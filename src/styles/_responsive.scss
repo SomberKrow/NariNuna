@@ -63,8 +63,8 @@
     align-items: stretch;
     padding: var(--space-5) var(--page-gutter) var(--space-6);
     overflow-y: auto;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
+    background: var(--bg-inset);
+    border-bottom: 1px solid var(--ornament);
     box-shadow: var(--shadow-deep);
   }
 
@@ -173,6 +173,22 @@
   .pillar-card:nth-child(2) {
     transform: none;
   }
+
+  .home-hero__portals {
+    width: min(35rem, 100%);
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero__portals a {
+    min-height: 5.35rem;
+  }
+
+  .home-hero__footer-note {
+    width: min(35rem, 100%);
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
 }
 
 @media (max-width: 45rem) {
@@ -196,7 +212,7 @@
   }
 
   .home-hero__art img {
-    object-position: 62% center;
+    object-position: 72% center;
   }
 
   .nail-hero > picture img {
@@ -205,7 +221,33 @@
 
   .home-hero__veil,
   .nail-hero__veil {
-    background: linear-gradient(90deg, rgb(30 12 17 / 92%) 0%, rgb(37 16 23 / 76%) 62%, rgb(25 9 13 / 38%) 100%), linear-gradient(0deg, rgb(20 8 12 / 58%), transparent 58%);
+    background:
+      linear-gradient(90deg, rgb(19 6 12 / 94%) 0%, rgb(31 11 21 / 80%) 68%, rgb(23 8 15 / 48%) 100%),
+      linear-gradient(0deg, rgb(15 4 9 / 72%), transparent 62%);
+  }
+
+  .home-hero::before {
+    inset: 0.45rem;
+  }
+
+  .home-hero::after {
+    display: none;
+  }
+
+  .home-hero__content {
+    padding-block: 4rem 3.2rem;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(4rem, 21vw, 6.4rem);
+  }
+
+  .home-hero h1 em {
+    margin-inline-start: 0.34em;
+  }
+
+  .home-hero__subcopy {
+    max-width: 30rem;
   }
 
   .gateway-grid,
@@ -292,6 +334,22 @@
   .button-row,
   .button-row .button {
     width: 100%;
+  }
+
+  .home-hero h1 {
+    font-size: clamp(3.55rem, 22vw, 5.1rem);
+  }
+
+  .home-hero__portals a {
+    min-height: 5rem;
+  }
+
+  .home-hero__whisper {
+    align-items: flex-start;
+  }
+
+  .home-hero__whisper img {
+    width: 3rem;
   }
 
   .site-footer__statement {

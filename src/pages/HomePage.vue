@@ -38,31 +38,48 @@ const gateways = [
     <picture class="home-hero__art" aria-hidden="true">
       <source
         type="image/webp"
-        srcset="/media/generated/nari-haven-hero-640.webp 640w, /media/generated/nari-haven-hero-1024.webp 1024w, /media/generated/nari-haven-hero-1440.webp 1440w, /media/generated/nari-haven-hero-1672.webp 1672w"
+        srcset="/media/generated/nari-haven-hero-v2-640.webp 640w, /media/generated/nari-haven-hero-v2-1024.webp 1024w, /media/generated/nari-haven-hero-v2-1440.webp 1440w, /media/generated/nari-haven-hero-v2-1672.webp 1672w"
         sizes="100vw"
       />
-      <img src="/media/generated/nari-haven-hero-1672.webp" width="1672" height="941" alt="" fetchpriority="high" />
+      <img src="/media/generated/nari-haven-hero-v2-1672.webp" width="1672" height="941" alt="" fetchpriority="high" />
     </picture>
     <div class="home-hero__veil"></div>
     <div class="home-hero__content page-width">
-      <p class="eyebrow eyebrow--light"><Sparkles :size="16" aria-hidden="true" /> Welcome to Nari's Haven</p>
-      <h1>Come in.<br /><em>Get comfortable.</em></h1>
-      <p class="home-hero__lede">A fall-evening refuge for streams, nail art, strange little stories, loud laughter, and people learning to treat each other like people.</p>
-      <div class="button-row">
-        <a class="button button--cream" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
-          <Radio :size="18" aria-hidden="true" /> Catch a stream
+      <p class="eyebrow eyebrow--light"><Sparkles :size="16" aria-hidden="true" /> Cozy chaos lives here</p>
+      <h1><span>Nari's</span><br /><em>Haven</em></h1>
+      <p class="home-hero__lede"><strong>Cozy chaos. Good vibes.<br />You belong here.</strong></p>
+      <p class="home-hero__subcopy">Streams, nail art, tiny ghosts, strange stories, loud laughter, and a protective big-sister kind of warmth.</p>
+
+      <nav class="home-hero__portals" aria-label="Start exploring Nari's Haven">
+        <a href="/haven/">
+          <span>Enter the Haven</span>
+          <small>Step into cozy chaos</small>
+        </a>
+        <a :href="twitchUrl" target="_blank" rel="noreferrer noopener">
+          <span>Watch me live</span>
+          <small>Catch the chaos in real time</small>
           <span class="sr-only"> on Twitch (opens in a new tab)</span>
         </a>
-        <a class="button button--ghost" href="/meet-nari/">Meet your host <ArrowRight :size="18" aria-hidden="true" /></a>
+        <a href="/meet-nari/">
+          <span>Discover Nari</span>
+          <small>Meet your host and peek around</small>
+        </a>
+      </nav>
+
+      <div class="home-hero__footer-note">
+        <div class="home-hero__whisper">
+          <img src="/media/generated/ghostie-128.webp" width="72" height="72" alt="" />
+          <p><strong>Psst…</strong> Click around. There are secrets everywhere.</p>
+        </div>
+        <p class="home-hero__aside"><ShieldCheck :size="16" aria-hidden="true" /> Warm room. Sharp boundaries. Zero pressure to perform.</p>
       </div>
-      <p class="home-hero__aside"><ShieldCheck :size="16" aria-hidden="true" /> Warm room. Sharp boundaries. Zero pressure to perform.</p>
     </div>
   </section>
 
   <section class="gateway-section section-pad page-width">
     <SectionHeading
-      eyebrow="A room with many doors"
-      title="Follow the part of Nari that found you first."
+      eyebrow="From the Haven"
+      title="Every side of Nari has a room."
       text="The VTuber, gamer, nail artist, teacher-at-heart, and protective big sister all live in the same world."
     />
     <div class="gateway-grid">

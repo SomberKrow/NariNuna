@@ -30,9 +30,10 @@ body::before {
   inset: 0;
   background-image:
     repeating-linear-gradient(115deg, transparent 0 3rem, rgb(255 255 255 / 2%) 3rem 3.05rem),
-    radial-gradient(circle at 28% 18%, rgb(255 255 255 / 18%) 0 0.035rem, transparent 0.045rem),
-    radial-gradient(circle at 72% 64%, rgb(0 0 0 / 22%) 0 0.03rem, transparent 0.04rem);
-  background-size: auto, 4.8rem 5.2rem, 5.7rem 4.4rem;
+    radial-gradient(circle at 28% 18%, rgb(255 235 205 / 34%) 0 0.04rem, transparent 0.055rem),
+    radial-gradient(circle at 72% 64%, rgb(0 0 0 / 22%) 0 0.03rem, transparent 0.04rem),
+    radial-gradient(circle at 84% 11%, rgb(213 139 104 / 24%) 0 0.08rem, transparent 0.1rem);
+  background-size: auto, 4.8rem 5.2rem, 5.7rem 4.4rem, 8.4rem 7.6rem;
   opacity: var(--grain-opacity);
   content: "";
   pointer-events: none;
@@ -97,13 +98,13 @@ h3 {
 h1 {
   margin-block-end: var(--space-5);
   font-size: clamp(2.7rem, 7vw, 6.8rem);
-  letter-spacing: -0.052em;
+  letter-spacing: -0.038em;
 }
 
 h2 {
   margin-block-end: var(--space-4);
   font-size: clamp(2rem, 4.2vw, 3.8rem);
-  letter-spacing: -0.038em;
+  letter-spacing: -0.025em;
 }
 
 h3 {
@@ -172,9 +173,9 @@ em {
   margin-block-end: var(--space-3);
   color: var(--emerald);
   font-family: var(--font-detail);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.19em;
   line-height: 1.4;
   text-transform: uppercase;
 }

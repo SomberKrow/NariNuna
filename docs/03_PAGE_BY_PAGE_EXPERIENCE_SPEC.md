@@ -6,7 +6,7 @@ All pages use the shared skip link, header, theme control, footer, focus system,
 
 - **Objective / audience:** Establish Nari's Haven for every arrival and route viewers, nail learners, and community visitors without a link-wall feeling.
 - **Emotional goal:** “I can come in as I am, and there is more here.”
-- **Order:** cinematic Haven hero → three unequal world gateways → host/identity note → three verified moments → Haven invitation → professional strip.
+- **Order:** cinematic Haven hero with three entry portals → three unequal world gateways → host/identity note → three verified moments → Haven invitation → professional strip.
 - **CTA:** Twitch is primary; Meet Nari is secondary. Support and Discord are not hero actions.
 - **Assets:** responsive local Haven environment; original Ghostie portrait placeholder; approved YouTube thumbnails.
 - **Empty/error:** if a thumbnail fails, text/card link remains; if character art is pending, label the placeholder.

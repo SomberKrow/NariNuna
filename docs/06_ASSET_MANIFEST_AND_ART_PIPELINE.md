@@ -5,21 +5,23 @@
 
 ## Locally generated high-resolution placeholders
 
-These files are original project placeholders, not canonical Nari artwork. The two opaque environmental masters use visually high-quality WebP so the complete private repository remains portable through ordinary Git; the alpha mascot remains PNG. Replace them semantically when approved art arrives. Future supplied canonical originals must remain untouched in the owner-approved source archive even when Git stores only deployment-friendly derivatives.
+These files are original project placeholders, not canonical Nari artwork. Opaque environmental masters use visually high-quality WebP so the complete private repository remains portable through ordinary Git; the alpha mascot remains PNG. Replace them semantically when approved art arrives. Future supplied canonical originals must remain untouched in the owner-approved source archive even when Git stores only deployment-friendly derivatives.
 
 | File | Dimensions / alpha | Size | Subject / crop | Current use | SHA-256 |
 |---|---|---:|---|---|---|
-| `src/assets/source/nari-haven-hero-environment-placeholder-v1.webp` | 1672×941 RGB | 124,930 B | Late-fall Haven, quiet left copy zone, strong right window | Home hero | `651c64f3ffa8e7a0312559c6984e74fe87da482e999dc85e488d257ad57feb3c` |
+| `src/assets/source/nari-haven-hero-environment-placeholder-v1.webp` | 1672×941 RGB | 124,930 B | Earlier photoreal-leaning late-fall Haven | Retained rollback source; superseded on Home | `651c64f3ffa8e7a0312559c6984e74fe87da482e999dc85e488d257ad57feb3c` |
+| `src/assets/source/nari-haven-hero-environment-placeholder-v2.webp` | 1672×941 RGB | 142,972 B | Illustrated cozy-goth Haven; dark left copy zone; Ghosties and nail desk on right | Active Home hero | `8ef6d0bdb32eaadf8ed2ec35a0bcf2cc16946adc23ad39331d52d44d565db621` |
 | `src/assets/source/ghostie-mascot-v1.png` | 1254×1254 RGBA | 598,496 B | Full lavender-white original spirit; square and small-scale legible | Placeholder mascot, icon, holds | `00b24ccb3f03fca3d618e4709961450ca6289447fcaabe18c6cfb0815c545105` |
 | `src/assets/source/nari-nuna-nail-studio-editorial.webp` | 1568×1003 RGB | 97,886 B | Learning desk; left copy zone; no person, hands, finished nails, brand, or readable label | Nail Studio hero | `5f7b52295dabd9e9864e4c8a8b6bca7197f25a2130427acf23c67ab199e66d77` |
 
-Quality: production-capable placeholders with clean compositions. The two high-resolution WebP placeholder records intentionally share their Git blobs with the largest served derivatives; the mascot source is unique. Ownership/licensing: created for this project; final owner license remains to be formalized. They must not be represented as Nari's commissioned model, official Ghostie/emote, real room, or real nail work.
+Quality: production-capable placeholders with clean compositions. High-resolution WebP placeholder records may intentionally share their Git blobs with the largest served derivatives; the mascot source is unique. Ownership/licensing: created for this project; final owner license remains to be formalized. They must not be represented as Nari's commissioned model, official Ghostie/emote, real room, or real nail work.
 
 ## Optimized derivatives
 
 | Family | Files | Total strategy |
 |---|---|---|
-| Haven hero | `public/media/generated/nari-haven-hero-{640,1024,1440,1672}.webp` | `srcset`/`sizes=100vw`; 27–125 KB; 16:9 derivatives except full source ratio |
+| Haven hero v2 | `public/media/generated/nari-haven-hero-v2-{640,1024,1440,1672}.webp` | Active `srcset`/`sizes=100vw`; 29–143 KB; 16:9; stripped metadata |
+| Haven hero v1 | `public/media/generated/nari-haven-hero-{640,1024,1440,1672}.webp` | Unreferenced rollback family; retained until visual approval |
 | Ghostie | `public/media/generated/ghostie-{128,256,512,768}.webp` | Preserved alpha; 2.9–33 KB; choose nearest non-upscaled display size |
 | Nail Studio | `public/media/generated/nari-nail-studio-{640,1024,1568}.webp` | `srcset`; 26–98 KB; source aspect retained |
 | Icons | `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Local Ghostie-derived placeholders with alpha |
@@ -31,9 +33,9 @@ Explicit width/height is set in markup. Above-fold hero uses `fetchpriority="hig
 ### Haven environment
 
 - **Page/viewport:** Home, wide desktop and mobile crop.
-- **Brief:** late-fall sunset, oversized sleepover room, cocoa wood, lavender/plum textiles, pillow-fort/movie clutter, warm window, original spectral atmosphere.
+- **Brief:** late-fall sunset, richly illustrated cozy-goth sleepover room, cocoa/plum architecture, lavender/rose textiles, pillow-fort clutter, warm window, bows/flowers, small original spectral visitors, and an environmental nail-practice desk.
 - **Crop:** low-detail left third for HTML copy; narrative right side; safe 16:9 center crop.
-- **Constraints:** no Nari likeness, logo, text, copyrighted mark, anime/game motif, or photoreal private room.
+- **Constraints:** no Nari likeness, logo, text, copyrighted character/mark, official emote recreation, scythe/skull/lore claim, cultural motif, or real/private room. Nail objects are environmental fiction and never portfolio work attributed to Nari.
 
 ### Nail Studio environment
 

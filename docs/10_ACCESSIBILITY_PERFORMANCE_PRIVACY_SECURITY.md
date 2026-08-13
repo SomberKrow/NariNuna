@@ -50,7 +50,7 @@ Budgets are release gates, not aspirational averages:
 | Cumulative layout shift | < 0.1 target |
 | Largest contentful paint | < 2.5s p75 target after real-host measurement |
 
-Observed local build on 2026-08-13: shared main JS ~59 KB gzip, icon helper ~24 KB gzip, CSS ~7.6 KB gzip, hero derivative ≤125 KB. These are point-in-time measurements, not production field data.
+Observed local build on 2026-08-13 after the illustrated Nari visual pass: shared main JS ~59 KB gzip, icon helper ~24 KB gzip, CSS ~9.2 KB gzip, active hero derivative ≤143 KB. These are point-in-time measurements, not production field data.
 
 Use responsive WebP/AVIF where visual comparison supports it, no upscaling, lazy loading below the fold, and `fetchpriority="high"` on only the actual LCP image. Do not preload every route or image. Keep top-level page modules lazy so page-specific content does not load globally.
 

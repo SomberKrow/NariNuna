@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { featuredMoments } from "@/data/media";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { discordUrl, socialLinks, throneUrl, twitchUrl } from "@/data/socials";
@@ -43,5 +43,17 @@ describe("content contracts", () => {
 
     expect(mediaCardSource).toContain('@error="thumbnailFailed = true"');
     expect(mediaCardSource).toContain('class="media-card__fallback"');
+  });
+
+  it("ships the active illustrated Haven hero as bounded responsive derivatives", () => {
+    const homeSource = readFileSync(new URL("../src/pages/HomePage.vue", import.meta.url), "utf8");
+
+    for (const width of [640, 1024, 1440, 1672]) {
+      const filename = `nari-haven-hero-v2-${width}.webp`;
+      const asset = new URL(`../public/media/generated/${filename}`, import.meta.url);
+
+      expect(homeSource).toContain(filename);
+      expect(statSync(asset).size).toBeLessThan(160_000);
+    }
   });
 });

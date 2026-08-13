@@ -13,14 +13,14 @@
   --space-8: 4.5rem;
   --space-9: 6.5rem;
 
-  --radius-sm: 0.55rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.75rem;
+  --radius-sm: 0.4rem;
+  --radius-md: 0.72rem;
+  --radius-lg: 1.05rem;
   --radius-pill: 999px;
 
   --shadow-soft: 0 1rem 3rem rgb(30 12 19 / 12%);
   --shadow-deep: 0 1.5rem 4rem rgb(22 8 13 / 28%);
-  --page-width: 76rem;
+  --page-width: 82rem;
   --page-gutter: clamp(1rem, 4vw, 3rem);
   --header-height: 4.75rem;
 
@@ -32,10 +32,10 @@
 :root,
 :root[data-theme="nari"] {
   color-scheme: dark;
-  --bg: #2a1820;
-  --bg-raised: #3b222e;
-  --bg-soft: #4b2a38;
-  --bg-inset: #211218;
+  --bg: #1d0f17;
+  --bg-raised: #2d1824;
+  --bg-soft: #442334;
+  --bg-inset: #150a10;
   --surface: #f2dfcf;
   --surface-soft: #dfc6c2;
   --text: #f9ede2;
@@ -49,6 +49,8 @@
   --rose: #cf8d8f;
   --ember: #df8a55;
   --ember-ink: #231218;
+  --copper: #c47851;
+  --ornament: rgb(226 151 100 / 52%);
   --cream: #f9e8d6;
   --emerald: #4fc59e;
   --emerald-on-surface: #0b5e49;
@@ -77,6 +79,8 @@
   --rose: #a8737e;
   --ember: #bd754c;
   --ember-ink: #231218;
+  --copper: #a6674d;
+  --ornament: rgb(184 120 84 / 46%);
   --cream: #eaddd4;
   --emerald: #58c7a5;
   --emerald-on-surface: #075c46;
@@ -105,6 +109,8 @@
   --rose: #bd777a;
   --ember: #a34a29;
   --ember-ink: #fff8eb;
+  --copper: #8f4f37;
+  --ornament: rgb(116 65 48 / 42%);
   --cream: #fff8eb;
   --emerald: #12644f;
   --emerald-on-surface: #12644f;

@@ -12,9 +12,12 @@
   gap: 0.55rem;
   padding: 0.72rem 1.2rem;
   border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  font-size: 0.92rem;
-  font-weight: 800;
+  border-color: color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--cream) 9%, transparent);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -28,13 +31,13 @@
 .button--small {
   min-height: 2.55rem;
   padding: 0.55rem 0.9rem;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 
 .button--ember {
   color: var(--ember-ink);
   background: var(--ember);
-  box-shadow: 0 0.6rem 1.5rem rgb(156 71 38 / 22%);
+  box-shadow: inset 0 0 0 2px rgb(255 231 210 / 16%), 0 0.6rem 1.5rem rgb(156 71 38 / 22%);
 }
 
 .button--cream {
@@ -45,7 +48,7 @@
 .button--emerald {
   color: var(--emerald-ink);
   background: var(--emerald);
-  box-shadow: 0 0.6rem 1.5rem rgb(32 126 99 / 20%);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 13%), 0 0.6rem 1.5rem rgb(32 126 99 / 20%);
 }
 
 .button--soft {
@@ -95,8 +98,9 @@
   z-index: 100;
   top: 0;
   min-height: var(--header-height);
-  border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom: 1px solid var(--ornament);
+  background: color-mix(in srgb, var(--bg-inset) 91%, transparent);
+  box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--ornament) 22%, transparent), 0 0.85rem 2rem rgb(10 3 7 / 18%);
   backdrop-filter: blur(18px) saturate(120%);
 }
 
@@ -116,6 +120,14 @@
   text-decoration: none;
 }
 
+.brand-mark::after {
+  width: 2.2rem;
+  height: 1px;
+  margin-inline-start: 0.1rem;
+  background: linear-gradient(90deg, var(--ornament), transparent);
+  content: "";
+}
+
 .brand-mark img {
   width: 2.6rem;
   height: 2.6rem;
@@ -129,13 +141,14 @@
 
 .brand-mark strong {
   font-family: var(--font-display);
-  font-size: 1.12rem;
-  letter-spacing: -0.02em;
+  font-size: 1.28rem;
+  font-style: italic;
+  letter-spacing: -0.025em;
 }
 
 .brand-mark small {
   margin-block-start: 0.25rem;
-  color: var(--text-muted);
+  color: var(--ember);
   font-family: var(--font-detail);
   font-size: 0.58rem;
   font-weight: 800;
@@ -169,7 +182,7 @@
 .site-header nav a:hover,
 .site-header nav a[aria-current="page"] {
   color: var(--text);
-  background: rgb(255 255 255 / 6%);
+  background: color-mix(in srgb, var(--plum) 23%, transparent);
 }
 
 .site-header nav a[aria-current="page"]::after {
@@ -178,7 +191,7 @@
   bottom: 0.35rem;
   left: 0.6rem;
   height: 2px;
-  background: var(--emerald);
+  background: linear-gradient(90deg, transparent, var(--ember), transparent);
   border-radius: var(--radius-pill);
   content: "";
 }
@@ -193,8 +206,10 @@
   gap: 0.15rem;
   padding: 0.2rem;
   border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  background: rgb(0 0 0 / 8%);
+  border-color: var(--ornament);
+  border-radius: var(--radius-md);
+  background: rgb(0 0 0 / 16%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%);
 }
 
 .theme-switcher__option {
@@ -208,7 +223,7 @@
   color: var(--text-muted);
   background: transparent;
   border: 0;
-  border-radius: var(--radius-pill);
+  border-radius: calc(var(--radius-md) - 0.2rem);
   cursor: pointer;
 }
 
@@ -369,8 +384,30 @@
 }
 
 .section-heading {
+  position: relative;
   max-width: 49rem;
   margin-block-end: var(--space-7);
+  padding-block-end: var(--space-5);
+}
+
+.section-heading::after {
+  display: block;
+  width: min(18rem, 72vw);
+  height: 1px;
+  margin-block-start: var(--space-5);
+  background: linear-gradient(90deg, var(--ornament), color-mix(in srgb, var(--lavender) 45%, transparent), transparent);
+  box-shadow: 2.4rem 0 0 color-mix(in srgb, var(--ornament) 20%, transparent);
+  content: "";
+}
+
+.section-heading::before {
+  position: absolute;
+  bottom: calc(var(--space-5) - 0.31rem);
+  left: 0;
+  color: var(--ember);
+  content: "✦";
+  font-size: 0.72rem;
+  transform: translateX(-0.1rem);
 }
 
 .section-heading h2 {
@@ -389,6 +426,16 @@
   text-align: center;
 }
 
+.section-heading--center::after {
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--ornament), color-mix(in srgb, var(--lavender) 45%, transparent), var(--ornament), transparent);
+}
+
+.section-heading--center::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .section-heading--center .eyebrow {
   justify-content: center;
 }
@@ -400,13 +447,23 @@
 }
 
 .media-card {
+  position: relative;
   overflow: hidden;
   color: var(--ink);
   background: var(--surface);
-  border: 1px solid var(--line-dark);
+  border: 1px solid color-mix(in srgb, var(--copper) 50%, var(--line-dark));
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) ease;
+}
+
+.media-card::after {
+  position: absolute;
+  inset: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--copper) 22%, transparent);
+  border-radius: calc(var(--radius-lg) - 0.25rem);
+  content: "";
+  pointer-events: none;
 }
 
 .media-card:hover {

@@ -4,7 +4,7 @@ Read with `00_PROJECT_SOURCE_OF_TRUTH.md` and `06_ASSET_MANIFEST_AND_ART_PIPELIN
 
 ## World thesis
 
-The interface is one physical-feeling Haven at different hours: an oversized late-fall sleepover room with cocoa wood, lavender textiles, pillows, blankets, warm window light, lamps, movies, creative clutter, and spectral visitors. It should feel cared for and lived in, not staged or coated in decoration.
+The interface is one physical-feeling Haven at different hours: an oversized late-fall sleepover room with cocoa wood, lavender textiles, pillows, blankets, warm window light, lamps, movies, creative clutter, and spectral visitors. It should feel cared for, expressive, and authored by Nari—not staged, generic, or coated in decoration.
 
 Core words: warm, cozy, chaotic, cute, protective, autumnal, intimate, handcrafted, spectral, expressive, legible.
 
@@ -25,14 +25,15 @@ Tokens in `src/styles/_tokens.scss` are implementation decisions, not immutable 
 
 | Role | Nari | Dark | Light |
 |---|---|---|---|
-| Background | `#2a1820` | `#130d13` | `#efe1cd` |
-| Raised background | `#3b222e` | `#211522` | `#f8eddd` |
+| Background | `#1d0f17` | `#130d13` | `#efe1cd` |
+| Raised background | `#2d1824` | `#211522` | `#f8eddd` |
 | Surface | `#f2dfcf` | `#e4d5dd` | `#fff8eb` |
 | Text | `#f9ede2` | `#f4eaf1` | `#321f27` |
 | Plum | `#8f607d` | `#71516f` | `#8b5e7b` |
 | Lavender | `#c6a6d4` | `#aa8fc3` | `#9b79ad` |
 | Ember | `#df8a55` | `#bd754c` | `#a34a29` |
 | Emerald | `#4fc59e` | `#58c7a5` | `#12644f` |
+| Copper ornament | `#c47851` | `#a6674d` | `#8f4f37` |
 
 Bright emerald remains the meaningful accent on dark Haven backgrounds. Cream reading surfaces use a separate darker `--emerald-on-surface` token so small labels and links retain AA contrast without flattening the themes.
 
@@ -51,15 +52,15 @@ Use display type for a few high-value headings, not entire paragraphs. Body copy
 ## Composition
 
 - Hero copy occupies a deliberate low-detail crop-safe zone; artwork carries narrative on the other side.
-- Cards feel like warm objects or rooms, not glass dashboards.
+- Cards feel like warm objects or rooms, not glass dashboards. Fine copper double-lines, tiny corner marks, and restrained floral/ribbon cues can make them feel like pieces of Nari's room.
 - Alternate dense environmental sections with quiet reading sections.
 - Decorations support hierarchy and should disappear before content does on mobile.
-- Use rounded corners selectively (`0.55rem`, `1rem`, `1.75rem`, pills); avoid turning every element into a floating capsule.
+- Use modest softened corners (`0.4rem`, `0.72rem`, `1.05rem`) and reserve pills for true compact controls; the visual character is framed and crafted rather than bubbly dashboard chrome.
 - Shadows are warm/soft, not neon. Borders keep low-contrast surfaces distinct.
 
 ## Motifs
 
-Allowed: window light, lamps, pillows, blanket folds, shelves, mugs, lavender sprigs, original spectral wisps, nail-desk materials, paper studies, framed moments, tiny emerald signals.
+Allowed: window light, lamps, pillows, blanket folds, shelves, mugs, lavender sprigs, roses, bows, ribbons, original spectral wisps, nail-desk materials, paper studies, framed moments, warm copper ornament, tiny emerald signals.
 
 Restricted: sun/moon mark, canonical Nari likeness, official Ghostie/emotes, commissioned banners, finished nail art, sponsor marks. Use only after per-asset clearance.
 
