@@ -18,6 +18,7 @@
 - **PASS:** production-only and full dependency audits report zero vulnerabilities after two development-only transitive lockfile updates.
 - **PASS:** current local placeholder sources, icons, and public derivatives expose no EXIF, GPS, or IPTC metadata in the ImageMagick metadata scan.
 - **PASS:** repository secret-pattern scan found no private keys, provider tokens, API keys, passwords, or client-secret assignments outside documentation examples.
+- **PASS:** the Netlify preview for the continuation commit completed successfully; remote YouTube-thumbnail failures now render a local readable card fallback instead of a broken image.
 - **PENDING:** complete 320/390/768px visual matrix, screen-reader pass, automated accessibility scan, all-theme contrast measurements, external-link crawl, and real-host header/404 test.
 - **BLOCKED:** production asset/copy acceptance because current character/Ghostie/nail/environment art includes explicit placeholders and canonical lore is unresolved.
 

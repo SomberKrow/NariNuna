@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { featuredMoments } from "@/data/media";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { discordUrl, socialLinks, throneUrl, twitchUrl } from "@/data/socials";
@@ -32,5 +33,15 @@ describe("content contracts", () => {
     expect(featuredMoments.every((moment) => moment.url.includes("youtube.com/shorts/"))).toBe(true);
     expect(featuredMoments.every((moment) => moment.thumbnailUrl?.startsWith("https://i.ytimg.com/"))).toBe(true);
     expect(featuredMoments.every((moment) => moment.contentRating === "general")).toBe(true);
+  });
+
+  it("keeps outbound media cards readable when a remote thumbnail fails", () => {
+    const mediaCardSource = readFileSync(
+      new URL("../src/components/ui/MediaCard.vue", import.meta.url),
+      "utf8"
+    );
+
+    expect(mediaCardSource).toContain('@error="thumbnailFailed = true"');
+    expect(mediaCardSource).toContain('class="media-card__fallback"');
   });
 });
