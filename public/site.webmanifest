@@ -1,0 +1,13 @@
+{
+  "name": "Nari Nuna's Haven",
+  "short_name": "Nari's Haven",
+  "description": "Streams, nail art, stories, and a warm corner for Ghosties.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3d2330",
+  "theme_color": "#3d2330",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
