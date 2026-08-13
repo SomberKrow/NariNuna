@@ -32,7 +32,7 @@
 }
 
 .button--ember {
-  color: #231218;
+  color: var(--ember-ink);
   background: var(--ember);
   box-shadow: 0 0.6rem 1.5rem rgb(156 71 38 / 22%);
 }
@@ -463,6 +463,11 @@
 .media-card__body > p:not(.eyebrow) {
   color: var(--ink-muted);
   font-size: 0.9rem;
+}
+
+.media-card .eyebrow,
+.media-card .text-link {
+  color: var(--emerald-on-surface);
 }
 
 .tag-row {

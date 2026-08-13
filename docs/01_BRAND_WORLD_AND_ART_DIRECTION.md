@@ -31,8 +31,10 @@ Tokens in `src/styles/_tokens.scss` are implementation decisions, not immutable 
 | Text | `#f9ede2` | `#f4eaf1` | `#321f27` |
 | Plum | `#8f607d` | `#71516f` | `#8b5e7b` |
 | Lavender | `#c6a6d4` | `#aa8fc3` | `#9b79ad` |
-| Ember | `#df8a55` | `#bd754c` | `#b95f35` |
-| Emerald | `#4fc59e` | `#58c7a5` | `#167b62` |
+| Ember | `#df8a55` | `#bd754c` | `#a34a29` |
+| Emerald | `#4fc59e` | `#58c7a5` | `#12644f` |
+
+Bright emerald remains the meaningful accent on dark Haven backgrounds. Cream reading surfaces use a separate darker `--emerald-on-surface` token so small labels and links retain AA contrast without flattening the themes.
 
 Dark stays warm and material; Light is linen and wood, never stark white. Theme backgrounds use different light sources and ambient glows, while shared surfaces preserve spatial continuity.
 

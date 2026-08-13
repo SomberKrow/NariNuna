@@ -58,7 +58,8 @@ Safe current public copy is “Nari, your chaotic big-sister VTuber.” The impl
 | Item | Confirmed state |
 |---|---|
 | Canonical repository | `SomberKrow/NariNuna` (private) |
-| Working branch | `agent/build-nari-haven` |
+| Merged foundation | PR #1 merged `agent/build-nari-haven` into `main` at `41b4edfcbd8d1d6423396d467c52305e81c3650e` |
+| Continuation branch | `agent/nari-haven-production-pass` |
 | Package manager | npm with committed `package-lock.json` |
 | Runtime floor | Node.js 22.13+ |
 | Framework | Vue 3.5.41 + TypeScript 5.9.3 |

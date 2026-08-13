@@ -139,6 +139,19 @@
   color: var(--text-muted);
 }
 
+.gateway-card:not(:nth-child(3)) .eyebrow,
+.gateway-card:not(:nth-child(3)) .text-link,
+.pillar-card .eyebrow,
+.studio-grid article .eyebrow,
+.resource-grid article .eyebrow,
+.support-grid article .eyebrow,
+.work-fit__grid article .eyebrow,
+.haven-invitation .eyebrow,
+.haven-invitation .text-link,
+.haven-door .eyebrow {
+  color: var(--emerald-on-surface);
+}
+
 .host-note,
 .symbol-section,
 .found-family,

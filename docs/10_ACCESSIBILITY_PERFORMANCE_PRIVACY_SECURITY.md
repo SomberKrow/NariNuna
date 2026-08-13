@@ -20,6 +20,8 @@ Review every text/control state in Nari, Dark, and Light themes. Minimum target 
 
 At 200% text zoom and 400% page zoom, navigation, headings, buttons, holds, and interactive cards must reflow without horizontal page scrolling or clipped controls. Monospace detail text may not carry essential instructions by itself.
 
+Semantic text/background token pairs are protected by `tests/theme-contrast.test.ts`. This guards ordinary text at 4.5:1 and focus/meaningful UI at 3:1, but it does not replace manual measurement over gradients, imagery, hover states, or final artwork.
+
 ### Images and media
 
 - Decorative environment imagery uses empty alt when adjacent HTML supplies meaning.
@@ -105,3 +107,5 @@ Confirm HTTPS/HSTS ownership, directory-index routing, 404 mapping, headers/CSP 
 - Network panel confirms zero unapproved third-party script/iframe requests.
 - Image metadata scan confirms no EXIF/GPS in public derivatives.
 - Secrets scan and content/privacy review pass before deployment.
+
+The 2026-08-13 continuation pass updated two development-only transitive dependencies after current npm advisories: `brace-expansion` 1.1.18 and `js-yaml` 4.3.1. Both the production-only and full `npm audit` graphs then reported zero vulnerabilities.

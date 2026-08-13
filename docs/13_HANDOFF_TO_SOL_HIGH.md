@@ -7,11 +7,13 @@ Finish and release Nari Nuna's Haven: a true Vue/Vite multi-page world for strea
 ## 2. Repository baseline
 
 - Canonical repo: private `SomberKrow/NariNuna`.
-- Working branch: `agent/build-nari-haven`.
+- PR #1 merged the foundation branch into `main` at `41b4edfcbd8d1d6423396d467c52305e81c3650e`.
+- Current continuation branch: `agent/nari-haven-production-pass`.
 - npm/Node.js 22.13+; lockfile committed.
 - Vue 3.5.41, TypeScript 5.9.3, Vite 8.2.1, Vue Router 5.2.0, SCSS, Motion for Vue 2.3.0.
 - Eleven real HTML entries, shared Vue shell, persistent Nari/Dark/Light theme boot, lazy route modules, responsive local art derivatives, tests, CI, security headers, and docs are implemented.
-- `npm run check` passed on 2026-08-13: lint, typecheck, 4 tests, build, and 11 HTML output validations.
+- `npm run check` passed on 2026-08-13: lint, typecheck, 7 tests across 2 files, build, and 11 HTML output validations.
+- `npm audit` and `npm audit --omit=dev` both reported zero vulnerabilities after current development-only transitive fixes.
 - No known source/build failure. Production launch remains blocked by content/art rights, canonical identity wording, host/domain, contact, and final manual QA.
 
 ## 3. Read these docs first

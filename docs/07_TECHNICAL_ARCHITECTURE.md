@@ -93,7 +93,7 @@ External `target="_blank"` links use `rel="noreferrer noopener"`. There are no c
 | `npm run check` | Lint → typecheck → test → build |
 | `npm run preview` | Vite production preview |
 
-Observed on 2026-08-13: `npm run check` passed, 1 test file/4 tests passed, 11 HTML documents validated, and the largest shared JS chunk was about 173 KB raw/59 KB gzip. Re-run after every material change; do not preserve these numbers as future claims.
+Observed on 2026-08-13: `npm run check` passed, 2 test files/7 tests passed, 11 HTML documents validated, and the largest shared JS chunk was about 173 KB raw/59 KB gzip. Re-run after every material change; do not preserve these numbers as future claims.
 
 ## Deployment
 

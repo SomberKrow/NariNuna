@@ -8,12 +8,16 @@
 
 ## Current evidence snapshot — 2026-08-13
 
-- **PASS:** `npm run check` completed: lint, TypeScript, 1 Vitest file/4 tests, production build, and 11-document HTML validator.
+- **PASS:** `npm run check` completed: lint, TypeScript, 2 Vitest files/7 tests, production build, and 11-document HTML validator.
 - **PASS:** desktop cloud preview at 1363×936 had no horizontal overflow; Home rendered with intentional hero hierarchy.
 - **PASS:** theme changed to Light and updated `theme-color`; Ghostie reveal opened.
 - **PASS:** document navigation reached `/haven/`; progressive door revealed Discord after deliberate steps; three floorboard activations revealed the secret.
 - **PASS:** `/the-prinny-cult/` rendered without global shell and exposed `noindex, nofollow`; oath interaction revealed Rule Eleven.
 - **PASS:** no application-origin runtime error remained after cross-document View Transitions were removed. Browser-extension logging is not application evidence.
+- **PASS:** semantic foreground/background token contracts pass for all three themes, including dedicated emerald-on-surface and theme-aware ember action pairs.
+- **PASS:** production-only and full dependency audits report zero vulnerabilities after two development-only transitive lockfile updates.
+- **PASS:** current local placeholder sources, icons, and public derivatives expose no EXIF, GPS, or IPTC metadata in the ImageMagick metadata scan.
+- **PASS:** repository secret-pattern scan found no private keys, provider tokens, API keys, passwords, or client-secret assignments outside documentation examples.
 - **PENDING:** complete 320/390/768px visual matrix, screen-reader pass, automated accessibility scan, all-theme contrast measurements, external-link crawl, and real-host header/404 test.
 - **BLOCKED:** production asset/copy acceptance because current character/Ghostie/nail/environment art includes explicit placeholders and canonical lore is unresolved.
 
@@ -36,7 +40,7 @@ Re-run and replace this snapshot after every material change. It is not a perman
 - [x] Pre-mount boot prevents an obvious wrong-theme flash.
 - [x] Control uses labelled native buttons and `aria-pressed`.
 - [ ] Final art/environmental cues make themes more than palette swaps.
-- [ ] Text, focus, controls, and meaningful graphics meet contrast in every state/theme.
+- [ ] Text, focus, controls, and meaningful graphics meet contrast in every state/theme. Core semantic token pairs are automated; final imagery, gradients, hover states, and manual measurements remain pending.
 
 ## MPA and routing
 
