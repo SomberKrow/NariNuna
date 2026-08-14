@@ -1,140 +1,236 @@
 # Project Source of Truth
 
-**Authority:** This file outranks the rest of the documentation when product intent conflicts.<br>
-**State:** Implemented foundation; production content clearance pending.<br>
-**Evidence date:** 2026-08-13.
+**Authority:** Highest project document below Nari's explicit current approval  
+**Status:** `LOCKED` product foundation; production clearance `BLOCKED`  
+**Reviewed:** 2026-08-13  
+**Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
+**Update trigger:** Any change to identity, audience, routes, stack, public claims, launch scope, or blocker status
 
 ## Product thesis
 
-Nari Nuna's Haven is a lived-in, late-fall refuge where one public identity—VTuber, gamer, self-taught nail artist, chaotic big sister, and community host—has multiple rooms. The emotional journey is arrival → comfort → curiosity → discovery → belonging. Professional visitors get a shorter path: credibility → fit → inquiry.
+Nari Nuna's Haven is a lived-in late-fall refuge built around one public identity with several real rooms: VTuber and gamer, self-taught nail artist and educator-at-heart, chaotic protective big sister, and community host. It turns a scattered set of creator links into a coherent place visitors can enter, understand, and remember.
 
-It is not a Linktree clone, generic VTuber template, corporate influencer page, pastel SaaS dashboard, grimdark site, salon storefront, or fan site for another franchise.
+The emotional journey is:
 
-## Audiences
+> arrival → comfort → curiosity → discovery → belonging
 
-- Current Ghosties and Haven members.
-- Viewers arriving from Twitch, YouTube, clips, or social profiles.
-- Nail-art learners and people interested in Nari's process.
-- Creators, collaborators, sponsors, and brands.
-- Visitors who may choose to support Nari without pressure.
+The professional journey is shorter:
 
-## Locked decisions
+> credibility → fit → boundaries → approved contact
 
-- True Vite multi-page architecture with real HTML documents and document navigation.
-- Vue 3, TypeScript, Vite, SCSS, Vue Router, and Motion for Vue; no Tailwind or general UI kit.
-- Public routes: Home, Meet Nari, Streams, Nail Studio, The Haven, Resources, Work With Nari, Support, and Story Time.
-- Nari, Dark, and Light are persistent atmospheres in one Haven, not arbitrary skins.
-- Fall sunset/early evening, lavender/plum/cocoa/cream, lived-in sleepover energy.
-- Emerald is a sparse signature accent connected to Nari's character eyes.
-- Sun/moon meaning stays personal to Nari's Mexicana heritage, family, people, and bloodline. No invented cultural history or decorative imitation.
-- Nail learning is first-class. Current public copy supports “self-taught” and work on herself only; do not imply licensing, clients, services, medical authority, or credentials.
-- The Haven centers kindness, respect, love, support, cooperation, boundaries, and treating people like people.
-- Discord is progressively discovered in the Haven, not repeated as a global conversion button.
-- Support is optional and never creates ownership, obligation, access, or a claim on Nari's time.
-- No autoplay sound; no autoplay third-party embed; reduced motion and keyboard parity are mandatory.
-- The Prinny Cult is hidden, no-index, original, optional, easy to exit, and contains no Disgaea/Prinny assets.
+The site succeeds when a visitor can say, “This could only belong to Nari,” while still finding the next action without deciphering a fandom maze.
 
-## Identity discrepancy: launch blocker
+## The promise
 
-The approved packet describes Nari as a warm, joy-spreading Grim Reaper. Current first-party public profiles consistently describe and depict a half-cat/half-dog “CatDog” big-sister VTuber. Neither source explains how the identities connect.
+The Haven promises four things:
 
-Safe current public copy is “Nari, your chaotic big-sister VTuber.” The implemented Meet Nari page holds the lore chapter open and states the discrepancy plainly. Nari must provide canonical wording before either identity is expanded. Do not merge, supersede, or retcon them without approval.
+1. **Personality without fiction.** Nari's warmth, chaos, craft, and boundaries are specific; unapproved lore and credentials are not invented to fill space.
+2. **Belonging without ownership.** Community and support never create entitlement to Nari, her time, or other people in the Haven.
+3. **Craft without counterfeit proof.** Nail learning is flagship content, but generated or stock work never impersonates Nari's portfolio.
+4. **Atmosphere without obstruction.** Art, themes, Ghosties, and secrets make the site memorable without blocking navigation, accessibility, performance, or privacy.
 
-## Terminology
+## Definition of “holy shit, this is mine”
 
-| Term | Meaning and usage |
-|---|---|
-| Nari's Haven / the Haven | The website world and community room; capitalize as a proper name |
-| Ghosties | Confirmed public community/mascot term; friendly collective, never donor tier |
-| Nari theme | Fall sunset / early-evening default atmosphere |
-| Dark theme | Same Haven at night, warm near-black/plum and moonlit restraint |
-| Light theme | Same Haven on a bright autumn afternoon, cream/linen and warm daylight |
-| Nail Studio | Creative and educational page; not a salon/services claim |
-| Story Time | Data-driven featured stories and approved media moments |
-| Work With Nari | Professional collaboration page; not “corporate” or “press” |
+The desired reaction does not come from more decoration. It comes from recognition and coherence:
+
+- the Haven feels like one place at three times of day;
+- Nari's roles feel connected rather than arranged as a link wall;
+- the Nail Studio is treated with the same importance as streaming;
+- warmth and sharp boundaries coexist in both copy and interaction design;
+- every visual asset feels authored, credited, and intentionally placed;
+- mobile feels composed, not compressed;
+- professional visitors can evaluate fit without sterilizing Nari;
+- hidden delight rewards curiosity but never becomes required navigation;
+- placeholders are honest and removable;
+- the implementation remains maintainable after the launch excitement fades.
+
+## Audiences and priority
+
+| Priority | Audience | Primary need | Success signal |
+|---:|---|---|---|
+| 1 | Current Ghosties and Haven members | Recognition, belonging, reliable doors | Values feel true; Discord is discoverable after context |
+| 2 | Viewers arriving from clips or live platforms | Understand Nari quickly | Reach a representative stream/video with correct expectations |
+| 3 | Nail-art learners and craft-curious visitors | See authentic work and learning process | Find approved work, process notes, and disclosed resources |
+| 4 | Creators, collaborators, sponsors, and brands | Evaluate fit and boundaries | Understand possible work and reach an approved professional route |
+| 5 | Optional supporters | Help without pressure | See free support first and understand that money grants no access |
+
+No audience is optimized through deceptive urgency, surveillance, fake scarcity, or fabricated social proof.
+
+## Locked product decisions
+
+### Identity and world
+
+- The public-safe identity is **“Nari, your chaotic big-sister VTuber.”**
+- Nari's Haven is the central world and community concept, not merely a Discord label.
+- The world is a cozy fall-sunset/early-evening sleepover refuge: lavender, plum, cocoa, cream, ember light, creative clutter, pillows, blankets, and friendly spectral presence.
+- Nari, Dark, and Light are three atmospheres in the same Haven, not unrelated skins.
+- Emerald is a sparse signature signal tied to Nari's eyes and meaningful states.
+- Sun-and-moon meaning stays personal to Nari's approved Mexicana heritage wording. The project does not invent history or imitate cultural motifs.
+- Found-family energy is emotional reference only. The site does not copy *Fairy Tail*, Disgaea/Prinny, or any other franchise identity or assets.
+
+### Content and experience
+
+- Nail learning is a first-class pillar beside streams and community.
+- Current public scope supports “self-taught nail artist” and work on herself. Do not imply licensing, clients, salon services, bookings, medical authority, or professional credentials.
+- Discord is progressively discovered after community values; it is not a repeated global conversion button.
+- Support is optional and never buys access, priority, ownership, obligation, or a claim on Nari's time.
+- Professional content may be concise, but it remains recognizably Nari and contains no invented metrics, partnerships, or response promises.
+- No autoplay sound, autoplay video, background stream, social-feed scrape, or third-party player on initial load.
+- The hidden Prinny Cult is original, optional, easy to exit, `noindex`, and contains no franchise assets.
+
+### Technical foundation
+
+- True Vite multi-page application with eleven real HTML documents.
+- Vue 3, TypeScript, Vite, Vue Router, SCSS, Motion for Vue, and Lucide.
+- Normal top-level document navigation; Vue Router resolves and lazy-loads the current page within each entry.
+- No Tailwind, general UI kit, CMS, database, analytics, account system, or fake form in the current scope.
+- npm with committed lockfile; Node.js 22.13+.
+- Mobile support begins at 320 CSS px.
+- WCAG 2.2 AA is the public-launch target.
+- Reduced motion, keyboard parity, visible focus, three-theme continuity, and direct route loading are release requirements.
+
+## Canon and unresolved identity
+
+The approved planning packet describes a warm, joy-spreading Grim Reaper. Current first-party profiles consistently describe and depict a half-cat/half-dog “CatDog” big-sister VTuber. No approved source currently explains whether these are versions, layers, evolutions, or unrelated concepts.
+
+This is a launch blocker, not an invitation to improvise.
+
+Until Nari resolves it:
+
+- use neutral big-sister VTuber wording;
+- do not generate or redraw a Nari likeness;
+- do not merge CatDog traits with Grim Reaper lore;
+- keep the Meet Nari lore room visibly held;
+- treat public images as references, not website licenses;
+- record Nari's final wording in the content approval template and governance log.
+
+## Route contract
+
+| Route | Document | Navigation | Product responsibility |
+|---|---|---|---|
+| `/` | `index.html` | Primary | Arrival, identity summary, three gateways, selected moments |
+| `/meet-nari/` | `meet-nari/index.html` | Primary | Privacy-safe identity, roles, symbols, boundaries, lore status |
+| `/streams/` | `streams/index.html` | Primary | Stream feeling, curated moments, live/archive doors, schedule truth |
+| `/nail-studio/` | `nail-studio/index.html` | Primary | Authentic nail practice, education, future approved gallery |
+| `/haven/` | `haven/index.html` | Primary | Community values, belonging, progressive Discord discovery |
+| `/resources/` | `resources/index.html` | Primary | Reviewed recommendations and material-relationship disclosure |
+| `/work-with-nari/` | `work-with-nari/index.html` | Primary | Collaboration fit, boundaries, process, approved contact |
+| `/stories/` | `stories/index.html` | Secondary | Curated, privacy-reviewed memories and media |
+| `/support/` | `support/index.html` | Secondary | Free and financial support with explicit boundaries |
+| `/the-prinny-cult/` | `the-prinny-cult/index.html` | Hidden | Optional original joke reward |
+| `/404.html` | `404.html` | System | Static-host recovery |
+
+Adding, removing, renaming, or re-ranking a route requires updates to architecture, IA, page specs, validation, tests, metadata, and deployment behavior.
 
 ## Repository truth
 
-| Item | Confirmed state |
+| Concern | Confirmed implementation |
 |---|---|
-| Canonical repository | `SomberKrow/NariNuna` (private) |
-| Working branch | `agent/build-nari-haven` |
-| Package manager | npm with committed `package-lock.json` |
+| Canonical repository | Private `SomberKrow/NariNuna` |
+| Active implementation branch | `agent/build-nari-haven` |
+| Package manager | npm, committed `package-lock.json` |
 | Runtime floor | Node.js 22.13+ |
-| Framework | Vue 3.5.41 + TypeScript 5.9.3 |
-| Routing | Vue Router 5.2.0 inside a true Vite 8.2.1 MPA |
-| Motion | Motion for Vue 2.3.0; CSS for simple states |
-| Styling | SCSS 1.102.0; no Tailwind |
-| Validation | ESLint, `vue-tsc`, Vitest, Vite build, 11-document output validator |
-| Deployment | Not locked in the GitHub source; keep output portable |
-| Analytics/forms/CMS | None; do not imply collection or submission works |
+| Framework | Vue 3.5.x + TypeScript 5.9.x |
+| Build | Vite 8.2.x true MPA |
+| Navigation | Vue Router 5.2.x + ordinary top-level anchors |
+| Styling | SCSS + semantic CSS custom properties |
+| Motion | Motion for Vue for isolated UI; CSS for small states |
+| Validation | ESLint, `vue-tsc`, Vitest, Vite build, HTML output validator |
+| Deployment | Provider and production domain not locked |
+| Trusted backend | None |
+| Forms/analytics/CMS | None |
 
-The repository began empty. The current build has 11 HTML entries, a shared Vue shell, lazy page modules, three-theme preflight, responsive local imagery, security headers, a manifest, unit tests, CI, and this documentation suite.
+Exact installed versions come from `package-lock.json`, not this prose.
 
-## Route truth
+## Terminology
 
-| Document | Navigation status |
+| Term | Approved use |
 |---|---|
-| `/` | Primary |
-| `/meet-nari/` | Primary |
-| `/streams/` | Primary |
-| `/nail-studio/` | Primary |
-| `/haven/` | Primary |
-| `/resources/` | Primary |
-| `/work-with-nari/` | Primary |
-| `/stories/` | Footer/secondary |
-| `/support/` | Footer/secondary |
-| `/the-prinny-cult/` | Hidden; robots `noindex, nofollow` |
-| `/404.html` | Hosting fallback |
+| Nari's Haven / the Haven | Website world and community space; proper name |
+| Ghosties | Public community/mascot term; never a donor tier |
+| Nari theme | Default sunset and amber-lamp atmosphere |
+| Dark theme | Same Haven at night; warm near-black/plum |
+| Light theme | Same Haven in bright autumn afternoon; cream/linen |
+| Nail Studio | Creative and educational room; not a salon or services claim |
+| Story Time | Selected, approved stories and media; not an automated feed |
+| Work With Nari | Professional collaboration route; not a corporate rebrand |
+| placeholder | Explicit temporary project asset/content state; never canonical by implication |
 
-## Asset truth
+## Current asset truth
 
-No Nari-supplied production artwork arrived with the packet. Existing creator-platform artwork was audited for visual cues and artist credits, but public visibility does not establish website reproduction rights. The build does not copy or hotlink Nari's model, commissioned banners, emotes, panels, logos, or nail work.
+No Nari-supplied production artwork was available at the implementation snapshot. The repository contains three locally generated and visibly noncanonical placeholder families:
 
-The repo contains three locally generated, visibly noncanonical placeholders: Haven environment, Ghostie mascot, and Nail Studio environment. They are locally hosted, documented, optimized, and replaceable. YouTube thumbnails are used only for three verified outbound Shorts; no player or tracking script loads.
+- Haven environment;
+- lavender Ghostie mascot;
+- Nail Studio environment with no person, hands, finished nails, brand, or service claim.
 
-See `06_ASSET_MANIFEST_AND_ART_PIPELINE.md` for exact files, hashes, sizes, rights status, and replacement procedure.
+No Nari model, commissioned banner, emote, panel, logo, or nail photograph has been copied or hotlinked. Three YouTube thumbnails support verified outbound Shorts without loading a player.
 
-## Verified public destinations
+Every asset change is governed by `06_ASSET_MANIFEST_AND_ART_PIPELINE.md`. Public visibility is not permission.
 
-- Linktree: <https://linktr.ee/NariNuna>
+## Public-link truth
+
+The implementation snapshot contains these destinations, last recorded as checked on 2026-08-13:
+
 - Twitch: <https://www.twitch.tv/nari_nuna>
 - YouTube: <https://www.youtube.com/@Nari_Nuna>
 - VOD archive: <https://www.youtube.com/@NariNunaVod>
 - X: <https://x.com/Nari_Nuna>
 - TikTok: <https://www.tiktok.com/@narinuna>
 - Instagram: <https://www.instagram.com/narinunagotu>
+- Linktree: <https://linktr.ee/NariNuna>
 - Throne: <https://throne.com/narinuna>
 - Discord candidate: <https://discord.com/invite/f25YtvtnbV>
 
-Links were checked on 2026-08-13. Platform availability, handles, invite codes, and content can change; reverify at release.
+Verification dates are volatile evidence. Recheck links, handles, invite destination, content rating, and ownership before release. Do not silently substitute a nearby account.
 
-## Non-goals and privacy boundary
+## Privacy and truth boundary
 
-Do not ship precise location, private/legal identity, private phone/email, family details, home or moving footage, private messages, raw EXIF, secrets, affiliate secrets, unapproved metrics, fake schedule, fake contact form, fabricated testimonials, medical claims, service pricing, or user-generated content without moderation and permission.
+Do not publish:
 
-`VITE_*` values are public and may never contain credentials. There is no backend in this repository.
+- legal/private identity, precise location, private phone or email;
+- private family, relationship, home, moving, or employment details;
+- private messages, Discord content, or community identifiers without approval;
+- raw files containing EXIF/IPTC/GPS or revealing filenames/backgrounds;
+- fabricated lore, testimonials, schedule, metrics, partnerships, services, credentials, or price claims;
+- secrets, API keys, webhooks, tokens, moderation credentials, or affiliate credentials;
+- adult-marked content without advance opt-in labeling.
 
-## Open items and safest defaults
+Every `VITE_*` value is public. The client has no trusted secret boundary.
 
-| Open item | Blocks public launch? | Safest default |
-|---|---:|---|
-| CatDog ↔ Grim Reaper canonical lore | Yes | Keep neutral big-sister VTuber copy and the lore hold |
-| Character/model art rights and current version | Yes | Keep original Ghostie placeholder; do not hotlink |
-| Ghostie/emote ownership, variants, credits | Yes for canonical mascot claim | Keep generated character labeled as original placeholder |
-| Real nail gallery + labels + permissions | Yes for flagship gallery | Keep empty-state/gallery hold; never fabricate work |
-| Final Discord invite | Yes for community CTA | Reverify candidate at release and choose one canonical code |
-| Business contact/media kit/metrics | Yes for active inquiry claims | Link to approved public hub/X; show no form or numbers |
-| Fonts/logo/wordmark | No | Continue licensed system stacks and text wordmark |
-| Schedule, stories, resources, affiliates | No | Show honest curating/no-schedule states |
-| Hosting, analytics, legal copy, license | Yes for production operations | Keep static output portable; collect nothing |
+## Launch blockers and safe defaults
 
-## Conflict resolution
+| Decision/input | Severity | Safe current state | Clearance evidence |
+|---|---:|---|---|
+| CatDog ↔ Grim Reaper canon | Critical | Neutral big-sister copy; lore hold | Nari-approved wording record |
+| Current character/model art | Critical | Ghostie placeholder | Owner/artist/rights/crop record |
+| Official Ghostie/emotes/logo | Critical for canonical visual launch | Original placeholder labelled | Website-use and derivative approval |
+| Real nail gallery/education | Critical for flagship promise | Honest empty gallery | Approved originals, labels, review, EXIF scan |
+| Canonical Discord invite | Critical for community CTA | Candidate only; reverify/hide on failure | Destination verification at release |
+| Professional contact/media kit | High | Public Linktree/X only; no form/numbers | Approved contact and metric snapshots |
+| Stories/resources/schedule | Medium | Curating/no-schedule states | Per-record approval and provenance |
+| Hosting/domain/headers/rollback | Critical for production | Portable static artifact | Completed release evidence record |
+| License/legal/analytics choice | Critical for operations | All rights reserved; collect nothing | Owner decision and, where needed, counsel |
 
-1. Nari's explicit current approval.
-2. This source of truth.
-3. Rights-cleared canonical source assets and current first-party facts.
-4. Other documents in this suite.
-5. Existing implementation details.
+## Explicit non-goals
 
-Unknown is acceptable. Fabricated certainty is not.
+- Linktree clone or exhaustive social wall on Home.
+- Generic purple VTuber template, streamer-neon dashboard, glassmorphism card farm, or corporate creator kit.
+- Ecommerce, nail bookings, salon services, accounts, user posts, DMs, chat, or Discord replacement.
+- Runtime platform scraping, algorithmic feeds, autoplay embeds, or surveillance analytics.
+- Lore encyclopedia built from inference.
+- Multi-brand framework abstracted before a second real consumer exists.
+- Deployment-provider lock-in before the host is chosen.
+
+## Decision test
+
+Before accepting a product change, answer:
+
+1. Does it make Nari more specific or merely make the site busier?
+2. Is the claim approved and the asset permitted?
+3. Does the change preserve the Haven's warmth and boundaries?
+4. Does it work at 320px, with keyboard, reduced motion, and all themes?
+5. Does it preserve the true MPA and static-host portability?
+6. Is the maintenance owner and expiry rule clear?
+
+If any answer is unknown, record the unknown. Do not style around it.

@@ -1,102 +1,265 @@
 # Technical Architecture
 
+**Status:** `IMPLEMENTED` foundation  
+**Owns:** Runtime, build shape, MPA/router contract, module boundaries, state ownership, extension recipes, invariants  
+**Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
+**Update trigger:** Dependency, route, state, build, directory, integration, hosting assumption, or architecture invariant changes
+
+## System summary
+
+Nari Nuna's Haven is a static Vue application built as a true Vite multi-page application (MPA). Eleven HTML documents share one Vue entry and shell. Vue Router resolves the current URL and lazy-loads the corresponding page component, while primary navigation uses ordinary anchors and real document transitions.
+
+There is no backend, account, database, CMS, form handler, analytics service, runtime social API, or trusted client secret boundary.
+
+```mermaid
+flowchart TD
+  B["Browser requests a real route"] --> H["Route-specific HTML document"]
+  H --> T["theme-boot.js sets pre-paint theme"]
+  H --> M["src/main.ts"]
+  M --> R["Vue Router resolves location"]
+  R --> P["Lazy page module"]
+  P --> S["Shared SiteShell or secret shell bypass"]
+  S --> A["Static local assets + approved outbound links"]
+```
+
 ## Verified baseline
 
 | Concern | Implementation |
 |---|---|
-| Runtime/package manager | Node.js 22.13+; npm lockfile |
-| UI | Vue 3.5.41, TypeScript 5.9.3 |
-| Build | Vite 8.2.1 + `@vitejs/plugin-vue` 6.0.8 |
-| Navigation | Vue Router 5.2.0 |
-| Styles | Sass 1.102.0; layered SCSS; CSS custom properties |
-| Motion | Motion for Vue 2.3.0 and native CSS transitions |
-| Icons | `@lucide/vue` 1.31.0 |
-| Quality | ESLint 9, `vue-tsc` 3.3.9, Vitest 4.1.10 |
+| Runtime | Node.js 22.13+ |
+| Package manager | npm with committed `package-lock.json` |
+| UI | Vue 3.5.x, TypeScript 5.9.x |
+| Build | Vite 8.2.x + `@vitejs/plugin-vue` 6.x |
+| Routing | Vue Router 5.2.x |
+| Styles | Sass/SCSS + semantic CSS custom properties |
+| Motion | Motion for Vue (`motion-v`) + CSS transitions |
+| Icons | `@lucide/vue` |
+| Quality | ESLint 9, `vue-tsc`, Vitest, custom output validation |
+| Output | Static `dist/` with eleven HTML documents and hashed assets |
 
-Use versions resolved in `package-lock.json`; this table is evidence, not a request to hand-edit the lockfile.
+Use exact versions resolved in `package-lock.json`. Do not hand-edit the lockfile or treat this table as an upgrade request.
 
-## MPA + Router decision
+## Why MPA and Router coexist
 
-Nari requested a true MPA and Jake also requested Vue Router. The implementation preserves both:
+The architecture satisfies two deliberate requirements: real multi-page documents and Vue Router.
 
-1. Every public route has an actual HTML entry document.
-2. Vite builds all entries using `build.rolldownOptions.input`.
-3. Global top-level links are ordinary anchors, causing real document navigation.
-4. Every document mounts the same shared Vue entry and Router.
-5. Router resolves the initial `window.location` and lazy-loads only that page component.
-6. Router remains available for route metadata, scroll reset, 404 matching, and future within-document subroutes; it does not replace top-level documents.
+1. Each public route has a real HTML entry.
+2. Vite receives all entries through `build.rolldownOptions.input`.
+3. Header and cross-room links are ordinary `<a>` elements.
+4. Each document runs the same `/src/main.ts` entry.
+5. Vue Router reads `window.location`, matches the route, and lazy-loads one page module.
+6. Router provides route metadata, scroll reset, catch-all rendering, and future within-document route capability.
+7. The hidden route uses route metadata to bypass the ordinary shell.
 
-This is not an SPA fallback. Direct refreshes work only if the host serves built directory indexes and the 404 file correctly.
+This is not an SPA fallback disguised as an MPA. Do not replace document links with `RouterLink` globally or remove entry documents because client navigation appears faster in development.
 
-## Entry documents
+## Document and route registry
 
-`vite.config.ts` declares Home, Meet Nari, Streams, Nail Studio, Haven, Resources, Work With Nari, Support, Stories, Prinny Cult, and 404. Each HTML file contains route-specific title/description/robots metadata, theme-color, favicon/manifest, the external theme preflight, and `/src/main.ts`.
+The following sources must stay synchronized:
 
-When adding a route, update the HTML file, `pageEntries`, router records, validator list, navigation/data where appropriate, tests, docs, and host routing.
+| Concern | Source |
+|---|---|
+| Build entries | `pageEntries` in `vite.config.ts` |
+| Client route matching | `routes` in `src/router/index.ts` |
+| Primary/footer visibility | `src/data/navigation.ts` |
+| Output existence | `scripts/validate-build.mjs` |
+| Route invariants | `tests/content-contract.test.ts` |
+| Title/description/robots/theme boot | Each HTML entry document |
+| Product responsibility | Docs `00`, `02`, and `03` |
 
-## Shared application
+A route is incomplete if only one registry knows it exists.
+
+## Repository map
 
 ```text
-src/
-├── components/
-│   ├── haven/          # Progressive community and secret threshold
-│   ├── layout/         # SiteShell, SiteHeader, SiteFooter
-│   └── ui/             # Theme, media, headings, Ghostie
-├── composables/        # Theme and reduced-motion state
-├── data/               # Reviewed content records, never scraped feeds
-├── pages/              # One lazy Vue module per document route
-├── router/             # Initial route resolution and metadata
-├── styles/             # Tokens, base, components, pages, responsive
-├── types/              # Content contracts
-└── assets/source/      # High-resolution local placeholder sources
+.
+├── index.html                         # Home entry
+├── <route>/index.html                 # Real route entries
+├── 404.html                           # Static-host fallback entry
+├── public/
+│   ├── _headers                       # Host-compatible security/cache rules
+│   ├── media/generated/               # Served optimized project imagery
+│   ├── theme-boot.js                  # Pre-Vue theme selection
+│   ├── icons + manifest
+│   └── robots.txt
+├── scripts/validate-build.mjs         # Eleven-document output contract
+├── src/
+│   ├── App.vue                        # Shell decision + RouterView
+│   ├── main.ts                        # App bootstrap and stale-chunk recovery
+│   ├── assets/source/                 # Project image masters; not served directly
+│   ├── components/
+│   │   ├── haven/                     # Progressive community/secret threshold
+│   │   ├── layout/                    # Shared shell/header/footer
+│   │   └── ui/                        # Theme/media/heading/Ghostie primitives
+│   ├── composables/                   # Theme and motion preference state
+│   ├── data/                          # Reviewed local content records
+│   ├── pages/                         # One lazy module per route view
+│   ├── router/                        # URL-to-page mapping and route metadata
+│   ├── styles/                        # Tokens → base → components → pages → responsive
+│   └── types/                         # Implemented content contracts
+├── tests/                             # Vitest invariants
+├── docs/                              # Product and operating specification
+├── vite.config.ts
+├── tsconfig.json
+└── package.json + package-lock.json
 ```
 
-`App.vue` renders ordinary routes inside `SiteShell` and the hidden route without global shell. `main.ts` waits for Router readiness, then mounts. A Vite preload error triggers one browser reload to recover stale chunks after a deployment.
+## Bootstrap lifecycle
 
-## Theme boot
+### Pre-paint theme
 
-`public/theme-boot.js` is an external blocking script loaded before the module entry. It accepts only `nari`, `dark`, or `light`, reads `localStorage` defensively, sets `data-theme`, and updates `theme-color`. The interactive composable writes the same versioned key. No cookie/account or analytics event is involved.
+Each HTML document loads `/theme-boot.js` before the module entry. The script:
 
-Do not inline the script while the CSP forbids inline script. If the storage key or theme list changes, update boot and composable together.
+- accepts only `nari`, `dark`, or `light`;
+- reads `localStorage` defensively;
+- falls back to the document's `data-theme`;
+- sets `<html data-theme>`;
+- updates the route's `theme-color` metadata.
 
-## Content data
+The corresponding Vue composable uses the same allowlist, color map, and storage key `nari-haven-theme-v1`.
 
-Current reviewed modules are `navigation.ts`, `socials.ts`, `media.ts`, and `content.ts`. Recurring content stays typed and data-driven. No runtime scraping or social API is required. Future editorial scale can justify a CMS only after owner workflow, auth, preview, schema, privacy, cost, and deployment are chosen.
+**Invariant:** Change theme names, storage key, or browser theme colors in both `public/theme-boot.js` and `src/composables/useTheme.ts`. The boot script is external because the CSP blocks inline script.
 
-## Media and embeds
+### Vue bootstrap
 
-- Local originals live outside `public`; optimized WebP derivatives live under `public/media/generated`.
-- Hero images use responsive `srcset`, explicit dimensions, and high priority only when above fold.
-- Other local images lazy-load.
-- YouTube cards use remote thumbnails and outbound links; CSP permits only `i.ytimg.com` in addition to self/data images.
-- `frame-src 'none'` and `media-src 'none'` deliberately prevent embeds/autoplay. A future click-to-load player requires a documented privacy/CSP change and consent UX.
+`src/main.ts`:
 
-## SCSS
+1. imports shared global SCSS;
+2. creates the Vue app;
+3. installs Router;
+4. waits for Router readiness;
+5. mounts to `#app`;
+6. handles `vite:preloadError` by reloading once through normal browser behavior to recover stale hashed chunks after deployment.
 
-Theme semantic tokens are CSS variables, allowing pre-Vue paint. SCSS compiles the structural layers. Breakpoints are content-driven, not device-named. Avoid component-scoped duplication for shared primitives and avoid a utility-class framework.
+### Shell selection
 
-## Security headers
+`App.vue` renders normal route views inside `SiteShell`. Routes with `meta.secret === true` bypass it. `SiteShell` owns skip link, header, one main region, footer, and Ghostie layer.
 
-`public/_headers` provides CSP, no-sniff, referrer policy, permissions policy, HSTS, frame protection, and caching guidance for compatible static hosts. Hosts that ignore `_headers` must reproduce these values in their configuration. Do not add `unsafe-eval`; review and remove `style-src 'unsafe-inline'` if a nonce/hash or fully external style path becomes feasible.
+Do not duplicate these concerns inside ordinary page components.
 
-External `target="_blank"` links use `rel="noreferrer noopener"`. There are no client secrets, credentials, raw webhooks, contact submissions, or authenticated areas.
+## Module boundaries
 
-## Scripts and evidence
+### Pages
 
-| Script | Contract |
+Page modules own route composition and page-specific static content. Repeated content collections belong in typed data. Pages may compose components but should not reimplement global theme, navigation, or asset policy.
+
+### Components
+
+Components own reusable behavior and semantic patterns. A component should expose clear props/state rather than reach into unrelated page DOM. Avoid abstraction that turns distinct rooms into one configurable generic card page.
+
+### Composables
+
+Composables own shared reactive browser state. Current global state is intentionally tiny:
+
+- theme selection/persistence;
+- operating-system reduced-motion preference.
+
+Do not add a global store until state truly crosses unrelated component trees and cannot be cleanly represented through props/composables/URL.
+
+### Data and types
+
+`src/data` contains reviewed local records; it does not scrape platform APIs. `src/types/content.ts` describes what the current code actually consumes. Richer planned editorial contracts are documented separately in `08_CONTENT_DATA_SCHEMAS.md` and must not be described as implemented until code validates them.
+
+### Styles
+
+Semantic theme values are CSS custom properties so the pre-Vue paint is correct. SCSS compiles structural layers. Shared primitives live in `_components.scss`; page compositions live in `_pages.scss`; preference and breakpoint overrides live in `_responsive.scss`.
+
+## State ownership
+
+| State | Owner | Persistence | Trust/privacy |
+|---|---|---|---|
+| Current route | Browser URL + Vue Router | History/document navigation | Public |
+| Theme | `useTheme` + `<html data-theme>` | Local storage key | Local preference only |
+| Reduced motion | `matchMedia` via `useReducedMotion` | OS/browser preference | No storage |
+| Mobile menu | `SiteHeader` local ref | None | UI-only |
+| Ghostie open state | `GhostieSummoner` local ref | None | UI-only |
+| Haven door step | `HavenDoor` local ref | None | Narrative, not auth |
+| Floorboard taps | `LooseFloorboard` local ref | None | Optional joke |
+| Secret oath/counter | `PrinnyCultPage` local refs | None | Optional joke |
+
+No current state belongs in a cookie, account, server session, URL parameter, or analytics event.
+
+## Content and media flow
+
+- Navigation, social links, featured media, community values, categories, and identity pillars are local TypeScript records.
+- Pages render these records through normal Vue templates.
+- Local source art is not imported into the bundle; optimized public derivatives are addressed by root-relative paths.
+- YouTube thumbnails are the only approved remote image origin at the snapshot.
+- All platform actions are outbound HTTPS links with `noopener noreferrer`.
+- `frame-src 'none'` and `media-src 'none'` intentionally block embed/player expansion.
+
+## Security boundary
+
+The browser is untrusted and the output is public static code.
+
+- `VITE_*` is public.
+- No secret, token, webhook, email credential, moderation credential, or private ID belongs in source or build configuration.
+- No unsanitized HTML is rendered.
+- A future Markdown/CMS boundary requires runtime schema validation and allowlist sanitization.
+- `robots.txt`, `noindex`, and a hidden route are not access control.
+- A future form requires a real backend/privacy/spam/error design; a client-only fake form is prohibited.
+
+## Build and quality commands
+
+| Command | Contract |
 |---|---|
 | `npm run dev` | Vite development server |
-| `npm run lint` | ESLint over source/config/public scripts |
+| `npm run lint` | ESLint across repository excluding build/cache paths |
 | `npm run typecheck` | `vue-tsc --noEmit` |
-| `npm run test` | Vitest content-contract tests |
-| `npm run build` | Typecheck, Vite MPA build, 11-document validator |
+| `npm run test` | Vitest content-contract suite |
+| `npm run build` | Typecheck → Vite MPA build → eleven-document validator |
 | `npm run check` | Lint → typecheck → test → build |
-| `npm run preview` | Vite production preview |
+| `npm run preview` | Preview built production artifact |
 
-Observed on 2026-08-13: `npm run check` passed, 1 test file/4 tests passed, 11 HTML documents validated, and the largest shared JS chunk was about 173 KB raw/59 KB gzip. Re-run after every material change; do not preserve these numbers as future claims.
+The last recorded implementation evidence on 2026-08-13 stated that `npm run check` passed with four tests and eleven output documents. Treat this as historical evidence for the snapshot, not proof for a later commit. Re-run the gate.
 
-## Deployment
+## Architecture invariants
 
-GitHub source remains host-portable. A deployment provider, production domain, canonical URL, redirects, 404 routing, cache policy enforcement, and public access mode are not locked. Do not commit a provider adapter to the canonical architecture until chosen. Deployment-specific mirrors may wrap this output, but source changes flow from this repository—not back from a generated mirror.
+The following are merge blockers unless intentionally changed through an accepted decision record:
 
-Before release, verify directory-index behavior, direct loads, 404 fallback, `_headers` support or equivalent, HTTPS, asset caching, robots, and no accidental preview indexing.
+- all eleven documents build and direct-load;
+- primary top-level navigation remains real document navigation;
+- shared shell is component-owned, not copied per page;
+- page modules remain lazy;
+- theme paints before Vue and persists across document navigation;
+- no Tailwind/general UI kit/second scaffold;
+- no backend-dependent claim without a backend;
+- no unapproved third-party script, iframe, or runtime feed;
+- no client secret;
+- public assets are local/approved and explicitly sized;
+- hidden route remains optional, no-index, and non-private;
+- output remains portable to a static host meeting the runbook contract.
+
+## Adding a route
+
+1. Approve the route responsibility in docs `00`, `02`, and `03`.
+2. Add `<route>/index.html` with route-specific title, description, theme metadata, icons/manifest, theme boot, and module entry.
+3. Add the HTML path to `pageEntries` in `vite.config.ts`.
+4. Add the lazy route record in `src/router/index.ts`.
+5. Create the page module under `src/pages`.
+6. Add navigation only at the IA-approved priority.
+7. Add the expected document to `scripts/validate-build.mjs`.
+8. Update route/data tests and count assumptions.
+9. Update host routing, metadata, docs, QA matrix, and sitemap/robots intent if applicable.
+10. Run `npm run check`, then direct-load the built route and test back/forward/refresh/trailing slash.
+
+## Adding an integration
+
+Before adding a CMS, embed, form, analytics tool, schedule API, or social API, document:
+
+- product purpose and why static local data is insufficient;
+- data controller/processor and destinations;
+- authentication and secret boundary;
+- schema and trust validation;
+- consent, retention, deletion, access, and incident owner;
+- CSP/network changes;
+- loading, failure, offline, and fallback states;
+- accessibility and performance cost;
+- price, vendor lock-in, export, and removal plan;
+- test and monitoring evidence.
+
+If these questions are premature, the integration is premature.
+
+## Deployment contract
+
+Architecture remains provider-neutral. The host must serve directory indexes, map unknown paths to `404.html`, enforce security/cache headers, support HTTPS, preserve root-relative assets, and permit atomic rollback. Detailed deployment and verification live in `15_DEPLOYMENT_AND_RELEASE_RUNBOOK.md`.

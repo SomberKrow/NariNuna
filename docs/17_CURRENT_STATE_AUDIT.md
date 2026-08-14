@@ -1,0 +1,152 @@
+# Current-State Audit
+
+**Repository:** `SomberKrow/NariNuna`  
+**Branch audited:** `agent/build-nari-haven`  
+**Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
+**Audit date:** 2026-08-13  
+**Evidence type:** Repository/code inspection plus historical validation records; final production/manual evidence remains pending
+
+This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
+
+## Observed implementation
+
+| Concern | Current state |
+|---|---|
+| Application | Vue 3.5, Composition API, `<script setup lang="ts">` |
+| Language | Strict TypeScript |
+| Build | Vite 8 true MPA with eleven HTML inputs |
+| Routing | Vue Router 5; ordinary anchors for top-level document navigation |
+| Styling | Five-layer SCSS system with semantic CSS theme tokens |
+| Themes | Nari, Dark, Light; pre-paint boot and local persistence |
+| Motion | Motion for Vue for Ghostie; CSS transitions for small states |
+| Icons | Tree-shaken Lucide Vue imports |
+| Content | Local TypeScript records plus page-local static composition |
+| Media | Local responsive WebP project placeholders; three remote YouTube thumbnails |
+| Tests | Vitest content invariants + custom eleven-document validator |
+| Quality | ESLint, `vue-tsc`, test, build through `npm run check` |
+| CI | GitHub Actions on pull request and pushes to main |
+| Security | Static header baseline, no backend/secrets/forms/analytics/embeds |
+| Hosting | Not selected; output intended for compatible static host |
+
+## Strengths to preserve
+
+- Real MPA/direct-document architecture without duplicating the Vue shell.
+- Small, understandable dependency surface.
+- Strict TypeScript and focused local data modules.
+- Route-level lazy modules.
+- Pre-paint theme continuity across document navigation.
+- Semantic shell, skip link, visible focus, native controls, and reduced-motion foundation.
+- Honest empty states instead of fake schedule, gallery, metrics, contact form, or resources.
+- Original local placeholder art with explicit noncanonical labels.
+- No copied Nari/platform/franchise art in the project asset path.
+- No third-party script, iframe, autoplay, analytics, or client secret.
+- Distinctive Haven language and progressive community entry.
+- Clear static build and CI gate.
+
+## Confirmed implementation limitations
+
+### Content contracts are uneven
+
+Navigation, socials, media, resource categories, community values, and identity pillars are centralized. Much page copy and fit/gateway data is still page-local. The implemented `MediaMoment` type lacks explicit publish state/provenance objects documented in the target schemas.
+
+**Direction:** Migrate only when real approved content arrives. Do not churn static copy into a generic CMS-shaped schema without an editorial need.
+
+### Automated tests cover a narrow slice
+
+Current four tests protect route uniqueness/shape, HTTPS social links, community/support URL protocol, and the three selected Shorts. They do not yet prove:
+
+- equality across Vite/router/validator registries;
+- theme boot/composable synchronization;
+- new-tab rel behavior;
+- all public claims/asset records;
+- responsive/accessibility interaction behavior;
+- image metadata/budget contracts;
+- target publish-state filtering.
+
+**Direction:** Add invariants alongside each real content/system migration; do not pretend unit tests replace manual QA.
+
+### Header/mobile focus behavior needs final review
+
+The menu exposes expanded/controls state, closes on Escape/selection, and locks background scroll. Focus containment and explicit return are not implemented/documented as passing.
+
+**Direction:** Test with keyboard and screen reader at final mobile layout, then implement only what the observed interaction requires.
+
+### Placeholder assets are structurally strong but noncanonical
+
+The current Haven, Ghostie, Nail Studio, and icons establish the pipeline and visual world but are not Nari-supplied/official. The largest served environment derivative shares the source blob, and generated media filenames are not content-hashed.
+
+**Direction:** Preserve the pipeline, ingest exact rights records, version canonical replacements, and re-test caching/crops/contrast.
+
+### Remote thumbnails are a deliberate exception
+
+Three `i.ytimg.com` images load without player code and use no-referrer. They still create a request to a third party and can fail/change.
+
+**Direction:** Keep text fallbacks, reapprove the final selection, and use local rights-cleared card art if the remote strategy becomes inappropriate.
+
+### Provider behavior is unverified
+
+`public/_headers` expresses intent but does not prove emitted headers, HSTS, routing, 404 status, cache behavior, or rollback. Root-relative paths assume domain-root deployment.
+
+**Direction:** Choose a provider/domain and complete the deployment runbook rather than adding speculative adapters.
+
+## Product/content blockers
+
+| Blocker | Current implementation response | Required next evidence |
+|---|---|---|
+| CatDog/Grim Reaper conflict | Neutral identity + lore hold | Nari canonical wording |
+| Character/model rights | Original Ghostie portrait hold | Current art/version and usage record |
+| Official Ghostie/logo/emotes | Project placeholder set | Rights/credit/animation terms |
+| Nail portfolio/education | Empty gallery + environment | Approved originals/labels/scope/privacy |
+| Discord code | Candidate constant | Intended-guild release verification |
+| Business contact/media kit/metrics | Linktree/X hold; no numbers/form | Approved public route and snapshots |
+| Stories/resources/schedule | Honest future/curating states | Approved records and maintenance owner |
+| Host/domain/legal/license | Portable static output | Owner/provider decisions and release record |
+
+## Visual risks to review with final art
+
+- Current editorial `h1` scale can become oversized if final art lacks negative space.
+- Hero veils and raw overlay colors are tuned to placeholder imagery.
+- Mobile hero `object-position` values are asset-specific.
+- The fixed Ghostie control needs final safe-area/zoom review.
+- Gateway/pillar asymmetry must remain intentional rather than looking broken at intermediate widths.
+- Theme differences are currently strong in tokens/light but need final environment-art coherence.
+- Nail detail may require image-budget exceptions backed by visual evidence.
+
+## Keep, improve, replace, decide
+
+| System | Direction |
+|---|---|
+| Vue, TypeScript, Vite, Router, SCSS | Keep |
+| True MPA/document navigation | Keep |
+| Theme boot and semantic tokens | Keep; synchronize and final-contrast review |
+| Motion for Vue | Keep for isolated behavior; do not expand casually |
+| Lucide | Keep; no second icon pack |
+| Current placeholder pipeline | Keep as fallback/reference; replace visual families when approved |
+| Remote thumbnails | Decide per final media/rights/privacy review |
+| Local typed content | Keep and expand per real content family |
+| Four current Vitest contracts | Keep and strengthen |
+| Page-local static copy/data | Keep where genuinely one-off; migrate repeated/volatile content |
+| Current Discord constant | Reverify or remove at release |
+| Host portability | Keep until provider decision |
+| `style-src 'unsafe-inline'` | Review; do not expand to script |
+| Focus containment/return | Decide from final manual testing |
+
+## Recorded commands
+
+The repository defines:
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+npm run check
+npm run preview
+```
+
+Historical records state `npm run check` passed at the audited implementation snapshot. This documentation overhaul does not substitute for rerunning the repository gate after integration.
+
+## Recommended first implementation action
+
+Do not refactor architecture first. Resolve the canonical identity and asset-rights packet, then integrate one complete vertical slice—current Nari portrait plus Meet Nari/Home placement—through source preservation, responsive derivatives, alt/credit, themes/mobile, tests, and documentation. That proves the production pipeline with real material before scaling to the nail gallery and remaining asset families.
