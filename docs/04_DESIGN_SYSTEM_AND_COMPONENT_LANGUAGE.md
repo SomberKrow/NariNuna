@@ -1,102 +1,235 @@
 # Design System and Component Language
 
-## Foundations
+**Status:** `IMPLEMENTED` foundation; final contrast/art review `PENDING`  
+**Owns:** Exact tokens, typography, layout, breakpoints, component semantics, visual state rules  
+**Implementation files:** `src/styles/_tokens.scss`, `_base.scss`, `_components.scss`, `_pages.scss`, `_responsive.scss`  
+**Update trigger:** Token, primitive, component, breakpoint, type, focus, or shared state changes
 
-Source files:
+## Design-system principles
 
-- `src/styles/_tokens.scss`: spacing, type stacks, semantic colors, theme atmospheres.
-- `src/styles/_base.scss`: reset, typography, focus, global surfaces.
-- `src/styles/_components.scss`: shared controls, shell, cards, media.
-- `src/styles/_pages.scss`: page compositions.
-- `src/styles/_responsive.scss`: breakpoints, reduced motion, increased contrast.
+1. **Semantic before decorative.** Components and tokens describe purpose, not a random hex or one-off page mood.
+2. **One Haven, three atmospheres.** Theme changes alter light/material while preserving hierarchy and layout.
+3. **Atmospheric does not mean vague.** Text, controls, focus, states, and destinations remain explicit.
+4. **Mobile is composition.** Content reorders and density changes; it is not a scaled desktop screenshot.
+5. **Components earn reuse.** Abstract a repeated behavior or semantic pattern, not every repeated `<div>`.
 
-Prefer semantic CSS variables over page-specific raw colors. `Nari`, `Dark`, and `Light` are values of `data-theme` on `<html>`.
+## Source layering
 
-## Scale
+| File | Responsibility | Must not own |
+|---|---|---|
+| `_tokens.scss` | Fonts, spacing, radii, shadows, motion, theme values | Page selectors or component layout |
+| `_base.scss` | Reset, document, typography, focus, utilities | Page-specific composition |
+| `_components.scss` | Shared shell, navigation, buttons, cards, theme, media, Ghostie | One-off page sections |
+| `_pages.scss` | Route composition and page-level section patterns | Token definitions |
+| `_responsive.scss` | Cross-system breakpoint recomposition and preferences | A duplicate desktop system |
+| `main.scss` | Import order only | Actual styles |
 
-| System | Values |
+Import order is tokens → base → components → pages → responsive. Changing it can change cascade behavior and requires visual regression review.
+
+## Theme color tokens
+
+These values mirror `src/styles/_tokens.scss` at the documented snapshot.
+
+| Semantic token | Nari | Dark | Light | Intended use |
+|---|---|---|---|---|
+| `--bg` | `#2a1820` | `#130d13` | `#efe1cd` | Document atmosphere |
+| `--bg-raised` | `#3b222e` | `#211522` | `#f8eddd` | Raised environmental sections |
+| `--bg-soft` | `#4b2a38` | `#301c2d` | `#e3cfbf` | Soft depth/media fallback |
+| `--bg-inset` | `#211218` | `#0c090d` | `#d7bfae` | Deep/inset rooms and footer |
+| `--surface` | `#f2dfcf` | `#e4d5dd` | `#fff8eb` | Primary readable object surface |
+| `--surface-soft` | `#dfc6c2` | `#bcaabc` | `#ead5d0` | Secondary surface/action |
+| `--text` | `#f9ede2` | `#f4eaf1` | `#321f27` | Text on atmosphere |
+| `--text-muted` | `#d9c4c1` | `#c9b7c7` | `#715761` | Secondary text on atmosphere |
+| `--ink` | `#2c1821` | `#1a111a` | `#2a1820` | Text on light surfaces |
+| `--ink-muted` | `#6f4c58` | `#5d4859` | `#73545c` | Secondary text on surfaces |
+| `--plum` | `#8f607d` | `#71516f` | `#8b5e7b` | Material/decorative accent |
+| `--lavender` | `#c6a6d4` | `#aa8fc3` | `#9b79ad` | Spectral/soft accent |
+| `--rose` | `#cf8d8f` | `#a8737e` | `#bd777a` | Warm supporting accent |
+| `--ember` | `#df8a55` | `#bd754c` | `#b95f35` | Primary warm action/emphasis |
+| `--cream` | `#f9e8d6` | `#eaddd4` | `#fff8eb` | High-contrast action/light material |
+| `--emerald` | `#4fc59e` | `#58c7a5` | `#167b62` | Meaningful signal/selection/discovery |
+| `--emerald-ink` | `#0b4c3d` | `#093e32` | `#f1fff9` | Text placed on emerald |
+| `--focus` | `#72e2bc` | `#7ce6c2` | `#087b5e` | Focus outline |
+
+`--line`, `--line-dark`, `--page-glow`, and `--grain-opacity` also change by theme. They create separation and atmosphere; they do not carry essential meaning.
+
+### Raw-color exceptions
+
+Raw colors currently appear where a semantic token cannot guarantee contrast across imagery or the isolated secret room:
+
+- hero copy/veil over fixed environment art;
+- button text over known ember/cream fills;
+- secret-room palette;
+- semi-transparent shadows/overlays.
+
+New raw colors require a reason. A page-specific hex that merely resembles an existing semantic token should use the token.
+
+### Color-use rules
+
+- Emerald is sparse and semantic.
+- Ember is the normal primary warm action, not every link.
+- Cream provides readable high-contrast action over environment art.
+- Plum/lavender create material identity and spectral atmosphere.
+- Selection uses text/shape/state plus color.
+- Final contrast must be measured in every theme and interaction state; token intent is not proof.
+
+## Typography tokens and hierarchy
+
+```css
+--font-display: Iowan Old Style, Baskerville, "Times New Roman", serif;
+--font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-detail: ui-monospace, "SFMono-Regular", Consolas, monospace;
+```
+
+| Element | Current scale | Use |
+|---|---|---|
+| `h1` | `clamp(2.7rem, 7vw, 6.8rem)`; mobile `clamp(2.65rem, 15vw, 4.4rem)` | One page thesis; keep copy concise |
+| `h2` | `clamp(2rem, 4.2vw, 3.8rem)` | Room/section threshold |
+| `h3` | `clamp(1.35rem, 2.2vw, 1.8rem)` | Card or content title |
+| Body | `1rem / 1.65` | Reading and controls |
+| Lead | approx. `1.08–1.3rem / 1.7` | One supporting paragraph |
+| Eyebrow | `0.72rem`, bold, tracked monospace | Short category/status only |
+
+Rules:
+
+- One meaningful `h1` per route view.
+- Keep body lines near 60–70 characters when composition permits.
+- Do not put essential instructions only in tiny monospace.
+- `text-wrap: balance` supports headings; do not hard-break every line for aesthetics.
+- Italic display emphasis may carry warmth, never the only semantic distinction.
+
+## Spacing, radius, depth, and motion
+
+### Spacing scale
+
+| Token | Value | Typical use |
+|---|---:|---|
+| `--space-1` | `0.25rem` | Micro gap |
+| `--space-2` | `0.5rem` | Inline/compact gap |
+| `--space-3` | `0.75rem` | Control/card internal gap |
+| `--space-4` | `1rem` | Base spacing |
+| `--space-5` | `1.5rem` | Card padding/small section relationship |
+| `--space-6` | `2rem` | Standard panel padding |
+| `--space-7` | `3rem` | Section internal separation |
+| `--space-8` | `4.5rem` | Large composition gap |
+| `--space-9` | `6.5rem` | Desktop section padding |
+
+At ≤56rem, `--space-9` becomes `5rem`; at ≤45rem, `--space-8` becomes `3.5rem` and `--space-9` becomes `4.25rem`.
+
+### Shape and depth
+
+| Token | Value | Use |
+|---|---|---|
+| `--radius-sm` | `0.55rem` | Small controls/notes |
+| `--radius-md` | `1rem` | Cards/panels |
+| `--radius-lg` | `1.75rem` | Major room objects |
+| `--radius-pill` | `999px` | Compact actions/status only |
+| `--shadow-soft` | Warm 1rem/3rem shadow | Resting surface |
+| `--shadow-deep` | Warm 1.5rem/4rem shadow | Floating/active object |
+
+### Layout constants
+
+- Content width: `76rem` plus responsive gutter.
+- Gutter: `clamp(1rem, 4vw, 3rem)`; becomes `clamp(1rem, 5vw, 1.5rem)` below 45rem.
+- Header: `4.75rem`.
+- Minimum document width: `20rem` (320px).
+
+### Motion constants
+
+- Fast: `160ms`.
+- Base: `280ms`.
+- Ease-out: `cubic-bezier(0.22, 1, 0.36, 1)`.
+
+Longer image emphasis may reach 500ms. No content waits for choreography.
+
+## Responsive breakpoints
+
+Breakpoints are content thresholds, not device names.
+
+| Threshold | System response |
+|---:|---|
+| `70rem` | Compact nav labels; 3-column grids become 2; last item may span |
+| `56rem` | Mobile navigation panel; primary split layouts stack; theme labels appear |
+| `45rem` | Major grids become one column; hero crops/veils change; density reduces |
+| `30rem` | Nav becomes one column; button rows become full-width; footer/secret compress |
+
+New breakpoints require a demonstrated content failure that existing thresholds cannot solve. Do not add viewport folklore such as “iPhone breakpoint.”
+
+## Component inventory
+
+| Component/pattern | File/owner | Contract | Primary risk |
+|---|---|---|---|
+| `SiteShell` | `components/layout/SiteShell.vue` | Skip, header, main, footer, Ghostie | Duplicate landmarks/shell |
+| `SiteHeader` | `components/layout/SiteHeader.vue` | MPA anchors, active state, mobile panel | Focus/overflow/current route |
+| `SiteFooter` | `components/layout/SiteFooter.vue` | Belonging, secondary routes, selected socials | Becoming a link dump |
+| `ThemeSwitcher` | `components/ui/ThemeSwitcher.vue` | Three labelled buttons, `aria-pressed` | Flash/desync/color-only state |
+| `GhostieSummoner` | `components/ui/GhostieSummoner.vue` | User-triggered low-priority delight | Obstruction/live-region noise |
+| `MediaCard` | `components/ui/MediaCard.vue` | Thumbnail + explicit outbound source | Remote failure/privacy |
+| `SectionHeading` | `components/ui/SectionHeading.vue` | Consistent section threshold | Heading-level misuse |
+| `HavenDoor` | `components/haven/HavenDoor.vue` | Four-state value-to-invite narrative | Fake security/invite expiry |
+| `LooseFloorboard` | `components/haven/LooseFloorboard.vue` | Optional three-step discovery | Required task hidden |
+| `.button` family | `_components.scss` | Priority, touch size, focus, reduced motion | Too many equal primaries |
+| gateway cards | `HomePage` + `_pages.scss` | Unequal spatial doors | Generic equal card grid |
+| honest holds | page components | Explain missing truth and safe route | Fake demo/skeleton content |
+
+## Control variants
+
+| Variant | Use | Do not use for |
+|---|---|---|
+| Ember | Normal primary warm action | Danger/error or every CTA |
+| Cream | High-contrast action over environmental art | Low-priority utility |
+| Emerald | Meaningful entry, confirmation, or discovery | Decorative social links |
+| Soft | Secondary action on readable surface | Primary hero action |
+| Outline/Ghost | Lower priority or alternate | Sole control on weak contrast |
+| Text link | Directional/source relationship | Ambiguous generic action |
+
+Buttons are at least 3rem high by default; the compact header utility is 2.55rem. Visible focus is a 3px semantic outline with 4px offset. Hover lift is enhancement only.
+
+## State language
+
+| State | Visual and semantic requirement |
 |---|---|
-| Spacing | `0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4.5, 6.5rem` |
-| Radius | `0.55rem`, `1rem`, `1.75rem`, pill |
-| Page width | `76rem` plus responsive gutter |
-| Header | `4.75rem` |
-| Motion | 160ms fast, 280ms base, ease-out `cubic-bezier(.22,1,.36,1)` |
-| Breakpoints | 70rem, 56rem, 45rem, 30rem |
+| Default | Clear affordance and label |
+| Hover | Optional lift/color; never sole content reveal |
+| Focus | High-visibility ring; no clipping |
+| Active/pressed | Immediate state response |
+| Selected | Text/icon/shape plus color; `aria-pressed`/`aria-current` where applicable |
+| Unavailable | Plain-language reason and safe alternative |
+| Loading | Reserved dimensions; no branded spinner for normal route chunks |
+| Error | Preserve task/destination text |
+| Reduced motion | Same content/state; transforms and long transitions removed |
+| Increased contrast | Stronger borders and critical microcopy weight |
 
-Spacing may compress at smaller breakpoints; touch targets do not.
+## Image and icon language
 
-## Typography hierarchy
+- Lucide icons support meaning and are tree-shaken imports.
+- Adjacent text names the action; redundant icons are `aria-hidden`.
+- No icon-only button lacks an accessible label.
+- Do not fake Twitch, YouTube, Discord, or other brand marks with Lucide.
+- Decorative environment art has empty alt when nearby HTML contains the meaning.
+- Informative character/nail/community art receives concise subject/function alt and separate credit/caption.
 
-- `h1`: editorial display, clamp 2.7–6.8rem desktop and a mobile-specific clamp; one per primary content document.
-- `h2`: 2–3.8rem; room/section threshold.
-- `h3`: 1.35–1.8rem; card/content title.
-- Body: 1rem/1.65; lead text 1.05–1.25rem.
-- Eyebrow: small uppercase monospace, high tracking, decorative icon optional.
-- Detail/status: 0.6–0.8rem only for secondary metadata; never primary instruction.
+## Anti-patterns
 
-## Components
+- glass dashboard grids;
+- random gradients as hierarchy;
+- giant typography with no content balance;
+- tiny low-contrast navigation;
+- every control as a pill;
+- generic purple on every surface;
+- neutral-black Dark and stark-white Light themes;
+- hover-only disclosure;
+- decorative parallax or animation loops;
+- per-page raw-color systems that bypass semantic tokens;
+- text baked into images;
+- reusable component abstractions that erase page identity.
 
-### Site shell
+## Adding or changing a component
 
-`SiteShell` owns skip link, header, `<main id="main-content">`, footer, and Ghostie layer. Secret route deliberately bypasses it. Never duplicate header/footer across page components.
-
-### Header/navigation
-
-Sticky translucent warm surface with text wordmark and local Ghostie icon. Desktop nav uses concise labels; medium layouts use compact labels; mobile uses an explicit menu button and full-width panel. Active state combines contrast, surface, and emerald underline—not color alone.
-
-### Theme switcher
-
-Three native buttons in a labelled group. Icons and labels represent Nari/Dark/Light; `aria-pressed` carries state. Theme boot runs before Vue to prevent flash. Do not replace with a color-only toggle.
-
-### Buttons and links
-
-- Ember: primary warm action.
-- Cream: high-contrast action over environmental art.
-- Emerald: meaningful entry/confirmation.
-- Soft: secondary on surfaces.
-- Outline/ghost: lower priority.
-- Text link: directional or source relationship, with icon when useful.
-
-Buttons are 3rem high by default, 2.55rem only for compact header utility. Hover lift is optional and removed for reduced motion; focus is always a 3px semantic ring with 4px offset.
-
-### Cards/panels
-
-Gateway cards are spatial doors, not generic equal cards. Media cards contain responsive thumbnail, explicit play affordance, source label, title, description, and outbound notice. Resource/fit/studio cards use opaque reading surfaces. No essential content appears only on hover.
-
-### Disclaimers and holds
-
-Use honest content blocks, not disabled skeletons, for missing schedule, gallery, business contact, lore, or resources. State what is pending, why it matters, and the safe current path. Never disguise fake content as “demo.”
-
-### Haven door
-
-A four-state progressive component: threshold, community behavior, boundary promise, invite. It is narrative context, not security. Each stage uses a real button and visible text. The Discord anchor exists only in the final state.
-
-### Ghostie summoner
-
-Fixed low-priority button opens a compact status card. Animation is opacity/vertical/scale under 280ms; reduced motion uses opacity or immediate state. The interaction never covers required navigation and has a close control.
-
-### Galleries
-
-Future nail galleries need semantic figures/cards, explicit dimensions, responsive sources, captions/credits, and keyboard-operable detail views if introduced. Do not add a carousel unless it has button, keyboard, screen-reader, touch, and reduced-motion behavior.
-
-### Forms
-
-No form exists. Do not add one until backend, purpose, fields, retention, validation, spam protection, privacy notice, and success/error delivery are approved. A form that cannot submit is worse than an honest outbound contact route.
-
-## States
-
-- **Loading:** static MPA HTML shell and reserved media dimensions; avoid branded spinners for normal lazy chunks.
-- **Unavailable:** plain-language hold with a safe alternative.
-- **Error:** preserve destination text even when remote thumbnail fails.
-- **Focus:** visible on every interactive element; never suppressed.
-- **Selected:** text/shape and color.
-- **Reduced motion:** content state changes remain; transforms stop.
-- **Increased contrast:** borders use current color and key microcopy becomes heavier.
-
-## Icon policy
-
-Use tree-shaken Lucide Vue components for functional support. Icons are `aria-hidden` when adjacent text already names the action. No icon-only control lacks an accessible label. Brand logos are not simulated with Lucide icons.
-
-## Visual anti-patterns
-
-No glass dashboard grid, gradient-only hierarchy, tiny low-contrast nav, excessive pill controls, generic purple everywhere, neutral-black Dark theme, stark-white Light theme, hover-only disclosure, text embedded only in raster art, or decorative animation on every object.
+1. Identify a real repeated behavior or semantic contract.
+2. Name the state, inputs, outputs, keyboard behavior, and reduced-motion behavior.
+3. Use existing tokens; add a token only if it represents a reusable decision.
+4. Place shared structure in the correct SCSS layer.
+5. Test all three themes, four target widths, keyboard, focus, zoom, and reduced motion.
+6. Update this inventory, the relevant page spec, interaction spec, and QA matrix.
+7. Record screenshots/evidence in the pull request without uploading private or uncleared art.

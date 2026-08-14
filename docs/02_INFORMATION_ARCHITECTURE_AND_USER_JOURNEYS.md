@@ -1,6 +1,13 @@
 # Information Architecture and User Journeys
 
-## Navigation model
+**Status:** `LOCKED` route model; content depth still evolving  
+**Owns:** Navigation, route responsibility, audience journeys, CTA priority, metadata and empty-state policy  
+**Implementation files:** `src/data/navigation.ts`, `src/router/index.ts`, HTML entry documents, `SiteHeader.vue`, `SiteFooter.vue`  
+**Update trigger:** Route, audience, primary action, navigation order, or page responsibility changes
+
+## Navigation thesis
+
+Visitors enter a place, not a directory. Navigation names rooms and responsibilities without forcing the metaphor so hard that ordinary users get lost.
 
 Primary header order:
 
@@ -12,75 +19,183 @@ Primary header order:
 6. Resources
 7. Work With Nari
 
-Header utility: three-theme switcher and external “Watch live” Twitch action. Secondary footer routes: Story Time and Support. Social destinations live in the footer/resources directory. The Prinny Cult is absent from global navigation, sitemap intent, and normal CTA hierarchy.
+Header utilities:
 
-Top-level navigation uses plain `<a>` document links. On screens at or below 56rem it becomes a labelled button and two-column panel; at 30rem it becomes one column. The open panel locks body scroll, closes on Escape or selection, and exposes `aria-expanded`/`aria-controls`.
+- three-theme atmosphere switcher;
+- external “Watch live” Twitch action.
+
+Secondary footer routes:
+
+- Story Time;
+- Support.
+
+Social destinations belong in the footer and Resources directory. The Prinny Cult is absent from global navigation, sitemap intent, and normal CTA hierarchy.
+
+## Site map
+
+```mermaid
+flowchart TD
+  H["Home / arrival"] --> N["Meet Nari"]
+  H --> S["Streams"]
+  H --> NS["Nail Studio"]
+  H --> V["The Haven"]
+  V --> D["Discord after values"]
+  V -. optional discovery .-> P["Hidden joke room"]
+  H --> W["Work With Nari"]
+  S --> ST["Story Time"]
+  NS --> R["Resources"]
+  H --> U["Support"]
+```
+
+The diagram describes user flow, not implementation routing. Technical route construction lives in `07_TECHNICAL_ARCHITECTURE.md`.
+
+## Route ownership
+
+| Page | Owns | Must not become |
+|---|---|---|
+| Home | World arrival, short identity, three primary gateways, curated taste | Full bio, all links, full gallery, Discord/support funnel |
+| Meet Nari | Privacy-safe identity, roles, symbols, boundaries, canon status | Unapproved lore encyclopedia or private biography |
+| Streams | Stream feeling, selected media, channel map, schedule truth | Autoplay embed wall or scraped feed |
+| Nail Studio | Authentic practice, education, future gallery, safety scope | Salon/services page or generated portfolio |
+| The Haven | Community values, belonging, Discord discovery, secret threshold | General social wall or fake security gate |
+| Resources | Reviewed recommendations and disclosures | Affiliate storefront or stale price list |
+| Work With Nari | Collaboration fit, process, boundaries, approved contact | Corporate persona, fake metrics, nonfunctional form |
+| Support | Optional free/financial support and entitlement boundary | Donation funnel or donor-status system |
+| Story Time | Curated privacy-reviewed stories/moments | Automated feed or permanent index of private anecdotes |
+| Secret room | Optional original joke and return path | Required navigation or copyrighted fandom page |
+| 404 | Recovery and home path | Brand gag that hides the error |
 
 ## CTA hierarchy
 
-| Level | Use | Examples |
-|---|---|---|
-| Primary | One best next action in context | Catch a stream; Enter Discord after values; Explore fit |
-| Secondary | Continue within the Haven | Meet your host; Open the studio; Read Story Time |
-| Tertiary | Outbound reference or reset | Social directory; close/reset an interaction |
-| Never primary | Money, affiliate link, Discord before context | Support stays secondary; Discord is earned |
+| Level | Definition | Examples | Constraints |
+|---|---|---|---|
+| Primary | Best next action for the current context | Catch a stream; Enter Discord after values; Explore fit | Normally one per decision area |
+| Secondary | Continue within the Haven | Meet your host; Open the studio; Read Story Time | May sit beside primary without equal visual weight |
+| Tertiary | Source, alternate, reset, or external reference | Social directory; close/reset; source link | Clear destination and new-tab cue |
+| Never primary | Money or intimacy before context | Throne, Discord on arrival, affiliate product | Must not dominate Home/hero/navigation |
+
+CTA copy names the destination. Repeated “Learn more” and mystery navigation are not acceptable outside the optional secret.
 
 ## Audience journeys
 
 ### First-time viewer
 
-Home hero → Streams gateway or verified moment → Twitch/YouTube outbound. Success means the person understands the stream's warmth and chaos before leaving; no embedded tracker is required.
+**Entry:** Clip, Twitch profile, social post, search, direct link.  
+**Path:** Home hero → Streams gateway or selected moment → Twitch/YouTube.  
+**Question answered:** “What does spending time with Nari feel like?”  
+**Success:** The visitor understands warmth, chaos, conversation, and boundaries before leaving for a platform.  
+**Failure mode:** Link wall, generic biography, autoplay stream, or seven equal buttons.
 
 ### Returning Ghostie
 
-Home/Haven → community values → progressive door → canonical Discord invite. The journey asks for understanding, not an email or conversion. Footer and Ghostie interaction offer familiarity without blocking content.
+**Entry:** Home or Haven direct link.  
+**Path:** Haven values → progressive door → canonical Discord invite.  
+**Question answered:** “Does this place still behave like us?”  
+**Success:** Community values feel true and entry is available without manipulation.  
+**Failure mode:** Discord treated as exclusivity, donor reward, or fake security challenge.
 
 ### Nail learner
 
-Home → Nail Studio → approved gallery/education/resource relationship → Resources. Until real work exists, the gallery clearly says it is waiting; no generic stock or generated manicure fills the gap.
+**Entry:** Nail video, social profile, search, Home gateway.  
+**Path:** Nail Studio → approved gallery/process → relevant Resources.  
+**Question answered:** “What has Nari actually made or learned?”  
+**Success:** Real work is legible, credited, and scoped; resources explain why they matter.  
+**Failure mode:** Generated manicure, salon implication, unsafe absolute advice, or undisclosed affiliate wall.
 
 ### Professional visitor
 
-Any page → persistent Work With Nari → fit categories → process → approved public contact route/media kit. Within one page, a brand should understand tone, possible collaboration areas, boundaries, and the next step. No fabricated metrics or submission form.
+**Entry:** Direct Work route, footer, Home professional strip.  
+**Path:** Work With Nari → fit categories → process/boundaries → approved contact or media kit.  
+**Question answered:** “Is Nari a fit, and what information should I send?”  
+**Success:** Tone, scope, rights expectations, and next step are clear within one page.  
+**Failure mode:** Invented metrics, generic corporate copy, private contact leak, or dead form.
 
-### Supporter
+### Optional supporter
 
-Footer → Support → “your presence is enough” → nonfinancial options → Throne only if desired. Money never affects community status, access, ownership, or boundaries.
+**Entry:** Footer or direct Support route.  
+**Path:** Optionality statement → free support → financial option if desired.  
+**Question answered:** “Can I help without buying status?”  
+**Success:** Presence and free support clearly count; financial support grants no access.  
+**Failure mode:** Urgency, guilt, ranking, exclusive intimacy, or sticky donation UI.
 
 ### Story/VOD visitor
 
-Home/Streams → Story Time → a structured, privacy-safe story or curated moment → outbound source. Adult-marked VOD material is opt-in and must never appear as a surprise preview.
+**Entry:** Streams, Story Time, external video.  
+**Path:** Story shelf → content/rating context → outbound source.  
+**Question answered:** “Which moments are worth my time, and what am I about to open?”  
+**Success:** Selected content is sourced, removable, privacy-reviewed, and appropriately rated.  
+**Failure mode:** Surprise adult content, private anecdote indexing, or feed scrape.
 
 ### Curious explorer
 
-Haven values → subtle loose floorboard → three deliberate activations → hidden key → no-index secret page → visible return path. The joke is optional and does not make ordinary tasks harder.
+**Entry:** The Haven.  
+**Path:** Values → floorboard → three deliberate inspections → key → hidden room → visible exit.  
+**Question answered:** “Did I find something extra?”  
+**Success:** Rewarding joke with keyboard/touch parity and no licensed imagery.  
+**Failure mode:** Required information hidden behind it, hover-only trigger, or trapped navigation.
 
-## Page responsibilities
+## Navigation behavior
 
-| Page | Owns | Does not own |
+Top-level links are ordinary anchors because every route is a real HTML document. At or below 56rem, navigation becomes an explicit menu button and full-width panel. At 30rem, links become one column.
+
+Required behavior:
+
+- menu button exposes `aria-expanded` and `aria-controls`;
+- active page uses text/surface/underline, not color alone;
+- Escape and link activation close the panel;
+- background scroll locks while open;
+- focus remains visible and ordered;
+- theme labels become visible in the mobile panel;
+- no essential route disappears to make the header fit.
+
+Focus containment and focus return are a pending manual decision based on screen-reader/keyboard testing; do not claim them as implemented.
+
+## Progressive disclosure rules
+
+Progressive disclosure is allowed when it adds context, not when it withholds a normal task.
+
+- Discord appears after values because the sequence communicates the social contract.
+- The secret room appears after optional exploration because it is extra.
+- Support terms appear before financial destinations because consent and boundaries matter.
+- Adult-marked media shows rating/context before navigation.
+
+Do not hide contact, accessibility controls, required disclosures, safety scope, or primary navigation behind a playful interaction.
+
+## Empty and failure states
+
+| Situation | Required behavior | Forbidden substitute |
 |---|---|---|
-| Home | World arrival, identity summary, three gateways, curated taste | Full bio, full gallery, all links |
-| Meet Nari | Privacy-safe identity, roles, symbols, boundaries, lore status | Unapproved lore/history |
-| Streams | Experience, verified clips, channel map, schedule state | Autoplay player or fake timetable |
-| Nail Studio | Learning, future approved gallery, process/resources framing | Services/pricing/medical advice |
-| Haven | Values, found family, Discord discovery, Easter-egg threshold | General social-link wall |
-| Resources | Curated tools and transparent disclosure system | Affiliate storefront |
-| Work With Nari | Collaboration fit, process, approved contact | Invented case studies or metrics |
-| Support | Optionality, boundaries, approved methods | Donor ranking or guilt |
-| Story Time | Data-driven stories/moments and source links | Private anecdotes by default |
+| No schedule | Point to current verified channel notifications | Empty calendar or invented recurring time |
+| No nail gallery | Explain that approved work is pending | Stock/generated manicure samples |
+| No resources | Show categories and review standard as `curating` | Fake product cards |
+| No professional contact | Use approved public hub/X and state the limitation | Guessed email or nonfunctional form |
+| Expired Discord | Remove/disable final external action; preserve values; point to verified hub | Guessing or rotating invite codes |
+| Thumbnail failure | Preserve title, description, and outbound link | Empty broken card |
+| Unpublished story | Render nothing for the record | Blank skeleton or draft leak |
+| Missing route | Serve branded `404.html` with Home action | SPA fallback pretending route exists |
 
-## Footer
+## Footer contract
 
-Footer repeats the belonging statement, secondary routes, verified social directory links, support, privacy/no-tracking note, and current placeholder/rights posture where useful. It must not become a dense sitemap or competing hero.
+The footer provides:
 
-## Empty and unavailable states
+- belonging statement;
+- Story Time and Support;
+- a small set of verified social destinations;
+- placeholder/rights posture while relevant;
+- no-tracking/privacy statement when final copy is approved.
 
-- No schedule: say Nari posts schedule changes on verified public channels; do not show empty calendar chrome.
-- No nail gallery: reserve the authored gallery and explain that approved work is pending.
-- No resources: show categories and review/disclosure standard, labelled “curating.”
-- No professional contact: direct to approved public hub/X without claiming a business inbox.
-- Expired Discord invite: hide/disable the final external action while preserving values content; never guess a replacement.
+It does not become a dense sitemap, newsletter funnel, Discord repeat, or second hero.
 
 ## URL and metadata policy
 
-Routes use lowercase kebab-case and trailing slashes, except `/404.html`. Each document owns title, description, viewport, theme color, canonical URL only when a production domain exists, and share art only when rights-cleared. Secret/404 documents use `noindex`; the secret is disallowed in `robots.txt` as defense in depth, not a security boundary.
+- Public routes use lowercase kebab-case with trailing slash.
+- `404.html` is the only document-style exception.
+- Each entry owns its title, description, viewport, theme color, icons, and robots intent.
+- Add canonical URLs only after the production domain exists.
+- Add social preview art only after rights clearance and crop review.
+- Secret and 404 documents use `noindex`; `robots.txt` defense-in-depth is not a privacy boundary.
+- Route-specific claims in metadata follow the same approval rules as visible copy.
+
+## Measurement without surveillance
+
+No analytics is approved. Journey success is evaluated during design review, usability checks, link verification, and—only if later approved—purpose-limited privacy-respecting measurement with a documented event taxonomy and retention policy. Do not add tracking to “prove” the IA before those decisions exist.

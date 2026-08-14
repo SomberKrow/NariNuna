@@ -1,126 +1,426 @@
 # Page-by-Page Experience Specification
 
-All pages use the shared skip link, header, theme control, footer, focus system, and Ghostie summoner unless explicitly noted. All external media is thumbnail + outbound link; no autoplay or player SDK.
+**Status:** `IMPLEMENTED` foundation; final content/art acceptance `BLOCKED`  
+**Owns:** Page purpose, sequence, dependencies, responsive behavior, failure state, and acceptance  
+**Implementation files:** `src/pages/*.vue`, route HTML documents, page selectors in `src/styles/_pages.scss`  
+**Update trigger:** Page composition, responsibility, primary action, dependency, or public claim changes
+
+## Shared page contract
+
+Every ordinary page uses `SiteShell` and therefore receives:
+
+- first-focusable skip link;
+- shared sticky header and primary navigation;
+- persistent Nari/Dark/Light theme control;
+- one `<main id="main-content">` region;
+- shared footer;
+- low-priority Ghostie summoner;
+- global focus, reduced-motion, responsive, and contrast styles.
+
+The hidden room intentionally bypasses `SiteShell`. Every external media item is a thumbnail/text card and outbound link; no player SDK, autoplay, or embedded social feed loads.
+
+Every page review asks:
+
+1. Can the visitor name the page's purpose in the first meaningful viewport?
+2. Is there one obvious next action without suppressing alternatives?
+3. Is every claim approved and every image permitted?
+4. Does the composition work at 320, 390, 768, and wide desktop?
+5. Does the page remain complete with images blocked and motion reduced?
+6. Does the route direct-load as its own document?
 
 ## Home — `/`
 
-- **Objective / audience:** Establish Nari's Haven for every arrival and route viewers, nail learners, and community visitors without a link-wall feeling.
-- **Emotional goal:** “I can come in as I am, and there is more here.”
-- **Order:** cinematic Haven hero → three unequal world gateways → host/identity note → three verified moments → Haven invitation → professional strip.
-- **CTA:** Twitch is primary; Meet Nari is secondary. Support and Discord are not hero actions.
-- **Assets:** responsive local Haven environment; original Ghostie portrait placeholder; approved YouTube thumbnails.
-- **Empty/error:** if a thumbnail fails, text/card link remains; if character art is pending, label the placeholder.
-- **Mobile:** left-weighted copy remains readable over a darker veil, one clear action first, gateway cards collapse, decorative density drops.
-- **Motion/a11y:** short hover lift, optional Ghostie reveal; hero meaning remains in HTML, art is decorative.
-- **Hazards:** largest-contentful image, contrast over art, public-art hotlinking, making all destinations equal.
+**Implementation:** `index.html`, `src/pages/HomePage.vue`  
+**Primary audience:** All arrivals  
+**Job:** Establish the Haven and route viewers, nail learners, community visitors, and professional visitors without becoming a link wall.  
+**Emotional outcome:** “I can come in as I am, and there is more here.”
+
+### Required sequence
+
+1. Environmental Haven hero.
+2. Three unequal gateways: Streams, Nail Studio, The Haven.
+3. Host/identity note.
+4. Three verified media moments.
+5. Haven invitation.
+6. Compact professional strip.
+
+### Action hierarchy
+
+- Primary: Catch a stream on Twitch.
+- Secondary: Meet Nari.
+- Contextual: enter Streams, Nail Studio, Haven, or Work With Nari.
+- Not allowed in hero: Discord, Throne, affiliate product, newsletter, or generic all-links button.
+
+### Asset and content dependencies
+
+- responsive Haven environment with copy-safe crop;
+- approved Nari portrait or explicit original placeholder;
+- selected media with content rating, source, and verification date;
+- approved high-level identity sentence.
+
+### Responsive contract
+
+- Hero copy remains left-weighted with an art-specific veil.
+- At 45rem and below, the art uses the documented mobile `object-position`; re-test when art changes.
+- Gateway cards collapse 3 → 2 → 1 columns while retaining unequal narrative emphasis.
+- Host portrait precedes copy on narrow screens.
+- Buttons become full-width only at the smallest breakpoint, not tablet by default.
+- Fixed Ghostie never obscures hero or CTA.
+
+### Failure and honesty states
+
+- Broken remote thumbnail preserves title, description, and destination.
+- Missing character art retains a visible placeholder label.
+- No live-status claim is made unless sourced in real time; “Watch live” names Twitch but does not assert Nari is currently live.
+
+### Acceptance
+
+- Haven, streams, nails, and community are understandable without scrolling through every section.
+- First viewport is not seven equal actions.
+- Hero copy meets contrast in every theme and crop.
+- LCP image uses an appropriate `srcset` candidate and explicit dimensions.
+- Page has no copied platform/character art or hidden support pressure.
 
 ## Meet Nari — `/meet-nari/`
 
-- **Objective / audience:** Give fans and professional visitors a warm, privacy-safe identity overview.
-- **Emotional goal:** Personal and specific without exposing the private person.
-- **Order:** identity hero → three pillars → emerald/sun-moon meaning → protective boundaries → explicit lore hold.
-- **CTA:** Haven values; no forced social conversion.
-- **Dependencies:** approved character render/credit and canonical CatDog ↔ Grim Reaper explanation.
-- **Empty/error:** keep the original Ghostie placeholder and lore hold until both arrive.
-- **Mobile:** portrait/placeholder precedes copy; symbols stack; secondary decorative lore image can hide.
-- **A11y/privacy:** personal meaning is text, not encoded only by color/art. No real name, location, family detail, or invented heritage claim.
-- **Hazards:** silently merging lore, implying credentials, treating heritage as decoration.
+**Implementation:** `meet-nari/index.html`, `src/pages/MeetNariPage.vue`  
+**Primary audience:** Fans, new viewers, professional visitors  
+**Job:** Present a warm, specific, privacy-safe public identity and name unresolved canon honestly.  
+**Emotional outcome:** “I understand who Nari is without being invited into private life.”
+
+### Required sequence
+
+1. Identity hero and roles.
+2. Three connected pillars: big-sister warmth, playful chaos, nail-art curiosity.
+3. Emerald and sun/moon meaning.
+4. Protection and boundary statement.
+5. Explicit lore hold until canon is approved.
+
+### Action hierarchy
+
+- Primary contextual continuation: The Haven.
+- Secondary: relevant creative/stream rooms if later introduced.
+- No forced social follow or support action.
+
+### Dependencies and blockers
+
+- canonical CatDog ↔ Grim Reaper wording;
+- current character render/version;
+- artist credit and website/crop/derivative rights;
+- Nari-approved heritage wording and art if expanded.
+
+### Responsive contract
+
+- Portrait/placeholder moves before copy below 56rem.
+- Symbol columns stack below 45rem.
+- Decorative lore image may hide; the lore explanation may not.
+- Role tags wrap without becoming tiny or horizontally scrollable.
+
+### Privacy and truth rules
+
+- No legal name, precise location, age/birthday, private family/relationship detail, offline employment, or inferred biography.
+- Heritage meaning is written as Nari's personal meaning, never generalized culture trivia.
+- Do not merge identities in copy, illustration, metadata, or alt text.
+
+### Acceptance
+
+- Nari's roles feel like one person, not separate brands.
+- Emerald meaning is textual and not color-only.
+- Placeholder/canon state is unmistakable.
+- Professional visitors learn personality and boundaries without private information.
 
 ## Streams — `/streams/`
 
-- **Objective / audience:** Show what a Nari stream feels like and provide verified next steps.
-- **Emotional goal:** Chaotic, conversational, welcoming—not a dead embed page.
-- **Order:** stream-feel hero + signal panel → three verified moments → channel map → honest schedule hold.
-- **CTA:** Twitch primary; YouTube/VOD secondary.
-- **Dependencies:** approved featured clips, games, schedule, chat/community screenshots if ever added.
-- **Empty/error:** “No fixed schedule published here” is valid. Never display stale schedule data as current.
-- **Mobile:** signal panel stacks below copy; media cards become one column; outbound actions stay 44px+.
-- **Motion/a11y:** no autoplay; play icon is decorative to an explicit link name; adult-marked VODs require opt-in framing.
-- **Hazards:** cookies, iframe weight, surprise adult content, chat-handle privacy.
+**Implementation:** `streams/index.html`, `src/pages/StreamsPage.vue`, `src/data/media.ts`  
+**Primary audience:** New and returning viewers  
+**Job:** Communicate the feeling of a Nari stream and provide verified live/archive paths.  
+**Emotional outcome:** “This sounds fun, warm, conversational, and a little chaotic.”
+
+### Required sequence
+
+1. Stream-feel hero.
+2. Three-signal expectation panel.
+3. Curated media moments.
+4. Channel/content map.
+5. Honest schedule state.
+
+### Action hierarchy
+
+- Primary: Twitch.
+- Secondary: VOD archive and main YouTube.
+- Story Time may continue the on-site journey.
+
+### Data requirements
+
+Each media moment requires unique ID, title, description, platform, HTTPS source, thumbnail/alt or fallback, content rating, state, and verification date. Nari approval is required before the release set is final.
+
+### Responsive and media contract
+
+- Signal panel stacks beneath copy at narrow widths.
+- Media grid collapses 3 → 2 → 1.
+- No controls below a 44px practical touch target.
+- No Twitch/YouTube iframe, autoplay, feed script, or surprise audio.
+- Adult-marked VODs receive visible opt-in context before navigation.
+
+### Failure and stale states
+
+- “No fixed schedule published here” is valid.
+- Stale schedules are removed, not left with a quiet outdated badge.
+- Failed thumbnails retain functional text links.
+- If a selected clip is deleted, retire the record and re-review the set; do not redirect to an unrelated upload.
+
+### Acceptance
+
+- Experience precedes platform promotion.
+- Selected clips are representative, approved, reachable, and correctly rated.
+- Network inspection shows no third-party script or iframe.
+- The page still makes sense with remote images blocked.
 
 ## Nail Studio — `/nail-studio/`
 
-- **Objective / audience:** Treat Nari's self-taught nail practice as flagship creative and educational work.
-- **Emotional goal:** Curious, tactile, patient, credible without salon claims.
-- **Order:** atmosphere hero → three practice/education pillars → reserved gallery → scope/safety note.
-- **CTA:** future approved gallery/tutorial; Resources secondary.
-- **Dependencies:** original nail photos, labels, techniques, dates, permissions, Nari-approved educational claims.
-- **Empty/error:** gallery hold is explicit; generated environment contains no finished nails and is never attributed as Nari's work.
-- **Mobile:** art crop retains right-side desk detail while copy has contrast; gallery placeholders stack.
-- **A11y/safety:** descriptive alt for real work; do not diagnose conditions, promise safety, or imply professional medical advice.
-- **Hazards:** fabricated portfolio, EXIF/location, overcompression of detail, counterfeit product/affiliate claims.
+**Implementation:** `nail-studio/index.html`, `src/pages/NailStudioPage.vue`  
+**Primary audience:** Nail learners, craft-curious viewers, collaborators  
+**Job:** Treat Nari's self-taught practice as flagship creative and educational work without inventing professional services.  
+**Emotional outcome:** “This craft is taken seriously, and the limits are honest.”
+
+### Required sequence
+
+1. Tactile studio atmosphere hero.
+2. Gallery, process notes, and tool-cabinet pillars.
+3. Reserved real-work gallery.
+4. Scope and safety note.
+
+### Action hierarchy
+
+- Primary after content exists: approved gallery or guide.
+- Secondary: related Resources.
+- Never: Book now, services, clients, salon, consultation, medical advice.
+
+### Asset and content dependencies
+
+- original nail photographs at sufficient detail;
+- creator/photographer permission;
+- labels, techniques, materials, and dates approved by Nari;
+- metadata/privacy inspection;
+- educational claims reviewed and appropriately sourced;
+- product relationships disclosed.
+
+### Gallery contract
+
+- Use semantic figures/cards with explicit dimensions and responsive sources.
+- Preserve color and detail; do not over-compress or beauty-retouch the result.
+- Captions own title, context, technique, and credit; alt describes visible design.
+- Generated environment art may set atmosphere but never occupy a portfolio slot.
+- A detail view must be keyboard, touch, screen-reader, and reduced-motion complete before introduction.
+
+### Responsive contract
+
+- Hero retains desk detail while veil protects text.
+- Gallery becomes one readable column when detail would otherwise become too small.
+- Fine-detail images may justify a larger budget only with recorded review.
+
+### Safety contract
+
+- Nari's firsthand practice is not medical authority.
+- Allergy, infection, chemical exposure, or nail-health topics include a scope statement and point health decisions to a qualified professional.
+- No “safe for everyone,” sanitation guarantee, or diagnosis.
+
+### Acceptance
+
+- Every displayed work is real, approved, credited, metadata-clean, and accurately described.
+- Visitors cannot reasonably infer a salon/service offering.
+- The gallery is excellent with real content or honestly absent—never counterfeit.
 
 ## The Haven — `/haven/`
 
-- **Objective / audience:** Make community values tangible and let the Discord entrance feel discovered.
-- **Emotional goal:** Found family with boundaries; playful without cruelty.
-- **Order:** values hero → four principles → found-family signals → three-stage Haven door → loose floorboard.
-- **CTA:** Discord appears only after three value acknowledgements.
-- **Dependencies:** one canonical reverified invite; future approved community memories with consent.
-- **Empty/error:** if invite is invalid, final stage explains the doorway is being repaired and points to verified Linktree; values remain usable.
-- **Mobile:** door art stacks above content; controls remain reachable and do not require hover.
-- **Motion/a11y:** state changes are live text; buttons work without motion; floorboard has three text progress states.
-- **Hazards:** treating Discord as security-gated, hiding a required task, copying a franchise guild aesthetic.
+**Implementation:** `haven/index.html`, `HavenPage.vue`, `HavenDoor.vue`, `LooseFloorboard.vue`  
+**Primary audience:** Current and prospective community members  
+**Job:** Make values tangible, create belonging, and reveal Discord after context.  
+**Emotional outcome:** “This room is warm because it has standards.”
+
+### Required sequence
+
+1. Values hero.
+2. Four community principles.
+3. Found-family signals.
+4. Progressive Haven door.
+5. Optional loose floorboard.
+
+### Haven door state contract
+
+| State | Meaning | Action |
+|---:|---|---|
+| 0 | The Haven is more than an invite | Knock gently |
+| 1 | Difference belongs; cruelty does not | Leave the armor by the door |
+| 2 | Kindness and boundaries are promised | Promise kindness |
+| 3 | Invite becomes available | Enter Discord or reset |
+
+This is narrative context, not authentication. The destination anchor only exists in state 3.
+
+### Invite failure contract
+
+At release, verify that the selected code resolves to the intended guild. If it fails:
+
+- hide or disable the final external action;
+- say the doorway is being repaired;
+- provide only a verified public routing surface;
+- preserve all values content and local interaction;
+- do not guess, scrape, or rotate another code.
+
+### Responsive and accessibility contract
+
+- Door art stacks above content below 56rem.
+- Controls remain ordinary buttons with visible text.
+- State change is understandable without progress-bar color or motion.
+- Floorboard has three text stages and no hover-only secret.
+- Secret remains optional and absent from ordinary task paths.
+
+### Acceptance
+
+- Values explicitly include dignity, respect, care, cooperation, boundaries, and room for different energy levels.
+- “Positive vibes only” is not used to suppress real concerns.
+- Discord never appears globally as a pressured conversion.
+- Pointer, touch, and keyboard complete both interactions.
 
 ## Resources — `/resources/`
 
-- **Objective / audience:** Prepare a trustworthy library of tools, products, games, and learning links.
-- **Emotional goal:** Nari is sharing what helped, not pushing a storefront.
-- **Order:** clear promise → three curating categories → disclosure principles → verified social directory.
-- **CTA:** individual resources only after Nari approval; public links remain secondary.
-- **Dependencies:** item approval, personal-use note, audience fit, affiliate status, price/date only when maintained.
-- **Empty/error:** “curating” cards describe the review standard without fake products.
-- **Mobile:** single-column cards and social links; whole-card links retain visible focus.
-- **Hazards:** affiliate-wall design, fake review language, stale pricing, undisclosed material connection.
+**Implementation:** `resources/index.html`, `ResourcesPage.vue`, `src/data/content.ts`  
+**Primary audience:** Nail learners, creators, viewers  
+**Job:** Hold approved recommendations with context and transparent relationships.  
+**Emotional outcome:** “Nari is sharing what helped, not running a storefront.”
+
+### Required sequence
+
+1. Recommendation promise.
+2. Curating/published categories.
+3. Disclosure principles.
+4. Verified social directory.
+
+### Publication gate per item
+
+- Nari has used/reviewed or explicitly approved the item.
+- The “why” and “best for” text is factual.
+- Relationship is one of none, affiliate, gifted, or sponsored.
+- Material connection has a visible disclosure.
+- Price/availability claims are dated or omitted.
+- Destination is HTTPS and verified.
+
+### Acceptance
+
+- Curating states explain the standard without fake products.
+- No affiliate relationship is hidden.
+- No urgency, discount theater, or universal-safety claim.
+- Whole-card links have visible focus and readable purpose.
 
 ## Work With Nari — `/work-with-nari/`
 
-- **Objective / audience:** Let brands, creators, and collaborators understand fit and the safest current next step quickly.
-- **Emotional goal:** Competent and clear while still Nari.
-- **Order:** professional hero → possible fit categories → review process → contact hold.
-- **CTA:** approved public contact route; no nonfunctional form.
-- **Dependencies:** business contact, media kit, approved categories, sourced/date-stamped metrics, partnership history.
-- **Empty/error:** explicitly say a formal inquiry route/media kit is pending; use Linktree/X only if approved.
-- **Mobile:** single-column fit grid; concise copy; no decorative obstruction.
-- **A11y/privacy:** contact content must be approved public/business information; no hidden tracking form.
-- **Hazards:** invented numbers, stale sponsor claims, private email propagation, generic corporate tone.
+**Implementation:** `work-with-nari/index.html`, `WorkWithNariPage.vue`  
+**Primary audience:** Brands, creators, collaborators  
+**Job:** Explain fit, process, boundaries, and the approved next step quickly.  
+**Emotional outcome:** “Nari is distinctive, prepared, and easy to evaluate.”
+
+### Required sequence
+
+1. Professional-but-Nari hero.
+2. Evidence-before-numbers statement.
+3. Potential fit categories.
+4. Context/scope/fit inquiry process.
+5. Approved contact or honest hold.
+
+### Claims gate
+
+- Metrics require first-party source, platform, metric definition, measurement window, and publication approval.
+- Partnerships/case studies require permission and current-status review.
+- Deliverables, usage rights, approvals, compensation, and deadlines are named as discussion topics, not pre-agreed terms.
+- Contact information must be explicitly public/business-approved.
+
+### Acceptance
+
+- Fit and next step are clear without fake numbers or testimonials.
+- Copy remains warm and specific, not generic creator-economy jargon.
+- No private email or nonfunctional form appears.
+- Mobile is concise and unobstructed.
 
 ## Support — `/support/`
 
-- **Objective / audience:** Explain optional ways to help without pressure or entitlement.
-- **Emotional goal:** “My presence counts even if I spend nothing.”
-- **Order:** Ghostie + optionality hero → boundary promise → nonfinancial/financial categories → approved external link.
-- **CTA:** Throne is secondary and voluntary; Twitch/sharing are equal or earlier alternatives.
-- **Dependencies:** Nari-approved support methods and final disclaimer.
-- **Empty/error:** remove a support action if unavailable; never add urgency.
-- **Mobile:** statement and actions stack; no sticky donation element.
-- **Hazards:** guilt, donor hierarchy, ownership implications, surprise external commerce.
+**Implementation:** `support/index.html`, `SupportPage.vue`  
+**Primary audience:** Visitors choosing whether/how to support  
+**Job:** Establish that presence counts, then offer free and optional financial actions without entitlement.  
+**Emotional outcome:** “I do not owe money to belong here.”
+
+### Required sequence
+
+1. Presence-is-enough hero.
+2. Explicit financial boundary.
+3. Free support methods.
+4. Optional approved financial destination.
+
+### Prohibited patterns
+
+- countdowns, scarcity, guilt, hardship implication;
+- donor rankings, public status tiers, intimacy promises;
+- sticky donation UI or financial action before optionality;
+- language implying control, access, ownership, or a claim on Nari's time.
+
+### Acceptance
+
+- A visitor who spends nothing is explicitly valued.
+- Throne remains secondary to presence/sharing/kindness.
+- External commerce is clearly identified and optional.
+- Unavailable support methods are removed rather than replaced with guesses.
 
 ## Story Time — `/stories/`
 
-- **Objective / audience:** Provide a maintainable home for curated moments and later approved stories.
-- **Emotional goal:** A shelf of memories, not a feed scrape.
-- **Order:** explanation hero → current verified moments → future story-system contract.
-- **CTA:** source moment; Streams secondary.
-- **Dependencies:** schema-valid story records, privacy approval, optional media/content rating.
-- **Empty/error:** featured moments remain; unpublished stories do not produce blank cards.
-- **Mobile:** one-column story/media cards.
-- **Hazards:** indexing private anecdotes, unmoderated community stories, rights-unclear screenshots.
+**Implementation:** `stories/index.html`, `StoriesPage.vue`, future typed story records  
+**Primary audience:** Fans, VOD visitors, returning community  
+**Job:** Preserve selected public moments intentionally rather than scraping a feed.  
+**Emotional outcome:** “These memories were chosen and cared for.”
+
+### Required sequence
+
+1. Archive purpose.
+2. Current selected moments.
+3. Future story-system promise and public VOD route.
+
+### Publication gate
+
+- approved publish state;
+- privacy review;
+- source/provenance;
+- content rating and warning where needed;
+- participant permission/redaction for community material;
+- removal/correction owner;
+- optional rights-cleared asset.
+
+### Acceptance
+
+- Drafts render nothing publicly.
+- Adult material is opt-in before preview/navigation.
+- Removing a record does not require layout surgery.
+- Private messages and casual stream remarks are not assumed permanently publishable.
 
 ## Hidden Prinny Cult — `/the-prinny-cult/`
 
-- **Objective / audience:** Reward optional curiosity with an absurd original joke.
-- **Emotional goal:** Deliberately overcommitted, safe, quick, and escapable.
-- **Order:** visible return link → original Ghostie → oath → Rule Eleven → optional inspection counter.
-- **CTA:** return to floorboard; no conversion.
-- **Dependencies:** none beyond original/permitted assets; future joke copy needs approval.
-- **Metadata:** `noindex, nofollow`; absent from navigation. Obscurity is not authentication.
-- **Mobile/a11y:** centered responsive card, real buttons, keyboard “P” parity with button, live counter text.
-- **Hazards:** licensed Prinny/Disgaea art, trapping navigation, inaccessible secret gestures.
+**Implementation:** `the-prinny-cult/index.html`, `PrinnyCultPage.vue`  
+**Primary audience:** Optional explorers  
+**Job:** Reward curiosity with a short, original, accessible joke.  
+**Emotional outcome:** “That was absurdly committed and clearly extra.”
+
+Required:
+
+- immediate visible return link;
+- `noindex, nofollow` metadata;
+- original/permitted assets only;
+- button equivalent for the optional `P` shortcut;
+- capped counter and clear state text;
+- no global shell by design;
+- no required information or conversion.
+
+Obscurity is not security. Never store private content on this route.
 
 ## 404 — `/404.html`
 
-- **Objective:** Recover a failed route with a clear home action.
-- **Order:** original Ghostie → simple explanation → home button.
-- **Metadata:** `noindex`; no external calls.
-- **Hazards:** host must route unknown documents to this file; confirm per deployment provider.
+**Implementation:** `404.html`, `NotFoundPage.vue`  
+**Job:** Explain the failure and return home.  
+**Required:** `noindex`, no external dependency, explicit Home action, host-level unknown-route mapping.  
+**Acceptance:** Direct host testing proves unknown URLs actually serve this document with the intended status behavior.

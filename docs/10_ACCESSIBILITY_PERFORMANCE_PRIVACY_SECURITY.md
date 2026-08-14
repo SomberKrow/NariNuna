@@ -1,107 +1,228 @@
 # Accessibility, Performance, Privacy, and Security
 
+**Status:** Automated foundation `IMPLEMENTED`; final manual/host evidence `PENDING`  
+**Owns:** WCAG target, performance budgets, privacy boundary, threat model, headers, release evidence  
+**Update trigger:** New component, asset, integration, data collection, host, dependency, or risk
+
+These are product requirements, not cleanup work after the visual design is finished.
+
 ## Accessibility target
 
-Target WCAG 2.2 AA for public launch, verified with automation plus keyboard, screen-reader, zoom, contrast, reduced-motion, and multi-viewport manual checks. A passing build is not an accessibility audit.
+Target WCAG 2.2 AA for public launch through automation **and** manual keyboard, screen-reader, zoom, contrast, reduced-motion, and multi-viewport review. A clean build or automated scan is not an accessibility audit.
 
-### Structure and keyboard
+## Structure and landmarks
 
-- One primary `<main>` and one meaningful `h1` per document view.
-- “Skip to content” is first focusable shell control and becomes visible on focus.
-- Header, theme group, mobile menu, Haven door, floorboard, secret oath, and Ghostie use native buttons/anchors.
-- Every external new-tab link has destination text and an “opens in a new tab” cue.
-- Visible 3px focus ring with 4px offset; never remove it for mouse aesthetics.
-- Mobile menu exposes `aria-expanded` and `aria-controls`, closes on Escape, and locks background scroll. Before release, confirm focus order and add focus containment/return only if testing shows the full-screen panel needs it.
-- No required content or action depends only on hover, pointer precision, animation, color, or a secret keyboard shortcut.
+- One primary `<main>` and one meaningful `h1` per route view.
+- “Skip to content” is the first focusable ordinary-shell control and becomes visible on focus.
+- Header, navigation, theme group, footer, and page sections use semantic elements.
+- Secret route has its own `<main>` because it intentionally bypasses `SiteShell`.
+- Heading levels describe hierarchy; visual size is controlled by CSS, not skipped levels.
+- Repeated card collections use appropriate list/section/article semantics when their relationship benefits from it.
 
-### Contrast and zoom
+## Keyboard and focus
 
-Review every text/control state in Nari, Dark, and Light themes. Minimum target is 4.5:1 for ordinary text and 3:1 for large text, focus, and meaningful UI graphics. Environmental hero veils are part of the contrast solution and must be retested when art changes.
+- Native buttons and anchors own all current actions.
+- Visible focus is a 3px semantic outline with 4px offset.
+- No required content/action depends on hover, pointer precision, animation, color, or a secret shortcut.
+- Mobile navigation exposes `aria-expanded`/`aria-controls`, closes on Escape, and locks background scroll.
+- Before release, manually determine whether the full-width mobile panel requires focus containment and explicit focus return; these are not currently documented as implemented.
+- External new-tab links name the destination and include a visible or screen-reader new-tab cue.
+- Fixed Ghostie UI never obscures the focused control.
 
-At 200% text zoom and 400% page zoom, navigation, headings, buttons, holds, and interactive cards must reflow without horizontal page scrolling or clipped controls. Monospace detail text may not carry essential instructions by itself.
+## Contrast, reflow, and zoom
 
-### Images and media
+Review every text/control state in Nari, Dark, and Light themes.
 
-- Decorative environment imagery uses empty alt when adjacent HTML supplies meaning.
-- Informative Nari/nail/community art uses concise subject/function alt; captions hold credit/context instead of stuffing alt.
-- Nail work alt describes visible design/material/color, not inferred quality or medical condition.
+Targets:
+
+- 4.5:1 for ordinary text;
+- 3:1 for large text, focus indicators, and meaningful UI graphics;
+- no meaning conveyed by color alone.
+
+Hero veils are part of the contrast solution and must be retested whenever art/crop changes.
+
+At 200% text zoom and 400% page zoom:
+
+- no horizontal page scroll caused by content at a 320 CSS px equivalent viewport;
+- nav, headings, controls, status text, and honest holds reflow;
+- no clipped focus ring or hidden action;
+- card columns collapse before readable type becomes tiny;
+- fixed UI can be dismissed or does not block content.
+
+## Images and media
+
+- Decorative environment images use empty alt when adjacent HTML carries meaning.
+- Informative Nari, nail, mascot-state, and community art uses concise subject/function alt.
+- Credits, provenance, dates, and technique belong in captions/visible copy rather than alt stuffing.
+- Nail alt describes visible color, motif, shape, and finish, not inferred quality or medical condition.
 - Explicit dimensions reserve layout space.
-- Remote thumbnail failure leaves a readable outbound card.
+- Remote thumbnail failure preserves a readable destination.
 - No critical text exists only inside raster art.
+- No autoplay audio/video, flashing, parallax dependency, or surprise adult media.
 
-### Motion
+## Motion and cognitive load
 
-Honor `prefers-reduced-motion`. Essential state changes remain and decorative transforms stop. No flashing, strobing, autoplay sound/video, parallax dependency, or infinite sprite loop. See `09_INTERACTION_AND_MOTION_SPEC.md`.
+- Honor `prefers-reduced-motion` before and after hydration.
+- Essential state changes remain visible; decorative transforms stop.
+- Avoid infinite motion, repeated interruptions, strobing, or more than one focal event.
+- Use plain-language holds for unavailable content.
+- Keep room metaphors paired with conventional route/action wording.
+- Money, privacy, safety, consent, and external navigation are not hidden inside jokes.
+
+See `09_INTERACTION_AND_MOTION_SPEC.md` for state-specific behavior.
+
+## Screen-reader smoke matrix
+
+At minimum test with one desktop and one mobile-capable screen-reader/browser combination available to the team. Record actual combination/version in release evidence.
+
+| Area | Required observation |
+|---|---|
+| Shell | Skip link reaches main; landmarks/headings are understandable |
+| Header | Current page, menu state, and theme pressed state are announced |
+| Media card | Destination/title is not redundantly or ambiguously announced |
+| Ghostie | Open/close is understandable; status does not spam |
+| Haven door | Each state heading/action is clear; final Discord link appears in sequence |
+| Floorboard | Progress text and revealed link are announced once |
+| Secret | Return path, oath, counter, and capped state are operable |
+| Holds | Pending state and safe alternative are clear |
 
 ## Performance budgets
 
-Budgets are release gates, not aspirational averages:
+Release budgets are gates, not averages:
 
 | Budget | Target |
 |---|---:|
-| Shared entry JS + CSS (gzip, excluding images) | ≤ 120 KB |
-| Any initial route-specific JS (gzip) | ≤ 35 KB |
-| Home above-fold image | ≤ 160 KB at wide desktop; smaller responsive choice on mobile |
-| Other single web image | ≤ 150 KB unless approved detail work justifies more |
-| First-viewport local image total | ≤ 250 KB |
+| Shared entry JS + CSS, gzip, excluding images | ≤120 KB |
+| Initial route-specific JS, gzip | ≤35 KB |
+| Home above-fold wide image | ≤160 KB; smaller responsive mobile candidate |
+| Other single web image | ≤150 KB unless approved detail exception |
+| First-viewport local image total | ≤250 KB |
 | Third-party JS/iframes on initial load | 0 |
-| Cumulative layout shift | < 0.1 target |
-| Largest contentful paint | < 2.5s p75 target after real-host measurement |
+| Cumulative Layout Shift | <0.1 target |
+| Largest Contentful Paint | <2.5s p75 target after real-host measurement |
 
-Observed local build on 2026-08-13: shared main JS ~59 KB gzip, icon helper ~24 KB gzip, CSS ~7.6 KB gzip, hero derivative ≤125 KB. These are point-in-time measurements, not production field data.
+The 2026-08-13 implementation record reported shared main JS near 59 KB gzip, icon helper near 24 KB gzip, CSS near 7.6 KB gzip, and the largest hero derivative at 125 KB. Those are historical local measurements, not field data or proof for later commits.
 
-Use responsive WebP/AVIF where visual comparison supports it, no upscaling, lazy loading below the fold, and `fetchpriority="high"` on only the actual LCP image. Do not preload every route or image. Keep top-level page modules lazy so page-specific content does not load globally.
+## Performance practices
 
-## Third-party content and privacy
+- Keep route modules lazy.
+- Do not preload every page or image.
+- Use responsive formats and widths with correct `sizes`.
+- Do not upscale.
+- Reserve dimensions.
+- High-priority fetch only for the true LCP image.
+- Lazy-load below-fold images.
+- Keep runtime social/platform integrations out of initial load.
+- Compare final imagery visually; a tiny file with destroyed nail detail is not a win.
+- Measure built artifacts and the production host; development server timing is not release evidence.
 
-Current strategy is thumbnail + outbound link. No Twitch/YouTube/social embed code, pixels, or autoplay loads. If future click-to-load embeds are approved:
+## Privacy posture
 
-1. Explain that the platform may set cookies/collect data.
-2. Do not load the iframe before deliberate activation.
-3. Update CSP to the narrowest origins.
-4. Reserve dimensions and provide an outbound alternative.
-5. Reassess consent/legal requirements by launch jurisdiction.
+Current site behavior:
 
-The site currently collects no form data, account data, analytics, location, or personalization beyond local theme preference. Do not add analytics merely because a provider offers a free tier; define purpose, event taxonomy, retention, access, consent, and owner approval first.
+- no form data;
+- no account or login;
+- no analytics or advertising pixel;
+- no location request;
+- no personalization beyond local theme preference;
+- no embedded third-party player/feed;
+- no server-side storage;
+- outbound links only.
+
+Do not add analytics because it is free or common. Define purpose, exact events, legal/consent basis, retention, access, deletion, processor, and owner approval first.
 
 ## Personal and community privacy
 
-Never publish precise/home/work location, legal identity, private phone/email, private family details, private messages, location-bearing photos, or data scraped from a platform. The VTuber identity is explicitly a privacy-preserving public bridge.
+Never publish:
 
-For nail/community images:
+- precise/home/work location;
+- legal/private identity;
+- private phone/email;
+- private family/relationship details;
+- private messages, DMs, or Discord content;
+- location-bearing originals or raw metadata;
+- unnecessary usernames/chat handles;
+- home/moving/private-person footage simply because it is public elsewhere.
 
-- preserve the private original according to owner policy;
-- strip GPS/EXIF/IPTC from public derivatives;
-- inspect mirrors/reflections/backgrounds and filenames for accidental location or identity;
-- obtain participant/artist permission and record it;
-- redact unrelated usernames/chat handles;
-- exclude private Discord/DM content;
-- offer a documented removal/correction path.
+For nail/community imagery:
 
-Adult-marked VODs must be labelled and opt-in before preview/navigation. Do not index a personal anecdote until it has explicit story approval and privacy review.
+- preserve the master according to owner policy;
+- strip EXIF/IPTC/GPS from public derivatives;
+- inspect reflections, mirrors, windows, shipping labels, screens, backgrounds, and filenames;
+- record participant/artist permission;
+- redact unnecessary identifiers;
+- provide a removal/correction path.
 
-## Client security
+Adult-marked content is labelled and opt-in before preview/navigation.
 
-- The repository is static client code. There is no trusted server boundary.
-- `VITE_*` is public. Never store API keys, tokens, webhook URLs, affiliate secrets, email credentials, private IDs, or moderation credentials in it.
-- All external URLs must be HTTPS and reviewed; new-tab links use `noopener noreferrer`.
-- CSP defaults to self, allows images only from self/data/`i.ytimg.com`, and blocks frames/media/objects.
-- `base-uri`, `form-action`, and `frame-ancestors` are restricted. Permissions policy disables camera, microphone, geolocation, payment, USB, and browsing topics.
-- `robots.txt` and `noindex` do not secure private data. Never commit a secret route as a privacy control.
-- Lockfile and GitHub Actions run `npm ci`; review dependency updates and generated lockfile diffs.
-- Do not inject unsanitized HTML. If Markdown/CMS content arrives, parse with an allowlist sanitizer and test XSS payloads.
+## Threat model
 
-## Hosting checklist
+| Threat | Current exposure | Control | Residual risk / gate |
+|---|---|---|---|
+| Secret leakage | Static client repository | No secrets; treat `VITE_*` as public | Run secret review on release commit |
+| XSS | Local Vue templates/data | No `v-html`; no external rich text | Future Markdown/CMS needs sanitizer/tests |
+| Malicious external link | Reviewed static URLs | HTTPS tests and manual verification | Destinations can change after release |
+| Reverse-tabnabbing/referrer | New-tab outbound links | `noopener noreferrer` | Verify every new link |
+| Third-party tracking | Remote thumbnails/outbound links | No scripts/iframes; narrow image CSP; no-referrer thumbnail | Remote image host sees request/network metadata |
+| Clickjacking | Static public pages | `frame-ancestors 'none'`; X-Frame-Options equivalent may be host-added | Verify emitted headers |
+| Supply chain | npm dependencies/actions | Lockfile, `npm ci`, minimal dependencies, read-only CI permission | Review upgrades and advisories |
+| Private content via hidden route | Hidden static path | Explicit policy: no private data | Obscurity/noindex provides no access control |
+| Location in media | Supplied photos/art | Intake, metadata stripping, visual privacy review | Human review required |
+| Stale Discord/social takeover | Volatile external URLs | Verification dates and release recheck | Ongoing maintenance owner required |
+| Fake form/security theater | No backend | No form until full design exists | Future integration review required |
 
-Confirm HTTPS/HSTS ownership, directory-index routing, 404 mapping, headers/CSP actually emitted, immutable hashed-asset caching, HTML no-cache/revalidation policy, source-map policy, deployment access, preview indexing, domain/canonical metadata, and rollback procedure. `_headers` is only effective on hosts that support its syntax.
+## Client security rules
+
+- Every external URL is HTTPS and reviewed.
+- New-tab links use `rel="noopener noreferrer"`.
+- No unsanitized HTML injection.
+- No token, key, webhook, credential, or private ID in client source/config.
+- `robots.txt` and `noindex` are indexing hints, not security.
+- Dependency updates include lockfile review and run through the full gate.
+- Future API calls use an explicit trusted server boundary where secrets are required.
+- A future contact form documents purpose, fields, retention, validation, spam controls, success/error delivery, privacy notice, and incident owner.
+
+## Header contract
+
+`public/_headers` currently defines a compatible-host baseline:
+
+- `X-Content-Type-Options: nosniff`;
+- `Referrer-Policy: strict-origin-when-cross-origin`;
+- restricted `Permissions-Policy`;
+- CSP restricted to self, data images, and `i.ytimg.com` images;
+- no frames, media, objects, camera, microphone, geolocation, or payment;
+- long immutable cache for hashed assets and generated media.
+
+The CSP currently permits `style-src 'unsafe-inline'`; this is a known compromise for generated/runtime style behavior and should not expand to script. Hosts that ignore `_headers` must reproduce the policy in provider configuration.
+
+HSTS should be enabled only after HTTPS/domain ownership is correct and rollback/subdomain implications are understood. The current file does not itself prove a header is emitted.
+
+## Hosting verification
+
+Observe, do not assume:
+
+- HTTPS and certificate behavior;
+- HSTS policy where chosen;
+- CSP/referrer/permissions/no-sniff/frame behavior;
+- directory-index direct loads and trailing slashes;
+- real 404 mapping/status;
+- immutable hashed asset caching;
+- HTML revalidation/no-cache policy;
+- source-map exposure policy;
+- preview indexing/access;
+- domain/canonical/social metadata;
+- atomic deployment and rollback.
 
 ## Release evidence
 
-- `npm run check` passes from a clean install.
-- Axe or equivalent has no critical/serious issues, then manual checks still run.
-- Keyboard-only and screen-reader smoke tests cover shell and all custom interactions.
-- 320, 390, 768, and wide desktop views have no overflow or obscured targets.
-- All three themes and reduced motion are reviewed with final assets.
-- Network panel confirms zero unapproved third-party script/iframe requests.
-- Image metadata scan confirms no EXIF/GPS in public derivatives.
-- Secrets scan and content/privacy review pass before deployment.
+- Clean `npm ci` and `npm run check`.
+- Automated accessibility scan with no critical/serious issues, followed by manual review.
+- Keyboard-only and screen-reader smoke matrix.
+- 200% text/400% zoom and 320/390/768/wide layouts.
+- All themes and reduced motion with final assets.
+- Network evidence showing zero unapproved third-party scripts/iframes.
+- Image metadata/privacy scan.
+- Secret/dependency/license/content-rights review.
+- Production headers, performance, direct routes, 404, and rollback observed.
+
+Use `templates/RELEASE_EVIDENCE_RECORD.md`. “The build passed” is necessary and insufficient.

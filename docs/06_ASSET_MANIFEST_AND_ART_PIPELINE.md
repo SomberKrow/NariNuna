@@ -1,98 +1,246 @@
 # Asset Manifest and Art Pipeline
 
-**Audit date:** 2026-08-13.<br>
-**Launch rule:** public visibility does not establish reproduction rights.
+**Status:** Placeholder pipeline `IMPLEMENTED`; canonical production assets `BLOCKED`  
+**Audit baseline:** 2026-08-13 at `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
+**Owns:** Asset inventory, provenance, rights, naming, source preservation, derivatives, alt/credit, replacement and retirement  
+**Update trigger:** Any image, icon, logo, font, clip, screenshot, emote, or other media enters, changes, or leaves the repository
 
-## Locally generated high-resolution placeholders
+## Non-negotiable rule
 
-These files are original project placeholders, not canonical Nari artwork. The two opaque environmental masters use visually high-quality WebP so the complete private repository remains portable through ordinary Git; the alpha mascot remains PNG. Replace them semantically when approved art arrives. Future supplied canonical originals must remain untouched in the owner-approved source archive even when Git stores only deployment-friendly derivatives.
+Public visibility is not permission.
 
-| File | Dimensions / alpha | Size | Subject / crop | Current use | SHA-256 |
+Do not copy, hotlink, crop, animate, recolor, trace, or republish Nari's model, commissioned art, emotes, banners, panels, nail photos, community images, sponsor marks, or heritage art until the specific website rights are recorded.
+
+An artist credit is not a license. Ownership is not automatically permission to create derivatives. Platform use is not automatically independent website use.
+
+## Storage model
+
+```text
+src/assets/source/            # Current project masters; never served directly
+public/media/generated/       # Optimized derivatives currently served
+public/                       # Icons, manifest, robots, static host files
+docs/templates/               # Intake and approval records
+```
+
+Future canonical assets should follow the same separation:
+
+```text
+src/assets/source/canonical/<family>/
+public/media/<family>/
+```
+
+If original contractual material must not live in Git, store it in the owner-approved private archive and commit only permitted web derivatives plus a manifest record pointing to the archive identifier. Do not invent an archive path before one is chosen.
+
+## Asset lifecycle
+
+```mermaid
+flowchart TD
+  I["Intake / quarantine"] --> R["Rights and privacy review"]
+  R -->|blocked| H["Hold outside public path"]
+  R -->|approved| M["Preserve master and hash"]
+  M --> D["Create web derivatives"]
+  D --> Q["Visual, metadata, crop, a11y QA"]
+  Q --> P["Publish through typed/page reference"]
+  P --> V["Reverify, replace, or retire"]
+```
+
+No asset skips from “found online” to `public/`.
+
+## Current source placeholders
+
+These are original project placeholders, not canonical Nari artwork. File sizes and SHA-256 values describe the implementation snapshot.
+
+| Source | Dimensions / alpha | Size | Purpose | Rights posture | SHA-256 |
 |---|---|---:|---|---|---|
-| `src/assets/source/nari-haven-hero-environment-placeholder-v1.webp` | 1672×941 RGB | 124,930 B | Late-fall Haven, quiet left copy zone, strong right window | Home hero | `651c64f3ffa8e7a0312559c6984e74fe87da482e999dc85e488d257ad57feb3c` |
-| `src/assets/source/ghostie-mascot-v1.png` | 1254×1254 RGBA | 598,496 B | Full lavender-white original spirit; square and small-scale legible | Placeholder mascot, icon, holds | `00b24ccb3f03fca3d618e4709961450ca6289447fcaabe18c6cfb0815c545105` |
-| `src/assets/source/nari-nuna-nail-studio-editorial.webp` | 1568×1003 RGB | 97,886 B | Learning desk; left copy zone; no person, hands, finished nails, brand, or readable label | Nail Studio hero | `5f7b52295dabd9e9864e4c8a8b6bca7197f25a2130427acf23c67ab199e66d77` |
+| `src/assets/source/nari-haven-hero-environment-placeholder-v1.webp` | 1672×941 RGB | 124,930 B | Home environment master | Project-generated placeholder; final owner license pending | `651c64f3ffa8e7a0312559c6984e74fe87da482e999dc85e488d257ad57feb3c` |
+| `src/assets/source/ghostie-mascot-v1.png` | 1254×1254 RGBA | 598,496 B | Original placeholder mascot master | Project-generated placeholder; not official Ghostie/emote | `00b24ccb3f03fca3d618e4709961450ca6289447fcaabe18c6cfb0815c545105` |
+| `src/assets/source/nari-nuna-nail-studio-editorial.webp` | 1568×1003 RGB | 97,886 B | Nail Studio environment master | Project-generated placeholder; not Nari's work/room | `5f7b52295dabd9e9864e4c8a8b6bca7197f25a2130427acf23c67ab199e66d77` |
 
-Quality: production-capable placeholders with clean compositions. The two high-resolution WebP placeholder records intentionally share their Git blobs with the largest served derivatives; the mascot source is unique. Ownership/licensing: created for this project; final owner license remains to be formalized. They must not be represented as Nari's commissioned model, official Ghostie/emote, real room, or real nail work.
+The two opaque source WebPs intentionally share their Git blob with the largest served derivative. The mascot alpha master remains a separate PNG.
 
-## Optimized derivatives
+## Current served derivatives
 
-| Family | Files | Total strategy |
+| Family | Files | Delivery contract |
 |---|---|---|
-| Haven hero | `public/media/generated/nari-haven-hero-{640,1024,1440,1672}.webp` | `srcset`/`sizes=100vw`; 27–125 KB; 16:9 derivatives except full source ratio |
-| Ghostie | `public/media/generated/ghostie-{128,256,512,768}.webp` | Preserved alpha; 2.9–33 KB; choose nearest non-upscaled display size |
-| Nail Studio | `public/media/generated/nari-nail-studio-{640,1024,1568}.webp` | `srcset`; 26–98 KB; source aspect retained |
-| Icons | `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Local Ghostie-derived placeholders with alpha |
+| Haven hero | `nari-haven-hero-{640,1024,1440,1672}.webp` | Responsive `srcset`; above-fold high priority; explicit dimensions |
+| Ghostie | `ghostie-{128,256,512,768}.webp` | Alpha preserved; select nearest non-upscaled size |
+| Nail Studio | `nari-nail-studio-{640,1024,1568}.webp` | Responsive `srcset`; above-fold high priority; explicit dimensions |
+| Icons | `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Placeholder identity derived from project Ghostie |
 
-Explicit width/height is set in markup. Above-fold hero uses `fetchpriority="high"`; noncritical local images use lazy loading. Source PNGs are never served to ordinary visitors.
+Source masters are not ordinary browser payloads. Optimized output is local; there is no public-CDN dependency for project art.
 
-## Art-request records
+## Public-reference audit — not licensed for production
 
-### Haven environment
-
-- **Page/viewport:** Home, wide desktop and mobile crop.
-- **Brief:** late-fall sunset, oversized sleepover room, cocoa wood, lavender/plum textiles, pillow-fort/movie clutter, warm window, original spectral atmosphere.
-- **Crop:** low-detail left third for HTML copy; narrative right side; safe 16:9 center crop.
-- **Constraints:** no Nari likeness, logo, text, copyrighted mark, anime/game motif, or photoreal private room.
-
-### Nail Studio environment
-
-- **Page/viewport:** Nail Studio flagship hero, approximately 16:10.
-- **Brief:** warm learning desk, closed unbranded bottles, clean stored tools, abstract paper swatches/sketchbook, original tiny spectral helper.
-- **Crop:** left third/upper-left quiet; detail right/lower-right.
-- **Constraints:** no hands, person, finished manicure/press-on set, service claim, brand, unsafe handling, readable label, or medical implication.
-
-### Original Ghostie placeholder
-
-- **Use:** responsive interface mascot and empty-state helper, not a replacement for official emotes.
-- **Brief:** one full lavender-white spirit, muted plum depth, tiny emerald eye glints, two arms, one curling tail, caring/sly expression, transparent square canvas.
-- **Constraints:** no Nari traits, franchise resemblance, sheet-ghost scallops, logo, text, horror, or extra limbs.
-
-## Public artwork audit: reference only
-
-No creator-platform character/banner/panel/emote art is copied into the repo. Rights, artist permission, crop terms, local-hosting terms, and current/retired status remain unknown.
-
-| Surface | Reference | Visible cue | Status |
+| Surface | Visible reference | Possible rights lead | Current decision |
 |---|---|---|---|
-| Linktree avatar | `ugc.production.linktr.ee/.../Nari-idle.png` | Chibi, mixed ears, emerald eyes, lavender/charcoal | Do not hotlink; original/rights required |
-| Twitch profile/banner | `twitch.tv/nari_nuna` | Portrait and cozy pastel nail-bedroom composition | Commissioned; rights pending |
-| X profile/banner | `x.com/Nari_Nuna` | Current CatDog portrait; nail-room crop | Rights pending |
-| YouTube profile/banner | `youtube.com/@Nari_Nuna` | Cropped nail-room art | Platform crop, not source master |
-| Discord icon/splash | Guild “Nari's Haven” | Chibi/icon and nail-room variant | Rights pending |
-| Throne card | `throne.com/narinuna` | Chibi with hearts | Rights pending |
-| Twitch emotes | `narinuHug`, `narinuHi`, `narinuRIP`, `narinuBlush`, `narinuRaid` | Pale friendly sheet-ghost family | Subscriber/platform assets; not website source |
+| Linktree | Nari avatar/chibi | Nari/commission artist | Reference only; do not hotlink |
+| Twitch | Profile, banner, panels, emotes | Model Kansla; rig Toto; emotes Haru; banner Famocii1; panels Mikiqt, as publicly credited | Verify exact asset/artist and website rights |
+| X | Current CatDog portrait/banner, later emote credits | Nari; Xylnaeri for later pair | Reference only |
+| YouTube | Cropped profile/banner and thumbnails | Nari/underlying artist/platform | Channel art not a source master |
+| Discord | Guild icon/splash | Nari/underlying artist | Private/community surface; permission required |
+| Throne | Chibi card | Nari/underlying artist | Reference only |
 
-Public Twitch credits currently identify model by Kansla (`@Kanslaaaa`), rigging by Toto (`@totochomp`), emotes by Haru (`@Harumiitsa`), banner by Famocii1 (`@famoccii1`), and panels by Mikiqt (`@namankung`). A later X post credits Xylnaeri for another emote pair. These are leads for permission/credit verification, not a license grant.
+Credits are leads for verification, not proof that a specific file can be republished.
 
-## Missing production assets
+## Missing canonical asset families
 
-| Bucket | Needed before launch | Required metadata |
+| Family | Minimum deliverables | Required record |
 |---|---|---|
-| Nari | current full render, portrait, optional expressions/lore art | owner, artist, current model version, credit, crops, derivatives, local hosting |
-| Ghosties/emotes | canonical mascot sheet and approved interaction variants | artist per batch, platform/site rights, animation/derivative rules |
-| Nails | original gallery and optional process/tutorial photos | creator/photographer, labels, date, permission, EXIF status, factual technique notes |
-| Branding | logo/wordmark and site icon if one exists | source master, clear space, colors, dark/light rules, artist credit |
-| Heritage | Nari-approved sun/moon source and copy if displayed | personal wording, exact asset, crop/derivative boundary |
-| Professional | sponsor-safe portrait, media-kit art | usage window, approved brand context, credit |
-| Content | approved clips/stories/community images | source URL, participant permission/redaction, rating |
-| Secret | original/permitted joke art only | ownership and explicit non-franchise confirmation |
+| Nari character | Current full render, portrait crop, optional approved expressions | Owner, artist, model version, display/local-host/crop/derivative rights, credit |
+| Ghosties/emotes | Canonical mascot master and approved variants | Artist per batch, site/platform rights, animation/derivative terms |
+| Nails | Original gallery and optional process/tutorial photos | Creator/photographer, labels, date, permission, privacy/EXIF review |
+| Branding | Logo/wordmark, icon, clear-space/theme rules | Source master, color/crop rules, artist, rights |
+| Heritage | Approved sun/moon asset and exact personal wording | Nari approval, artist, display/crop restrictions |
+| Professional | Sponsor-safe portrait/media-kit art | Usage context/window, credit, rights |
+| Stories/community | Approved clip stills, screenshots, memories | Source, participants, redaction, rating, removal path |
+| Secret | Original joke art only | Explicit ownership and non-franchise confirmation |
 
-## Ingestion checklist
+## Intake record
 
-1. Quarantine incoming files outside the optimized public directory.
-2. Record filename, source path, owner, artist, approval date, type, dimensions, bytes, alpha, visual subject, current/legacy status, and usage constraints.
-3. Inspect visually; do not trust filenames. Identify duplicates by cryptographic hash and human comparison.
-4. Confirm commercial website display, local hosting, responsive crops, compression, derivative/animation, artist credit, and AI-adjacent restrictions.
-5. Strip EXIF/IPTC/GPS from web derivatives; preserve original privately according to owner policy.
-6. Do not upscale. Export responsive WebP and optionally AVIF after visual comparison; preserve PNG for alpha/source only.
-7. Use `subject-purpose-theme-width.ext`; keep canonical originals unchanged.
-8. Set dimensions, `srcset`, `sizes`, loading priority, alt/caption, and failure behavior.
-9. Test mobile crops and all themes; update this manifest and the relevant content record.
+Use [`templates/ASSET_INTAKE_RECORD.md`](templates/ASSET_INTAKE_RECORD.md) for every family or supplied batch. At minimum record:
 
-## YouTube thumbnail exception
+- stable asset ID and original filename;
+- received date and source/archive identifier;
+- owner and artist/photographer;
+- exact permission source and approver;
+- website display, local hosting, crop, compression, derivative, animation, theme-treatment, and AI restrictions;
+- required credit and placement;
+- current/retired status and usage window;
+- media type, dimensions, bytes, alpha/color profile;
+- cryptographic hash;
+- visible subject and intended page/slot;
+- privacy/EXIF/reflection/background review;
+- alt/caption purpose;
+- approved derivative list.
 
-Three `i.ytimg.com` thumbnails map directly to verified outbound YouTube Shorts in `src/data/media.ts`. They load as images only; no YouTube script, iframe, cookie, or autoplay player loads. Reconfirm media approval and platform requirements before public launch. If a thumbnail is unavailable, retain the text link or replace it with a local rights-cleared card image.
+Do not store contracts, private messages, or private contact details in the public repository. Record a safe reference to the owner-controlled approval evidence.
 
-## Canonical invite note
+## Naming convention
 
-Two public codes currently resolve to the same guild: `f25YtvtnbV` (packet/current implementation) and `7JPH2H7TGC` (YouTube). Either may be revoked despite reporting no expiration. Nari must choose one; the site must not silently rotate between codes.
+Use lowercase kebab-case:
+
+```text
+<subject>-<purpose>-<theme-or-variant>-<width>.<ext>
+```
+
+Examples:
+
+```text
+nari-portrait-neutral-768.webp
+ghostie-hydrate-dark-256.webp
+nail-set-autumn-leaves-detail-1024.avif
+haven-home-hero-nari-1440.webp
+```
+
+Master files retain the supplied original filename in the private/source record; a normalized working filename may sit beside it. Do not encode legal names, locations, private dates, or temporary phrases such as `final-final-2`.
+
+## Ingestion procedure
+
+1. **Quarantine.** Keep incoming files outside served directories.
+2. **Inspect visually.** Filenames and extensions are not evidence. Check subject, version, duplicates, hidden background detail, logos, and accidental private information.
+3. **Hash and identify.** Record bytes, dimensions, media type, color/alpha, and SHA-256.
+4. **Resolve rights.** Confirm the exact allowed uses and required credits.
+5. **Preserve the master.** Never destructively optimize or overwrite the supplied original.
+6. **Strip public metadata.** Remove EXIF/IPTC/GPS from derivatives; verify removal.
+7. **Create derivatives.** Do not upscale. Compare WebP/AVIF/PNG visually and preserve needed alpha/detail.
+8. **Implement semantics.** Add explicit dimensions, `srcset`, `sizes`, loading priority, alt/caption, and failure behavior.
+9. **Test composition.** Review all themes, target widths, zoom, reduced motion, and the exact page crop.
+10. **Update records.** Manifest, page spec, content record, credits, and PR evidence must agree.
+
+## Suggested inspection commands
+
+These commands are examples for an environment with the named tools installed; they are not npm dependencies.
+
+```bash
+file path/to/asset
+sha256sum path/to/asset
+identify -verbose path/to/asset
+exiftool path/to/asset
+```
+
+After creating a public derivative:
+
+```bash
+exiftool -all= -overwrite_original path/to/derivative
+exiftool path/to/derivative
+```
+
+The second command is verification, not ceremony. If tooling is unavailable, use an equivalent method and record it.
+
+## Optimization and delivery rules
+
+- Never upscale.
+- Generate only widths a real layout can select.
+- Prefer WebP and evaluate AVIF when detail/size gain justifies the additional format.
+- Preserve PNG for source/alpha cases where modern lossy output harms edges or color.
+- Use SVG only for trusted, reviewed vector assets; sanitize active content and external references.
+- Set intrinsic width and height to prevent layout shift.
+- Use `fetchpriority="high"` only on the actual above-fold LCP candidate.
+- Lazy-load below-fold imagery.
+- Keep `sizes` synchronized with actual CSS composition.
+- Do not ship source originals merely because the repository contains them.
+
+### Current release budgets
+
+- Home wide hero: ≤160 KB; smaller responsive selection on mobile.
+- Other single web image: ≤150 KB unless approved detail work justifies more.
+- First-viewport local image total: ≤250 KB.
+
+Nail-detail exceptions require recorded visual evidence and performance review, not silent budget expansion.
+
+## Alt text and caption decision
+
+1. **Is the image purely environmental/decorative and adjacent HTML gives the meaning?** Use `alt=""`.
+2. **Does it identify Nari, a nail set, a community moment, or the function of a state?** Write concise visible subject/function alt.
+3. **Does the information belong to provenance, technique, date, or artist credit?** Put it in a caption/credit, not stuffed into alt.
+4. **Is an image also a link?** Alt/link text must make the destination understandable without duplicative chatter.
+5. **Is it a nail image?** Describe visible colors, shapes, motifs, finish, and composition; do not infer quality or medical condition.
+
+Do not start every alt with “Image of.” Do not include private identity or location details.
+
+## Placeholder-to-canonical replacement
+
+1. Complete and approve the intake record.
+2. Confirm the exact destination slot and current page contract.
+3. Preserve the canonical master and create permitted derivatives.
+4. Implement sources/dimensions/crop/alt/credit.
+5. Test 320, 390, 768, and wide desktop in Nari/Dark/Light.
+6. Test image-blocked fallback, zoom, and hero contrast.
+7. Remove placeholder wording only after canonical truth is live.
+8. Retire unused placeholder derivatives in a focused change with rollback clarity.
+9. Update this manifest and governance log.
+
+Do not replace a placeholder globally just because one canonical asset arrives. A portrait may be permitted for Meet Nari but not hero, animation, sponsor, or social-preview use.
+
+## Remote media exception
+
+The current build allows `i.ytimg.com` for three thumbnails tied directly to verified outbound YouTube Shorts in `src/data/media.ts`.
+
+- Images only; no YouTube player/script/iframe.
+- `referrerpolicy="no-referrer"` is set.
+- Text link remains meaningful when image fails.
+- Reconfirm selection, rating, and platform policy before release.
+- Replace with local permitted art if the remote strategy becomes unreliable or inappropriate.
+
+Adding another remote image origin requires privacy, CSP, reliability, and rights review.
+
+## Retirement and removal
+
+- Mark the record `RETIRED` with date/reason.
+- Remove public references before deleting derivatives.
+- Preserve contractual masters only according to owner policy.
+- Do not leave orphaned files in `public/` “just in case.”
+- Confirm route builds and network requests after removal.
+- If removal is privacy/rights-driven, prioritize public takedown and deployment invalidation, then preserve only the minimum private evidence needed.
+
+## Asset pull-request gate
+
+- [ ] Intake record is complete and safely references permission evidence.
+- [ ] Source master is preserved and hashed.
+- [ ] No private metadata/background/reflection/filename leak.
+- [ ] No upscaling; derivative dimensions and formats are intentional.
+- [ ] `srcset`, `sizes`, dimensions, loading, alt, caption, and credit are correct.
+- [ ] All themes and target widths were visually reviewed.
+- [ ] Performance budget holds or an exception is approved.
+- [ ] Placeholder wording and retired files are synchronized.
+- [ ] Manifest, relevant page spec, content record, and release evidence are updated.

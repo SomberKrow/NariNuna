@@ -1,71 +1,215 @@
 # Interaction and Motion Specification
 
-Motion is punctuation, not wallpaper. Every action must remain clear and complete with animation disabled.
+**Status:** Core interactions `IMPLEMENTED`; final manual/device review `PENDING`  
+**Owns:** Interaction state, timing, input parity, focus, delight limits, reduced-motion equivalence  
+**Implementation files:** `SiteHeader.vue`, `ThemeSwitcher.vue`, `GhostieSummoner.vue`, `HavenDoor.vue`, `LooseFloorboard.vue`, `PrinnyCultPage.vue`, SCSS  
+**Update trigger:** New/changed interaction, shortcut, animation, live region, menu, theme, or reveal behavior
 
-## Motion tokens
+## Motion thesis
 
-| Class | Range | Use |
-|---|---:|---|
-| Instant/state | 0–120ms | Pressed/selected/focus feedback |
-| Fast | 140–180ms | Button and link hover/tap |
-| Base | 240–320ms | Ghostie card, small reveal, panel |
-| Large | 360–500ms | Rare image/card emphasis; no blocking page choreography |
+Motion is punctuation, not wallpaper. It may confirm a state, reveal a small delight, or add material response. It never delays content, blocks navigation, changes the truth of a disclaimer, or becomes necessary to understand what happened.
 
-Default ease-out is `cubic-bezier(.22,1,.36,1)`. Avoid spring overshoot on reading surfaces and avoid chained delays that make content wait.
+Every action must remain clear and complete with animation disabled.
 
-## Page navigation
+## Timing system
 
-Top-level routes are real document navigations. No cross-document animation is required; cancelled browser View Transition operations produced console noise during rapid navigation and were deliberately removed. The correct-theme preflight and reserved dimensions provide continuity. Future transitions must be progressive enhancement and must not delay navigation, break history, or log errors.
+| Class | Range | Use | Avoid |
+|---|---:|---|---|
+| Instant/state | 0–120ms | Pressed/selected/focus feedback | Meaningful content travel |
+| Fast | 140–180ms | Button/link hover/tap | Large panels |
+| Base | 240–320ms | Ghostie card, small reveal | Chained page choreography |
+| Large | 360–500ms | Rare image/card emphasis | Blocking route/navigation |
 
-## Implemented interactions
+Default ease-out: `cubic-bezier(0.22, 1, 0.36, 1)`. Avoid spring overshoot on reading surfaces and staged delays that make visitors wait.
 
-| Interaction | Full-motion behavior | Reduced-motion replacement | Input parity |
+## Cross-document navigation
+
+Top-level routes are real document navigations. No cross-document animation is required. Previous experimental browser View Transitions were removed after rapid navigation produced cancelled-operation console noise.
+
+Future cross-document transitions must be progressive enhancement and must:
+
+- preserve normal navigation/history when unsupported;
+- never delay link activation;
+- never trap an old page state;
+- not cause console/runtime errors under rapid clicks/back-forward;
+- honor reduced motion;
+- be justified by observed improvement, not novelty.
+
+## Interaction state machines
+
+### Theme switcher
+
+```mermaid
+stateDiagram-v2
+  [*] --> StoredOrDefault
+  StoredOrDefault --> Nari: select Nari
+  StoredOrDefault --> Dark: select Dark
+  StoredOrDefault --> Light: select Light
+  Nari --> Dark: select Dark
+  Nari --> Light: select Light
+  Dark --> Nari: select Nari
+  Dark --> Light: select Light
+  Light --> Nari: select Nari
+  Light --> Dark: select Dark
+```
+
+State effects:
+
+- update `<html data-theme>` immediately;
+- update `theme-color`;
+- persist allowed value defensively to local storage;
+- retain focus on the selected button;
+- expose state through `aria-pressed`, icon, and label/title;
+- play no sound and load no network resource.
+
+Pre-paint and Vue state must share the same allowed values, storage key, and theme colors.
+
+### Mobile navigation
+
+States: closed ↔ open.
+
+Open through the labelled menu button. Close through button, Escape, or selecting a route. While open, body scroll is locked. `aria-expanded` and `aria-controls` expose state.
+
+Pending manual determination: whether focus containment and explicit focus return are required for the panel at release. Do not state that these are implemented until tested and added.
+
+### Ghostie summoner
+
+States: closed ↔ open.
+
+Full motion: opacity + 24px rise + scale over 280ms.  
+Reduced motion: static/immediate or opacity-only state.  
+Inputs: visible button and visible close button; no idle autoplay.  
+Semantics: compact status message; avoid repeated live-region announcements.
+
+The fixed layer must stay below the header's critical stacking context and away from required controls/browser edges.
+
+### Haven door
+
+```mermaid
+stateDiagram-v2
+  [*] --> Threshold
+  Threshold --> Belonging: Knock gently
+  Belonging --> Boundary: Leave armor
+  Boundary --> Invite: Promise kindness
+  Invite --> Threshold: Close door
+```
+
+The Discord anchor exists only at `Invite`. Progress bars are decorative reinforcement; headings, paragraph, and button labels carry the state. This is narrative sequencing, not security or consent storage.
+
+### Loose floorboard
+
+States: untouched → moved → certain → key revealed.
+
+- One visible native button advances the first three states.
+- Text changes in an `aria-live="polite"` region.
+- The final state reveals a normal link.
+- No hover, timing, precision, or sound is required.
+- The interaction is optional and contains no essential page action.
+
+### Secret oath and inspection
+
+States: oath → Rule Eleven; inspection count 0–11.
+
+- Visible button accepts the oath.
+- Visible button increments inspection.
+- `P` key is optional parity, never the canonical path.
+- Count is capped at 11 and exposed politely.
+- Visible return link is available from the start.
+
+## Implemented behavior matrix
+
+| Interaction | Full-motion behavior | Reduced-motion replacement | Required inputs |
 |---|---|---|---|
-| Buttons/cards | 2–6px lift; occasional 0.25° card rotation | No transform; color/border only | Hover, focus, tap |
-| Theme | Token colors/backgrounds transition ~280ms | Near-instant token update | Three labelled buttons, keyboard/touch |
-| Ghostie summoner | Opacity + 24px rise + scale over 280ms; reverse on close | Static/opacity state | Button, close button, Escape not required |
-| Mobile nav | Immediate panel visibility with shell state | Same | Menu button, Escape, link close |
-| Haven door | Text/action state replaces through four steps; three progress bars | Same, no travel animation | Native buttons; visible text |
-| Floorboard | Three text stages reveal a key | Same | Native button; no hover secret |
-| Secret oath | Oath card swaps to Rule Eleven | Same | Button; “P” key and button increment counter |
-| Media images | Very small scale on card hover | No scale | Link focus preserves affordance |
+| Buttons/cards | 2–6px lift; rare 0.25° rotation | No transform; color/border | Hover, focus, tap |
+| Theme | Token transition ~280ms | Near-instant | Keyboard/touch/pointer |
+| Ghostie | Opacity/rise/scale | Static/opacity | Open and close buttons |
+| Mobile nav | Immediate panel state | Same | Menu, Escape, link selection |
+| Haven door | Content/state replacement | Same, no travel | Native buttons |
+| Floorboard | Three text stages | Same | Native button |
+| Secret | Oath swap and capped counter | Same | Buttons; optional `P` |
+| Media image | Small scale on card hover | No scale | Link focus retains affordance |
 
-Do not rely on the keyboard-only `P` shortcut; the visible “Inspect ceremonial pillow” button is canonical.
+## Future Ghostie/emote behavior
 
-## Ghosties and future emote bursts
+- User action or meaningful completion triggers delight.
+- Maximum instance count and cooldown are explicit.
+- Decorative sprites use transform/opacity and `pointer-events: none`.
+- Stop effects when the document becomes hidden.
+- Do not spawn continuously, on scroll, before consent/action, or over reading/focus targets.
+- Canonical emotes require website and animation rights.
+- Reduced motion uses a static cue or no decorative cue.
+- No autoplay audio, repeated speech, flashing emerald, or random jump scare.
 
-- Maximum one summoner card and a small capped number of decorative sprites.
-- Never spawn continuously, on scroll, or before user action.
-- Use transforms/opacity only; do not animate layout properties.
-- Clamp lifetime and instance count; stop when document is hidden.
-- Keep effects outside reading/focus targets and `pointer-events: none` for decorative sprites.
-- Canonical emote assets require website/animation rights; current placeholder is not a style reference to trace.
-- Reduced motion uses a static appearance or short text status; no drifting/falling.
+## Environmental response budget
 
-## Environmental responses
+Allowed examples:
 
-Allowed future examples: lamp glow strengthens on a theme selection, a single Ghostie peeks after a meaningful completion, a pillow shifts after deliberate inspection. Each has one trigger, a cap/cooldown, a touch equivalent, and a reduced-motion state.
+- lamp glow subtly strengthens after theme selection;
+- one Ghostie peeks after a meaningful completion;
+- a pillow shifts after deliberate inspection.
 
-Never animate: body copy while reading, safety/privacy/support disclaimers, primary navigation position, professional metrics, form labels/errors, flashing emerald cues, or background parallax that competes with scroll.
+Each needs one trigger, one cap/cooldown, a touch/keyboard equivalent where interactive, and a reduced-motion state.
 
-## Theme changes
+Never animate:
 
-Theme control updates `data-theme`, local storage, and browser theme color immediately. It does not play sound, swap unrelated worlds, move focus, or announce a fake “saved” network operation. Color is not the only state signal: icons, button state, and labels remain.
+- body copy while it is being read;
+- support/privacy/safety disclaimers;
+- primary navigation position;
+- form labels/errors if forms are later approved;
+- professional metrics;
+- a background parallax layer tied to scroll;
+- infinite particles or sprite rain.
 
-## Mobile behavior
+## Focus and announcement rules
 
-Touch targets stay at least 44×44 CSS px where practical. Hover effects are enhancement only. Fixed Ghostie control stays away from browser edges and never overlays the mobile nav. Decorative density and multi-column motion collapse before typography or controls.
+- Decorative reveals do not move focus.
+- Opening a lightweight Ghostie status card does not steal focus.
+- If a future modal/detail viewer is introduced, it must manage initial focus, containment, Escape, and return.
+- Live regions announce meaningful state once, not every animation frame.
+- State changes remain visible in ordinary text.
+- Keyboard shortcuts never fire inside text inputs if such inputs are later added.
 
-## Reduced motion and user preference
+## Mobile and touch
 
-`prefers-reduced-motion: reduce` sets scroll behavior to auto, collapses animation/transition duration to effectively instant, removes hover transforms, and passes a reactive boolean to Motion for Vue. Do not add a second site-level motion preference until there is an owner requirement; the operating-system preference is authoritative today.
+- Practical touch target is at least 44×44 CSS px.
+- Hover is enhancement only.
+- Fixed controls do not collide with mobile navigation, safe areas, or browser chrome.
+- Multi-column motion and decorative density collapse before controls or type shrink.
+- Test repeated rapid taps; state machines must cap and remain deterministic.
 
-## Performance and QA
+## Reduced motion
 
-- Animate compositor-friendly transform/opacity only.
-- Avoid more than one animated focal event at a time.
-- No autoplay audio, video, canvas particle field, or animation loop.
-- Inspect 60fps behavior on representative mid-range mobile hardware before adding bursts.
-- Verify keyboard focus does not move on decorative reveals.
-- Verify screen-reader output is not flooded by repeated live regions.
-- Rapidly activate and navigate components to expose stale-state/cancelled-transition errors.
+The operating-system `prefers-reduced-motion` preference is authoritative. Current CSS:
+
+- disables smooth scroll;
+- collapses animation/transition duration to effectively instant;
+- limits iterations;
+- removes hover transforms;
+- passes a reactive boolean to Motion for Vue.
+
+Do not add a separate site preference without an owner requirement and a clear precedence model.
+
+## Performance rules
+
+- Animate compositor-friendly transform/opacity.
+- One focal animated event at a time.
+- No autoplay video/audio, canvas field, WebGL decoration, or perpetual loop.
+- Avoid layout-property animation.
+- Test on representative mid-range mobile hardware before adding sprite bursts.
+- Inspect rapid navigation/activation for stale state and cancelled-operation errors.
+
+## Interaction QA script
+
+For each interaction:
+
+1. Complete with keyboard only.
+2. Complete with touch/pointer only.
+3. Repeat rapidly and attempt over-activation.
+4. Test at 320px and 400% zoom.
+5. Enable reduced motion before load and while the page is open.
+6. Check focus order, visibility, and whether focus unexpectedly moves.
+7. Check screen-reader announcement count and clarity.
+8. Navigate away/back/refresh and confirm intended reset/persistence.
+9. Block images/network where relevant and confirm the action remains understandable.
+
+Record actual evidence in the release record; implementation intent is not a pass.
