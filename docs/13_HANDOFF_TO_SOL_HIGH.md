@@ -14,6 +14,7 @@ Finish and release Nari Nuna's Haven: a true Vue/Vite multi-page world for strea
 - Eleven real HTML entries, shared Vue shell, persistent Nari/Dark/Light theme boot, lazy route modules, responsive local art derivatives, tests, CI, security headers, and docs are implemented.
 - `npm run check` passed on 2026-08-13: lint, typecheck, 9 tests across 2 files, build, and 11 HTML output validations.
 - `npm audit` and `npm audit --omit=dev` both reported zero vulnerabilities after current development-only transitive fixes.
+- The illustrated Nari visual pass is published on draft PR #2 at `055ff7876532113b5b99d71888abac0a175dc3f2`; both the GitHub Quality gate and Netlify deploy preview passed.
 - No known source/build failure. Production launch remains blocked by content/art rights, canonical identity wording, host/domain, contact, and final manual QA.
 
 ## 3. Read these docs first

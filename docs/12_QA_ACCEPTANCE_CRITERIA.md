@@ -19,7 +19,8 @@
 - **PASS:** current local placeholder sources, icons, and public derivatives expose no EXIF, GPS, or IPTC metadata in the ImageMagick metadata scan.
 - **PASS:** repository secret-pattern scan found no private keys, provider tokens, API keys, passwords, or client-secret assignments outside documentation examples.
 - **PASS:** the Netlify preview for the continuation commit completed successfully; remote YouTube-thumbnail failures now render a local readable card fallback instead of a broken image.
-- **PENDING:** exact deploy-preview review of the illustrated Nari visual pass and its 320/390/768 responsive composition.
+- **PASS:** exact Netlify deploy-preview review of the illustrated Nari visual pass at 1363×936 covered all 11 routes, all three themes, persistent document navigation, the skip link, responsive image selection, fallback cards, and horizontal overflow.
+- **PENDING:** true 320/390/768 responsive composition review and screen-reader/automated accessibility testing.
 - **PENDING:** complete 320/390/768px visual matrix, screen-reader pass, automated accessibility scan, all-theme contrast measurements, external-link crawl, and real-host header/404 test.
 - **BLOCKED:** production asset/copy acceptance because current character/Ghostie/nail/environment art includes explicit placeholders and canonical lore is unresolved.
 
@@ -27,7 +28,7 @@ Re-run and replace this snapshot after every material change. It is not a perman
 
 ## Product and content
 
-- [ ] Site unmistakably feels like the Haven, not a generic VTuber template or social directory. The illustrated visual pass is implemented; final approval remains with Jake/Nari.
+- [x] Implemented visual system unmistakably feels like the Haven rather than a generic VTuber template or social directory; final subjective approval remains with Jake/Nari.
 - [ ] One public Nari identity is internally coherent and explicitly approved.
 - [ ] Nail work/education is first-class and uses only real approved work.
 - [ ] Haven values include kindness, respect, care/love, support, cooperation, boundaries, and human dignity.
