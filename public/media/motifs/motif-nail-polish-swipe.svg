@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-nail-polish-swipe-title">
+<title id="motif-nail-polish-swipe-title">motif-nail-polish-swipe</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-lavender)" stroke="var(--motif-ink)" stroke-width="4" stroke-linejoin="round" d="M27 154C52 114 95 86 145 83C178 81 210 91 230 111C207 110 191 120 176 137C158 157 134 170 107 176C73 183 47 174 27 154Z"/><path fill="none" stroke="var(--motif-lavender-light)" stroke-width="5" stroke-linecap="round" d="M51 151C83 119 119 105 162 102C182 101 199 104 215 111"/><circle fill="var(--motif-pink)" cx="199" cy="158" r="7"/><circle fill="var(--motif-lavender-light)" cx="220" cy="149" r="4"/>
+</svg>

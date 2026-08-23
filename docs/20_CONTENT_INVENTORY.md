@@ -11,6 +11,10 @@ This inventory prevents content from disappearing into component templates witho
 
 It is not a copy dump. Exact public wording remains in source/data and approved content records.
 
+## 2026-08-23 authentic-artwork content delta
+
+Shared authentic identity assets now live in `src/data/artwork.ts`; authentic supplied Prinny derivative references live in `src/data/prinnyCult.ts`; platform shortcuts are rendered through `src/components/ui/SocialDock.vue`. Home now owns a concise desktop-single-viewport arrival rather than the prior long-form Home section inventory below. Meet Nari owns actual model/emote presentation; every remaining page owns its own scene/Ghostie/emote composition while retaining honest content holds. Nine indexable HTML entry documents own Open Graph/Twitter titles, descriptions, and locally hosted preview artwork; secret and 404 documents remain non-indexable and have no promotional previews. All new first-person copy, identity wording, generated support-art adoption, and supplied character/emote/Prinny artwork still require final Nari/rights-holder review before a public release.
+
 ## Shared content
 
 | Content | Current owner | State | Volatility / next action |

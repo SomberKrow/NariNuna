@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-charm-trinket-title">
+<title id="motif-charm-trinket-title">motif-charm-trinket</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="none" stroke="var(--motif-gold)" stroke-width="5" stroke-linecap="round" d="M128 28V62"/><circle fill="var(--motif-gold)" stroke="var(--motif-ink)" stroke-width="4" cx="128" cy="42" r="14"/><path fill="none" stroke="var(--motif-ink)" stroke-width="3.5" d="M128 62V91"/><path fill="var(--motif-lavender)" stroke="var(--motif-ink)" stroke-width="4" d="M93 91C93 76 110 70 128 83C146 70 163 76 163 91C163 107 146 117 128 131C110 117 93 107 93 91Z"/><path fill="none" stroke="var(--motif-gold)" stroke-width="4" d="M128 131V157"/><path fill="var(--motif-emerald)" stroke="var(--motif-ink)" stroke-width="4" d="M128 157L149 183L128 221L107 183Z"/><path fill="var(--motif-gold)" d="M169 128L175 143L190 149L175 155L169 170L163 155L148 149L163 143Z"/>
+</svg>

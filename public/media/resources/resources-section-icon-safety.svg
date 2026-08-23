@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Resources safety icon">
+  <g fill="#D7C8FF" stroke="#241B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 6l23 8v17c0 15-10 24-23 30C19 55 9 46 9 31V14z"/><path d="M21 32l8 8 15-17" fill="none"/>
+  </g>
+  <path d="M50 7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F1B65D" stroke="none"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Resources community icon">
+  <g fill="#D7C8FF" stroke="#241B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 31c-7-7-17-1-17 8 0 13 17 22 31 31 14-9 31-18 31-31 0-9-10-15-17-8-5 5-9 10-14 15-5-5-9-10-14-15z"/><path d="M12 20c5-9 14-12 20-8M52 20c-5-9-14-12-20-8" fill="none"/>
+  </g>
+  <path d="M50 7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F1B65D" stroke="none"/>
+</svg>

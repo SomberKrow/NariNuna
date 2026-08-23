@@ -2,47 +2,44 @@
 import { Heart, House, MoonStar, ShieldCheck, Users } from "@lucide/vue";
 import HavenDoor from "@/components/haven/HavenDoor.vue";
 import LooseFloorboard from "@/components/haven/LooseFloorboard.vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { environmentArtwork, ghostieArtwork, nariArtwork } from "@/data/artwork";
 import { communityValues } from "@/data/content";
+
+const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.protective, ghostieArtwork.chaotic];
 </script>
 
 <template>
-  <section class="haven-hero page-width section-pad">
-    <div class="haven-hero__copy">
-      <p class="eyebrow"><House :size="16" aria-hidden="true" /> The emotional center</p>
-      <h1>The Haven is not a server name.<br /><em>It is how the room behaves.</em></h1>
-      <p class="page-hero__lede">Cool fall air outside. Lavender in the room. Pajamas, movies, pillow forts, loud laughter, and enough trust to let people be real without letting cruelty become the entertainment.</p>
+  <section class="haven-heart">
+    <div class="haven-heart__environment" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.commonRoom}')` }"></div>
+    <div class="haven-heart__inner page-width">
+      <div>
+        <p class="eyebrow"><House :size="16" aria-hidden="true" /> Chapter four · the room that feels like exhaling</p>
+        <h1>You don't have to<br /><em>earn your place here.</em></h1>
+        <p>A warm little refuge for big personalities, quiet lurkers, tired people, weird jokes, and anyone who remembers that there are real humans on the other side of the screen.</p>
+      </div>
+      <img :src="nariArtwork.cozy" width="220" height="220" alt="Nari's supplied cozy chibi artwork offering a warm drink and an enthusiastic welcome" loading="lazy" />
     </div>
-    <img src="/media/generated/ghostie-512.webp" width="420" height="420" alt="A lavender Ghostie welcomes visitors into the Haven" />
   </section>
 
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="The house rules, without the laminated sign" title="Kind is not the same as passive." />
-    <div class="values-grid">
+  <section class="haven-values page-width section-pad">
+    <header class="world-heading world-heading--center"><p class="eyebrow">What keeps the room feeling like home</p><h2>Kindness has a backbone.</h2></header>
+    <div class="haven-values__grid">
       <article v-for="(value, index) in communityValues" :key="value.title">
+        <img :src="valueGhosties[index]" width="154" height="154" alt="" loading="lazy" />
         <span>{{ String(index + 1).padStart(2, "0") }}</span>
-        <h2>{{ value.title }}</h2>
+        <h3>{{ value.title }}</h3>
         <p>{{ value.description }}</p>
       </article>
     </div>
   </section>
 
-  <section class="found-family section-pad">
-    <div class="found-family__inner page-width">
-      <div>
-        <p class="eyebrow">Found-family energy</p>
-        <h2>Strong personalities. Shared jokes. Fierce loyalty. No borrowed anime branding.</h2>
-        <p>The emotional reference is a chaotic guild that shows up for its people—not a copy of Fairy Tail's logos, marks, characters, or visual identity. The Haven earns its own symbols through Nari, the Ghosties, and the memories made here.</p>
-      </div>
-      <div class="found-family__signals" aria-label="Haven community principles">
-        <span><Users :size="22" aria-hidden="true" /> Belonging</span>
-        <span><Heart :size="22" aria-hidden="true" /> Care</span>
-        <span><ShieldCheck :size="22" aria-hidden="true" /> Boundaries</span>
-        <span><MoonStar :size="22" aria-hidden="true" /> Room to be strange</span>
-      </div>
+  <section class="haven-belonging">
+    <div class="haven-belonging__inner page-width">
+      <div><p class="eyebrow">A little found-family energy</p><h2>Show up as you are.<br />Look out for each other.</h2><p>No loyalty tests. No having to be the funniest person in chat. No being told that crossed boundaries are just part of the joke.</p></div>
+      <div class="haven-belonging__badges" aria-label="Haven community principles"><span><Users :size="22" aria-hidden="true" /> Belonging</span><span><Heart :size="22" aria-hidden="true" /> Care</span><span><ShieldCheck :size="22" aria-hidden="true" /> Boundaries</span><span><MoonStar :size="22" aria-hidden="true" /> Your own kind of weird</span></div>
     </div>
   </section>
 
-  <div class="page-width section-pad"><HavenDoor /></div>
+  <div class="haven-door-wrap page-width section-pad"><HavenDoor /></div>
   <div class="page-width"><LooseFloorboard /></div>
 </template>

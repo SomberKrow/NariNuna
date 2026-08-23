@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-soft-star-title">
+<title id="motif-soft-star-title">motif-soft-star</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-cream)" stroke="var(--motif-ink)" stroke-width="5" stroke-linejoin="round" d="M128 29C139 74 153 88 198 99C153 110 139 124 128 169C117 124 103 110 58 99C103 88 117 74 128 29Z"/><path fill="var(--motif-lavender-light)" d="M192 149C198 170 205 177 226 183C205 189 198 196 192 217C186 196 179 189 158 183C179 177 186 170 192 149Z"/><path fill="var(--motif-pink)" d="M62 147C67 162 72 167 87 172C72 177 67 182 62 197C57 182 52 177 37 172C52 167 57 162 62 147Z"/>
+</svg>

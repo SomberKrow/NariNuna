@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-lavender-sprig-1-title">
+<title id="motif-lavender-sprig-1-title">motif-lavender-sprig-1</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path class="line" d="M125 223C116 185 109 149 110 112C111 82 120 55 134 33"/>
+<g fill="none" stroke="var(--motif-ink)" stroke-width="3.5" stroke-linecap="round">
+<path d="M113 155C93 143 77 127 64 106M111 132C89 117 77 98 72 79M116 105C99 91 92 74 90 55"/><path d="M113 163C136 151 152 133 164 111M112 138C134 124 148 106 155 87M116 112C135 100 145 84 150 66"/></g>
+<g fill="var(--motif-lavender)" stroke="var(--motif-ink)" stroke-width="2"><ellipse cx="132" cy="37" rx="9" ry="15" transform="rotate(25 132 37)"/><ellipse cx="121" cy="53" rx="8" ry="13" transform="rotate(-15 121 53)"/><ellipse cx="141" cy="60" rx="8" ry="13" transform="rotate(25 141 60)"/><ellipse cx="116" cy="72" rx="8" ry="13" transform="rotate(-20 116 72)"/><ellipse cx="139" cy="80" rx="8" ry="13" transform="rotate(20 139 80)"/><ellipse cx="112" cy="92" rx="8" ry="13" transform="rotate(-18 112 92)"/><ellipse cx="135" cy="99" rx="8" ry="13" transform="rotate(18 135 99)"/></g>
+<g fill="var(--motif-lavender-light)" stroke="var(--motif-ink)" stroke-width="2"><ellipse cx="96" cy="61" rx="6" ry="10" transform="rotate(-35 96 61)"/><ellipse cx="77" cy="85" rx="6" ry="10" transform="rotate(-40 77 85)"/><ellipse cx="66" cy="111" rx="6" ry="10" transform="rotate(-45 66 111)"/><ellipse cx="153" cy="73" rx="6" ry="10" transform="rotate(35 153 73)"/><ellipse cx="159" cy="94" rx="6" ry="10" transform="rotate(40 159 94)"/><ellipse cx="165" cy="116" rx="6" ry="10" transform="rotate(45 165 116)"/></g>
+</svg>

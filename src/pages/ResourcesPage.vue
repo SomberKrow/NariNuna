@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import { ArrowUpRight, BadgeCheck, BookMarked, ExternalLink, Scale } from "@lucide/vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { ArrowUpRight, BadgeCheck, BookMarked, ExternalLink, HeartHandshake, Scale } from "@lucide/vue";
+import { environmentArtwork, ghostieArtwork } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
 import { socialLinks } from "@/data/socials";
+
+const categoryArt = [
+  "/media/resources/resources-section-icon-nails.svg",
+  "/media/resources/resources-section-icon-creator.svg",
+  "/media/resources/resources-section-icon-community.svg"
+];
 </script>
 
 <template>
-  <section class="page-hero page-hero--simple page-width section-pad">
-    <div class="page-hero__copy">
-      <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Nari's resource cabinet</p>
-      <h1>Useful things, with the reason they earned shelf space.</h1>
-      <p class="page-hero__lede">This will never be an affiliate-link wall. A recommendation needs Nari's approval, real context, and an honest disclosure before it gets a card.</p>
+  <section class="room-opening room-opening--resources page-width">
+    <div class="room-opening__copy">
+      <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Chapter five · the very helpful shelf</p>
+      <h1>Useful things.<br /><em>Chosen with care.</em></h1>
+      <p>Helpful finds, creator tools, and nail-desk favorites only get a spot if Nari actually wants to share them.</p>
+      <div class="room-opening__signals"><span><HeartHandshake :size="15" aria-hidden="true" /> People before products</span></div>
+    </div>
+    <div class="room-opening__art room-opening__art--resources">
+      <img :src="environmentArtwork.resources" width="1672" height="941" alt="An intricately hand-painted autumn library where little Ghosties keep watch over Nari's books, creative tools, lavender, and helpful shelves" fetchpriority="high" />
+      <img class="room-opening__companion" src="/media/resources/resources-helper-ghostie.svg" width="145" height="145" alt="A helpful Ghostie keeps watch over Nari's resource shelf" loading="lazy" />
     </div>
   </section>
 
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="Cabinet map" title="The shelves are built. Nari chooses what belongs." />
-    <div class="resource-grid">
-      <article v-for="category in resourceCategories" :key="category.title">
-        <div class="resource-grid__top"><BadgeCheck :size="26" aria-hidden="true" /><span>{{ category.status }}</span></div>
-        <h2>{{ category.title }}</h2>
+  <section class="resource-shelves page-width section-pad">
+    <header class="world-heading"><p class="eyebrow">Currently being curated, very dramatically</p><h2>The shelves are ready for her favorites.</h2></header>
+    <div class="resource-shelves__grid">
+      <article v-for="(category, index) in resourceCategories" :key="category.title">
+        <img :src="categoryArt[index]" width="90" height="90" alt="" loading="lazy" />
+        <span><BadgeCheck :size="14" aria-hidden="true" /> {{ category.status }}</span>
+        <h3>{{ category.title }}</h3>
         <p>{{ category.description }}</p>
         <ul><li v-for="example in category.examples" :key="example">{{ example }}</li></ul>
       </article>
     </div>
   </section>
 
-  <section class="disclosure-principles section-pad">
-    <div class="disclosure-principles__inner page-width">
-      <Scale :size="42" aria-hidden="true" />
-      <div>
-        <p class="eyebrow">The shelf rules</p>
-        <h2>Recommendation first. Relationship disclosed. No urgency theater.</h2>
-        <p>Affiliate links will be labeled where required. Products will not be described as tested, loved, safe, essential, or discounted unless Nari has confirmed the claim and the relationship.</p>
-      </div>
-    </div>
+  <section class="shelf-promise">
+    <div class="shelf-promise__inner page-width"><Scale :size="38" aria-hidden="true" /><div><p class="eyebrow">The shelf rules</p><h2>No fake recommendations. No pressure.</h2><p>If something earns a link, Nari gets to explain why. Any material relationship gets disclosed, and nobody pretends a random product is essential.</p></div><img :src="ghostieArtwork.protective" width="130" height="130" alt="" loading="lazy" /></div>
   </section>
 
   <section class="social-directory page-width section-pad">
-    <SectionHeading eyebrow="Current verified doors" title="Looking for Nari somewhere else?" text="These are the public destinations verified during this build. They open on their own platforms." />
+    <header class="world-heading"><p class="eyebrow">Looking for the real Nari?</p><h2>These doors already lead to her.</h2></header>
     <div class="social-directory__grid">
-      <a v-for="link in socialLinks" :key="link.url" :href="link.url" target="_blank" rel="noreferrer noopener">
-        <span><strong>{{ link.label }}</strong><small>{{ link.handle }}</small></span>
-        <ExternalLink :size="18" aria-hidden="true" />
-        <p>{{ link.purpose }}</p>
-        <span class="sr-only"> (opens in a new tab)</span>
-      </a>
+      <a v-for="link in socialLinks" :key="link.url" :href="link.url" target="_blank" rel="noreferrer noopener"><span><strong>{{ link.label }}</strong><small>{{ link.handle }}</small></span><ExternalLink :size="18" aria-hidden="true" /><p>{{ link.purpose }}</p><span class="sr-only"> (opens in a new tab)</span></a>
     </div>
-    <p class="verification-note"><ArrowUpRight :size="16" aria-hidden="true" /> Link labels verified 2026-08-13; they are rechecked before launch.</p>
+    <p class="verification-note"><ArrowUpRight :size="16" aria-hidden="true" /> Public destinations were last recorded on August 13, 2026 and must be rechecked before launch.</p>
   </section>
 </template>

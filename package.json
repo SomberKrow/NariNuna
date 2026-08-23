@@ -10,10 +10,11 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && node scripts/validate-build.mjs",
     "preview": "vite preview",
+    "verify:preview": "node scripts/verify-preview.mjs",
     "start": "npm run preview",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build && npm run verify:preview",
     "lint": "eslint . --ignore-pattern dist"
   },
   "dependencies": {

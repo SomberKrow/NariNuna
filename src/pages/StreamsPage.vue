@@ -1,60 +1,58 @@
 <script setup lang="ts">
-import { ArrowUpRight, MessageCircle, Radio, Smile, VolumeX } from "@lucide/vue";
+import { ArrowRight, ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Video } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { environmentArtwork, ghostieArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 import { socialLinks, twitchUrl } from "@/data/socials";
 
 const youtube = socialLinks.find((link) => link.label === "YouTube");
 const vods = socialLinks.find((link) => link.label === "VOD Archive");
+const streamDoors = [
+  { title: "Little disasters", note: "The clips chat will never let her forget.", art: storybookPostcards.streams, href: youtube?.url ?? twitchUrl },
+  { title: "The good bits", note: "A few favorite moments with context.", art: storybookPostcards.stories, href: youtube?.url ?? twitchUrl },
+  { title: "Stay awhile", note: "Settle in for the whole ridiculous evening.", art: storybookPostcards.haven, href: vods?.url ?? twitchUrl }
+];
 </script>
 
 <template>
-  <section class="page-hero page-hero--stream page-width section-pad">
-    <div class="page-hero__copy">
-      <p class="eyebrow"><Radio :size="16" aria-hidden="true" /> The stream room</p>
+  <section class="room-opening room-opening--streams page-width">
+    <div class="room-opening__copy">
+      <p class="eyebrow"><Radio :size="16" aria-hidden="true" /> Chapter two · somewhere after midnight</p>
       <h1>Come for the game.<br /><em>Stay for the yap.</em></h1>
-      <p class="page-hero__lede">Nari's streams are equal parts playful chaos, honest reactions, big-sister warmth, community timing, and plans that survive contact with absolutely nothing.</p>
+      <p>Expect cozy chaos, wildly unnecessary panic, affectionate bullying, and a chat that somehow becomes half the show.</p>
       <div class="button-row">
-        <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Watch on Twitch <ArrowUpRight :size="18" aria-hidden="true" /></a>
-        <a v-if="vods" class="button button--outline" :href="vods.url" target="_blank" rel="noreferrer noopener">Browse VODs <ArrowUpRight :size="18" aria-hidden="true" /></a>
+        <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Hang out on Twitch <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
+        <a v-if="vods" class="button button--outline" :href="vods.url" target="_blank" rel="noreferrer noopener">Find the VODs <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
       </div>
+      <div class="room-opening__signals"><span><MessageCircle :size="15" aria-hidden="true" /> Chat welcome</span><span><Gamepad2 :size="15" aria-hidden="true" /> Plans optional</span></div>
     </div>
-    <div class="stream-signal" aria-label="What to expect in a Nari stream">
-      <div><MessageCircle :size="24" aria-hidden="true" /><strong>Chat is part of the room</strong><span>Conversation, call-backs, and shared jokes.</span></div>
-      <div><Smile :size="24" aria-hidden="true" /><strong>Failure is content</strong><span>Panic and laughter are allowed to be the point.</span></div>
-      <div><VolumeX :size="24" aria-hidden="true" /><strong>No ambush audio here</strong><span>The website never autoplays a stream.</span></div>
-    </div>
-  </section>
-
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="Start with a moment" title="A fast way to understand the energy." text="These links open on Nari's own channel. No tracker-heavy feed is loaded into the page." />
-    <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
-  </section>
-
-  <section class="stream-map section-pad">
-    <div class="stream-map__inner page-width">
-      <div>
-        <p class="eyebrow">The content map</p>
-        <h2>Games are the stage, not the whole show.</h2>
-        <p>Public content currently spans funny gameplay, reactions, Just Chatting energy, nail-supply and nail-art content, vlogs, making, and community game nights. The site uses curated moments instead of pretending every upload suits every visitor.</p>
-      </div>
-      <ul>
-        <li><strong>Live:</strong> Twitch is the real-time room.</li>
-        <li><strong>Highlights:</strong> Main YouTube keeps the quick, chosen moments.</li>
-        <li><strong>Long-form:</strong> The VOD channel contains archives, including adult-marked entries that remain opt-in.</li>
-      </ul>
-      <a v-if="youtube" class="button button--soft" :href="youtube.url" target="_blank" rel="noreferrer noopener">Open Nari's YouTube <ArrowUpRight :size="18" aria-hidden="true" /></a>
+    <div class="room-opening__art room-opening__art--streams">
+      <img :src="environmentArtwork.streams" width="1672" height="941" alt="Nari laughs at her hand-painted autumn streaming desk beside a little Ghostie wearing matching lavender headphones" fetchpriority="high" />
+      <img class="room-opening__companion" :src="officialEmotes.panic" width="130" height="130" alt="Nari's official panic emote" loading="lazy" />
     </div>
   </section>
 
-  <section class="schedule-hold page-width section-pad">
-    <img src="/media/generated/ghostie-256.webp" width="180" height="180" alt="A Ghostie holds an empty calendar card" loading="lazy" />
-    <div>
-      <p class="eyebrow">Schedule</p>
-      <h2>No fake clock on the wall.</h2>
-      <p>A recurring schedule has not been approved for the website. Until Nari provides one, Twitch notifications and current social updates remain the accurate source.</p>
-      <a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Follow the live source <ArrowUpRight :size="16" aria-hidden="true" /></a>
+  <section class="stream-door-section page-width section-pad">
+    <header class="world-heading"><p class="eyebrow"><Video :size="15" aria-hidden="true" /> Pick your kind of chaos</p><h2>Three ways into the stream room.</h2></header>
+    <div class="stream-door-grid">
+      <a v-for="door in streamDoors" :key="door.title" :href="door.href" target="_blank" rel="noreferrer noopener">
+        <img :src="door.art" width="960" height="540" alt="" loading="lazy" />
+        <div><span><strong>{{ door.title }}</strong><small>{{ door.note }}</small></span><ArrowRight :size="19" aria-hidden="true" /></div>
+        <span class="sr-only"> (opens in a new tab)</span>
+      </a>
     </div>
+  </section>
+
+  <section class="moment-shelf">
+    <div class="page-width section-pad">
+      <header class="world-heading"><p class="eyebrow"><Sparkles :size="15" aria-hidden="true" /> Start with the good stuff</p><h2>A few actual Nari moments.</h2><p>Chosen from Nari's own public channel. Nothing autoplays or sneaks into your speakers.</p></header>
+      <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
+    </div>
+  </section>
+
+  <section class="gentle-hold page-width">
+    <img :src="ghostieArtwork.cozy" width="170" height="170" alt="A cozy Ghostie settles in with a blanket" loading="lazy" />
+    <div><p class="eyebrow">When's the next stream?</p><h2>No made-up schedule here.</h2><p>Check Nari's Twitch and current socials for the real updates. The Ghosties refuse to invent a clock.</p></div>
+    <a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Check Twitch <ArrowUpRight :size="16" aria-hidden="true" /></a>
   </section>
 </template>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny roster card template</title>
+  <desc id="desc">A blank ceremonial roster card frame with an image well, title area, status notch, and stitched trim for dynamic HTML content.</desc>
+  <rect x="18" y="18" width="684" height="384" rx="34" fill="#211218" stroke="#8f607d" stroke-width="8"/>
+  <rect x="42" y="42" width="636" height="336" rx="24" fill="#3b222e" stroke="#c6a6d4" stroke-width="4" stroke-dasharray="12 10"/>
+  <rect x="70" y="74" width="220" height="272" rx="30" fill="#130d13" stroke="#8f607d" stroke-width="6"/>
+  <circle cx="180" cy="210" r="76" fill="#4b2a38" opacity=".7"/>
+  <path d="M336 104h274M336 158h218M336 246h298M336 290h244" stroke="#c6a6d4" stroke-width="10" stroke-linecap="round" opacity=".7"/>
+  <rect x="336" y="326" width="120" height="24" rx="12" fill="#4fc59e" opacity=".55"/>
+  <circle cx="620" cy="330" r="22" fill="#df8a55"/>
+</svg>

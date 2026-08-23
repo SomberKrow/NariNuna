@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<title id="title">Nails environment support</title><desc id="desc">Warm lavender manicure environment support illustration with nail polish, candles, and a small ghostie.</desc>
+<defs>
+<linearGradient id="warmGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6bc"/><stop offset="1" stop-color="#be82c8"/></linearGradient>
+<linearGradient id="purpleGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7b9ff" stop-opacity=".9"/><stop offset=".45" stop-color="#8f5cc7"/><stop offset="1" stop-color="#4b2f64"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b89ad9"/><stop offset="1" stop-color="#76599a"/></linearGradient>
+<filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="14" result="blur"/><feOffset in="blur" dx="0" dy="12" result="off"/><feFlood flood-color="#23172e" flood-opacity=".28" result="flood"/><feComposite in="flood" in2="off" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1600" height="900" rx="42" fill="#2a1e33"/>
+<rect x="55" y="55" width="700" height="515" rx="28" fill="url(#warmGlow)"/>
+<rect x="105" y="105" width="600" height="415" rx="12" fill="#f3d2a8" stroke="#6e4f66" stroke-width="12"/>
+<path d="M405 105v415M105 310h600" stroke="#8d647b" stroke-width="10"/>
+<circle cx="235" cy="170" r="64" fill="#fff7de" opacity=".7"/>
+<path d="M0 710 Q420 630 820 700 T1600 690 V900 H0Z" fill="#4c354d"/>
+<rect x="815" y="220" width="665" height="400" rx="28" fill="#3a2944" stroke="#765d83" stroke-width="4"/>
+<rect x="900" y="300" width="485" height="65" rx="18" fill="#503958"/>
+<rect x="900" y="410" width="485" height="65" rx="18" fill="#503958"/>
+<!-- polish bottles -->
+<rect x="930" y="268" width="34" height="60" rx="7" fill="#75519d" stroke="#211626" stroke-width="3"/><rect x="937" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="985" y="268" width="34" height="60" rx="7" fill="#a15d8e" stroke="#211626" stroke-width="3"/><rect x="992" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1040" y="268" width="34" height="60" rx="7" fill="#d28ca8" stroke="#211626" stroke-width="3"/><rect x="1047" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1095" y="268" width="34" height="60" rx="7" fill="#8c65b8" stroke="#211626" stroke-width="3"/><rect x="1102" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1150" y="268" width="34" height="60" rx="7" fill="#c08f72" stroke="#211626" stroke-width="3"/><rect x="1157" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1205" y="268" width="34" height="60" rx="7" fill="#6c406b" stroke="#211626" stroke-width="3"/><rect x="1212" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1260" y="268" width="34" height="60" rx="7" fill="#9b6ac6" stroke="#211626" stroke-width="3"/><rect x="1267" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1315" y="268" width="34" height="60" rx="7" fill="#dca3b4" stroke="#211626" stroke-width="3"/><rect x="1322" y="244" width="20" height="27" rx="5" fill="#1f1822"/><rect x="930" y="378" width="34" height="60" rx="7" fill="#75519d" stroke="#211626" stroke-width="3"/><rect x="937" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="985" y="378" width="34" height="60" rx="7" fill="#a15d8e" stroke="#211626" stroke-width="3"/><rect x="992" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1040" y="378" width="34" height="60" rx="7" fill="#d28ca8" stroke="#211626" stroke-width="3"/><rect x="1047" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1095" y="378" width="34" height="60" rx="7" fill="#8c65b8" stroke="#211626" stroke-width="3"/><rect x="1102" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1150" y="378" width="34" height="60" rx="7" fill="#c08f72" stroke="#211626" stroke-width="3"/><rect x="1157" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1205" y="378" width="34" height="60" rx="7" fill="#6c406b" stroke="#211626" stroke-width="3"/><rect x="1212" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1260" y="378" width="34" height="60" rx="7" fill="#9b6ac6" stroke="#211626" stroke-width="3"/><rect x="1267" y="354" width="20" height="27" rx="5" fill="#1f1822"/><rect x="1315" y="378" width="34" height="60" rx="7" fill="#dca3b4" stroke="#211626" stroke-width="3"/><rect x="1322" y="354" width="20" height="27" rx="5" fill="#1f1822"/>
+<!-- lavender -->
+<g transform="translate(120 575)"><path d="M70 120C90 70 105 25 110-40" stroke="#7d9775" stroke-width="10" fill="none"/>
+<ellipse cx="92" cy="0" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 92 0)"/><ellipse cx="115" cy="-24" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 115 -24)"/><ellipse cx="86" cy="-34" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 86 -34)"/><ellipse cx="123" cy="-52" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 123 -52)"/><ellipse cx="97" cy="-62" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 97 -62)"/><ellipse cx="118" cy="-82" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 118 -82)"/><ellipse cx="104" cy="-100" rx="18" ry="9" fill="#8f5cc7" transform="rotate(-25 104 -100)"/></g>
+<!-- candles -->
+<g filter="url(#softShadow)"><rect x="735" y="600" width="110" height="145" rx="22" fill="#7b536b"/><ellipse cx="790" cy="600" rx="55" ry="17" fill="#9d708b"/><path d="M790 586 C770 555 790 535 805 508 C820 540 822 564 790 586Z" fill="#ffd57a" filter="url(#glow)"/></g>
+<!-- nail mat -->
+<rect x="480" y="665" width="650" height="155" rx="34" fill="url(#cloth)" filter="url(#softShadow)"/><path d="M520 705h570" stroke="#d7c0ef" stroke-opacity=".45" stroke-width="6"/>
+<!-- ghost sign -->
+<g transform="translate(1300 645)" filter="url(#softShadow)"><path d="M0 95C0 35 30 0 85 0s85 35 85 95v105l-28-18-28 18-29-18-28 18-28-18-29 18z" fill="#fff9f3"/><ellipse cx="58" cy="79" rx="10" ry="14" fill="#24182f"/><ellipse cx="112" cy="79" rx="10" ry="14" fill="#24182f"/><path d="M61 118q24 18 49 0" stroke="#e9a7c5" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+<!-- tiny stars -->
+<g fill="#d7a44a"><path d="M760 95l8 21 21 8-21 8-8 21-8-21-21-8 21-8z"/><path d="M1450 120l6 15 15 6-15 6-6 15-6-15-15-6 15-6z"/></g>
+
+</svg>

@@ -8,6 +8,12 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
+## 2026-08-23 owner-directed implementation delta
+
+Following owner direction, the current private review redesign retains the actual supplied Nari model and portrait alongside eight bespoke room paintings, including seven integrated model-faithful Nari appearances, dedicated character-inclusive Home and Meet Nari compositions without standalone overlays, five painted Ghosties, eight illustrated chapter postcards, three time-of-day Home scenes, regenerated Nari app icons, and eight route-specific social-preview compositions. Supplied cozy character artwork, 12 supplied static emote derivatives, and all 27 supplied original Prinny designs remain intact. Shared artwork is centralized in `src/data/artwork.ts`; supplied Prinnies remain separated from unapproved canon records in `src/data/prinnyCult.ts`; `tests/artwork-contract.test.ts` verifies original and illustrated identity, distinct integrated Home/Meet scenes, local assets, and the 27-design capacity.
+
+The HTML documents include route-specific Open Graph/Twitter painted previews except for deliberately non-indexable system/secret pages. Home is an asymmetrical editorial single desktop viewport; mobile retains natural scrolling. Owner-authorized Nari artwork is documented as a supplied-model-derived reillustration, never misrepresented as untouched original artwork. No fake nail work, schedule, metric, inbox, invented canon, public-reference model substitute, or generated Prinny replacement was introduced. Statements below describing unavailable supplied artwork are the 2026-08-13 historical baseline. Public model-derivative permission, original artist approval/credit, franchise review, Nari approval, contact decisions, and manual QA remain blocked/pending.
+
 ## Observed implementation
 
 | Concern | Current state |

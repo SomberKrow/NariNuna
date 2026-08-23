@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 90" role="img" aria-label="Celestial divider">
+  <path d="M80 45h350M770 45h350" stroke="#5B3A7A" stroke-width="4" stroke-linecap="round" stroke-dasharray="4 12"/>
+  <path d="M512 45a35 35 0 1 0 0-1c16 8 31 8 45 0-18-23-18-50 0-72-28 1-53 15-68 36" transform="translate(70 0)" fill="#D7C8FF" stroke="#241B2F" stroke-width="4"/>
+  <circle cx="600" cy="45" r="15" fill="#F1B65D" stroke="#241B2F" stroke-width="4"/>
+  <path d="M600 5l7 20 20 7-20 7-7 20-7-20-20-7 20-7z" fill="none" stroke="#7A5AC8" stroke-width="4"/>
+  <path d="M183 34l5 12 12 5-12 5-5 12-5-12-12-5 12-5zM1017 34l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#F1B65D"/>
+</svg>

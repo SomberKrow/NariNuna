@@ -1,73 +1,89 @@
 <script setup lang="ts">
-import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield } from "@lucide/vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
+import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
+
+const expressions = [
+  { image: officialEmotes.comfy, label: "Comfy" },
+  { image: officialEmotes.panic, label: "Panic" },
+  { image: officialEmotes.bonk, label: "Bonk" },
+  { image: officialEmotes.shy, label: "Shy" },
+  { image: officialEmotes.fire, label: "Chaos" }
+];
 </script>
 
 <template>
-  <section class="page-hero page-hero--portrait page-width section-pad">
-    <div class="page-hero__copy">
-      <p class="eyebrow">Meet your host</p>
-      <h1>Nari is the big sister your group chat warned you about.</h1>
-      <p class="page-hero__lede">Warm, protective, wildly chatty, creative to the fingertips, and always one game away from a completely reasonable amount of panic.</p>
+  <section
+    class="character-intro character-intro--storybook character-intro--integrated page-width"
+    :style="{ '--chapter-painting': `url('${environmentArtwork.meetNari}')` }"
+  >
+    <div class="character-intro__copy">
+      <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
+      <h1>Hi, I'm <em>Nari.</em></h1>
+      <p class="character-intro__subtitle">Big-sister energy. Artist hands. Absolutely no volume control.</p>
+      <p class="character-intro__text">I love making people laugh, finding pretty things, learning as I go, and turning strangers into the kind of people who remember to check on each other.</p>
       <div class="tag-row" aria-label="Nari's creative roles">
         <span><Gamepad2 :size="16" aria-hidden="true" /> VTuber & gamer</span>
         <span><Paintbrush :size="16" aria-hidden="true" /> Self-taught nail artist</span>
-        <span><Heart :size="16" aria-hidden="true" /> Haven keeper</span>
+        <span><Heart :size="16" aria-hidden="true" /> Protective big sister</span>
       </div>
-    </div>
-    <div class="page-hero__portrait">
-      <div class="portrait-frame">
-        <img src="/media/generated/ghostie-768.webp" width="600" height="600" alt="An original lavender Ghostie holds Nari's future character portrait space" />
-      </div>
-      <p>Original launch placeholder. Nari's approved character render and artist credit will replace it.</p>
+      <a class="button button--ember" href="/haven/">Come see the Haven <ArrowRight :size="18" aria-hidden="true" /></a>
     </div>
   </section>
 
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="One person, many rooms" title="None of these sides are separate brands." />
-    <div class="pillar-grid">
-      <article v-for="pillar in identityPillars" :key="pillar.title" class="pillar-card">
+  <section class="expression-ribbon">
+    <div class="expression-ribbon__inner page-width">
+      <p><span>Nari, in five</span> very predictable moods</p>
+      <div class="expression-ribbon__emotes">
+        <figure v-for="expression in expressions" :key="expression.label">
+          <img :src="expression.image" width="90" height="90" :alt="`Nari's official ${expression.label.toLowerCase()} emote`" loading="lazy" />
+          <figcaption>{{ expression.label }}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="identity-rooms page-width section-pad">
+    <header class="world-heading">
+      <p class="eyebrow">One Nari, a whole bunch of little worlds</p>
+      <h2>Everything I love lives in the same room.</h2>
+    </header>
+    <div class="identity-rooms__grid">
+      <article v-for="(pillar, index) in identityPillars" :key="pillar.title">
+        <img
+          :src="[ghostieArtwork.heart, ghostieArtwork.chaotic, ghostieArtwork.nails][index]"
+          width="144"
+          height="144"
+          alt=""
+          loading="lazy"
+        />
         <p class="eyebrow">{{ pillar.eyebrow }}</p>
-        <h2>{{ pillar.title }}</h2>
+        <h3>{{ pillar.title }}</h3>
         <p>{{ pillar.text }}</p>
       </article>
     </div>
   </section>
 
-  <section class="symbol-section section-pad">
-    <div class="symbol-section__inner page-width">
+  <section class="meaningful-details">
+    <div class="meaningful-details__inner page-width">
       <article>
-        <Eye :size="34" aria-hidden="true" />
-        <p class="eyebrow">A signature glimpse</p>
-        <h2>Emerald, used with purpose.</h2>
-        <p>Nari's emerald character eyes are meant as a glimpse into her personality and soul. The site treats emerald the same way: a small, meaningful signal—not green paint poured over everything.</p>
+        <Eye :size="31" aria-hidden="true" />
+        <div><p class="eyebrow">A little glimpse</p><h2>Look for the emerald.</h2><p>Those bright green eyes are one of Nari's little signatures. Here, emerald is saved for the moments that matter.</p></div>
       </article>
       <article>
-        <MoonStar :size="34" aria-hidden="true" />
-        <p class="eyebrow">A personal symbol</p>
-        <h2>Sun and moon, kept personal.</h2>
-        <p>Nari's meshed sun-and-moon tattoo connects to her Mexicana heritage, people, family, and bloodline. Until her own approved artwork and wording arrive, the site honors that meaning without inventing cultural history or decorative imitation.</p>
+        <MoonStar :size="31" aria-hidden="true" />
+        <div><p class="eyebrow">Held close</p><h2>Some stories stay hers.</h2><p>The sun, the moon, family, and heritage carry personal meaning. Nari gets to share those stories in her own words, on her own time.</p></div>
       </article>
     </div>
   </section>
 
-  <section class="big-sister-section page-width section-pad">
-    <div class="big-sister-section__icon"><Shield :size="42" aria-hidden="true" /></div>
+  <section class="nari-promise page-width section-pad">
+    <img :src="nariArtwork.cozy" width="270" height="270" alt="Nari's supplied cozy chibi artwork holding a warm drink" loading="lazy" />
     <div>
-      <p class="eyebrow">Sweet does not mean soft-spined</p>
-      <h2>Protection and boundaries belong in the same sentence.</h2>
-      <p>The Haven can be loud, playful, affectionate, and a little feral. It is never an excuse to treat people as props. Nari's warmth comes with a spine: care for the Ghosties, respect the room, and do not mistake support for ownership.</p>
-      <a class="text-link" href="/haven/">See what the Haven stands for <ArrowRight :size="16" aria-hidden="true" /></a>
+      <p class="eyebrow"><Shield :size="15" aria-hidden="true" /> Sweet doesn't mean spineless</p>
+      <h2>We take care of our people here.</h2>
+      <p>The jokes can be loud and the chaos can be legendary. But nobody has to earn basic respect, and nobody gets to mistake kindness for permission to cross a boundary.</p>
+      <a class="text-link" href="/haven/">See what the Haven protects <ArrowRight :size="16" aria-hidden="true" /></a>
     </div>
-  </section>
-
-  <section class="lore-hold section-pad page-width">
-    <div>
-      <p class="eyebrow">Lore room · deliberately held</p>
-      <h2>The next chapter needs Nari's canonical art.</h2>
-      <p>The approved website direction includes a warm, joy-spreading Grim Reaper concept, while current public profiles use CatDog language and art. This build refuses to silently mash those identities together. The final lore chapter will open once Nari confirms how they connect.</p>
-    </div>
-    <img src="/media/generated/ghostie-256.webp" width="190" height="190" alt="A curious lavender Ghostie waits beside the closed lore room" loading="lazy" />
   </section>
 </template>

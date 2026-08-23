@@ -1,135 +1,59 @@
 <script setup lang="ts">
-import { ArrowRight, ArrowUpRight, Gamepad2, HeartHandshake, Paintbrush, Radio, ShieldCheck, Sparkles } from "@lucide/vue";
-import MediaCard from "@/components/ui/MediaCard.vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
-import { featuredMoments } from "@/data/media";
+import { ArrowRight, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
+import SocialDock from "@/components/ui/SocialDock.vue";
+import { detailArtwork, storybookPostcards } from "@/data/artwork";
 import { twitchUrl } from "@/data/socials";
 
-const gateways = [
-  {
-    icon: Radio,
-    eyebrow: "Live room",
-    title: "Streams",
-    text: "Games, yapping, panic, laughter, and the kind of chat that becomes part of the show.",
-    href: "/streams/",
-    link: "Feel the stream"
-  },
-  {
-    icon: Paintbrush,
-    eyebrow: "Creative room",
-    title: "Nail Studio",
-    text: "Color, process, self-taught learning, and a proper home for Nari's future approved gallery.",
-    href: "/nail-studio/",
-    link: "Open the studio"
-  },
-  {
-    icon: HeartHandshake,
-    eyebrow: "Common room",
-    title: "The Haven",
-    text: "A rowdy found family built on kindness, respect, boundaries, support, and excellent pillow-fort engineering.",
-    href: "/haven/",
-    link: "Go deeper"
-  }
+const rooms = [
+  { icon: Gamepad2, title: "The stream room", note: "Laughter comes with the furniture.", href: "/streams/", image: storybookPostcards.streams, number: "01" },
+  { icon: Paintbrush, title: "The nail desk", note: "A little glitter gets everywhere.", href: "/nail-studio/", image: storybookPostcards.nails, number: "02" },
+  { icon: Heart, title: "The Haven", note: "There's always room for you.", href: "/haven/", image: storybookPostcards.haven, number: "03" }
 ];
 </script>
 
 <template>
-  <section class="home-hero">
-    <picture class="home-hero__art" aria-hidden="true">
-      <source
-        type="image/webp"
-        srcset="/media/generated/nari-haven-hero-640.webp 640w, /media/generated/nari-haven-hero-1024.webp 1024w, /media/generated/nari-haven-hero-1440.webp 1440w, /media/generated/nari-haven-hero-1672.webp 1672w"
-        sizes="100vw"
-      />
-      <img src="/media/generated/nari-haven-hero-1672.webp" width="1672" height="941" alt="" fetchpriority="high" />
-    </picture>
-    <div class="home-hero__veil"></div>
-    <div class="home-hero__content page-width">
-      <p class="eyebrow eyebrow--light"><Sparkles :size="16" aria-hidden="true" /> Welcome to Nari's Haven</p>
-      <h1>Come in.<br /><em>Get comfortable.</em></h1>
-      <p class="home-hero__lede">A fall-evening refuge for streams, nail art, strange little stories, loud laughter, and people learning to treat each other like people.</p>
-      <div class="button-row">
-        <a class="button button--cream" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
-          <Radio :size="18" aria-hidden="true" /> Catch a stream
-          <span class="sr-only"> on Twitch (opens in a new tab)</span>
-        </a>
-        <a class="button button--ghost" href="/meet-nari/">Meet your host <ArrowRight :size="18" aria-hidden="true" /></a>
-      </div>
-      <p class="home-hero__aside"><ShieldCheck :size="16" aria-hidden="true" /> Warm room. Sharp boundaries. Zero pressure to perform.</p>
-    </div>
-  </section>
+  <section class="haven-landing" aria-labelledby="landing-title">
+    <div
+      class="haven-landing__scene"
+      role="img"
+      aria-label="Nari, with emerald eyes, asymmetric cat-and-dog ears, lavender clothes, and her purple-tipped tail, welcomes a little Ghostie from the autumn window seat in her Haven."
+    ></div>
+    <div class="haven-landing__veil" aria-hidden="true"></div>
+    <img class="haven-landing__sprig" :src="detailArtwork.lavender" width="290" height="290" alt="" aria-hidden="true" />
+    <div class="haven-landing__margin-note" aria-hidden="true"><span>AUTUMN, AFTER HOURS</span><i></i><MoonStar :size="15" /></div>
 
-  <section class="gateway-section section-pad page-width">
-    <SectionHeading
-      eyebrow="A room with many doors"
-      title="Follow the part of Nari that found you first."
-      text="The VTuber, gamer, nail artist, teacher-at-heart, and protective big sister all live in the same world."
-    />
-    <div class="gateway-grid">
-      <a v-for="gateway in gateways" :key="gateway.href" class="gateway-card" :href="gateway.href">
-        <component :is="gateway.icon" :size="28" aria-hidden="true" />
-        <p class="eyebrow">{{ gateway.eyebrow }}</p>
-        <h2>{{ gateway.title }}</h2>
-        <p>{{ gateway.text }}</p>
-        <span class="text-link">{{ gateway.link }} <ArrowRight :size="16" aria-hidden="true" /></span>
+    <div class="haven-landing__inner page-width">
+      <div class="haven-landing__welcome">
+        <p class="haven-landing__kicker"><Sparkles :size="15" aria-hidden="true" /> A little refuge for lovely weirdos</p>
+        <h1 id="landing-title">
+          <span>Nari</span>
+          <em>Nuna</em>
+        </h1>
+        <p class="haven-landing__subtitle">Your favorite chaotic big sister.</p>
+        <p class="haven-landing__intro">Somewhere between the late-night laughing, the tiny painted nails, and one more cup of cocoa, we made a place to belong.</p>
+
+        <div class="haven-landing__divider" aria-hidden="true"><span></span><Heart :size="15" /><span></span></div>
+
+        <SocialDock />
+
+        <div class="haven-landing__actions">
+          <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
+            Come sit with us
+            <ArrowRight :size="17" aria-hidden="true" />
+            <span class="sr-only"> on Twitch (opens in a new tab)</span>
+          </a>
+          <a class="haven-landing__meet" href="/meet-nari/">Meet Nari <ArrowRight :size="15" aria-hidden="true" /></a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="haven-landing__rooms page-width" aria-label="Explore Nari's rooms">
+      <a v-for="room in rooms" :key="room.href" :href="room.href">
+        <img :src="room.image" width="320" height="180" alt="" loading="lazy" />
+        <span class="haven-landing__room-number">{{ room.number }}</span>
+        <span class="haven-landing__room-copy"><strong>{{ room.title }}</strong><small>{{ room.note }}</small></span>
+        <component :is="room.icon" :size="19" aria-hidden="true" />
       </a>
-    </div>
-  </section>
-
-  <section class="host-note section-pad">
-    <div class="host-note__inner page-width">
-      <div class="host-note__portrait">
-        <img
-          src="/media/generated/ghostie-512.webp"
-          width="520"
-          height="520"
-          alt="An original lavender Ghostie keeps Nari's portrait space warm"
-          loading="lazy"
-        />
-        <span>Original launch placeholder · Nari portrait and credit pending</span>
-      </div>
-      <div class="host-note__copy">
-        <p class="eyebrow">Your chaotic big sister</p>
-        <h2>Cute things. Nail polish. Games. Professional-grade yapping.</h2>
-        <p>Nari built the Haven to entertain, teach what she is learning, make people laugh, and offer the kind of protective warmth that never asks you to surrender your boundaries.</p>
-        <blockquote>“Your presence already counts. The rest is just extra glitter.”</blockquote>
-        <a class="text-link" href="/meet-nari/">Meet Nari properly <ArrowRight :size="16" aria-hidden="true" /></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-pad page-width">
-    <SectionHeading
-      eyebrow="A taste of the chaos"
-      title="Three moments. Zero context required."
-      text="Curated outbound clips keep the page quick and private—nothing heavy or autoplaying follows you into the room."
-    />
-    <div class="media-grid">
-      <MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" />
-    </div>
-    <div class="section-action">
-      <a class="button button--soft" href="/streams/">Explore the stream room <Gamepad2 :size="18" aria-hidden="true" /></a>
-    </div>
-  </section>
-
-  <section class="haven-invitation section-pad">
-    <div class="haven-invitation__inner page-width">
-      <img src="/media/generated/ghostie-512.webp" width="360" height="360" alt="A lavender Ghostie floats beside the invitation" loading="lazy" />
-      <div>
-        <p class="eyebrow">Deeper in the house</p>
-        <h2>The Discord door is here.<br />It just is not shouting at you.</h2>
-        <p>Learn what the Haven protects, understand the room, and then discover the entrance the way a real guest would.</p>
-        <a class="button button--emerald" href="/haven/">Find the common room <ArrowRight :size="18" aria-hidden="true" /></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="professional-strip page-width">
-    <div>
-      <p class="eyebrow">Creators & brands</p>
-      <h2>There is a clean path through the pillow fort.</h2>
-      <p>Collaboration fit, content boundaries, and the next professional step—without invented metrics or corporate cosplay.</p>
-    </div>
-    <a class="button button--outline" href="/work-with-nari/">Work with Nari <ArrowUpRight :size="18" aria-hidden="true" /></a>
+    </nav>
   </section>
 </template>

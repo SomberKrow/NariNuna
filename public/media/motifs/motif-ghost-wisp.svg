@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-ghost-wisp-title">
+<title id="motif-ghost-wisp-title">motif-ghost-wisp</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-ghost)" stroke="var(--motif-ink)" stroke-width="5" stroke-linejoin="round" d="M143 34C108 34 85 58 85 91C85 120 103 136 112 150C121 164 122 178 108 191C126 188 139 180 146 166C151 181 167 194 190 194C173 182 166 170 167 154C168 136 181 125 188 109C195 92 194 72 182 57C172 44 159 36 143 34Z"/><ellipse fill="var(--motif-ink)" cx="125" cy="86" rx="6" ry="10"/><ellipse fill="var(--motif-ink)" cx="154" cy="86" rx="6" ry="10"/><path fill="none" stroke="var(--motif-blue)" stroke-width="4" stroke-linecap="round" d="M84 122C64 129 54 143 58 161C61 175 73 183 88 182"/><circle fill="var(--motif-lavender-light)" cx="203" cy="75" r="6"/><circle fill="var(--motif-blue)" cx="210" cy="98" r="4"/>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Resources environment support vignette</title>
+  <desc id="desc">A compact cozy resource desk vignette with books, lantern, mug, notebook, lavender and tiny spectral accents on a transparent background.</desc>
+  <defs>
+    <linearGradient id="bookA" x1="0" x2="1"><stop stop-color="#3A2C4C"/><stop offset="1" stop-color="#5B3A7A"/></linearGradient>
+    <linearGradient id="bookB" x1="0" x2="1"><stop stop-color="#5B3A7A"/><stop offset="1" stop-color="#7A5AC8"/></linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF7E8"/><stop offset="1" stop-color="#F1DFBE"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#FFF6C9"/><stop offset=".45" stop-color="#F1B65D" stop-opacity=".9"/><stop offset="1" stop-color="#F1B65D" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+    <filter id="smallSoft"><feGaussianBlur stdDeviation="7"/></filter>
+  </defs>
+
+  <!-- low atmospheric glow -->
+  <ellipse cx="445" cy="520" rx="390" ry="300" fill="#7A5AC8" opacity=".09" filter="url(#soft)"/>
+  <ellipse cx="300" cy="390" rx="210" ry="220" fill="url(#glow)" opacity=".25" filter="url(#smallSoft)"/>
+
+  <!-- desk shadow -->
+  <ellipse cx="520" cy="770" rx="480" ry="70" fill="#241B2F" opacity=".18"/>
+
+  <!-- lantern -->
+  <g transform="translate(95 208)" stroke="#241B2F" stroke-width="12" stroke-linejoin="round">
+    <path d="M90 20c0-56 112-56 112 0" fill="none"/>
+    <path d="M50 78h190l-22 360H72z" fill="#3A2C4C"/>
+    <path d="M83 117h124l-15 264H98z" fill="#412D46"/>
+    <rect x="104" y="144" width="82" height="200" rx="18" fill="#F6DFA4" stroke-width="8"/>
+    <ellipse cx="145" cy="244" rx="80" ry="120" fill="url(#glow)" stroke="none" opacity=".95"/>
+    <path d="M144 320c-38-35-31-77 2-107 28 29 44 60 19 104-7 12-12 15-21 3z" fill="#F1B65D" stroke="none"/>
+    <path d="M34 78h222"/>
+    <path d="M67 420h160"/>
+    <path d="M77 84l-32-41M222 84l33-41" fill="none"/>
+    <circle cx="145" cy="53" r="18" fill="#F1B65D"/>
+  </g>
+
+  <!-- books -->
+  <g transform="translate(350 285)" stroke="#241B2F" stroke-width="10" stroke-linejoin="round">
+    <g transform="rotate(-2 300 230)">
+      <path d="M50 325h480q24 0 24 24v48q0 24-24 24H50q-24 0-24-24v-48q0-24 24-24z" fill="url(#bookA)"/>
+      <path d="M90 335v76M490 335v76" opacity=".4"/>
+      <path d="M35 354h510" opacity=".28"/>
+    </g>
+    <g transform="translate(52 -12) rotate(2 250 240)">
+      <path d="M20 245h454q23 0 23 23v48q0 23-23 23H20q-23 0-23-23v-48q0-23 23-23z" fill="url(#bookB)"/>
+      <path d="M60 255v74M438 255v74" opacity=".38"/>
+    </g>
+    <g transform="translate(8 -16) rotate(-1 260 170)">
+      <path d="M50 165h430q22 0 22 22v47q0 22-22 22H50q-22 0-22-22v-47q0-22 22-22z" fill="#6B506D"/>
+      <path d="M90 174v73M442 174v73" opacity=".38"/>
+    </g>
+    <g transform="translate(85 -40) rotate(3 210 120)">
+      <path d="M26 92h383q21 0 21 21v45q0 21-21 21H26q-21 0-21-21v-45q0-21 21-21z" fill="#B789A6"/>
+      <path d="M64 101v69M372 101v69" opacity=".35"/>
+    </g>
+    <!-- bookmarks -->
+    <path d="M205 152v148l25-26 25 26V152" fill="#D7C8FF"/>
+    <path d="M390 334v117l19-20 19 20V334" fill="#ECA4C7"/>
+  </g>
+
+  <!-- open notebook -->
+  <g transform="translate(292 605) rotate(-4 260 100)" stroke="#241B2F" stroke-width="9" stroke-linejoin="round">
+    <path d="M0 25Q130-10 260 30v185Q132 175 0 205z" fill="url(#paper)"/>
+    <path d="M260 30Q390-10 520 25v180q-132-30-260 10z" fill="url(#paper)"/>
+    <path d="M260 30v185"/>
+    <g stroke="#5B3A7A" stroke-width="5" opacity=".65">
+      <path d="M42 68h150M42 96h180M42 124h130M308 72h160M308 101h118M308 130h145"/>
+    </g>
+    <g fill="none" stroke="#ECA4C7" stroke-width="6">
+      <path d="M56 158c-18-16-44 8-16 31l16 13 16-13c28-23 2-47-16-31z"/>
+      <path d="M334 158c-18-16-44 8-16 31l16 13 16-13c28-23 2-47-16-31z"/>
+    </g>
+  </g>
+
+  <!-- mug -->
+  <g transform="translate(840 485)" stroke="#241B2F" stroke-width="10" stroke-linejoin="round">
+    <path d="M10 80h150v175q0 42-42 42H52q-42 0-42-42z" fill="#3A2C4C"/>
+    <path d="M160 120h45q52 0 52 56t-52 56h-45" fill="none"/>
+    <path d="M58 178c-18-18-43 9-15 31l15 13 15-13c28-22 3-49-15-31z" fill="#A88CF2" stroke="none"/>
+    <path d="M64 40c-45-50 36-70 4-122M111 40c-44-49 37-69 5-120" fill="none" stroke="#D7C8FF" stroke-width="12" stroke-linecap="round" opacity=".8"/>
+  </g>
+
+  <!-- corkboard and pinned notes -->
+  <g transform="translate(820 130) rotate(3 210 150)" stroke="#241B2F" stroke-width="10" stroke-linejoin="round">
+    <rect x="0" y="0" width="400" height="290" rx="18" fill="#8B674B"/>
+    <rect x="22" y="22" width="356" height="246" rx="8" fill="#B48A63" stroke-width="6"/>
+    <g fill="#FFF7E8" stroke-width="5">
+      <rect x="56" y="58" width="125" height="88" rx="6" transform="rotate(-4 118 102)"/>
+      <rect x="205" y="72" width="130" height="102" rx="6" transform="rotate(5 270 123)"/>
+      <rect x="119" y="166" width="160" height="72" rx="6" transform="rotate(-2 199 202)"/>
+    </g>
+    <g fill="#F1B65D" stroke="none"><circle cx="120" cy="54" r="10"/><circle cx="268" cy="72" r="10"/><circle cx="198" cy="168" r="10"/></g>
+    <g stroke="#5B3A7A" stroke-width="5" stroke-linecap="round" opacity=".65"><path d="M76 95h78M77 117h53"/><path d="M227 108h80M227 130h62"/><path d="M146 197h112M146 218h76"/></g>
+  </g>
+
+  <!-- lavender sprigs -->
+  <g transform="translate(1020 520)" stroke="#241B2F" stroke-width="6" stroke-linecap="round">
+    <path d="M55 220C20 150 35 68 52 0M90 230C70 150 95 70 120 12M130 232c12-80 55-139 95-188" fill="none" stroke="#8DAA91"/>
+    <g fill="#7A5AC8" stroke="none">
+      <ellipse cx="46" cy="30" rx="13" ry="22" transform="rotate(-28 46 30)"/><ellipse cx="58" cy="58" rx="13" ry="21" transform="rotate(30 58 58)"/><ellipse cx="42" cy="83" rx="12" ry="20" transform="rotate(-28 42 83)"/><ellipse cx="52" cy="110" rx="12" ry="20" transform="rotate(25 52 110)"/>
+      <ellipse cx="120" cy="42" rx="13" ry="22" transform="rotate(-25 120 42)"/><ellipse cx="104" cy="70" rx="12" ry="20" transform="rotate(24 104 70)"/><ellipse cx="116" cy="99" rx="12" ry="20" transform="rotate(-22 116 99)"/>
+      <ellipse cx="207" cy="67" rx="13" ry="22" transform="rotate(32 207 67)"/><ellipse cx="187" cy="91" rx="12" ry="20" transform="rotate(-24 187 91)"/><ellipse cx="170" cy="116" rx="12" ry="20" transform="rotate(30 170 116)"/>
+    </g>
+  </g>
+
+  <!-- ghost wisps -->
+  <g fill="#D7C8FF" stroke="#7A5AC8" stroke-width="7" opacity=".95">
+    <g transform="translate(1140 350)"><path d="M0 60C-4 17 31-9 64 12c26 16 24 47 4 68 8 22 0 48-28 72 8-35-34-37-31-71-10-5-11-12-9-21z"/><circle cx="26" cy="49" r="5" fill="#241B2F" stroke="none"/><circle cx="46" cy="49" r="5" fill="#241B2F" stroke="none"/></g>
+    <g transform="translate(245 150) scale(.75)"><path d="M0 60C-4 17 31-9 64 12c26 16 24 47 4 68 8 22 0 48-28 72 8-35-34-37-31-71-10-5-11-12-9-21z"/><circle cx="26" cy="49" r="5" fill="#241B2F" stroke="none"/><circle cx="46" cy="49" r="5" fill="#241B2F" stroke="none"/></g>
+  </g>
+
+  <!-- scattered sparkles -->
+  <g fill="#F1B65D" opacity=".9"><path d="M1220 185l10 25 25 10-25 10-10 25-10-25-25-10 25-10z"/><path d="M1115 690l7 17 17 7-17 7-7 17-7-17-17-7 17-7z"/><circle cx="1240" cy="650" r="8"/></g>
+</svg>

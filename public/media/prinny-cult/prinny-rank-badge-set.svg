@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny rank badge set</title>
+  <desc id="desc">Five blank rank badge motifs for dynamic labels: circle, double-chevron, eye, star, and heart-seal tiers.</desc>
+  <g stroke="#c6a6d4" stroke-width="7" fill="#211218">
+    <circle cx="110" cy="110" r="72"/><circle cx="330" cy="110" r="72"/><circle cx="550" cy="110" r="72"/><circle cx="770" cy="110" r="72"/><circle cx="990" cy="110" r="72"/>
+  </g>
+  <circle cx="110" cy="110" r="22" fill="#8f607d"/>
+  <g fill="none" stroke="#df8a55" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"><path d="M292 88l38 28 38-28M292 118l38 28 38-28"/></g>
+  <path d="M498 110c31-43 73-43 104 0-31 43-73 43-104 0z" fill="none" stroke="#4fc59e" stroke-width="9"/><circle cx="550" cy="110" r="11" fill="#4fc59e"/>
+  <path d="M770 59l16 34 37 5-27 26 7 37-33-18-33 18 7-37-27-26 37-5z" fill="#c6a6d4"/>
+  <path d="M954 106c0-30 36-40 36-12 0-28 36-18 36 12 0 30-36 54-36 54s-36-24-36-54z" fill="#df8a55"/>
+</svg>

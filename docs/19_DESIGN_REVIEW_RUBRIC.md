@@ -18,6 +18,10 @@ A candidate requires:
 
 A high score cannot compensate for a truth, rights, privacy, accessibility, or architectural failure.
 
+### 2026-08-23 character-centered review additions
+
+For the owner-directed storybook pass, confirm that the first desktop viewport centers an explicitly owner-authorized Nari reillustration anchored directly to the actual supplied model, a coherent theme-specific painted room, six verified profile shortcuts, one primary stream action, and three illustrated room doors without a scroll requirement. Compare asymmetric ears, emerald eyes, brown-to-purple hair/tail, lavender/corset outfit, jewelry, complexion, and caring adult demeanor against the retained supplied original. Reject guessed/public-reference-based models, generated replacement Prinnies, fabricated nail portfolios, generic stock-template rooms, or routes without intentional character-relevant artwork. Check Nari/Dark/Light, mobile navigation, reduced motion, broken-thumbnail fallback, and the noindex hidden-room exit. Private review does not pass public artwork/model-derivative-rights approval.
+
 ## Hard failures
 
 Reject the candidate if it contains any of the following:

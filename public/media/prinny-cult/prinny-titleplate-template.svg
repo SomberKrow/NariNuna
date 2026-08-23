@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny titleplate template</title>
+  <desc id="desc">A blank ceremonial nameplate with a stitched plum frame and small emerald signal accents for dynamic text overlay.</desc>
+  <path d="M70 34h760l42 76-42 76H70l-42-76z" fill="#211218" stroke="#8f607d" stroke-width="8"/>
+  <path d="M105 58h690l28 52-28 52H105l-28-52z" fill="#3b222e" stroke="#c6a6d4" stroke-width="4" stroke-dasharray="14 12"/>
+  <circle cx="92" cy="110" r="14" fill="#4fc59e"/>
+  <circle cx="808" cy="110" r="14" fill="#4fc59e"/>
+  <path d="M147 110h606" stroke="#8f607d" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+  <g fill="#df8a55"><circle cx="54" cy="110" r="7"/><circle cx="846" cy="110" r="7"/></g>
+</svg>

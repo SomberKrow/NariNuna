@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Resources creator icon">
+  <g fill="#D7C8FF" stroke="#241B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="17" width="44" height="34" rx="7"/><circle cx="32" cy="34" r="10" fill="none"/><path d="M20 17l5-7h14l5 7M16 57h32" fill="none"/>
+  </g>
+  <path d="M50 7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F1B65D" stroke="none"/>
+</svg>

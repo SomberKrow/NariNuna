@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+<title id="title">Nail polish bottle illustration</title><desc id="desc">Fictional lavender ghostie nail polish bottle with no third-party branding.</desc>
+<defs>
+<linearGradient id="warmGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6bc"/><stop offset="1" stop-color="#be82c8"/></linearGradient>
+<linearGradient id="purpleGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7b9ff" stop-opacity=".9"/><stop offset=".45" stop-color="#8f5cc7"/><stop offset="1" stop-color="#4b2f64"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b89ad9"/><stop offset="1" stop-color="#76599a"/></linearGradient>
+<filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="14" result="blur"/><feOffset in="blur" dx="0" dy="12" result="off"/><feFlood flood-color="#23172e" flood-opacity=".28" result="flood"/><feComposite in="flood" in2="off" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g filter="url(#softShadow)" transform="translate(55 65)">
+<rect x="245" y="35" width="210" height="245" rx="48" fill="#1e1823"/><path d="M275 50h150" stroke="#5a4d62" stroke-width="10" opacity=".7"/>
+<path d="M175 260Q160 230 220 210h260q60 20 45 50l-35 500q-5 85-90 95H300q-85-10-90-95Z" fill="#d9c3e9" stroke="#4c375b" stroke-width="10"/>
+<path d="M210 302h280l-28 425q-6 74-72 78H310q-66-4-72-78z" fill="url(#purpleGlass)"/>
+<rect x="250" y="420" width="200" height="215" rx="34" fill="#f7eadf" opacity=".94" stroke="#d4b77d" stroke-width="7"/>
+<circle cx="350" cy="500" r="61" fill="#765395"/><path d="M307 528c0-63 28-100 68-100s68 37 68 100v73l-20-15-18 15-19-15-19 15-21-15-19 15-20-15z" fill="#fffaf4" transform="translate(-25 -25) scale(.55)"/>
+<circle cx="340" cy="499" r="7" fill="#24182f"/><circle cx="365" cy="499" r="7" fill="#24182f"/>
+<path d="M300 565h100" stroke="#d7a44a" stroke-width="5"/><path d="M322 590h56" stroke="#7c668c" stroke-width="4"/>
+<path d="M195 780q-60 18-88 62q55 25 130-3" fill="#7c4ca0" opacity=".6"/>
+<path d="M525 322l18-15 18 15-18 15z" fill="#fff" opacity=".7"/>
+</g>
+</svg>

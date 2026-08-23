@@ -4,7 +4,7 @@ This directory is the product specification, engineering manual, content contrac
 
 **Repository:** `SomberKrow/NariNuna`  
 **Implementation branch:** `agent/build-nari-haven`  
-**Documentation baseline:** 2026-08-13  
+**Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
 **Implementation snapshot described:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
 
 ## Start here
@@ -36,7 +36,9 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 2. [`06_ASSET_MANIFEST_AND_ART_PIPELINE.md`](06_ASSET_MANIFEST_AND_ART_PIPELINE.md)
 3. [`01_BRAND_WORLD_AND_ART_DIRECTION.md`](01_BRAND_WORLD_AND_ART_DIRECTION.md)
 4. [`templates/ASSET_INTAKE_RECORD.md`](templates/ASSET_INTAKE_RECORD.md)
-5. The destination page contract in [`03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md`](03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md)
+5. [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md)
+6. [`24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`](24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md)
+7. The destination page contract in [`03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md`](03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md)
 
 ### Architecture, routing, or data work
 
@@ -92,6 +94,8 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `20_CONTENT_INVENTORY` | Current public content locations, state, source, volatility, gaps | Public content enters, moves, changes, or retires |
 | `21_AI_ASSISTED_WORKFLOW` | Agent context, evidence labels, protocol, stop and handoff rules | AI/repository workflow changes |
 | `22_GLOSSARY` | Canonical project/design/engineering/status language | A durable term changes or becomes ambiguous |
+| `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
+| `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
 
 ## Authority and conflict resolution
 
@@ -137,6 +141,6 @@ Use the records under [`templates/`](templates/) instead of inventing approval f
 
 ## Current release posture
 
-The codebase is an implemented, testable foundation. It is **not cleared for public production release**. The critical blockers are canonical identity wording, Nari-supplied or explicitly adopted artwork, real nail-work content, final Discord and professional contact decisions, host/domain configuration, licensing, and final manual accessibility/mobile/rights review.
+The codebase now includes an owner-requested authentic-artwork review implementation using the supplied Nari model, supplied character art, official static emotes, and all 27 supplied Prinny designs. It is **not cleared for public production release**. The critical blockers are final canonical identity wording, documented artist/owner/website/franchise permissions and credits, real nail-work content, final Discord and professional contact decisions, host/domain configuration, and final manual accessibility/mobile/rights review.
 
 Unknown is a valid state. Fabricated certainty is not.

@@ -5,6 +5,12 @@
 **Implementation files:** `src/pages/*.vue`, route HTML documents, page selectors in `src/styles/_pages.scss`  
 **Update trigger:** Page composition, responsibility, primary action, dependency, or public claim changes
 
+## 2026-08-23 authentic-artwork composition update
+
+The owner-directed review redesign changes Home from a long scrolling gateway page to a single composed desktop viewport: actual Nari full-body model, theme-specific illustrated Haven room, concise welcome, verified social dock, a Twitch action, Meet Nari link, and three compact Streams/Nail Studio/Haven room doors. Mobile may scroll naturally. Home deliberately suppresses the shared footer; the remaining ordinary pages retain it.
+
+Meet Nari centers the supplied model portrait and official emotes. Streams, Nail Studio, Haven, Resources, Work With Nari, Support, Stories, and 404 each receive route-specific scene, Ghostie, emote, or state artwork. The Nail Studio still contains no fabricated portfolio, client service, or qualification. The hidden optional room displays all 27 owner-supplied Prinny designs while keeping approved character identity/canon records empty. Exact route-by-route assets and outstanding public-rights blockers are recorded in [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:
@@ -13,7 +19,7 @@ Every ordinary page uses `SiteShell` and therefore receives:
 - shared sticky header and primary navigation;
 - persistent Nari/Dark/Light theme control;
 - one `<main id="main-content">` region;
-- shared footer;
+- shared footer on every ordinary page except the intentionally single-viewport Home arrival;
 - low-priority Ghostie summoner;
 - global focus, reduced-motion, responsive, and contrast styles.
 
@@ -37,12 +43,11 @@ Every page review asks:
 
 ### Required sequence
 
-1. Environmental Haven hero.
-2. Three unequal gateways: Streams, Nail Studio, The Haven.
-3. Host/identity note.
-4. Three verified media moments.
-5. Haven invitation.
-6. Compact professional strip.
+1. Theme-specific Haven environment and actual supplied Nari character model.
+2. Concise big-sister identity, verified social dock, and primary Twitch action.
+3. Secondary Meet Nari action.
+4. Three compact room gateways: Streams, Nail Studio, The Haven.
+5. All five elements appear within the desktop viewport; deeper content belongs to its owning room rather than a long Home scroll.
 
 ### Action hierarchy
 

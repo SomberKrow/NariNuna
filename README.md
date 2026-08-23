@@ -2,13 +2,13 @@
 
 A warm, true multi-page home for Nari Nuna's streams, self-taught nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-The current implementation is a strong, testable foundation. Public links and selected media have recorded verification dates; original project art deliberately stands in for Nari's canonical character, Ghostie/emote, logo, and nail-art packs until exact rights and approvals are recorded.
+The current implementation builds an entirely bespoke autumn-storybook world around owner-authorized illustrations grounded directly in Nari's actual supplied character model. Eight original painted rooms—including seven integrated model-faithful Nari appearances and dedicated Home/Meet Nari compositions—five painted Ghosties, illustrated chapter postcards, three coherent times of day, custom app icons, and route-specific social paintings carry her identity across the entire site. Home and Meet Nari place Nari directly inside their paintings without independent character overlays. Her real supplied model, original cozy character art, official static emotes, and all 27 supplied Prinny illustrations remain intact.
 
 ## Product direction
 
 Nari's Haven is one lived-in late-fall refuge with several rooms—not a Linktree clone or generic VTuber template. The experience connects Nari's big-sister warmth, playful stream chaos, nail-art curiosity, community values, professional fit, and clear boundaries.
 
-Production release is currently blocked by canonical identity wording, final art rights, real nail-work content, final Discord/contact/hosting decisions, and release-grade manual QA. Unknowns remain honest holds rather than fabricated content.
+The private project-owner-requested review implementation is not public-release approval. Production release remains blocked by Nari's final identity/copy approval, recorded artwork ownership and website-use rights, real nail-work content, final Discord/contact/hosting decisions, and release-grade manual QA. Unknowns remain honest holds rather than fabricated content.
 
 ## Stack
 
@@ -37,7 +37,9 @@ Required repository gate:
 npm run check
 ```
 
-`npm run check` runs lint, TypeScript, unit tests, the production build, and the eleven-document output validator. Manual viewport, theme, keyboard, screen-reader, rights, privacy, and host checks still follow.
+`npm run check` runs lint, TypeScript, unit tests, the production build, the eleven-document output validator, and the live production-preview route/artwork verifier. Manual viewport, theme, keyboard, screen-reader, rights, privacy, and host checks still follow.
+
+For a built local site, `npm run verify:preview` starts and stops its own production preview automatically. It checks all eleven direct-loading documents, public social metadata, required genuine character/room artwork, hidden-page indexing boundaries, and every one of the 27 supplied Prinny images. Set `NARI_PREVIEW_URL` to check an already-running compatible preview instead.
 
 ## Routes
 
@@ -65,6 +67,8 @@ Critical references:
 - [Page-by-page experience contracts](docs/03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md)
 - [Design system and exact color tokens](docs/04_DESIGN_SYSTEM_AND_COMPONENT_LANGUAGE.md)
 - [Asset manifest and rights pipeline](docs/06_ASSET_MANIFEST_AND_ART_PIPELINE.md)
+- [Authentic artwork implementation and review boundaries](docs/23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md)
+- [Bespoke storybook art direction and complete generation prompts](docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md)
 - [Technical architecture](docs/07_TECHNICAL_ARCHITECTURE.md)
 - [Current-state audit](docs/17_CURRENT_STATE_AUDIT.md)
 - [Code standards](docs/18_CODE_STANDARDS.md)
@@ -77,14 +81,22 @@ The documentation is part of the product contract. Changes to routes, tokens, as
 
 ## Asset and content posture
 
-Publicly visible artwork is not automatically licensed for republication. No Nari model, commissioned banner, emote, panel, logo, or nail-art image has been copied or hotlinked into the project art path.
+Publicly visible artwork is not automatically licensed for republication. The actual character model, cozy illustration, official static emotes, and 27 original Prinny designs came from the owner-supplied Nari project archive, never public scraping or hotlinking. At the owner's subsequent explicit direction, the site also includes identity-preserving illustrated Nari derivatives anchored directly to that actual supplied model. Those paintings are identified as owner-directed reillustrations, never falsely presented as the original artist's untouched artwork, a real nail portfolio, or replacement Prinny designs. Public model-derivative, artist, and website-use rights remain unresolved.
+
+Owner-directed inclusion in a private review branch does **not** resolve the commissioned artists, copyright holders, public website display, required credits, cropping/background treatment, or franchise-related rights. Record those decisions before any public deployment. The actual source archive remains outside served assets; web derivatives are stripped and locally hosted.
+
+Regenerate review assets from the preserved owner-supplied archive material with ImageMagick:
+
+```bash
+bash scripts/prepare-client-assets.sh /path/to/recovered-source-material public/media
+```
 
 Before public launch, Nari and the relevant rights holders must approve or provide:
 
-- canonical identity wording and current character render;
-- official Ghostie/emote/logo assets and usage terms;
+- canonical identity wording, final character-render selection, and permitted character-render usage;
+- official emote/logo source attribution, adopted Ghostie artwork, and exact website usage terms;
 - real nail-work images, labels, and education scope;
-- artist/owner credit and display/local-host/crop/derivative permissions;
+- artist/owner credit and display/local-host/crop/derivative permissions, including the original Prinny collection;
 - canonical Discord and professional contact route;
 - any metrics, schedule, resources, support methods, affiliate relationships, or sponsor claims.
 

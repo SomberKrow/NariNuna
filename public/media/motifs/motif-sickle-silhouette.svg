@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-sickle-silhouette-title">
+<title id="motif-sickle-silhouette-title">motif-sickle-silhouette</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="none" stroke="var(--motif-ink)" stroke-width="11" stroke-linecap="round" d="M83 219L139 80"/><path fill="var(--motif-ink)" d="M132 83C149 39 190 20 227 32C200 33 175 44 160 64C149 78 142 94 137 112C150 102 165 98 181 99C156 107 139 126 126 147C126 126 127 104 132 83Z"/><path fill="none" stroke="var(--motif-lavender)" stroke-width="4" stroke-linecap="round" d="M82 212C91 188 99 169 107 149"/><path fill="var(--motif-pink)" d="M74 217C70 209 61 206 55 211C49 216 51 225 59 230L74 240L89 230C97 225 99 216 93 211C87 206 78 209 74 217Z"/>
+</svg>

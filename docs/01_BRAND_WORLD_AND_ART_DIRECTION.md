@@ -140,7 +140,7 @@ Do not add a webfont until its license, hosting, weights, glyph coverage, privac
 
 ## Character and mascot policy
 
-Do not generate a Nari likeness from public references. A canonical character render requires:
+Never generate a Nari likeness from public references. ADR-008 permits an owner-requested private-review storybook reillustration anchored directly to the supplied real model, with exact asymmetric ears, emerald eyes, brown/purple hair and tail, lavender/corset outfit, accessories, and caring-adult demeanor preserved. This bounded private direction does not approve final public use. A canonical public character render still requires:
 
 - current model/version confirmation;
 - owner and artist identification;

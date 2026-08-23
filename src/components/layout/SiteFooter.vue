@@ -1,35 +1,33 @@
 <script setup lang="ts">
 import { ArrowUpRight, Heart } from "@lucide/vue";
+import { ghostieArtwork, nariArtwork } from "@/data/artwork";
 import { footerNavigation } from "@/data/navigation";
 import { socialLinks } from "@/data/socials";
 
-const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "X", "Instagram"].includes(link.label));
+const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikTok", "Instagram"].includes(link.label));
 </script>
 
 <template>
   <footer class="site-footer">
+    <img class="site-footer__peek" :src="ghostieArtwork.peekingLeft" width="104" height="104" alt="" loading="lazy" />
     <div class="site-footer__inner page-width">
       <div class="site-footer__statement">
-        <img src="/media/generated/ghostie-256.webp" width="112" height="112" alt="" loading="lazy" />
+        <img :src="nariArtwork.cozy" width="132" height="132" alt="" loading="lazy" />
         <div>
-          <p class="eyebrow">Stay strange. Stay kind.</p>
+          <p class="eyebrow">From Nari, with a little extra glitter</p>
           <h2>There is room for you here.</h2>
-          <p>Pull up a pillow, keep your boundaries intact, and leave the room warmer than you found it.</p>
+          <p>Come as you are. Keep your boundaries. Leave the room a little warmer than you found it.</p>
         </div>
       </div>
 
       <div class="site-footer__links">
         <nav aria-label="Footer navigation">
+          <a href="/meet-nari/">Meet Nari</a>
+          <a href="/haven/">The Haven</a>
           <a v-for="item in footerNavigation" :key="item.href" :href="item.href">{{ item.label }}</a>
         </nav>
         <div class="site-footer__socials" aria-label="Nari's social profiles">
-          <a
-            v-for="link in featuredSocials"
-            :key="link.url"
-            :href="link.url"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <a v-for="link in featuredSocials" :key="link.url" :href="link.url" target="_blank" rel="noreferrer noopener">
             {{ link.label }}
             <ArrowUpRight :size="14" aria-hidden="true" />
             <span class="sr-only"> (opens in a new tab)</span>
@@ -38,8 +36,8 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "X", 
       </div>
 
       <div class="site-footer__base">
-        <p>Made with <Heart :size="14" aria-hidden="true" /> for Nari's Ghosties.</p>
-        <p>Generated environment and mascot art are temporary project assets pending Nari's canonical art pack.</p>
+        <p>Made with <Heart :size="14" aria-hidden="true" /> for Nari and her Ghosties.</p>
+        <p>Be kind. Stay curious. Hydrate, please.</p>
       </div>
     </div>
   </footer>

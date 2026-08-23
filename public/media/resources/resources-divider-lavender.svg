@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 90" role="img" aria-label="Lavender divider">
+  <g stroke="#8DAA91" stroke-width="4" stroke-linecap="round" fill="none"><path d="M100 51h290M810 51h290"/><path d="M410 64c45-14 79-24 116-49M790 64c-45-14-79-24-116-49"/></g>
+  <g fill="#7A5AC8"><ellipse cx="455" cy="42" rx="7" ry="13" transform="rotate(-50 455 42)"/><ellipse cx="476" cy="31" rx="7" ry="13" transform="rotate(-42 476 31)"/><ellipse cx="500" cy="23" rx="7" ry="13" transform="rotate(-32 500 23)"/><ellipse cx="745" cy="42" rx="7" ry="13" transform="rotate(50 745 42)"/><ellipse cx="724" cy="31" rx="7" ry="13" transform="rotate(42 724 31)"/><ellipse cx="700" cy="23" rx="7" ry="13" transform="rotate(32 700 23)"/></g>
+  <path d="M600 24c-15-15-38 8-13 28l13 10 13-10c25-20 2-43-13-28z" fill="#ECA4C7" stroke="#241B2F" stroke-width="4"/>
+  <path d="M82 39l5 12 12 5-12 5-5 12-5-12-12-5 12-5zM1118 39l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#F1B65D"/>
+</svg>

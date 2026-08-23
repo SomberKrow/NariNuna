@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 640" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult pedestal</title>
+  <desc id="desc">A compact ceremonial pedestal with plum stone, lavender trim, a soft emerald inset, and an empty top for a featured cult figure.</desc>
+  <ellipse cx="260" cy="584" rx="190" ry="36" fill="#130d13" opacity=".4"/>
+  <path d="M126 510h268l42 66H84z" fill="#211218" stroke="#8f607d" stroke-width="7"/>
+  <path d="M166 188h188l35 324H131z" fill="#3b222e" stroke="#8f607d" stroke-width="7"/>
+  <path d="M130 148h260l-21 84H151z" fill="#4b2a38" stroke="#c6a6d4" stroke-width="7"/>
+  <path d="M111 106h298l-19 54H130z" fill="#2a1820" stroke="#8f607d" stroke-width="7"/>
+  <rect x="206" y="304" width="108" height="126" rx="54" fill="#211218" stroke="#8f607d" stroke-width="6"/>
+  <ellipse cx="260" cy="365" rx="28" ry="43" fill="#4fc59e" opacity=".18"/>
+  <path d="M231 365c16-27 42-27 58 0-16 27-42 27-58 0z" fill="none" stroke="#4fc59e" stroke-width="5"/>
+  <circle cx="260" cy="365" r="5" fill="#4fc59e"/>
+  <path d="M155 477h210" stroke="#c6a6d4" stroke-width="5" stroke-dasharray="10 11"/>
+  <g fill="#df8a55"><circle cx="178" cy="262" r="7"/><circle cx="342" cy="262" r="7"/></g>
+</svg>

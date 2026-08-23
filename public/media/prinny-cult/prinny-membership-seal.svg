@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult membership seal</title>
+  <desc id="desc">A circular ceremonial seal with stitched rings, a heart, an eye-like shape, and a small emerald center.</desc>
+  <circle cx="256" cy="256" r="220" fill="#211218" stroke="#8f607d" stroke-width="16"/>
+  <circle cx="256" cy="256" r="184" fill="#3b222e" stroke="#c6a6d4" stroke-width="8" stroke-dasharray="18 14"/>
+  <circle cx="256" cy="256" r="126" fill="#2a1820" stroke="#8f607d" stroke-width="8"/>
+  <path d="M165 245c54-76 128-76 182 0-54 76-128 76-182 0z" fill="none" stroke="#c6a6d4" stroke-width="10"/>
+  <circle cx="256" cy="245" r="18" fill="#4fc59e"/>
+  <path d="M214 321c0-35 42-48 42-13 0-35 42-22 42 13 0 36-42 65-42 65s-42-29-42-65z" fill="#df8a55"/>
+  <g fill="#f9e8d6"><circle cx="256" cy="61" r="8"/><circle cx="451" cy="256" r="8"/><circle cx="256" cy="451" r="8"/><circle cx="61" cy="256" r="8"/></g>
+</svg>

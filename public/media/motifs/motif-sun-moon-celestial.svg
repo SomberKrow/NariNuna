@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-sun-moon-celestial-title">
+<title id="motif-sun-moon-celestial-title">motif-sun-moon-celestial</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<g fill="none" stroke="var(--motif-gold)" stroke-width="4" stroke-linecap="round"><path d="M128 20V43M128 213V236M20 128H43M213 128H236M51 51L67 67M189 189L205 205M205 51L189 67M67 189L51 205"/></g><circle fill="var(--motif-gold)" stroke="var(--motif-ink)" stroke-width="4" cx="128" cy="128" r="58"/><path fill="var(--motif-cream)" stroke="var(--motif-ink)" stroke-width="4" d="M156 74C131 81 113 101 113 127C113 156 136 179 165 179C175 179 184 176 192 171C179 189 157 201 132 201C90 201 56 167 56 125C56 86 85 54 123 50C134 49 145 51 156 55C151 61 149 68 156 74Z"/><path fill="var(--motif-lavender)" d="M175 91L181 106L196 112L181 118L175 133L169 118L154 112L169 106Z"/>
+</svg>

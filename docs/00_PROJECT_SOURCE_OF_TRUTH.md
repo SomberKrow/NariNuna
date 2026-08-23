@@ -6,6 +6,12 @@
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Update trigger:** Any change to identity, audience, routes, stack, public claims, launch scope, or blocker status
 
+## 2026-08-23 owner-directed authentic-artwork implementation update
+
+The repository owner first directed that the site retain Nari's real model and original Prinnies, then explicitly authorized an identity-preserving reillustration of Nari to create a distinctive, cohesive private-review website. The implementation retains the supplied `Model_File.png`, supplied `Assets/comfy.png`, supplied static emotes, and all 27 unchanged-as-design `Assets/PrinnysForThrow/*.png` derivatives. Its storybook character and character-led environments are derived from the actual supplied model, never public references or a guessed replacement identity. Asymmetric ears, emerald eyes, brown-to-purple hair and tail, lavender/corset silhouette, complexion, accessories, and warm adult demeanor are mandatory invariants. Owner-directed private review is not public-release or model-artist derivative-rights approval; see ADR-008 and `docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`.
+
+This owner instruction authorizes implementation and review in the private repository; it does **not** establish Nari's final public-copy approval, artist ownership, exact website rights, required attribution, or franchise-related permissions. Public launch remains blocked until those records are completed. The hidden room remains optional, `noindex, nofollow`, absent from normal navigation, and uses the supplied designs without inventing approved names, ranks, biographies, or canon. See [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
+
 ## Product thesis
 
 Nari Nuna's Haven is a lived-in late-fall refuge built around one public identity with several real rooms: VTuber and gamer, self-taught nail artist and educator-at-heart, chaotic protective big sister, and community host. It turns a scattered set of creator links into a coherent place visitors can enter, understand, and remember.
@@ -76,7 +82,7 @@ No audience is optimized through deceptive urgency, surveillance, fake scarcity,
 - Support is optional and never buys access, priority, ownership, obligation, or a claim on Nari's time.
 - Professional content may be concise, but it remains recognizably Nari and contains no invented metrics, partnerships, or response promises.
 - No autoplay sound, autoplay video, background stream, social-feed scrape, or third-party player on initial load.
-- The hidden Prinny Cult is original, optional, easy to exit, `noindex`, and contains no franchise assets.
+- The hidden Prinny Cult is optional, easy to exit, `noindex`, and excluded from normal navigation. The owner-directed private review displays the 27 supplied original collection designs without redrawing or inventing lore; public display remains blocked until all underlying character/franchise/artist rights are verified.
 
 ### Technical foundation
 
@@ -98,7 +104,7 @@ This is a launch blocker, not an invitation to improvise.
 Until Nari resolves it:
 
 - use neutral big-sister VTuber wording;
-- do not generate or redraw a Nari likeness;
+- never generate or redraw Nari from public references; only an explicit owner-authorized, identity-preserving private-review reillustration grounded in the actual supplied model is permitted, without resolving public derivative rights or inventing lore;
 - do not merge CatDog traits with Grim Reaper lore;
 - keep the Meet Nari lore room visibly held;
 - treat public images as references, not website licenses;
@@ -108,7 +114,7 @@ Until Nari resolves it:
 
 | Route | Document | Navigation | Product responsibility |
 |---|---|---|---|
-| `/` | `index.html` | Primary | Arrival, identity summary, three gateways, selected moments |
+| `/` | `index.html` | Primary | One-screen desktop arrival, actual Nari identity, verified social dock, three room gateways |
 | `/meet-nari/` | `meet-nari/index.html` | Primary | Privacy-safe identity, roles, symbols, boundaries, lore status |
 | `/streams/` | `streams/index.html` | Primary | Stream feeling, curated moments, live/archive doors, schedule truth |
 | `/nail-studio/` | `nail-studio/index.html` | Primary | Authentic nail practice, education, future approved gallery |

@@ -93,6 +93,7 @@ Do not ask Jake to repeat a fact already available in current context or reposit
 
 - Establish page slot, narrative job, crop-safe zone, and content hierarchy before generating/selecting art.
 - Do not generate a Nari likeness from public references.
+- Only explicit ADR-008 owner authorization permits private-review Nari reillustration: reference the supplied real model, retain every documented identity invariant, preserve original artwork/emotes/Prinnies, record prompts/provenance, and leave all public derivative/model-artist rights blocked.
 - Use original placeholders only when clearly labelled and permitted.
 - Canonical asset work begins from exact source/rights records.
 - Review a full route and state matrix, not a hero screenshot.
