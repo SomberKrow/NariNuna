@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Resources technical icon">
+  <g fill="#D7C8FF" stroke="#241B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="14" width="48" height="33" rx="6"/><path d="M18 54h28M25 47v7M39 47v7" fill="none"/><path d="M25 25l-7 6 7 6M39 25l7 6-7 6M35 22l-6 18" fill="none"/>
+  </g>
+  <path d="M50 7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F1B65D" stroke="none"/>
+</svg>

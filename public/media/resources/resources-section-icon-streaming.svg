@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Resources streaming icon">
+  <g fill="#D7C8FF" stroke="#241B2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 27q20-22 40 0v18q0 7-7 7h-7V29h14M12 29v23h7q7 0 7-7V29" fill="none"/><rect x="28" y="22" width="8" height="25" rx="4"/><path d="M23 39q9 9 18 0M32 47v9M24 56h16" fill="none"/>
+  </g>
+  <path d="M50 7l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#F1B65D" stroke="none"/>
+</svg>

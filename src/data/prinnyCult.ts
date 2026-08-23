@@ -35,6 +35,43 @@ export const prinnyCultAssets = {
 // quietly becoming canon while still giving the UI a stable typed contract.
 export const prinnyRoster: readonly PrinnyRosterRecord[] = [];
 
+// These are the 27 artwork designs supplied in Nari's own project archive. The
+// file labels identify web derivatives; they are not invented names, ranks,
+// biographies, approvals, or a claim that franchise rights are resolved.
+export const suppliedPrinnyArtwork = [
+  "batman",
+  "bulgarian-traitor",
+  "cpurkitty",
+  "death",
+  "derpy-batman",
+  "emo-frog",
+  "frog",
+  "good-and-evil",
+  "hambone-1",
+  "monster-hunter-frog",
+  "monster-hunter-frog2",
+  "monster-hunter-frog3",
+  "monster-hunter-frog4",
+  "monster-hunter-frog5",
+  "monster-hunter-frog6",
+  "monster-hunter-kitty",
+  "monster-hunter-kitty2",
+  "monster-hunter-orin",
+  "original",
+  "orin-as-prinny-fire-eyes",
+  "orin",
+  "pajama-batman",
+  "panda",
+  "prinny",
+  "puzzle",
+  "slime",
+  "traitor"
+].map((assetId, index) => ({
+  assetId,
+  src: `/media/prinny-cult/roster/${assetId}.webp`,
+  alt: `Supplied Prinny collection artwork ${String(index + 1).padStart(2, "0")}`
+}));
+
 export const prinnyNamesList = prinnyRoster.map(({ id, name }) => ({ id, name }));
 export const prinnyCultTitlesList = prinnyRoster.map(({ id, cultTitle }) => ({ id, cultTitle }));
 export const prinnyBiosList = prinnyRoster.map(({ id, bio }) => ({ id, bio }));

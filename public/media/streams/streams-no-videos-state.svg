@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">Streams no videos state</title><desc id="desc">Curious ghostie peeking into an empty media crate with film reels, cobwebs, question bubbles and fallen leaves.</desc>
+<defs>
+  <linearGradient id="hoodGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#15101F"/><stop offset="0.6" stop-color="#2A1737"/><stop offset="1" stop-color="#50306A"/>
+  </linearGradient>
+  <linearGradient id="ghostGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E8DFF6"/>
+  </linearGradient>
+  <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#75F2FF"/><stop offset="0.48" stop-color="#728CFF"/><stop offset="1" stop-color="#D66DFF"/>
+  </linearGradient>
+  <linearGradient id="warmGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FFE784"/><stop offset="0.55" stop-color="#FF9B58"/><stop offset="1" stop-color="#FF6DB6"/>
+  </linearGradient>
+  <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="tinyGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<ellipse cx="600" cy="680" rx="430" ry="330" fill="#513273" opacity=".14" filter="url(#softGlow)"/><g transform="translate(600 790)"><path d="M-300 -40 L-165 -155 H180 L300 -40 V245 H-300Z" fill="#2D2138" stroke="#171225" stroke-width="16"/><path d="M-300 -40 L-165 45 H180 L300 -40" fill="#3B2A4A" stroke="#171225" stroke-width="14"/><rect x="-90" y="88" width="180" height="115" rx="20" fill="#5A3A72"/><path d="M-27 112 L53 146 L-27 180Z" fill="#F7F1FF"/></g><g transform="translate(735 720)" stroke="#B8A7C8" stroke-width="5" opacity=".6" fill="none"><path d="M0 0 L90 0 M0 0 L70 55 M0 0 L20 85 M25 0 Q25 28 0 28 M52 0 Q51 55 13 55 M75 0 Q78 78 18 78"/></g><g transform="translate(585 380) scale(1.28)" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-156 -15 Q-144 -138 0 -160 Q144 -138 156 -15 L126 1 Q116 -70 0 -84 Q-116 -70 -126 1Z" fill="url(#hoodGrad)" stroke="#171225" stroke-width="12"/>
+      <path d="M-122 -78 L-160 -122 L-170 -63 L-142 -39Z" fill="#2E1B3D" stroke="#171225" stroke-width="10"/>
+      <path d="M122 -78 L160 -122 L170 -63 L142 -39Z" fill="#2E1B3D" stroke="#171225" stroke-width="10"/>
+      <circle cx="0" cy="-24" r="105" fill="url(#ghostGrad)" stroke="#171225" stroke-width="12"/>
+      <path d="M-98 42 C-129 111 -93 196 -42 215 C-12 228 8 208 25 229 C44 204 70 223 93 196 C132 151 117 88 91 48 C68 77 33 91 0 91 C-34 91 -70 77 -98 42Z" fill="url(#ghostGrad)" stroke="#171225" stroke-width="12"/>
+      <ellipse cx="-38" cy="-28" rx="14" ry="18" fill="#171225"/><ellipse cx="38" cy="-28" rx="14" ry="18" fill="#171225"/>
+      <circle cx="-33" cy="-34" r="4" fill="#FFFFFF"/><circle cx="43" cy="-34" r="4" fill="#FFFFFF"/>
+      <path d="M-13 4 Q0 18 13 4" fill="none" stroke="#171225" stroke-width="8"/>
+      <ellipse cx="-66" cy="8" rx="19" ry="10" fill="#FF9ECF" opacity=".45"/><ellipse cx="66" cy="8" rx="19" ry="10" fill="#FF9ECF" opacity=".45"/>
+      <path d="M-58 -108 Q0 -131 58 -108" fill="none" stroke="#7E4AA4" stroke-width="8" opacity=".72"/>
+      <g transform="translate(98 -84)"><circle r="24" fill="#F2EAF8" stroke="#171225" stroke-width="8"/><circle cx="-7" cy="-3" r="4.5" fill="#171225"/><circle cx="7" cy="-3" r="4.5" fill="#171225"/><path d="M-6 10 L0 4 L6 10" fill="none" stroke="#171225" stroke-width="4"/></g>
+      <path d="M-115 80 C-160 92 -183 112 -196 140 L-140 143 C-126 125 -112 119 -92 116Z" fill="url(#ghostGrad)" stroke="#171225" stroke-width="10"/>
+    </g><g transform="translate(255 930)"><circle r="92" fill="#31243E" stroke="#171225" stroke-width="12"/><circle r="20.24" fill="#181320"/><circle cx="0" cy="-46.0" r="13.799999999999999" fill="#171225"/><circle cx="43.239999999999995" cy="14.72" r="13.799999999999999" fill="#171225"/><circle cx="-43.239999999999995" cy="14.72" r="13.799999999999999" fill="#171225"/></g><g transform="translate(990 950)"><circle r="76" fill="#31243E" stroke="#171225" stroke-width="12"/><circle r="16.72" fill="#181320"/><circle cx="0" cy="-38.0" r="11.4" fill="#171225"/><circle cx="35.72" cy="12.16" r="11.4" fill="#171225"/><circle cx="-35.72" cy="12.16" r="11.4" fill="#171225"/></g><g fill="#FF8AD0" stroke="#171225" stroke-width="9"><path d="M935 285 Q935 210 1015 210 Q1090 210 1090 278 Q1090 330 1035 354 L1035 400 H985 V325 Q1038 304 1038 278 Q1038 254 1012 254 Q985 254 985 285Z"/><circle cx="1010" cy="442" r="18"/></g><g transform="translate(295 380) scale(0.58)" opacity="1">
+      <path d="M0 65 C-55 48 -58 0 -28 -35 C-13 -52 -16 -77 0 -94 C10 -64 37 -50 39 -20 C62 2 49 50 0 65Z" fill="url(#flameGrad)"/>
+      <ellipse cx="0" cy="8" rx="25" ry="28" fill="#151225" opacity=".92"/>
+      <circle cx="-8" cy="5" r="4.5" fill="#DDFBFF"/><circle cx="8" cy="5" r="4.5" fill="#DDFBFF"/>
+    </g><g transform="translate(980 600) scale(0.48)" opacity="0.8">
+      <path d="M0 65 C-55 48 -58 0 -28 -35 C-13 -52 -16 -77 0 -94 C10 -64 37 -50 39 -20 C62 2 49 50 0 65Z" fill="url(#flameGrad)"/>
+      <ellipse cx="0" cy="8" rx="25" ry="28" fill="#151225" opacity=".92"/>
+      <circle cx="-8" cy="5" r="4.5" fill="#DDFBFF"/><circle cx="8" cy="5" r="4.5" fill="#DDFBFF"/>
+    </g><path d="M235 1040 q28.8 -20.8 54.400000000000006 0 q-20.8 35.2 -54.400000000000006 0Z" fill="#B9663F" transform="rotate(-18 235 1040)"/><path d="M335 1080 q25.2 -18.2 47.599999999999994 0 q-18.2 30.799999999999997 -47.599999999999994 0Z" fill="#B9663F" transform="rotate(20 335 1080)"/><path d="M900 1080 q32.4 -23.400000000000002 61.2 0 q-23.400000000000002 39.6 -61.2 0Z" fill="#B9663F" transform="rotate(-10 900 1080)"/><path d="M1030 1040 q27.0 -19.5 51.0 0 q-19.5 33.0 -51.0 0Z" fill="#B9663F" transform="rotate(25 1030 1040)"/><path d="M250 236.0 L254.9 245.1 L264.0 250 L254.9 254.9 L250 264.0 L245.1 254.9 L236.0 250 L245.1 245.1 Z" fill="#A97BEA" opacity="0.8"/><path d="M870 176.0 L874.9 185.1 L884.0 190 L874.9 194.9 L870 204.0 L865.1 194.9 L856.0 190 L865.1 185.1 Z" fill="#FFC75A" opacity="0.8"/></svg>

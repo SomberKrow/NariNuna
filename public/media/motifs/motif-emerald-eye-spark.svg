@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-emerald-eye-spark-title">
+<title id="motif-emerald-eye-spark-title">motif-emerald-eye-spark</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-cream)" stroke="var(--motif-ink)" stroke-width="5" d="M39 128C63 91 93 73 128 73C163 73 193 91 217 128C193 165 163 183 128 183C93 183 63 165 39 128Z"/><circle fill="var(--motif-emerald)" stroke="var(--motif-ink)" stroke-width="5" cx="128" cy="128" r="34"/><path fill="var(--motif-emerald-dark)" stroke="var(--motif-ink)" stroke-width="4" d="M128 93L149 128L128 163L107 128Z"/><circle fill="var(--motif-cream)" cx="140" cy="112" r="7"/><path fill="var(--motif-gold)" d="M205 60L210 74L224 79L210 84L205 98L200 84L186 79L200 74Z"/>
+</svg>

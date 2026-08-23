@@ -18,6 +18,10 @@ A candidate requires:
 
 A high score cannot compensate for a truth, rights, privacy, accessibility, or architectural failure.
 
+### 2026-08-23 character-centered review additions
+
+For the owner-directed authentic-artwork pass, confirm that the first desktop viewport contains the actual supplied Nari model, one coherent theme-specific room, six verified profile shortcuts, one primary stream action, and three compact room doors without a scroll requirement. Reject any generated Nari likeness, any generated replacement for the 27 supplied Prinny designs, any fabricated nail portfolio, or a page with no intentional artwork. Check each route in Nari/Dark/Light, mobile navigation, reduced motion, broken-thumbnail fallback, and the noindex hidden-room exit. Private review inclusion does not pass the separate public artwork-rights gate.
+
 ## Hard failures
 
 Reject the candidate if it contains any of the following:

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="240" viewBox="0 0 1400 240" role="img" aria-labelledby="title desc">
+<title id="title">Nails brushstroke divider 03</title><desc id="desc">Wide decorative polish-brush divider variant 03.</desc>
+<defs>
+<linearGradient id="warmGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6bc"/><stop offset="1" stop-color="#be82c8"/></linearGradient>
+<linearGradient id="purpleGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7b9ff" stop-opacity=".9"/><stop offset=".45" stop-color="#8f5cc7"/><stop offset="1" stop-color="#4b2f64"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b89ad9"/><stop offset="1" stop-color="#76599a"/></linearGradient>
+<filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="14" result="blur"/><feOffset in="blur" dx="0" dy="12" result="off"/><feFlood flood-color="#23172e" flood-opacity=".28" result="flood"/><feComposite in="flood" in2="off" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<path d="M55 117 C240 70, 420 112, 615 94 S1030 81, 1345 104" stroke="#6d3e78" stroke-width="33" stroke-linecap="round" fill="none" opacity=".82"/>
+<path d="M90 132 C300 102, 460 136, 690 112 S1070 101, 1300 123" stroke="#d7a44a" stroke-width="6" fill="none" stroke-linecap="round" opacity=".75"/>
+<path d="M1260 74l8 20 20 8-20 8-8 20-8-20-20-8 20-8z" fill="#d7a44a"/>
+<path d="M180 68l10 24 24 10-24 10-10 24-10-24-24-10 24-10z" fill="#e9a7c5"/>
+</svg>

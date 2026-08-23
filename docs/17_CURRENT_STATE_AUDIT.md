@@ -8,6 +8,12 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
+## 2026-08-23 owner-directed implementation delta
+
+The former placeholder-only visual audit below is retained as historical baseline. The current private review redesign now implements an actual owner-supplied Nari full-body model and portrait, supplied cozy character artwork, 12 supplied static emote derivatives, 27 supplied original Prinny design derivatives, multiple individually authored/generated Ghosties, page-specific support packs, three time-of-day Home environments, and distinct illustrated rooms across every route. Shared artwork is centralized in `src/data/artwork.ts`; the supplied Prinny image list is separated from still-unapproved character/canon records in `src/data/prinnyCult.ts`; `tests/artwork-contract.test.ts` verifies local availability and the 27-design capacity.
+
+The HTML documents now include route-specific Open Graph/Twitter preview artwork except for deliberately non-indexable system/secret pages. Home is an intentional single desktop viewport with a true character-centered layout; mobile retains natural scrolling. No fake nail work, schedule, metric, email inbox, invented canon, or generated Nari substitute was introduced. The earlier statements below that no supplied Nari/emote/Prinny artwork exists describe the 2026-08-13 baseline, not the current private branch. Public-release artwork permission, credit, franchise review, Nari copy approval, contact decisions, and full manual QA remain blocked/pending rather than assumed complete.
+
 ## Observed implementation
 
 | Concern | Current state |

@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import { Menu, X } from "@lucide/vue";
+import { ChevronDown, Menu, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
-import { primaryNavigation } from "@/data/navigation";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher.vue";
+import { nariArtwork } from "@/data/artwork";
+import { footerNavigation, primaryNavigation } from "@/data/navigation";
+import { twitchUrl } from "@/data/socials";
 
 const menuOpen = ref(false);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
+const principalLinks = primaryNavigation.filter((item) =>
+  ["/meet-nari/", "/streams/", "/nail-studio/", "/haven/"].includes(item.href)
+);
+const moreLinks = [
+  ...primaryNavigation.filter((item) => ["/resources/", "/work-with-nari/"].includes(item.href)),
+  ...footerNavigation
+];
 
 function isCurrent(href: string): boolean {
   return currentPath.value === href || (href === "/" && currentPath.value === "");
@@ -34,10 +43,10 @@ onBeforeUnmount(() => {
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
-        <img src="/media/generated/ghostie-128.webp" width="42" height="42" alt="" />
+        <img :src="nariArtwork.cozy" width="52" height="52" alt="" />
         <span>
-          <strong>Nari Nuna</strong>
-          <small>The Haven</small>
+          <strong>Nari <i>Nuna</i></strong>
+          <small>A little place to belong</small>
         </span>
       </a>
 
@@ -54,22 +63,38 @@ onBeforeUnmount(() => {
       </button>
 
       <div id="primary-navigation" class="site-header__panel" :class="{ 'is-open': menuOpen }">
-        <nav aria-label="Primary navigation">
+        <nav class="site-header__main-nav" aria-label="Primary navigation">
           <a
-            v-for="item in primaryNavigation"
+            v-for="item in principalLinks"
             :key="item.href"
             :href="item.href"
             :aria-current="isCurrent(item.href) ? 'page' : undefined"
             @click="closeMenu"
           >
-            <span class="nav-label--wide">{{ item.label }}</span>
-            <span class="nav-label--compact">{{ item.shortLabel ?? item.label }}</span>
+            {{ item.shortLabel ?? item.label }}
           </a>
         </nav>
+
+        <details class="site-header__more">
+          <summary>More <ChevronDown :size="15" aria-hidden="true" /></summary>
+          <nav aria-label="Additional Haven rooms">
+            <a
+              v-for="item in moreLinks"
+              :key="item.href"
+              :href="item.href"
+              :aria-current="isCurrent(item.href) ? 'page' : undefined"
+              @click="closeMenu"
+            >
+              {{ item.shortLabel ?? item.label }}
+            </a>
+          </nav>
+        </details>
+
         <ThemeSwitcher />
-        <a class="button button--small button--ember" href="https://www.twitch.tv/nari_nuna" target="_blank" rel="noreferrer noopener">
-          Watch live
-          <span class="sr-only"> on Twitch (opens in a new tab)</span>
+        <a class="site-header__live-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
+          <span aria-hidden="true"></span>
+          Twitch
+          <span class="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
     </div>

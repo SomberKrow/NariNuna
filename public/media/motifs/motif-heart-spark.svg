@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-heart-spark-title">
+<title id="motif-heart-spark-title">motif-heart-spark</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-pink)" stroke="var(--motif-ink)" stroke-width="5" stroke-linejoin="round" d="M77 112C77 82 111 69 128 93C145 69 179 82 179 112C179 142 152 158 128 181C104 158 77 142 77 112Z"/>
+<path fill="var(--motif-gold)" d="M184 48L190 65L207 71L190 77L184 94L178 77L161 71L178 65Z"/><path fill="var(--motif-lavender-light)" d="M59 62L63 72L73 76L63 80L59 90L55 80L45 76L55 72Z"/><circle fill="var(--motif-cream)" cx="195" cy="121" r="5"/>
+</svg>

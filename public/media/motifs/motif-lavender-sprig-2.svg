@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-lavender-sprig-2-title">
+<title id="motif-lavender-sprig-2-title">motif-lavender-sprig-2</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path class="line" d="M78 214C95 181 108 149 119 116C127 91 135 66 145 41"/>
+<g fill="none" stroke="var(--motif-ink)" stroke-width="3.5" stroke-linecap="round"><path d="M102 161C83 154 67 143 52 128M111 136C90 128 77 116 67 102M120 109C101 103 88 91 80 77"/><path d="M108 175C130 169 149 157 165 141M116 150C139 143 158 130 173 114M125 122C147 113 164 99 176 81"/></g>
+<g fill="var(--motif-lavender)" stroke="var(--motif-ink)" stroke-width="2"><ellipse cx="145" cy="43" rx="8" ry="14" transform="rotate(28 145 43)"/><ellipse cx="134" cy="58" rx="8" ry="13" transform="rotate(-18 134 58)"/><ellipse cx="151" cy="66" rx="8" ry="13" transform="rotate(24 151 66)"/><ellipse cx="129" cy="78" rx="8" ry="13" transform="rotate(-20 129 78)"/><ellipse cx="146" cy="86" rx="8" ry="13" transform="rotate(22 146 86)"/><ellipse cx="124" cy="97" rx="8" ry="13" transform="rotate(-18 124 97)"/></g>
+<g fill="var(--motif-lavender-light)" stroke="var(--motif-ink)" stroke-width="2"><ellipse cx="82" cy="80" rx="6" ry="10" transform="rotate(-35 82 80)"/><ellipse cx="67" cy="104" rx="6" ry="10" transform="rotate(-40 67 104)"/><ellipse cx="52" cy="130" rx="6" ry="10" transform="rotate(-45 52 130)"/><ellipse cx="176" cy="84" rx="6" ry="10" transform="rotate(38 176 84)"/><ellipse cx="173" cy="116" rx="6" ry="10" transform="rotate(42 173 116)"/><ellipse cx="165" cy="143" rx="6" ry="10" transform="rotate(48 165 143)"/></g>
+<path fill="none" stroke="var(--motif-lavender)" stroke-width="6" stroke-linecap="round" d="M69 215C93 202 111 202 132 211C151 219 168 219 188 205"/>
+</svg>

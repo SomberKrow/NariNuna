@@ -8,9 +8,9 @@ const initial = themes.includes(document.documentElement.dataset.theme as ThemeN
 const currentTheme = ref<ThemeName>(initial);
 
 const themeColors: Record<ThemeName, string> = {
-  nari: "#3d2330",
-  dark: "#160f18",
-  light: "#f4e8d3"
+  nari: "#2a1820",
+  dark: "#130d13",
+  light: "#efe1cd"
 };
 
 export function setTheme(theme: ThemeName): void {

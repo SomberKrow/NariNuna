@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowUpRight, BookOpenText, Clock3 } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { ghostieArtwork, officialEmotes } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 import { socialLinks } from "@/data/socials";
 
@@ -9,28 +9,12 @@ const vods = socialLinks.find((link) => link.label === "VOD Archive");
 </script>
 
 <template>
-  <section class="page-hero page-hero--simple page-width section-pad">
-    <div class="page-hero__copy">
-      <p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Story Time</p>
-      <h1>Moments worth keeping after the stream ends.</h1>
-      <p class="page-hero__lede">A future home for Nari's chosen stories, community memories, and VOD-connected anecdotes—published intentionally, not scraped out of context.</p>
-    </div>
+  <section class="story-opening page-width">
+    <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Pull up a pillow, Ghostie</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A little shelf for Nari's favorite stories, ridiculous stream memories, and moments that still make her laugh when chat is long gone.</p></div>
+    <div class="story-opening__art"><img :src="ghostieArtwork.cozy" width="340" height="340" alt="A sleepy Ghostie is tucked under a lavender blanket for story time" fetchpriority="high" /><img :src="officialEmotes.comfy" width="115" height="115" alt="Nari's official cozy emote" loading="lazy" /><img :src="officialEmotes.bonk" width="105" height="105" alt="Nari's official bonk emote" loading="lazy" /></div>
   </section>
 
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="The current shelf" title="Three verified moments while the story archive gets its blankets." text="Each card points to Nari's own public channel and can be removed from data without editing the layout." />
-    <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
-  </section>
+  <section class="moment-shelf"><div class="page-width section-pad"><header class="world-heading"><p class="eyebrow">Three little pieces of the chaos</p><h2>Start with something that actually happened.</h2></header><div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div></div></section>
 
-  <section class="story-system section-pad">
-    <div class="story-system__inner page-width">
-      <Clock3 :size="42" aria-hidden="true" />
-      <div>
-        <p class="eyebrow">Built to rotate</p>
-        <h2>Story of the week, month, or whenever Nari has one worth telling.</h2>
-        <p>The system is data-driven and privacy-aware. A story can carry a date, summary, optional public clip/VOD, permission note, content warning, and publish state. No private anecdote becomes permanent indexed content by accident.</p>
-        <a v-if="vods" class="text-link" :href="vods.url" target="_blank" rel="noreferrer noopener">Browse the public VOD archive <ArrowUpRight :size="16" aria-hidden="true" /></a>
-      </div>
-    </div>
-  </section>
+  <section class="gentle-hold page-width"><Clock3 :size="36" aria-hidden="true" /><div><p class="eyebrow">More stories, when they're hers to tell</p><h2>Nari decides what makes the shelf.</h2><p>Nothing private gets scraped, no community memory gets published without permission, and nobody has to become content to belong.</p></div><a v-if="vods" class="text-link" :href="vods.url" target="_blank" rel="noreferrer noopener">Browse the VODs <ArrowUpRight :size="16" aria-hidden="true" /></a></section>
 </template>

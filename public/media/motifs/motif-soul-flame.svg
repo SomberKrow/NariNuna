@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="motif-soul-flame-title">
+<title id="motif-soul-flame-title">motif-soul-flame</title>
+<style>
+:root{--motif-ink:#34213F;--motif-lavender:#9A78C8;--motif-lavender-light:#C8B5E6;--motif-pink:#F0A6C1;--motif-cream:#F8EAD8;--motif-gold:#E5B566;--motif-emerald:#3CB77A;--motif-emerald-dark:#1F6F50;--motif-autumn:#C96A3B;--motif-autumn-light:#E7A252;--motif-ghost:#F3EEFF;--motif-blue:#9BD7E8;}
+.line{fill:none;stroke:var(--motif-ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.thin{fill:none;stroke:var(--motif-ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+
+<path fill="var(--motif-blue)" stroke="var(--motif-ink)" stroke-width="5" stroke-linejoin="round" d="M132 25C146 55 142 71 128 88C145 83 160 72 169 58C182 83 184 103 174 121C168 132 160 139 152 145C166 141 180 131 188 117C194 144 184 176 160 195C139 212 103 211 82 188C58 161 63 126 83 103C79 125 89 139 103 146C95 124 101 103 117 88C126 79 134 61 132 25Z"/><path fill="var(--motif-ghost)" d="M128 93C139 110 141 121 134 133C130 140 123 144 116 148C122 130 116 118 109 107C101 125 101 143 111 155C122 168 144 166 154 151C164 136 159 118 150 106C147 122 141 130 134 134C141 119 137 104 128 93Z"/>
+</svg>

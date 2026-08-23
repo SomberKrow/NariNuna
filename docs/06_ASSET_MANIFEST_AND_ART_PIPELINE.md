@@ -1,15 +1,32 @@
 # Asset Manifest and Art Pipeline
 
-**Status:** Placeholder pipeline `IMPLEMENTED`; canonical production assets `BLOCKED`  
+**Status:** Owner-supplied authentic-artwork private review `IMPLEMENTED`; public-production artwork permissions `BLOCKED`
 **Audit baseline:** 2026-08-13 at `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Owns:** Asset inventory, provenance, rights, naming, source preservation, derivatives, alt/credit, replacement and retirement  
 **Update trigger:** Any image, icon, logo, font, clip, screenshot, emote, or other media enters, changes, or leaves the repository
+
+## 2026-08-23 owner-supplied private-review intake
+
+The owner-supplied `Nari.zip` project archive contains the actual `Model_File.png`, supplied `Assets/comfy.png`, 12 static Nari emotes, and 27 `Assets/PrinnysForThrow/*.png` source designs. The repository owner explicitly requested use of that real model and those original Prinnies in the private implementation. Supporting Ghostie, nails, resources, work, metadata, states, decorative, and UI packs came from prior project-generated artwork batches; no generated Nari likeness or generated substitute Prinny roster was adopted.
+
+The original 1789×4516 model has SHA-256 `abbea0e43bb9d99f9cf8d9d2d7b4cc2153a730308b466e7c71f86c55ab5675a9`; supplied 1254×1254 cozy art has SHA-256 `e3e40bc86dbaef9e67786548a667df0782d35063013742a8ea14c9a885cabbbf`. Originals remain in the owner-supplied source archive and are not served. `scripts/prepare-client-assets.sh` produces metadata-stripped local WebP derivatives, removing only the model's connected white source backdrop and preserving all 27 Prinny compositions without redrawing or invented lore.
+
+| Review family | Local derivatives | Provenance | Public-release status |
+|---|---|---|---|
+| Actual Nari model and supplied cozy art | `public/media/nari/` | Owner-supplied archive | Blocked pending artist, exact rights, credit, and model-version approval |
+| Official static Nari emotes | `public/media/emotes/` | Owner-supplied archive | Blocked pending original artist attribution and exact website rights |
+| 27 original Prinny designs | `public/media/prinny-cult/roster/` | Owner-supplied archive; resize/format derivatives only | Blocked pending underlying artist/character/franchise permissions |
+| Nari-adjacent Ghostie support characters | `public/media/ghosties/` | Previously generated project assets; no generated Nari likeness | Owner adoption and final style/rights review pending |
+| Illustrated room environments | `public/media/environments/` and page asset folders | Authored SVG scenes plus prior generated support packs | Owner adoption and final production review pending |
+| UI, metadata, states, motifs, and page packs | `public/media/{identity,streams,nails,resources,work,motifs,states,share,ui}/` | Previously generated project asset batches | Owner adoption, mark/metadata approval, and rights review pending |
+
+See the intake records under [`asset-records/`](asset-records/) and [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md). Private repository implementation is not permission to publish commissioned or franchise-associated material publicly.
 
 ## Non-negotiable rule
 
 Public visibility is not permission.
 
-Do not copy, hotlink, crop, animate, recolor, trace, or republish Nari's model, commissioned art, emotes, banners, panels, nail photos, community images, sponsor marks, or heritage art until the specific website rights are recorded.
+Do not copy, hotlink, crop, animate, recolor, trace, or publicly republish Nari's model, commissioned art, emotes, banners, panels, nail photos, community images, sponsor marks, or heritage art until the specific website rights are recorded. Owner-directed private review of the supplied archive is documented above; that bounded implementation exception is not public-release clearance.
 
 An artist credit is not a license. Ownership is not automatically permission to create derivatives. Platform use is not automatically independent website use.
 

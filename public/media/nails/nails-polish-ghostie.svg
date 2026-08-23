@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+<title id="title">Nails polish ghostie</title><desc id="desc">Cute ghostie in a purple beanie carefully painting a glossy lavender nail swatch.</desc>
+<defs>
+<linearGradient id="warmGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe6bc"/><stop offset="1" stop-color="#be82c8"/></linearGradient>
+<linearGradient id="purpleGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d7b9ff" stop-opacity=".9"/><stop offset=".45" stop-color="#8f5cc7"/><stop offset="1" stop-color="#4b2f64"/></linearGradient>
+<linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b89ad9"/><stop offset="1" stop-color="#76599a"/></linearGradient>
+<filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur in="SourceAlpha" stdDeviation="14" result="blur"/><feOffset in="blur" dx="0" dy="12" result="off"/><feFlood flood-color="#23172e" flood-opacity=".28" result="flood"/><feComposite in="flood" in2="off" operator="in" result="shadow"/><feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g filter="url(#softShadow)" transform="translate(80 95)">
+<path d="M180 460C180 250 280 120 440 120s260 130 260 340v235l-78-45-64 45-72-45-70 45-74-45-64 45-58-45z" fill="#fffaf4" stroke="#d9d0df" stroke-width="8"/>
+<!-- beanie -->
+<path d="M245 185Q300 42 440 42t195 143q-35 30-93 36H340q-60-6-95-36Z" fill="#7f5a9d"/>
+<rect x="250" y="167" width="380" height="92" rx="40" fill="#8f69ad"/><path d="M294 193h292" stroke="#b796d0" stroke-width="10" stroke-linecap="round" opacity=".6"/>
+<circle cx="368" cy="360" r="22" fill="#24182f"/><circle cx="514" cy="360" r="22" fill="#24182f"/>
+<ellipse cx="333" cy="414" rx="36" ry="17" fill="#e9a7c5" opacity=".45"/><ellipse cx="550" cy="414" rx="36" ry="17" fill="#e9a7c5" opacity=".45"/>
+<path d="M395 431q46 30 92 0" stroke="#b76f91" stroke-width="11" fill="none" stroke-linecap="round"/>
+<!-- arm + brush -->
+<path d="M287 460q-80-2-115-80" stroke="#fffaf4" stroke-width="55" stroke-linecap="round"/><g transform="rotate(-23 190 345)"><rect x="145" y="275" width="72" height="150" rx="24" fill="#1f1924"/><rect x="166" y="405" width="30" height="140" rx="15" fill="#6d3e78"/><path d="M162 534l38 0 14 65-65 0z" fill="#a86dd0"/></g>
+<!-- nail swatch -->
+<path d="M560 555q120-25 165 25q22 28 0 85q-22 52-115 65q-80 11-120-20q-28-22-10-70q18-50 80-85Z" fill="#f0d1c5" stroke="#ad8a81" stroke-width="6"/><path d="M598 582q88-19 103 13q12 30-13 64q-26 36-83 35q-48 0-68-22q-16-20-5-47q13-31 66-43Z" fill="url(#purpleGlass)"/>
+<circle cx="212" cy="566" r="14" fill="#a068ca"/><circle cx="242" cy="595" r="10" fill="#d0a8ef"/><circle cx="690" cy="265" r="8" fill="#d7a44a"/><path d="M704 240l8 20 20 8-20 8-8 20-8-20-20-8 20-8z" fill="#d7a44a"/>
+</g>
+</svg>

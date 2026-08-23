@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ArrowUpRight, Play } from "@lucide/vue";
+import { ref } from "vue";
 import type { MediaMoment } from "@/types/content";
 
 defineProps<{ moment: MediaMoment }>();
+const imageFailed = ref(false);
 </script>
 
 <template>
@@ -10,13 +12,22 @@ defineProps<{ moment: MediaMoment }>();
     <a :href="moment.url" target="_blank" rel="noreferrer noopener">
       <div class="media-card__image">
         <img
-          v-if="moment.thumbnailUrl"
+          v-if="moment.thumbnailUrl && !imageFailed"
           :src="moment.thumbnailUrl"
           width="480"
           height="360"
           :alt="moment.alt ?? ''"
           loading="lazy"
           referrerpolicy="no-referrer"
+          @error="imageFailed = true"
+        />
+        <img
+          v-else
+          src="/media/streams/streams-card-clips.svg"
+          width="960"
+          height="540"
+          alt="Illustrated Ghostie clip card"
+          loading="lazy"
         />
         <span class="media-card__play" aria-hidden="true"><Play :size="20" fill="currentColor" /></span>
       </div>

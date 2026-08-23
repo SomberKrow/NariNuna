@@ -1,60 +1,50 @@
 <script setup lang="ts">
-import { BookOpen, FlaskConical, Images, Paintbrush, ShieldAlert } from "@lucide/vue";
-import SectionHeading from "@/components/ui/SectionHeading.vue";
+import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
+import { environmentArtwork, ghostieArtwork, officialEmotes } from "@/data/artwork";
 
-const studioRooms = [
-  { icon: Images, title: "The gallery", text: "Approved photographs of Nari's own sets, presented with room to see the craft—not compressed into a disposable thumbnail wall." },
-  { icon: BookOpen, title: "Process notes", text: "Self-taught learning, experiments, mistakes, and practical observations written in Nari's voice." },
-  { icon: Paintbrush, title: "The tool cabinet", text: "Products and tools Nari has actually approved, with honest context and visible affiliate disclosure when relevant." }
+const studioPieces = [
+  { icon: Images, title: "Her real work", text: "Nari's own sets and photographs belong here when she chooses which ones to share.", art: "/media/nails/nails-polish-bottle-illustration.svg" },
+  { icon: Paintbrush, title: "The fun part", text: "Color stories, tiny details, glitter experiments, and the occasional wonderful accident.", art: "/media/nails/nails-polish-ghostie.svg" },
+  { icon: BookOpen, title: "What she's learning", text: "Honest little lessons from a self-taught artist figuring things out as she goes.", art: "/media/nails/nails-manicure-station-vignette.svg" }
 ];
 </script>
 
 <template>
-  <section class="nail-hero">
-    <picture aria-hidden="true">
-      <source srcset="/media/generated/nari-nail-studio-640.webp 640w, /media/generated/nari-nail-studio-1024.webp 1024w, /media/generated/nari-nail-studio-1568.webp 1568w" sizes="100vw" type="image/webp" />
-      <img src="/media/generated/nari-nail-studio-1568.webp" width="1568" height="1003" alt="" fetchpriority="high" />
-    </picture>
-    <div class="nail-hero__veil"></div>
-    <div class="nail-hero__copy page-width">
-      <p class="eyebrow eyebrow--light"><Paintbrush :size="16" aria-hidden="true" /> Nari's Nail Studio</p>
-      <h1>Color is a language.<br /><em>The desk is open.</em></h1>
-      <p>Nari's self-taught nail-art practice deserves a real creative room: beautiful, honest about scope, and built to teach through process rather than borrowed authority.</p>
+  <section class="studio-opening">
+    <div class="studio-opening__backdrop" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.nails}')` }"></div>
+    <div class="studio-opening__inner page-width">
+      <div>
+        <p class="eyebrow"><Paintbrush :size="16" aria-hidden="true" /> Welcome to the nail desk</p>
+        <h1>Tiny canvases.<br /><em>Big Nari energy.</em></h1>
+        <p>Pretty colors, careful little details, and a self-taught creative who genuinely loves showing people what she's figuring out.</p>
+        <div class="tag-row"><span><Heart :size="15" aria-hidden="true" /> Made with love</span><span><Sparkles :size="15" aria-hidden="true" /> Probably with glitter</span></div>
+      </div>
+      <img class="studio-opening__ghostie" :src="ghostieArtwork.nails" width="380" height="380" alt="An excited Ghostie paints its nails beside a collection of pink and purple polish" fetchpriority="high" />
     </div>
   </section>
 
-  <section class="section-pad page-width">
-    <SectionHeading eyebrow="A flagship room" title="The gallery will be real, or it will wait." text="Generated environment art sets the atmosphere. It is never presented as a manicure Nari made." />
-    <div class="studio-grid">
-      <article v-for="room in studioRooms" :key="room.title">
-        <component :is="room.icon" :size="28" aria-hidden="true" />
-        <h2>{{ room.title }}</h2>
-        <p>{{ room.text }}</p>
-        <span class="status-chip">Awaiting Nari's approved content</span>
+  <section class="studio-notes page-width section-pad">
+    <header class="world-heading"><p class="eyebrow">A proper creative room</p><h2>Polish, practice, and doing it her way.</h2></header>
+    <div class="studio-notes__grid">
+      <article v-for="piece in studioPieces" :key="piece.title">
+        <img :src="piece.art" width="280" height="190" alt="" loading="lazy" />
+        <component :is="piece.icon" :size="19" aria-hidden="true" />
+        <h3>{{ piece.title }}</h3>
+        <p>{{ piece.text }}</p>
       </article>
     </div>
   </section>
 
-  <section class="gallery-hold section-pad">
-    <div class="gallery-hold__inner page-width">
-      <div class="gallery-hold__visual" aria-hidden="true">
-        <span>01</span><span>02</span><span>03</span><span>04</span>
-      </div>
-      <div>
-        <p class="eyebrow">Gallery intake</p>
-        <h2>Four frames are ready. The photographs are not being guessed.</h2>
-        <p>When Nari provides her canonical nail-photo set, each image will receive a subject label, crop review, alt text, metadata stripping, responsive exports, and an ownership note before it appears here.</p>
-      </div>
+  <section class="honest-gallery">
+    <div class="honest-gallery__inner page-width">
+      <img src="/media/states/state-empty-gallery.svg" width="320" height="270" alt="A Ghostie keeps the nail-gallery frames warm until Nari chooses real photographs" loading="lazy" />
+      <div><p class="eyebrow">The gallery is getting its top coat</p><h2>Her actual work, or nothing.</h2><p>No stock nails. No generated hands. No pretending someone else's manicure is Nari's. Her own approved photos will live here when they're ready.</p></div>
+      <img class="honest-gallery__emote" :src="officialEmotes.comfy" width="105" height="105" alt="" aria-hidden="true" loading="lazy" />
     </div>
   </section>
 
-  <section class="safety-note page-width section-pad">
-    <ShieldAlert :size="34" aria-hidden="true" />
-    <div>
-      <p class="eyebrow">Clear scope</p>
-      <h2>Creative learning, not medical advice.</h2>
-      <p>Nari publicly describes her nail work as self-taught and performed on herself. The studio will not claim licensure, client services, or medical authority. Content involving allergies, infection, chemical exposure, or nail health must point readers toward qualified professional care.</p>
-    </div>
-    <FlaskConical :size="64" aria-hidden="true" />
+  <section class="studio-boundary page-width">
+    <FlaskConical :size="30" aria-hidden="true" />
+    <div><p class="eyebrow">Just so we're clear</p><h2>A creative desk, not a salon.</h2><p>Nari's nail work is self-taught and done on herself. This space is about art, learning, and enjoying the process—not services, bookings, medical advice, or invented credentials.</p><a class="text-link" href="/resources/">Visit the resource shelf <ArrowRight :size="16" aria-hidden="true" /></a></div>
   </section>
 </template>

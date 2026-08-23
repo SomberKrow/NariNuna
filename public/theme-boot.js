@@ -9,7 +9,7 @@
   var fallback = document.documentElement.dataset.theme || "nari";
   var theme = allowed.indexOf(stored) >= 0 ? stored : fallback;
   document.documentElement.dataset.theme = theme;
-  var colors = { nari: "#3d2330", dark: "#160f18", light: "#f4e8d3" };
+  var colors = { nari: "#2a1820", dark: "#130d13", light: "#efe1cd" };
   var meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute("content", colors[theme]);
 })();

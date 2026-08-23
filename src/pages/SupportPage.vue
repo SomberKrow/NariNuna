@@ -1,51 +1,23 @@
 <script setup lang="ts">
 import { ArrowUpRight, Eye, Gift, Heart, Share2 } from "@lucide/vue";
+import { ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
 import { throneUrl, twitchUrl } from "@/data/socials";
 
 const ways = [
-  { icon: Eye, title: "Be there", text: "Watch when you want, lurk when you need, and enjoy the room without performing for it." },
-  { icon: Share2, title: "Share something you loved", text: "A clip sent to the right person can matter more than any algorithmic ritual." },
-  { icon: Heart, title: "Treat the room well", text: "Kindness, respect, and healthy boundaries are real support for Nari and every Ghostie." }
+  { icon: Eye, art: officialEmotes.comfy, title: "Just be here", text: "Watch, lurk, laugh, or take a break. You never need to perform to deserve your place." },
+  { icon: Share2, art: officialEmotes.uwu, title: "Share a favorite moment", text: "Send a clip to somebody who needs a laugh. Genuine little moments mean a lot." },
+  { icon: Heart, art: officialEmotes.shy, title: "Be good to the room", text: "Kindness, respect, and healthy boundaries help everyone in the Haven breathe." }
 ];
 </script>
 
 <template>
-  <section class="support-hero page-width section-pad">
-    <img src="/media/generated/ghostie-512.webp" width="360" height="360" alt="A grateful lavender Ghostie holds its hands to its heart" />
-    <div>
-      <p class="eyebrow">Your presence is enough</p>
-      <h1>Support is welcome.<br /><em>It is never a debt.</em></h1>
-      <p class="page-hero__lede">You matter in the Haven whether you spend money or not. Watching, sharing, laughing, learning, lurking, and simply being kind are all real forms of support.</p>
-    </div>
+  <section class="support-welcome page-width">
+    <img :src="nariArtwork.cozy" width="390" height="390" alt="Nari's genuine cozy character artwork, smiling over a warm mug" fetchpriority="high" />
+    <div><p class="eyebrow"><Heart :size="15" aria-hidden="true" /> A gentle reminder from your big sister</p><h1>Your presence<br /><em>already counts.</em></h1><p>You matter here whether you spend money or not. Laughing, learning, lurking, checking in, and simply being kind are all real support.</p></div>
+    <img class="support-welcome__ghostie" :src="ghostieArtwork.heart" width="150" height="150" alt="" aria-hidden="true" loading="lazy" />
   </section>
 
-  <section class="support-promise section-pad">
-    <div class="support-promise__inner page-width">
-      <Gift :size="38" aria-hidden="true" />
-      <blockquote>Financial support does not create ownership, obligation, control over Nari's time, or special permission to cross her boundaries.</blockquote>
-    </div>
-  </section>
+  <section class="support-kindness"><div class="page-width section-pad"><header class="world-heading"><p class="eyebrow">The things that cost absolutely nothing</p><h2>These are the big ones.</h2></header><div class="support-kindness__grid"><article v-for="way in ways" :key="way.title"><img :src="way.art" width="120" height="120" alt="" loading="lazy" /><component :is="way.icon" :size="18" aria-hidden="true" /><h3>{{ way.title }}</h3><p>{{ way.text }}</p></article></div></div></section>
 
-  <section class="section-pad page-width">
-    <p class="eyebrow">The free ways count</p>
-    <div class="support-grid">
-      <article v-for="way in ways" :key="way.title">
-        <component :is="way.icon" :size="28" aria-hidden="true" />
-        <h2>{{ way.title }}</h2>
-        <p>{{ way.text }}</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="optional-support page-width section-pad">
-    <div>
-      <p class="eyebrow">If you genuinely want to</p>
-      <h2>Nari's current public wishlist lives on Throne.</h2>
-      <p>Wishlist contents and availability are managed on Throne and were not imported into this site. Review that external page on its own terms, with zero pressure from this one.</p>
-      <div class="button-row">
-        <a class="button button--emerald" :href="throneUrl" target="_blank" rel="noreferrer noopener">Open Throne <ArrowUpRight :size="18" aria-hidden="true" /></a>
-        <a class="button button--outline" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Just hang out on Twitch <ArrowUpRight :size="18" aria-hidden="true" /></a>
-      </div>
-    </div>
-  </section>
+  <section class="support-boundary page-width"><Gift :size="31" aria-hidden="true" /><div><p class="eyebrow">If you genuinely want to</p><h2>Nari's wishlist lives on Throne.</h2><p>Financial support never buys access, extra attention, ownership, permission to cross a boundary, or a claim on Nari's time. Ever.</p><div class="button-row"><a class="button button--emerald" :href="throneUrl" target="_blank" rel="noreferrer noopener">Visit Throne <ArrowUpRight :size="17" aria-hidden="true" /></a><a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Or just come hang out <ArrowUpRight :size="15" aria-hidden="true" /></a></div></div></section>
 </template>
