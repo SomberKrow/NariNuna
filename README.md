@@ -2,7 +2,7 @@
 
 A warm, true multi-page home for Nari Nuna's streams, self-taught nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-The current implementation centers Nari's actual supplied character model, supplied cozy character art, her official static emotes, and the complete set of 27 supplied Prinny illustrations. Purpose-built Ghosties, illustrated rooms, page-specific artwork, and three time-of-day environments surround that authentic identity without generating or substituting a Nari likeness.
+The current implementation builds an entirely bespoke autumn-storybook world around an owner-authorized reillustration grounded directly in Nari's actual supplied character model. Seven original painted rooms—including five integrated model-faithful Nari appearances—five newly painted Ghosties, illustrated chapter postcards, three coherent times of day, custom app icons, and route-specific social paintings carry her identity across the entire site. Her real supplied model, original cozy character art, official static emotes, and all 27 supplied Prinny illustrations remain intact.
 
 ## Product direction
 
@@ -68,6 +68,7 @@ Critical references:
 - [Design system and exact color tokens](docs/04_DESIGN_SYSTEM_AND_COMPONENT_LANGUAGE.md)
 - [Asset manifest and rights pipeline](docs/06_ASSET_MANIFEST_AND_ART_PIPELINE.md)
 - [Authentic artwork implementation and review boundaries](docs/23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md)
+- [Bespoke storybook art direction and complete generation prompts](docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md)
 - [Technical architecture](docs/07_TECHNICAL_ARCHITECTURE.md)
 - [Current-state audit](docs/17_CURRENT_STATE_AUDIT.md)
 - [Code standards](docs/18_CODE_STANDARDS.md)
@@ -80,7 +81,7 @@ The documentation is part of the product contract. Changes to routes, tokens, as
 
 ## Asset and content posture
 
-Publicly visible artwork is not automatically licensed for republication. The character model, cozy character illustration, official static emotes, and 27 original Prinny designs in this private review implementation were recovered from the owner-supplied Nari project archive, not copied, scraped, or hotlinked from public platforms. Generated support artwork is limited to environments, decorative systems, Ghosties, metadata, and UI; it is never represented as a generated Nari model, Nari nail portfolio, or replacement Prinny design.
+Publicly visible artwork is not automatically licensed for republication. The actual character model, cozy illustration, official static emotes, and 27 original Prinny designs came from the owner-supplied Nari project archive, never public scraping or hotlinking. At the owner's subsequent explicit direction, the site also includes identity-preserving illustrated Nari derivatives anchored directly to that actual supplied model. Those paintings are identified as owner-directed reillustrations, never falsely presented as the original artist's untouched artwork, a real nail portfolio, or replacement Prinny designs. Public model-derivative, artist, and website-use rights remain unresolved.
 
 Owner-directed inclusion in a private review branch does **not** resolve the commissioned artists, copyright holders, public website display, required credits, cropping/background treatment, or franchise-related rights. Record those decisions before any public deployment. The actual source archive remains outside served assets; web derivatives are stripped and locally hosted.
 

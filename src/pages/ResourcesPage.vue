@@ -14,13 +14,13 @@ const categoryArt = [
 <template>
   <section class="room-opening room-opening--resources page-width">
     <div class="room-opening__copy">
-      <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Nari's little resource shelf</p>
+      <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Chapter five · the very helpful shelf</p>
       <h1>Useful things.<br /><em>Chosen with care.</em></h1>
       <p>Helpful finds, creator tools, and nail-desk favorites only get a spot if Nari actually wants to share them.</p>
       <div class="room-opening__signals"><span><HeartHandshake :size="15" aria-hidden="true" /> People before products</span></div>
     </div>
     <div class="room-opening__art room-opening__art--resources">
-      <img :src="environmentArtwork.resources" width="1400" height="900" alt="An illustrated cozy desk with books, a lantern, handwritten notes, lavender, and tiny Ghosties" fetchpriority="high" />
+      <img :src="environmentArtwork.resources" width="1672" height="941" alt="An intricately hand-painted autumn library where little Ghosties keep watch over Nari's books, creative tools, lavender, and helpful shelves" fetchpriority="high" />
       <img class="room-opening__companion" src="/media/resources/resources-helper-ghostie.svg" width="145" height="145" alt="A helpful Ghostie keeps watch over Nari's resource shelf" loading="lazy" />
     </div>
   </section>

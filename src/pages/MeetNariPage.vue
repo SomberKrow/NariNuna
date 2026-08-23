@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import { detailArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
+import { detailArtwork, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
 const expressions = [
@@ -13,9 +13,9 @@ const expressions = [
 </script>
 
 <template>
-  <section class="character-intro page-width">
+  <section class="character-intro character-intro--storybook page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.homeSunset}')` }">
     <div class="character-intro__copy">
-      <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Your host, your hype woman, your bad influence</p>
+      <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
       <h1>Hi, I'm <em>Nari.</em></h1>
       <p class="character-intro__subtitle">Big-sister energy. Artist hands. Absolutely no volume control.</p>
       <p class="character-intro__text">I love making people laugh, finding pretty things, learning as I go, and turning strangers into the kind of people who remember to check on each other.</p>
@@ -34,7 +34,7 @@ const expressions = [
         :src="nariArtwork.portrait"
         width="883"
         height="1360"
-        alt="Nari's real character model with emerald eyes, brown hair tipped in purple, and her lavender-and-black outfit"
+        alt="Nari's identity-faithful illustrated portrait, preserving the emerald eyes, asymmetric ears, purple-tipped brown hair, and lavender outfit of her actual model"
         fetchpriority="high"
       />
       <img class="character-intro__ghostie" :src="ghostieArtwork.peekingRight" width="145" height="145" alt="" aria-hidden="true" />

@@ -43,10 +43,10 @@ onBeforeUnmount(() => {
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
-        <img :src="nariArtwork.cozy" width="52" height="52" alt="" />
+        <img :src="nariArtwork.avatar" width="52" height="52" alt="" />
         <span>
           <strong>Nari <i>Nuna</i></strong>
-          <small>A little place to belong</small>
+          <small>The little world next door</small>
         </span>
       </a>
 
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
         <ThemeSwitcher />
         <a class="site-header__live-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
           <span aria-hidden="true"></span>
-          Twitch
+          On Twitch
           <span class="sr-only"> (opens in a new tab)</span>
         </a>
       </div>

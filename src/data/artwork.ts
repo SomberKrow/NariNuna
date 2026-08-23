@@ -1,21 +1,24 @@
 export const nariArtwork = {
-  fullbody: "/media/nari/nari-model-fullbody.webp",
-  portrait: "/media/nari/nari-model-portrait.webp",
+  fullbody: "/media/storybook/characters/nari-painted-welcome.webp",
+  portrait: "/media/storybook/characters/nari-painted-portrait.webp",
+  avatar: "/media/storybook/characters/nari-painted-avatar.webp",
+  suppliedModel: "/media/nari/nari-model-fullbody.webp",
+  suppliedPortrait: "/media/nari/nari-model-portrait.webp",
   cozy: "/media/nari/nari-comfy-original.webp",
   wordmark: "/media/identity/nari-wordmark.webp",
   icon: "/media/identity/nari-icon.webp"
 } as const;
 
 export const ghostieArtwork = {
-  shy: "/media/ghosties/ghostie-shy.webp",
+  shy: "/media/storybook/ghosties/ghostie-shy.webp",
   floating: "/media/ghosties/ghostie-floating.webp",
   waving: "/media/ghosties/ghostie-waving.webp",
-  chaotic: "/media/ghosties/ghostie-chaotic.webp",
+  chaotic: "/media/storybook/ghosties/ghostie-chaos.webp",
   peeking: "/media/ghosties/ghostie-peeking.webp",
-  cozy: "/media/ghosties/ghostie-cozy.webp",
-  heart: "/media/ghosties/ghostie-heart.webp",
+  cozy: "/media/storybook/ghosties/ghostie-cozy.webp",
+  heart: "/media/storybook/ghosties/ghostie-heart.webp",
   protective: "/media/ghosties/ghostie-protective.webp",
-  nails: "/media/ghosties/ghostie-nails.webp",
+  nails: "/media/storybook/ghosties/ghostie-nails.webp",
   derpy: "/media/ghosties/ghostie-derpy.webp",
   friendly: "/media/ghosties/ghostie-friendly.webp",
   peekingLeft: "/media/ghosties/ghostie-peeking-left.webp",
@@ -37,14 +40,25 @@ export const officialEmotes = {
 } as const;
 
 export const environmentArtwork = {
-  homeSunset: "/media/environments/haven-room-sunset.svg",
-  homeNight: "/media/environments/haven-room-night.svg",
-  homeDaylight: "/media/environments/haven-room-daylight.svg",
-  commonRoom: "/media/environments/haven-common-room.svg",
-  streams: "/media/environments/streams-room.svg",
-  nails: "/media/nails/nails-environment-support.svg",
-  resources: "/media/resources/resources-environment-support.svg",
-  work: "/media/work/work-environment-support.svg"
+  homeSunset: "/media/storybook/scenes/haven-sunset.webp",
+  homeNight: "/media/storybook/scenes/haven-midnight.webp",
+  homeDaylight: "/media/storybook/scenes/haven-daybreak.webp",
+  commonRoom: "/media/storybook/scenes/haven-community.webp",
+  streams: "/media/storybook/scenes/streams-atelier.webp",
+  nails: "/media/storybook/scenes/nails-atelier.webp",
+  resources: "/media/storybook/scenes/resources-library.webp",
+  work: "/media/storybook/scenes/work-correspondence.webp",
+  stories: "/media/storybook/scenes/stories-lantern.webp"
+} as const;
+
+export const storybookPostcards = {
+  home: "/media/storybook/postcards/haven-sunset.webp",
+  haven: "/media/storybook/postcards/haven-community.webp",
+  streams: "/media/storybook/postcards/streams-atelier.webp",
+  nails: "/media/storybook/postcards/nails-atelier.webp",
+  resources: "/media/storybook/postcards/resources-library.webp",
+  work: "/media/storybook/postcards/work-correspondence.webp",
+  stories: "/media/storybook/postcards/stories-lantern.webp"
 } as const;
 
 export const detailArtwork = {

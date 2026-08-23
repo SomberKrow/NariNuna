@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ArrowRight, Gamepad2, Heart, Paintbrush, Sparkles } from "@lucide/vue";
+import { ArrowRight, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import SocialDock from "@/components/ui/SocialDock.vue";
-import { detailArtwork, ghostieArtwork, nariArtwork } from "@/data/artwork";
+import { detailArtwork, ghostieArtwork, nariArtwork, storybookPostcards } from "@/data/artwork";
 import { twitchUrl } from "@/data/socials";
 
 const rooms = [
-  { icon: Gamepad2, title: "Streams", note: "Games, giggles & glorious panic", href: "/streams/" },
-  { icon: Paintbrush, title: "Nail art", note: "Tiny canvases, big creativity", href: "/nail-studio/" },
-  { icon: Heart, title: "The Haven", note: "A soft place to belong", href: "/haven/" }
+  { icon: Gamepad2, title: "The stream room", note: "Laughter comes with the furniture.", href: "/streams/", image: storybookPostcards.streams, number: "01" },
+  { icon: Paintbrush, title: "The nail desk", note: "A little glitter gets everywhere.", href: "/nail-studio/", image: storybookPostcards.nails, number: "02" },
+  { icon: Heart, title: "The Haven", note: "There's always room for you.", href: "/haven/", image: storybookPostcards.haven, number: "03" }
 ];
 </script>
 
@@ -16,22 +16,25 @@ const rooms = [
     <div class="haven-landing__scene" aria-hidden="true"></div>
     <div class="haven-landing__veil" aria-hidden="true"></div>
     <img class="haven-landing__sprig" :src="detailArtwork.lavender" width="290" height="290" alt="" aria-hidden="true" />
+    <div class="haven-landing__margin-note" aria-hidden="true"><span>AUTUMN, AFTER HOURS</span><i></i><MoonStar :size="15" /></div>
 
     <div class="haven-landing__inner page-width">
       <div class="haven-landing__welcome">
-        <p class="haven-landing__kicker"><Sparkles :size="15" aria-hidden="true" /> Come in, Ghostie.</p>
+        <p class="haven-landing__kicker"><Sparkles :size="15" aria-hidden="true" /> A little refuge for lovely weirdos</p>
         <h1 id="landing-title">
           <span>Nari</span>
           <em>Nuna</em>
         </h1>
-        <p class="haven-landing__subtitle">Your chaotic big sister on the internet.</p>
-        <p class="haven-landing__intro">Games, cute nails, loud laughs, and a cozy little corner where people get to feel like people.</p>
+        <p class="haven-landing__subtitle">Your favorite chaotic big sister.</p>
+        <p class="haven-landing__intro">Somewhere between the late-night laughing, the tiny painted nails, and one more cup of cocoa, we made a place to belong.</p>
+
+        <div class="haven-landing__divider" aria-hidden="true"><span></span><Heart :size="15" /><span></span></div>
 
         <SocialDock />
 
         <div class="haven-landing__actions">
           <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
-            Come hang out
+            Come sit with us
             <ArrowRight :size="17" aria-hidden="true" />
             <span class="sr-only"> on Twitch (opens in a new tab)</span>
           </a>
@@ -45,20 +48,21 @@ const rooms = [
           :src="nariArtwork.fullbody"
           width="888"
           height="2400"
-          alt="Nari Nuna's actual character model, with emerald eyes, dark hair, a lavender outfit, and a fluffy purple-tipped tail"
+          alt="Nari, reillustrated directly from her real model with emerald eyes, asymmetric cat-and-dog ears, flowing purple-tipped hair, her lavender outfit, and her fluffy purple-tipped tail"
           fetchpriority="high"
         />
         <img class="haven-landing__ghostie haven-landing__ghostie--shy" :src="ghostieArtwork.shy" width="180" height="180" alt="" loading="lazy" />
-        <img class="haven-landing__ghostie haven-landing__ghostie--hello" :src="ghostieArtwork.waving" width="136" height="136" alt="" loading="lazy" />
-        <div class="haven-landing__note"><Heart :size="15" aria-hidden="true" /> You already belong.</div>
+        <img class="haven-landing__ghostie haven-landing__ghostie--hello" :src="ghostieArtwork.heart" width="136" height="136" alt="" loading="lazy" />
+        <div class="haven-landing__note"><Heart :size="15" aria-hidden="true" /> saved you a spot ♡</div>
       </div>
     </div>
 
     <nav class="haven-landing__rooms page-width" aria-label="Explore Nari's rooms">
       <a v-for="room in rooms" :key="room.href" :href="room.href">
-        <component :is="room.icon" :size="18" aria-hidden="true" />
-        <span><strong>{{ room.title }}</strong><small>{{ room.note }}</small></span>
-        <ArrowRight :size="15" aria-hidden="true" />
+        <img :src="room.image" width="320" height="180" alt="" loading="lazy" />
+        <span class="haven-landing__room-number">{{ room.number }}</span>
+        <span class="haven-landing__room-copy"><strong>{{ room.title }}</strong><small>{{ room.note }}</small></span>
+        <component :is="room.icon" :size="19" aria-hidden="true" />
       </a>
     </nav>
   </section>

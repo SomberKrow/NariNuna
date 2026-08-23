@@ -112,6 +112,23 @@ Use `templates/DECISION_RECORD.md` for substantial new decisions, then summarize
 **Consequences:** Obscurity is not security; `P` shortcut remains optional.  
 **Revisit when:** The joke no longer fits Nari or introduces maintenance/rights cost.
 
+### ADR-008 — Owner-authorized model-anchored storybook reillustration
+
+**State:** `ACCEPTED_FOR_PRIVATE_REVIEW`; public-release derivative/model rights `BLOCKED`
+
+**Date:** 2026-08-23
+
+**Decision owner:** Repository/product owner Jake; Nari retains final public identity and likeness approval.
+
+**Decision:** Preserve the supplied original Nari model, supplied cozy illustration, official static emotes, and all 27 original Prinny designs. At the owner's explicit subsequent direction, create an identity-preserving storybook Nari reillustration and bespoke character-led environments using the supplied real `Model_File.png` as reference. Never derive identity from public imagery, guess a replacement model, redraw Prinnies, invent character canon, or present generated nail paintings as real work.
+
+**Identity invariants:** Warm tan adult complexion, emerald eyes, long chocolate hair with blunt bangs and purple-gradient tips, asymmetric floppy dark dog ear and pointed cat ear with white tuft, fluffy brown-to-purple tail, off-shoulder lavender sheer-sleeve top, tightly laced black corset, layered lavender/black skirt, distressed black thigh-highs, chunky black boots, delicate sun/moon jewelry, subtle shoulder tattoo, and caring protective big-sister expression.
+
+**Reason:** The previous actual-model-over-generic-room execution did not meet the owner's visual direction; integrated model-faithful painting gives Nari an individual creative world without discarding her identity.
+
+**Consequences:** Identify derivatives honestly; retain original artwork and official emotes; record generated prompts and provenance; leave artist, model derivative, publication, credit, franchise, and final Nari approvals open. This supersedes the previous blanket private-review no-reillustration constraint only for explicitly model-anchored owner-requested work; public-reference generation remains forbidden.
+**Revisit when:** Nari accepts/rejects the portrayal, an original artist restricts derivatives, public rights are resolved, or the canonical model changes.
+
 ## Open decisions
 
 | ID | Question | State | Blocks | Safe default |

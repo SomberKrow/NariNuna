@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpRight, Eye, Gift, Heart, Share2 } from "@lucide/vue";
-import { ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
 import { throneUrl, twitchUrl } from "@/data/socials";
 
 const ways = [
@@ -11,9 +11,9 @@ const ways = [
 </script>
 
 <template>
-  <section class="support-welcome page-width">
+  <section class="support-welcome support-welcome--painted page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.commonRoom}')` }">
     <img :src="nariArtwork.cozy" width="390" height="390" alt="Nari's genuine cozy character artwork, smiling over a warm mug" fetchpriority="high" />
-    <div><p class="eyebrow"><Heart :size="15" aria-hidden="true" /> A gentle reminder from your big sister</p><h1>Your presence<br /><em>already counts.</em></h1><p>You matter here whether you spend money or not. Laughing, learning, lurking, checking in, and simply being kind are all real support.</p></div>
+    <div><p class="eyebrow"><Heart :size="15" aria-hidden="true" /> A gentle reminder, before anything else</p><h1>Your presence<br /><em>already counts.</em></h1><p>You matter here whether you spend money or not. Laughing, learning, lurking, checking in, and simply being kind are all real support.</p></div>
     <img class="support-welcome__ghostie" :src="ghostieArtwork.heart" width="150" height="150" alt="" aria-hidden="true" loading="lazy" />
   </section>
 

@@ -1,5 +1,11 @@
 # Authentic Artwork Implementation and Review Boundaries
 
+## Subsequent owner-directed storybook revision — 2026-08-23
+
+The supplied-art-only implementation documented below is retained as the first private-review baseline. The repository owner subsequently rejected that execution as too generic and explicitly authorized reillustrating Nari while retaining everything identifying her. The current site therefore adds an identity-preserving storybook character, seven bespoke room paintings including five integrated Nari scenes, five newly painted Ghosties, three Home atmospheres, chapter postcards, replacement Nari icons, and route-specific painted social images. Every Nari illustration is anchored directly to the owner-supplied actual `Model_File.png`; original model derivatives, cozy artwork, official emotes, and all 27 original Prinny designs remain available.
+
+This subsequent direction supersedes earlier statements below prohibiting every private-review Nari reillustration; it does not authorize public-reference-based likeness generation, replacement Prinnies, invented canon, fabricated nail portfolios, or public deployment. ADR-008 records the narrow authority and invariant character traits. [`24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`](24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md) records the complete prompts and pipeline. Original artist rights, model derivative terms, Nari approval, public website permission, credits, and franchise review remain unresolved.
+
 **Implementation date:** 2026-08-23
 **Authority:** Repository owner's explicit instruction to use Nari's real model and original supplied Prinnies in this private repository review implementation
 **Public-release status:** `BLOCKED` pending Nari approval, artist/owner attribution, exact website-use permissions, and underlying Prinny/franchise review

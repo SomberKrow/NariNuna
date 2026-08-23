@@ -8,7 +8,7 @@
 
 ## 2026-08-23 owner-directed authentic-artwork implementation update
 
-The repository owner explicitly directed that the site feature Nari's real model and original Prinnies, not generated substitutes. The current private review implementation therefore uses the supplied `Model_File.png`, supplied `Assets/comfy.png`, supplied static emotes, and all 27 unchanged-as-design `Assets/PrinnysForThrow/*.png` artwork derivatives from the owner-supplied project archive. Nari herself is never generated or redrawn. Previously prepared generated artwork is limited to Ghosties, supporting environments, decorative assets, social previews, and interface illustration.
+The repository owner first directed that the site retain Nari's real model and original Prinnies, then explicitly authorized an identity-preserving reillustration of Nari to create a distinctive, cohesive private-review website. The implementation retains the supplied `Model_File.png`, supplied `Assets/comfy.png`, supplied static emotes, and all 27 unchanged-as-design `Assets/PrinnysForThrow/*.png` derivatives. Its storybook character and character-led environments are derived from the actual supplied model, never public references or a guessed replacement identity. Asymmetric ears, emerald eyes, brown-to-purple hair and tail, lavender/corset silhouette, complexion, accessories, and warm adult demeanor are mandatory invariants. Owner-directed private review is not public-release or model-artist derivative-rights approval; see ADR-008 and `docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`.
 
 This owner instruction authorizes implementation and review in the private repository; it does **not** establish Nari's final public-copy approval, artist ownership, exact website rights, required attribution, or franchise-related permissions. Public launch remains blocked until those records are completed. The hidden room remains optional, `noindex, nofollow`, absent from normal navigation, and uses the supplied designs without inventing approved names, ranks, biographies, or canon. See [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
 
@@ -104,7 +104,7 @@ This is a launch blocker, not an invitation to improvise.
 Until Nari resolves it:
 
 - use neutral big-sister VTuber wording;
-- do not generate or redraw a Nari likeness;
+- never generate or redraw Nari from public references; only an explicit owner-authorized, identity-preserving private-review reillustration grounded in the actual supplied model is permitted, without resolving public derivative rights or inventing lore;
 - do not merge CatDog traits with Grim Reaper lore;
 - keep the Meet Nari lore room visibly held;
 - treat public images as references, not website licenses;

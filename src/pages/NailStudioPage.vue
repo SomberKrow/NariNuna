@@ -14,12 +14,12 @@ const studioPieces = [
     <div class="studio-opening__backdrop" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.nails}')` }"></div>
     <div class="studio-opening__inner page-width">
       <div>
-        <p class="eyebrow"><Paintbrush :size="16" aria-hidden="true" /> Welcome to the nail desk</p>
+        <p class="eyebrow"><Paintbrush :size="16" aria-hidden="true" /> Chapter three · her favorite little desk</p>
         <h1>Tiny canvases.<br /><em>Big Nari energy.</em></h1>
         <p>Pretty colors, careful little details, and a self-taught creative who genuinely loves showing people what she's figuring out.</p>
         <div class="tag-row"><span><Heart :size="15" aria-hidden="true" /> Made with love</span><span><Sparkles :size="15" aria-hidden="true" /> Probably with glitter</span></div>
       </div>
-      <img class="studio-opening__ghostie" :src="ghostieArtwork.nails" width="380" height="380" alt="An excited Ghostie paints its nails beside a collection of pink and purple polish" fetchpriority="high" />
+      <img class="studio-opening__ghostie" :src="ghostieArtwork.nails" width="220" height="220" alt="Nari's tiny illustrated Ghostie helper carries a little lavender polish bottle" loading="lazy" />
     </div>
   </section>
 

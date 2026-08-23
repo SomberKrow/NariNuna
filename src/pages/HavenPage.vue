@@ -13,11 +13,11 @@ const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.
     <div class="haven-heart__environment" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.commonRoom}')` }"></div>
     <div class="haven-heart__inner page-width">
       <div>
-        <p class="eyebrow"><House :size="16" aria-hidden="true" /> The room at the center of everything</p>
+        <p class="eyebrow"><House :size="16" aria-hidden="true" /> Chapter four · the room that feels like exhaling</p>
         <h1>You don't have to<br /><em>earn your place here.</em></h1>
         <p>A warm little refuge for big personalities, quiet lurkers, tired people, weird jokes, and anyone who remembers that there are real humans on the other side of the screen.</p>
       </div>
-      <img :src="nariArtwork.cozy" width="430" height="430" alt="Nari's official cozy chibi artwork offering a warm drink and an enthusiastic welcome" fetchpriority="high" />
+      <img :src="nariArtwork.cozy" width="220" height="220" alt="Nari's supplied cozy chibi artwork offering a warm drink and an enthusiastic welcome" loading="lazy" />
     </div>
   </section>
 

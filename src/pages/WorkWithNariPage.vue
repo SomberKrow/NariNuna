@@ -15,14 +15,14 @@ const fits = [
 <template>
   <section class="room-opening room-opening--work page-width">
     <div class="room-opening__copy">
-      <p class="eyebrow"><Handshake :size="16" aria-hidden="true" /> Creators, collaborators, and good ideas</p>
+      <p class="eyebrow"><Handshake :size="16" aria-hidden="true" /> Chapter six · a note from the writing desk</p>
       <h1>Let's make<br /><em>something lovely.</em></h1>
       <p>Good work can be clear, professional, and well organized without asking Nari to become somebody else.</p>
       <a v-if="linktree" class="button button--ember" :href="linktree.url" target="_blank" rel="noreferrer noopener">Find Nari's current links <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
     </div>
     <div class="room-opening__art room-opening__art--work">
-      <img :src="environmentArtwork.work" width="1600" height="900" alt="An illustrated creator desk with a sunset window, stationery, nail tools, lavender, and a Ghostie" fetchpriority="high" />
-      <img class="room-opening__nari-portrait" :src="nariArtwork.portrait" width="210" height="320" alt="Nari's actual character model" loading="lazy" />
+      <img :src="environmentArtwork.work" width="1672" height="941" alt="Nari sits at her beautifully illustrated autumn correspondence desk while a tiny Ghostie helps carry a letter" fetchpriority="high" />
+      <img class="room-opening__nari-portrait" :src="nariArtwork.portrait" width="210" height="320" alt="" aria-hidden="true" loading="lazy" />
     </div>
   </section>
 

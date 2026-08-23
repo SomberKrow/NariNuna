@@ -1,0 +1,1087 @@
+// The Haven is a hand-illustrated autumn storybook, not a set of reusable UI
+// cards. Paintings own the first viewport; the interface sits inside the room.
+:root {
+  --font-display: "Palatino Linotype", "Book Antiqua", Iowan Old Style, Baskerville, serif;
+  --storybook-gold: #dfae77;
+  --storybook-paper: #f4e6d5;
+  --storybook-ink: #21151e;
+  --storybook-plum: #352033;
+  --storybook-rule: rgb(233 194 163 / 29%);
+  --header-height: 5.15rem;
+  --page-width: 82rem;
+  --scene-veil: linear-gradient(90deg, rgb(27 15 21 / 96%) 0%, rgb(33 19 27 / 88%) 30%, rgb(36 20 30 / 56%) 51%, rgb(33 19 29 / 10%) 74%, rgb(27 16 23 / 19%) 100%);
+}
+
+:root[data-theme="dark"] {
+  --scene-veil: linear-gradient(90deg, rgb(13 10 18 / 98%) 0%, rgb(22 15 29 / 91%) 31%, rgb(26 17 34 / 62%) 52%, rgb(16 12 23 / 15%) 76%, rgb(13 9 19 / 32%) 100%);
+}
+
+:root[data-theme="light"] {
+  --storybook-gold: #9d603f;
+  --storybook-paper: #321f27;
+  --storybook-rule: rgb(100 63 67 / 24%);
+  --scene-veil: linear-gradient(90deg, rgb(245 230 210 / 99%) 0%, rgb(245 232 216 / 91%) 30%, rgb(241 221 201 / 65%) 51%, rgb(244 224 201 / 21%) 76%, rgb(244 225 208 / 28%) 100%);
+}
+
+.site-header {
+  border-bottom: 1px solid rgb(229 188 163 / 18%);
+  background: color-mix(in srgb, var(--bg) 93%, transparent);
+  backdrop-filter: blur(17px) saturate(112%);
+}
+
+.site-header__inner {
+  gap: 1.35rem;
+}
+
+.brand-mark {
+  gap: 0.75rem;
+}
+
+.brand-mark img {
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0.13rem;
+  background: linear-gradient(145deg, rgb(206 157 196 / 19%), rgb(226 172 126 / 14%));
+  border: 1px solid var(--storybook-rule);
+  border-radius: 50%;
+}
+
+.brand-mark strong {
+  font-size: 1.18rem;
+  font-style: italic;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.brand-mark small {
+  color: var(--storybook-gold);
+  font-size: 0.49rem;
+  letter-spacing: 0.155em;
+}
+
+.site-header nav a {
+  font-size: 0.75rem;
+  font-weight: 610;
+}
+
+.site-header nav a[aria-current="page"]::after {
+  height: 1px;
+  background: var(--storybook-gold);
+}
+
+.site-header__live-link {
+  padding-inline: 0.82rem;
+  border-color: var(--storybook-rule);
+  font-size: 0.69rem;
+  letter-spacing: 0.015em;
+}
+
+.theme-switcher {
+  border-color: var(--storybook-rule);
+  background: rgb(17 12 19 / 12%);
+}
+
+.haven-landing {
+  min-height: calc(100svh - var(--header-height));
+  max-height: calc(100svh - var(--header-height));
+}
+
+.haven-landing::before {
+  position: absolute;
+  z-index: 4;
+  top: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  border: 1px solid rgb(223 174 119 / 16%);
+  content: "";
+  pointer-events: none;
+}
+
+.haven-landing__scene {
+  background-position: center center;
+}
+
+.haven-landing__sprig {
+  z-index: 0;
+  right: 3%;
+  bottom: 4%;
+  width: clamp(6rem, 13vw, 12.5rem);
+  opacity: 0.32;
+}
+
+.haven-landing__inner {
+  position: relative;
+  width: min(100%, 90rem);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  padding-inline: clamp(3.8rem, 9vw, 9rem);
+}
+
+.haven-landing__margin-note {
+  position: absolute;
+  z-index: 4;
+  top: 18%;
+  bottom: 20%;
+  left: clamp(1.65rem, 3vw, 3.4rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  writing-mode: vertical-rl;
+}
+
+.haven-landing__margin-note > span {
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.53rem;
+  letter-spacing: 0.25em;
+}
+
+.haven-landing__margin-note > i {
+  width: 1px;
+  min-height: 4rem;
+  flex: 1;
+  background: linear-gradient(transparent, var(--storybook-rule), transparent);
+}
+
+.haven-landing__margin-note > svg {
+  color: var(--storybook-gold);
+}
+
+.haven-landing__welcome {
+  max-width: 33rem;
+  padding-block: 1rem 0.5rem;
+}
+
+.haven-landing__kicker {
+  gap: 0.6rem;
+  margin-block-end: 1.15rem;
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.64rem;
+  font-weight: 680;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+}
+
+.haven-landing h1 {
+  display: grid;
+  gap: 0;
+  margin-block-end: 0.9rem;
+  font-size: clamp(4.1rem, 8.4vw, 7.6rem);
+  font-weight: 580;
+  line-height: 0.8;
+  letter-spacing: -0.087em;
+}
+
+.haven-landing h1 > em {
+  padding-inline-start: 0.54em;
+  color: var(--lavender);
+  font-size: 0.76em;
+  font-style: italic;
+  font-weight: 410;
+}
+
+.haven-landing__subtitle {
+  margin-block-end: 0.4rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 1.65vw, 1.45rem);
+  font-style: italic;
+  font-weight: 450;
+}
+
+.haven-landing__intro {
+  max-width: 27.6rem;
+  margin-block-end: 0.65rem;
+  font-size: clamp(0.79rem, 1vw, 0.92rem);
+  line-height: 1.8;
+}
+
+.haven-landing__divider {
+  display: flex;
+  max-width: 18rem;
+  align-items: center;
+  gap: 0.62rem;
+  margin-block: 0.95rem 0.7rem;
+}
+
+.haven-landing__divider > span {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--storybook-rule));
+}
+
+.haven-landing__divider > span:last-child {
+  background: linear-gradient(90deg, var(--storybook-rule), transparent);
+}
+
+.haven-landing__divider > svg {
+  color: var(--storybook-gold);
+}
+
+.social-dock {
+  gap: 0.2rem;
+  margin-block: 0.7rem 1.15rem;
+}
+
+.social-dock > a {
+  width: 3.45rem;
+  font-size: 0.56rem;
+  font-weight: 620;
+}
+
+.social-dock__icon {
+  width: 2.12rem;
+  height: 2.12rem;
+  background: rgb(24 17 24 / 37%);
+  border: 1px solid var(--storybook-rule);
+}
+
+:root[data-theme="light"] .social-dock__icon {
+  background: rgb(244 230 218 / 75%);
+}
+
+.social-dock__icon img {
+  width: 1.12rem;
+  height: 1.12rem;
+}
+
+.haven-landing__actions {
+  gap: 1.25rem;
+}
+
+.haven-landing__actions > .button {
+  min-height: 2.65rem;
+  padding-inline: 1rem;
+  background: var(--storybook-gold);
+  font-size: 0.78rem;
+}
+
+.haven-landing__meet {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.haven-landing__portrait {
+  z-index: 2;
+  height: min(77svh, 46rem);
+  align-self: end;
+  margin-inline-start: -2rem;
+}
+
+.haven-landing__nari {
+  max-width: 112%;
+  filter: drop-shadow(0 0.8rem 2.4rem rgb(13 8 15 / 48%));
+}
+
+.haven-landing__ghostie--shy {
+  right: -1%;
+  bottom: 17%;
+  width: clamp(4.7rem, 10vw, 8rem);
+}
+
+.haven-landing__ghostie--hello {
+  top: 11%;
+  left: -5%;
+  width: clamp(3.9rem, 7vw, 6.6rem);
+}
+
+.haven-landing__note {
+  right: -0.2rem;
+  bottom: 2.3rem;
+  padding: 0.42rem 0.72rem;
+  color: #f8ebdf;
+  background: rgb(38 23 36 / 89%);
+  border-color: var(--storybook-rule);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.haven-landing__rooms {
+  z-index: 5;
+  width: min(100%, 87rem);
+  gap: 0.7rem;
+  padding-inline: clamp(2.4rem, 6vw, 6.3rem);
+  padding-block-end: 1.3rem;
+}
+
+.haven-landing__rooms > a {
+  position: relative;
+  display: grid;
+  min-height: 5.1rem;
+  grid-template-columns: 5.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.72rem;
+  padding: 0.38rem 0.66rem 0.38rem 0.38rem;
+  overflow: hidden;
+  background: rgb(32 21 30 / 89%);
+  border: 1px solid var(--storybook-rule);
+  border-radius: 0.45rem;
+  box-shadow: 0 0.75rem 1.8rem rgb(15 10 13 / 24%);
+}
+
+.haven-landing__rooms > a > img {
+  width: 5.4rem;
+  height: 4.15rem;
+  border-radius: 0.22rem;
+  object-fit: cover;
+  object-position: 68% center;
+}
+
+.haven-landing__room-number {
+  position: absolute;
+  top: 0.64rem;
+  right: 0.65rem;
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.5rem;
+}
+
+.haven-landing__room-copy {
+  display: grid;
+  gap: 0.11rem;
+}
+
+.haven-landing__rooms .haven-landing__room-copy > strong {
+  color: #fbefe4;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 530;
+}
+
+.haven-landing__rooms .haven-landing__room-copy > small {
+  color: #d0b9b9;
+  font-size: 0.64rem;
+}
+
+.haven-landing__rooms > a > svg:last-child {
+  align-self: end;
+  margin-block-end: 0.48rem;
+  color: var(--lavender);
+}
+
+.world-heading {
+  max-width: 51rem;
+  margin-block-end: 2.8rem;
+}
+
+.world-heading h2 {
+  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+  font-weight: 490;
+  letter-spacing: -0.055em;
+}
+
+.world-heading .eyebrow,
+.room-opening .eyebrow,
+.studio-opening .eyebrow,
+.haven-heart .eyebrow,
+.story-opening .eyebrow,
+.support-welcome .eyebrow,
+.character-intro .eyebrow {
+  color: var(--storybook-gold);
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+}
+
+.character-intro--storybook {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  min-height: min(49rem, calc(100svh - var(--header-height)));
+  padding-inline: max(var(--page-gutter), calc((100vw - var(--page-width)) / 2));
+  isolation: isolate;
+}
+
+.character-intro--storybook::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: var(--chapter-painting);
+  background-position: center;
+  background-size: cover;
+  content: "";
+}
+
+.character-intro--storybook::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--bg) 91%, transparent) 36%, color-mix(in srgb, var(--bg) 37%, transparent) 72%);
+  content: "";
+}
+
+.character-intro__copy {
+  max-width: 36rem;
+}
+
+.character-intro__copy h1 {
+  font-size: clamp(4.1rem, 8vw, 6.6rem);
+  font-weight: 480;
+}
+
+.character-intro__portrait {
+  z-index: 1;
+  height: min(43rem, 79svh);
+}
+
+.expression-ribbon {
+  position: relative;
+  background: var(--bg-inset);
+  border-color: var(--storybook-rule);
+}
+
+.expression-ribbon::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--storybook-gold), transparent);
+  content: "";
+}
+
+.room-opening {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: none;
+  min-height: min(45rem, calc(100svh - var(--header-height)));
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+  padding: 5rem max(var(--page-gutter), calc((100vw - var(--page-width)) / 2));
+  isolation: isolate;
+}
+
+.room-opening::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 98%, transparent) 0%, color-mix(in srgb, var(--bg) 93%, transparent) 27%, color-mix(in srgb, var(--bg) 75%, transparent) 45%, color-mix(in srgb, var(--bg) 21%, transparent) 72%, color-mix(in srgb, var(--bg) 8%, transparent) 100%);
+  content: "";
+}
+
+.room-opening__copy {
+  position: relative;
+  max-width: 35rem;
+}
+
+.room-opening__copy h1,
+.studio-opening h1,
+.haven-heart h1,
+.story-opening h1,
+.support-welcome h1 {
+  font-size: clamp(3.3rem, 6vw, 5.7rem);
+  font-weight: 460;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.room-opening__copy h1 em,
+.studio-opening h1 em,
+.haven-heart h1 em,
+.story-opening h1 em,
+.support-welcome h1 em {
+  color: var(--lavender);
+  font-size: 0.82em;
+}
+
+.room-opening__copy > p:not(.eyebrow) {
+  max-width: 30rem;
+  line-height: 1.83;
+}
+
+.room-opening__art {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.room-opening__art > img:first-child {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: 65% center;
+}
+
+.room-opening__companion {
+  top: auto;
+  right: 8%;
+  bottom: 1rem;
+  width: 6.7rem;
+}
+
+.room-opening__nari-portrait {
+  display: none;
+}
+
+.room-opening__signals > span {
+  font-size: 0.74rem;
+}
+
+.studio-opening,
+.haven-heart {
+  min-height: min(46rem, calc(100svh - var(--header-height)));
+}
+
+.studio-opening__backdrop,
+.haven-heart__environment {
+  background-position: 65% center;
+}
+
+.studio-opening::after,
+.haven-heart::after {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 98%, transparent) 0%, color-mix(in srgb, var(--bg) 94%, transparent) 26%, color-mix(in srgb, var(--bg) 72%, transparent) 44%, color-mix(in srgb, var(--bg) 17%, transparent) 76%, color-mix(in srgb, var(--bg) 9%, transparent) 100%);
+}
+
+.studio-opening__inner,
+.haven-heart__inner {
+  position: relative;
+  min-height: min(46rem, calc(100svh - var(--header-height)));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+}
+
+.studio-opening__inner > div,
+.haven-heart__inner > div {
+  max-width: 34rem;
+}
+
+.studio-opening__ghostie {
+  width: 10rem;
+  align-self: end;
+  justify-self: end;
+  margin-block-end: 1.5rem;
+}
+
+.haven-heart__inner > img {
+  width: 8.5rem;
+  align-self: end;
+  justify-self: end;
+  margin-block-end: 1.2rem;
+}
+
+.story-opening--painted,
+.support-welcome--painted {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: none;
+  min-height: min(44rem, calc(100svh - var(--header-height)));
+  align-items: center;
+  padding-inline: max(var(--page-gutter), calc((100vw - var(--page-width)) / 2));
+  isolation: isolate;
+}
+
+.story-opening--painted::before,
+.support-welcome--painted::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background-image: var(--chapter-painting);
+  background-position: 66% center;
+  background-size: cover;
+  content: "";
+}
+
+.story-opening--painted::after,
+.support-welcome--painted::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 97%, transparent) 0%, color-mix(in srgb, var(--bg) 90%, transparent) 30%, color-mix(in srgb, var(--bg) 59%, transparent) 50%, color-mix(in srgb, var(--bg) 13%, transparent) 76%);
+  content: "";
+}
+
+.story-opening--painted > div:first-child,
+.support-welcome--painted > div {
+  position: relative;
+  z-index: 1;
+  max-width: 36rem;
+}
+
+.story-opening__art {
+  position: absolute;
+  right: 3rem;
+  bottom: 1.4rem;
+  width: 12rem;
+}
+
+.story-opening__art > img:first-child {
+  width: 8rem;
+}
+
+.story-opening__art > img:nth-child(2),
+.story-opening__art > img:nth-child(3) {
+  width: 3.8rem;
+}
+
+.support-welcome--painted > img:first-child {
+  position: absolute;
+  right: 5%;
+  bottom: 1rem;
+  width: 8rem;
+}
+
+.support-welcome--painted > .support-welcome__ghostie {
+  right: 1.6%;
+  bottom: 9.3rem;
+  width: 5rem;
+}
+
+.identity-rooms,
+.stream-door-section,
+.studio-notes,
+.resource-shelves,
+.work-fit,
+.social-directory,
+.haven-values {
+  position: relative;
+}
+
+.identity-rooms::before,
+.stream-door-section::before,
+.studio-notes::before,
+.resource-shelves::before,
+.work-fit::before,
+.haven-values::before {
+  position: absolute;
+  top: 3.5rem;
+  right: var(--page-gutter);
+  left: var(--page-gutter);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--storybook-rule), transparent);
+  content: "";
+}
+
+.identity-rooms__grid,
+.studio-notes__grid,
+.resource-shelves__grid,
+.stream-door-grid,
+.support-kindness__grid,
+.haven-values__grid {
+  gap: 1.3rem;
+}
+
+.identity-rooms__grid > article,
+.studio-notes__grid > article,
+.resource-shelves__grid > article,
+.support-kindness__grid > article,
+.haven-values__grid > article,
+.work-fit__grid > article {
+  position: relative;
+  padding: 1.55rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 78% 2%, rgb(215 174 151 / 10%), transparent 48%),
+    linear-gradient(155deg, var(--bg-raised), color-mix(in srgb, var(--bg-inset) 55%, var(--bg-raised)));
+  border: 1px solid var(--storybook-rule);
+  border-radius: 0.55rem;
+  box-shadow: 0 0.7rem 2rem rgb(20 12 18 / 12%);
+}
+
+.identity-rooms__grid > article::after,
+.studio-notes__grid > article::after,
+.resource-shelves__grid > article::after,
+.support-kindness__grid > article::after,
+.haven-values__grid > article::after,
+.work-fit__grid > article::after {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  left: 0.4rem;
+  border: 1px solid rgb(223 174 119 / 9%);
+  content: "";
+  pointer-events: none;
+}
+
+.identity-rooms__grid > article:nth-child(2),
+.studio-notes__grid > article:nth-child(2),
+.resource-shelves__grid > article:nth-child(2),
+.stream-door-grid > a:nth-child(2) {
+  transform: translateY(0.75rem);
+}
+
+.identity-rooms__grid > article > img,
+.haven-values__grid > article > img {
+  width: 7.8rem;
+  filter: drop-shadow(0 0.65rem 0.9rem rgb(22 13 20 / 18%));
+}
+
+.identity-rooms__grid h3,
+.studio-notes__grid h3,
+.resource-shelves__grid h3,
+.haven-values__grid h3,
+.support-kindness__grid h3,
+.work-fit__grid h3 {
+  font-weight: 500;
+}
+
+.stream-door-grid > a {
+  overflow: visible;
+  background: var(--bg-raised);
+  border: 1px solid var(--storybook-rule);
+  border-radius: 0.48rem;
+}
+
+.stream-door-grid > a > img {
+  width: calc(100% - 0.7rem);
+  aspect-ratio: 1.65;
+  margin: 0.35rem 0.35rem 0;
+  border-radius: 0.18rem;
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.stream-door-grid > a > div > span > strong {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 550;
+}
+
+.stream-door-grid > a > div > span > small {
+  margin-block-start: 0.14rem;
+}
+
+.moment-shelf,
+.meaningful-details,
+.shelf-promise,
+.haven-belonging,
+.support-kindness,
+.honest-gallery,
+.work-process {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 12% 8%, rgb(190 129 116 / 8%), transparent 40%),
+    radial-gradient(ellipse at 83% 80%, rgb(138 107 166 / 8%), transparent 41%),
+    var(--bg-inset);
+  border-color: var(--storybook-rule);
+}
+
+.haven-belonging__badges > span {
+  border-color: var(--storybook-rule);
+  border-radius: 0.45rem;
+}
+
+.nari-promise {
+  gap: 2.7rem;
+}
+
+.site-footer {
+  overflow: hidden;
+  border-color: var(--storybook-rule);
+  background:
+    radial-gradient(ellipse at 89% 9%, rgb(196 152 186 / 12%), transparent 40%),
+    var(--bg-inset);
+}
+
+.site-footer__statement h2 {
+  font-style: italic;
+  font-weight: 480;
+}
+
+.site-footer__links,
+.site-footer__base {
+  border-color: var(--storybook-rule);
+}
+
+@media (max-width: 75rem) {
+  .haven-landing__inner {
+    padding-inline: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .haven-landing__rooms {
+    padding-inline: clamp(2.2rem, 5vw, 4rem);
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 4.35rem minmax(0, 1fr) auto;
+    gap: 0.48rem;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 4.35rem;
+  }
+}
+
+@media (max-width: 56rem) {
+  .site-header__panel {
+    background: var(--bg);
+  }
+
+  .haven-landing {
+    min-height: calc(100svh - var(--header-height));
+    max-height: none;
+  }
+
+  .haven-landing__margin-note {
+    left: 1.45rem;
+  }
+
+  .haven-landing__inner {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    padding-inline: 3.5rem 1.8rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(3.8rem, 9vw, 5.4rem);
+  }
+
+  .haven-landing__portrait {
+    height: min(68svh, 37rem);
+    margin-inline-start: -1.5rem;
+  }
+
+  .haven-landing__rooms {
+    padding-inline: 2rem;
+  }
+
+  .haven-landing__rooms .haven-landing__room-copy > small {
+    display: none;
+  }
+
+  .character-intro--storybook {
+    min-height: auto;
+    padding-inline: var(--page-gutter);
+    padding-block-start: 4rem;
+  }
+
+  .character-intro--storybook::after {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 94%, transparent), color-mix(in srgb, var(--bg) 88%, transparent) 46%, color-mix(in srgb, var(--bg) 54%, transparent));
+  }
+
+  .character-intro__portrait {
+    height: min(34rem, 69svh);
+  }
+
+  .room-opening,
+  .studio-opening,
+  .haven-heart,
+  .story-opening--painted,
+  .support-welcome--painted {
+    min-height: 38rem;
+  }
+
+  .room-opening,
+  .story-opening--painted,
+  .support-welcome--painted {
+    padding-inline: var(--page-gutter);
+  }
+
+  .room-opening__art > img:first-child,
+  .studio-opening__backdrop,
+  .haven-heart__environment,
+  .story-opening--painted::before,
+  .support-welcome--painted::before {
+    object-position: 70% center;
+    background-position: 70% center;
+  }
+
+  .studio-opening__inner,
+  .haven-heart__inner {
+    min-height: 38rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .studio-opening__ghostie,
+  .haven-heart__inner > img {
+    width: 6rem;
+  }
+
+  .identity-rooms__grid > article:nth-child(2),
+  .studio-notes__grid > article:nth-child(2),
+  .resource-shelves__grid > article:nth-child(2),
+  .stream-door-grid > a:nth-child(2) {
+    transform: none;
+  }
+}
+
+@media (max-width: 42rem) {
+  :root {
+    --header-height: 4.6rem;
+  }
+
+  .brand-mark img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .brand-mark small {
+    font-size: 0.43rem;
+  }
+
+  .haven-landing::before {
+    top: 0.55rem;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    left: 0.55rem;
+  }
+
+  .haven-landing__scene {
+    background-position: 66% center;
+  }
+
+  .haven-landing__veil {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 93%, transparent) 0%, color-mix(in srgb, var(--bg) 88%, transparent) 39%, color-mix(in srgb, var(--bg) 60%, transparent) 77%, color-mix(in srgb, var(--bg) 89%, transparent));
+  }
+
+  .haven-landing__margin-note {
+    top: 7.2rem;
+    bottom: auto;
+    left: 1.1rem;
+    height: 15rem;
+  }
+
+  .haven-landing__margin-note > span {
+    font-size: 0.47rem;
+  }
+
+  .haven-landing__inner {
+    grid-template-columns: 1fr;
+    padding-inline: 2.45rem 1.2rem;
+  }
+
+  .haven-landing__welcome {
+    padding-block: 2.1rem 0.5rem;
+    padding-inline-start: 1rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(4.2rem, 18vw, 6.3rem);
+  }
+
+  .haven-landing__intro {
+    max-width: 26rem;
+  }
+
+  .social-dock > a {
+    width: 3.15rem;
+  }
+
+  .haven-landing__portrait {
+    height: min(33rem, 69svh);
+    margin-inline: -0.4rem 0;
+  }
+
+  .haven-landing__ghostie--shy {
+    right: 3%;
+  }
+
+  .haven-landing__ghostie--hello {
+    left: 1%;
+  }
+
+  .haven-landing__rooms {
+    grid-template-columns: 1fr;
+    padding: 0.7rem 1.3rem 1.55rem;
+  }
+
+  .haven-landing__rooms > a {
+    min-height: 4.6rem;
+    grid-template-columns: 5rem minmax(0, 1fr) auto;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 5rem;
+    height: 3.8rem;
+  }
+
+  .haven-landing__rooms .haven-landing__room-copy > small {
+    display: block;
+  }
+
+  .room-opening,
+  .studio-opening,
+  .haven-heart,
+  .story-opening--painted,
+  .support-welcome--painted {
+    min-height: 36rem;
+  }
+
+  .room-opening::before,
+  .studio-opening::after,
+  .haven-heart::after,
+  .story-opening--painted::after,
+  .support-welcome--painted::after {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 98%, transparent) 0%, color-mix(in srgb, var(--bg) 95%, transparent) 45%, color-mix(in srgb, var(--bg) 64%, transparent) 78%, color-mix(in srgb, var(--bg) 36%, transparent));
+  }
+
+  .room-opening__copy h1,
+  .studio-opening h1,
+  .haven-heart h1,
+  .story-opening h1,
+  .support-welcome h1 {
+    font-size: clamp(2.8rem, 12vw, 4.2rem);
+  }
+
+  .studio-opening__inner,
+  .haven-heart__inner {
+    min-height: 36rem;
+    grid-template-columns: 1fr;
+  }
+
+  .studio-opening__ghostie,
+  .haven-heart__inner > img {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1rem;
+    width: 5.5rem;
+    margin: 0;
+  }
+
+  .story-opening__art {
+    right: 1rem;
+    width: 8rem;
+  }
+
+  .story-opening__art > img:first-child {
+    width: 5.5rem;
+  }
+
+  .story-opening__art > img:nth-child(2),
+  .story-opening__art > img:nth-child(3) {
+    width: 2.8rem;
+  }
+}
+
+@media (max-height: 48rem) and (min-width: 42.01rem) {
+  .haven-landing__kicker {
+    margin-block-end: 0.55rem;
+  }
+
+  .haven-landing h1 {
+    margin-block-end: 0.45rem;
+    font-size: clamp(3.5rem, 7vw, 5.2rem);
+  }
+
+  .haven-landing__divider {
+    margin-block: 0.5rem;
+  }
+
+  .social-dock {
+    margin-block: 0.45rem 0.7rem;
+  }
+
+  .haven-landing__portrait {
+    height: min(73svh, 37rem);
+  }
+
+  .haven-landing__rooms > a {
+    min-height: 4rem;
+  }
+
+  .haven-landing__rooms > a > img {
+    height: 3.35rem;
+  }
+}

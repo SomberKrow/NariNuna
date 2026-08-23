@@ -46,7 +46,7 @@ An architecture departure requires an accepted decision record.
 
 - Safe identity: “Nari, your chaotic big-sister VTuber.”
 - Do not merge CatDog and Grim Reaper canon without Nari approval.
-- Do not generate/redraw Nari from public references.
+- Never generate/redraw Nari from public references. Owner-authorized private-review reillustration may use only the supplied real model and must preserve every identifying character trait; public use remains separately blocked until rights and Nari's approval are recorded.
 - Nail Studio is self-taught practice/education, not services, clients, licensure, or medical authority.
 - Discord appears after values; support never buys access, ownership, obligation, or time.
 - Do not invent lore, metrics, schedule, testimonials, partnerships, resources, affiliate status, contact details, credentials, or private biography.

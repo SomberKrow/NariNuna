@@ -37,7 +37,8 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 3. [`01_BRAND_WORLD_AND_ART_DIRECTION.md`](01_BRAND_WORLD_AND_ART_DIRECTION.md)
 4. [`templates/ASSET_INTAKE_RECORD.md`](templates/ASSET_INTAKE_RECORD.md)
 5. [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md)
-6. The destination page contract in [`03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md`](03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md)
+6. [`24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`](24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md)
+7. The destination page contract in [`03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md`](03_PAGE_BY_PAGE_EXPERIENCE_SPEC.md)
 
 ### Architecture, routing, or data work
 
@@ -94,6 +95,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `21_AI_ASSISTED_WORKFLOW` | Agent context, evidence labels, protocol, stop and handoff rules | AI/repository workflow changes |
 | `22_GLOSSARY` | Canonical project/design/engineering/status language | A durable term changes or becomes ambiguous |
 | `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
+| `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
 
 ## Authority and conflict resolution
 
