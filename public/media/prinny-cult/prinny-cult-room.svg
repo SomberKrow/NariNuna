@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult room</title>
+  <desc id="desc">A cozy, theatrical secret chamber with plum curtains, candlelight, shelves, pillows, and an empty ceremonial center.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2a1820"/><stop offset="1" stop-color="#130d13"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#df8a55" stop-opacity=".42"/><stop offset="1" stop-color="#df8a55" stop-opacity="0"/></radialGradient>
+    <pattern id="grain" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M0 17h34M17 0v34" stroke="#f9e8d6" stroke-opacity=".025"/></pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wall)"/>
+  <ellipse cx="800" cy="330" rx="610" ry="360" fill="url(#glow)"/>
+  <rect width="1600" height="900" fill="url(#grain)"/>
+  <path d="M0 0h330c-42 176-39 355 8 540-93 82-196 112-338 92z" fill="#4b2a38"/>
+  <path d="M1600 0h-330c42 176 39 355-8 540 93 82 196 112 338 92z" fill="#4b2a38"/>
+  <path d="M0 690c335-54 551-71 800-71s465 17 800 71v210H0z" fill="#211218"/>
+  <g opacity=".75" stroke="#8f607d" stroke-width="8" fill="none"><path d="M0 735c360-46 612-58 800-58s440 12 800 58"/><path d="M0 809c360-35 612-44 800-44s440 9 800 44"/></g>
+  <g fill="#301c2d" stroke="#8f607d" stroke-width="5">
+    <path d="M88 205h290v365H88z"/><path d="M1222 205h290v365h-290z"/>
+    <path d="M110 285h246M110 385h246M1244 285h246M1244 385h246"/>
+  </g>
+  <g fill="#c6a6d4" opacity=".75"><circle cx="148" cy="244" r="18"/><circle cx="250" cy="244" r="12"/><circle cx="1350" cy="244" r="16"/><circle cx="1450" cy="244" r="10"/></g>
+  <g fill="#f9e8d6"><path d="M177 346h42v26h-42z"/><path d="M284 339h34v33h-34z"/><path d="M1290 340h38v32h-38z"/><path d="M1396 345h46v27h-46z"/></g>
+  <g stroke="#c6a6d4" stroke-width="7" fill="none" opacity=".7"><circle cx="800" cy="300" r="125"/><path d="M725 300c37-56 113-56 150 0-37 56-113 56-150 0z"/><path d="M800 250v100"/></g>
+  <g fill="#df8a55"><ellipse cx="587" cy="559" rx="64" ry="23" opacity=".2"/><ellipse cx="1013" cy="559" rx="64" ry="23" opacity=".2"/></g>
+  <g stroke="#f9e8d6" stroke-width="6" stroke-linecap="round"><path d="M574 552v-92M599 552v-70M1000 552v-84M1025 552v-105"/></g>
+  <g fill="#df8a55"><path d="M568 456c4-19 17-24 12-39 18 11 20 27 8 42z"/><path d="M593 478c4-19 17-24 12-39 18 11 20 27 8 42z"/><path d="M994 464c4-19 17-24 12-39 18 11 20 27 8 42z"/><path d="M1019 445c4-19 17-24 12-39 18 11 20 27 8 42z"/></g>
+  <path d="M560 635h480l-44 91H604z" fill="#3b222e" stroke="#8f607d" stroke-width="6"/>
+  <path d="M630 635c34-79 78-126 170-126s136 47 170 126" fill="#f2dfcf" fill-opacity=".08" stroke="#c6a6d4" stroke-width="6"/>
+  <g fill="#c6a6d4" opacity=".5"><ellipse cx="455" cy="732" rx="112" ry="46"/><ellipse cx="1145" cy="732" rx="112" ry="46"/><ellipse cx="535" cy="778" rx="82" ry="34"/><ellipse cx="1065" cy="778" rx="82" ry="34"/></g>
+  <g fill="#4fc59e"><circle cx="800" cy="300" r="7"/><circle cx="710" cy="665" r="5"/><circle cx="890" cy="665" r="5"/></g>
+</svg>
