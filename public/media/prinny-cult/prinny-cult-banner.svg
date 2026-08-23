@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 680" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult banner</title>
+  <desc id="desc">A theatrical plum fabric banner with stitched lavender trim and an original abstract eye-and-heart sigil.</desc>
+  <path d="M55 38h310l-18 520-137 84L73 558z" fill="#4b2a38" stroke="#8f607d" stroke-width="8"/>
+  <path d="M81 72h258l-15 463-114 70-114-70z" fill="#3b222e" stroke="#c6a6d4" stroke-width="4" stroke-dasharray="12 10"/>
+  <circle cx="210" cy="273" r="100" fill="#211218" stroke="#c6a6d4" stroke-width="7"/>
+  <path d="M145 273c38-55 92-55 130 0-38 55-92 55-130 0z" fill="none" stroke="#c6a6d4" stroke-width="7"/>
+  <circle cx="210" cy="273" r="12" fill="#4fc59e"/>
+  <path d="M174 358c0-31 36-40 36-13 0-27 36-18 36 13 0 29-36 52-36 52s-36-23-36-52z" fill="#df8a55"/>
+  <path d="M134 464h152" stroke="#8f607d" stroke-width="7" stroke-linecap="round"/>
+  <path d="M160 497h100" stroke="#8f607d" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+</svg>
