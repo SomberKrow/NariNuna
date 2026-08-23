@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult altar</title>
+  <desc id="desc">A small ceremonial altar with draped plum fabric, candles, stitched trim, and a glowing abstract seal.</desc>
+  <defs><radialGradient id="g"><stop stop-color="#df8a55" stop-opacity=".55"/><stop offset="1" stop-color="#df8a55" stop-opacity="0"/></radialGradient></defs>
+  <ellipse cx="360" cy="420" rx="270" ry="76" fill="#130d13" opacity=".45"/>
+  <ellipse cx="360" cy="190" rx="220" ry="170" fill="url(#g)"/>
+  <path d="M154 215h412l-34 224H188z" fill="#3b222e" stroke="#8f607d" stroke-width="7"/>
+  <path d="M166 225c83 49 151 29 194 2 43 27 111 47 194-2l-23 82c-74 31-129 22-171-3-42 25-97 34-171 3z" fill="#8f607d"/>
+  <path d="M199 309c86 32 236 32 322 0" fill="none" stroke="#c6a6d4" stroke-width="5" stroke-dasharray="11 12"/>
+  <circle cx="360" cy="201" r="75" fill="#211218" stroke="#c6a6d4" stroke-width="6"/>
+  <path d="M316 201c25-39 63-39 88 0-25 39-63 39-88 0z" fill="none" stroke="#c6a6d4" stroke-width="6"/>
+  <path d="M360 164v74" stroke="#4fc59e" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="360" cy="201" r="6" fill="#4fc59e"/>
+  <g fill="#f9e8d6"><rect x="102" y="250" width="34" height="126" rx="8"/><rect x="584" y="238" width="34" height="138" rx="8"/></g>
+  <g fill="#df8a55"><path d="M106 244c0-26 27-35 18-57 28 14 31 37 15 61z"/><path d="M588 232c0-26 27-35 18-57 28 14 31 37 15 61z"/></g>
+  <g fill="#c6a6d4"><circle cx="241" cy="376" r="8"/><circle cx="479" cy="376" r="8"/></g>
+</svg>
