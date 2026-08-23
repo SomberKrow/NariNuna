@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult easter egg reward</title>
+  <desc id="desc">A blank ceremonial certificate frame with stitched plum borders, a membership seal, stars, ribbons, and space for dynamic reward text.</desc>
+  <rect x="34" y="34" width="1132" height="732" rx="44" fill="#f2dfcf" stroke="#8f607d" stroke-width="12"/>
+  <rect x="70" y="70" width="1060" height="660" rx="32" fill="#fff8eb" stroke="#c6a6d4" stroke-width="5" stroke-dasharray="18 14"/>
+  <path d="M120 142h960M120 620h960" stroke="#8f607d" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+  <circle cx="600" cy="560" r="92" fill="#211218" stroke="#8f607d" stroke-width="10"/>
+  <circle cx="600" cy="560" r="64" fill="#3b222e" stroke="#c6a6d4" stroke-width="5" stroke-dasharray="12 10"/>
+  <path d="M552 554c28-40 68-40 96 0-28 40-68 40-96 0z" fill="none" stroke="#c6a6d4" stroke-width="8"/>
+  <circle cx="600" cy="554" r="10" fill="#4fc59e"/>
+  <path d="M573 604c0-22 27-30 27-8 0-22 27-14 27 8 0 23-27 41-27 41s-27-18-27-41z" fill="#df8a55"/>
+  <path d="M520 635l-34 106 79-43 35 68 35-68 79 43-34-106" fill="#8f607d" opacity=".85"/>
+  <g fill="#df8a55"><path d="M177 191l13 27 30 4-22 21 5 30-26-14-27 14 6-30-22-21 30-4z"/><path d="M1023 191l13 27 30 4-22 21 5 30-26-14-27 14 6-30-22-21 30-4z"/></g>
+  <g fill="#4fc59e"><circle cx="178" cy="564" r="10"/><circle cx="1022" cy="564" r="10"/></g>
+  <path d="M270 270h660M330 335h540M390 400h420" stroke="#6f4c58" stroke-width="12" stroke-linecap="round" opacity=".32"/>
+</svg>
