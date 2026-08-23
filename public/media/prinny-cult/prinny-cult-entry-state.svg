@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult entry state</title>
+  <desc id="desc">A secret velvet doorway with an original ceremonial seal, candle sconces, and a bright threshold line.</desc>
+  <rect width="1200" height="620" fill="#130d13"/>
+  <path d="M0 0h250c-34 172-25 358 20 620H0zM1200 0H950c34 172 25 358-20 620h270z" fill="#4b2a38"/>
+  <path d="M352 584V122c0-52 42-94 94-94h308c52 0 94 42 94 94v462z" fill="#211218" stroke="#8f607d" stroke-width="10"/>
+  <path d="M398 584V151c0-39 31-70 70-70h264c39 0 70 31 70 70v433z" fill="#2a1820" stroke="#c6a6d4" stroke-width="5" stroke-dasharray="16 13"/>
+  <circle cx="600" cy="292" r="108" fill="#3b222e" stroke="#c6a6d4" stroke-width="8"/>
+  <path d="M524 292c45-64 107-64 152 0-45 64-107 64-152 0z" fill="none" stroke="#c6a6d4" stroke-width="9"/>
+  <circle cx="600" cy="292" r="14" fill="#4fc59e"/>
+  <path d="M558 376c0-34 42-45 42-13 0-32 42-21 42 13 0 34-42 61-42 61s-42-27-42-61z" fill="#df8a55"/>
+  <g fill="#f9e8d6"><rect x="282" y="245" width="26" height="110" rx="8"/><rect x="892" y="245" width="26" height="110" rx="8"/></g>
+  <g fill="#df8a55"><path d="M284 239c0-20 22-28 14-46 23 12 26 30 13 49z"/><path d="M894 239c0-20 22-28 14-46 23 12 26 30 13 49z"/></g>
+  <path d="M320 584h560" stroke="#4fc59e" stroke-width="10" stroke-linecap="round" opacity=".8"/>
+</svg>
