@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult summoning circle</title>
+  <desc id="desc">An original layered ceremonial floor sigil made from stitched rings, soft stars, hearts, and an emerald center.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="450" cy="450" r="390" stroke="#8f607d" stroke-width="18"/>
+    <circle cx="450" cy="450" r="334" stroke="#c6a6d4" stroke-width="8" stroke-dasharray="20 18"/>
+    <circle cx="450" cy="450" r="240" stroke="#8f607d" stroke-width="10"/>
+    <path d="M450 124l97 186 207 28-150 145 36 204-190-97-190 97 36-204-150-145 207-28z" stroke="#c6a6d4" stroke-width="10"/>
+    <path d="M321 450c76-108 182-108 258 0-76 108-182 108-258 0z" stroke="#c6a6d4" stroke-width="12"/>
+  </g>
+  <circle cx="450" cy="450" r="28" fill="#4fc59e"/>
+  <g fill="#df8a55"><circle cx="450" cy="94" r="14"/><circle cx="806" cy="450" r="14"/><circle cx="450" cy="806" r="14"/><circle cx="94" cy="450" r="14"/></g>
+  <g fill="#f9e8d6"><circle cx="198" cy="198" r="10"/><circle cx="702" cy="198" r="10"/><circle cx="702" cy="702" r="10"/><circle cx="198" cy="702" r="10"/></g>
+</svg>
