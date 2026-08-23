@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import SocialDock from "@/components/ui/SocialDock.vue";
-import { detailArtwork, ghostieArtwork, nariArtwork, storybookPostcards } from "@/data/artwork";
+import { detailArtwork, storybookPostcards } from "@/data/artwork";
 import { twitchUrl } from "@/data/socials";
 
 const rooms = [
@@ -13,7 +13,11 @@ const rooms = [
 
 <template>
   <section class="haven-landing" aria-labelledby="landing-title">
-    <div class="haven-landing__scene" aria-hidden="true"></div>
+    <div
+      class="haven-landing__scene"
+      role="img"
+      aria-label="Nari, with emerald eyes, asymmetric cat-and-dog ears, lavender clothes, and her purple-tipped tail, welcomes a little Ghostie from the autumn window seat in her Haven."
+    ></div>
     <div class="haven-landing__veil" aria-hidden="true"></div>
     <img class="haven-landing__sprig" :src="detailArtwork.lavender" width="290" height="290" alt="" aria-hidden="true" />
     <div class="haven-landing__margin-note" aria-hidden="true"><span>AUTUMN, AFTER HOURS</span><i></i><MoonStar :size="15" /></div>
@@ -40,20 +44,6 @@ const rooms = [
           </a>
           <a class="haven-landing__meet" href="/meet-nari/">Meet Nari <ArrowRight :size="15" aria-hidden="true" /></a>
         </div>
-      </div>
-
-      <div class="haven-landing__portrait">
-        <img
-          class="haven-landing__nari"
-          :src="nariArtwork.fullbody"
-          width="888"
-          height="2400"
-          alt="Nari, reillustrated directly from her real model with emerald eyes, asymmetric cat-and-dog ears, flowing purple-tipped hair, her lavender outfit, and her fluffy purple-tipped tail"
-          fetchpriority="high"
-        />
-        <img class="haven-landing__ghostie haven-landing__ghostie--shy" :src="ghostieArtwork.shy" width="180" height="180" alt="" loading="lazy" />
-        <img class="haven-landing__ghostie haven-landing__ghostie--hello" :src="ghostieArtwork.heart" width="136" height="136" alt="" loading="lazy" />
-        <div class="haven-landing__note"><Heart :size="15" aria-hidden="true" /> saved you a spot ♡</div>
       </div>
     </div>
 

@@ -9,7 +9,7 @@
 
 ## Environment family
 
-Seven original autumn-storybook master compositions depict the Home sunset atelier, Haven community room, streaming studio, illustrated nail-practice desk, resource library, correspondence/work desk, and lantern-lit Story Time. Five scenes include an identity-preserving Nari referenced directly against the actual supplied model; the Home and resource-library masters intentionally contain no character. One physical Home painting also receives midnight and daybreak grading without changing room composition.
+Eight original autumn-storybook master compositions depict the integrated Home sunset atelier, dedicated integrated Meet Nari introduction, Haven community room, streaming studio, illustrated nail-practice desk, resource library, correspondence/work desk, and lantern-lit Story Time. Seven scenes include an identity-preserving Nari painted directly into the environment and referenced against the supplied actual model; only the resource library intentionally contains no human. The owner specifically requested that Home and Meet Nari use integrated illustrations instead of separate rendered character overlays. One physical character-inclusive Home painting also receives midnight and daybreak grading without changing room composition.
 
 Optimized derivatives live in `public/media/storybook/scenes/`, `public/media/storybook/postcards/`, and `public/media/storybook/share/`. Route-level Open Graph/Twitter metadata uses compatible 1200×630 JPEG compositions. The nail scene is visibly hand-painted setting artwork, not a photograph, real manicure result, approved nail portfolio, client claim, or professional credential.
 

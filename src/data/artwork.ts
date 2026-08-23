@@ -43,6 +43,7 @@ export const environmentArtwork = {
   homeSunset: "/media/storybook/scenes/haven-sunset.webp",
   homeNight: "/media/storybook/scenes/haven-midnight.webp",
   homeDaylight: "/media/storybook/scenes/haven-daybreak.webp",
+  meetNari: "/media/storybook/scenes/meet-nari.webp",
   commonRoom: "/media/storybook/scenes/haven-community.webp",
   streams: "/media/storybook/scenes/streams-atelier.webp",
   nails: "/media/storybook/scenes/nails-atelier.webp",
@@ -53,6 +54,7 @@ export const environmentArtwork = {
 
 export const storybookPostcards = {
   home: "/media/storybook/postcards/haven-sunset.webp",
+  meetNari: "/media/storybook/postcards/meet-nari.webp",
   haven: "/media/storybook/postcards/haven-community.webp",
   streams: "/media/storybook/postcards/streams-atelier.webp",
   nails: "/media/storybook/postcards/nails-atelier.webp",

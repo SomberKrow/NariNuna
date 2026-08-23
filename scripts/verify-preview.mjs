@@ -41,7 +41,7 @@ if (managesPreview) {
 try {
 const routes = [
   ["/", "Nari Nuna's Haven", "/media/storybook/share/nari-home-social.jpg"],
-  ["/meet-nari/", "Meet Nari", "/media/storybook/share/nari-home-social.jpg"],
+  ["/meet-nari/", "Meet Nari", "/media/storybook/share/nari-meet-social.jpg"],
   ["/streams/", "Streams", "/media/storybook/share/nari-streams-social.jpg"],
   ["/nail-studio/", "Nail Studio", "/media/storybook/share/nari-nails-social.jpg"],
   ["/haven/", "The Haven", "/media/storybook/share/nari-haven-social.jpg"],
@@ -70,6 +70,7 @@ const requiredAssets = [
   "/media/storybook/scenes/haven-sunset.webp",
   "/media/storybook/scenes/haven-midnight.webp",
   "/media/storybook/scenes/haven-daybreak.webp",
+  "/media/storybook/scenes/meet-nari.webp",
   "/media/storybook/scenes/streams-atelier.webp",
   "/media/storybook/scenes/haven-community.webp",
   "/media/storybook/scenes/nails-atelier.webp",
@@ -77,6 +78,7 @@ const requiredAssets = [
   "/media/storybook/scenes/work-correspondence.webp",
   "/media/storybook/scenes/stories-lantern.webp",
   "/media/storybook/share/nari-home-social.jpg",
+  "/media/storybook/share/nari-meet-social.jpg",
   "/favicon.png"
 ];
 

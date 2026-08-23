@@ -40,6 +40,16 @@ describe("approved-source artwork contracts", () => {
     expect(worldStyles).toContain(environmentArtwork.homeDaylight);
   });
 
+  it("integrates Nari into distinct Home and Meet Nari paintings without separate model overlays", () => {
+    const homePage = readFileSync(resolve(process.cwd(), "src/pages/HomePage.vue"), "utf8");
+    const meetPage = readFileSync(resolve(process.cwd(), "src/pages/MeetNariPage.vue"), "utf8");
+
+    expect(environmentArtwork.meetNari).not.toBe(environmentArtwork.homeSunset);
+    expect(meetPage).toContain("environmentArtwork.meetNari");
+    expect(homePage).not.toContain("nariArtwork.fullbody");
+    expect(meetPage).not.toContain("nariArtwork.portrait");
+  });
+
   it("keeps secret Prinny artwork out of indexing and ordinary primary navigation", () => {
     const secretDocument = readFileSync(resolve(process.cwd(), "the-prinny-cult/index.html"), "utf8");
     const primaryNavigation = readFileSync(resolve(process.cwd(), "src/data/navigation.ts"), "utf8");

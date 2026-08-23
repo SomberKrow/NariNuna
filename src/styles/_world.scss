@@ -232,62 +232,6 @@ body[data-route="home"] .site-footer {
   text-decoration: none;
 }
 
-.haven-landing__portrait {
-  position: relative;
-  display: flex;
-  height: min(77svh, 45rem);
-  align-self: end;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.haven-landing__nari {
-  width: auto;
-  height: 100%;
-  max-width: 105%;
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 1rem 2.4rem rgb(12 8 18 / 43%));
-}
-
-.haven-landing__ghostie {
-  position: absolute;
-  filter: drop-shadow(0 0.7rem 1rem rgb(24 15 29 / 28%));
-  animation: ghostie-bob 5s ease-in-out infinite;
-}
-
-.haven-landing__ghostie--shy {
-  right: 0;
-  bottom: 19%;
-  width: clamp(5.3rem, 12vw, 9.2rem);
-}
-
-.haven-landing__ghostie--hello {
-  top: 13%;
-  left: 2%;
-  width: clamp(4rem, 8vw, 6.8rem);
-  animation-delay: -2.2s;
-}
-
-.haven-landing__note {
-  position: absolute;
-  right: 1rem;
-  bottom: 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.8rem;
-  color: var(--cream);
-  background: rgb(39 25 44 / 85%);
-  border: 1px solid rgb(231 209 225 / 24%);
-  border-radius: var(--radius-pill);
-  font-size: 0.71rem;
-}
-
-.haven-landing__note svg {
-  color: var(--emerald);
-}
-
 .haven-landing__rooms {
   position: relative;
   z-index: 2;
@@ -426,40 +370,6 @@ body[data-route="home"] .site-footer {
 
 .character-intro .tag-row {
   margin-block: 1.55rem 1.7rem;
-}
-
-.character-intro__portrait {
-  position: relative;
-  display: flex;
-  height: min(42rem, 81svh);
-  align-self: end;
-  justify-content: center;
-}
-
-.character-intro__model {
-  z-index: 1;
-  width: auto;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom;
-  filter: drop-shadow(0 1.4rem 2.3rem rgb(17 11 26 / 39%));
-}
-
-.character-intro__lavender {
-  position: absolute;
-  right: -3%;
-  bottom: 8%;
-  width: 48%;
-  opacity: 0.68;
-}
-
-.character-intro__ghostie {
-  position: absolute;
-  z-index: 2;
-  top: 14%;
-  right: -3%;
-  width: 26%;
-  animation: ghostie-bob 5.2s ease-in-out infinite;
 }
 
 .expression-ribbon {
@@ -1251,10 +1161,6 @@ body[data-route="home"] .site-footer {
     white-space: nowrap;
   }
 
-  .haven-landing__portrait {
-    height: min(72svh, 41rem);
-  }
-
   .haven-values__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1292,14 +1198,6 @@ body[data-route="home"] .site-footer {
     font-size: clamp(3rem, 8vw, 4.8rem);
   }
 
-  .haven-landing__portrait {
-    height: min(63svh, 35rem);
-  }
-
-  .haven-landing__ghostie--shy {
-    right: -8%;
-  }
-
   .social-dock > a {
     width: 3.55rem;
   }
@@ -1332,10 +1230,6 @@ body[data-route="home"] .site-footer {
 
   .character-intro__copy {
     padding-block: 1rem;
-  }
-
-  .character-intro__portrait {
-    height: min(38rem, 70svh);
   }
 
   .studio-opening__inner,
@@ -1423,15 +1317,6 @@ body[data-route="home"] .site-footer {
 
   .social-dock > a {
     width: 3.45rem;
-  }
-
-  .haven-landing__portrait {
-    height: 30rem;
-    margin-block-start: 0.5rem;
-  }
-
-  .haven-landing__ghostie--shy {
-    right: 8%;
   }
 
   .haven-landing__rooms {

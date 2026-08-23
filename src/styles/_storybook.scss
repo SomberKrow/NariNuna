@@ -99,7 +99,7 @@
 }
 
 .haven-landing__scene {
-  background-position: center center;
+  background-position: 68% center;
 }
 
 .haven-landing__sprig {
@@ -264,42 +264,6 @@
   font-style: italic;
 }
 
-.haven-landing__portrait {
-  z-index: 2;
-  height: min(77svh, 46rem);
-  align-self: end;
-  margin-inline-start: -2rem;
-}
-
-.haven-landing__nari {
-  max-width: 112%;
-  filter: drop-shadow(0 0.8rem 2.4rem rgb(13 8 15 / 48%));
-}
-
-.haven-landing__ghostie--shy {
-  right: -1%;
-  bottom: 17%;
-  width: clamp(4.7rem, 10vw, 8rem);
-}
-
-.haven-landing__ghostie--hello {
-  top: 11%;
-  left: -5%;
-  width: clamp(3.9rem, 7vw, 6.6rem);
-}
-
-.haven-landing__note {
-  right: -0.2rem;
-  bottom: 2.3rem;
-  padding: 0.42rem 0.72rem;
-  color: #f8ebdf;
-  background: rgb(38 23 36 / 89%);
-  border-color: var(--storybook-rule);
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-style: italic;
-}
-
 .haven-landing__rooms {
   z-index: 5;
   width: min(100%, 87rem);
@@ -401,7 +365,7 @@
   z-index: -2;
   inset: 0;
   background-image: var(--chapter-painting);
-  background-position: center;
+  background-position: 68% center;
   background-size: cover;
   content: "";
 }
@@ -410,7 +374,7 @@
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 98%, transparent), color-mix(in srgb, var(--bg) 91%, transparent) 36%, color-mix(in srgb, var(--bg) 37%, transparent) 72%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--bg) 96%, transparent), color-mix(in srgb, var(--bg) 83%, transparent) 35%, color-mix(in srgb, var(--bg) 20%, transparent) 63%, color-mix(in srgb, var(--bg) 5%, transparent) 84%);
   content: "";
 }
 
@@ -423,9 +387,8 @@
   font-weight: 480;
 }
 
-.character-intro__portrait {
-  z-index: 1;
-  height: min(43rem, 79svh);
+.character-intro--integrated .character-intro__copy {
+  max-width: 34rem;
 }
 
 .expression-ribbon {
@@ -838,11 +801,6 @@
     font-size: clamp(3.8rem, 9vw, 5.4rem);
   }
 
-  .haven-landing__portrait {
-    height: min(68svh, 37rem);
-    margin-inline-start: -1.5rem;
-  }
-
   .haven-landing__rooms {
     padding-inline: 2rem;
   }
@@ -852,17 +810,21 @@
   }
 
   .character-intro--storybook {
-    min-height: auto;
+    min-height: 40rem;
     padding-inline: var(--page-gutter);
     padding-block-start: 4rem;
   }
 
   .character-intro--storybook::after {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 94%, transparent), color-mix(in srgb, var(--bg) 88%, transparent) 46%, color-mix(in srgb, var(--bg) 54%, transparent));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 94%, transparent), color-mix(in srgb, var(--bg) 86%, transparent) 40%, color-mix(in srgb, var(--bg) 28%, transparent) 78%);
   }
 
-  .character-intro__portrait {
-    height: min(34rem, 69svh);
+  .character-intro--integrated {
+    align-items: start;
+  }
+
+  .character-intro--integrated .character-intro__copy {
+    padding-block: 1rem 14rem;
   }
 
   .room-opening,
@@ -929,11 +891,14 @@
   }
 
   .haven-landing__scene {
-    background-position: 66% center;
+    background-color: var(--bg);
+    background-position: 72% 76%;
+    background-repeat: no-repeat;
+    background-size: auto 76%;
   }
 
   .haven-landing__veil {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 93%, transparent) 0%, color-mix(in srgb, var(--bg) 88%, transparent) 39%, color-mix(in srgb, var(--bg) 60%, transparent) 77%, color-mix(in srgb, var(--bg) 89%, transparent));
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 97%, transparent) 0%, color-mix(in srgb, var(--bg) 86%, transparent) 33%, color-mix(in srgb, var(--bg) 15%, transparent) 68%, color-mix(in srgb, var(--bg) 82%, transparent) 100%);
   }
 
   .haven-landing__margin-note {
@@ -952,6 +917,12 @@
     padding-inline: 2.45rem 1.2rem;
   }
 
+  .haven-landing__inner::after {
+    display: block;
+    min-height: clamp(16rem, 72vw, 25rem);
+    content: "";
+  }
+
   .haven-landing__welcome {
     padding-block: 2.1rem 0.5rem;
     padding-inline-start: 1rem;
@@ -967,19 +938,6 @@
 
   .social-dock > a {
     width: 3.15rem;
-  }
-
-  .haven-landing__portrait {
-    height: min(33rem, 69svh);
-    margin-inline: -0.4rem 0;
-  }
-
-  .haven-landing__ghostie--shy {
-    right: 3%;
-  }
-
-  .haven-landing__ghostie--hello {
-    left: 1%;
   }
 
   .haven-landing__rooms {
@@ -1071,10 +1029,6 @@
 
   .social-dock {
     margin-block: 0.45rem 0.7rem;
-  }
-
-  .haven-landing__portrait {
-    height: min(73svh, 37rem);
   }
 
   .haven-landing__rooms > a {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import { detailArtwork, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
 const expressions = [
@@ -13,7 +13,10 @@ const expressions = [
 </script>
 
 <template>
-  <section class="character-intro character-intro--storybook page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.homeSunset}')` }">
+  <section
+    class="character-intro character-intro--storybook character-intro--integrated page-width"
+    :style="{ '--chapter-painting': `url('${environmentArtwork.meetNari}')` }"
+  >
     <div class="character-intro__copy">
       <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
       <h1>Hi, I'm <em>Nari.</em></h1>
@@ -25,19 +28,6 @@ const expressions = [
         <span><Heart :size="16" aria-hidden="true" /> Protective big sister</span>
       </div>
       <a class="button button--ember" href="/haven/">Come see the Haven <ArrowRight :size="18" aria-hidden="true" /></a>
-    </div>
-
-    <div class="character-intro__portrait">
-      <img class="character-intro__lavender" :src="detailArtwork.lavender" width="260" height="260" alt="" aria-hidden="true" />
-      <img
-        class="character-intro__model"
-        :src="nariArtwork.portrait"
-        width="883"
-        height="1360"
-        alt="Nari's identity-faithful illustrated portrait, preserving the emerald eyes, asymmetric ears, purple-tipped brown hair, and lavender outfit of her actual model"
-        fetchpriority="high"
-      />
-      <img class="character-intro__ghostie" :src="ghostieArtwork.peekingRight" width="145" height="145" alt="" aria-hidden="true" />
     </div>
   </section>
 

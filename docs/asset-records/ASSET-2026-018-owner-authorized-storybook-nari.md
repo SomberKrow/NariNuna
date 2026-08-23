@@ -17,7 +17,7 @@ The only character references were the privately owner-supplied `Nari/Model_File
 - `public/media/storybook/characters/nari-painted-portrait.webp`
 - `public/media/storybook/characters/nari-painted-avatar.webp`
 - `public/favicon.png`, `public/apple-touch-icon.png`, `public/icon-192.png`, and `public/icon-512.png`
-- Character appearances in five supplied-model-referenced chapter paintings and their postcard/social derivatives.
+- Character appearances in seven supplied-model-referenced chapter paintings—including integrated Home and Meet Nari scenes—and their postcard/social derivatives.
 
 The real supplied-model derivatives remain separately available in `public/media/nari/`; official emotes, cozy artwork, and the 27 original Prinny designs are unchanged. Asset descriptions identify new artwork as reillustration rather than untouched original art.
 

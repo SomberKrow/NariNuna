@@ -2,7 +2,7 @@
 
 A warm, true multi-page home for Nari Nuna's streams, self-taught nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-The current implementation builds an entirely bespoke autumn-storybook world around an owner-authorized reillustration grounded directly in Nari's actual supplied character model. Seven original painted rooms—including five integrated model-faithful Nari appearances—five newly painted Ghosties, illustrated chapter postcards, three coherent times of day, custom app icons, and route-specific social paintings carry her identity across the entire site. Her real supplied model, original cozy character art, official static emotes, and all 27 supplied Prinny illustrations remain intact.
+The current implementation builds an entirely bespoke autumn-storybook world around owner-authorized illustrations grounded directly in Nari's actual supplied character model. Eight original painted rooms—including seven integrated model-faithful Nari appearances and dedicated Home/Meet Nari compositions—five painted Ghosties, illustrated chapter postcards, three coherent times of day, custom app icons, and route-specific social paintings carry her identity across the entire site. Home and Meet Nari place Nari directly inside their paintings without independent character overlays. Her real supplied model, original cozy character art, official static emotes, and all 27 supplied Prinny illustrations remain intact.
 
 ## Product direction
 

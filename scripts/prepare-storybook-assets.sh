@@ -47,7 +47,7 @@ convert_transparent_character() {
     -trim +repage -resize "$maximum_size>" -strip -quality 88 "$destination"
 }
 
-for required in nari-storybook-fullbody haven-sunset-master haven-common-room-master streams-atelier-master nails-atelier-master resources-library-master work-correspondence-master stories-lantern-master; do
+for required in nari-storybook-fullbody home-integrated-nari-master meet-nari-integrated-master haven-common-room-master streams-atelier-master nails-atelier-master resources-library-master work-correspondence-master stories-lantern-master; do
   if [[ ! -f "$master_root/$required.png" ]]; then
     printf '%s\n' "Missing storybook master: $master_root/$required.png" >&2
     exit 1
@@ -82,7 +82,8 @@ for icon in 'favicon.png:96' 'apple-touch-icon.png:180' 'icon-192.png:192' 'icon
 done
 
 declare -A scenes=(
-  [haven-sunset]='haven-sunset-master'
+  [haven-sunset]='home-integrated-nari-master'
+  [meet-nari]='meet-nari-integrated-master'
   [haven-community]='haven-common-room-master'
   [streams-atelier]='streams-atelier-master'
   [nails-atelier]='nails-atelier-master'
@@ -103,12 +104,12 @@ done
 
 # Preserve the physical room composition across all themes; only the clock,
 # light temperature, and atmosphere change.
-convert_checked "$master_root/haven-sunset-master.png" \
+convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 73,82,104 -fill '#34204a' -colorize 13 \
   -resize '1680x1000>' -strip -quality 82 \
   "$media_root/storybook/scenes/haven-midnight.webp"
 
-convert_checked "$master_root/haven-sunset-master.png" \
+convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 116,88,99 -fill '#ffe3c1' -colorize 12 \
   -resize '1680x1000>' -strip -quality 82 \
   "$media_root/storybook/scenes/haven-daybreak.webp"
@@ -125,9 +126,10 @@ done
 
 # Regenerate every social-sharing composition directly from the new visual
 # world. Keep text in HTML instead of baking fragile lettering into imagery.
-for share in home streams nails haven resources work stories; do
+for share in home meet streams nails haven resources work stories; do
   case "$share" in
-    home) source='haven-sunset-master' ;;
+    home) source='home-integrated-nari-master' ;;
+    meet) source='meet-nari-integrated-master' ;;
     streams) source='streams-atelier-master' ;;
     nails) source='nails-atelier-master' ;;
     haven) source='haven-common-room-master' ;;
