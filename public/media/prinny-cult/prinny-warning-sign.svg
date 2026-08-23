@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-labelledby="title desc">
+  <title id="title">Prinny Cult warning sign</title>
+  <desc id="desc">A crooked ceremonial warning placard with a stitched border and an abstract caution sigil.</desc>
+  <path d="M92 96l458-28 24 330-458 42z" fill="#f2dfcf" stroke="#8f607d" stroke-width="10"/>
+  <path d="M124 128l394-24 18 258-394 36z" fill="#dfc6c2" stroke="#6f4c58" stroke-width="5" stroke-dasharray="13 10"/>
+  <path d="M320 148l120 188H200z" fill="#df8a55" stroke="#2c1821" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M320 207v71" stroke="#2c1821" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="320" cy="310" r="10" fill="#2c1821"/>
+  <path d="M156 425l-27 83M489 411l31 88" stroke="#4b2a38" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="520" cy="116" r="8" fill="#4fc59e"/>
+</svg>
