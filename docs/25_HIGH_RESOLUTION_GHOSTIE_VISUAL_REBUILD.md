@@ -41,7 +41,7 @@ Nail Studio remains explicitly illustrated environmental support artwork, never 
 
 `public/media/storybook/scenes/haven-doorway-gathering.webp` is an independently generated, full-frame `1672 × 941` storybook gathering painted specifically for the Haven's third-knock reveal. Nari and six approved scythe-hairpin Ghosties belong to one coherent illustrated cottage scene; no separately rendered Ghostie is layered over the painting.
 
-The locked doorway glimpses the gathering through its opening. Once all three knocks are answered, the component expands into the complete uncropped illustration and reveals the approved Discord invitation. The artwork remains owner-authorized private-review material under the same unresolved identity, derivative-rights, credit, and public-release boundaries as the other generated environment paintings.
+The locked doorway glimpses the gathering through its opening. Once all three knocks are answered, the complete uncropped illustration remains contained within the ornate arched doorway while the approved Discord invitation appears beside it. The section keeps its existing dimensions and column layout instead of expanding into the viewport. The artwork remains owner-authorized private-review material under the same unresolved identity, derivative-rights, credit, and public-release boundaries as the other generated environment paintings.
 
 ## Rendering and verification contract
 

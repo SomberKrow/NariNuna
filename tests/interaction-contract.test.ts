@@ -23,6 +23,17 @@ describe("Haven doorway and social interaction contracts", () => {
     expect(doorway).toContain("object-fit: contain");
     expect(doorway).not.toContain("GhostieArt");
 
+    const archOpening = doorway.indexOf('<div class="haven-threshold__arch">');
+    const gathering = doorway.indexOf('v-if="isOpen" class="haven-threshold__gathering"');
+    const physicalDoor = doorway.indexOf('class="haven-threshold__door"');
+
+    expect(gathering).toBeGreaterThan(archOpening);
+    expect(gathering).toBeLessThan(physicalDoor);
+    expect(doorway).not.toContain(".haven-threshold--open {\n    grid-template-columns: 1fr");
+    expect(doorway).toContain("haven-threshold__ivy");
+    expect(doorway).toContain("haven-threshold__keystone");
+    expect(doorway).toContain("haven-threshold__door-inlay");
+
     const lockedState = doorway.slice(doorway.indexOf('<template v-if="!isOpen">'), doorway.indexOf("<template v-else>"));
     const openState = doorway.slice(doorway.indexOf("<template v-else>"));
 
