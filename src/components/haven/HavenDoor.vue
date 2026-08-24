@@ -2,115 +2,619 @@
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
 import { computed, ref } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
+import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
+const knocksRequired = 3;
 const step = ref(0);
+
 const stages = [
-  { title: "The door is warm to the touch.", text: "The Haven is more than an invite link. Knock, and take a moment to understand the room first.", action: "Knock gently" },
-  { title: "Okay. Somebody is definitely home.", text: "The latch clicks, a Ghostie peeks around the door, and the pillow barricade gets dragged approximately six inches out of the way.", action: "Say hi to the Ghostie" },
-  { title: "One promise before you enter.", text: "Treat people like human beings. Respect boundaries. Protect the fun without trying to own it.", action: "Promise kindness" }
-];
-const currentStage = computed(() => stages[Math.min(step.value, stages.length - 1)]);
+  {
+    name: "First knock",
+    chapter: "The threshold",
+    title: "Knock once. Let us know you're here.",
+    text: "A little gold light finds its way beneath the door. You don't need an invitation to be interesting, impressive, or perfectly okay. Just start with a knock.",
+    action: "Give the first knock",
+    whisper: "Somewhere inside, a tiny Ghostie looks up."
+  },
+  {
+    name: "Second knock",
+    chapter: "Leave the armor",
+    title: "You can come exactly as you are.",
+    text: "The latch stirs. A Ghostie peeks out and nudges a basket toward you. The pretending, the proving, the need to be anyone else? You can leave those here.",
+    action: "Give the second knock",
+    whisper: "Difference belongs here. Cruelty doesn't."
+  },
+  {
+    name: "Third knock",
+    chapter: "Keep the light on",
+    title: "One small promise before we open.",
+    text: "Be kind to the people inside. Respect their boundaries. Protect the warmth without trying to own it. The Haven stays a haven because everybody helps.",
+    action: "Promise kindness · third knock",
+    whisper: "The Ghostie is already making room for you."
+  }
+] as const;
+
+const currentStage = computed(() => stages[Math.min(step.value, knocksRequired - 1)]);
+const isOpen = computed(() => step.value === knocksRequired);
+
+function knock(): void {
+  step.value = Math.min(step.value + 1, knocksRequired);
+}
+
+function closeDoor(): void {
+  step.value = 0;
+}
 </script>
 
 <template>
   <section class="haven-threshold" aria-labelledby="haven-door-title">
-    <div class="haven-threshold__scene" :class="`is-step-${step}`" aria-hidden="true">
-      <div class="haven-threshold__stars"><i></i><i></i><i></i><i></i></div>
+    <div
+      class="haven-threshold__scene"
+      :class="`is-step-${step}`"
+      :style="{ '--haven-room-art': `url('${environmentArtwork.commonRoom}')` }"
+    >
+      <div class="haven-threshold__wall" aria-hidden="true"></div>
+      <div class="haven-threshold__lantern haven-threshold__lantern--left" aria-hidden="true"></div>
+      <div class="haven-threshold__lantern haven-threshold__lantern--right" aria-hidden="true"></div>
+
       <div class="haven-threshold__arch">
-        <div class="haven-threshold__room-light"></div>
-        <div class="haven-threshold__pillow haven-threshold__pillow--one"></div>
-        <div class="haven-threshold__pillow haven-threshold__pillow--two"></div>
-        <GhostieArt class="haven-threshold__ghostie" variant="peek" />
-        <div class="haven-threshold__door">
-          <div class="haven-threshold__door-panel"></div>
-          <div class="haven-threshold__knob"></div>
-          <div class="haven-threshold__sign"><span>THE HAVEN</span><small>knock gently</small></div>
-        </div>
+        <div class="haven-threshold__room" aria-hidden="true"></div>
+        <div class="haven-threshold__room-light" aria-hidden="true"></div>
+        <GhostieArt class="haven-threshold__ghostie" variant="shy" />
+
+        <button
+          class="haven-threshold__door"
+          type="button"
+          :aria-label="isOpen ? 'The Haven doorway is open' : currentStage.action"
+          :disabled="isOpen"
+          @click="knock"
+        >
+          <span class="haven-threshold__door-grain" aria-hidden="true"></span>
+          <span class="haven-threshold__door-panel" aria-hidden="true"></span>
+          <span class="haven-threshold__door-moon" aria-hidden="true">✦</span>
+          <span class="haven-threshold__sign" aria-hidden="true">
+            <span>THE HAVEN</span>
+            <small>three knocks, please</small>
+          </span>
+          <span class="haven-threshold__knocker" aria-hidden="true"></span>
+          <span class="haven-threshold__knob" aria-hidden="true"></span>
+        </button>
       </div>
-      <div class="haven-threshold__mat">COME AS YOU ARE</div>
+
+      <div class="haven-threshold__stepstone" aria-hidden="true"></div>
+      <div class="haven-threshold__mat" aria-hidden="true">COME AS YOU ARE</div>
+      <p class="haven-threshold__scene-note" aria-hidden="true">
+        {{ isOpen ? "The door is yours to open." : "You can knock on the door, too." }}
+      </p>
     </div>
 
-    <div class="haven-threshold__content" aria-live="polite">
-      <p class="eyebrow">A door deeper inside</p>
-      <template v-if="step < stages.length">
+    <div class="haven-threshold__content">
+      <div class="haven-threshold__chapter">
+        <p class="eyebrow">{{ isOpen ? "All three knocks answered" : currentStage.chapter }}</p>
+        <p class="haven-threshold__count" aria-live="polite">{{ step }} of {{ knocksRequired }} knocks</p>
+      </div>
+
+      <ol class="haven-threshold__progress" aria-label="Your three knocks at the Haven door">
+        <li
+          v-for="index in knocksRequired"
+          :key="index"
+          :class="{ 'is-answered': step >= index, 'is-current': !isOpen && step === index - 1 }"
+          :aria-label="`Knock ${index}: ${step >= index ? 'answered' : 'waiting'}`"
+        >
+          <span aria-hidden="true">{{ index }}</span>
+        </li>
+      </ol>
+
+      <template v-if="!isOpen">
+        <p class="haven-threshold__stage-name">{{ currentStage.name }}</p>
         <h2 id="haven-door-title">{{ currentStage.title }}</h2>
-        <p>{{ currentStage.text }}</p>
-        <div class="haven-threshold__progress" aria-hidden="true"><span v-for="index in stages.length" :key="index" :class="{ active: step >= index - 1 }"></span></div>
-        <button class="button button--ember" type="button" @click="step += 1">
+        <p class="haven-threshold__story">{{ currentStage.text }}</p>
+        <p class="haven-threshold__whisper">{{ currentStage.whisper }}</p>
+
+        <button class="button button--ember haven-threshold__action" type="button" @click="knock">
           <ShieldCheck v-if="step === 2" :size="18" aria-hidden="true" />
           <HeartHandshake v-else :size="18" aria-hidden="true" />
           {{ currentStage.action }}
         </button>
       </template>
+
       <template v-else>
-        <h2 id="haven-door-title">All right, Ghostie. Come in.</h2>
-        <p>The door is open. You found the community entrance because you took the time to learn what the Haven protects.</p>
-        <a class="button button--emerald" :href="discordUrl" target="_blank" rel="noreferrer noopener">Enter Nari's Haven on Discord <ArrowUpRight :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
-        <button class="text-button" type="button" @click="step = 0">Close the door behind me</button>
+        <p class="haven-threshold__stage-name">The door swings open</p>
+        <h2 id="haven-door-title">There's a place for you inside.</h2>
+        <p class="haven-threshold__story">
+          The Ghostie steps aside. Past the blankets and the soft lavender light, people are already making room.
+          Welcome to Nari's Haven.
+        </p>
+        <p class="haven-threshold__whisper">You knew the way in was never just a link.</p>
+
+        <a
+          class="button button--emerald haven-threshold__action"
+          :href="discordUrl"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Enter Nari's Haven on Discord
+          <ArrowUpRight :size="18" aria-hidden="true" />
+          <span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <button class="text-button" type="button" @click="closeDoor">Close the door behind me</button>
       </template>
     </div>
   </section>
 </template>
 
 <style scoped>
-.haven-threshold { display: grid; overflow: hidden; color: var(--story-copy); background: var(--story-surface); border: 1px solid var(--story-line); border-radius: 0.8rem; box-shadow: 0 1rem 3rem rgb(15 9 13 / 18%); }
-.haven-threshold__scene { position: relative; min-height: 20rem; overflow: hidden; isolation: isolate; background: radial-gradient(circle at 50% 62%, rgb(228 177 117 / 18%), transparent 32%), linear-gradient(180deg, #3b2637, #241720 72%); }
-.haven-threshold__scene::before { position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(0deg, transparent 0 3.15rem, rgb(255 242 228 / 4%) 3.15rem 3.2rem), repeating-linear-gradient(90deg, transparent 0 5rem, rgb(255 242 228 / 3%) 5rem 5.05rem); content: ""; }
-.haven-threshold__arch { --door-angle: 0deg; position: absolute; bottom: 2.4rem; left: 50%; width: min(68%, 18rem); height: 82%; overflow: hidden; background: #1a1118; border: 0.55rem solid #6e4d52; border-bottom: 0; border-radius: 9rem 9rem 0 0; box-shadow: 0 0 0 0.18rem rgb(233 198 168 / 15%), 0 1.5rem 3rem rgb(5 2 5 / 38%); transform: translateX(-50%); perspective: 900px; }
-.haven-threshold__room-light { position: absolute; inset: 0; background: radial-gradient(circle at 50% 46%, rgb(255 219 151 / 72%), transparent 33%), linear-gradient(180deg, #805e58, #4f3545 70%); opacity: 0.18; transition: opacity 360ms ease; }
-.haven-threshold__door { position: absolute; inset: 0; z-index: 4; overflow: hidden; background: linear-gradient(90deg, rgb(255 255 255 / 8%), transparent 18%), linear-gradient(145deg, #704a54, #4a303c 58%, #38232f); border-right: 0.16rem solid rgb(30 15 23 / 55%); transform: rotateY(var(--door-angle)); transform-origin: left center; transform-style: preserve-3d; transition: transform 520ms cubic-bezier(0.22, 0.78, 0.22, 1); }
-.haven-threshold__door-panel { position: absolute; inset: 2.2rem 1.35rem 2.5rem; border: 1px solid rgb(235 201 181 / 24%); border-radius: 7rem 7rem 0.55rem 0.55rem; box-shadow: inset 0 0 0 0.45rem rgb(39 20 29 / 16%); }
-.haven-threshold__knob { position: absolute; right: 1.45rem; top: 56%; width: 0.85rem; aspect-ratio: 1; background: #d6aa71; border: 0.15rem solid #6f5140; border-radius: 50%; box-shadow: 0 0 0 0.3rem rgb(31 16 22 / 18%); }
-.haven-threshold__sign { position: absolute; top: 28%; left: 50%; display: grid; width: 8.6rem; gap: 0.12rem; padding: 0.6rem 0.65rem; color: #3b2730; background: #ead7bd; border: 2px solid #7a5852; box-shadow: 0 0.45rem 0 rgb(36 20 27 / 18%); text-align: center; transform: translateX(-50%) rotate(-2deg); }
+.haven-threshold {
+  display: grid;
+  overflow: hidden;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 1rem;
+  box-shadow: 0 1.15rem 3.2rem rgb(15 9 13 / 20%);
+}
+
+.haven-threshold__scene {
+  position: relative;
+  min-height: 24rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgb(229 157 92 / 18%), transparent 55%),
+    linear-gradient(180deg, #493143, #2d1d2a 68%, #241821);
+  isolation: isolate;
+}
+
+.haven-threshold__wall {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3.4rem, rgb(255 237 218 / 5%) 3.4rem 3.48rem),
+    repeating-linear-gradient(90deg, transparent 0 5.8rem, rgb(255 237 218 / 3%) 5.8rem 5.88rem);
+  mask-image: linear-gradient(180deg, rgb(0 0 0 / 70%), transparent 86%);
+}
+
+.haven-threshold__arch {
+  --door-angle: 0deg;
+  position: absolute;
+  z-index: 2;
+  bottom: 3.65rem;
+  left: 50%;
+  width: min(66%, 17.75rem);
+  height: 78%;
+  overflow: hidden;
+  background: #20131d;
+  border: 0.68rem solid #82606a;
+  border-bottom: 0;
+  border-radius: 10rem 10rem 0 0;
+  box-shadow: 0 0 0 0.15rem rgb(241 205 176 / 25%), 0 1rem 3rem rgb(10 4 9 / 46%);
+  perspective: 950px;
+  transform: translateX(-50%);
+}
+
+.haven-threshold__room {
+  position: absolute;
+  inset: 0;
+  background-image: var(--haven-room-art);
+  background-position: 53% center;
+  background-size: cover;
+  filter: brightness(0.82) saturate(0.88);
+}
+
+.haven-threshold__room-light {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 58% 58%, rgb(254 199 124 / 68%), transparent 40%),
+    linear-gradient(180deg, rgb(245 182 131 / 14%), transparent 72%);
+  opacity: 0.15;
+  transition: opacity 360ms ease;
+}
+
+.haven-threshold__door {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  background: linear-gradient(145deg, #855b63 0%, #64404f 38%, #402a38 100%);
+  border: 0;
+  border-right: 0.16rem solid rgb(33 17 27 / 55%);
+  border-radius: 9.5rem 9.5rem 0 0;
+  cursor: pointer;
+  transform: rotateY(var(--door-angle));
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.22, 0.78, 0.22, 1), filter 180ms ease;
+}
+
+.haven-threshold__door:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.haven-threshold__door:focus-visible {
+  outline: 3px solid #f3cb8c;
+  outline-offset: -0.35rem;
+}
+
+.haven-threshold__door:disabled {
+  cursor: default;
+}
+
+.haven-threshold__door-grain {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 2.55rem, rgb(41 20 31 / 21%) 2.55rem 2.66rem),
+    linear-gradient(90deg, rgb(255 244 225 / 10%), transparent 14%, transparent 86%, rgb(22 10 19 / 17%));
+}
+
+.haven-threshold__door-panel {
+  position: absolute;
+  inset: 2.15rem 1rem 1.9rem;
+  border: 1px solid rgb(245 214 189 / 36%);
+  border-radius: 8rem 8rem 0.7rem 0.7rem;
+  box-shadow: inset 0 0 0 0.5rem rgb(49 25 37 / 16%);
+}
+
+.haven-threshold__door-moon {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  color: #efc78f;
+  font-size: 1.2rem;
+  text-shadow: 0 0 0.8rem rgb(240 185 115 / 58%);
+  transform: translateX(-50%);
+}
+
+.haven-threshold__sign {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  display: grid;
+  width: min(78%, 9.25rem);
+  gap: 0.18rem;
+  padding: 0.7rem 0.55rem;
+  color: #432b37;
+  background: linear-gradient(165deg, #f4e4cd, #dbc2aa);
+  border: 1px solid #956f68;
+  box-shadow: 0 0.38rem 0 rgb(36 19 30 / 21%);
+  text-align: center;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
 .haven-threshold__sign::before,
-.haven-threshold__sign::after { position: absolute; top: -1.2rem; width: 1px; height: 1.25rem; background: #8b6a60; content: ""; }
-.haven-threshold__sign::before { left: 1.3rem; transform: rotate(13deg); }
-.haven-threshold__sign::after { right: 1.3rem; transform: rotate(-13deg); }
-.haven-threshold__sign span { font-family: var(--font-display); font-size: 0.92rem; font-style: italic; font-weight: 800; letter-spacing: 0.05em; }
-.haven-threshold__sign small { font-family: var(--font-detail); font-size: 0.51rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.haven-threshold__ghostie { --ghostie-size: 7.25rem; position: absolute; z-index: 3; right: -1.2rem; bottom: -0.6rem; width: 8.4rem; height: 7.4rem; opacity: 0; border: 1px solid rgb(234 203 184 / 24%); border-radius: 0.85rem; box-shadow: 0 0.75rem 2rem rgb(25 10 20 / 30%); transform: translateX(2.5rem) rotate(7deg); transition: opacity 300ms ease 80ms, transform 420ms cubic-bezier(0.22, 0.78, 0.22, 1); }
-.haven-threshold__pillow { position: absolute; z-index: 2; bottom: 0.35rem; width: 5.6rem; height: 2.6rem; background: #9b789c; border: 2px solid #604961; border-radius: 52% 48% 44% 56%; box-shadow: inset 0 -0.5rem 0 rgb(61 39 56 / 12%); transition: transform 420ms ease; }
-.haven-threshold__pillow--one { left: 2.4rem; transform: rotate(8deg); }
-.haven-threshold__pillow--two { right: 2.1rem; background: #bc826f; border-color: #754f4d; transform: rotate(-7deg); }
-.haven-threshold__mat { position: absolute; z-index: 5; bottom: 0.75rem; left: 50%; padding: 0.35rem 1.2rem; color: #d9c4b7; background: #39272e; border: 1px solid rgb(236 211 196 / 15%); border-radius: 50%; font-family: var(--font-detail); font-size: 0.48rem; font-weight: 850; letter-spacing: 0.12em; transform: translateX(-50%); }
-.haven-threshold__stars i { position: absolute; width: 0.35rem; aspect-ratio: 1; background: #e5b675; border-radius: 50%; box-shadow: 0 0 0.7rem rgb(229 182 117 / 52%); }
-.haven-threshold__stars i:nth-child(1) { top: 18%; left: 13%; }
-.haven-threshold__stars i:nth-child(2) { top: 32%; right: 12%; }
-.haven-threshold__stars i:nth-child(3) { bottom: 25%; left: 19%; }
-.haven-threshold__stars i:nth-child(4) { top: 11%; right: 23%; }
-.haven-threshold__scene.is-step-1 .haven-threshold__arch { --door-angle: -18deg; }
-.haven-threshold__scene.is-step-2 .haven-threshold__arch { --door-angle: -46deg; }
-.haven-threshold__scene.is-step-3 .haven-threshold__arch { --door-angle: -72deg; }
-.haven-threshold__scene.is-step-1 .haven-threshold__room-light { opacity: 0.44; }
+.haven-threshold__sign::after {
+  position: absolute;
+  top: -1rem;
+  width: 1px;
+  height: 1.08rem;
+  background: #d5b197;
+  content: "";
+}
+
+.haven-threshold__sign::before {
+  left: 1.4rem;
+  transform: rotate(16deg);
+}
+
+.haven-threshold__sign::after {
+  right: 1.4rem;
+  transform: rotate(-16deg);
+}
+
+.haven-threshold__sign > span {
+  font-family: var(--font-display);
+  font-size: 0.93rem;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.haven-threshold__sign small {
+  font-family: var(--font-detail);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.haven-threshold__knocker {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  width: 2rem;
+  height: 2.3rem;
+  border: 0.22rem solid #d1a670;
+  border-radius: 48% 48% 44% 44%;
+  box-shadow: inset 0 0 0 1px rgb(49 25 31 / 34%), 0 0 0.8rem rgb(232 174 103 / 15%);
+  transform: translateX(-50%);
+}
+
+.haven-threshold__knocker::before {
+  position: absolute;
+  top: -0.48rem;
+  left: 50%;
+  width: 0.7rem;
+  aspect-ratio: 1;
+  background: #e7c18b;
+  border: 1px solid #8a6650;
+  border-radius: 50%;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.haven-threshold__knob {
+  position: absolute;
+  top: 67%;
+  right: 1.12rem;
+  width: 0.84rem;
+  aspect-ratio: 1;
+  background: #e6bd86;
+  border: 0.14rem solid #775642;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.25rem rgb(36 18 27 / 24%);
+}
+
+.haven-threshold__ghostie {
+  --ghostie-size: 8rem;
+  position: absolute;
+  z-index: 3;
+  right: -1.7rem;
+  bottom: 0.35rem;
+  width: 8.8rem;
+  height: 8.8rem;
+  opacity: 0;
+  transform: translateX(2rem) rotate(8deg);
+  transition: opacity 300ms ease 80ms, transform 440ms cubic-bezier(0.22, 0.78, 0.22, 1);
+}
+
+.haven-threshold__lantern {
+  position: absolute;
+  z-index: 1;
+  top: 24%;
+  width: 1.55rem;
+  height: 2.2rem;
+  background: linear-gradient(180deg, #f4c98b, #e39759);
+  border: 0.16rem solid #75514b;
+  border-radius: 35% 35% 28% 28%;
+  box-shadow: 0 0 1.6rem 0.45rem rgb(235 176 107 / 26%);
+}
+
+.haven-threshold__lantern::before {
+  position: absolute;
+  right: 48%;
+  bottom: 100%;
+  width: 1px;
+  height: 1.6rem;
+  background: #bb927c;
+  content: "";
+}
+
+.haven-threshold__lantern--left {
+  left: 9%;
+}
+
+.haven-threshold__lantern--right {
+  right: 9%;
+  top: 32%;
+  transform: scale(0.85);
+}
+
+.haven-threshold__stepstone {
+  position: absolute;
+  z-index: 3;
+  right: 11%;
+  bottom: 2.75rem;
+  left: 11%;
+  height: 0.9rem;
+  background: linear-gradient(180deg, #80646a, #573c47);
+  border-radius: 0.4rem;
+  box-shadow: 0 0.5rem 1.2rem rgb(13 7 12 / 35%);
+}
+
+.haven-threshold__mat {
+  position: absolute;
+  z-index: 5;
+  bottom: 1.62rem;
+  left: 50%;
+  padding: 0.38rem 1.05rem;
+  color: #f0dccc;
+  background: #593b43;
+  border: 1px solid rgb(241 205 181 / 32%);
+  border-radius: 48%;
+  font-family: var(--font-detail);
+  font-size: 0.51rem;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.haven-threshold__scene-note {
+  position: absolute;
+  right: 0;
+  bottom: 0.5rem;
+  left: 0;
+  margin: 0;
+  color: rgb(249 225 218 / 83%);
+  font-family: var(--font-detail);
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.haven-threshold__scene.is-step-1 .haven-threshold__arch {
+  --door-angle: -18deg;
+}
+
+.haven-threshold__scene.is-step-2 .haven-threshold__arch {
+  --door-angle: -43deg;
+}
+
+.haven-threshold__scene.is-step-3 .haven-threshold__arch {
+  --door-angle: -78deg;
+}
+
+.haven-threshold__scene.is-step-1 .haven-threshold__room-light {
+  opacity: 0.48;
+}
+
 .haven-threshold__scene.is-step-2 .haven-threshold__room-light,
-.haven-threshold__scene.is-step-3 .haven-threshold__room-light { opacity: 0.82; }
+.haven-threshold__scene.is-step-3 .haven-threshold__room-light {
+  opacity: 0.84;
+}
+
 .haven-threshold__scene.is-step-1 .haven-threshold__ghostie,
 .haven-threshold__scene.is-step-2 .haven-threshold__ghostie,
-.haven-threshold__scene.is-step-3 .haven-threshold__ghostie { opacity: 1; transform: translateX(0) rotate(0); }
-.haven-threshold__scene.is-step-2 .haven-threshold__pillow--one,
-.haven-threshold__scene.is-step-3 .haven-threshold__pillow--one { transform: translateX(-1.4rem) rotate(-7deg); }
-.haven-threshold__scene.is-step-2 .haven-threshold__pillow--two,
-.haven-threshold__scene.is-step-3 .haven-threshold__pillow--two { transform: translateX(1.3rem) rotate(6deg); }
-.haven-threshold__content { display: grid; align-content: center; justify-items: start; min-height: 19rem; padding: 1.4rem; color: var(--story-copy); background: radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--story-accent) 12%, transparent), transparent 40%), var(--story-surface); }
-.haven-threshold__content h2 { color: var(--story-copy); }
-.haven-threshold__content > p:not(.eyebrow) { max-width: 38rem; color: var(--story-muted); }
-.haven-threshold__content .eyebrow { color: var(--story-accent); }
-.haven-threshold__content .text-button { margin-block-start: 0.85rem; color: var(--story-muted); }
-.haven-threshold__progress { display: flex; gap: 0.35rem; margin-block: 0.45rem 1rem; }
-.haven-threshold__progress span { width: 1.7rem; height: 0.24rem; background: color-mix(in srgb, var(--story-muted) 22%, transparent); border-radius: 999px; transition: background-color 220ms ease; }
-.haven-threshold__progress span.active { background: var(--story-accent); }
-@media (min-width: 56rem) {
-  .haven-threshold { grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr); }
-  .haven-threshold__scene { min-height: 31rem; }
-  .haven-threshold__content { min-height: 31rem; padding: clamp(2rem, 4vw, 3.5rem); }
-  .haven-threshold__arch { width: min(64%, 21rem); }
-  .haven-threshold__ghostie { --ghostie-size: 8.75rem; width: 10rem; height: 8.8rem; }
+.haven-threshold__scene.is-step-3 .haven-threshold__ghostie {
+  opacity: 1;
+  transform: translateX(0) rotate(0);
 }
+
+.haven-threshold__content {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  min-height: 26rem;
+  padding: 1.4rem;
+  color: var(--story-copy);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--story-accent) 13%, transparent), transparent 41%),
+    var(--story-surface);
+}
+
+.haven-threshold__chapter {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.haven-threshold__content .eyebrow {
+  margin: 0;
+  color: var(--story-accent);
+}
+
+.haven-threshold__count {
+  margin: 0;
+  color: var(--story-muted);
+  font-size: 0.7rem;
+  font-weight: 740;
+  white-space: nowrap;
+}
+
+.haven-threshold__progress {
+  display: flex;
+  align-items: center;
+  gap: 0.62rem;
+  padding: 0;
+  margin-block: 1rem 1.1rem;
+  list-style: none;
+}
+
+.haven-threshold__progress > li {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--story-muted);
+  background: color-mix(in srgb, var(--story-surface-deep) 75%, transparent);
+  border: 1px solid var(--story-line);
+  border-radius: 50%;
+  font-size: 0.76rem;
+  font-weight: 800;
+  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.haven-threshold__progress > li.is-current {
+  color: var(--story-copy);
+  border-color: var(--story-accent);
+}
+
+.haven-threshold__progress > li.is-answered {
+  color: var(--story-copy);
+  background: color-mix(in srgb, var(--story-accent) 36%, var(--story-surface));
+  border-color: var(--story-accent);
+}
+
+.haven-threshold__stage-name {
+  margin: 0 0 0.35rem;
+  color: var(--story-accent);
+  font-family: var(--font-detail);
+  font-size: 0.7rem;
+  font-weight: 820;
+  letter-spacing: 0.085em;
+  text-transform: uppercase;
+}
+
+.haven-threshold__content h2 {
+  max-width: 22rem;
+  margin: 0 0 0.72rem;
+  color: var(--story-copy);
+  font-size: clamp(1.75rem, 4vw, 2.55rem);
+  line-height: 1.08;
+}
+
+.haven-threshold__story {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--story-muted);
+  line-height: 1.7;
+}
+
+.haven-threshold__whisper {
+  margin-block: 0.9rem 1.1rem;
+  color: var(--story-copy);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.haven-threshold__action {
+  max-width: 100%;
+}
+
+.haven-threshold__content .text-button {
+  margin-block-start: 0.85rem;
+  color: var(--story-muted);
+}
+
+@media (min-width: 56rem) {
+  .haven-threshold {
+    grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
+  }
+
+  .haven-threshold__scene,
+  .haven-threshold__content {
+    min-height: 35rem;
+  }
+
+  .haven-threshold__content {
+    padding: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .haven-threshold__arch {
+    width: min(64%, 21rem);
+  }
+
+  .haven-threshold__ghostie {
+    --ghostie-size: 10rem;
+    width: 10.5rem;
+    height: 10.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,
   .haven-threshold__ghostie,
-  .haven-threshold__pillow,
-  .haven-threshold__room-light { transition: none; }
+  .haven-threshold__room-light,
+  .haven-threshold__progress > li {
+    transition: none;
+  }
 }
 </style>
