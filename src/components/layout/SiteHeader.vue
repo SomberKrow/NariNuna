@@ -104,17 +104,18 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .brand-mark__emblem {
-  display: block;
-  width: 3rem;
-  height: 3rem;
+  display: grid;
+  width: 3.15rem;
+  height: 3.15rem;
   flex: 0 0 auto;
-  overflow: hidden;
-  background: #fffaf3;
-  border: 1px solid var(--story-line);
-  border-radius: 0.8rem;
-  box-shadow: 0 0.45rem 0.8rem rgb(35 17 27 / 18%);
+  place-items: center;
+  overflow: visible;
+  background: radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--story-accent) 22%, transparent), transparent 70%);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: none;
 }
-.brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 3rem; }
+.brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 3.15rem; }
 .site-header__more { position: relative; }
 .site-header__more > summary {
   display: flex;
