@@ -37,6 +37,12 @@ Home, Meet Nari, Haven, Streams, Nail Studio, Resources, Work With Nari, and Sto
 
 Nail Studio remains explicitly illustrated environmental support artwork, never counterfeit portfolio photography. Resources uses only original scythe-hairpin Ghostie librarians instead of inventing a replacement Nari. The original owner-supplied model, original emotes, and all 27 supplied Prinny designs remain untouched.
 
+## Purpose-composed Haven doorway reveal
+
+`public/media/storybook/scenes/haven-doorway-gathering.webp` is an independently generated, full-frame `1672 × 941` storybook gathering painted specifically for the Haven's third-knock reveal. Nari and six approved scythe-hairpin Ghosties belong to one coherent illustrated cottage scene; no separately rendered Ghostie is layered over the painting.
+
+The locked doorway glimpses the gathering through its opening. Once all three knocks are answered, the component expands into the complete uncropped illustration and reveals the approved Discord invitation. The artwork remains owner-authorized private-review material under the same unresolved identity, derivative-rights, credit, and public-release boundaries as the other generated environment paintings.
+
 ## Rendering and verification contract
 
 `src/components/art/GhostieArt.vue` renders each preprocessed original directly as a semantic `<img>` with intrinsic `1254 × 1254` dimensions, appropriate alternative text, lazy loading for non-header art, `object-fit: contain`, and existing theme-aware shadows.

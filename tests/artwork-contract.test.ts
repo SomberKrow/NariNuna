@@ -59,7 +59,6 @@ describe("approved-source artwork contracts", () => {
       "src/pages/HavenPage.vue",
       "src/pages/SupportPage.vue",
       "src/pages/NotFoundPage.vue",
-      "src/components/haven/HavenDoor.vue",
       "src/components/layout/SiteHeader.vue"
     ];
 

@@ -67,6 +67,7 @@ export const environmentArtwork = {
   homeDaylight: "/media/storybook/scenes/haven-daybreak.webp",
   meetNari: "/media/storybook/scenes/meet-nari.webp",
   commonRoom: "/media/storybook/scenes/haven-community.webp",
+  havenGathering: "/media/storybook/scenes/haven-doorway-gathering.webp",
   streams: "/media/storybook/scenes/streams-atelier.webp",
   nails: "/media/storybook/scenes/nails-atelier.webp",
   resources: "/media/storybook/scenes/resources-library.webp",

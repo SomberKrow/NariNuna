@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
 import { computed, ref } from "vue";
-import GhostieArt from "@/components/art/GhostieArt.vue";
 import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
@@ -48,11 +47,15 @@ function closeDoor(): void {
 </script>
 
 <template>
-  <section class="haven-threshold" aria-labelledby="haven-door-title">
+  <section
+    class="haven-threshold"
+    :class="{ 'haven-threshold--open': isOpen }"
+    aria-labelledby="haven-door-title"
+  >
     <div
       class="haven-threshold__scene"
       :class="`is-step-${step}`"
-      :style="{ '--haven-room-art': `url('${environmentArtwork.commonRoom}')` }"
+      :style="{ '--haven-room-art': `url('${environmentArtwork.havenGathering}')` }"
     >
       <div class="haven-threshold__wall" aria-hidden="true"></div>
       <div class="haven-threshold__lantern haven-threshold__lantern--left" aria-hidden="true"></div>
@@ -61,7 +64,6 @@ function closeDoor(): void {
       <div class="haven-threshold__arch">
         <div class="haven-threshold__room" aria-hidden="true"></div>
         <div class="haven-threshold__room-light" aria-hidden="true"></div>
-        <GhostieArt class="haven-threshold__ghostie" variant="shy" />
 
         <button
           class="haven-threshold__door"
@@ -87,6 +89,20 @@ function closeDoor(): void {
       <p class="haven-threshold__scene-note" aria-hidden="true">
         {{ isOpen ? "The door is yours to open." : "You can knock on the door, too." }}
       </p>
+
+      <figure v-if="isOpen" class="haven-threshold__gathering">
+        <img
+          :src="environmentArtwork.havenGathering"
+          width="1672"
+          height="941"
+          alt="Nari welcomes you into a lantern-lit autumn cottage surrounded by her cheerful little scythe-hairpin Ghosties"
+          decoding="async"
+        />
+        <figcaption>
+          <span>The Haven, after three knocks</span>
+          <strong>We saved you a spot.</strong>
+        </figcaption>
+      </figure>
     </div>
 
     <div class="haven-threshold__content">
@@ -359,19 +375,6 @@ function closeDoor(): void {
   box-shadow: 0 0 0 0.25rem rgb(36 18 27 / 24%);
 }
 
-.haven-threshold__ghostie {
-  --ghostie-size: 8rem;
-  position: absolute;
-  z-index: 3;
-  right: -1.7rem;
-  bottom: 0.35rem;
-  width: 8.8rem;
-  height: 8.8rem;
-  opacity: 0;
-  transform: translateX(2rem) rotate(8deg);
-  transition: opacity 300ms ease 80ms, transform 440ms cubic-bezier(0.22, 0.78, 0.22, 1);
-}
-
 .haven-threshold__lantern {
   position: absolute;
   z-index: 1;
@@ -468,11 +471,62 @@ function closeDoor(): void {
   opacity: 0.84;
 }
 
-.haven-threshold__scene.is-step-1 .haven-threshold__ghostie,
-.haven-threshold__scene.is-step-2 .haven-threshold__ghostie,
-.haven-threshold__scene.is-step-3 .haven-threshold__ghostie {
-  opacity: 1;
-  transform: translateX(0) rotate(0);
+.haven-threshold--open .haven-threshold__scene {
+  min-height: 0;
+  aspect-ratio: 1672 / 941;
+}
+
+.haven-threshold__gathering {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  display: grid;
+  margin: 0;
+  overflow: hidden;
+  background: var(--story-surface-deep);
+}
+
+.haven-threshold__gathering > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.haven-threshold__gathering::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 44%;
+  background: linear-gradient(180deg, transparent, rgb(30 16 26 / 78%));
+  content: "";
+  pointer-events: none;
+}
+
+.haven-threshold__gathering > figcaption {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 0.9rem;
+  left: 1rem;
+  display: grid;
+  gap: 0.15rem;
+  color: #fff4ed;
+  text-shadow: 0 0.15rem 0.65rem rgb(20 10 17 / 75%);
+}
+
+.haven-threshold__gathering > figcaption > span {
+  font-family: var(--font-detail);
+  font-size: clamp(0.52rem, 1.6vw, 0.75rem);
+  font-weight: 820;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.haven-threshold__gathering > figcaption > strong {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 4vw, 2.25rem);
+  line-height: 1.06;
 }
 
 .haven-threshold__content {
@@ -589,8 +643,12 @@ function closeDoor(): void {
     grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
   }
 
-  .haven-threshold__scene,
-  .haven-threshold__content {
+  .haven-threshold--open {
+    grid-template-columns: 1fr;
+  }
+
+  .haven-threshold:not(.haven-threshold--open) .haven-threshold__scene,
+  .haven-threshold:not(.haven-threshold--open) .haven-threshold__content {
     min-height: 35rem;
   }
 
@@ -602,16 +660,16 @@ function closeDoor(): void {
     width: min(64%, 21rem);
   }
 
-  .haven-threshold__ghostie {
-    --ghostie-size: 10rem;
-    width: 10.5rem;
-    height: 10.5rem;
+  .haven-threshold__gathering > figcaption {
+    right: 2.25rem;
+    bottom: 2rem;
+    left: 2.25rem;
+    gap: 0.4rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,
-  .haven-threshold__ghostie,
   .haven-threshold__room-light,
   .haven-threshold__progress > li {
     transition: none;
