@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Youtube } from "@lucide/vue";
+import { ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Youtube } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
