@@ -25,6 +25,13 @@ export const ghostieArtwork = {
   peekingRight: "/media/ghosties/ghostie-peeking-right.webp"
 } as const;
 
+export const communityGhostieSprites = {
+  core: "/media/ghosties/community/ghostie-strip-core.webp",
+  cozy: "/media/ghosties/community/ghostie-strip-cozy.webp",
+  utility: "/media/ghosties/community/ghostie-strip-utility.webp",
+  extras: "/media/ghosties/community/ghostie-strip-extras.webp"
+} as const;
+
 export const officialEmotes = {
   blush: "/media/emotes/nari-shy.webp",
   bonk: "/media/emotes/nari-bonk.webp",

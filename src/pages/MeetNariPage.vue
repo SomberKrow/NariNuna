@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import GhostieIllustration, { type GhostieVariant } from "@/components/art/GhostieIllustration.vue";
+import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import { environmentArtwork } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
-const identityVariants: GhostieVariant[] = ["guardian", "chaos", "artist"];
+const identityVariants: GhostieArtVariant[] = ["heart", "chaotic", "nailTech"];
 const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghostie: identityVariants[index] }));
 </script>
 
@@ -28,14 +28,14 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
     <header class="world-heading"><p class="eyebrow">One Nari, three familiar corners</p><h2>The warmth, the chaos, and the craft all belong together.</h2></header>
     <div class="identity-rooms__grid identity-rooms__grid--painted">
       <article v-for="card in identityCards" :key="card.title">
-        <GhostieIllustration class="ghostie-card-art" :variant="card.ghostie" />
+        <GhostieArt class="ghostie-card-art" :variant="card.ghostie" />
         <div><p class="eyebrow">{{ card.eyebrow }}</p><h3>{{ card.title }}</h3><p>{{ card.text }}</p></div>
       </article>
     </div>
   </section>
 
   <section class="nari-promise nari-promise--storybook page-width section-pad">
-    <GhostieIllustration class="nari-promise__ghostie" variant="lantern" :decorative="false" label="A Haven Ghostie carrying an emerald lantern, representing Nari's warmth and boundaries" />
+    <GhostieArt class="nari-promise__ghostie" variant="protective" :decorative="false" label="A Nari Nuna Ghostie holding a heart shield, representing warmth with strong boundaries" />
     <div class="nari-promise__copy">
       <p class="eyebrow"><Shield :size="15" aria-hidden="true" /> Sweet doesn't mean spineless</p>
       <h2>We take care of our people here.</h2>
@@ -51,13 +51,13 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
 
 <style scoped>
 .identity-rooms__grid--painted > article { grid-template-rows: 12rem 1fr; min-height: 100%; }
-.ghostie-card-art { height: 12rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
+.ghostie-card-art { --ghostie-size: 11.5rem; height: 12rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
 .identity-rooms__grid--painted > article > div { min-height: 12.5rem; }
-.nari-promise__ghostie { min-height: 18rem; border: 1px solid var(--story-line); border-radius: 0.7rem; box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%); }
+.nari-promise__ghostie { --ghostie-size: 18rem; min-height: 18rem; border: 1px solid var(--story-line); border-radius: 0.7rem; box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%); }
 @media (min-width: 48rem) {
   .identity-rooms__grid--painted > article { grid-template-rows: 13rem 1fr; }
-  .ghostie-card-art { height: 13rem; }
+  .ghostie-card-art { --ghostie-size: 12.5rem; height: 13rem; }
   .identity-rooms__grid--painted > article > div { min-height: 14rem; }
-  .nari-promise__ghostie { height: 100%; min-height: 24rem; }
+  .nari-promise__ghostie { --ghostie-size: 22rem; height: 100%; min-height: 24rem; }
 }
 </style>

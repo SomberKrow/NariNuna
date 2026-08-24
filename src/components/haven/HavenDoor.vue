@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
 import { computed, ref } from "vue";
-import GhostieIllustration from "@/components/art/GhostieIllustration.vue";
+import GhostieArt from "@/components/art/GhostieArt.vue";
 import { discordUrl } from "@/data/socials";
 
 const step = ref(0);
@@ -21,7 +21,7 @@ const currentStage = computed(() => stages[Math.min(step.value, stages.length - 
         <div class="haven-threshold__room-light"></div>
         <div class="haven-threshold__pillow haven-threshold__pillow--one"></div>
         <div class="haven-threshold__pillow haven-threshold__pillow--two"></div>
-        <GhostieIllustration class="haven-threshold__ghostie" variant="welcome" bare />
+        <GhostieArt class="haven-threshold__ghostie" variant="peek" />
         <div class="haven-threshold__door">
           <div class="haven-threshold__door-panel"></div>
           <div class="haven-threshold__knob"></div>
@@ -69,7 +69,7 @@ const currentStage = computed(() => stages[Math.min(step.value, stages.length - 
 .haven-threshold__sign::after { right: 1.3rem; transform: rotate(-13deg); }
 .haven-threshold__sign span { font-family: var(--font-display); font-size: 0.92rem; font-style: italic; font-weight: 800; letter-spacing: 0.05em; }
 .haven-threshold__sign small { font-family: var(--font-detail); font-size: 0.51rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.haven-threshold__ghostie { position: absolute; z-index: 3; right: -1.2rem; bottom: -0.8rem; width: 8.4rem; height: 7rem; opacity: 0; transform: translateX(2.5rem) rotate(7deg); transition: opacity 300ms ease 80ms, transform 420ms cubic-bezier(0.22, 0.78, 0.22, 1); }
+.haven-threshold__ghostie { --ghostie-size: 7.25rem; position: absolute; z-index: 3; right: -1.2rem; bottom: -0.6rem; width: 8.4rem; height: 7.4rem; opacity: 0; border: 1px solid rgb(234 203 184 / 24%); border-radius: 0.85rem; box-shadow: 0 0.75rem 2rem rgb(25 10 20 / 30%); transform: translateX(2.5rem) rotate(7deg); transition: opacity 300ms ease 80ms, transform 420ms cubic-bezier(0.22, 0.78, 0.22, 1); }
 .haven-threshold__pillow { position: absolute; z-index: 2; bottom: 0.35rem; width: 5.6rem; height: 2.6rem; background: #9b789c; border: 2px solid #604961; border-radius: 52% 48% 44% 56%; box-shadow: inset 0 -0.5rem 0 rgb(61 39 56 / 12%); transition: transform 420ms ease; }
 .haven-threshold__pillow--one { left: 2.4rem; transform: rotate(8deg); }
 .haven-threshold__pillow--two { right: 2.1rem; background: #bc826f; border-color: #754f4d; transform: rotate(-7deg); }
@@ -105,7 +105,7 @@ const currentStage = computed(() => stages[Math.min(step.value, stages.length - 
   .haven-threshold__scene { min-height: 31rem; }
   .haven-threshold__content { min-height: 31rem; padding: clamp(2rem, 4vw, 3.5rem); }
   .haven-threshold__arch { width: min(64%, 21rem); }
-  .haven-threshold__ghostie { width: 10rem; height: 8.5rem; }
+  .haven-threshold__ghostie { --ghostie-size: 8.75rem; width: 10rem; height: 8.8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,

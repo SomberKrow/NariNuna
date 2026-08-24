@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
+import { communityGhostieSprites, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
 import { prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
 
 function publicAssetExists(assetPath: string): boolean {
@@ -23,8 +23,27 @@ describe("approved-source artwork contracts", () => {
 
   it("gives every shared Ghostie and room illustration a real asset", () => {
     expect(Object.values(ghostieArtwork).every(publicAssetExists)).toBe(true);
+    expect(Object.values(communityGhostieSprites).every(publicAssetExists)).toBe(true);
     expect(Object.values(environmentArtwork).every(publicAssetExists)).toBe(true);
     expect(Object.values(storybookPostcards).every(publicAssetExists)).toBe(true);
+  });
+
+  it("uses Nari's approved raster Ghostie family instead of the retired inline SVG system", () => {
+    const consumers = [
+      "src/pages/MeetNariPage.vue",
+      "src/pages/NailStudioPage.vue",
+      "src/pages/HavenPage.vue",
+      "src/pages/SupportPage.vue",
+      "src/pages/NotFoundPage.vue",
+      "src/components/haven/HavenDoor.vue",
+      "src/components/layout/SiteHeader.vue"
+    ];
+
+    for (const path of consumers) {
+      const source = readFileSync(resolve(process.cwd(), path), "utf8");
+      expect(source).toContain("GhostieArt");
+      expect(source).not.toContain("GhostieIllustration");
+    }
   });
 
   it("retains all 27 supplied Prinny designs without fabricating roster lore", () => {

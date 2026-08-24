@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ChevronDown, Menu, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
-import NariHavenMark from "@/components/art/NariHavenMark.vue";
+import GhostieArt from "@/components/art/GhostieArt.vue";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher.vue";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { twitchUrl } from "@/data/socials";
@@ -43,7 +43,7 @@ onBeforeUnmount(() => {
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
-        <span class="brand-mark__emblem"><NariHavenMark /></span>
+        <span class="brand-mark__emblem"><GhostieArt variant="wave" /></span>
         <span>
           <strong>Nari <i>Nuna</i></strong>
           <small>The little world next door</small>
@@ -103,8 +103,18 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.brand-mark__emblem { display: block; width: 2.9rem; height: 2.9rem; flex: 0 0 auto; }
-.brand-mark__emblem :deep(.nari-haven-mark) { filter: drop-shadow(0 0.45rem 0.8rem rgb(35 17 27 / 22%)); }
+.brand-mark__emblem {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: #fffaf3;
+  border: 1px solid var(--story-line);
+  border-radius: 0.8rem;
+  box-shadow: 0 0.45rem 0.8rem rgb(35 17 27 / 18%);
+}
+.brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 3rem; }
 .site-header__more { position: relative; }
 .site-header__more > summary {
   display: flex;
