@@ -139,12 +139,12 @@ for share in home meet streams nails haven resources work stories; do
   esac
 
   convert_checked "$master_root/$source.png" \
-    -resize '1200x630^' -gravity Center -extent 1200x630 \
+    -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \
     -strip -quality 84 \
     "$media_root/storybook/share/nari-$share-social.webp"
 
   convert_checked "$master_root/$source.png" \
-    -resize '1200x630^' -gravity Center -extent 1200x630 \
+    -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \
     -strip -interlace Plane -quality 86 \
     "$media_root/storybook/share/nari-$share-social.jpg"
 done

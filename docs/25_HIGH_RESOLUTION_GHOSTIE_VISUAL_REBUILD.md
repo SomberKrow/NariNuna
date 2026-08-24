@@ -33,9 +33,9 @@ The existing 19 semantic component variants remain supported. Closely related se
 
 ## Delivered page environments
 
-Home, Meet Nari, Haven, and Streams each receive a completely independent `1672 × 941` native-resolution environmental composition. The homepage remains one physical room at sunset, midnight, and daybreak. Corresponding `960 × 540` postcards preserve the entire composition, while the mandatory `1200 × 630` social previews retain the full painting over a subtle extended background instead of cropping Nari out of frame.
+Home, Meet Nari, Haven, Streams, Nail Studio, Resources, Work With Nari, and Stories each receive a completely independent `1672 × 941` native-resolution environmental composition. The homepage remains one physical room at sunset, midnight, and daybreak. All eight corresponding `960 × 540` postcards preserve their entire compositions, while all sixteen mandatory WebP/JPEG `1200 × 630` social previews retain the full paintings over subtle extended backgrounds instead of cropping Nari out of frame.
 
-Nail Studio, Resources, Work, and Stories retain their existing separately authored chapter paintings. The original owner-supplied model, original emotes, and all 27 supplied Prinny designs remain untouched.
+Nail Studio remains explicitly illustrated environmental support artwork, never counterfeit portfolio photography. Resources uses only original scythe-hairpin Ghostie librarians instead of inventing a replacement Nari. The original owner-supplied model, original emotes, and all 27 supplied Prinny designs remain untouched.
 
 ## Rendering and verification contract
 
