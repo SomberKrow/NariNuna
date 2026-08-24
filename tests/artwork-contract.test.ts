@@ -28,7 +28,13 @@ describe("approved-source artwork contracts", () => {
     expect(Object.values(storybookPostcards).every(publicAssetExists)).toBe(true);
   });
 
-  it("uses Nari's approved raster Ghostie family instead of the retired inline SVG system", () => {
+  it("uses transparent raster Ghosties instead of cream card backgrounds", () => {
+    const ghostieComponent = readFileSync(resolve(process.cwd(), "src/components/art/GhostieArt.vue"), "utf8");
+    expect(ghostieComponent).toContain("removeConnectedPaper");
+    expect(ghostieComponent).toContain("background: transparent");
+    expect(ghostieComponent).toContain("drop-shadow");
+    expect(ghostieComponent).not.toContain("#fffaf3");
+
     const consumers = [
       "src/pages/MeetNariPage.vue",
       "src/pages/NailStudioPage.vue",
