@@ -39,9 +39,9 @@ Nail Studio remains explicitly illustrated environmental support artwork, never 
 
 ## Purpose-composed Haven doorway reveal
 
-`public/media/storybook/scenes/haven-doorway-gathering.webp` is an independently generated, full-frame `1672 × 941` storybook gathering painted specifically for the Haven's third-knock reveal. Nari and six approved scythe-hairpin Ghosties belong to one coherent illustrated cottage scene; no separately rendered Ghostie is layered over the painting.
+`public/media/storybook/scenes/haven-doorway-gathering.webp` is the independently generated `1672 × 941` horizontal concept for the Haven's third-knock reveal. Its companion, `public/media/storybook/scenes/haven-doorway-interior.webp`, is a separately generated full-height `1024 × 1536` vertical room composition designed specifically to occupy the tall arched doorway. Nari and the approved scythe-hairpin Ghosties belong to one coherent illustrated cottage scene; no separately rendered Ghostie is layered over either painting.
 
-The locked doorway glimpses the gathering through its opening. Once all three knocks are answered, the complete uncropped illustration remains contained within the ornate arched doorway while the approved Discord invitation appears beside it. The section keeps its existing dimensions and column layout instead of expanding into the viewport. The artwork remains owner-authorized private-review material under the same unresolved identity, derivative-rights, credit, and public-release boundaries as the other generated environment paintings.
+The locked doorway glimpses the portrait room painting through its opening. Once all three knocks are answered, that single purpose-composed image fills the entire ornate arched doorway from edge to edge while the approved Discord invitation appears beside it. There is no inset landscape image, duplicated background, blurred filler, or viewport expansion. The section keeps its existing dimensions and column layout. The artwork remains owner-authorized private-review material under the same unresolved identity, derivative-rights, credit, and public-release boundaries as the other generated environment paintings.
 
 ## Rendering and verification contract
 

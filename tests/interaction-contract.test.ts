@@ -16,11 +16,13 @@ describe("Haven doorway and social interaction contracts", () => {
     expect(doorway).toContain('name: "Second knock"');
     expect(doorway).toContain('name: "Third knock"');
     expect(doorway).toContain('aria-label="Your three knocks at the Haven door"');
-    expect(doorway).toContain("environmentArtwork.havenGathering");
+    expect(doorway).toContain("environmentArtwork.havenDoorInterior");
     expect(doorway).toContain('v-if="isOpen" class="haven-threshold__gathering"');
-    expect(doorway).toContain('width="1672"');
-    expect(doorway).toContain('height="941"');
-    expect(doorway).toContain("object-fit: contain");
+    expect(doorway).toContain('width="1024"');
+    expect(doorway).toContain('height="1536"');
+    expect(doorway).toContain("object-fit: cover");
+    expect(doorway).not.toContain("backdrop-filter: blur");
+    expect(doorway).not.toContain(".haven-threshold__gathering::before");
     expect(doorway).not.toContain("GhostieArt");
 
     const archOpening = doorway.indexOf('<div class="haven-threshold__arch">');

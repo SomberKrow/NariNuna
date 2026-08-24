@@ -55,7 +55,7 @@ function closeDoor(): void {
     <div
       class="haven-threshold__scene"
       :class="`is-step-${step}`"
-      :style="{ '--haven-room-art': `url('${environmentArtwork.havenGathering}')` }"
+      :style="{ '--haven-room-art': `url('${environmentArtwork.havenDoorInterior}')` }"
     >
       <div class="haven-threshold__wall" aria-hidden="true"></div>
       <div class="haven-threshold__halo" aria-hidden="true"></div>
@@ -71,9 +71,9 @@ function closeDoor(): void {
 
         <figure v-if="isOpen" class="haven-threshold__gathering">
           <img
-            :src="environmentArtwork.havenGathering"
-            width="1672"
-            height="941"
+            :src="environmentArtwork.havenDoorInterior"
+            width="1024"
+            height="1536"
             alt="Nari welcomes you into a lantern-lit autumn cottage surrounded by her cheerful little scythe-hairpin Ghosties"
             decoding="async"
           />
@@ -634,30 +634,16 @@ function closeDoor(): void {
   inset: 0;
   margin: 0;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgb(36 23 32 / 43%), rgb(36 23 32 / 22%)),
-    var(--haven-room-art) center / cover;
-}
-
-.haven-threshold__gathering::before {
-  position: absolute;
-  inset: 0;
-  background: rgb(36 23 32 / 30%);
-  backdrop-filter: blur(0.23rem);
-  content: "";
 }
 
 .haven-threshold__gathering > img {
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: 0;
+  inset: 0;
   width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
-  box-shadow: 0 0.45rem 1.2rem rgb(26 14 20 / 32%);
-  transform: translateY(-53%);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
 }
 
 .haven-threshold__gathering::after {

@@ -74,6 +74,7 @@ const requiredAssets = [
   "/media/storybook/scenes/streams-atelier.webp",
   "/media/storybook/scenes/haven-community.webp",
   "/media/storybook/scenes/haven-doorway-gathering.webp",
+  "/media/storybook/scenes/haven-doorway-interior.webp",
   "/media/storybook/scenes/nails-atelier.webp",
   "/media/storybook/scenes/resources-library.webp",
   "/media/storybook/scenes/work-correspondence.webp",
