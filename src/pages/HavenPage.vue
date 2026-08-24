@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { Heart, House, MoonStar, ShieldCheck, Users } from "@lucide/vue";
+import { House } from "@lucide/vue";
+import GhostieIllustration, { type GhostieVariant } from "@/components/art/GhostieIllustration.vue";
 import HavenDoor from "@/components/haven/HavenDoor.vue";
 import LooseFloorboard from "@/components/haven/LooseFloorboard.vue";
-import { environmentArtwork, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork } from "@/data/artwork";
 import { communityValues } from "@/data/content";
 
-const valueScenes = [storybookPostcards.home, storybookPostcards.meetNari, storybookPostcards.haven, storybookPostcards.streams];
+const valueGhosties: GhostieVariant[] = ["kindness", "weird", "protect", "together"];
 </script>
 
 <template>
@@ -24,19 +25,9 @@ const valueScenes = [storybookPostcards.home, storybookPostcards.meetNari, story
     <header class="world-heading world-heading--center"><p class="eyebrow">What keeps the room feeling like home</p><h2>Kindness has a backbone.</h2></header>
     <div class="haven-values__grid haven-values__grid--storybook">
       <article v-for="(value, index) in communityValues" :key="value.title">
-        <div class="haven-values__art"><img :src="valueScenes[index]" width="640" height="360" alt="" loading="lazy" /></div>
-        <div class="haven-values__copy">
-          <span>{{ String(index + 1).padStart(2, "0") }}</span>
-          <h3>{{ value.title }}</h3>
-          <p>{{ value.description }}</p>
-        </div>
+        <GhostieIllustration class="haven-values__ghostie" :variant="valueGhosties[index]" />
+        <div class="haven-values__copy"><span>{{ String(index + 1).padStart(2, "0") }}</span><h3>{{ value.title }}</h3><p>{{ value.description }}</p></div>
       </article>
-    </div>
-    <div class="haven-values__principles" aria-label="Haven community principles">
-      <span><Users :size="20" aria-hidden="true" /> Belonging without performance</span>
-      <span><Heart :size="20" aria-hidden="true" /> Care without entitlement</span>
-      <span><ShieldCheck :size="20" aria-hidden="true" /> Boundaries without apology</span>
-      <span><MoonStar :size="20" aria-hidden="true" /> Your own kind of weird</span>
     </div>
   </section>
 
@@ -45,3 +36,18 @@ const valueScenes = [storybookPostcards.home, storybookPostcards.meetNari, story
     <LooseFloorboard />
   </section>
 </template>
+
+<style scoped>
+.haven-values__grid--storybook { align-items: stretch; }
+.haven-values__grid--storybook > article { grid-template-rows: 11.5rem 1fr; min-height: 100%; }
+.haven-values__ghostie { height: 11.5rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
+.haven-values__copy { grid-template-rows: auto minmax(3.15rem, auto) 1fr; align-content: start; min-height: 12.5rem; }
+.haven-values__copy > span { margin-block-end: 0.55rem; color: var(--story-accent); font-family: var(--font-detail); font-size: 0.66rem; font-weight: 850; letter-spacing: 0.12em; }
+.haven-values__copy h3 { margin-block-end: 0.65rem; }
+.haven-values__copy p { margin-block-end: 0; }
+@media (min-width: 48rem) {
+  .haven-values__grid--storybook > article { grid-template-rows: 12.5rem 1fr; }
+  .haven-values__ghostie { height: 12.5rem; }
+  .haven-values__copy { min-height: 14rem; }
+}
+</style>
