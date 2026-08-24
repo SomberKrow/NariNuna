@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Youtube } from "@lucide/vue";
+import { ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Video } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
@@ -22,7 +22,7 @@ const platforms = [
         art: storybookPostcards.stories,
         href: youtube.url,
         action: "Open YouTube",
-        icon: Youtube
+        icon: Video
       }]
     : [])
 ];
@@ -36,7 +36,7 @@ const platforms = [
       <p>Expect cozy chaos, wildly unnecessary panic, affectionate bullying, and a chat that somehow becomes half the show.</p>
       <div class="button-row">
         <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Watch live on Twitch <Radio :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
-        <a v-if="youtube" class="button button--outline" :href="youtube.url" target="_blank" rel="noreferrer noopener">Watch Nari on YouTube <Youtube :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
+        <a v-if="youtube" class="button button--outline" :href="youtube.url" target="_blank" rel="noreferrer noopener">Watch Nari on YouTube <Video :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div class="room-opening__signals"><span><MessageCircle :size="15" aria-hidden="true" /> Chat welcome</span><span><Gamepad2 :size="15" aria-hidden="true" /> Plans optional</span></div>
     </div>
