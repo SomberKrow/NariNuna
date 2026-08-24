@@ -61,10 +61,8 @@ const platforms = [
     <div class="stream-status-note"><Sparkles :size="20" aria-hidden="true" /><div><strong>No pretend live schedule.</strong><p>For current stream times, check Twitch or Nari's active socials. The old VOD archive is no longer treated as an active destination.</p></div></div>
   </section>
 
-  <section class="moment-shelf">
-    <div class="page-width section-pad">
-      <header class="world-heading"><p class="eyebrow"><Sparkles :size="15" aria-hidden="true" /> Start with the good stuff</p><h2>A few actual Nari moments.</h2><p>Chosen from Nari's own public channel. Nothing autoplays or sneaks into your speakers.</p></header>
-      <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
-    </div>
+  <section class="moment-shelf moment-shelf--final page-width section-pad">
+    <header class="world-heading"><p class="eyebrow"><Sparkles :size="15" aria-hidden="true" /> Start with the good stuff</p><h2>A few actual Nari moments.</h2><p>Chosen from Nari's own public channel. Nothing autoplays or sneaks into your speakers.</p></header>
+    <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
   </section>
 </template>

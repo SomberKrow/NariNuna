@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpRight, Heart } from "@lucide/vue";
-import { nariArtwork } from "@/data/artwork";
+import { storybookPostcards } from "@/data/artwork";
 import { footerNavigation } from "@/data/navigation";
 import { socialLinks } from "@/data/socials";
 
@@ -11,7 +11,7 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
   <footer class="site-footer">
     <div class="site-footer__inner page-width">
       <div class="site-footer__statement">
-        <div class="site-footer__portrait"><img :src="nariArtwork.avatar" width="132" height="132" alt="" loading="lazy" /></div>
+        <div class="site-footer__portrait"><img :src="storybookPostcards.meetNari" width="320" height="240" alt="" loading="lazy" /></div>
         <div>
           <p class="eyebrow">From Nari, with a little extra glitter</p>
           <h2>There is room for you here.</h2>

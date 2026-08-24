@@ -1,33 +1,249 @@
-// Final storybook cohesion, legibility, and viewport-envelope corrections.
-// Loaded last so this layer can resolve review findings without disturbing the
-// underlying world/storybook architecture.
+// Mobile-first composition layer.
+// The page paintings are the visual source of truth. Base rules target 320px;
+// larger layouts only add space, columns, and art exposure through min-width
+// enhancements. This file is intentionally loaded last.
 
-.ghostie-summoner {
-  right: max(1rem, env(safe-area-inset-right));
-  bottom: max(1rem, env(safe-area-inset-bottom));
+:root,
+:root[data-theme="nari"] {
+  --story-surface: #3b2430;
+  --story-surface-deep: #24151d;
+  --story-surface-soft: #523040;
+  --story-copy: #fff2e8;
+  --story-muted: #e3cbd0;
+  --story-line: rgb(244 219 205 / 22%);
+  --story-accent: #e4ad79;
+  --story-chip: #593448;
+  --story-chip-copy: #fff5ec;
 }
 
-// Painted card language: artwork carries the mood; copy stays on a stable,
-// theme-aware surface instead of floating over decorative gradients.
+:root[data-theme="dark"] {
+  --story-surface: #241725;
+  --story-surface-deep: #100b11;
+  --story-surface-soft: #342039;
+  --story-copy: #f8edf5;
+  --story-muted: #d2c1d0;
+  --story-line: rgb(235 216 233 / 21%);
+  --story-accent: #d4aa78;
+  --story-chip: #38243d;
+  --story-chip-copy: #fff5fb;
+}
+
+:root[data-theme="light"] {
+  --story-surface: #fff7ea;
+  --story-surface-deep: #ead8c4;
+  --story-surface-soft: #f2e0d7;
+  --story-copy: #321f27;
+  --story-muted: #6b505b;
+  --story-line: rgb(78 44 54 / 20%);
+  --story-accent: #9d5f3f;
+  --story-chip: #ead3d0;
+  --story-chip-copy: #321f27;
+}
+
+.section-pad {
+  padding-block: clamp(2.4rem, 10vw, 4rem);
+}
+
+.world-heading {
+  max-width: 46rem;
+  margin-block-end: 1.35rem;
+}
+
+.world-heading > p:last-child {
+  color: var(--text-muted);
+}
+
+/* Header: narrow layout is the baseline. */
+.brand-mark small {
+  display: none;
+}
+
+.site-header__more > nav {
+  grid-template-columns: 1fr;
+}
+
+.theme-switcher,
+.site-header__live-link {
+  width: 100%;
+}
+
+.theme-switcher__option {
+  flex: 1;
+}
+
+.site-header__live-link {
+  justify-content: center;
+}
+
+/* Home socials use one Nari-colored system instead of mixed dark brand SVGs. */
+.social-dock {
+  display: grid;
+  width: min(100%, 21rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-block: 0.75rem 1rem;
+}
+
+.social-dock > a {
+  display: flex;
+  width: auto;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.42rem;
+  color: var(--story-chip-copy);
+  background: var(--story-chip);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  font-size: 0.63rem;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.social-dock__icon {
+  display: grid;
+  width: 1.55rem;
+  height: 1.55rem;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--story-accent);
+  background: color-mix(in srgb, var(--story-surface-deep) 70%, transparent);
+  border: 1px solid var(--story-line);
+  border-radius: 50%;
+}
+
+.social-dock__label {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: nowrap;
+}
+
+/* Home starts as a natural mobile document instead of a forced desktop viewport. */
+.haven-landing {
+  min-height: calc(100svh - var(--header-height));
+  max-height: none;
+  padding-block-end: 1rem;
+}
+
+.haven-landing::before {
+  inset: 0.55rem;
+}
+
+.haven-landing__margin-note {
+  display: none;
+}
+
+.haven-landing__inner {
+  width: 100%;
+  grid-template-columns: 1fr;
+  padding-inline: 1rem;
+}
+
+.haven-landing__welcome {
+  max-width: 31rem;
+  padding-block: 1.6rem 0.6rem;
+}
+
+.haven-landing h1 {
+  font-size: clamp(3.15rem, 16vw, 4.7rem);
+  line-height: 0.84;
+}
+
+.haven-landing__kicker {
+  font-size: 0.58rem;
+  line-height: 1.5;
+}
+
+.haven-landing__subtitle {
+  font-size: 1rem;
+}
+
+.haven-landing__intro {
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.haven-landing__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+}
+
+.haven-landing__actions > .button {
+  width: 100%;
+}
+
+.haven-landing__meet {
+  min-height: 2.75rem;
+  justify-content: center;
+}
+
+.haven-landing__rooms {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  padding: 0.8rem 1rem 0;
+}
+
+.haven-landing__rooms > a {
+  grid-template-columns: 4.1rem auto minmax(0, 1fr) auto;
+  min-height: 4.25rem;
+  gap: 0.45rem;
+}
+
+.haven-landing__rooms > a > img {
+  width: 4.1rem;
+  height: 3.25rem;
+  object-fit: cover;
+}
+
+.haven-landing__room-copy > small {
+  display: none;
+}
+
+/* All repeated content cards share one coherent storybook geometry. */
+.identity-rooms__grid--painted,
+.studio-notes__grid--painted,
+.resource-shelves__grid--painted,
+.work-fit__grid--painted,
+.support-kindness__grid--painted,
+.haven-values__grid--storybook {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
 .identity-rooms__grid--painted > article,
 .studio-notes__grid--painted > article,
 .resource-shelves__grid--painted > article,
-.work-fit__grid--painted > article {
+.work-fit__grid--painted > article,
+.support-kindness__grid--painted > article,
+.haven-values__grid--storybook > article {
+  display: grid;
   padding: 0;
   overflow: hidden;
-  color: var(--text);
-  background: var(--bg-raised);
-  border: 1px solid var(--storybook-rule);
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
   border-radius: 0.65rem;
-  box-shadow: 0 0.9rem 2.3rem rgb(15 9 14 / 16%);
+  box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%);
 }
 
-.identity-rooms__grid.identity-rooms__grid--painted > article > img,
-.studio-notes__grid.studio-notes__grid--painted > article > img,
-.resource-shelves__grid.resource-shelves__grid--painted > article > img,
-.work-fit__grid.work-fit__grid--painted > article > img {
+.identity-rooms__grid--painted > article > img,
+.studio-notes__grid--painted > article > img,
+.resource-shelves__grid--painted > article > img,
+.work-fit__grid--painted > article > img,
+.support-kindness__grid--painted > article > img,
+.haven-values__art > img {
   width: 100%;
-  height: 11.5rem;
+  height: clamp(10.5rem, 56vw, 14rem);
   margin: 0;
   object-fit: cover;
   object-position: center;
@@ -36,118 +252,150 @@
   filter: none;
 }
 
-.studio-notes__grid--painted > article:nth-child(2) > img {
-  padding: 1rem;
-  object-fit: contain;
-  background:
-    radial-gradient(circle at 50% 45%, rgb(198 166 212 / 22%), transparent 48%),
-    var(--bg-inset);
-}
-
 .identity-rooms__grid--painted > article > div,
 .studio-notes__grid--painted > article > div,
 .resource-shelves__grid--painted > article > div,
-.work-fit__grid--painted > article > div {
-  padding: 1.25rem 1.35rem 1.4rem;
+.work-fit__grid--painted > article > div,
+.support-kindness__grid--painted > article > div,
+.haven-values__copy {
+  display: grid;
+  align-content: start;
+  padding: 1.15rem 1.2rem 1.3rem;
 }
 
 .identity-rooms__grid--painted h3,
 .studio-notes__grid--painted h3,
 .resource-shelves__grid--painted h3,
-.work-fit__grid--painted h3 {
-  color: var(--text);
+.work-fit__grid--painted h3,
+.support-kindness__grid--painted h3,
+.haven-values__grid--storybook h3 {
+  min-height: 0;
+  color: var(--story-copy);
 }
 
 .identity-rooms__grid--painted p:last-child,
 .studio-notes__grid--painted p:last-child,
 .resource-shelves__grid--painted p,
 .resource-shelves__grid--painted ul,
-.work-fit__grid--painted p {
-  color: var(--text-muted);
+.work-fit__grid--painted p,
+.support-kindness__grid--painted p,
+.haven-values__grid--storybook p {
+  color: var(--story-muted);
 }
 
-// Meet Nari: replace the legacy supplied chibi with an authored storybook panel.
-.nari-promise--storybook {
+.studio-notes__grid--painted svg,
+.work-fit__grid--painted svg,
+.support-kindness__grid--painted svg {
+  margin-block-end: 0.65rem;
+  color: var(--story-accent);
+}
+
+/* Meet Nari closing panel: use the integrated painting, not a square portrait crop. */
+.nari-promise.nari-promise--storybook {
+  display: grid;
   max-width: calc(var(--page-width) + var(--page-gutter) * 2);
-  grid-template-columns: minmax(15rem, 22rem) minmax(0, 40rem);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  align-items: stretch;
 }
 
 .nari-promise__art {
   position: relative;
+  aspect-ratio: 16 / 10;
+  margin: 0;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 35%, rgb(198 166 212 / 23%), transparent 48%),
-    var(--bg-inset);
-  border: 1px solid var(--storybook-rule);
-  border-radius: 0.8rem;
-  box-shadow: 0 1rem 2.8rem rgb(16 9 14 / 20%);
-}
-
-.nari-promise__art::after {
-  position: absolute;
-  inset: 0.45rem;
-  border: 1px solid rgb(223 174 119 / 12%);
-  content: "";
-  pointer-events: none;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.7rem;
 }
 
 .nari-promise__art > img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
+  object-position: 61% 45%;
+}
+
+.nari-promise__art figcaption {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.65rem;
+  padding: 0.38rem 0.58rem;
+  color: #fff8ef;
+  background: rgb(27 16 22 / 72%);
+  border: 1px solid rgb(255 239 225 / 18%);
+  border-radius: 999px;
+  font-size: 0.64rem;
+  backdrop-filter: blur(8px);
+}
+
+.nari-promise__copy {
+  padding: 1.3rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.7rem;
+}
+
+.nari-promise__copy > p:not(.eyebrow),
+.nari-promise__details > span {
+  color: var(--story-muted);
+}
+
+.nari-promise__copy h2,
+.nari-promise__details strong {
+  color: var(--story-copy);
+}
+
+.nari-promise__copy .eyebrow,
+.nari-promise__copy .text-link {
+  color: var(--story-accent);
 }
 
 .nari-promise__details {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin-block: 1.2rem 1.35rem;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  margin-block: 1rem 1.2rem;
 }
 
 .nari-promise__details > span {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: 0.45rem 0.55rem;
-  padding: 0.85rem;
-  color: var(--text-muted);
-  background: var(--bg-raised);
-  border: 1px solid var(--storybook-rule);
+  gap: 0.35rem 0.55rem;
+  padding: 0.8rem;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
   border-radius: 0.45rem;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   line-height: 1.55;
 }
 
 .nari-promise__details > span > svg {
   grid-row: 1 / span 2;
-  color: var(--storybook-gold);
+  color: var(--story-accent);
 }
 
-.nari-promise__details strong {
-  color: var(--text);
-}
-
-// Streams: two current destinations, no abandoned VOD lane.
+/* Streams: no decorative empty tail after the actual moments. */
 .stream-platform-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
 }
 
 .stream-platform-grid > a {
   overflow: hidden;
-  color: var(--text);
-  background: var(--bg-raised);
-  border: 1px solid var(--storybook-rule);
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
   border-radius: 0.65rem;
   text-decoration: none;
-  box-shadow: 0 0.8rem 2rem rgb(14 9 13 / 15%);
 }
 
 .stream-platform-grid > a > img {
   width: 100%;
-  height: clamp(12rem, 24vw, 18rem);
+  height: clamp(11rem, 52vw, 15rem);
   object-fit: cover;
   object-position: 64% center;
 }
@@ -156,309 +404,516 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.85rem;
-  padding: 1.1rem 1.2rem;
+  gap: 0.7rem;
+  padding: 1rem;
 }
 
-.stream-platform-grid svg {
-  color: var(--storybook-gold);
-}
-
-.stream-platform-grid strong,
-.stream-platform-grid small {
-  display: block;
+.stream-platform-grid svg,
+.stream-platform-grid strong {
+  color: var(--story-accent);
 }
 
 .stream-platform-grid strong {
-  color: var(--text);
+  color: var(--story-copy);
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-style: italic;
-  font-weight: 540;
 }
 
 .stream-platform-grid small {
-  margin-block-start: 0.18rem;
-  color: var(--text-muted);
-  font-size: 0.76rem;
-  line-height: 1.5;
+  display: block;
+  margin-block-start: 0.15rem;
+  color: var(--story-muted);
+  font-size: 0.74rem;
+  line-height: 1.45;
 }
 
 .stream-status-note,
-.resource-promise {
+.resource-promise,
+.story-shelf-note {
   display: flex;
   align-items: flex-start;
-  gap: 0.8rem;
-  padding: 1rem 1.1rem;
-  margin-block-start: 1rem;
-  color: var(--text-muted);
-  background: color-mix(in srgb, var(--bg-inset) 78%, var(--bg-raised));
-  border: 1px solid var(--storybook-rule);
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  margin-block-start: 0.9rem;
+  color: var(--story-muted);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
   border-radius: 0.5rem;
 }
 
-.stream-status-note > svg,
-.resource-promise > svg {
+.stream-status-note svg,
+.resource-promise svg,
+.story-shelf-note svg {
   flex: 0 0 auto;
-  color: var(--storybook-gold);
+  color: var(--story-accent);
 }
 
 .stream-status-note strong,
-.resource-promise strong {
-  color: var(--text);
+.resource-promise strong,
+.story-shelf-note strong {
+  color: var(--story-copy);
 }
 
 .stream-status-note p,
-.resource-promise p {
-  margin: 0.2rem 0 0;
+.resource-promise p,
+.story-shelf-note p {
+  margin: 0.15rem 0 0;
+  color: var(--story-muted);
 }
 
-// Nail Studio: real painted room assets replace the utility SVG/state family.
+.moment-shelf.moment-shelf--final {
+  min-height: 0;
+  margin-block: 0;
+  background: transparent;
+  border: 0;
+}
+
+.moment-shelf--final .media-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.moment-shelf--final .media-card,
+.moment-shelf--final .media-card:last-child {
+  grid-column: auto;
+  min-height: 0;
+}
+
+.moment-shelf--final .media-card > a {
+  height: 100%;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border-color: var(--story-line);
+}
+
+.moment-shelf--final .media-card__body > p {
+  color: var(--story-muted);
+}
+
+.moment-shelf--final .media-card__body h3 {
+  color: var(--story-copy);
+}
+
+main > .moment-shelf--final:last-child {
+  padding-block-end: 2.4rem;
+}
+
+/* Nail Studio: all secondary art is derived from the canonical painted rooms. */
 .studio-gallery-note {
   display: grid;
-  grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
-  align-items: center;
-  gap: clamp(1.2rem, 4vw, 2.5rem);
-  padding: 1rem;
-  margin-block-start: 1.2rem;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  margin-block-start: 0.95rem;
   overflow: hidden;
-  color: var(--text);
-  background: var(--bg-inset);
-  border: 1px solid var(--storybook-rule);
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
   border-radius: 0.65rem;
 }
 
 .studio-gallery-note > img {
   width: 100%;
-  min-height: 15rem;
-  height: 100%;
+  height: clamp(12rem, 55vw, 16rem);
   object-fit: cover;
   object-position: 67% center;
-  border-radius: 0.35rem;
+  border-radius: 0;
 }
 
 .studio-gallery-note > div {
-  padding: clamp(0.4rem, 2vw, 1.2rem);
+  padding: 1.2rem;
 }
 
 .studio-gallery-note h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--story-copy);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
 }
 
-.studio-gallery-note p:last-child {
-  margin: 0;
-  color: var(--text-muted);
+.studio-gallery-note p:last-child,
+.studio-boundary p {
+  color: var(--story-muted);
 }
 
-// Haven: one coherent storybook Ghostie family and a painted Discord threshold.
+.studio-boundary,
+.support-boundary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  padding: 1.2rem;
+  margin-block: 0 2.4rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+}
+
+.studio-boundary > svg,
+.support-boundary > svg {
+  color: var(--story-accent);
+}
+
+.studio-boundary h2,
+.support-boundary h2 {
+  color: var(--story-copy);
+}
+
+/* Haven values use banner-canon scene crops instead of a second Ghostie style. */
 .haven-values__grid--storybook > article {
-  color: var(--text);
-  background: var(--bg-raised);
-  border-color: var(--storybook-rule);
+  grid-template-rows: auto 1fr;
 }
 
-.haven-values__grid--storybook > article > p {
-  color: var(--text-muted);
+.haven-values__art {
+  overflow: hidden;
+  background: var(--story-surface-deep);
+}
+
+.haven-values__copy {
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+}
+
+.haven-values__copy > span {
+  width: fit-content;
+  margin-block-end: 0.55rem;
+  color: var(--story-accent);
+  font-family: var(--font-detail);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.haven-values__copy h3 {
+  margin-block-end: 0.55rem;
+}
+
+.haven-values__copy p {
+  margin: 0;
 }
 
 .haven-values__principles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-block-start: 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-block-start: 0.8rem;
 }
 
 .haven-values__principles > span {
   display: flex;
-  min-height: 4.5rem;
+  min-height: 3.6rem;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.8rem;
-  color: var(--text);
-  background: var(--bg-inset);
-  border: 1px solid var(--storybook-rule);
+  padding: 0.75rem 0.85rem;
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
   border-radius: 0.45rem;
-  font-size: 0.78rem;
-  font-weight: 680;
+  font-size: 0.77rem;
+  font-weight: 700;
 }
 
 .haven-values__principles svg {
   flex: 0 0 auto;
-  color: var(--storybook-gold);
+  color: var(--story-accent);
 }
 
 .haven-entry {
   display: grid;
-  gap: 1rem;
+  gap: 0.85rem;
+  padding-block-start: 1rem;
 }
 
 .haven-door {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: 1fr;
   overflow: hidden;
-  color: var(--text);
-  background: var(--bg-raised);
-  border: 1px solid var(--storybook-rule);
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
   border-radius: 0.7rem;
-  box-shadow: 0 1rem 3rem rgb(15 9 13 / 18%);
+  box-shadow: 0 1rem 3rem rgb(15 9 13 / 16%);
 }
 
 .haven-door__art {
   position: relative;
-  min-height: 25rem;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--bg-inset);
+  background: var(--story-surface-deep);
 }
 
 .haven-door__art > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% center;
+  object-position: 63% center;
 }
 
 .haven-door__art::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 55%, rgb(25 14 20 / 34%));
+  background: linear-gradient(0deg, rgb(20 11 16 / 38%), transparent 55%);
   content: "";
+  pointer-events: none;
+}
+
+.haven-door__sign {
+  position: absolute;
+  z-index: 2;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  display: grid;
+  max-width: calc(100% - 4.8rem);
+  gap: 0.05rem;
+  padding: 0.5rem 0.65rem;
+  color: #38201e;
+  background: #e8c99d;
+  border: 1px solid rgb(72 38 28 / 35%);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1.4rem rgb(15 8 10 / 30%);
+  transform: rotate(-1deg);
+}
+
+.haven-door__sign span {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.haven-door__sign small {
+  font-size: 0.6rem;
 }
 
 .haven-door__progress {
   position: absolute;
-  z-index: 2;
-  right: 1rem;
-  bottom: 1rem;
+  z-index: 3;
+  right: 0.75rem;
+  bottom: 0.75rem;
   display: flex;
-  gap: 0.35rem;
-  padding: 0.45rem 0.55rem;
-  background: rgb(24 14 20 / 72%);
-  border: 1px solid rgb(244 226 214 / 17%);
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  background: rgb(24 14 20 / 76%);
+  border: 1px solid rgb(244 226 214 / 18%);
   border-radius: 999px;
-  backdrop-filter: blur(8px);
 }
 
 .haven-door__progress > span {
-  width: 0.62rem;
-  height: 0.62rem;
-  background: rgb(244 226 214 / 28%);
+  width: 0.55rem;
+  height: 0.55rem;
+  background: rgb(244 226 214 / 32%);
   border-radius: 50%;
 }
 
 .haven-door__progress > span.active {
-  background: var(--storybook-gold);
-  box-shadow: 0 0 0.6rem rgb(223 174 119 / 42%);
+  background: var(--story-accent);
 }
 
 .haven-door__content {
   display: grid;
+  min-height: 0;
   align-content: center;
   justify-items: start;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: 1.35rem;
+  color: var(--story-copy);
 }
 
-.haven-door__content > p:not(.eyebrow) {
-  color: var(--text-muted);
+.haven-door__content h2,
+.haven-door__content strong,
+.haven-door__content .eyebrow {
+  color: var(--story-copy);
+}
+
+.haven-door__content .eyebrow,
+.haven-door__content .text-link {
+  color: var(--story-accent);
+}
+
+.haven-door__content > p:not(.eyebrow),
+.haven-door__content .text-button {
+  color: var(--story-muted);
+}
+
+.haven-door__content .button {
+  margin-block-start: 0.25rem;
 }
 
 .haven-door__content .text-button {
-  margin-block-start: 0.9rem;
-}
-
-// Resources: painted shelf cards and one compact integrity note.
-.resource-shelves__grid--painted ul {
   margin-block-start: 0.8rem;
 }
 
+.loose-floorboard,
+.loose-floorboard button,
+.loose-floorboard__reveal {
+  color: var(--story-copy);
+}
+
+.loose-floorboard button,
+.loose-floorboard__reveal {
+  background: var(--story-surface-deep);
+  border-color: var(--story-line);
+}
+
+/* Resources and work get explicit foregrounds in every theme. */
 .resource-shelves__grid--painted > article > div > span {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
   gap: 0.35rem;
   margin-block-end: 0.55rem;
-  color: var(--storybook-gold);
+  color: var(--story-accent);
   font-family: var(--font-detail);
   font-size: 0.66rem;
   text-transform: uppercase;
 }
 
-// Work: explicit theme-aware foreground colors fix dark-on-dark cards.
 .work-fit__grid--painted > article,
 .work-fit__grid--painted > article * {
   color: inherit;
 }
 
 .work-fit__grid--painted > article {
-  color: var(--text);
-}
-
-.work-fit__grid--painted > article svg {
-  margin-block-end: 0.65rem;
-  color: var(--storybook-gold);
+  color: var(--story-copy);
 }
 
 .work-fit__grid--painted > article p {
-  color: var(--text-muted);
+  color: var(--story-muted);
 }
 
 .work-process {
-  color: var(--text);
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
 }
 
 .work-process__inner,
-.work-contact--storybook {
-  color: var(--text);
+.work-process__inner h2,
+.work-process__inner strong {
+  color: var(--story-copy);
 }
 
 .work-process__inner p,
-.work-contact--storybook p,
-.work-contact--storybook aside {
-  color: var(--text-muted);
+.work-process__inner li p {
+  color: var(--story-muted);
 }
 
 .work-contact--storybook {
-  grid-template-columns: 11rem minmax(0, 1fr);
-  gap: 1rem 1.4rem;
-  padding-block: 2.2rem 0;
-  margin-block-start: 2rem;
-  border-top: 1px solid var(--storybook-rule);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  padding-block: 1.4rem 0;
+  margin-block-start: 1.5rem;
+  color: var(--story-copy);
+  border-top: 1px solid var(--story-line);
 }
 
 .work-contact--storybook > img {
-  width: 11rem;
-  height: 8rem;
+  width: 100%;
+  height: 10rem;
   object-fit: cover;
   object-position: 66% center;
-  border: 1px solid var(--storybook-rule);
+  border: 1px solid var(--story-line);
   border-radius: 0.4rem;
 }
 
-.work-contact--storybook > aside {
-  grid-column: 2;
+.work-contact--storybook h2 {
+  color: var(--story-copy);
 }
 
-// Footer uses the painted Nari avatar rather than the older supplied chibi.
-.site-footer__portrait {
+.work-contact--storybook p,
+.work-contact--storybook aside {
+  color: var(--story-muted);
+}
+
+.work-contact--storybook aside {
+  grid-column: auto;
+}
+
+/* Support cards now use the same paintings as the rest of the Haven. */
+.support-kindness {
+  background: transparent;
+}
+
+.support-kindness__grid--painted > article > div {
+  grid-template-rows: auto auto 1fr;
+}
+
+.support-boundary .text-link {
+  color: var(--story-accent);
+}
+
+/* Footer image is a landscape crop from the integrated Meet Nari painting. */
+.site-footer {
+  margin-block-start: 0;
+}
+
+.site-footer__statement {
   display: grid;
-  width: 8rem;
-  aspect-ratio: 1;
-  place-items: center;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.site-footer__portrait {
+  width: min(100%, 14rem);
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 38%, rgb(198 166 212 / 22%), transparent 48%),
-    var(--bg-raised);
-  border: 1px solid var(--storybook-rule);
-  border-radius: 50%;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.6rem;
 }
 
 .site-footer__portrait > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 61% 45%;
   filter: none;
 }
 
-// Secret room: actual supplied Prinny collection is the artwork. The rest is
-// typography, paper, smoke, and Netherworld bureaucracy rather than utility SVGs.
+.site-footer__statement h2,
+.site-footer__statement p,
+.site-footer__links,
+.site-footer__base {
+  color: var(--text);
+}
+
+.site-footer__socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.site-footer__socials > a {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.65rem;
+  color: var(--story-chip-copy);
+  background: var(--story-chip);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* 404 uses a real Haven painting rather than the retired utility Ghostie SVG. */
+.not-found {
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.not-found > img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 66% center;
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+}
+
+/* Prinny basement: one actual Prinny gets the sign; the supplied roster remains canon. */
 .cult-page--collection {
   min-height: 100svh;
   color: #f5e7df;
@@ -468,515 +923,451 @@
     linear-gradient(180deg, #150c13, #211019 48%, #10090f);
 }
 
-.cult-page--collection::before {
-  position: fixed;
-  z-index: 0;
-  inset: 0;
-  background-image: repeating-linear-gradient(0deg, transparent 0 3.4rem, rgb(255 237 223 / 2%) 3.4rem 3.45rem);
-  content: "";
-  pointer-events: none;
+.cult-page__escape {
+  position: relative;
+  z-index: 2;
 }
 
-.cult-page--collection .cult-page__escape,
-.cult-page--collection .cult-collection {
+.cult-collection {
   position: relative;
   z-index: 1;
-}
-
-.cult-page--collection .cult-page__escape {
-  position: sticky;
-  z-index: 5;
-  top: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 0.8rem;
-  margin: 0.8rem;
-  color: #f5e7df;
-  background: rgb(20 11 17 / 79%);
-  border: 1px solid rgb(245 231 223 / 18%);
-  border-radius: 0.35rem;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-}
-
-.cult-page--collection .cult-collection {
   width: min(100%, 82rem);
-  min-height: auto;
-  padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 2.5rem) 5rem;
   margin-inline: auto;
+  padding: 6rem 0.85rem 3rem;
 }
 
 .cult-collection__header--rebuilt {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
   align-items: center;
-  gap: 1rem 3rem;
-  max-width: none;
-  margin: 0 0 3rem;
-  text-align: left;
 }
 
-.cult-collection__header--rebuilt > .eyebrow,
-.cult-collection__header--rebuilt > h1,
-.cult-collection__header--rebuilt > p:last-child {
-  grid-column: 1;
-}
-
-.cult-collection__header--rebuilt .eyebrow {
-  color: #efb67f;
-}
-
-.cult-collection__header--rebuilt h1 {
-  margin-block-end: 0.25rem;
-  color: #fff1e8;
-  font-size: clamp(3.2rem, 8vw, 6.5rem);
-  letter-spacing: -0.07em;
-}
-
-.cult-collection__header--rebuilt > p:last-child {
-  max-width: 40rem;
-  color: #d9bec3;
-  font-size: 1rem;
-}
-
-.cult-collection__featured {
-  grid-column: 2;
-  grid-row: 1 / span 3;
+.cult-mascot-sign {
+  position: relative;
   display: grid;
-  min-height: 22rem;
-  place-items: center;
-  isolation: isolate;
+  min-height: 18rem;
+  place-items: end center;
+  padding: 1rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 65%, rgb(143 78 97 / 26%), transparent 55%);
+  border: 1px solid rgb(244 226 214 / 13%);
+  border-radius: 0.7rem;
 }
 
-.cult-collection__featured > img {
-  grid-area: 1 / 1;
-  width: min(15rem, 72%);
-  max-height: 17rem;
-  object-fit: contain;
-  filter: drop-shadow(0 1.2rem 1.3rem rgb(0 0 0 / 38%));
+.cult-mascot-sign > img {
+  width: min(72%, 15rem);
+  filter: drop-shadow(0 1rem 1.1rem rgb(0 0 0 / 38%));
 }
 
-.cult-collection__featured > img:nth-child(1) {
-  transform: translate(-28%, 9%) rotate(-9deg);
+.cult-signboard {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.8rem;
+  left: 0.75rem;
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.65rem 0.8rem;
+  color: #321d20;
+  background: #e4c68f;
+  border: 2px solid #704236;
+  box-shadow: 0.25rem 0.35rem 0 #391d23;
+  transform: rotate(-1.4deg);
 }
 
-.cult-collection__featured > img:nth-child(2) {
-  z-index: 2;
-  transform: translate(6%, -7%) rotate(3deg);
+.cult-signboard span,
+.cult-signboard small {
+  font-family: var(--font-detail);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
 }
 
-.cult-collection__featured > img:nth-child(3) {
-  transform: translate(29%, 13%) rotate(10deg);
+.cult-signboard strong {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 5vw, 1.45rem);
+  line-height: 1;
+}
+
+.cult-collection__intro > p:last-child,
+.cult-collection__roster > div:first-child > p:last-child {
+  color: #d6c0c8;
 }
 
 .cult-briefing {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin-block-end: 3.2rem;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-block: 1.2rem;
 }
 
 .cult-briefing > article {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: start;
-  gap: 0.8rem;
-  padding: 1rem;
-  background: rgb(44 22 31 / 76%);
-  border: 1px solid rgb(245 231 223 / 14%);
-  border-radius: 0.35rem;
-}
-
-.cult-briefing svg {
-  color: #efb67f;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  padding: 0.9rem;
+  color: #f5e7df;
+  background: rgb(44 24 34 / 82%);
+  border: 1px solid rgb(241 214 199 / 14%);
+  border-radius: 0.45rem;
 }
 
 .cult-briefing h2 {
-  margin-block-end: 0.3rem;
-  color: #fff0e5;
-  font-size: 1.15rem;
+  margin-block-end: 0.25rem;
+  font-size: 1.05rem;
 }
 
 .cult-briefing p {
   margin: 0;
-  color: #ccb4bb;
-  font-size: 0.83rem;
+  color: #d5c0c8;
+  font-size: 0.78rem;
 }
 
-.cult-collection__roster > div:first-child {
-  max-width: 43rem;
-  margin-block-end: 1.2rem;
+.cult-collection__roster {
+  padding: 1rem;
+  background: rgb(18 10 15 / 54%);
+  border: 1px solid rgb(241 214 199 / 12%);
+  border-radius: 0.65rem;
 }
 
-.cult-collection__roster .eyebrow {
-  color: #efb67f;
+.cult-collection__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-block-start: 1rem;
 }
 
-.cult-collection__roster h2 {
-  color: #fff1e8;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-}
-
-.cult-collection__roster > div:first-child > p:last-child {
-  color: #ccb4bb;
-}
-
-.cult-page--collection .cult-collection__gallery {
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: 0.65rem;
-}
-
-.cult-page--collection .cult-collection__gallery > article {
-  min-height: 9.5rem;
+.cult-collection__gallery > article {
+  position: relative;
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 35%, rgb(94 66 111 / 26%), transparent 55%),
-    rgb(35 18 27 / 84%);
-  border: 1px solid rgb(245 231 223 / 13%);
+  background: rgb(52 27 38 / 86%);
+  border: 1px solid rgb(241 214 199 / 13%);
   border-radius: 0.4rem;
 }
 
-.cult-page--collection .cult-collection__gallery > article > span {
-  color: #b89ca5;
+.cult-collection__gallery > article > span {
+  position: absolute;
+  z-index: 2;
+  top: 0.35rem;
+  left: 0.4rem;
+  color: #e2c6b8;
+  font-family: var(--font-detail);
+  font-size: 0.55rem;
 }
 
-.cult-page--collection .cult-collection__gallery > article > img {
-  max-height: 10rem;
-  filter: drop-shadow(0 0.5rem 0.7rem rgb(0 0 0 / 25%));
+.cult-collection__gallery img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
 }
 
 .cult-collection__contract {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
   align-items: center;
-  gap: 1rem;
-  padding: 1.2rem;
-  margin-block-start: 2rem;
-  background: #ead8c8;
-  border: 1px solid #9f7764;
-  border-radius: 0.35rem;
-  color: #2b1820;
-  box-shadow: 0 1rem 2.8rem rgb(0 0 0 / 24%);
+  padding: 1rem;
+  margin-block-start: 1rem;
+  color: #f5e7df;
+  background: #3b2530;
+  border: 1px solid rgb(241 214 199 / 18%);
+  border-radius: 0.55rem;
 }
 
-.cult-collection__contract .eyebrow,
 .cult-collection__contract > svg {
-  color: #914c3f;
-}
-
-.cult-collection__contract h2 {
-  margin-block-end: 0.25rem;
-  color: #2b1820;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: #e4c68f;
 }
 
 .cult-collection__contract p {
-  margin: 0;
-  color: #654552;
+  color: #d6c0c8;
 }
 
 .cult-collection__contract .text-button {
-  color: #654552;
+  justify-self: start;
+  color: #f0d8cb;
 }
 
-@media (max-width: 56rem) {
+/* Tablet: add columns only when the content has room. */
+@media (min-width: 30rem) {
+  .brand-mark small {
+    display: block;
+  }
+
+  .site-footer__socials {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cult-collection__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
   .identity-rooms__grid--painted,
   .studio-notes__grid--painted,
   .resource-shelves__grid--painted,
   .work-fit__grid--painted,
-  .stream-platform-grid {
-    grid-template-columns: 1fr;
+  .support-kindness__grid--painted {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .nari-promise--storybook,
-  .studio-gallery-note,
-  .haven-door {
-    grid-template-columns: 1fr;
+  .identity-rooms__grid--painted > article:last-child,
+  .studio-notes__grid--painted > article:last-child,
+  .resource-shelves__grid--painted > article:last-child,
+  .work-fit__grid--painted > article:last-child,
+  .support-kindness__grid--painted > article:last-child {
+    grid-column: 1 / -1;
   }
 
-  .nari-promise__art {
-    width: min(100%, 22rem);
-  }
-
-  .studio-gallery-note > img {
-    min-height: 12rem;
-    max-height: 20rem;
-  }
-
+  .haven-values__grid--storybook,
   .haven-values__principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .haven-door__art {
-    min-height: 19rem;
+  .stream-platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .work-contact--storybook {
-    grid-template-columns: 8rem minmax(0, 1fr);
+  .moment-shelf--final .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .work-contact--storybook > img {
-    width: 8rem;
-    height: 7rem;
+  .moment-shelf--final .media-card:last-child {
+    grid-column: 1 / -1;
   }
 
-  .cult-collection__header--rebuilt {
-    grid-template-columns: 1fr;
-  }
-
-  .cult-collection__featured {
-    grid-column: 1;
-    grid-row: auto;
-    min-height: 17rem;
-    order: -1;
-  }
-
-  .cult-briefing {
-    grid-template-columns: 1fr;
-  }
-
-  .cult-collection__contract {
-    grid-template-columns: auto 1fr;
-  }
-
-  .cult-collection__contract > .button,
-  .cult-collection__contract > .text-button {
-    grid-column: 2;
-    justify-self: start;
-  }
-}
-
-@media (max-width: 30rem) {
-  .site-header__panel {
-    padding-inline: 1rem;
-  }
-
-  .site-header__more > nav {
-    grid-template-columns: 1fr;
-  }
-
-  .site-header__more summary,
-  .site-header__live-link {
-    min-height: 2.75rem;
-  }
-
-  .site-header__more summary {
-    justify-content: space-between;
-    padding-inline: 0.85rem;
-  }
-
-  .site-header__live-link {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .theme-switcher {
-    width: 100%;
-  }
-
-  .theme-switcher__option {
-    flex: 1;
-  }
-
-  .haven-landing__margin-note {
-    display: none;
-  }
-
-  .haven-landing__inner {
-    padding-inline: 1rem;
-  }
-
-  .haven-landing__welcome {
-    padding-block: 1.55rem 0.45rem;
-    padding-inline-start: 0;
-  }
-
-  .haven-landing h1 {
-    font-size: clamp(3.15rem, 16vw, 4.6rem);
-    line-height: 0.84;
-  }
-
-  .haven-landing__kicker {
-    font-size: 0.57rem;
-    line-height: 1.5;
-  }
-
-  .haven-landing__subtitle {
-    font-size: 1rem;
-  }
-
-  .haven-landing__intro {
-    font-size: 0.82rem;
-    line-height: 1.65;
-  }
-
-  .social-dock {
-    display: grid;
-    width: min(100%, 11.25rem);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.45rem 0.25rem;
-  }
-
-  .social-dock > a {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .haven-landing__actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.4rem;
-  }
-
-  .haven-landing__actions > .button {
-    width: 100%;
-  }
-
-  .haven-landing__meet {
-    min-height: 2.75rem;
-    justify-content: center;
-  }
-
-  .haven-landing__rooms {
-    padding: 0.65rem 1rem 1.25rem;
-  }
-
-  .haven-landing__rooms > a {
-    grid-template-columns: 4.35rem minmax(0, 1fr) auto;
-    gap: 0.5rem;
-  }
-
-  .haven-landing__rooms > a > img {
-    width: 4.35rem;
-    height: 3.4rem;
-  }
-
-  .haven-landing__rooms .haven-landing__room-copy > small {
-    display: none;
-  }
-
-  .character-intro--storybook {
-    min-height: 36rem;
-    padding-block-start: 2.2rem;
-  }
-
-  .character-intro--integrated .character-intro__copy {
-    padding-block: 0.5rem 10rem;
-  }
-
-  .character-intro__copy h1 {
-    font-size: clamp(2.9rem, 14vw, 3.8rem);
-  }
-
-  .room-opening,
-  .studio-opening,
-  .haven-heart,
-  .story-opening--painted,
-  .support-welcome--painted {
-    min-height: 33rem;
-  }
-
-  .room-opening,
-  .story-opening--painted,
-  .support-welcome--painted {
-    padding-block: 3.4rem;
-  }
-
-  .nari-promise__details,
-  .haven-values__principles {
-    grid-template-columns: 1fr;
-  }
-
-  .stream-platform-grid > a > img {
-    height: 12rem;
-  }
-
-  .stream-platform-grid > a > div {
+  .studio-boundary,
+  .support-boundary {
     grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .stream-platform-grid > a > div > svg:last-child {
-    display: none;
-  }
-
-  .haven-door__art {
-    min-height: 15rem;
+    gap: 1rem;
   }
 
   .work-contact--storybook {
-    grid-template-columns: 1fr;
+    grid-template-columns: 10rem minmax(0, 1fr);
   }
 
   .work-contact--storybook > img {
-    width: 100%;
-    height: 10rem;
+    width: 10rem;
+    height: 8rem;
   }
 
   .work-contact--storybook > aside {
-    grid-column: auto;
+    grid-column: 2;
   }
 
   .site-footer__statement {
-    grid-template-columns: 1fr;
+    grid-template-columns: 12rem minmax(0, 1fr);
   }
 
   .site-footer__portrait {
-    width: 6.5rem;
+    width: 12rem;
   }
 
-  .cult-page--collection .cult-collection {
-    padding-inline: 0.75rem;
+  .not-found {
+    grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
   }
 
-  .cult-collection__featured {
-    min-height: 14rem;
-  }
-
-  .cult-collection__featured > img {
-    width: min(11rem, 68%);
-  }
-
-  .cult-page--collection .cult-collection__gallery {
+  .cult-briefing {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cult-page--collection .cult-collection__gallery > article {
-    min-height: 7rem;
-    padding: 0.4rem;
-  }
-
-  .cult-collection__contract {
-    grid-template-columns: 1fr;
-  }
-
-  .cult-collection__contract > .button,
-  .cult-collection__contract > .text-button {
-    grid-column: auto;
-  }
-
-  .ghostie-summoner {
-    right: max(0.7rem, env(safe-area-inset-right));
-    bottom: max(0.7rem, env(safe-area-inset-bottom));
-  }
-
-  .ghostie-summoner__button {
-    min-height: 2.75rem;
+  .cult-collection__gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 22rem) {
-  .brand-mark strong {
-    font-size: 1rem;
+/* Desktop: enhance, never re-author the mobile document. */
+@media (min-width: 56rem) {
+  .site-header__more > nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-switcher,
+  .site-header__live-link {
+    width: auto;
+  }
+
+  .theme-switcher__option {
+    flex: initial;
+  }
+
+  .social-dock {
+    width: min(100%, 35rem);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .haven-landing {
+    min-height: calc(100svh - var(--header-height));
+    max-height: calc(100svh - var(--header-height));
+    padding-block-end: 0;
+  }
+
+  .haven-landing::before {
+    inset: 1rem;
+  }
+
+  .haven-landing__inner {
+    width: min(100%, 90rem);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    padding-inline: clamp(3.8rem, 9vw, 9rem);
+  }
+
+  .haven-landing__margin-note {
+    display: flex;
+  }
+
+  .haven-landing__welcome {
+    padding-block: 1rem 0.5rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(4.1rem, 8.4vw, 7.6rem);
+    line-height: 0.8;
+  }
+
+  .haven-landing__kicker {
+    font-size: 0.64rem;
+  }
+
+  .haven-landing__subtitle {
+    font-size: clamp(1.12rem, 1.65vw, 1.45rem);
+  }
+
+  .haven-landing__intro {
+    font-size: clamp(0.79rem, 1vw, 0.92rem);
+  }
+
+  .haven-landing__actions {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .haven-landing__actions > .button {
+    width: auto;
+  }
+
+  .haven-landing__rooms {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 1rem 1rem;
   }
 
   .haven-landing__rooms > a {
-    grid-template-columns: 3.8rem minmax(0, 1fr) auto;
+    grid-template-columns: 5.5rem auto minmax(0, 1fr) auto;
   }
 
   .haven-landing__rooms > a > img {
-    width: 3.8rem;
-    height: 3.15rem;
+    width: 5.5rem;
+    height: 4rem;
+  }
+
+  .haven-landing__room-copy > small {
+    display: block;
+  }
+
+  .identity-rooms__grid--painted,
+  .studio-notes__grid--painted,
+  .resource-shelves__grid--painted,
+  .work-fit__grid--painted,
+  .support-kindness__grid--painted {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .identity-rooms__grid--painted > article:last-child,
+  .studio-notes__grid--painted > article:last-child,
+  .resource-shelves__grid--painted > article:last-child,
+  .work-fit__grid--painted > article:last-child,
+  .support-kindness__grid--painted > article:last-child {
+    grid-column: auto;
+  }
+
+  .haven-values__grid--storybook,
+  .haven-values__principles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .nari-promise.nari-promise--storybook {
+    grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 1rem;
+  }
+
+  .nari-promise__art {
+    aspect-ratio: auto;
+    min-height: 26rem;
+  }
+
+  .nari-promise__copy {
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+  }
+
+  .nari-promise__details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-card:last-child {
+    grid-column: auto;
+  }
+
+  .studio-gallery-note {
+    grid-template-columns: minmax(17rem, 0.95fr) minmax(0, 1.05fr);
+    align-items: stretch;
+  }
+
+  .studio-gallery-note > img {
+    height: 100%;
+    min-height: 17rem;
+  }
+
+  .haven-door {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  }
+
+  .haven-door__art {
+    min-height: 27rem;
+    aspect-ratio: auto;
+  }
+
+  .haven-door__content {
+    padding: clamp(1.6rem, 4vw, 3rem);
+  }
+
+  .cult-collection__header--rebuilt {
+    grid-template-columns: minmax(19rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 2rem;
+  }
+
+  .cult-mascot-sign {
+    min-height: 23rem;
+  }
+
+  .cult-collection__gallery {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .cult-collection__contract {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  .identity-rooms__grid--painted > article > img,
+  .studio-notes__grid--painted > article > img,
+  .resource-shelves__grid--painted > article > img,
+  .work-fit__grid--painted > article > img,
+  .support-kindness__grid--painted > article > img,
+  .haven-values__art > img {
+    height: 15rem;
   }
 }
 
@@ -985,5 +1376,24 @@
   .site-footer__inner,
   .page-width {
     --page-gutter: 2rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .brand-mark strong {
+    font-size: 1rem;
+  }
+
+  .social-dock > a {
+    font-size: 0.58rem;
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 3.6rem auto minmax(0, 1fr) auto;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 3.6rem;
+    height: 3rem;
   }
 }

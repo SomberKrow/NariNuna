@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowUpRight, Play } from "@lucide/vue";
 import { ref } from "vue";
+import { storybookPostcards } from "@/data/artwork";
 import type { MediaMoment } from "@/types/content";
 
 defineProps<{ moment: MediaMoment }>();
@@ -23,10 +24,10 @@ const imageFailed = ref(false);
         />
         <img
           v-else
-          src="/media/streams/streams-card-clips.svg"
+          :src="storybookPostcards.streams"
           width="960"
           height="540"
-          alt="Illustrated Ghostie clip card"
+          alt="Painted view of Nari's stream room"
           loading="lazy"
         />
         <span class="media-card__play" aria-hidden="true"><Play :size="20" fill="currentColor" /></span>

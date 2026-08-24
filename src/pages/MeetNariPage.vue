@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import { environmentArtwork, nariArtwork, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
 const identityCards = identityPillars.map((pillar, index) => ({
@@ -46,10 +46,11 @@ const identityCards = identityPillars.map((pillar, index) => ({
   </section>
 
   <section class="nari-promise nari-promise--storybook page-width section-pad">
-    <div class="nari-promise__art">
-      <img :src="nariArtwork.portrait" width="512" height="512" alt="Storybook portrait of Nari in the Haven's warm autumn palette" loading="lazy" />
-    </div>
-    <div>
+    <figure class="nari-promise__art">
+      <img :src="storybookPostcards.meetNari" width="960" height="540" alt="Painted Meet Nari room with Nari and the Haven's soft storybook atmosphere" loading="lazy" />
+      <figcaption>Same Haven. A little closer to Nari.</figcaption>
+    </figure>
+    <div class="nari-promise__copy">
       <p class="eyebrow"><Shield :size="15" aria-hidden="true" /> Sweet doesn't mean spineless</p>
       <h2>We take care of our people here.</h2>
       <p>The jokes can be loud and the chaos can be legendary. But nobody has to earn basic respect, and nobody gets to mistake kindness for permission to cross a boundary.</p>

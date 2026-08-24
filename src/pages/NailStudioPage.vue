@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
-import { environmentArtwork, ghostieArtwork, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 
 const studioPieces = [
   {
@@ -14,15 +14,15 @@ const studioPieces = [
     icon: Paintbrush,
     title: "The fun part",
     text: "Color stories, tiny details, glitter experiments, and the occasional wonderful accident.",
-    art: ghostieArtwork.nails,
-    alt: "Storybook Ghostie carrying a lavender nail-polish bottle"
+    art: environmentArtwork.nails,
+    alt: "Hand-painted nail atelier filled with polish, tools, and warm autumn light"
   },
   {
     icon: BookOpen,
     title: "What she's learning",
     text: "Honest little lessons from a self-taught artist figuring things out as she goes.",
-    art: environmentArtwork.nails,
-    alt: "Hand-painted nail atelier filled with polish, tools, and warm autumn light"
+    art: storybookPostcards.resources,
+    alt: "Painted library shelf where Nari keeps useful references and creative tools"
   }
 ];
 </script>
