@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight, ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Video } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
-import { environmentArtwork, ghostieArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork, storybookPostcards } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 import { socialLinks, twitchUrl } from "@/data/socials";
 
@@ -28,7 +28,6 @@ const streamDoors = [
     </div>
     <div class="room-opening__art room-opening__art--streams">
       <img :src="environmentArtwork.streams" width="1672" height="941" alt="Nari laughs at her hand-painted autumn streaming desk beside a little Ghostie wearing matching lavender headphones" fetchpriority="high" />
-      <img class="room-opening__companion" :src="officialEmotes.panic" width="130" height="130" alt="Nari's official panic emote" loading="lazy" />
     </div>
   </section>
 

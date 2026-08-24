@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpRight, Heart } from "@lucide/vue";
-import { ghostieArtwork, nariArtwork } from "@/data/artwork";
+import { nariArtwork } from "@/data/artwork";
 import { footerNavigation } from "@/data/navigation";
 import { socialLinks } from "@/data/socials";
 
@@ -9,7 +9,6 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
 
 <template>
   <footer class="site-footer">
-    <img class="site-footer__peek" :src="ghostieArtwork.peekingLeft" width="104" height="104" alt="" loading="lazy" />
     <div class="site-footer__inner page-width">
       <div class="site-footer__statement">
         <img :src="nariArtwork.cozy" width="132" height="132" alt="" loading="lazy" />

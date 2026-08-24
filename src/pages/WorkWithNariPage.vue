@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, ArrowUpRight, Clapperboard, Handshake, MessageSquareMore, ShieldCheck, Sparkles } from "@lucide/vue";
-import { environmentArtwork, nariArtwork } from "@/data/artwork";
+import { environmentArtwork } from "@/data/artwork";
 import { socialLinks } from "@/data/socials";
 
 const linktree = socialLinks.find((link) => link.label === "Linktree");
@@ -22,7 +22,6 @@ const fits = [
     </div>
     <div class="room-opening__art room-opening__art--work">
       <img :src="environmentArtwork.work" width="1672" height="941" alt="Nari sits at her beautifully illustrated autumn correspondence desk while a tiny Ghostie helps carry a letter" fetchpriority="high" />
-      <img class="room-opening__nari-portrait" :src="nariArtwork.portrait" width="210" height="320" alt="" aria-hidden="true" loading="lazy" />
     </div>
   </section>
 

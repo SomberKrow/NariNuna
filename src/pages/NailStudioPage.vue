@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
-import { environmentArtwork, ghostieArtwork, officialEmotes } from "@/data/artwork";
+import { environmentArtwork } from "@/data/artwork";
 
 const studioPieces = [
   { icon: Images, title: "Her real work", text: "Nari's own sets and photographs belong here when she chooses which ones to share.", art: "/media/nails/nails-polish-bottle-illustration.svg" },
@@ -19,7 +19,6 @@ const studioPieces = [
         <p>Pretty colors, careful little details, and a self-taught creative who genuinely loves showing people what she's figuring out.</p>
         <div class="tag-row"><span><Heart :size="15" aria-hidden="true" /> Made with love</span><span><Sparkles :size="15" aria-hidden="true" /> Probably with glitter</span></div>
       </div>
-      <img class="studio-opening__ghostie" :src="ghostieArtwork.nails" width="220" height="220" alt="Nari's tiny illustrated Ghostie helper carries a little lavender polish bottle" loading="lazy" />
     </div>
   </section>
 
@@ -39,7 +38,6 @@ const studioPieces = [
     <div class="honest-gallery__inner page-width">
       <img src="/media/states/state-empty-gallery.svg" width="320" height="270" alt="A Ghostie keeps the nail-gallery frames warm until Nari chooses real photographs" loading="lazy" />
       <div><p class="eyebrow">The gallery is getting its top coat</p><h2>Her actual work, or nothing.</h2><p>No stock nails. No generated hands. No pretending someone else's manicure is Nari's. Her own approved photos will live here when they're ready.</p></div>
-      <img class="honest-gallery__emote" :src="officialEmotes.comfy" width="105" height="105" alt="" aria-hidden="true" loading="lazy" />
     </div>
   </section>
 

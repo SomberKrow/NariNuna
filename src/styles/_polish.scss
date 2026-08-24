@@ -1,0 +1,177 @@
+// Final storybook cohesion and viewport-envelope corrections.
+// This layer intentionally stays small: it resolves late composition conflicts
+// without duplicating the underlying world/storybook systems.
+
+.ghostie-summoner {
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 30rem) {
+  .site-header__panel {
+    padding-inline: 1rem;
+  }
+
+  .site-header__more > nav {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header__more summary,
+  .site-header__live-link {
+    min-height: 2.75rem;
+  }
+
+  .site-header__more summary {
+    justify-content: space-between;
+    padding-inline: 0.85rem;
+  }
+
+  .site-header__live-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .theme-switcher {
+    width: 100%;
+  }
+
+  .theme-switcher__option {
+    flex: 1;
+  }
+
+  .haven-landing__margin-note {
+    display: none;
+  }
+
+  .haven-landing__inner {
+    padding-inline: 1rem;
+  }
+
+  .haven-landing__welcome {
+    padding-block: 1.55rem 0.45rem;
+    padding-inline-start: 0;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(3.15rem, 16vw, 4.6rem);
+    line-height: 0.84;
+  }
+
+  .haven-landing__kicker {
+    font-size: 0.57rem;
+    line-height: 1.5;
+  }
+
+  .haven-landing__subtitle {
+    font-size: 1rem;
+  }
+
+  .haven-landing__intro {
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+
+  .social-dock {
+    display: grid;
+    width: min(100%, 11.25rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem 0.25rem;
+  }
+
+  .social-dock > a {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .haven-landing__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .haven-landing__actions > .button {
+    width: 100%;
+  }
+
+  .haven-landing__meet {
+    min-height: 2.75rem;
+    justify-content: center;
+  }
+
+  .haven-landing__rooms {
+    padding: 0.65rem 1rem 1.25rem;
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 4.35rem minmax(0, 1fr) auto;
+    gap: 0.5rem;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 4.35rem;
+    height: 3.4rem;
+  }
+
+  .haven-landing__rooms .haven-landing__room-copy > small {
+    display: none;
+  }
+
+  .character-intro--storybook {
+    min-height: 36rem;
+    padding-block-start: 2.2rem;
+  }
+
+  .character-intro--integrated .character-intro__copy {
+    padding-block: 0.5rem 10rem;
+  }
+
+  .character-intro__copy h1 {
+    font-size: clamp(2.9rem, 14vw, 3.8rem);
+  }
+
+  .room-opening,
+  .studio-opening,
+  .haven-heart,
+  .story-opening--painted,
+  .support-welcome--painted {
+    min-height: 33rem;
+  }
+
+  .room-opening,
+  .story-opening--painted,
+  .support-welcome--painted {
+    padding-block: 3.4rem;
+  }
+
+  .ghostie-summoner {
+    right: max(0.7rem, env(safe-area-inset-right));
+    bottom: max(0.7rem, env(safe-area-inset-bottom));
+  }
+
+  .ghostie-summoner__button {
+    min-height: 2.75rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .brand-mark strong {
+    font-size: 1rem;
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 3.8rem minmax(0, 1fr) auto;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 3.8rem;
+    height: 3.15rem;
+  }
+}
+
+@media (min-width: 120rem) {
+  .site-header__inner,
+  .site-footer__inner,
+  .page-width {
+    --page-gutter: 2rem;
+  }
+}

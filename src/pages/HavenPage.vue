@@ -2,7 +2,7 @@
 import { Heart, House, MoonStar, ShieldCheck, Users } from "@lucide/vue";
 import HavenDoor from "@/components/haven/HavenDoor.vue";
 import LooseFloorboard from "@/components/haven/LooseFloorboard.vue";
-import { environmentArtwork, ghostieArtwork, nariArtwork } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork } from "@/data/artwork";
 import { communityValues } from "@/data/content";
 
 const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.protective, ghostieArtwork.chaotic];
@@ -17,7 +17,6 @@ const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.
         <h1>You don't have to<br /><em>earn your place here.</em></h1>
         <p>A warm little refuge for big personalities, quiet lurkers, tired people, weird jokes, and anyone who remembers that there are real humans on the other side of the screen.</p>
       </div>
-      <img :src="nariArtwork.cozy" width="220" height="220" alt="Nari's supplied cozy chibi artwork offering a warm drink and an enthusiastic welcome" loading="lazy" />
     </div>
   </section>
 

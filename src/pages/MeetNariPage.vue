@@ -1,15 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork, nariArtwork } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
-
-const expressions = [
-  { image: officialEmotes.comfy, label: "Comfy" },
-  { image: officialEmotes.panic, label: "Panic" },
-  { image: officialEmotes.bonk, label: "Bonk" },
-  { image: officialEmotes.shy, label: "Shy" },
-  { image: officialEmotes.fire, label: "Chaos" }
-];
 </script>
 
 <template>
@@ -28,18 +20,6 @@ const expressions = [
         <span><Heart :size="16" aria-hidden="true" /> Protective big sister</span>
       </div>
       <a class="button button--ember" href="/haven/">Come see the Haven <ArrowRight :size="18" aria-hidden="true" /></a>
-    </div>
-  </section>
-
-  <section class="expression-ribbon">
-    <div class="expression-ribbon__inner page-width">
-      <p><span>Nari, in five</span> very predictable moods</p>
-      <div class="expression-ribbon__emotes">
-        <figure v-for="expression in expressions" :key="expression.label">
-          <img :src="expression.image" width="90" height="90" :alt="`Nari's official ${expression.label.toLowerCase()} emote`" loading="lazy" />
-          <figcaption>{{ expression.label }}</figcaption>
-        </figure>
-      </div>
     </div>
   </section>
 

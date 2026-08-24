@@ -21,7 +21,6 @@ const categoryArt = [
     </div>
     <div class="room-opening__art room-opening__art--resources">
       <img :src="environmentArtwork.resources" width="1672" height="941" alt="An intricately hand-painted autumn library where little Ghosties keep watch over Nari's books, creative tools, lavender, and helpful shelves" fetchpriority="high" />
-      <img class="room-opening__companion" src="/media/resources/resources-helper-ghostie.svg" width="145" height="145" alt="A helpful Ghostie keeps watch over Nari's resource shelf" loading="lazy" />
     </div>
   </section>
 
