@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { communityGhostieSprites, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
+import { communityGhostieArtwork, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
 import { prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
 
 function publicAssetExists(assetPath: string): boolean {
@@ -23,17 +23,35 @@ describe("approved-source artwork contracts", () => {
 
   it("gives every shared Ghostie and room illustration a real asset", () => {
     expect(Object.values(ghostieArtwork).every(publicAssetExists)).toBe(true);
-    expect(Object.values(communityGhostieSprites).every(publicAssetExists)).toBe(true);
+    expect(Object.values(communityGhostieArtwork).every(publicAssetExists)).toBe(true);
     expect(Object.values(environmentArtwork).every(publicAssetExists)).toBe(true);
     expect(Object.values(storybookPostcards).every(publicAssetExists)).toBe(true);
   });
 
-  it("uses transparent raster Ghosties instead of cream card backgrounds", () => {
+  it("uses individually authored transparent Ghosties without sprite cropping or canvas processing", () => {
     const ghostieComponent = readFileSync(resolve(process.cwd(), "src/components/art/GhostieArt.vue"), "utf8");
-    expect(ghostieComponent).toContain("removeConnectedPaper");
+    const uniqueGhosties = [...new Set(Object.values(communityGhostieArtwork))];
+
+    expect(uniqueGhosties).toHaveLength(12);
+    expect(ghostieComponent).toContain("communityGhostieArtwork[variant]");
+    expect(ghostieComponent).toContain("<img");
+    expect(ghostieComponent).toContain('width="1254"');
     expect(ghostieComponent).toContain("background: transparent");
     expect(ghostieComponent).toContain("drop-shadow");
+    expect(ghostieComponent).not.toContain("<canvas");
+    expect(ghostieComponent).not.toContain("drawImage");
+    expect(ghostieComponent).not.toContain("removeConnectedPaper");
+    expect(ghostieComponent).not.toContain("ghostie-strip");
     expect(ghostieComponent).not.toContain("#fffaf3");
+
+    for (const asset of uniqueGhosties) {
+      const bytes = readFileSync(resolve(process.cwd(), "public", asset.replace(/^\//, "")));
+      expect(bytes.toString("ascii", 8, 12)).toBe("WEBP");
+      expect(bytes.toString("ascii", 12, 16)).toBe("VP8X");
+      expect(bytes[20] & 0b00010000).toBeTruthy();
+      expect(bytes.readUIntLE(24, 3) + 1).toBe(1254);
+      expect(bytes.readUIntLE(27, 3) + 1).toBe(1254);
+    }
 
     const consumers = [
       "src/pages/MeetNariPage.vue",
