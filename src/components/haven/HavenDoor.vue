@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ArrowUpRight, DoorOpen, HeartHandshake, ShieldCheck } from "@lucide/vue";
+import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
 import { computed, ref } from "vue";
+import { storybookPostcards } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
 const step = ref(0);
@@ -28,8 +29,8 @@ const currentStage = computed(() => stages[Math.min(step.value, stages.length - 
 <template>
   <section class="haven-door" aria-labelledby="haven-door-title">
     <div class="haven-door__art" aria-hidden="true">
-      <DoorOpen :size="64" />
-      <span v-for="index in 3" :key="index" :class="{ active: step >= index }"></span>
+      <img :src="storybookPostcards.haven" width="960" height="540" alt="" loading="lazy" />
+      <div class="haven-door__progress"><span v-for="index in 3" :key="index" :class="{ active: step >= index }"></span></div>
     </div>
     <div class="haven-door__content">
       <p class="eyebrow">A door deeper inside</p>

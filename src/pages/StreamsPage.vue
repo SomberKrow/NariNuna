@@ -1,16 +1,30 @@
 <script setup lang="ts">
-import { ArrowRight, ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Video } from "@lucide/vue";
+import { ArrowRight, ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Youtube } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
-import { environmentArtwork, ghostieArtwork, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 import { socialLinks, twitchUrl } from "@/data/socials";
 
 const youtube = socialLinks.find((link) => link.label === "YouTube");
-const vods = socialLinks.find((link) => link.label === "VOD Archive");
-const streamDoors = [
-  { title: "Little disasters", note: "The clips chat will never let her forget.", art: storybookPostcards.streams, href: youtube?.url ?? twitchUrl },
-  { title: "The good bits", note: "A few favorite moments with context.", art: storybookPostcards.stories, href: youtube?.url ?? twitchUrl },
-  { title: "Stay awhile", note: "Settle in for the whole ridiculous evening.", art: storybookPostcards.haven, href: vods?.url ?? twitchUrl }
+const platforms = [
+  {
+    title: "Live on Twitch",
+    note: "The full room: games, chat, panic, tangents, and whatever happens next.",
+    art: storybookPostcards.streams,
+    href: twitchUrl,
+    action: "Open Twitch",
+    icon: Radio
+  },
+  ...(youtube
+    ? [{
+        title: "Catch the good bits on YouTube",
+        note: "Highlights, Shorts, nail content, and the moments worth keeping after stream ends.",
+        art: storybookPostcards.stories,
+        href: youtube.url,
+        action: "Open YouTube",
+        icon: Youtube
+      }]
+    : [])
 ];
 </script>
 
@@ -21,8 +35,8 @@ const streamDoors = [
       <h1>Come for the game.<br /><em>Stay for the yap.</em></h1>
       <p>Expect cozy chaos, wildly unnecessary panic, affectionate bullying, and a chat that somehow becomes half the show.</p>
       <div class="button-row">
-        <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Hang out on Twitch <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
-        <a v-if="vods" class="button button--outline" :href="vods.url" target="_blank" rel="noreferrer noopener">Find the VODs <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Watch live on Twitch <Radio :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
+        <a v-if="youtube" class="button button--outline" :href="youtube.url" target="_blank" rel="noreferrer noopener">Watch Nari on YouTube <Youtube :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div class="room-opening__signals"><span><MessageCircle :size="15" aria-hidden="true" /> Chat welcome</span><span><Gamepad2 :size="15" aria-hidden="true" /> Plans optional</span></div>
     </div>
@@ -31,15 +45,20 @@ const streamDoors = [
     </div>
   </section>
 
-  <section class="stream-door-section page-width section-pad">
-    <header class="world-heading"><p class="eyebrow"><Video :size="15" aria-hidden="true" /> Pick your kind of chaos</p><h2>Three ways into the stream room.</h2></header>
-    <div class="stream-door-grid">
-      <a v-for="door in streamDoors" :key="door.title" :href="door.href" target="_blank" rel="noreferrer noopener">
-        <img :src="door.art" width="960" height="540" alt="" loading="lazy" />
-        <div><span><strong>{{ door.title }}</strong><small>{{ door.note }}</small></span><ArrowRight :size="19" aria-hidden="true" /></div>
-        <span class="sr-only"> (opens in a new tab)</span>
+  <section class="stream-hub page-width section-pad">
+    <header class="world-heading"><p class="eyebrow">Two doors that are actually current</p><h2>Live there. Catch up here.</h2><p>Twitch is the live room. YouTube is where Nari's highlights, Shorts, and longer-lived creative pieces can keep breathing afterward.</p></header>
+    <div class="stream-platform-grid">
+      <a v-for="platform in platforms" :key="platform.title" :href="platform.href" target="_blank" rel="noreferrer noopener">
+        <img :src="platform.art" width="960" height="540" alt="" loading="lazy" />
+        <div>
+          <component :is="platform.icon" :size="22" aria-hidden="true" />
+          <span><strong>{{ platform.title }}</strong><small>{{ platform.note }}</small></span>
+          <ArrowUpRight :size="19" aria-hidden="true" />
+        </div>
+        <span class="sr-only">{{ platform.action }} (opens in a new tab)</span>
       </a>
     </div>
+    <div class="stream-status-note"><Sparkles :size="20" aria-hidden="true" /><div><strong>No pretend live schedule.</strong><p>For current stream times, check Twitch or Nari's active socials. The old VOD archive is no longer treated as an active destination.</p></div></div>
   </section>
 
   <section class="moment-shelf">
@@ -47,11 +66,5 @@ const streamDoors = [
       <header class="world-heading"><p class="eyebrow"><Sparkles :size="15" aria-hidden="true" /> Start with the good stuff</p><h2>A few actual Nari moments.</h2><p>Chosen from Nari's own public channel. Nothing autoplays or sneaks into your speakers.</p></header>
       <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
     </div>
-  </section>
-
-  <section class="gentle-hold page-width">
-    <img :src="ghostieArtwork.cozy" width="170" height="170" alt="A cozy Ghostie settles in with a blanket" loading="lazy" />
-    <div><p class="eyebrow">When's the next stream?</p><h2>No made-up schedule here.</h2><p>Check Nari's Twitch and current socials for the real updates. The Ghosties refuse to invent a clock.</p></div>
-    <a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Check Twitch <ArrowUpRight :size="16" aria-hidden="true" /></a>
   </section>
 </template>

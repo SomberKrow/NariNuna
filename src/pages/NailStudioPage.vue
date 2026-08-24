@@ -1,11 +1,29 @@
 <script setup lang="ts">
 import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
-import { environmentArtwork } from "@/data/artwork";
+import { environmentArtwork, ghostieArtwork, storybookPostcards } from "@/data/artwork";
 
 const studioPieces = [
-  { icon: Images, title: "Her real work", text: "Nari's own sets and photographs belong here when she chooses which ones to share.", art: "/media/nails/nails-polish-bottle-illustration.svg" },
-  { icon: Paintbrush, title: "The fun part", text: "Color stories, tiny details, glitter experiments, and the occasional wonderful accident.", art: "/media/nails/nails-polish-ghostie.svg" },
-  { icon: BookOpen, title: "What she's learning", text: "Honest little lessons from a self-taught artist figuring things out as she goes.", art: "/media/nails/nails-manicure-station-vignette.svg" }
+  {
+    icon: Images,
+    title: "Her real work",
+    text: "Nari's own sets and photographs belong here when she chooses which ones to share.",
+    art: storybookPostcards.nails,
+    alt: "Painted view of Nari's warm autumn nail desk"
+  },
+  {
+    icon: Paintbrush,
+    title: "The fun part",
+    text: "Color stories, tiny details, glitter experiments, and the occasional wonderful accident.",
+    art: ghostieArtwork.nails,
+    alt: "Storybook Ghostie carrying a lavender nail-polish bottle"
+  },
+  {
+    icon: BookOpen,
+    title: "What she's learning",
+    text: "Honest little lessons from a self-taught artist figuring things out as she goes.",
+    art: environmentArtwork.nails,
+    alt: "Hand-painted nail atelier filled with polish, tools, and warm autumn light"
+  }
 ];
 </script>
 
@@ -24,20 +42,20 @@ const studioPieces = [
 
   <section class="studio-notes page-width section-pad">
     <header class="world-heading"><p class="eyebrow">A proper creative room</p><h2>Polish, practice, and doing it her way.</h2></header>
-    <div class="studio-notes__grid">
+    <div class="studio-notes__grid studio-notes__grid--painted">
       <article v-for="piece in studioPieces" :key="piece.title">
-        <img :src="piece.art" width="280" height="190" alt="" loading="lazy" />
-        <component :is="piece.icon" :size="19" aria-hidden="true" />
-        <h3>{{ piece.title }}</h3>
-        <p>{{ piece.text }}</p>
+        <img :src="piece.art" width="640" height="360" :alt="piece.alt" loading="lazy" />
+        <div>
+          <component :is="piece.icon" :size="20" aria-hidden="true" />
+          <h3>{{ piece.title }}</h3>
+          <p>{{ piece.text }}</p>
+        </div>
       </article>
     </div>
-  </section>
 
-  <section class="honest-gallery">
-    <div class="honest-gallery__inner page-width">
-      <img src="/media/states/state-empty-gallery.svg" width="320" height="270" alt="A Ghostie keeps the nail-gallery frames warm until Nari chooses real photographs" loading="lazy" />
-      <div><p class="eyebrow">The gallery is getting its top coat</p><h2>Her actual work, or nothing.</h2><p>No stock nails. No generated hands. No pretending someone else's manicure is Nari's. Her own approved photos will live here when they're ready.</p></div>
+    <div class="studio-gallery-note">
+      <img :src="storybookPostcards.nails" width="960" height="540" alt="Painted detail of Nari's nail workspace while the real portfolio is being selected" loading="lazy" />
+      <div><p class="eyebrow">Her actual work, or nothing</p><h2>The portfolio opens when Nari picks the sets.</h2><p>No stock nails. No generated hands. No borrowing somebody else's manicure to make the page look finished. Until her approved photos are ready, the studio itself carries the mood.</p></div>
     </div>
   </section>
 

@@ -11,7 +11,7 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
   <footer class="site-footer">
     <div class="site-footer__inner page-width">
       <div class="site-footer__statement">
-        <img :src="nariArtwork.cozy" width="132" height="132" alt="" loading="lazy" />
+        <div class="site-footer__portrait"><img :src="nariArtwork.avatar" width="132" height="132" alt="" loading="lazy" /></div>
         <div>
           <p class="eyebrow">From Nari, with a little extra glitter</p>
           <h2>There is room for you here.</h2>

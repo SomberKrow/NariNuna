@@ -13,15 +13,7 @@ export const socialLinks: SocialLink[] = [
     label: "YouTube",
     handle: "@Nari_Nuna",
     url: "https://www.youtube.com/@Nari_Nuna",
-    purpose: "Curated videos, shorts, nail content, and highlights",
-    verifiedAt: "2026-08-13",
-    external: true
-  },
-  {
-    label: "VOD Archive",
-    handle: "@NariNunaVod",
-    url: "https://www.youtube.com/@NariNunaVod",
-    purpose: "Long-form stream archives, including adult-marked entries",
+    purpose: "Curated videos, Shorts, nail content, and highlights",
     verifiedAt: "2026-08-13",
     external: true
   },

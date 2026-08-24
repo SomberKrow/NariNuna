@@ -5,7 +5,7 @@ import LooseFloorboard from "@/components/haven/LooseFloorboard.vue";
 import { environmentArtwork, ghostieArtwork } from "@/data/artwork";
 import { communityValues } from "@/data/content";
 
-const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.protective, ghostieArtwork.chaotic];
+const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.cozy, ghostieArtwork.chaotic];
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.
 
   <section class="haven-values page-width section-pad">
     <header class="world-heading world-heading--center"><p class="eyebrow">What keeps the room feeling like home</p><h2>Kindness has a backbone.</h2></header>
-    <div class="haven-values__grid">
+    <div class="haven-values__grid haven-values__grid--storybook">
       <article v-for="(value, index) in communityValues" :key="value.title">
         <img :src="valueGhosties[index]" width="154" height="154" alt="" loading="lazy" />
         <span>{{ String(index + 1).padStart(2, "0") }}</span>
@@ -30,15 +30,16 @@ const valueGhosties = [ghostieArtwork.heart, ghostieArtwork.shy, ghostieArtwork.
         <p>{{ value.description }}</p>
       </article>
     </div>
-  </section>
-
-  <section class="haven-belonging">
-    <div class="haven-belonging__inner page-width">
-      <div><p class="eyebrow">A little found-family energy</p><h2>Show up as you are.<br />Look out for each other.</h2><p>No loyalty tests. No having to be the funniest person in chat. No being told that crossed boundaries are just part of the joke.</p></div>
-      <div class="haven-belonging__badges" aria-label="Haven community principles"><span><Users :size="22" aria-hidden="true" /> Belonging</span><span><Heart :size="22" aria-hidden="true" /> Care</span><span><ShieldCheck :size="22" aria-hidden="true" /> Boundaries</span><span><MoonStar :size="22" aria-hidden="true" /> Your own kind of weird</span></div>
+    <div class="haven-values__principles" aria-label="Haven community principles">
+      <span><Users :size="20" aria-hidden="true" /> Belonging without performance</span>
+      <span><Heart :size="20" aria-hidden="true" /> Care without entitlement</span>
+      <span><ShieldCheck :size="20" aria-hidden="true" /> Boundaries without apology</span>
+      <span><MoonStar :size="20" aria-hidden="true" /> Your own kind of weird</span>
     </div>
   </section>
 
-  <div class="haven-door-wrap page-width section-pad"><HavenDoor /></div>
-  <div class="page-width"><LooseFloorboard /></div>
+  <section class="haven-entry page-width section-pad">
+    <HavenDoor />
+    <LooseFloorboard />
+  </section>
 </template>
