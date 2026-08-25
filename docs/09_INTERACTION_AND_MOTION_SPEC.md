@@ -98,23 +98,29 @@ The Discord anchor exists only at `Invite`. Progress bars are decorative reinfor
 
 ### Loose floorboard
 
-States: untouched → moved → certain → key revealed.
+States: untouched → first knock → second knock → gatekeeper listening → password accepted.
 
-- One visible native button advances the first three states.
+- One visible native button advances exactly three capped floorboard knocks.
+- A supplied original Prinny rises from the illustrated boards as a decorative state cue.
+- The listening gatekeeper presents three labelled native password buttons.
+- Incorrect answers announce a harmless, polite explanation without losing progress.
+- Only `DOOD` accepts the password; only the accepted state renders the normal hidden-route link.
 - Text changes in an `aria-live="polite"` region.
-- The final state reveals a normal link.
 - No hover, timing, precision, or sound is required.
 - The interaction is optional and contains no essential page action.
 
-### Secret oath and inspection
+### Prinny initiation and eleventh offering
 
-States: oath → Rule Eleven; inspection count 0–11.
+States: candle rite → sardine rite → sacred-word rite → oath → initiated; offering count 0–11.
 
-- Visible button accepts the oath.
-- Visible button increments inspection.
-- `P` key is optional parity, never the canonical path.
-- Count is capped at 11 and exposed politely.
-- Visible return link is available from the start.
+- Three labelled native buttons advance the respective candle, sardine, and `DOOD` rites.
+- A numbered list exposes completed/current rites without relying on glow or color.
+- The optional oath button appears only after all three rites.
+- The ceremonial title describes the visitor only; it never invents a supplied Prinny's identity, rank, or biography.
+- The sardine-offering button exists only after initiation and caps the counter at 11.
+- Counter updates are exposed politely, and the eleventh offering reveals the final visitor-only joke title.
+- The fixed candlelight is decorative; the only animation is optional, brief visual-state feedback.
+- A visible return link is available from the start and again at the bottom of the route.
 
 ## Implemented behavior matrix
 
@@ -125,8 +131,8 @@ States: oath → Rule Eleven; inspection count 0–11.
 | Ghostie | Opacity/rise/scale | Static/opacity | Open and close buttons |
 | Mobile nav | Immediate panel state | Same | Menu, Escape, link selection |
 | Haven door | Content/state replacement | Same, no travel | Native buttons |
-| Floorboard | Three text stages | Same | Native button |
-| Secret | Oath swap and capped counter | Same | Buttons; optional `P` |
+| Floorboard | Three knocks, decorative Prinny reveal, visible password choice | Same, without gatekeeper transition | Native investigation and password buttons |
+| Secret | Three rites, optional oath, ceremonial visitor title, capped sardine counter | Same, without glow/card transitions | Native labelled buttons and visible return links |
 | Media image | Small scale on card hover | No scale | Link focus retains affordance |
 
 ## Future Ghostie/emote behavior

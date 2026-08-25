@@ -277,7 +277,9 @@ At release, verify that the selected code resolves to the intended guild. If it 
 - Door art stacks above content below 56rem.
 - Controls remain ordinary buttons with visible text.
 - State change is understandable without progress-bar color or motion.
-- Floorboard has three text stages and no hover-only secret.
+- Floorboard advances through three labelled knocks, reveals an original supplied Prinny gatekeeper, and accepts the visible `Dood.` password.
+- Incorrect passwords give harmless text feedback; the hidden-route anchor exists only after the correct answer.
+- The physical floorboard illustration and password options work with keyboard, touch, and reduced motion.
 - Secret remains optional and absent from ordinary task paths.
 
 ### Acceptance
@@ -408,18 +410,22 @@ At release, verify that the selected code resolves to the intended guild. If it 
 
 **Implementation:** `the-prinny-cult/index.html`, `PrinnyCultPage.vue`  
 **Primary audience:** Optional explorers  
-**Job:** Reward curiosity with a short, original, accessible joke.  
+**Job:** Reward curiosity with a theatrical, accessible, entirely optional Prinny initiation and the untouched supplied collection.  
 **Emotional outcome:** “That was absurdly committed and clearly extra.”
 
 Required:
 
-- immediate visible return link;
-- `noindex, nofollow` metadata;
-- original/permitted assets only;
-- button equivalent for the optional `P` shortcut;
-- capped counter and clear state text;
-- no global shell by design;
-- no required information or conversion.
+- immediate visible return link and a second clear exit after the experience;
+- `noindex, nofollow` metadata and no normal-navigation placement;
+- supplied original Prinny designs and existing project-made ceremonial assets only;
+- a custom candlelit chamber featuring three actual supplied Prinnies and a readable warning plaque;
+- three explicitly labelled, button-operated rites: light the candle, offer the sardine, and speak `DOOD`;
+- an optional tongue-in-cheek oath before the visitor-only ceremonial role appears;
+- all 27 supplied artwork designs with their existing neutral alt text and no fabricated individual names, biographies, ranks, or canon;
+- three plainly fictional rules that reinforce safety, kindness, and the joke;
+- an optional sardine counter capped at 11 with polite status and a visitor-only bonus title;
+- responsive composition from 320px, reduced-motion parity, and no autoplay audio;
+- no global shell by design, required information, financial ask, or conversion.
 
 Obscurity is not security. Never store private content on this route.
 

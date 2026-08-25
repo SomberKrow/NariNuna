@@ -1,49 +1,943 @@
 <script setup lang="ts">
-import { ArrowLeft, Bomb, ClipboardCheck, Fish, Sparkles } from "@lucide/vue";
-import { ref } from "vue";
-import { suppliedPrinnyArtwork } from "@/data/prinnyCult";
+import { ArrowLeft, Bomb, Crown, Feather, Fish, Flame, MoonStar, ScrollText, ShieldCheck, Sparkles } from "@lucide/vue";
+import { computed, ref } from "vue";
+import { prinnyCultAssets, prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
 
-const clockedIn = ref(false);
-const mascot = suppliedPrinnyArtwork.find(({ assetId }) => assetId === "original") ?? suppliedPrinnyArtwork[0];
-const notices = [
-  { icon: Bomb, title: "Throwing policy", text: "Strongly discouraged indoors. Explosions create paperwork, scorch marks, and awkward questions from upstairs." },
-  { icon: Fish, title: "Ration policy", text: "Sardines have been requisitioned. The request is stamped, countersigned, and somehow still pending." },
-  { icon: ClipboardCheck, title: "Reincarnation queue", text: "Take a number, finish your shift, and complain with appropriate peon-level enthusiasm, dood." }
-];
+const ritualStage = ref(0);
+const oathAccepted = ref(false);
+const offerings = ref(0);
+const maxOfferings = 11;
+
+const herald = suppliedPrinnyArtwork.find(({ assetId }) => assetId === "original") ?? suppliedPrinnyArtwork[0];
+const leftAcolyte = suppliedPrinnyArtwork.find(({ assetId }) => assetId === "panda") ?? suppliedPrinnyArtwork[1];
+const rightAcolyte = suppliedPrinnyArtwork.find(({ assetId }) => assetId === "orin") ?? suppliedPrinnyArtwork[2];
+
+const rites = [
+  {
+    numeral: "I",
+    title: "Wake the candle",
+    instruction: "The first flame answers only to visitors who are prepared to make questionable decisions with confidence.",
+    action: "Light the first candle",
+    icon: Flame
+  },
+  {
+    numeral: "II",
+    title: "Make the offering",
+    instruction: "Place one ceremonial sardine upon the altar. The order accepts no substitutes, no refunds, and absolutely no tuna.",
+    action: "Offer the sacred sardine",
+    icon: Fish
+  },
+  {
+    numeral: "III",
+    title: "Speak the sacred word",
+    instruction: "The chamber goes quiet. Twenty-seven tiny faces turn toward you. Somewhere, a clipboard trembles.",
+    action: "Say it with conviction: DOOD",
+    icon: Sparkles
+  }
+] as const;
+
+const commandments = [
+  {
+    numeral: "01",
+    title: "Thou shalt not yeet indoors.",
+    text: "Explosions make the candle situation considerably worse, and the cleaning deposit is already a myth.",
+    icon: Bomb
+  },
+  {
+    numeral: "02",
+    title: "The sardine is sacred.",
+    text: "All offerings are ceremonial, imaginary, and mysteriously missing approximately eight seconds later.",
+    icon: Fish
+  },
+  {
+    numeral: "03",
+    title: "Every little weirdo belongs.",
+    text: "Take the joke seriously. Take each other kindly. Leave actual cruelty and cult behavior upstairs.",
+    icon: ShieldCheck
+  }
+] as const;
+
+const riteComplete = computed(() => ritualStage.value === rites.length);
+const activeRite = computed(() => rites[Math.min(ritualStage.value, rites.length - 1)]);
+const visitorRank = computed(() => {
+  if (offerings.value >= maxOfferings) return "High Waddlemancer of the Eleventh Sardine";
+  if (offerings.value >= 5) return "Keeper of the Suspiciously Holy Fish";
+  return "Initiate of Mildly Questionable Intent";
+});
+
+function completeRite(): void {
+  ritualStage.value = Math.min(ritualStage.value + 1, rites.length);
+}
+
+function acceptOath(): void {
+  if (riteComplete.value) oathAccepted.value = true;
+}
+
+function offerSardine(): void {
+  offerings.value = Math.min(offerings.value + 1, maxOfferings);
+}
 </script>
 
 <template>
-  <main id="main-content" class="cult-page cult-page--collection">
-    <a class="cult-page__escape" href="/haven/"><ArrowLeft :size="18" aria-hidden="true" /> Back through the floorboard</a>
+  <main id="main-content" class="prinny-sanctum">
+    <div class="prinny-sanctum__grain" aria-hidden="true"></div>
 
-    <section class="cult-collection">
-      <header class="cult-collection__header cult-collection__header--rebuilt">
-        <div class="cult-mascot-sign" aria-hidden="true">
-          <img v-if="mascot" :src="mascot.src" width="260" height="260" alt="" />
-          <div class="cult-signboard"><span>BASEMENT PERSONNEL OFFICE</span><strong>DOOD. CLOCK IN BEFORE EXPLODING.</strong><small>Sardine claims filed downstairs. Probably.</small></div>
-        </div>
-        <div class="cult-collection__intro">
-          <p class="eyebrow"><Sparkles :size="15" aria-hidden="true" /> Unofficial Netherworld basement department</p>
-          <h1>The Prinny Cult</h1>
-          <p>You lifted the loose floorboard and found Nari's full collection of tiny blue-adjacent disasters. There is apparently a bureaucracy down here now. Nobody remembers approving it.</p>
-        </div>
-      </header>
+    <nav class="prinny-sanctum__escape" aria-label="Return to the Haven">
+      <a href="/haven/"><ArrowLeft :size="17" aria-hidden="true" /> Climb back through the floorboard</a>
+      <span aria-hidden="true">EST. SOME TIME AFTER MIDNIGHT</span>
+    </nav>
 
-      <section class="cult-briefing" aria-label="Basement orientation notices">
-        <article v-for="notice in notices" :key="notice.title"><component :is="notice.icon" :size="26" aria-hidden="true" /><div><h2>{{ notice.title }}</h2><p>{{ notice.text }}</p></div></article>
-      </section>
+    <section class="cult-descent" aria-labelledby="cult-title">
+      <div class="cult-descent__chamber" aria-hidden="true">
+        <div class="cult-descent__arch"></div>
+        <div class="cult-descent__stars cult-descent__stars--left">✦ · ✧</div>
+        <div class="cult-descent__stars cult-descent__stars--right">✧ · ✦</div>
+        <img class="cult-descent__circle" :src="prinnyCultAssets.summoningCircle" width="300" height="300" alt="" />
+        <img v-if="leftAcolyte" class="cult-descent__acolyte cult-descent__acolyte--left" :src="leftAcolyte.src" width="150" height="150" alt="" />
+        <img v-if="rightAcolyte" class="cult-descent__acolyte cult-descent__acolyte--right" :src="rightAcolyte.src" width="150" height="150" alt="" />
+        <img v-if="herald" class="cult-descent__herald" :src="herald.src" width="310" height="310" alt="" fetchpriority="high" />
+        <div class="cult-descent__candle cult-descent__candle--one"></div>
+        <div class="cult-descent__candle cult-descent__candle--two"></div>
+        <div class="cult-descent__candle cult-descent__candle--three"></div>
+        <div class="cult-descent__candle cult-descent__candle--four"></div>
+        <div class="cult-descent__plaque"><span>THE FLOORBOARD WAS A WARNING</span><strong>YOU CAME ANYWAY.</strong></div>
+      </div>
 
-      <section class="cult-collection__roster" aria-labelledby="prinny-roster-title">
-        <div><p class="eyebrow">Current basement personnel</p><h2 id="prinny-roster-title">Twenty-seven Prinnies. Zero supervision.</h2><p>The supplied collection stays the star here—no fake ranks, bios, or replacement character art.</p></div>
-        <div class="cult-collection__gallery" aria-label="Nari's supplied Prinny artwork collection">
-          <article v-for="(prinny, index) in suppliedPrinnyArtwork" :key="prinny.assetId"><span>{{ String(index + 1).padStart(2, "0") }}</span><img :src="prinny.src" width="190" height="190" :alt="prinny.alt" loading="lazy" /></article>
-        </div>
-      </section>
-
-      <div class="cult-collection__contract">
-        <template v-if="!clockedIn"><ClipboardCheck :size="30" aria-hidden="true" /><div><p class="eyebrow">Mandatory optional employment form</p><h2>Clock in for basement duty?</h2><p>Compensation is mysterious. Hazard pay is theoretical. The sardine line item has been escalated three times.</p></div><button class="button button--cream" type="button" @click="clockedIn = true">Sign the suspicious clipboard</button></template>
-        <template v-else><Bomb :size="30" aria-hidden="true" /><div><p class="eyebrow">Paperwork accepted</p><h2>Congratulations, dood. You're middle management.</h2><p>Your first responsibility is ensuring nobody throws the workforce indoors. Your second responsibility is pretending there was a first responsibility.</p></div><button class="text-button" type="button" @click="clockedIn = false">Resign before lunch</button></template>
+      <div class="cult-descent__story">
+        <p class="cult-kicker"><MoonStar :size="15" aria-hidden="true" /> Beneath the Haven · Chamber XI</p>
+        <p class="cult-descent__pretitle">Welcome, deeply suspicious traveler, to</p>
+        <h1 id="cult-title">The Prinny<br /><span>Cult.</span></h1>
+        <p class="cult-descent__lede">An ancient order of tiny disasters, ceremonial sardines, and highly questionable spiritual leadership. Ancient, in this case, means somebody started it downstairs last Tuesday.</p>
+        <div class="cult-descent__insignia"><span>XXVII WITNESSES</span><span aria-hidden="true">✶</span><span>ZERO ADULT SUPERVISION</span></div>
       </div>
     </section>
+
+    <div class="cult-divider" aria-hidden="true"><span></span><span>✦</span><span></span></div>
+
+    <section class="cult-ritual" aria-labelledby="ritual-title">
+      <header class="cult-section-heading">
+        <p class="cult-kicker"><Flame :size="16" aria-hidden="true" /> The completely optional initiation</p>
+        <h2 id="ritual-title">The Rite of the <em>Eternal Dood.</em></h2>
+        <p>Three acts. One sacred syllable. Absolutely no liability waiver.</p>
+      </header>
+
+      <div class="cult-ritual__altar">
+        <div class="cult-ritual__illustration" aria-hidden="true">
+          <img :src="prinnyCultAssets.altar" width="260" height="190" alt="" loading="lazy" />
+          <span class="cult-ritual__altar-glow" :class="{ 'is-lit': ritualStage > 0 }"></span>
+        </div>
+
+        <div class="cult-ritual__content">
+          <ol class="cult-ritual__progress" aria-label="Three ceremonial initiation rites">
+            <li
+              v-for="(rite, index) in rites"
+              :key="rite.numeral"
+              :class="{ 'is-complete': ritualStage > index, 'is-current': ritualStage === index }"
+              :aria-label="rite.title + (ritualStage > index ? ': completed' : ': waiting')"
+            >
+              <span aria-hidden="true">{{ rite.numeral }}</span>
+              <strong>{{ rite.title }}</strong>
+            </li>
+          </ol>
+
+          <template v-if="!riteComplete">
+            <p class="cult-ritual__stage">RITE {{ activeRite.numeral }} OF III</p>
+            <h3>{{ activeRite.title }}</h3>
+            <p class="cult-ritual__instruction" aria-live="polite">{{ activeRite.instruction }}</p>
+            <button class="cult-action" type="button" @click="completeRite">
+              <component :is="activeRite.icon" :size="18" aria-hidden="true" />
+              {{ activeRite.action }}
+            </button>
+          </template>
+
+          <template v-else-if="!oathAccepted">
+            <p class="cult-ritual__stage">THE FINAL, LEGALLY USELESS OATH</p>
+            <h3>Repeat after the suspicious penguin.</h3>
+            <blockquote>“I solemnly swear to protect the bit, respect the weirdos, and never throw the congregation at anyone indoors.”</blockquote>
+            <button class="cult-action" type="button" @click="acceptOath"><ScrollText :size="18" aria-hidden="true" /> Swear the extremely serious oath</button>
+          </template>
+
+          <template v-else>
+            <p class="cult-ritual__stage">THE CHAMBER HAS SPOKEN</p>
+            <h3>Welcome to the congregation, dood.</h3>
+            <p class="cult-ritual__instruction">You are now ceremonially responsible for absolutely nothing. The tiny council applauds with deeply unsettling enthusiasm.</p>
+            <div class="cult-ritual__rank"><Crown :size="19" aria-hidden="true" /> {{ visitorRank }}</div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="cult-doctrine" aria-labelledby="doctrine-title">
+      <header class="cult-section-heading cult-section-heading--compact">
+        <p class="cult-kicker"><ScrollText :size="16" aria-hidden="true" /> Excavated from a very sticky napkin</p>
+        <h2 id="doctrine-title">The sacred <em>commandments.</em></h2>
+      </header>
+
+      <div class="cult-doctrine__articles">
+        <article v-for="commandment in commandments" :key="commandment.numeral">
+          <span class="cult-doctrine__number">{{ commandment.numeral }}</span>
+          <component :is="commandment.icon" :size="23" aria-hidden="true" />
+          <h3>{{ commandment.title }}</h3>
+          <p>{{ commandment.text }}</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cult-congregation" aria-labelledby="congregation-title">
+      <header class="cult-congregation__heading">
+        <div>
+          <p class="cult-kicker"><Feather :size="16" aria-hidden="true" /> Witnesses of the eleventh floorboard</p>
+          <h2 id="congregation-title">The congregation.</h2>
+          <p>All {{ prinnyRosterCapacity }} of Nari's supplied tiny chaos agents. Every original design. No fake names, fake biographies, or stolen halos.</p>
+        </div>
+        <div class="cult-congregation__count" aria-label="27 original Prinny designs"><strong>{{ prinnyRosterCapacity }}</strong><span>PRESENT</span></div>
+      </header>
+
+      <div class="cult-congregation__gallery" aria-label="Nari's supplied Prinny artwork collection">
+        <article v-for="(prinny, index) in suppliedPrinnyArtwork" :key="prinny.assetId" class="cult-congregation__member">
+          <span>{{ String(index + 1).padStart(2, "0") }}</span>
+          <img :src="prinny.src" width="190" height="190" :alt="prinny.alt" loading="lazy" />
+          <span aria-hidden="true">✶</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="cult-offering" aria-labelledby="offering-title">
+      <img class="cult-offering__seal" :src="prinnyCultAssets.membershipSeal" width="116" height="116" alt="" aria-hidden="true" loading="lazy" />
+
+      <div v-if="oathAccepted" class="cult-offering__content">
+        <p class="cult-kicker"><Fish :size="16" aria-hidden="true" /> Members-only nonsense</p>
+        <h2 id="offering-title">{{ offerings === maxOfferings ? "The Eleventh Sardine has spoken." : "Feed the ceremonial offering bowl." }}</h2>
+        <p>{{ offerings === maxOfferings ? "The candles bow. The floorboards hum. Somewhere upstairs, Nari wonders why the snack budget has become a religious matter." : "One imaginary sardine at a time. The bowl is deeply spiritual and, allegedly, tax-exempt." }}</p>
+        <button v-if="offerings < maxOfferings" class="cult-action cult-action--quiet" type="button" @click="offerSardine"><Fish :size="17" aria-hidden="true" /> Offer another imaginary sardine</button>
+        <p class="cult-offering__count" aria-live="polite">Sacred sardines surrendered: {{ offerings }} / {{ maxOfferings }}</p>
+        <p v-if="offerings === maxOfferings" class="cult-offering__reward"><Crown :size="19" aria-hidden="true" /> {{ visitorRank }}</p>
+      </div>
+
+      <div v-else class="cult-offering__content">
+        <p class="cult-kicker"><Crown :size="16" aria-hidden="true" /> A suspiciously exclusive inner circle</p>
+        <h2 id="offering-title">There is more under the altar.</h2>
+        <p>Complete the initiation above, and the congregation may trust you with its most sacred, most fish-shaped secret.</p>
+      </div>
+    </section>
+
+    <footer class="cult-dismissal">
+      <span>GO FORTH. WADDLE IN DARKNESS. BE NICE ABOUT IT.</span>
+      <a href="/haven/"><ArrowLeft :size="16" aria-hidden="true" /> Return to the Haven</a>
+    </footer>
   </main>
 </template>
+
+<style scoped>
+.prinny-sanctum {
+  --cult-ink: #faf0e8;
+  --cult-muted: #c9b4bc;
+  --cult-gold: #edc78e;
+  --cult-line: rgb(244 207 174 / 18%);
+  position: relative;
+  min-height: 100svh;
+  padding: 0 clamp(1rem, 5vw, 4.5rem) 2.5rem;
+  overflow: hidden;
+  color: var(--cult-ink);
+  background:
+    radial-gradient(ellipse at 20% 12%, rgb(122 54 72 / 31%), transparent 30%),
+    radial-gradient(ellipse at 82% 30%, rgb(94 60 112 / 24%), transparent 29%),
+    radial-gradient(ellipse at 50% 70%, rgb(111 55 64 / 12%), transparent 35%),
+    linear-gradient(180deg, #171019, #20121b 35%, #120d14 78%, #171016);
+  isolation: isolate;
+}
+
+.prinny-sanctum > section,
+.prinny-sanctum > nav,
+.prinny-sanctum > footer,
+.cult-divider {
+  position: relative;
+  z-index: 1;
+  max-width: 76rem;
+  margin-inline: auto;
+}
+
+.prinny-sanctum__grain {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 6.2rem, rgb(246 215 191 / 2%) 6.2rem 6.25rem),
+    radial-gradient(ellipse at 50% 100%, rgb(0 0 0 / 24%), transparent 65%);
+  pointer-events: none;
+}
+
+.prinny-sanctum__escape {
+  display: flex;
+  min-height: 4.7rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--cult-line);
+}
+
+.prinny-sanctum__escape > a,
+.cult-dismissal > a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cult-ink);
+  font-size: 0.76rem;
+  font-weight: 710;
+  text-decoration: none;
+}
+
+.prinny-sanctum__escape > span,
+.cult-dismissal > span {
+  color: var(--cult-muted);
+  font-family: var(--font-detail);
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
+}
+
+.cult-descent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  align-items: center;
+  padding-block: 3rem 2.5rem;
+}
+
+.cult-descent__chamber {
+  position: relative;
+  min-height: 23rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 64%, rgb(236 178 110 / 22%), transparent 36%),
+    radial-gradient(ellipse at 50% 31%, rgb(112 71 119 / 27%), transparent 50%),
+    linear-gradient(160deg, #241622, #341c2a 52%, #171018);
+  border: 1px solid var(--cult-line);
+  border-radius: 11rem 11rem 0.8rem 0.8rem;
+  isolation: isolate;
+}
+
+.cult-descent__arch {
+  position: absolute;
+  inset: 1rem 0.9rem 0.8rem;
+  border: 1px solid rgb(246 207 171 / 31%);
+  border-radius: 10rem 10rem 0.45rem 0.45rem;
+  box-shadow: inset 0 0 0 0.35rem rgb(15 10 16 / 34%);
+}
+
+.cult-descent__stars {
+  position: absolute;
+  z-index: 2;
+  top: 24%;
+  color: var(--cult-gold);
+  font-size: 1.1rem;
+}
+
+.cult-descent__stars--left {
+  left: 14%;
+}
+
+.cult-descent__stars--right {
+  right: 14%;
+}
+
+.cult-descent__circle {
+  position: absolute;
+  right: 12%;
+  bottom: 13%;
+  left: 12%;
+  width: 76%;
+  margin-inline: auto;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 1rem rgb(207 147 97 / 42%));
+}
+
+.cult-descent__herald {
+  position: absolute;
+  z-index: 3;
+  right: 13%;
+  bottom: 2rem;
+  left: 13%;
+  width: 74%;
+  max-width: 18.5rem;
+  margin-inline: auto;
+  filter: drop-shadow(0 1rem 1.6rem rgb(0 0 0 / 60%));
+}
+
+.cult-descent__acolyte {
+  position: absolute;
+  z-index: 2;
+  bottom: 2.85rem;
+  width: 33%;
+  opacity: 0.84;
+  filter: drop-shadow(0 0.75rem 1rem rgb(0 0 0 / 45%));
+}
+
+.cult-descent__acolyte--left {
+  left: 5%;
+}
+
+.cult-descent__acolyte--right {
+  right: 5%;
+}
+
+.cult-descent__candle {
+  position: absolute;
+  z-index: 4;
+  bottom: 5rem;
+  width: 0.55rem;
+  height: 2.5rem;
+  background: linear-gradient(90deg, #c6a993, #f1dccc 52%, #b89680);
+  border-radius: 0.12rem 0.12rem 0 0;
+}
+
+.cult-descent__candle::before {
+  position: absolute;
+  bottom: 96%;
+  left: 0.12rem;
+  width: 0.35rem;
+  height: 0.7rem;
+  background: #f7cc79;
+  border-radius: 60% 30% 55% 45%;
+  box-shadow: 0 0 0.8rem 0.35rem rgb(246 169 72 / 45%);
+  content: "";
+  transform: rotate(-12deg);
+}
+
+.cult-descent__candle--one {
+  left: 10%;
+}
+
+.cult-descent__candle--two {
+  left: 15%;
+  height: 1.8rem;
+}
+
+.cult-descent__candle--three {
+  right: 10%;
+}
+
+.cult-descent__candle--four {
+  right: 15%;
+  height: 1.85rem;
+}
+
+.cult-descent__plaque {
+  position: absolute;
+  z-index: 5;
+  right: 1.2rem;
+  bottom: 0.9rem;
+  left: 1.2rem;
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.65rem 0.8rem;
+  color: #f8e9d8;
+  background: linear-gradient(145deg, #684752, #3e2839);
+  border: 1px solid rgb(242 194 142 / 66%);
+  border-radius: 0.28rem;
+  box-shadow: 0 0.3rem 0 #21141d;
+  text-align: center;
+}
+
+.cult-descent__plaque > span {
+  font-family: var(--font-detail);
+  font-size: 0.5rem;
+  letter-spacing: 0.11em;
+}
+
+.cult-descent__plaque > strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.cult-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.85rem;
+  color: var(--cult-gold);
+  font-family: var(--font-detail);
+  font-size: 0.65rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cult-descent__pretitle {
+  margin: 0 0 0.4rem;
+  color: var(--cult-muted);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-style: italic;
+}
+
+.cult-descent h1 {
+  margin: 0 0 0.9rem;
+  color: var(--cult-ink);
+  font-size: clamp(3.9rem, 13vw, 7rem);
+  line-height: 0.87;
+}
+
+.cult-descent h1 > span {
+  color: var(--cult-gold);
+  font-style: italic;
+}
+
+.cult-descent__lede,
+.cult-section-heading > p:last-child,
+.cult-congregation__heading > div:first-child > p:last-child,
+.cult-offering__content > p:not(.cult-kicker):not(.cult-offering__count):not(.cult-offering__reward) {
+  max-width: 36rem;
+  color: var(--cult-muted);
+  font-size: 0.91rem;
+  line-height: 1.75;
+}
+
+.cult-descent__insignia {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-block-start: 1.3rem;
+  color: var(--cult-gold);
+  font-family: var(--font-detail);
+  font-size: 0.57rem;
+  letter-spacing: 0.09em;
+}
+
+.cult-divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  color: var(--cult-gold);
+}
+
+.cult-divider > span:first-child,
+.cult-divider > span:last-child {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cult-line), transparent);
+}
+
+.cult-ritual,
+.cult-doctrine,
+.cult-congregation {
+  padding-block: 4rem 0.5rem;
+}
+
+.cult-section-heading h2,
+.cult-congregation__heading h2,
+.cult-offering__content h2 {
+  margin: 0 0 0.5rem;
+  color: var(--cult-ink);
+  font-size: clamp(2rem, 6vw, 3.35rem);
+  line-height: 1.04;
+}
+
+.cult-section-heading h2 > em {
+  color: var(--cult-gold);
+}
+
+.cult-section-heading > p:last-child {
+  margin-block-end: 0;
+}
+
+.cult-ritual__altar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  overflow: hidden;
+  margin-block-start: 1.7rem;
+  background: linear-gradient(150deg, #2c1c29, #20141d);
+  border: 1px solid var(--cult-line);
+  border-radius: 0.8rem;
+}
+
+.cult-ritual__illustration {
+  position: relative;
+  display: grid;
+  min-height: 15rem;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 65%, rgb(214 149 84 / 18%), transparent 53%), #1b121b;
+}
+
+.cult-ritual__illustration > img {
+  position: relative;
+  z-index: 2;
+  width: min(75%, 17rem);
+}
+
+.cult-ritual__altar-glow {
+  position: absolute;
+  width: 12rem;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgb(239 171 93 / 29%), transparent 63%);
+  opacity: 0.25;
+  transition: opacity 220ms ease;
+}
+
+.cult-ritual__altar-glow.is-lit {
+  opacity: 1;
+}
+
+.cult-ritual__content {
+  min-height: 20rem;
+  padding: 1.3rem;
+}
+
+.cult-ritual__progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+  padding: 0 0 1.1rem;
+  margin: 0 0 1.1rem;
+  border-bottom: 1px solid var(--cult-line);
+  list-style: none;
+}
+
+.cult-ritual__progress > li {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--cult-muted);
+}
+
+.cult-ritual__progress > li > span {
+  display: grid;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--cult-line);
+  border-radius: 50%;
+  font-family: var(--font-detail);
+  font-size: 0.72rem;
+}
+
+.cult-ritual__progress > li > strong {
+  max-width: 8rem;
+  font-size: 0.63rem;
+  line-height: 1.35;
+}
+
+.cult-ritual__progress > li.is-current,
+.cult-ritual__progress > li.is-complete {
+  color: var(--cult-gold);
+}
+
+.cult-ritual__progress > li.is-current > span,
+.cult-ritual__progress > li.is-complete > span {
+  background: rgb(235 188 130 / 12%);
+  border-color: var(--cult-gold);
+}
+
+.cult-ritual__stage {
+  margin: 0 0 0.4rem;
+  color: var(--cult-gold);
+  font-family: var(--font-detail);
+  font-size: 0.62rem;
+  letter-spacing: 0.075em;
+}
+
+.cult-ritual__content h3 {
+  margin: 0 0 0.5rem;
+  color: var(--cult-ink);
+  font-size: clamp(1.35rem, 4vw, 1.8rem);
+}
+
+.cult-ritual__instruction,
+.cult-ritual__content blockquote {
+  margin: 0 0 1rem;
+  color: var(--cult-muted);
+  font-size: 0.82rem;
+  line-height: 1.72;
+}
+
+.cult-ritual__content blockquote {
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--cult-gold);
+  font-style: italic;
+}
+
+.cult-action {
+  display: inline-flex;
+  min-height: 2.8rem;
+  align-items: center;
+  gap: 0.48rem;
+  padding: 0.65rem 0.9rem;
+  color: #2c1920;
+  background: linear-gradient(145deg, #f3d6a5, #d7ad75);
+  border: 1px solid #f4d5a3;
+  border-radius: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 790;
+  cursor: pointer;
+}
+
+.cult-action:hover,
+.cult-action:focus-visible {
+  border-color: #fff1d3;
+  filter: brightness(1.07);
+}
+
+.cult-ritual__rank,
+.cult-offering__reward {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cult-gold);
+  font-size: 0.8rem;
+  font-weight: 760;
+}
+
+.cult-doctrine__articles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  margin-block-start: 1.45rem;
+}
+
+.cult-doctrine__articles > article {
+  min-height: 11.4rem;
+  padding: 1.1rem;
+  background: rgb(43 27 37 / 70%);
+  border: 1px solid var(--cult-line);
+  border-radius: 0.55rem;
+}
+
+.cult-doctrine__number {
+  display: block;
+  margin-block-end: 0.8rem;
+  color: var(--cult-muted);
+  font-family: var(--font-detail);
+  font-size: 0.62rem;
+}
+
+.cult-doctrine__articles > article > svg {
+  color: var(--cult-gold);
+}
+
+.cult-doctrine__articles h3 {
+  margin: 0.65rem 0 0.35rem;
+  color: var(--cult-ink);
+  font-size: 1.11rem;
+}
+
+.cult-doctrine__articles p {
+  margin: 0;
+  color: var(--cult-muted);
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+.cult-congregation {
+  padding-block-start: 4.5rem;
+}
+
+.cult-congregation__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.cult-congregation__count {
+  display: grid;
+  justify-items: center;
+  padding: 0.5rem 0.75rem;
+  border-left: 1px solid var(--cult-line);
+}
+
+.cult-congregation__count > strong {
+  color: var(--cult-gold);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.cult-congregation__count > span {
+  color: var(--cult-muted);
+  font-family: var(--font-detail);
+  font-size: 0.55rem;
+}
+
+.cult-congregation__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-block-start: 1.5rem;
+}
+
+.cult-congregation__member {
+  position: relative;
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 80%, rgb(185 119 119 / 17%), transparent 55%), #281924;
+  border: 1px solid var(--cult-line);
+  border-radius: 0.42rem;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.cult-congregation__member:hover {
+  border-color: rgb(240 196 139 / 62%);
+  transform: translateY(-2px);
+}
+
+.cult-congregation__member > img {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+}
+
+.cult-congregation__member > span:first-child,
+.cult-congregation__member > span:last-child {
+  position: absolute;
+  z-index: 1;
+  color: var(--cult-gold);
+  font-family: var(--font-detail);
+  font-size: 0.58rem;
+}
+
+.cult-congregation__member > span:first-child {
+  top: 0.45rem;
+  left: 0.5rem;
+}
+
+.cult-congregation__member > span:last-child {
+  right: 0.5rem;
+  bottom: 0.38rem;
+}
+
+.cult-offering {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  margin-block: 4rem 2.5rem;
+  background: radial-gradient(ellipse at 0% 0%, rgb(229 166 109 / 13%), transparent 45%), #291b25;
+  border: 1px solid var(--cult-line);
+  border-radius: 0.8rem;
+}
+
+.cult-offering__seal {
+  width: 5.5rem;
+  opacity: 0.92;
+}
+
+.cult-offering__content h2 {
+  font-size: clamp(1.7rem, 5vw, 2.25rem);
+}
+
+.cult-action--quiet {
+  margin-block: 0.35rem 0.55rem;
+}
+
+.cult-offering__count {
+  margin: 0.45rem 0 0;
+  color: var(--cult-muted);
+  font-family: var(--font-detail);
+  font-size: 0.66rem;
+}
+
+.cult-dismissal {
+  display: grid;
+  gap: 0.8rem;
+  align-items: center;
+  padding-block: 1rem;
+  border-top: 1px solid var(--cult-line);
+}
+
+@media (min-width: 33rem) {
+  .cult-congregation__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cult-doctrine__articles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .cult-descent {
+    grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 2.5rem;
+    padding-block: 5rem 4rem;
+  }
+
+  .cult-descent__chamber {
+    min-height: 29rem;
+  }
+
+  .cult-ritual__altar {
+    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+  }
+
+  .cult-ritual__content {
+    padding: 1.6rem;
+  }
+
+  .cult-doctrine__articles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cult-congregation__gallery {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .cult-offering {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.7rem;
+    padding: 1.8rem;
+  }
+
+  .cult-offering__seal {
+    width: 7rem;
+  }
+
+  .cult-dismissal {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (min-width: 72rem) {
+  .cult-descent {
+    grid-template-columns: minmax(21rem, 0.88fr) minmax(0, 1.12fr);
+    gap: 4.5rem;
+  }
+
+  .cult-descent__chamber {
+    min-height: 33rem;
+  }
+
+  .cult-congregation__gallery {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 33rem) {
+  .prinny-sanctum__escape > span {
+    display: none;
+  }
+
+  .cult-congregation__heading {
+    grid-template-columns: 1fr;
+  }
+
+  .cult-congregation__count {
+    width: fit-content;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cult-ritual__altar-glow,
+  .cult-congregation__member {
+    transition: none;
+  }
+
+  .cult-congregation__member:hover {
+    transform: none;
+  }
+}
+</style>
