@@ -418,10 +418,11 @@ Required:
 - immediate visible return link and a second clear exit after the experience;
 - `noindex, nofollow` metadata and no normal-navigation placement;
 - supplied original Prinny designs and existing project-made ceremonial assets only;
-- a custom candlelit chamber featuring three actual supplied Prinnies and a readable warning plaque;
+- a full-width, purpose-painted, character-free underground sanctuary featuring three separately composed actual supplied Prinnies and a readable warning plaque;
+- a second purpose-painted, character-free ceremonial altar with three individually labelled, sequentially enabled candle/offering/oath hotspots;
 - three explicitly labelled, button-operated rites: light the candle, offer the sardine, and speak `DOOD`;
 - an optional tongue-in-cheek oath before the visitor-only ceremonial role appears;
-- all 27 supplied artwork designs with their existing neutral alt text and no fabricated individual names, biographies, ranks, or canon;
+- all 27 supplied artwork designs with their existing neutral alt text, optional noncanonical witness whispers, and no fabricated individual names, biographies, ranks, or canon;
 - three plainly fictional rules that reinforce safety, kindness, and the joke;
 - an optional sardine counter capped at 11 with polite status and a visitor-only bonus title;
 - responsive composition from 320px, reduced-motion parity, and no autoplay audio;

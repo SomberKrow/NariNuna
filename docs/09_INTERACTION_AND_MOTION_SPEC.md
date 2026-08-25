@@ -114,6 +114,7 @@ States: untouched → first knock → second knock → gatekeeper listening → 
 States: candle rite → sardine rite → sacred-word rite → oath → initiated; offering count 0–11.
 
 - Three labelled native buttons advance the respective candle, sardine, and `DOOD` rites.
+- The same actions can be completed through three labelled native hotspots on the dedicated altar painting; future rites remain visibly disabled until the previous rite is complete.
 - A numbered list exposes completed/current rites without relying on glow or color.
 - The optional oath button appears only after all three rites.
 - The ceremonial title describes the visitor only; it never invents a supplied Prinny's identity, rank, or biography.
@@ -121,6 +122,7 @@ States: candle rite → sardine rite → sacred-word rite → oath → initiated
 - Counter updates are exposed politely, and the eleventh offering reveals the final visitor-only joke title.
 - The fixed candlelight is decorative; the only animation is optional, brief visual-state feedback.
 - A visible return link is available from the start and again at the bottom of the route.
+- Each supplied congregation image has a visible-focus native button that reveals a harmless generic witness whisper; no individual lore, status, or roster identity is created.
 
 ## Implemented behavior matrix
 

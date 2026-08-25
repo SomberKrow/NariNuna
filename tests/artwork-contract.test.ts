@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { communityGhostieArtwork, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
-import { prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
+import { prinnyCultAssets, prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
 
 function publicAssetExists(assetPath: string): boolean {
   return existsSync(resolve(process.cwd(), "public", assetPath.replace(/^\//, "")));
@@ -73,6 +73,17 @@ describe("approved-source artwork contracts", () => {
     expect(suppliedPrinnyArtwork).toHaveLength(prinnyRosterCapacity);
     expect(new Set(suppliedPrinnyArtwork.map(({ assetId }) => assetId)).size).toBe(prinnyRosterCapacity);
     expect(suppliedPrinnyArtwork.every(({ src }) => publicAssetExists(src))).toBe(true);
+  });
+
+  it("gives the hidden cult original optimized sanctuary and altar environments", () => {
+    expect(publicAssetExists(prinnyCultAssets.sanctumPainting)).toBe(true);
+    expect(publicAssetExists(prinnyCultAssets.altarPainting)).toBe(true);
+
+    for (const asset of [prinnyCultAssets.sanctumPainting, prinnyCultAssets.altarPainting]) {
+      const bytes = readFileSync(resolve(process.cwd(), "public", asset.replace(/^\//, "")));
+      expect(bytes.toString("ascii", 8, 12)).toBe("WEBP");
+      expect(bytes.byteLength).toBeLessThan(400_000);
+    }
   });
 
   it("keeps the three physical Haven atmospheres connected to real room artwork", () => {

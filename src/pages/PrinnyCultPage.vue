@@ -6,6 +6,7 @@ import { prinnyCultAssets, prinnyRosterCapacity, suppliedPrinnyArtwork } from "@
 const ritualStage = ref(0);
 const oathAccepted = ref(false);
 const offerings = ref(0);
+const selectedWitness = ref<number | null>(null);
 const maxOfferings = 11;
 
 const herald = suppliedPrinnyArtwork.find(({ assetId }) => assetId === "original") ?? suppliedPrinnyArtwork[0];
@@ -57,8 +58,18 @@ const commandments = [
   }
 ] as const;
 
+const witnessWhispers = [
+  "The witness slides you a fish-shaped pamphlet and refuses to elaborate.",
+  "A tiny voice whispers, \"The candles have unionized, dood.\"",
+  "This witness knows what happened to Rule Four. This witness isn't talking.",
+  "A solemn nod. An ominous waddle. Absolutely immaculate vibes.",
+  "Someone has drawn a crown on the emergency sardine inventory.",
+  "The congregation is pretending this is normal. You should probably do the same."
+] as const;
+
 const riteComplete = computed(() => ritualStage.value === rites.length);
 const activeRite = computed(() => rites[Math.min(ritualStage.value, rites.length - 1)]);
+const witnessWhisper = computed(() => selectedWitness.value === null ? "" : witnessWhispers[selectedWitness.value % witnessWhispers.length]);
 const visitorRank = computed(() => {
   if (offerings.value >= maxOfferings) return "High Waddlemancer of the Eleventh Sardine";
   if (offerings.value >= 5) return "Keeper of the Suspiciously Holy Fish";
@@ -67,6 +78,10 @@ const visitorRank = computed(() => {
 
 function completeRite(): void {
   ritualStage.value = Math.min(ritualStage.value + 1, rites.length);
+}
+
+function touchAltar(index: number): void {
+  if (index === ritualStage.value) completeRite();
 }
 
 function acceptOath(): void {
@@ -88,6 +103,10 @@ function offerSardine(): void {
     </nav>
 
     <section class="cult-descent" aria-labelledby="cult-title">
+      <div class="cult-descent__environment" aria-hidden="true">
+        <img :src="prinnyCultAssets.sanctumPainting" width="1672" height="941" alt="" fetchpriority="high" />
+      </div>
+
       <div class="cult-descent__chamber" aria-hidden="true">
         <div class="cult-descent__arch"></div>
         <div class="cult-descent__stars cult-descent__stars--left">✦ · ✧</div>
@@ -100,15 +119,17 @@ function offerSardine(): void {
         <div class="cult-descent__candle cult-descent__candle--two"></div>
         <div class="cult-descent__candle cult-descent__candle--three"></div>
         <div class="cult-descent__candle cult-descent__candle--four"></div>
-        <div class="cult-descent__plaque"><span>THE FLOORBOARD WAS A WARNING</span><strong>YOU CAME ANYWAY.</strong></div>
+        <div class="cult-descent__plaque"><span>THE FLOORBOARD WAS A WARNING</span><strong>YOU CAME ANYWAY, DOOD.</strong></div>
       </div>
 
       <div class="cult-descent__story">
         <p class="cult-kicker"><MoonStar :size="15" aria-hidden="true" /> Beneath the Haven · Chamber XI</p>
         <p class="cult-descent__pretitle">Welcome, deeply suspicious traveler, to</p>
-        <h1 id="cult-title">The Prinny<br /><span>Cult.</span></h1>
-        <p class="cult-descent__lede">An ancient order of tiny disasters, ceremonial sardines, and highly questionable spiritual leadership. Ancient, in this case, means somebody started it downstairs last Tuesday.</p>
+        <h1 id="cult-title">The Order of<br /><span>the Eternal Dood.</span></h1>
+        <p class="cult-descent__designation">KNOWN ABOVE THE FLOORBOARDS AS THE PRINNY CULT</p>
+        <p class="cult-descent__lede">Somewhere beneath the Haven, twenty-seven tiny disasters have built themselves a secret society. There are candles. There are ceremonies. The sardine budget is no longer explainable.</p>
         <div class="cult-descent__insignia"><span>XXVII WITNESSES</span><span aria-hidden="true">✶</span><span>ZERO ADULT SUPERVISION</span></div>
+        <a class="cult-descent__invitation" href="#ritual-title"><Flame :size="16" aria-hidden="true" /> Approach the initiation altar</a>
       </div>
     </section>
 
@@ -122,9 +143,30 @@ function offerSardine(): void {
       </header>
 
       <div class="cult-ritual__altar">
-        <div class="cult-ritual__illustration" aria-hidden="true">
-          <img :src="prinnyCultAssets.altar" width="260" height="190" alt="" loading="lazy" />
+        <div class="cult-ritual__illustration" aria-label="Painted ceremonial altar with three interactive ritual objects">
+          <img
+            class="cult-ritual__painting"
+            :src="prinnyCultAssets.altarPainting"
+            width="1536"
+            height="1024"
+            alt="A lantern-lit stone altar with ceremonial candles, a brass sardine dish, and an open oath ledger"
+            loading="lazy"
+          />
+          <button
+            v-for="(rite, index) in rites"
+            :key="rite.numeral"
+            class="cult-ritual__hotspot"
+            :class="['cult-ritual__hotspot--' + (index + 1), { 'is-current': ritualStage === index, 'is-complete': ritualStage > index }]"
+            type="button"
+            :disabled="ritualStage !== index"
+            :aria-label="rite.action + (ritualStage > index ? ': completed' : ritualStage === index ? ': available' : ': locked')"
+            @click="touchAltar(index)"
+          >
+            <component :is="rite.icon" :size="18" aria-hidden="true" />
+            <span>{{ rite.numeral }}</span>
+          </button>
           <span class="cult-ritual__altar-glow" :class="{ 'is-lit': ritualStage > 0 }"></span>
+          <p class="cult-ritual__scene-caption">Touch the glowing object on the altar.</p>
         </div>
 
         <div class="cult-ritual__content">
@@ -193,11 +235,20 @@ function offerSardine(): void {
         <div class="cult-congregation__count" aria-label="27 original Prinny designs"><strong>{{ prinnyRosterCapacity }}</strong><span>PRESENT</span></div>
       </header>
 
+      <p v-if="witnessWhisper" class="cult-congregation__whisper" aria-live="polite">{{ witnessWhisper }}</p>
+
       <div class="cult-congregation__gallery" aria-label="Nari's supplied Prinny artwork collection">
         <article v-for="(prinny, index) in suppliedPrinnyArtwork" :key="prinny.assetId" class="cult-congregation__member">
-          <span>{{ String(index + 1).padStart(2, "0") }}</span>
-          <img :src="prinny.src" width="190" height="190" :alt="prinny.alt" loading="lazy" />
-          <span aria-hidden="true">✶</span>
+          <button
+            type="button"
+            :aria-label="'Listen to congregation witness ' + String(index + 1).padStart(2, '0')"
+            :aria-pressed="selectedWitness === index"
+            @click="selectedWitness = index"
+          >
+            <span>{{ String(index + 1).padStart(2, "0") }}</span>
+            <img :src="prinny.src" width="190" height="190" :alt="prinny.alt" loading="lazy" />
+            <span aria-hidden="true">✶</span>
+          </button>
         </article>
       </div>
     </section>
@@ -230,13 +281,14 @@ function offerSardine(): void {
 
 <style scoped>
 .prinny-sanctum {
+  --sanctum-gutter: clamp(1rem, 5vw, 4.5rem);
   --cult-ink: #faf0e8;
   --cult-muted: #c9b4bc;
   --cult-gold: #edc78e;
   --cult-line: rgb(244 207 174 / 18%);
   position: relative;
   min-height: 100svh;
-  padding: 0 clamp(1rem, 5vw, 4.5rem) 2.5rem;
+  padding: 0 var(--sanctum-gutter) 2.5rem;
   overflow: hidden;
   color: var(--cult-ink);
   background:
@@ -297,32 +349,70 @@ function offerSardine(): void {
 }
 
 .cult-descent {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.8rem;
+  gap: 0;
   align-items: center;
-  padding-block: 3rem 2.5rem;
+  min-height: 39rem;
+  padding: 3.5rem var(--sanctum-gutter) 2.2rem;
+  isolation: isolate;
+}
+
+.prinny-sanctum > .cult-descent {
+  width: calc(100% + 2 * var(--sanctum-gutter));
+  max-width: none;
+  margin-inline: calc(-1 * var(--sanctum-gutter));
+}
+
+.cult-descent__environment {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cult-descent__environment > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 54% center;
+}
+
+.cult-descent__environment::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(17 10 16 / 47%) 0%, rgb(19 11 17 / 20%) 43%, #171019 100%),
+    linear-gradient(90deg, rgb(17 10 16 / 88%), rgb(19 11 17 / 49%) 51%, rgb(18 10 17 / 12%));
+  content: "";
+}
+
+.cult-descent__story,
+.cult-descent__chamber {
+  width: min(100%, 38rem);
+  margin-inline: auto;
+}
+
+.cult-descent__story {
+  z-index: 2;
+  order: 0;
+  padding-block: 0.8rem 1.8rem;
 }
 
 .cult-descent__chamber {
   position: relative;
-  min-height: 23rem;
+  min-height: 18rem;
+  order: 1;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 50% 64%, rgb(236 178 110 / 22%), transparent 36%),
-    radial-gradient(ellipse at 50% 31%, rgb(112 71 119 / 27%), transparent 50%),
-    linear-gradient(160deg, #241622, #341c2a 52%, #171018);
-  border: 1px solid var(--cult-line);
-  border-radius: 11rem 11rem 0.8rem 0.8rem;
+  background: radial-gradient(ellipse at 50% 87%, rgb(219 153 101 / 23%), transparent 58%);
+  border: 0;
+  border-radius: 0;
   isolation: isolate;
 }
 
 .cult-descent__arch {
-  position: absolute;
-  inset: 1rem 0.9rem 0.8rem;
-  border: 1px solid rgb(246 207 171 / 31%);
-  border-radius: 10rem 10rem 0.45rem 0.45rem;
-  box-shadow: inset 0 0 0 0.35rem rgb(15 10 16 / 34%);
+  display: none;
 }
 
 .cult-descent__stars {
@@ -472,15 +562,25 @@ function offerSardine(): void {
 }
 
 .cult-descent h1 {
-  margin: 0 0 0.9rem;
+  max-width: 12ch;
+  margin: 0 0 0.75rem;
   color: var(--cult-ink);
-  font-size: clamp(3.9rem, 13vw, 7rem);
-  line-height: 0.87;
+  font-size: clamp(2.9rem, 9vw, 5.3rem);
+  line-height: 0.96;
 }
 
 .cult-descent h1 > span {
   color: var(--cult-gold);
   font-style: italic;
+}
+
+.cult-descent__designation {
+  max-width: 33rem;
+  margin: 0 0 1.05rem;
+  color: #e7cfbd;
+  font-family: var(--font-detail);
+  font-size: 0.59rem;
+  letter-spacing: 0.12em;
 }
 
 .cult-descent__lede,
@@ -503,6 +603,22 @@ function offerSardine(): void {
   font-family: var(--font-detail);
   font-size: 0.57rem;
   letter-spacing: 0.09em;
+}
+
+.cult-descent__invitation {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  gap: 0.48rem;
+  padding: 0.7rem 0.9rem;
+  margin-block-start: 1.4rem;
+  color: #2b1920;
+  background: linear-gradient(135deg, #efd19e, #d5a870);
+  border: 1px solid #f3d3a0;
+  border-radius: 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 820;
+  text-decoration: none;
 }
 
 .cult-divider {
@@ -556,29 +672,117 @@ function offerSardine(): void {
 .cult-ritual__illustration {
   position: relative;
   display: grid;
-  min-height: 15rem;
+  min-height: 18rem;
   place-items: center;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 65%, rgb(214 149 84 / 18%), transparent 53%), #1b121b;
+  background: #1b121b;
 }
 
 .cult-ritual__illustration > img {
-  position: relative;
-  z-index: 2;
-  width: min(75%, 17rem);
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .cult-ritual__altar-glow {
   position: absolute;
+  z-index: 1;
+  top: 26%;
+  left: 14%;
   width: 12rem;
   aspect-ratio: 1;
   background: radial-gradient(circle, rgb(239 171 93 / 29%), transparent 63%);
   opacity: 0.25;
+  pointer-events: none;
   transition: opacity 220ms ease;
 }
 
 .cult-ritual__altar-glow.is-lit {
   opacity: 1;
+}
+
+.cult-ritual__hotspot {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: 2.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  color: #f1dcbf;
+  background: rgb(31 19 29 / 82%);
+  border: 1px solid rgb(243 210 173 / 56%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cult-ritual__hotspot > span {
+  position: absolute;
+  right: -0.35rem;
+  bottom: -0.22rem;
+  display: grid;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  place-items: center;
+  color: #2b1920;
+  background: #ecc98f;
+  border-radius: 50%;
+  font-family: var(--font-detail);
+  font-size: 0.55rem;
+  font-weight: 850;
+}
+
+.cult-ritual__hotspot--1 {
+  top: 45%;
+  left: 19%;
+}
+
+.cult-ritual__hotspot--2 {
+  top: 56%;
+  left: 44%;
+}
+
+.cult-ritual__hotspot--3 {
+  top: 47%;
+  right: 20%;
+}
+
+.cult-ritual__hotspot.is-current {
+  color: #fff2d9;
+  border-color: #f4cf96;
+  box-shadow: 0 0 0 0.28rem rgb(235 185 111 / 25%), 0 0 1.4rem rgb(237 178 89 / 65%);
+}
+
+.cult-ritual__hotspot.is-complete {
+  color: #243926;
+  background: #dbc593;
+  border-color: #fae1af;
+}
+
+.cult-ritual__hotspot:disabled:not(.is-complete) {
+  color: rgb(249 231 218 / 54%);
+  background: rgb(30 20 29 / 72%);
+  cursor: not-allowed;
+}
+
+.cult-ritual__scene-caption {
+  position: absolute;
+  z-index: 2;
+  right: 0.8rem;
+  bottom: 0.6rem;
+  left: 0.8rem;
+  padding: 0.42rem 0.6rem;
+  margin: 0;
+  color: #f6e8d6;
+  background: rgb(22 14 22 / 78%);
+  border: 1px solid rgb(242 210 174 / 22%);
+  border-radius: 0.22rem;
+  font-family: var(--font-detail);
+  font-size: 0.62rem;
+  text-align: center;
 }
 
 .cult-ritual__content {
@@ -767,6 +971,18 @@ function offerSardine(): void {
   margin-block-start: 1.5rem;
 }
 
+.cult-congregation__whisper {
+  max-width: 42rem;
+  padding: 0.72rem 0.9rem;
+  margin-block: 1rem 0;
+  color: #f2dcbd;
+  background: rgb(84 55 62 / 47%);
+  border-left: 2px solid var(--cult-gold);
+  font-family: var(--font-display);
+  font-size: 0.91rem;
+  font-style: italic;
+}
+
 .cult-congregation__member {
   position: relative;
   display: grid;
@@ -779,19 +995,36 @@ function offerSardine(): void {
   transition: border-color 160ms ease, transform 160ms ease;
 }
 
+.cult-congregation__member > button {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.cult-congregation__member > button[aria-pressed="true"] {
+  background: radial-gradient(ellipse at 50% 80%, rgb(221 167 101 / 28%), transparent 70%);
+}
+
 .cult-congregation__member:hover {
   border-color: rgb(240 196 139 / 62%);
   transform: translateY(-2px);
 }
 
-.cult-congregation__member > img {
+.cult-congregation__member > button > img {
   width: 88%;
   height: 88%;
   object-fit: contain;
 }
 
-.cult-congregation__member > span:first-child,
-.cult-congregation__member > span:last-child {
+.cult-congregation__member > button > span:first-child,
+.cult-congregation__member > button > span:last-child {
   position: absolute;
   z-index: 1;
   color: var(--cult-gold);
@@ -799,12 +1032,12 @@ function offerSardine(): void {
   font-size: 0.58rem;
 }
 
-.cult-congregation__member > span:first-child {
+.cult-congregation__member > button > span:first-child {
   top: 0.45rem;
   left: 0.5rem;
 }
 
-.cult-congregation__member > span:last-child {
+.cult-congregation__member > button > span:last-child {
   right: 0.5rem;
   bottom: 0.38rem;
 }
@@ -863,6 +1096,7 @@ function offerSardine(): void {
   .cult-descent {
     grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.1fr);
     gap: 2.5rem;
+    min-height: 39rem;
     padding-block: 5rem 4rem;
   }
 
@@ -871,7 +1105,11 @@ function offerSardine(): void {
   }
 
   .cult-ritual__altar {
-    grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+    grid-template-columns: minmax(18rem, 1.12fr) minmax(17rem, 0.88fr);
+  }
+
+  .cult-ritual__illustration {
+    min-height: 26rem;
   }
 
   .cult-ritual__content {
@@ -905,10 +1143,15 @@ function offerSardine(): void {
   .cult-descent {
     grid-template-columns: minmax(21rem, 0.88fr) minmax(0, 1.12fr);
     gap: 4.5rem;
+    min-height: 45rem;
   }
 
   .cult-descent__chamber {
     min-height: 33rem;
+  }
+
+  .cult-ritual__illustration {
+    min-height: 29rem;
   }
 
   .cult-congregation__gallery {

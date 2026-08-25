@@ -75,6 +75,12 @@ describe("Haven doorway and social interaction contracts", () => {
     expect(cult).toContain('v-else-if="!oathAccepted"');
     expect(cult).toContain('v-for="(prinny, index) in suppliedPrinnyArtwork"');
     expect(cult).toContain(':alt="prinny.alt"');
+    expect(cult).toContain("prinnyCultAssets.sanctumPainting");
+    expect(cult).toContain("prinnyCultAssets.altarPainting");
+    expect(cult).toContain('aria-label="Painted ceremonial altar with three interactive ritual objects"');
+    expect(cult).toContain(':disabled="ritualStage !== index"');
+    expect(cult).toContain('@click="touchAltar(index)"');
+    expect(cult).toContain(':aria-pressed="selectedWitness === index"');
     expect(cult).toContain("prinnyRosterCapacity");
     expect(cult).toContain('aria-live="polite"');
     expect(cult).toContain("@media (prefers-reduced-motion: reduce)");
