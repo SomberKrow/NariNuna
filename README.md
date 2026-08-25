@@ -22,6 +22,16 @@ The private project-owner-requested review implementation is not public-release 
 
 Top-level links use normal document navigation. Each route has a real HTML entry and direct-loads independently; this is not an SPA fallback presented as an MPA.
 
+## Repository layout
+
+- `pages/` contains the eleven real HTML documents, route-specific metadata, and static-host recovery page.
+- `src/pages/` contains the Vue component rendered by each corresponding HTML document.
+- `src/components/`, `src/data/`, `src/router/`, and `src/styles/` contain the shared application.
+- `public/` contains locally served artwork, icons, the manifest, and the pre-paint theme script.
+- `docs/`, `scripts/`, and `tests/` contain the project contract, maintenance commands, and quality checks.
+
+Vite uses `pages/` as its document root while continuing to build the same public URLs into the repository-level `dist/` directory. Moving a document or adding a route requires updating `vite.config.ts`, the Vue Router, and the route validation checks together.
+
 ## Local development
 
 Requirements: Node.js 22.13 or newer and npm.

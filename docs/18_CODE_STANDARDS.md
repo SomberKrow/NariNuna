@@ -80,7 +80,8 @@ The current theme singleton is deliberate because it synchronizes one global doc
 
 ## HTML and routing
 
-- Preserve one real HTML entry per documented route.
+- Preserve one real HTML entry per documented route inside the repository-level `pages/` document root.
+- Keep Vue page implementations in `src/pages/`; do not scatter route-entry folders across the repository root.
 - Each entry owns accurate title, description, robots, viewport, theme color, icons/manifest, theme boot, and module entry.
 - Primary top-level navigation uses ordinary anchors.
 - Route paths are lowercase kebab-case with trailing slash, except `404.html`.

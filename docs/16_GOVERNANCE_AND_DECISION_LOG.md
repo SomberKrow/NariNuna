@@ -129,6 +129,15 @@ Use `templates/DECISION_RECORD.md` for substantial new decisions, then summarize
 **Consequences:** Identify derivatives honestly; retain original artwork and official emotes; record generated prompts and provenance; leave artist, model derivative, publication, credit, franchise, and final Nari approvals open. This supersedes the previous blanket private-review no-reillustration constraint only for explicitly model-anchored owner-requested work; public-reference generation remains forbidden.
 **Revisit when:** Nari accepts/rejects the portrayal, an original artist restricts derivatives, public rights are resolved, or the canonical model changes.
 
+### ADR-009 — Centralized multi-page HTML document root
+
+**State:** `ACCEPTED`  
+**Date:** 2026-08-25  
+**Decision:** Keep all eleven real HTML entries inside the repository-level `pages/` directory and configure Vite to use that directory as its document root. Keep Vue page components in `src/pages/`, public assets in `public/`, and production output in `dist/`.  
+**Reason:** Removes route-only folders from the repository root and makes the client handoff easier to understand without discarding the true MPA or adding a routing workaround.  
+**Consequences:** Public URLs, direct document loading, per-page metadata, Vue entry, static-host output, and the hidden room remain unchanged. Route additions and document-reading tests must use the `pages/` source location.  
+**Revisit when:** A future Vite/hosting requirement cannot support a separate document root without compromising the existing route contract.
+
 ## Open decisions
 
 | ID | Question | State | Blocks | Safe default |
