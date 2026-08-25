@@ -114,17 +114,17 @@ Until Nari resolves it:
 
 | Route | Document | Navigation | Product responsibility |
 |---|---|---|---|
-| `/` | `index.html` | Primary | One-screen desktop arrival, actual Nari identity, verified social dock, three room gateways |
-| `/meet-nari/` | `meet-nari/index.html` | Primary | Privacy-safe identity, roles, symbols, boundaries, lore status |
-| `/streams/` | `streams/index.html` | Primary | Stream feeling, curated moments, live/archive doors, schedule truth |
-| `/nail-studio/` | `nail-studio/index.html` | Primary | Authentic nail practice, education, future approved gallery |
-| `/haven/` | `haven/index.html` | Primary | Community values, belonging, progressive Discord discovery |
-| `/resources/` | `resources/index.html` | Primary | Reviewed recommendations and material-relationship disclosure |
-| `/work-with-nari/` | `work-with-nari/index.html` | Primary | Collaboration fit, boundaries, process, approved contact |
-| `/stories/` | `stories/index.html` | Secondary | Curated, privacy-reviewed memories and media |
-| `/support/` | `support/index.html` | Secondary | Free and financial support with explicit boundaries |
-| `/the-prinny-cult/` | `the-prinny-cult/index.html` | Hidden | Optional original joke reward |
-| `/404.html` | `404.html` | System | Static-host recovery |
+| `/` | `pages/index.html` | Primary | One-screen desktop arrival, actual Nari identity, verified social dock, three room gateways |
+| `/meet-nari/` | `pages/meet-nari/index.html` | Primary | Privacy-safe identity, roles, symbols, boundaries, lore status |
+| `/streams/` | `pages/streams/index.html` | Primary | Stream feeling, curated moments, live/archive doors, schedule truth |
+| `/nail-studio/` | `pages/nail-studio/index.html` | Primary | Authentic nail practice, education, future approved gallery |
+| `/haven/` | `pages/haven/index.html` | Primary | Community values, belonging, progressive Discord discovery |
+| `/resources/` | `pages/resources/index.html` | Primary | Reviewed recommendations and material-relationship disclosure |
+| `/work-with-nari/` | `pages/work-with-nari/index.html` | Primary | Collaboration fit, boundaries, process, approved contact |
+| `/stories/` | `pages/stories/index.html` | Secondary | Curated, privacy-reviewed memories and media |
+| `/support/` | `pages/support/index.html` | Secondary | Free and financial support with explicit boundaries |
+| `/the-prinny-cult/` | `pages/the-prinny-cult/index.html` | Hidden | Optional original joke reward |
+| `/404.html` | `pages/404.html` | System | Static-host recovery |
 
 Adding, removing, renaming, or re-ranking a route requires updates to architecture, IA, page specs, validation, tests, metadata, and deployment behavior.
 

@@ -43,8 +43,8 @@ Use exact versions resolved in `package-lock.json`. Do not hand-edit the lockfil
 
 The architecture satisfies two deliberate requirements: real multi-page documents and Vue Router.
 
-1. Each public route has a real HTML entry.
-2. Vite receives all entries through `build.rolldownOptions.input`.
+1. Each public route has a real HTML entry under the dedicated `pages/` document root.
+2. Vite receives all entries through `build.rolldownOptions.input` and writes their unchanged public paths to the repository-level `dist/` directory.
 3. Header and cross-room links are ordinary `<a>` elements.
 4. Each document runs the same `/src/main.ts` entry.
 5. Vue Router reads `window.location`, matches the route, and lazy-loads one page module.
@@ -59,6 +59,7 @@ The following sources must stay synchronized:
 
 | Concern | Source |
 |---|---|
+| HTML document root and page metadata | `pages/` |
 | Build entries | `pageEntries` in `vite.config.ts` |
 | Client route matching | `routes` in `src/router/index.ts` |
 | Primary/footer visibility | `src/data/navigation.ts` |
@@ -73,9 +74,10 @@ A route is incomplete if only one registry knows it exists.
 
 ```text
 .
-├── index.html                         # Home entry
-├── <route>/index.html                 # Real route entries
-├── 404.html                           # Static-host fallback entry
+├── pages/                             # Vite document root; no page folders at repository root
+│   ├── index.html                     # Home entry
+│   ├── <route>/index.html             # Real route entries and route-specific metadata
+│   └── 404.html                       # Static-host fallback entry
 ├── public/
 │   ├── _headers                       # Host-compatible security/cache rules
 │   ├── media/generated/               # Served optimized project imagery
@@ -233,7 +235,7 @@ The following are merge blockers unless intentionally changed through an accepte
 ## Adding a route
 
 1. Approve the route responsibility in docs `00`, `02`, and `03`.
-2. Add `<route>/index.html` with route-specific title, description, theme metadata, icons/manifest, theme boot, and module entry.
+2. Add `pages/<route>/index.html` with route-specific title, description, theme metadata, icons/manifest, theme boot, and module entry.
 3. Add the HTML path to `pageEntries` in `vite.config.ts`.
 4. Add the lazy route record in `src/router/index.ts`.
 5. Create the page module under `src/pages`.

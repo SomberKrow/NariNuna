@@ -106,7 +106,7 @@ describe("approved-source artwork contracts", () => {
   });
 
   it("keeps secret Prinny artwork out of indexing and ordinary primary navigation", () => {
-    const secretDocument = readFileSync(resolve(process.cwd(), "the-prinny-cult/index.html"), "utf8");
+    const secretDocument = readFileSync(resolve(process.cwd(), "pages/the-prinny-cult/index.html"), "utf8");
     const primaryNavigation = readFileSync(resolve(process.cwd(), "src/data/navigation.ts"), "utf8");
     expect(secretDocument).toContain('content="noindex, nofollow"');
     expect(primaryNavigation).not.toContain("/the-prinny-cult/");
