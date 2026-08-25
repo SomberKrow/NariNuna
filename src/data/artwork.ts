@@ -10,19 +10,41 @@ export const nariArtwork = {
 } as const;
 
 export const ghostieArtwork = {
-  shy: "/media/storybook/ghosties/ghostie-shy.webp",
-  floating: "/media/ghosties/ghostie-floating.webp",
-  waving: "/media/ghosties/ghostie-waving.webp",
-  chaotic: "/media/storybook/ghosties/ghostie-chaos.webp",
-  peeking: "/media/ghosties/ghostie-peeking.webp",
-  cozy: "/media/storybook/ghosties/ghostie-cozy.webp",
-  heart: "/media/storybook/ghosties/ghostie-heart.webp",
-  protective: "/media/ghosties/ghostie-protective.webp",
-  nails: "/media/storybook/ghosties/ghostie-nails.webp",
-  derpy: "/media/ghosties/ghostie-derpy.webp",
-  friendly: "/media/ghosties/ghostie-friendly.webp",
-  peekingLeft: "/media/ghosties/ghostie-peeking-left.webp",
-  peekingRight: "/media/ghosties/ghostie-peeking-right.webp"
+  shy: "/media/ghosties/community/ghostie-shy.webp",
+  floating: "/media/ghosties/community/ghostie-chaotic.webp",
+  waving: "/media/ghosties/community/ghostie-heart.webp",
+  chaotic: "/media/ghosties/community/ghostie-chaotic.webp",
+  peeking: "/media/ghosties/community/ghostie-peek.webp",
+  cozy: "/media/ghosties/community/ghostie-cozy.webp",
+  heart: "/media/ghosties/community/ghostie-heart.webp",
+  protective: "/media/ghosties/community/ghostie-protective.webp",
+  nails: "/media/ghosties/community/ghostie-nail-tech.webp",
+  derpy: "/media/ghosties/community/ghostie-bonked.webp",
+  friendly: "/media/ghosties/community/ghostie-heart.webp",
+  peekingLeft: "/media/ghosties/community/ghostie-peek.webp",
+  peekingRight: "/media/ghosties/community/ghostie-peek.webp"
+} as const;
+
+export const communityGhostieArtwork = {
+  sleeping: "/media/ghosties/community/ghostie-sleeping.webp",
+  chaotic: "/media/ghosties/community/ghostie-chaotic.webp",
+  protective: "/media/ghosties/community/ghostie-protective.webp",
+  nailTech: "/media/ghosties/community/ghostie-nail-tech.webp",
+  gaming: "/media/ghosties/community/ghostie-gaming.webp",
+  cozy: "/media/ghosties/community/ghostie-cozy.webp",
+  study: "/media/ghosties/community/ghostie-study.webp",
+  peek: "/media/ghosties/community/ghostie-peek.webp",
+  heart: "/media/ghosties/community/ghostie-heart.webp",
+  bonked: "/media/ghosties/community/ghostie-bonked.webp",
+  shy: "/media/ghosties/community/ghostie-shy.webp",
+  sign: "/media/ghosties/community/ghostie-sign.webp",
+  blushing: "/media/ghosties/community/ghostie-shy.webp",
+  pointLeft: "/media/ghosties/community/ghostie-sign.webp",
+  wave: "/media/ghosties/community/ghostie-heart.webp",
+  floating: "/media/ghosties/community/ghostie-chaotic.webp",
+  blanket: "/media/ghosties/community/ghostie-sleeping.webp",
+  support: "/media/ghosties/community/ghostie-heart.webp",
+  panicked: "/media/ghosties/community/ghostie-bonked.webp"
 } as const;
 
 export const officialEmotes = {
@@ -45,6 +67,8 @@ export const environmentArtwork = {
   homeDaylight: "/media/storybook/scenes/haven-daybreak.webp",
   meetNari: "/media/storybook/scenes/meet-nari.webp",
   commonRoom: "/media/storybook/scenes/haven-community.webp",
+  havenGathering: "/media/storybook/scenes/haven-doorway-gathering.webp",
+  havenDoorInterior: "/media/storybook/scenes/haven-doorway-interior.webp",
   streams: "/media/storybook/scenes/streams-atelier.webp",
   nails: "/media/storybook/scenes/nails-atelier.webp",
   resources: "/media/storybook/scenes/resources-library.webp",

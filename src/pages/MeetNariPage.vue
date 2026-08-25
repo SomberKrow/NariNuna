@@ -1,22 +1,15 @@
 <script setup lang="ts">
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
-import { environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes } from "@/data/artwork";
+import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
+import { environmentArtwork } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
-const expressions = [
-  { image: officialEmotes.comfy, label: "Comfy" },
-  { image: officialEmotes.panic, label: "Panic" },
-  { image: officialEmotes.bonk, label: "Bonk" },
-  { image: officialEmotes.shy, label: "Shy" },
-  { image: officialEmotes.fire, label: "Chaos" }
-];
+const identityVariants: GhostieArtVariant[] = ["heart", "chaotic", "nailTech"];
+const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghostie: identityVariants[index] }));
 </script>
 
 <template>
-  <section
-    class="character-intro character-intro--storybook character-intro--integrated page-width"
-    :style="{ '--chapter-painting': `url('${environmentArtwork.meetNari}')` }"
-  >
+  <section class="character-intro character-intro--storybook character-intro--integrated page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.meetNari}')` }">
     <div class="character-intro__copy">
       <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
       <h1>Hi, I'm <em>Nari.</em></h1>
@@ -31,59 +24,40 @@ const expressions = [
     </div>
   </section>
 
-  <section class="expression-ribbon">
-    <div class="expression-ribbon__inner page-width">
-      <p><span>Nari, in five</span> very predictable moods</p>
-      <div class="expression-ribbon__emotes">
-        <figure v-for="expression in expressions" :key="expression.label">
-          <img :src="expression.image" width="90" height="90" :alt="`Nari's official ${expression.label.toLowerCase()} emote`" loading="lazy" />
-          <figcaption>{{ expression.label }}</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
   <section class="identity-rooms page-width section-pad">
-    <header class="world-heading">
-      <p class="eyebrow">One Nari, a whole bunch of little worlds</p>
-      <h2>Everything I love lives in the same room.</h2>
-    </header>
-    <div class="identity-rooms__grid">
-      <article v-for="(pillar, index) in identityPillars" :key="pillar.title">
-        <img
-          :src="[ghostieArtwork.heart, ghostieArtwork.chaotic, ghostieArtwork.nails][index]"
-          width="144"
-          height="144"
-          alt=""
-          loading="lazy"
-        />
-        <p class="eyebrow">{{ pillar.eyebrow }}</p>
-        <h3>{{ pillar.title }}</h3>
-        <p>{{ pillar.text }}</p>
+    <header class="world-heading"><p class="eyebrow">One Nari, three familiar corners</p><h2>The warmth, the chaos, and the craft all belong together.</h2></header>
+    <div class="identity-rooms__grid identity-rooms__grid--painted">
+      <article v-for="card in identityCards" :key="card.title">
+        <GhostieArt class="ghostie-card-art" :variant="card.ghostie" />
+        <div><p class="eyebrow">{{ card.eyebrow }}</p><h3>{{ card.title }}</h3><p>{{ card.text }}</p></div>
       </article>
     </div>
   </section>
 
-  <section class="meaningful-details">
-    <div class="meaningful-details__inner page-width">
-      <article>
-        <Eye :size="31" aria-hidden="true" />
-        <div><p class="eyebrow">A little glimpse</p><h2>Look for the emerald.</h2><p>Those bright green eyes are one of Nari's little signatures. Here, emerald is saved for the moments that matter.</p></div>
-      </article>
-      <article>
-        <MoonStar :size="31" aria-hidden="true" />
-        <div><p class="eyebrow">Held close</p><h2>Some stories stay hers.</h2><p>The sun, the moon, family, and heritage carry personal meaning. Nari gets to share those stories in her own words, on her own time.</p></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="nari-promise page-width section-pad">
-    <img :src="nariArtwork.cozy" width="270" height="270" alt="Nari's supplied cozy chibi artwork holding a warm drink" loading="lazy" />
-    <div>
+  <section class="nari-promise nari-promise--storybook page-width section-pad">
+    <GhostieArt class="nari-promise__ghostie" variant="protective" :decorative="false" label="A Nari Nuna Ghostie holding a heart shield, representing warmth with strong boundaries" />
+    <div class="nari-promise__copy">
       <p class="eyebrow"><Shield :size="15" aria-hidden="true" /> Sweet doesn't mean spineless</p>
       <h2>We take care of our people here.</h2>
       <p>The jokes can be loud and the chaos can be legendary. But nobody has to earn basic respect, and nobody gets to mistake kindness for permission to cross a boundary.</p>
+      <div class="nari-promise__details">
+        <span><Eye :size="18" aria-hidden="true" /><strong>Look for the emerald.</strong> Her bright green eyes stay one of the little signatures that follows Nari through the whole site.</span>
+        <span><MoonStar :size="18" aria-hidden="true" /><strong>Some stories stay hers.</strong> Family, heritage, sun, and moon symbolism are hers to share in her own words and timing.</span>
+      </div>
       <a class="text-link" href="/haven/">See what the Haven protects <ArrowRight :size="16" aria-hidden="true" /></a>
     </div>
   </section>
 </template>
+
+<style scoped>
+.identity-rooms__grid--painted > article { grid-template-rows: 12rem 1fr; min-height: 100%; }
+.ghostie-card-art { --ghostie-size: 11.5rem; height: 12rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
+.identity-rooms__grid--painted > article > div { min-height: 12.5rem; }
+.nari-promise__ghostie { --ghostie-size: 18rem; min-height: 18rem; border: 1px solid var(--story-line); border-radius: 0.7rem; box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%); }
+@media (min-width: 48rem) {
+  .identity-rooms__grid--painted > article { grid-template-rows: 13rem 1fr; }
+  .ghostie-card-art { --ghostie-size: 12.5rem; height: 13rem; }
+  .identity-rooms__grid--painted > article > div { min-height: 14rem; }
+  .nari-promise__ghostie { --ghostie-size: 22rem; height: 100%; min-height: 24rem; }
+}
+</style>

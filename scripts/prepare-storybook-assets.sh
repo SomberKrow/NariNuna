@@ -94,11 +94,11 @@ declare -A scenes=(
 
 for slug in "${!scenes[@]}"; do
   convert_checked "$master_root/${scenes[$slug]}.png" \
-    -resize '1680x1000>' -strip -quality 82 \
+    -resize '2560x1440>' -strip -quality 92 \
     "$media_root/storybook/scenes/$slug.webp"
 
   convert_checked "$master_root/${scenes[$slug]}.png" \
-    -resize '880x520>' -strip -quality 78 \
+    -resize '960x540>' -strip -quality 90 \
     "$media_root/storybook/postcards/$slug.webp"
 done
 
@@ -106,12 +106,12 @@ done
 # light temperature, and atmosphere change.
 convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 73,82,104 -fill '#34204a' -colorize 13 \
-  -resize '1680x1000>' -strip -quality 82 \
+  -resize '2560x1440>' -strip -quality 92 \
   "$media_root/storybook/scenes/haven-midnight.webp"
 
 convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 116,88,99 -fill '#ffe3c1' -colorize 12 \
-  -resize '1680x1000>' -strip -quality 82 \
+  -resize '2560x1440>' -strip -quality 92 \
   "$media_root/storybook/scenes/haven-daybreak.webp"
 
 for emotion in shy chaos cozy nails heart; do
@@ -120,7 +120,7 @@ for emotion in shy chaos cozy nails heart; do
     convert_transparent_character \
       "$character" \
       "$media_root/storybook/ghosties/ghostie-$emotion.webp" \
-      '620x620'
+      '1254x1254'
   fi
 done
 
@@ -139,12 +139,12 @@ for share in home meet streams nails haven resources work stories; do
   esac
 
   convert_checked "$master_root/$source.png" \
-    -resize '1200x630^' -gravity Center -extent 1200x630 \
+    -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \
     -strip -quality 84 \
     "$media_root/storybook/share/nari-$share-social.webp"
 
   convert_checked "$master_root/$source.png" \
-    -resize '1200x630^' -gravity Center -extent 1200x630 \
+    -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \
     -strip -interlace Plane -quality 86 \
     "$media_root/storybook/share/nari-$share-social.jpg"
 done

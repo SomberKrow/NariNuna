@@ -1,0 +1,1409 @@
+// Mobile-first composition layer.
+// The page paintings are the visual source of truth. Base rules target 320px;
+// larger layouts only add space, columns, and art exposure through min-width
+// enhancements. This file is intentionally loaded last.
+
+:root,
+:root[data-theme="nari"] {
+  --story-surface: #3b2430;
+  --story-surface-deep: #24151d;
+  --story-surface-soft: #523040;
+  --story-copy: #fff2e8;
+  --story-muted: #e3cbd0;
+  --story-line: rgb(244 219 205 / 22%);
+  --story-accent: #e4ad79;
+  --story-chip: #593448;
+  --story-chip-copy: #fff5ec;
+}
+
+:root[data-theme="dark"] {
+  --story-surface: #241725;
+  --story-surface-deep: #100b11;
+  --story-surface-soft: #342039;
+  --story-copy: #f8edf5;
+  --story-muted: #d2c1d0;
+  --story-line: rgb(235 216 233 / 21%);
+  --story-accent: #d4aa78;
+  --story-chip: #38243d;
+  --story-chip-copy: #fff5fb;
+}
+
+:root[data-theme="light"] {
+  --story-surface: #fff7ea;
+  --story-surface-deep: #ead8c4;
+  --story-surface-soft: #f2e0d7;
+  --story-copy: #321f27;
+  --story-muted: #6b505b;
+  --story-line: rgb(78 44 54 / 20%);
+  --story-accent: #9d5f3f;
+  --story-chip: #ead3d0;
+  --story-chip-copy: #321f27;
+}
+
+.section-pad {
+  padding-block: clamp(2.4rem, 10vw, 4rem);
+}
+
+.world-heading {
+  max-width: 46rem;
+  margin-block-end: 1.35rem;
+}
+
+.world-heading > p:last-child {
+  color: var(--text-muted);
+}
+
+/* Header: narrow layout is the baseline. */
+.brand-mark small {
+  display: none;
+}
+
+.site-header__more > nav {
+  grid-template-columns: 1fr;
+}
+
+.theme-switcher,
+.site-header__live-link {
+  width: 100%;
+}
+
+.theme-switcher__option {
+  flex: 1;
+}
+
+.site-header__live-link {
+  justify-content: center;
+}
+
+/* Recognizable, icon-only socials stay equally legible in every Haven theme. */
+.social-dock {
+  display: grid;
+  width: min(100%, 20.25rem);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.26rem, 1vw, 0.55rem);
+  margin-block: 0.75rem 1rem;
+}
+
+.social-dock > a {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 2.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0.6rem;
+  color: var(--story-copy);
+  background: color-mix(in srgb, var(--story-surface) 76%, var(--story-surface-deep));
+  border: 1px solid color-mix(in srgb, var(--story-copy) 25%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0.25rem 0.75rem rgb(20 10 17 / 11%);
+  text-decoration: none;
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.social-dock > a:hover,
+.social-dock > a:focus-visible {
+  color: var(--story-copy);
+  background: color-mix(in srgb, var(--story-accent) 28%, var(--story-surface));
+  border-color: var(--story-accent);
+  transform: translateY(-2px);
+}
+
+.social-dock__icon {
+  display: block;
+  width: min(100%, 1.38rem);
+  height: min(100%, 1.38rem);
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+:root[data-theme="light"] .social-dock__icon {
+  background: transparent;
+}
+
+/* Home starts as a natural mobile document instead of a forced desktop viewport. */
+.haven-landing {
+  min-height: calc(100svh - var(--header-height));
+  max-height: none;
+  padding-block-end: 1rem;
+}
+
+.haven-landing::before {
+  inset: 0.55rem;
+}
+
+.haven-landing__margin-note {
+  display: none;
+}
+
+.haven-landing__inner {
+  width: 100%;
+  grid-template-columns: 1fr;
+  padding-inline: 1rem;
+}
+
+.haven-landing__welcome {
+  max-width: 31rem;
+  padding-block: 1.6rem 0.6rem;
+}
+
+.haven-landing h1 {
+  font-size: clamp(3.15rem, 16vw, 4.7rem);
+  line-height: 0.84;
+}
+
+.haven-landing__kicker {
+  font-size: 0.58rem;
+  line-height: 1.5;
+}
+
+.haven-landing__subtitle {
+  font-size: 1rem;
+}
+
+.haven-landing__intro {
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+.haven-landing__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.45rem;
+}
+
+.haven-landing__actions > .button {
+  width: 100%;
+}
+
+.haven-landing__meet {
+  min-height: 2.75rem;
+  justify-content: center;
+}
+
+.haven-landing__rooms {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+  padding: 0.8rem 1rem 0;
+}
+
+.haven-landing__rooms > a {
+  grid-template-columns: 4.1rem auto minmax(0, 1fr) auto;
+  min-height: 4.25rem;
+  gap: 0.45rem;
+}
+
+.haven-landing__rooms > a > img {
+  width: 4.1rem;
+  height: 3.25rem;
+  object-fit: cover;
+}
+
+.haven-landing__room-copy > small {
+  display: none;
+}
+
+/* All repeated content cards share one coherent storybook geometry. */
+.identity-rooms__grid--painted,
+.studio-notes__grid--painted,
+.resource-shelves__grid--painted,
+.work-fit__grid--painted,
+.support-kindness__grid--painted,
+.haven-values__grid--storybook {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.identity-rooms__grid--painted > article,
+.studio-notes__grid--painted > article,
+.resource-shelves__grid--painted > article,
+.work-fit__grid--painted > article,
+.support-kindness__grid--painted > article,
+.haven-values__grid--storybook > article {
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+  box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%);
+}
+
+.identity-rooms__grid--painted > article > img,
+.studio-notes__grid--painted > article > img,
+.resource-shelves__grid--painted > article > img,
+.work-fit__grid--painted > article > img,
+.support-kindness__grid--painted > article > img,
+.haven-values__art > img {
+  width: 100%;
+  height: clamp(10.5rem, 56vw, 14rem);
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
+  border: 0;
+  border-radius: 0;
+  filter: none;
+}
+
+.identity-rooms__grid--painted > article > div,
+.studio-notes__grid--painted > article > div,
+.resource-shelves__grid--painted > article > div,
+.work-fit__grid--painted > article > div,
+.support-kindness__grid--painted > article > div,
+.haven-values__copy {
+  display: grid;
+  align-content: start;
+  padding: 1.15rem 1.2rem 1.3rem;
+}
+
+.identity-rooms__grid--painted h3,
+.studio-notes__grid--painted h3,
+.resource-shelves__grid--painted h3,
+.work-fit__grid--painted h3,
+.support-kindness__grid--painted h3,
+.haven-values__grid--storybook h3 {
+  min-height: 0;
+  color: var(--story-copy);
+}
+
+.identity-rooms__grid--painted p:last-child,
+.studio-notes__grid--painted p:last-child,
+.resource-shelves__grid--painted p,
+.resource-shelves__grid--painted ul,
+.work-fit__grid--painted p,
+.support-kindness__grid--painted p,
+.haven-values__grid--storybook p {
+  color: var(--story-muted);
+}
+
+.studio-notes__grid--painted svg,
+.work-fit__grid--painted svg,
+.support-kindness__grid--painted svg {
+  margin-block-end: 0.65rem;
+  color: var(--story-accent);
+}
+
+/* Meet Nari closing panel: use the integrated painting, not a square portrait crop. */
+.nari-promise.nari-promise--storybook {
+  display: grid;
+  max-width: calc(var(--page-width) + var(--page-gutter) * 2);
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  align-items: stretch;
+}
+
+.nari-promise__art {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.7rem;
+}
+
+.nari-promise__art > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 61% 45%;
+}
+
+.nari-promise__art figcaption {
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.65rem;
+  padding: 0.38rem 0.58rem;
+  color: #fff8ef;
+  background: rgb(27 16 22 / 72%);
+  border: 1px solid rgb(255 239 225 / 18%);
+  border-radius: 999px;
+  font-size: 0.64rem;
+  backdrop-filter: blur(8px);
+}
+
+.nari-promise__copy {
+  padding: 1.3rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.7rem;
+}
+
+.nari-promise__copy > p:not(.eyebrow),
+.nari-promise__details > span {
+  color: var(--story-muted);
+}
+
+.nari-promise__copy h2,
+.nari-promise__details strong {
+  color: var(--story-copy);
+}
+
+.nari-promise__copy .eyebrow,
+.nari-promise__copy .text-link {
+  color: var(--story-accent);
+}
+
+.nari-promise__details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  margin-block: 1rem 1.2rem;
+}
+
+.nari-promise__details > span {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.35rem 0.55rem;
+  padding: 0.8rem;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.nari-promise__details > span > svg {
+  grid-row: 1 / span 2;
+  color: var(--story-accent);
+}
+
+/* Streams: no decorative empty tail after the actual moments. */
+.stream-platform-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.stream-platform-grid > a {
+  overflow: hidden;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+  text-decoration: none;
+}
+
+.stream-platform-grid > a > img {
+  width: 100%;
+  height: clamp(11rem, 52vw, 15rem);
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.stream-platform-grid > a > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.stream-platform-grid svg,
+.stream-platform-grid strong {
+  color: var(--story-accent);
+}
+
+.stream-platform-grid strong {
+  color: var(--story-copy);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+.stream-platform-grid small {
+  display: block;
+  margin-block-start: 0.15rem;
+  color: var(--story-muted);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.stream-status-note,
+.resource-promise,
+.story-shelf-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  margin-block-start: 0.9rem;
+  color: var(--story-muted);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.5rem;
+}
+
+.stream-status-note svg,
+.resource-promise svg,
+.story-shelf-note svg {
+  flex: 0 0 auto;
+  color: var(--story-accent);
+}
+
+.stream-status-note strong,
+.resource-promise strong,
+.story-shelf-note strong {
+  color: var(--story-copy);
+}
+
+.stream-status-note p,
+.resource-promise p,
+.story-shelf-note p {
+  margin: 0.15rem 0 0;
+  color: var(--story-muted);
+}
+
+.moment-shelf.moment-shelf--final {
+  min-height: 0;
+  margin-block: 0;
+  background: transparent;
+  border: 0;
+}
+
+.moment-shelf--final .media-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.moment-shelf--final .media-card,
+.moment-shelf--final .media-card:last-child {
+  grid-column: auto;
+  min-height: 0;
+}
+
+.moment-shelf--final .media-card > a {
+  height: 100%;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border-color: var(--story-line);
+}
+
+.moment-shelf--final .media-card__body > p {
+  color: var(--story-muted);
+}
+
+.moment-shelf--final .media-card__body h3 {
+  color: var(--story-copy);
+}
+
+main > .moment-shelf--final:last-child {
+  padding-block-end: 2.4rem;
+}
+
+/* Nail Studio: all secondary art is derived from the canonical painted rooms. */
+.studio-gallery-note {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  margin-block-start: 0.95rem;
+  overflow: hidden;
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+}
+
+.studio-gallery-note > img {
+  width: 100%;
+  height: clamp(12rem, 55vw, 16rem);
+  object-fit: cover;
+  object-position: 67% center;
+  border-radius: 0;
+}
+
+.studio-gallery-note > div {
+  padding: 1.2rem;
+}
+
+.studio-gallery-note h2 {
+  color: var(--story-copy);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+}
+
+.studio-gallery-note p:last-child,
+.studio-boundary p {
+  color: var(--story-muted);
+}
+
+.studio-boundary,
+.support-boundary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  padding: 1.2rem;
+  margin-block: 0 2.4rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+}
+
+.studio-boundary > svg,
+.support-boundary > svg {
+  color: var(--story-accent);
+}
+
+.studio-boundary h2,
+.support-boundary h2 {
+  color: var(--story-copy);
+}
+
+/* Haven values use banner-canon scene crops instead of a second Ghostie style. */
+.haven-values__grid--storybook > article {
+  grid-template-rows: auto 1fr;
+}
+
+.haven-values__art {
+  overflow: hidden;
+  background: var(--story-surface-deep);
+}
+
+.haven-values__copy {
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+}
+
+.haven-values__copy > span {
+  width: fit-content;
+  margin-block-end: 0.55rem;
+  color: var(--story-accent);
+  font-family: var(--font-detail);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.haven-values__copy h3 {
+  margin-block-end: 0.55rem;
+}
+
+.haven-values__copy p {
+  margin: 0;
+}
+
+.haven-values__principles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-block-start: 0.8rem;
+}
+
+.haven-values__principles > span {
+  display: flex;
+  min-height: 3.6rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 0.85rem;
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.45rem;
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+.haven-values__principles svg {
+  flex: 0 0 auto;
+  color: var(--story-accent);
+}
+
+.haven-entry {
+  display: grid;
+  gap: 0.85rem;
+  padding-block-start: 1rem;
+}
+
+.haven-door {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.7rem;
+  box-shadow: 0 1rem 3rem rgb(15 9 13 / 16%);
+}
+
+.haven-door__art {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--story-surface-deep);
+}
+
+.haven-door__art > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 63% center;
+}
+
+.haven-door__art::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(20 11 16 / 38%), transparent 55%);
+  content: "";
+  pointer-events: none;
+}
+
+.haven-door__sign {
+  position: absolute;
+  z-index: 2;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  display: grid;
+  max-width: calc(100% - 4.8rem);
+  gap: 0.05rem;
+  padding: 0.5rem 0.65rem;
+  color: #38201e;
+  background: #e8c99d;
+  border: 1px solid rgb(72 38 28 / 35%);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1.4rem rgb(15 8 10 / 30%);
+  transform: rotate(-1deg);
+}
+
+.haven-door__sign span {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.haven-door__sign small {
+  font-size: 0.6rem;
+}
+
+.haven-door__progress {
+  position: absolute;
+  z-index: 3;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  background: rgb(24 14 20 / 76%);
+  border: 1px solid rgb(244 226 214 / 18%);
+  border-radius: 999px;
+}
+
+.haven-door__progress > span {
+  width: 0.55rem;
+  height: 0.55rem;
+  background: rgb(244 226 214 / 32%);
+  border-radius: 50%;
+}
+
+.haven-door__progress > span.active {
+  background: var(--story-accent);
+}
+
+.haven-door__content {
+  display: grid;
+  min-height: 0;
+  align-content: center;
+  justify-items: start;
+  padding: 1.35rem;
+  color: var(--story-copy);
+}
+
+.haven-door__content h2,
+.haven-door__content strong,
+.haven-door__content .eyebrow {
+  color: var(--story-copy);
+}
+
+.haven-door__content .eyebrow,
+.haven-door__content .text-link {
+  color: var(--story-accent);
+}
+
+.haven-door__content > p:not(.eyebrow),
+.haven-door__content .text-button {
+  color: var(--story-muted);
+}
+
+.haven-door__content .button {
+  margin-block-start: 0.25rem;
+}
+
+.haven-door__content .text-button {
+  margin-block-start: 0.8rem;
+}
+
+.loose-floorboard,
+.loose-floorboard button,
+.loose-floorboard__reveal {
+  color: var(--story-copy);
+}
+
+.loose-floorboard button,
+.loose-floorboard__reveal {
+  background: var(--story-surface-deep);
+  border-color: var(--story-line);
+}
+
+/* Resources and work get explicit foregrounds in every theme. */
+.resource-shelves__grid--painted > article > div > span {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.35rem;
+  margin-block-end: 0.55rem;
+  color: var(--story-accent);
+  font-family: var(--font-detail);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+}
+
+.work-fit__grid--painted > article,
+.work-fit__grid--painted > article * {
+  color: inherit;
+}
+
+.work-fit__grid--painted > article {
+  color: var(--story-copy);
+}
+
+.work-fit__grid--painted > article p {
+  color: var(--story-muted);
+}
+
+.work-process {
+  color: var(--story-copy);
+  background: var(--story-surface-deep);
+}
+
+.work-process__inner,
+.work-process__inner h2,
+.work-process__inner strong {
+  color: var(--story-copy);
+}
+
+.work-process__inner p,
+.work-process__inner li p {
+  color: var(--story-muted);
+}
+
+.work-contact--storybook {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  padding-block: 1.4rem 0;
+  margin-block-start: 1.5rem;
+  color: var(--story-copy);
+  border-top: 1px solid var(--story-line);
+}
+
+.work-contact--storybook > img {
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  object-position: 66% center;
+  border: 1px solid var(--story-line);
+  border-radius: 0.4rem;
+}
+
+.work-contact--storybook h2 {
+  color: var(--story-copy);
+}
+
+.work-contact--storybook p,
+.work-contact--storybook aside {
+  color: var(--story-muted);
+}
+
+.work-contact--storybook aside {
+  grid-column: auto;
+}
+
+/* Support cards now use the same paintings as the rest of the Haven. */
+.support-kindness {
+  background: transparent;
+}
+
+.support-kindness__grid--painted > article > div {
+  grid-template-rows: auto auto 1fr;
+}
+
+.support-boundary .text-link {
+  color: var(--story-accent);
+}
+
+/* Footer image is a landscape crop from the integrated Meet Nari painting. */
+.site-footer {
+  margin-block-start: 0;
+}
+
+.site-footer__statement {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.site-footer__portrait {
+  width: min(100%, 14rem);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.6rem;
+}
+
+.site-footer__portrait > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 61% 45%;
+  filter: none;
+}
+
+.site-footer__statement h2,
+.site-footer__statement p,
+.site-footer__links,
+.site-footer__base {
+  color: var(--text);
+}
+
+.site-footer__socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+}
+
+.site-footer__socials > a {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.65rem;
+  color: var(--story-chip-copy);
+  background: var(--story-chip);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* 404 uses a real Haven painting rather than the retired utility Ghostie SVG. */
+.not-found {
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+.not-found > img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: 66% center;
+  border: 1px solid var(--story-line);
+  border-radius: 0.65rem;
+}
+
+/* Prinny basement: one actual Prinny gets the sign; the supplied roster remains canon. */
+.cult-page--collection {
+  min-height: 100svh;
+  color: #f5e7df;
+  background:
+    radial-gradient(circle at 18% 8%, rgb(126 49 61 / 28%), transparent 34%),
+    radial-gradient(circle at 82% 30%, rgb(78 56 105 / 24%), transparent 32%),
+    linear-gradient(180deg, #150c13, #211019 48%, #10090f);
+}
+
+.cult-page__escape {
+  position: relative;
+  z-index: 2;
+}
+
+.cult-collection {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 82rem);
+  margin-inline: auto;
+  padding: 6rem 0.85rem 3rem;
+}
+
+.cult-collection__header--rebuilt {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.cult-mascot-sign {
+  position: relative;
+  display: grid;
+  min-height: 18rem;
+  place-items: end center;
+  padding: 1rem;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 65%, rgb(143 78 97 / 26%), transparent 55%);
+  border: 1px solid rgb(244 226 214 / 13%);
+  border-radius: 0.7rem;
+}
+
+.cult-mascot-sign > img {
+  width: min(72%, 15rem);
+  filter: drop-shadow(0 1rem 1.1rem rgb(0 0 0 / 38%));
+}
+
+.cult-signboard {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.8rem;
+  left: 0.75rem;
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.65rem 0.8rem;
+  color: #321d20;
+  background: #e4c68f;
+  border: 2px solid #704236;
+  box-shadow: 0.25rem 0.35rem 0 #391d23;
+  transform: rotate(-1.4deg);
+}
+
+.cult-signboard span,
+.cult-signboard small {
+  font-family: var(--font-detail);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+.cult-signboard strong {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 5vw, 1.45rem);
+  line-height: 1;
+}
+
+.cult-collection__intro > p:last-child,
+.cult-collection__roster > div:first-child > p:last-child {
+  color: #d6c0c8;
+}
+
+.cult-briefing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-block: 1.2rem;
+}
+
+.cult-briefing > article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.7rem;
+  padding: 0.9rem;
+  color: #f5e7df;
+  background: rgb(44 24 34 / 82%);
+  border: 1px solid rgb(241 214 199 / 14%);
+  border-radius: 0.45rem;
+}
+
+.cult-briefing h2 {
+  margin-block-end: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.cult-briefing p {
+  margin: 0;
+  color: #d5c0c8;
+  font-size: 0.78rem;
+}
+
+.cult-collection__roster {
+  padding: 1rem;
+  background: rgb(18 10 15 / 54%);
+  border: 1px solid rgb(241 214 199 / 12%);
+  border-radius: 0.65rem;
+}
+
+.cult-collection__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-block-start: 1rem;
+}
+
+.cult-collection__gallery > article {
+  position: relative;
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  overflow: hidden;
+  background: rgb(52 27 38 / 86%);
+  border: 1px solid rgb(241 214 199 / 13%);
+  border-radius: 0.4rem;
+}
+
+.cult-collection__gallery > article > span {
+  position: absolute;
+  z-index: 2;
+  top: 0.35rem;
+  left: 0.4rem;
+  color: #e2c6b8;
+  font-family: var(--font-detail);
+  font-size: 0.55rem;
+}
+
+.cult-collection__gallery img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.cult-collection__contract {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 1rem;
+  margin-block-start: 1rem;
+  color: #f5e7df;
+  background: #3b2530;
+  border: 1px solid rgb(241 214 199 / 18%);
+  border-radius: 0.55rem;
+}
+
+.cult-collection__contract > svg {
+  color: #e4c68f;
+}
+
+.cult-collection__contract p {
+  color: #d6c0c8;
+}
+
+.cult-collection__contract .text-button {
+  justify-self: start;
+  color: #f0d8cb;
+}
+
+/* Tablet: add columns only when the content has room. */
+@media (min-width: 30rem) {
+  .brand-mark small {
+    display: block;
+  }
+
+  .site-footer__socials {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cult-collection__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
+  .identity-rooms__grid--painted,
+  .studio-notes__grid--painted,
+  .resource-shelves__grid--painted,
+  .work-fit__grid--painted,
+  .support-kindness__grid--painted {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .identity-rooms__grid--painted > article:last-child,
+  .studio-notes__grid--painted > article:last-child,
+  .resource-shelves__grid--painted > article:last-child,
+  .work-fit__grid--painted > article:last-child,
+  .support-kindness__grid--painted > article:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .haven-values__grid--storybook,
+  .haven-values__principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stream-platform-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .studio-boundary,
+  .support-boundary {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .work-contact--storybook {
+    grid-template-columns: 10rem minmax(0, 1fr);
+  }
+
+  .work-contact--storybook > img {
+    width: 10rem;
+    height: 8rem;
+  }
+
+  .work-contact--storybook > aside {
+    grid-column: 2;
+  }
+
+  .site-footer__statement {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+
+  .site-footer__portrait {
+    width: 12rem;
+  }
+
+  .not-found {
+    grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+
+  .cult-briefing {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cult-collection__gallery {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Desktop: enhance, never re-author the mobile document. */
+@media (min-width: 56rem) {
+  .site-header__more > nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-switcher,
+  .site-header__live-link {
+    width: auto;
+  }
+
+  .theme-switcher__option {
+    flex: initial;
+  }
+
+  .social-dock {
+    width: min(100%, 20.25rem);
+  }
+
+  .haven-landing {
+    min-height: calc(100svh - var(--header-height));
+    max-height: calc(100svh - var(--header-height));
+    padding-block-end: 0;
+  }
+
+  .haven-landing::before {
+    inset: 1rem;
+  }
+
+  .haven-landing__inner {
+    width: min(100%, 90rem);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    padding-inline: clamp(3.8rem, 9vw, 9rem);
+  }
+
+  .haven-landing__margin-note {
+    display: flex;
+  }
+
+  .haven-landing__welcome {
+    padding-block: 1rem 0.5rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(4.1rem, 8.4vw, 7.6rem);
+    line-height: 0.8;
+  }
+
+  .haven-landing__kicker {
+    font-size: 0.64rem;
+  }
+
+  .haven-landing__subtitle {
+    font-size: clamp(1.12rem, 1.65vw, 1.45rem);
+  }
+
+  .haven-landing__intro {
+    font-size: clamp(0.79rem, 1vw, 0.92rem);
+  }
+
+  .haven-landing__actions {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .haven-landing__actions > .button {
+    width: auto;
+  }
+
+  .haven-landing__rooms {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 1rem 1rem;
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 5.5rem auto minmax(0, 1fr) auto;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 5.5rem;
+    height: 4rem;
+  }
+
+  .haven-landing__room-copy > small {
+    display: block;
+  }
+
+  .identity-rooms__grid--painted,
+  .studio-notes__grid--painted,
+  .resource-shelves__grid--painted,
+  .work-fit__grid--painted,
+  .support-kindness__grid--painted {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .identity-rooms__grid--painted > article:last-child,
+  .studio-notes__grid--painted > article:last-child,
+  .resource-shelves__grid--painted > article:last-child,
+  .work-fit__grid--painted > article:last-child,
+  .support-kindness__grid--painted > article:last-child {
+    grid-column: auto;
+  }
+
+  .haven-values__grid--storybook,
+  .haven-values__principles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .nari-promise.nari-promise--storybook {
+    grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 1rem;
+  }
+
+  .nari-promise__art {
+    aspect-ratio: auto;
+    min-height: 26rem;
+  }
+
+  .nari-promise__copy {
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+  }
+
+  .nari-promise__details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .moment-shelf--final .media-card:last-child {
+    grid-column: auto;
+  }
+
+  .studio-gallery-note {
+    grid-template-columns: minmax(17rem, 0.95fr) minmax(0, 1.05fr);
+    align-items: stretch;
+  }
+
+  .studio-gallery-note > img {
+    height: 100%;
+    min-height: 17rem;
+  }
+
+  .haven-door {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  }
+
+  .haven-door__art {
+    min-height: 27rem;
+    aspect-ratio: auto;
+  }
+
+  .haven-door__content {
+    padding: clamp(1.6rem, 4vw, 3rem);
+  }
+
+  .cult-collection__header--rebuilt {
+    grid-template-columns: minmax(19rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 2rem;
+  }
+
+  .cult-mascot-sign {
+    min-height: 23rem;
+  }
+
+  .cult-collection__gallery {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .cult-collection__contract {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  .identity-rooms__grid--painted > article > img,
+  .studio-notes__grid--painted > article > img,
+  .resource-shelves__grid--painted > article > img,
+  .work-fit__grid--painted > article > img,
+  .support-kindness__grid--painted > article > img,
+  .haven-values__art > img {
+    height: 15rem;
+  }
+}
+
+@media (min-width: 120rem) {
+  .site-header__inner,
+  .site-footer__inner,
+  .page-width {
+    --page-gutter: 2rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .brand-mark strong {
+    font-size: 1rem;
+  }
+
+  .social-dock {
+    width: min(100%, 16.75rem);
+    gap: 0.3rem;
+  }
+
+  .social-dock > a {
+    min-height: 2.4rem;
+    padding: 0.48rem;
+  }
+
+  .haven-landing__rooms > a {
+    grid-template-columns: 3.6rem auto minmax(0, 1fr) auto;
+  }
+
+  .haven-landing__rooms > a > img {
+    width: 3.6rem;
+    height: 3rem;
+  }
+}

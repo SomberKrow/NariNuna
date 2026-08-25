@@ -24,8 +24,8 @@ const reducedMotion = useReducedMotion();
         <button type="button" aria-label="Send Ghostie back" @click="open = false">
           <X :size="16" aria-hidden="true" />
         </button>
-        <img :src="ghostieArtwork.waving" width="140" height="140" alt="A happy Ghostie pops in to wave hello" />
-        <p><strong>Hi, Ghostie.</strong><br />Drink some water. Unclench your jaw. You're doing fine.</p>
+        <img :src="ghostieArtwork.heart" width="140" height="140" alt="A cozy storybook Ghostie pops in with a tiny heart" />
+        <p><strong>Hi, Ghostie.</strong><br />Drink some water. Unclench your jaw. Find a comfortable corner.</p>
       </motion.div>
     </AnimatePresence>
     <button class="ghostie-summoner__button" type="button" :aria-expanded="open" @click="open = !open">

@@ -15,6 +15,8 @@ export interface PrinnyRosterRecord {
 export const prinnyRosterCapacity = 27 as const;
 
 export const prinnyCultAssets = {
+  sanctumPainting: "/media/prinny-cult/prinny-sanctum-illustrated-v2.webp",
+  altarPainting: "/media/prinny-cult/prinny-altar-illustrated-v2.webp",
   room: "/media/prinny-cult/prinny-cult-room.svg",
   altar: "/media/prinny-cult/prinny-altar.svg",
   pedestal: "/media/prinny-cult/prinny-pedestal.svg",
