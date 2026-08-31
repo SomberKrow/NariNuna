@@ -2,7 +2,6 @@
 import { ArrowRight, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import SocialDock from "@/components/ui/SocialDock.vue";
 import { detailArtwork, storybookPostcards } from "@/data/artwork";
-import { twitchUrl } from "@/data/socials";
 
 const rooms = [
   { icon: Gamepad2, title: "The stream room", note: "Laughter comes with the furniture.", href: "/streams/", image: storybookPostcards.streams, number: "01" },
@@ -37,10 +36,9 @@ const rooms = [
         <SocialDock />
 
         <div class="haven-landing__actions">
-          <a class="button button--ember" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
+          <a class="button button--ember haven-landing__haven-cta" href="/haven/#haven-door">
             Come sit with us
             <ArrowRight :size="17" aria-hidden="true" />
-            <span class="sr-only"> on Twitch (opens in a new tab)</span>
           </a>
           <a class="haven-landing__meet" href="/meet-nari/">Meet Nari <ArrowRight :size="15" aria-hidden="true" /></a>
         </div>

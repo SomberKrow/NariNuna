@@ -1,0 +1,427 @@
+/*
+ * 2026-08-31 Nari/Panda client-feedback pass.
+ * Loaded after the established storybook/polish layers so these rules stay
+ * focused on the approved hero, native-links, Resources, and Easter-egg changes.
+ */
+
+/* Home: one deliberate desktop viewport, with room gateways inside the frame. */
+.haven-landing {
+  height: calc(100svh - var(--header-height));
+  min-height: 38rem;
+  padding-block-end: 0;
+}
+
+.haven-landing__inner {
+  min-height: 100%;
+  padding-block-end: 5.8rem;
+}
+
+.haven-landing__welcome {
+  padding-block: clamp(1rem, 4svh, 2.2rem) 1rem;
+}
+
+.haven-landing__rooms {
+  position: absolute;
+  right: auto;
+  bottom: 0.8rem;
+  left: 50%;
+  width: min(var(--page-width), calc(100% - (var(--page-gutter) * 2)));
+  padding: 0;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+#haven-door,
+#nari-links {
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+/* Work With Nari: a native directory, not a Linktree-shaped handoff. */
+.nari-links {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.nari-links__intro {
+  max-width: 35rem;
+}
+
+.nari-links__intro h2 {
+  margin-block-end: 0.65rem;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.nari-links__intro > p:last-child {
+  margin-block-end: 0;
+  color: var(--text-muted);
+}
+
+.nari-links__directory {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.nari-links__directory > a {
+  display: grid;
+  min-height: 5rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.6rem;
+  text-decoration: none;
+  transition:
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.nari-links__directory > a:hover,
+.nari-links__directory > a:focus-visible {
+  background: color-mix(in srgb, var(--story-surface) 86%, var(--story-accent));
+  border-color: var(--story-accent);
+  transform: translateY(-2px);
+}
+
+.nari-links__index {
+  color: var(--story-accent);
+  font-family: var(--font-detail);
+  font-size: 0.64rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.nari-links__copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.28rem;
+}
+
+.nari-links__copy > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+}
+
+.nari-links__copy strong {
+  color: var(--story-copy);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+.nari-links__copy small,
+.nari-links__copy p {
+  color: var(--story-muted);
+}
+
+.nari-links__copy small {
+  font-size: 0.68rem;
+}
+
+.nari-links__copy p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.nari-links__directory > a > svg {
+  color: var(--story-accent);
+}
+
+/* Resources: demonstrate real density while keeping every placeholder explicit. */
+.resource-demo {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: clamp(2rem, 7vw, 3.5rem);
+}
+
+.resource-demo__heading {
+  max-width: 42rem;
+}
+
+.resource-demo__heading h2 {
+  margin-block-end: 0.6rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+.resource-demo__heading > p:last-child {
+  margin-block-end: 0;
+  color: var(--text-muted);
+}
+
+.resource-demo__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.resource-demo__item {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  padding: 1rem;
+  color: var(--story-copy);
+  background: var(--story-surface);
+  border: 1px solid var(--story-line);
+  border-radius: 0.6rem;
+}
+
+.resource-demo__item--compact {
+  min-height: 11rem;
+}
+
+.resource-demo__item--standard {
+  min-height: 14rem;
+}
+
+.resource-demo__item--wide {
+  min-height: 15rem;
+  background: color-mix(in srgb, var(--story-surface) 88%, var(--story-surface-soft));
+}
+
+.resource-demo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.resource-demo__meta span,
+.resource-demo__meta small {
+  font-family: var(--font-detail);
+  font-size: 0.6rem;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resource-demo__meta span {
+  color: var(--story-accent);
+}
+
+.resource-demo__meta small {
+  padding: 0.25rem 0.4rem;
+  color: var(--story-muted);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+}
+
+.resource-demo__item h3 {
+  margin: 0;
+  color: var(--story-copy);
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+}
+
+.resource-demo__item > p,
+.resource-demo__item li {
+  color: var(--story-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.resource-demo__item > p {
+  margin: 0;
+}
+
+.resource-demo__item ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: auto 0 0;
+  list-style: none;
+}
+
+.resource-demo__item li {
+  padding: 0.3rem 0.45rem;
+  background: var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  font-size: 0.67rem;
+}
+
+.resource-demo__disclosure {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.75rem 0.85rem;
+  margin: 0;
+  color: var(--text-muted);
+  background: var(--bg-inset);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.resource-demo__disclosure svg {
+  flex: 0 0 auto;
+  color: var(--emerald);
+}
+
+@media (max-width: 42rem) {
+  /*
+   * Keep Home a composed scene on phones. Copy remains in the left visual lane,
+   * the CTA shrinks to its content instead of crossing the painting, and the
+   * three room gateways become a compact bottom rail inside the viewport.
+   */
+  .haven-landing {
+    min-height: 39rem;
+  }
+
+  .haven-landing__scene {
+    background-position: 64% center;
+  }
+
+  .haven-landing__veil {
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--bg) 96%, transparent) 0%, color-mix(in srgb, var(--bg) 88%, transparent) 52%, color-mix(in srgb, var(--bg) 50%, transparent) 76%, transparent 100%),
+      linear-gradient(180deg, color-mix(in srgb, var(--bg) 28%, transparent), transparent 48%, color-mix(in srgb, var(--bg) 70%, transparent) 100%);
+  }
+
+  .haven-landing__inner {
+    align-items: start;
+    padding-inline: 1rem;
+    padding-block-end: 5rem;
+  }
+
+  .haven-landing__welcome {
+    width: min(100%, 22rem);
+    max-width: 22rem;
+    padding-block: clamp(0.9rem, 3svh, 1.7rem) 0.35rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(3rem, 14vw, 4.35rem);
+  }
+
+  .haven-landing__intro {
+    max-width: 19rem;
+    margin-block-end: 0.55rem;
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+
+  .social-dock {
+    width: min(100%, 18rem);
+    margin-block: 0.5rem 0.65rem;
+  }
+
+  .haven-landing__actions {
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .haven-landing__actions > .button {
+    width: fit-content;
+    max-width: 100%;
+    min-height: 2.7rem;
+  }
+
+  .haven-landing__meet {
+    min-height: 2.35rem;
+    justify-content: flex-start;
+  }
+
+  .haven-landing__rooms {
+    bottom: 0.55rem;
+    width: calc(100% - 2rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .haven-landing__rooms > a {
+    min-height: 3.75rem;
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 0.1rem;
+    padding: 0.45rem 0.3rem;
+    text-align: center;
+  }
+
+  .haven-landing__rooms > a > img,
+  .haven-landing__room-number,
+  .haven-landing__room-copy small,
+  .haven-landing__rooms > a > svg {
+    display: none;
+  }
+
+  .haven-landing__room-copy strong {
+    font-size: 0.68rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .nari-links__copy p {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 42rem) and (max-height: 44rem) {
+  .haven-landing {
+    min-height: 35rem;
+  }
+
+  .haven-landing h1 {
+    font-size: clamp(2.75rem, 13vw, 3.8rem);
+  }
+
+  .haven-landing__kicker {
+    margin-block-end: 0.2rem;
+  }
+
+  .haven-landing__subtitle {
+    margin-block-end: 0.35rem;
+  }
+
+  .haven-landing__intro {
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  .social-dock {
+    margin-block: 0.35rem 0.5rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .nari-links {
+    grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr);
+    align-items: start;
+  }
+
+  .resource-demo__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resource-demo__item--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 72rem) {
+  .resource-demo__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .resource-demo__item--wide {
+    grid-column: span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nari-links__directory > a {
+    transition: none;
+  }
+
+  .nari-links__directory > a:hover,
+  .nari-links__directory > a:focus-visible {
+    transform: none;
+  }
+}

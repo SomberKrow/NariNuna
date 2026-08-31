@@ -2,6 +2,7 @@
 import { BadgeCheck, BookMarked, HeartHandshake, Scale } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
+import { resourceDemoEntries } from "@/data/resources";
 
 const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storybookPostcards.streams];
 </script>
@@ -20,7 +21,12 @@ const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storyboo
   </section>
 
   <section class="resource-shelves page-width section-pad">
-    <header class="world-heading"><p class="eyebrow">Currently being curated, very dramatically</p><h2>The shelves are ready for her favorites.</h2><p>Nothing earns a card because a layout needs filling. These shelves stay selective until Nari has something she actually wants to recommend.</p></header>
+    <header class="world-heading">
+      <p class="eyebrow">Layout preview · recommendations still pending</p>
+      <h2>The shelves finally have enough weight to judge.</h2>
+      <p>The category cards remain honest curating states. The entries below are clearly marked demonstration content so Nari and Panda can evaluate density before final recommendations exist.</p>
+    </header>
+
     <div class="resource-shelves__grid resource-shelves__grid--painted">
       <article v-for="(category, index) in resourceCategories" :key="category.title">
         <img :src="categoryArt[index]" width="640" height="360" alt="" loading="lazy" />
@@ -32,6 +38,31 @@ const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storyboo
         </div>
       </article>
     </div>
+
+    <div class="resource-demo" aria-labelledby="resource-demo-title">
+      <header class="resource-demo__heading">
+        <p class="eyebrow"><BadgeCheck :size="14" aria-hidden="true" /> Demonstration shelf</p>
+        <h2 id="resource-demo-title">What a genuinely populated page can feel like.</h2>
+        <p>Different lengths, different rhythms, and enough repetition to expose awkward wrapping or empty space before real recommendations arrive.</p>
+      </header>
+
+      <div class="resource-demo__grid">
+        <article
+          v-for="entry in resourceDemoEntries"
+          :key="entry.id"
+          class="resource-demo__item"
+          :class="`resource-demo__item--${entry.layout}`"
+        >
+          <div class="resource-demo__meta"><span>{{ entry.category }}</span><small>Demo entry</small></div>
+          <h3>{{ entry.title }}</h3>
+          <p>{{ entry.summary }}</p>
+          <ul><li v-for="detail in entry.details" :key="detail">{{ detail }}</li></ul>
+        </article>
+      </div>
+
+      <p class="resource-demo__disclosure"><Scale :size="18" aria-hidden="true" /> Demonstration only: these entries preview layout and content rhythm; they are not endorsements, sponsorships, or final Nari recommendations.</p>
+    </div>
+
     <div class="resource-promise"><Scale :size="28" aria-hidden="true" /><div><strong>No fake recommendations. No pressure.</strong><p>If something earns a link, Nari gets to explain why. Any material relationship gets disclosed, and nobody pretends a random product is essential.</p></div></div>
   </section>
 </template>

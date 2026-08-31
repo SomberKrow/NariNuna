@@ -31,7 +31,7 @@ const valueGhosties: GhostieArtVariant[] = ["support", "bonked", "protective", "
     </div>
   </section>
 
-  <section class="haven-entry page-width section-pad">
+  <section id="haven-door" class="haven-entry page-width section-pad">
     <HavenDoor />
     <LooseFloorboard />
   </section>
