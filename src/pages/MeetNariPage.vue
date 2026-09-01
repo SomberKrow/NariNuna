@@ -109,17 +109,17 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
   .identity-rooms__fragment {
     margin: 0;
   }
-  .identity-rooms__fragment--1 {
+  .identity-rooms__grid--painted > .identity-rooms__fragment--1 {
     grid-column: 1 / 8;
     grid-row: 1 / span 2;
     grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.28fr);
     min-height: 23rem;
   }
-  .identity-rooms__fragment--2 {
+  .identity-rooms__grid--painted > .identity-rooms__fragment--2 {
     grid-column: 8 / 13;
     grid-row: 1;
   }
-  .identity-rooms__fragment--3 {
+  .identity-rooms__grid--painted > .identity-rooms__fragment--3 {
     grid-column: 7 / 12;
     grid-row: 2;
   }
