@@ -66,3 +66,87 @@ const platforms = [
     <div class="media-grid"><MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" /></div>
   </section>
 </template>
+
+<style scoped>
+.stream-platform-grid > a {
+  position: relative;
+  transition:
+    border-color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+.stream-platform-grid > a:hover,
+.stream-platform-grid > a:focus-visible {
+  border-color: var(--story-accent);
+  transform: translateY(-2px);
+}
+.stream-platform-grid > a:first-child::before {
+  position: absolute;
+  z-index: 2;
+  top: 0.8rem;
+  left: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  color: var(--story-copy);
+  background: color-mix(in srgb, var(--story-surface-deep) 84%, transparent);
+  border: 1px solid var(--story-line);
+  border-radius: 999px;
+  font-family: var(--font-detail);
+  font-size: 0.56rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  content: "The live room";
+  backdrop-filter: blur(8px);
+}
+.moment-shelf--final :deep(.media-card) {
+  border-radius: 0.45rem;
+}
+@media (min-width: 48rem) {
+  .stream-platform-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.65fr);
+    align-items: stretch;
+  }
+  .stream-platform-grid > a:first-child > img {
+    height: clamp(18rem, 33vw, 25rem);
+  }
+  .stream-platform-grid > a:last-child {
+    align-self: end;
+  }
+  .stream-platform-grid > a:last-child > img {
+    height: clamp(11rem, 18vw, 14rem);
+  }
+  .moment-shelf--final .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .moment-shelf--final :deep(.media-card:first-child) {
+    grid-row: span 2;
+  }
+  .moment-shelf--final :deep(.media-card:first-child .media-card__image) {
+    aspect-ratio: 16 / 11;
+  }
+  .moment-shelf--final :deep(.media-card:not(:first-child) > a) {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.42fr) minmax(0, 0.58fr);
+  }
+  .moment-shelf--final :deep(.media-card:not(:first-child) .media-card__image) {
+    height: 100%;
+    min-height: 13rem;
+    aspect-ratio: auto;
+  }
+}
+@media (min-width: 72rem) {
+  .stream-platform-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr);
+    gap: clamp(1rem, 2.5vw, 2rem);
+  }
+  .moment-shelf--final .media-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+    gap: 1.2rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stream-platform-grid > a { transition: none; }
+  .stream-platform-grid > a:hover,
+  .stream-platform-grid > a:focus-visible { transform: none; }
+}
+</style>

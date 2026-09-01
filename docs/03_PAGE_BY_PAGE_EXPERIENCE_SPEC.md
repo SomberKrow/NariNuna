@@ -11,6 +11,10 @@ The owner-directed review redesign changes Home from a long scrolling gateway pa
 
 Meet Nari centers the supplied model portrait and official emotes. Streams, Nail Studio, Haven, Resources, Work With Nari, Support, Stories, and 404 each receive route-specific scene, Ghostie, emote, or state artwork. The Nail Studio still contains no fabricated portfolio, client service, or qualification. The hidden optional room displays all 27 owner-supplied Prinny designs while keeping approved character identity/canon records empty. Exact route-by-route assets and outstanding public-rights blockers are recorded in [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
 
+## 2026-09-01 visual-composition refinement
+
+The approved content and route responsibilities remain intact. Home's compact room rail now carries restrained destination-specific imagery above 320px without competing with the face-safe hero. Meet Nari presents its three existing identity pillars as one asymmetrical illustrated spread rather than three equal cards. Streams gives Twitch dominant live-room weight, treats YouTube as a supporting archive destination, and varies the existing featured-moment shelf without changing `MediaCard` behavior. These are composition changes only; no copy, routes, product behavior, or external destinations were added.
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:

@@ -8,6 +8,10 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
+## 2026-09-01 composition and navigation delta
+
+The active client-feedback branch now prioritizes Meet Nari, Streams, Haven, and Work in the visible header; the Nari brand remains the Home link, while Resources, Nails, Story Time, and Support appear in the native More disclosure. Public URLs and the true MPA route registry are unchanged. Home, Meet Nari, and Streams retain their approved content and artwork while using more page-specific visual rhythm: destination imagery returns to the compact Home room rail where width permits, Meet Nari uses an asymmetrical identity spread, Twitch leads the Streams platform hierarchy, and the existing media cards form a varied editorial shelf. The final face-safe layer remains authoritative for hero crops.
+
 ## 2026-08-23 owner-directed implementation delta
 
 Following owner direction, the current private review redesign retains the actual supplied Nari model and portrait alongside eight bespoke room paintings, including seven integrated model-faithful Nari appearances, dedicated character-inclusive Home and Meet Nari compositions without standalone overlays, five painted Ghosties, eight illustrated chapter postcards, three time-of-day Home scenes, regenerated Nari app icons, and eight route-specific social-preview compositions. Supplied cozy character artwork, 12 supplied static emote derivatives, and all 27 supplied original Prinny designs remain intact. Shared artwork is centralized in `src/data/artwork.ts`; supplied Prinnies remain separated from unapproved canon records in `src/data/prinnyCult.ts`; `tests/artwork-contract.test.ts` verifies original and illustrated identity, distinct integrated Home/Meet scenes, local assets, and the 27-design capacity.
