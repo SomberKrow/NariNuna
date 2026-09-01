@@ -15,6 +15,8 @@ Meet Nari centers the supplied model portrait and official emotes. Streams, Nail
 
 The approved content and route responsibilities remain intact. Home's compact room rail now carries restrained destination-specific imagery above 320px without competing with the face-safe hero. Meet Nari presents its three existing identity pillars as one asymmetrical illustrated spread rather than three equal cards. Streams gives Twitch dominant live-room weight, treats YouTube as a supporting archive destination, and varies the existing featured-moment shelf without changing `MediaCard` behavior. These are composition changes only; no copy, routes, product behavior, or external destinations were added.
 
+The same page-specific composition standard now extends to the remaining ordinary pages. Nail Studio uses a workbench sequence around its honest portfolio hold; Haven reads as a staggered community charter before the unchanged doorway; Resources separates its dominant category shelf from a dense varied demonstration catalog; Work presents collaboration fit and public links as an editorial ledger; Story Time treats one existing moment as the lead archive piece; and Support turns its three free-support actions into an illustrated generosity sequence. The hidden room, 404, page copy, routes, data, and external destinations remain unchanged.
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:
