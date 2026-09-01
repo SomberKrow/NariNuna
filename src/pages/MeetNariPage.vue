@@ -27,7 +27,7 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
   <section class="identity-rooms page-width section-pad">
     <header class="world-heading"><p class="eyebrow">One Nari, three familiar corners</p><h2>The warmth, the chaos, and the craft all belong together.</h2></header>
     <div class="identity-rooms__grid identity-rooms__grid--painted">
-      <article v-for="card in identityCards" :key="card.title">
+      <article v-for="(card, index) in identityCards" :key="card.title" :class="`identity-rooms__fragment identity-rooms__fragment--${index + 1}`">
         <GhostieArt class="ghostie-card-art" :variant="card.ghostie" />
         <div><p class="eyebrow">{{ card.eyebrow }}</p><h3>{{ card.title }}</h3><p>{{ card.text }}</p></div>
       </article>
@@ -50,14 +50,100 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
 </template>
 
 <style scoped>
-.identity-rooms__grid--painted > article { grid-template-rows: 12rem 1fr; min-height: 100%; }
-.ghostie-card-art { --ghostie-size: 11.5rem; height: 12rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
-.identity-rooms__grid--painted > article > div { min-height: 12.5rem; }
-.nari-promise__ghostie { --ghostie-size: 18rem; min-height: 18rem; border: 1px solid var(--story-line); border-radius: 0.7rem; box-shadow: 0 0.8rem 2.1rem rgb(15 9 14 / 14%); }
+.identity-rooms__grid--painted {
+  position: relative;
+  gap: 1rem;
+}
+.identity-rooms__grid--painted::before {
+  position: absolute;
+  z-index: -1;
+  inset: 1.5rem 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--story-line) 16%, var(--story-accent) 50%, var(--story-line) 84%, transparent);
+  content: "";
+}
+.identity-rooms__fragment {
+  min-height: 0;
+  grid-template-columns: 7.2rem minmax(0, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  overflow: visible;
+  background: color-mix(in srgb, var(--story-surface) 86%, transparent);
+  border-radius: 0.35rem;
+}
+.ghostie-card-art {
+  --ghostie-size: 8.5rem;
+  width: 8rem;
+  height: 9rem;
+  margin-inline-start: -0.65rem;
+  border: 0;
+  filter: drop-shadow(0 0.8rem 1rem rgb(15 9 14 / 18%));
+}
+.identity-rooms__fragment > div {
+  min-height: 0;
+  padding: 1.1rem 1.1rem 1.1rem 0.8rem;
+  border-inline-start: 1px solid var(--story-line);
+}
+.identity-rooms__fragment--2 {
+  margin-inline-start: clamp(0rem, 7vw, 2.5rem);
+}
+.identity-rooms__fragment--3 {
+  margin-inline-end: clamp(0rem, 5vw, 1.75rem);
+}
+.nari-promise__ghostie {
+  --ghostie-size: 18rem;
+  min-height: 18rem;
+  border: 0;
+  border-radius: 0;
+  background: radial-gradient(circle, color-mix(in srgb, var(--story-accent) 12%, transparent), transparent 67%);
+  filter: drop-shadow(0 1rem 1.8rem rgb(15 9 14 / 16%));
+  box-shadow: none;
+}
 @media (min-width: 48rem) {
-  .identity-rooms__grid--painted > article { grid-template-rows: 13rem 1fr; }
-  .ghostie-card-art { --ghostie-size: 12.5rem; height: 13rem; }
-  .identity-rooms__grid--painted > article > div { min-height: 14rem; }
+  .identity-rooms__grid--painted {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+    padding-block: 1.5rem;
+  }
+  .identity-rooms__fragment {
+    margin: 0;
+  }
+  .identity-rooms__fragment--1 {
+    grid-column: 1 / 8;
+    grid-row: 1 / span 2;
+    grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.28fr);
+    min-height: 23rem;
+  }
+  .identity-rooms__fragment--2 {
+    grid-column: 8 / 13;
+    grid-row: 1;
+  }
+  .identity-rooms__fragment--3 {
+    grid-column: 7 / 12;
+    grid-row: 2;
+  }
+  .identity-rooms__fragment--1 .ghostie-card-art {
+    --ghostie-size: 15rem;
+    width: 13rem;
+    height: 16rem;
+    margin-inline-start: -1.25rem;
+  }
+  .identity-rooms__fragment--2 .ghostie-card-art,
+  .identity-rooms__fragment--3 .ghostie-card-art {
+    --ghostie-size: 9.5rem;
+    width: 8.5rem;
+    height: 10rem;
+  }
+  .identity-rooms__fragment > div {
+    display: grid;
+    align-content: center;
+    min-height: 100%;
+  }
   .nari-promise__ghostie { --ghostie-size: 22rem; height: 100%; min-height: 24rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .identity-rooms__fragment:hover .ghostie-card-art { transform: translateY(-2px); }
+  .ghostie-card-art { transition: transform 240ms ease; }
 }
 </style>
