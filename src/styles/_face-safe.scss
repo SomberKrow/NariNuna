@@ -1,0 +1,411 @@
+/*
+ * Nari face-safe composition layer.
+ *
+ * Nari's face is a protected focal point. Pages using Nari-containing paintings
+ * keep copy in a dedicated lane on desktop and move the painting into a separate
+ * lower visual field on tablet/mobile. Streams and Work use a true split hero so
+ * copy can never sit on top of the illustrated character.
+ *
+ * Loaded after _feedback.scss so this is the final composition authority.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Desktop: keep text in the left lane and Nari's focal point to the right.    */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 64.01rem) {
+  .haven-landing__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .haven-landing__welcome {
+    width: min(100%, 28rem);
+    max-width: 28rem;
+  }
+
+  .haven-landing__scene {
+    background-position: 77% center;
+  }
+
+  .haven-landing__veil {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 97%, transparent) 34%,
+      color-mix(in srgb, var(--bg) 88%, transparent) 42%,
+      color-mix(in srgb, var(--bg) 38%, transparent) 53%,
+      color-mix(in srgb, var(--bg) 8%, transparent) 66%,
+      transparent 100%
+    );
+  }
+
+  .character-intro--integrated::before {
+    background-position: 78% center;
+  }
+
+  .character-intro--integrated::after {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 96%, transparent) 34%,
+      color-mix(in srgb, var(--bg) 82%, transparent) 43%,
+      color-mix(in srgb, var(--bg) 28%, transparent) 55%,
+      transparent 69%
+    );
+  }
+
+  .character-intro--integrated .character-intro__copy {
+    width: min(38vw, 30rem);
+    max-width: 30rem;
+  }
+
+  .studio-opening__backdrop,
+  .haven-heart__environment {
+    background-position: 78% center;
+  }
+
+  .studio-opening::after,
+  .haven-heart::after {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 96%, transparent) 33%,
+      color-mix(in srgb, var(--bg) 82%, transparent) 43%,
+      color-mix(in srgb, var(--bg) 26%, transparent) 56%,
+      transparent 70%
+    );
+  }
+
+  .studio-opening__inner,
+  .haven-heart__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .studio-opening__inner > div,
+  .haven-heart__inner > div {
+    width: min(38vw, 30rem);
+    max-width: 30rem;
+  }
+
+  .story-opening--painted::before,
+  .support-welcome--painted::before {
+    background-position: 78% center;
+  }
+
+  .story-opening--painted::after,
+  .support-welcome--painted::after {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 96%, transparent) 34%,
+      color-mix(in srgb, var(--bg) 80%, transparent) 43%,
+      color-mix(in srgb, var(--bg) 24%, transparent) 56%,
+      transparent 70%
+    );
+  }
+
+  .story-opening--painted > div:first-child,
+  .support-welcome--painted > div {
+    width: min(38vw, 30rem);
+    max-width: 30rem;
+  }
+
+  /*
+   * Streams and Work contain Nari inside an actual <img>. Stop treating that
+   * image as a background entirely: text and face get separate grid columns.
+   */
+  .room-opening--streams,
+  .room-opening--work {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    align-items: center;
+  }
+
+  .room-opening--streams::before,
+  .room-opening--work::before {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--bg) 99%, transparent),
+      color-mix(in srgb, var(--bg) 92%, transparent) 37%,
+      color-mix(in srgb, var(--bg) 55%, transparent) 55%,
+      color-mix(in srgb, var(--bg) 18%, transparent)
+    );
+  }
+
+  .room-opening--streams .room-opening__copy,
+  .room-opening--work .room-opening__copy {
+    z-index: 1;
+    width: min(100%, 30rem);
+    max-width: 30rem;
+  }
+
+  .room-opening--streams .room-opening__art,
+  .room-opening--work .room-opening__art {
+    position: relative;
+    z-index: 0;
+    inset: auto;
+    min-height: clamp(29rem, 34vw, 36rem);
+    overflow: hidden;
+    background: var(--story-surface-deep);
+    border: 1px solid var(--story-line);
+    border-radius: 0.8rem;
+    box-shadow: 0 1.2rem 3rem rgb(15 9 13 / 18%);
+  }
+
+  .room-opening--streams .room-opening__art > img:first-child,
+  .room-opening--work .room-opening__art > img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% center;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tablet/mobile: copy first, Nari painting second. No face/text overlap.       */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 64rem) {
+  /* Home keeps its art in the lower field while the welcome copy stays above. */
+  .haven-landing {
+    height: auto;
+    min-height: max(44rem, calc(100svh - var(--header-height)));
+  }
+
+  .haven-landing__scene {
+    background-color: var(--bg);
+    background-position: 72% 100%;
+    background-repeat: no-repeat;
+    background-size: auto 59%;
+  }
+
+  .haven-landing__veil {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 98%, transparent) 39%,
+      color-mix(in srgb, var(--bg) 91%, transparent) 48%,
+      color-mix(in srgb, var(--bg) 38%, transparent) 61%,
+      color-mix(in srgb, var(--bg) 8%, transparent) 72%,
+      color-mix(in srgb, var(--bg) 67%, transparent) 100%
+    );
+  }
+
+  .haven-landing__inner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .haven-landing__welcome {
+    width: min(100%, 23rem);
+    max-width: 23rem;
+  }
+
+  .haven-landing__inner::after {
+    min-height: clamp(18rem, 58vw, 25rem);
+  }
+
+  /* Meet Nari: top copy field, full-width painting below it. */
+  .character-intro--integrated {
+    min-height: 48rem;
+    align-items: start;
+    padding-block-start: 1.5rem;
+  }
+
+  .character-intro--integrated::before {
+    background-color: var(--bg);
+    background-position: 74% 100%;
+    background-repeat: no-repeat;
+    background-size: auto 58%;
+  }
+
+  .character-intro--integrated::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 98%, transparent) 45%,
+      color-mix(in srgb, var(--bg) 88%, transparent) 54%,
+      color-mix(in srgb, var(--bg) 20%, transparent) 66%,
+      transparent 77%
+    );
+  }
+
+  .character-intro--integrated .character-intro__copy {
+    width: min(100%, 25rem);
+    max-width: 25rem;
+    padding-block: 1rem 23rem;
+  }
+
+  /* Nails and Haven use real backdrop elements: reserve their lower half for Nari. */
+  .studio-opening,
+  .haven-heart {
+    min-height: 48rem;
+  }
+
+  .studio-opening__backdrop,
+  .haven-heart__environment {
+    background-color: var(--bg);
+    background-position: 74% 100%;
+    background-repeat: no-repeat;
+    background-size: auto 58%;
+  }
+
+  .studio-opening::after,
+  .haven-heart::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 98%, transparent) 44%,
+      color-mix(in srgb, var(--bg) 88%, transparent) 53%,
+      color-mix(in srgb, var(--bg) 18%, transparent) 66%,
+      transparent 78%
+    );
+  }
+
+  .studio-opening__inner,
+  .haven-heart__inner {
+    min-height: 48rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding-block: 2rem 23rem;
+  }
+
+  .studio-opening__inner > div,
+  .haven-heart__inner > div {
+    width: min(100%, 25rem);
+    max-width: 25rem;
+  }
+
+  /* Support and Story Time use pseudo-element paintings; same safe geometry. */
+  .story-opening--painted,
+  .support-welcome--painted {
+    min-height: 48rem;
+    align-items: flex-start;
+    padding-block: 2rem 23rem;
+  }
+
+  .story-opening--painted::before,
+  .support-welcome--painted::before {
+    background-color: var(--bg);
+    background-position: 74% 100%;
+    background-repeat: no-repeat;
+    background-size: auto 58%;
+  }
+
+  .story-opening--painted::after,
+  .support-welcome--painted::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 98%, transparent) 44%,
+      color-mix(in srgb, var(--bg) 87%, transparent) 53%,
+      color-mix(in srgb, var(--bg) 18%, transparent) 66%,
+      transparent 78%
+    );
+  }
+
+  .story-opening--painted > div:first-child,
+  .support-welcome--painted > div {
+    width: min(100%, 25rem);
+    max-width: 25rem;
+  }
+
+  /* Streams and Work: true stacked layout, image after copy. */
+  .room-opening--streams,
+  .room-opening--work {
+    display: grid;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding-block: 2.25rem 3rem;
+  }
+
+  .room-opening--streams::before,
+  .room-opening--work::before {
+    background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg-inset) 62%, var(--bg)));
+  }
+
+  .room-opening--streams .room-opening__copy,
+  .room-opening--work .room-opening__copy {
+    z-index: 1;
+    width: min(100%, 28rem);
+    max-width: 28rem;
+  }
+
+  .room-opening--streams .room-opening__art,
+  .room-opening--work .room-opening__art {
+    position: relative;
+    z-index: 0;
+    inset: auto;
+    width: 100%;
+    min-height: clamp(19rem, 72vw, 28rem);
+    overflow: hidden;
+    background: var(--story-surface-deep);
+    border: 1px solid var(--story-line);
+    border-radius: 0.7rem;
+    box-shadow: 0 0.9rem 2.4rem rgb(15 9 13 / 15%);
+  }
+
+  .room-opening--streams .room-opening__art > img:first-child,
+  .room-opening--work .room-opening__art > img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 70% 38%;
+  }
+}
+
+/* Narrow phones get a little more vertical breathing room for the painting. */
+@media (max-width: 42rem) {
+  .haven-landing {
+    min-height: max(46rem, calc(100svh - var(--header-height)));
+  }
+
+  .haven-landing__scene {
+    background-position: 72% 100%;
+    background-size: auto 56%;
+  }
+
+  .haven-landing__welcome {
+    width: min(100%, 21rem);
+    max-width: 21rem;
+  }
+
+  .character-intro--integrated,
+  .studio-opening,
+  .haven-heart,
+  .story-opening--painted,
+  .support-welcome--painted {
+    min-height: 50rem;
+  }
+
+  .character-intro--integrated::before,
+  .studio-opening__backdrop,
+  .haven-heart__environment,
+  .story-opening--painted::before,
+  .support-welcome--painted::before {
+    background-position: 72% 100%;
+    background-size: auto 55%;
+  }
+
+  .character-intro--integrated .character-intro__copy,
+  .studio-opening__inner,
+  .haven-heart__inner,
+  .story-opening--painted,
+  .support-welcome--painted {
+    padding-block-end: 24rem;
+  }
+
+  .character-intro--integrated .character-intro__copy,
+  .studio-opening__inner > div,
+  .haven-heart__inner > div,
+  .story-opening--painted > div:first-child,
+  .support-welcome--painted > div,
+  .room-opening--streams .room-opening__copy,
+  .room-opening--work .room-opening__copy {
+    width: min(100%, 22rem);
+    max-width: 22rem;
+  }
+}
