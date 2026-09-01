@@ -9,10 +9,10 @@ import { twitchUrl } from "@/data/socials";
 const menuOpen = ref(false);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
-  ["/meet-nari/", "/streams/", "/nail-studio/", "/haven/"].includes(item.href)
+  ["/meet-nari/", "/streams/", "/haven/", "/work-with-nari/"].includes(item.href)
 );
 const moreLinks = [
-  ...primaryNavigation.filter((item) => ["/resources/", "/work-with-nari/"].includes(item.href)),
+  ...primaryNavigation.filter((item) => ["/resources/", "/nail-studio/"].includes(item.href)),
   ...footerNavigation
 ];
 
@@ -86,7 +86,7 @@ onBeforeUnmount(() => {
               @click="closeMenu"
             >
               <span>{{ item.shortLabel ?? item.label }}</span>
-              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/work-with-nari/" ? "Collaborations" : item.href === "/stories/" ? "Saved moments" : "Support Nari" }}</small>
+              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/nail-studio/" ? "Color and craft" : item.href === "/stories/" ? "Saved moments" : "Support Nari" }}</small>
             </a>
           </nav>
         </details>

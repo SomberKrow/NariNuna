@@ -11,6 +11,17 @@ describe("content contracts", () => {
     expect(new Set(paths).size).toBe(paths.length);
     expect(paths).toContain("/");
     expect(paths.filter((path) => path !== "/").every((path) => path.endsWith("/"))).toBe(true);
+    expect(paths).toEqual([
+      "/",
+      "/meet-nari/",
+      "/streams/",
+      "/haven/",
+      "/work-with-nari/",
+      "/resources/",
+      "/nail-studio/",
+      "/stories/",
+      "/support/"
+    ]);
   });
 
   it("uses one secure source of truth for Nari's common public links", () => {

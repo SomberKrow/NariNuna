@@ -11,23 +11,24 @@ Visitors enter a place, not a directory. Navigation names rooms and responsibili
 
 Primary header order:
 
-1. Home
+1. Nari brand banner → Home
 2. Meet Nari
 3. Streams
-4. Nail Studio
-5. The Haven
-6. Resources
-7. Work With Nari
+4. The Haven
+5. Work With Nari
+6. More dropdown → Resources, Nail Studio, Story Time, Support
 
 Header utilities:
 
 - three-theme atmosphere switcher;
 - external “Watch live” Twitch action.
 
-Secondary footer routes:
+Secondary/footer routes:
 
 - Story Time;
 - Support.
+
+The routes remain unchanged. The compact header prioritizes identity, current content, community, and collaboration; supporting material remains available through the native More disclosure and the footer where applicable.
 
 Social destinations belong in the footer and Resources directory. The Prinny Cult is absent from global navigation, sitemap intent, and normal CTA hierarchy.
 
