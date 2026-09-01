@@ -18,7 +18,7 @@ const ways: { icon: typeof Eye; title: string; text: string; ghostie: GhostieArt
   <section class="support-kindness page-width section-pad">
     <header class="world-heading"><p class="eyebrow">The things that cost absolutely nothing</p><h2>These are the big ones.</h2></header>
     <div class="support-kindness__grid support-kindness__grid--painted">
-      <article v-for="way in ways" :key="way.title">
+      <article v-for="(way, index) in ways" :key="way.title" :class="`support-kindness__chapter support-kindness__chapter--${index + 1}`">
         <GhostieArt class="ghostie-card-art" :variant="way.ghostie" :mirror="way.mirror" />
         <div><component :is="way.icon" :size="22" aria-hidden="true" /><h3>{{ way.title }}</h3><p>{{ way.text }}</p></div>
       </article>
@@ -28,11 +28,39 @@ const ways: { icon: typeof Eye; title: string; text: string; ghostie: GhostieArt
 </template>
 
 <style scoped>
-.support-kindness__grid--painted > article { grid-template-rows: 11.5rem 1fr; min-height: 100%; }
-.ghostie-card-art { --ghostie-size: 11rem; height: 11.5rem; border-bottom: 1px solid var(--story-line); border-radius: 0; }
-.support-kindness__grid--painted > article > div { min-height: 12rem; }
+.support-kindness__grid--painted { position: relative; gap: 0.9rem; }
+.support-kindness__chapter {
+  min-height: 0;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  overflow: visible;
+  border-radius: 0.35rem;
+}
+.ghostie-card-art {
+  --ghostie-size: 8rem;
+  width: 7.7rem;
+  height: 9rem;
+  margin-inline-start: -0.5rem;
+  border: 0;
+  filter: drop-shadow(0 0.75rem 1rem rgb(15 9 14 / 16%));
+}
+.support-kindness__chapter > div { min-height: 0; padding: 1.15rem 1.15rem 1.2rem 0.8rem; border-inline-start: 1px solid var(--story-line); }
 @media (min-width: 48rem) {
-  .support-kindness__grid--painted > article { grid-template-rows: 12.5rem 1fr; }
-  .ghostie-card-art { --ghostie-size: 12rem; height: 12.5rem; }
+  .support-kindness__grid--painted {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.1rem;
+    align-items: start;
+    padding-block: 1rem;
+  }
+  .support-kindness__grid--painted > .support-kindness__chapter--1 {
+    grid-column: 1 / 8;
+    grid-row: 1 / span 2;
+    grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.28fr);
+    min-height: 23rem;
+  }
+  .support-kindness__grid--painted > .support-kindness__chapter--2 { grid-column: 8 / 13; grid-row: 1; }
+  .support-kindness__grid--painted > .support-kindness__chapter--3 { grid-column: 7 / 12; grid-row: 2; }
+  .support-kindness__chapter--1 .ghostie-card-art { --ghostie-size: 14rem; width: 13rem; height: 15rem; margin-inline-start: -1rem; }
 }
 </style>

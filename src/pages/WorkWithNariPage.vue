@@ -26,7 +26,7 @@ const fits = [
   <section class="work-fit page-width section-pad">
     <header class="world-heading"><p class="eyebrow">Where the fit feels right</p><h2>Creative work with an actual heartbeat.</h2></header>
     <div class="work-fit__grid work-fit__grid--painted">
-      <article v-for="fit in fits" :key="fit.title">
+      <article v-for="(fit, index) in fits" :key="fit.title" :class="`work-fit__chapter work-fit__chapter--${index + 1}`">
         <img :src="fit.art" width="640" height="360" alt="" loading="lazy" />
         <div><component :is="fit.icon" :size="24" aria-hidden="true" /><h3>{{ fit.title }}</h3><p>{{ fit.text }}</p></div>
       </article>
@@ -71,3 +71,38 @@ const fits = [
     </div>
   </section>
 </template>
+
+<style scoped>
+.work-fit__grid--painted { position: relative; gap: 0.9rem; }
+.work-fit__chapter { border-radius: 0.4rem; }
+.nari-links__directory > a {
+  border-inline-start: 2px solid color-mix(in srgb, var(--story-line) 78%, var(--story-accent));
+  border-radius: 0.25rem;
+}
+@media (min-width: 48rem) {
+  .work-fit__grid--painted {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.1rem;
+    align-items: start;
+  }
+  .work-fit__grid--painted > .work-fit__chapter--1 {
+    grid-column: 1 / 8;
+    grid-row: 1 / span 2;
+  }
+  .work-fit__grid--painted > .work-fit__chapter--1 > img { height: clamp(15rem, 29vw, 21rem); }
+  .work-fit__grid--painted > .work-fit__chapter--2 { grid-column: 8 / 13; grid-row: 1; }
+  .work-fit__grid--painted > .work-fit__chapter--3 { grid-column: 7 / 12; grid-row: 2; }
+  .nari-links__directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .nari-links__directory > a:nth-child(even) { transform: translateY(0.7rem); }
+  .nari-links__directory > a:nth-child(even):hover,
+  .nari-links__directory > a:nth-child(even):focus-visible { transform: translateY(calc(0.7rem - 2px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nari-links__directory > a:nth-child(even),
+  .nari-links__directory > a:nth-child(even):hover,
+  .nari-links__directory > a:nth-child(even):focus-visible { transform: none; }
+}
+</style>
