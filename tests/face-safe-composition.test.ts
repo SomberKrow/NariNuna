@@ -38,12 +38,24 @@ describe("Nari face-safe composition contract", () => {
     expect(pages.work).toContain("Nari sits at her beautifully illustrated autumn correspondence desk");
   });
 
+  it("defines one shared focal system with page-specific mobile crops", () => {
+    const styles = sourceAt("src/styles/_face-safe.scss");
+
+    expect(styles).toContain("--hero-desktop-focus-x");
+    expect(styles).toContain("--hero-mobile-focus-x");
+    expect(styles).toContain("--hero-mobile-focus-y");
+    expect(styles).toContain("--hero-mobile-art-height");
+    expect(styles).toContain("--hero-mobile-copy-width");
+    expect(styles).toContain(".room-opening--streams {");
+    expect(styles).toContain(".room-opening--work {");
+  });
+
   it("keeps desktop copy in a protected left lane and the painted focal point to the right", () => {
     const styles = sourceAt("src/styles/_face-safe.scss");
 
     expect(styles).toContain("@media (min-width: 64.01rem)");
     expect(styles).toContain(".haven-landing__welcome");
-    expect(styles).toContain("background-position: 77% center");
+    expect(styles).toContain("background-position: var(--hero-desktop-focus-x) center");
     expect(styles).toContain(".character-intro--integrated .character-intro__copy");
     expect(styles).toContain(".studio-opening__inner > div");
     expect(styles).toContain(".haven-heart__inner > div");
@@ -63,15 +75,16 @@ describe("Nari face-safe composition contract", () => {
     expect(styles).toContain("inset: auto");
   });
 
-  it("moves Nari paintings below the copy field on tablet and mobile", () => {
+  it("moves Nari paintings into compact framed plates on tablet and mobile", () => {
     const styles = sourceAt("src/styles/_face-safe.scss");
 
     expect(styles).toContain("@media (max-width: 64rem)");
-    expect(styles).toContain("background-position: 74% 100%");
-    expect(styles).toContain("background-size: auto 58%");
-    expect(styles).toContain("padding-block: 2rem 23rem");
+    expect(styles).toContain("height: var(--hero-mobile-art-height)");
+    expect(styles).toContain("background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y)");
+    expect(styles).toContain("background-size: cover");
+    expect(styles).toContain("calc(var(--hero-mobile-art-height) + 2.5rem)");
     expect(styles).toContain("grid-template-columns: 1fr");
-    expect(styles).toContain("object-position: 70% 38%");
+    expect(styles).toContain("object-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y)");
   });
 
   it("does not force Nari-specific face rules onto non-Nari hero pages", () => {

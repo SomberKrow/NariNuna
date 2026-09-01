@@ -34,10 +34,11 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 
 ### Tablet and mobile
 
-- Painted-background pages reserve the upper field for copy and the lower field for Nari's artwork.
-- The painting uses explicit bottom/right focal positioning and no-repeat sizing instead of a full-height cover crop behind text.
-- Streams and Work With Nari stack copy first and artwork second.
-- Narrow phones receive additional vertical room so the image does not have to compete with headings and calls to action.
+- Every painted page uses a shared chapter-frame system driven by `--hero-mobile-focus-x`, `--hero-mobile-focus-y`, `--hero-mobile-art-height`, and `--hero-mobile-copy-width`.
+- Copy stays in a compact upper field while the environmental painting becomes a bordered chapter plate beneath it. The plate uses `cover` inside a deliberately shallow frame instead of sizing a wide desktop painting against the entire hero height.
+- Meet Nari, Nail Studio, Haven, Support, and Story Time each define their own focal coordinates and art height so character and room context survive together.
+- Streams and Work With Nari remain physically separate copy/image compositions. Phones use a joined editorial spread; tablets return to two columns when the content has enough width.
+- Home keeps copy, Nari's scene, and the three room gateways in one opening composition. Its social dock and actions compress before the painting is sacrificed.
 
 ## Implementation
 
@@ -48,6 +49,7 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 - No new dependency
 - No route changes
 - No copy changes required to manufacture layout space
+- No JavaScript layout measurement or duplicated mobile artwork
 
 ## Regression protection
 
@@ -57,7 +59,8 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 - all Nari-containing hero pages remain covered by the contract;
 - desktop left-lane/right-focal geometry remains present;
 - Streams and Work keep their artwork physically separate from copy;
-- tablet/mobile paintings remain below the copy field;
+- tablet/mobile paintings remain below the copy field in compact framed plates;
+- every affected page exposes explicit focal variables instead of inheriting one universal crop;
 - Nari-specific rules are not applied to Resources, 404, or Prinny pages.
 
 ## Validation

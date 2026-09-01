@@ -1,17 +1,62 @@
-/*
- * Nari face-safe composition layer.
- *
- * Nari's face is a protected focal point. Pages using Nari-containing paintings
- * keep copy in a dedicated lane on desktop and move the painting into a separate
- * lower visual field on tablet/mobile. Streams and Work use a true split hero so
- * copy can never sit on top of the illustrated character.
- *
- * Loaded after _feedback.scss so this is the final composition authority.
- */
+/* Final Nari hero composition authority: shared geometry, page-specific crops. */
 
-/* -------------------------------------------------------------------------- */
-/* Desktop: keep text in the left lane and Nari's focal point to the right.    */
-/* -------------------------------------------------------------------------- */
+.haven-landing {
+  --hero-desktop-focus-x: 77%;
+  --hero-mobile-focus-x: 72%;
+  --hero-mobile-focus-y: 48%;
+  --hero-mobile-art-height: clamp(17rem, 76vw, 20rem);
+  --hero-mobile-copy-width: 21rem;
+}
+
+.character-intro--integrated {
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 72%;
+  --hero-mobile-focus-y: 48%;
+  --hero-mobile-art-height: clamp(16.5rem, 70vw, 19rem);
+  --hero-mobile-copy-width: 25rem;
+}
+
+.studio-opening {
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 72%;
+  --hero-mobile-focus-y: 50%;
+  --hero-mobile-art-height: clamp(15.5rem, 66vw, 18.5rem);
+  --hero-mobile-copy-width: 24rem;
+}
+
+.haven-heart {
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 70%;
+  --hero-mobile-focus-y: 50%;
+  --hero-mobile-art-height: clamp(15.5rem, 67vw, 18.75rem);
+  --hero-mobile-copy-width: 24rem;
+}
+
+.support-welcome--painted {
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 64%;
+  --hero-mobile-focus-y: 50%;
+  --hero-mobile-art-height: clamp(15rem, 65vw, 18.25rem);
+  --hero-mobile-copy-width: 24rem;
+}
+
+.story-opening--painted {
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 69%;
+  --hero-mobile-focus-y: 48%;
+  --hero-mobile-art-height: clamp(15.5rem, 66vw, 18.5rem);
+  --hero-mobile-copy-width: 24rem;
+}
+
+.room-opening--streams {
+  --hero-mobile-focus-x: 69%;
+  --hero-mobile-focus-y: 50%;
+}
+
+.room-opening--work {
+  --hero-mobile-focus-x: 66%;
+  --hero-mobile-focus-y: 50%;
+}
 
 @media (min-width: 64.01rem) {
   .haven-landing__inner {
@@ -24,7 +69,7 @@
   }
 
   .haven-landing__scene {
-    background-position: 77% center;
+    background-position: var(--hero-desktop-focus-x) center;
   }
 
   .haven-landing__veil {
@@ -39,41 +84,36 @@
     );
   }
 
-  .character-intro--integrated::before {
-    background-position: 78% center;
+  .character-intro--integrated::before,
+  .studio-opening__backdrop,
+  .haven-heart__environment,
+  .story-opening--painted::before,
+  .support-welcome--painted::before {
+    background-position: var(--hero-desktop-focus-x) center;
   }
 
-  .character-intro--integrated::after {
+  .character-intro--integrated::after,
+  .studio-opening::after,
+  .haven-heart::after,
+  .story-opening--painted::after,
+  .support-welcome--painted::after {
     background: linear-gradient(
       90deg,
       color-mix(in srgb, var(--bg) 99%, transparent) 0%,
       color-mix(in srgb, var(--bg) 96%, transparent) 34%,
       color-mix(in srgb, var(--bg) 82%, transparent) 43%,
-      color-mix(in srgb, var(--bg) 28%, transparent) 55%,
-      transparent 69%
-    );
-  }
-
-  .character-intro--integrated .character-intro__copy {
-    width: min(38vw, 30rem);
-    max-width: 30rem;
-  }
-
-  .studio-opening__backdrop,
-  .haven-heart__environment {
-    background-position: 78% center;
-  }
-
-  .studio-opening::after,
-  .haven-heart::after {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 96%, transparent) 33%,
-      color-mix(in srgb, var(--bg) 82%, transparent) 43%,
-      color-mix(in srgb, var(--bg) 26%, transparent) 56%,
+      color-mix(in srgb, var(--bg) 27%, transparent) 56%,
       transparent 70%
     );
+  }
+
+  .character-intro--integrated .character-intro__copy,
+  .studio-opening__inner > div,
+  .haven-heart__inner > div,
+  .story-opening--painted > div:first-child,
+  .support-welcome--painted > div {
+    width: min(38vw, 30rem);
+    max-width: 30rem;
   }
 
   .studio-opening__inner,
@@ -81,39 +121,6 @@
     grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
   }
 
-  .studio-opening__inner > div,
-  .haven-heart__inner > div {
-    width: min(38vw, 30rem);
-    max-width: 30rem;
-  }
-
-  .story-opening--painted::before,
-  .support-welcome--painted::before {
-    background-position: 78% center;
-  }
-
-  .story-opening--painted::after,
-  .support-welcome--painted::after {
-    background: linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 96%, transparent) 34%,
-      color-mix(in srgb, var(--bg) 80%, transparent) 43%,
-      color-mix(in srgb, var(--bg) 24%, transparent) 56%,
-      transparent 70%
-    );
-  }
-
-  .story-opening--painted > div:first-child,
-  .support-welcome--painted > div {
-    width: min(38vw, 30rem);
-    max-width: 30rem;
-  }
-
-  /*
-   * Streams and Work contain Nari inside an actual <img>. Stop treating that
-   * image as a background entirely: text and face get separate grid columns.
-   */
   .room-opening--streams,
   .room-opening--work {
     display: grid;
@@ -158,219 +165,136 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 72% center;
+    object-position: var(--hero-mobile-focus-x) center;
   }
 }
 
-/* -------------------------------------------------------------------------- */
-/* Tablet/mobile: copy first, Nari painting second. No face/text overlap.       */
-/* -------------------------------------------------------------------------- */
-
 @media (max-width: 64rem) {
-  /* Home keeps its art in the lower field while the welcome copy stays above. */
   .haven-landing {
     height: auto;
-    min-height: max(44rem, calc(100svh - var(--header-height)));
+    min-height: max(43rem, calc(100svh - var(--header-height)));
+    background: var(--bg);
+  }
+
+  .haven-landing__scene,
+  .haven-landing__veil {
+    top: auto;
+    right: 0.75rem;
+    bottom: 5.15rem;
+    left: 0.75rem;
+    height: var(--hero-mobile-art-height);
+    border-radius: 0.65rem;
   }
 
   .haven-landing__scene {
-    background-color: var(--bg);
-    background-position: 72% 100%;
+    background-color: var(--bg-inset);
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
     background-repeat: no-repeat;
-    background-size: auto 59%;
+    background-size: cover;
+    border: 1px solid var(--story-line);
+    box-shadow: 0 1rem 2.6rem rgb(15 9 13 / 20%);
   }
 
   .haven-landing__veil {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 98%, transparent) 39%,
-      color-mix(in srgb, var(--bg) 91%, transparent) 48%,
-      color-mix(in srgb, var(--bg) 38%, transparent) 61%,
-      color-mix(in srgb, var(--bg) 8%, transparent) 72%,
-      color-mix(in srgb, var(--bg) 67%, transparent) 100%
-    );
+    z-index: -1;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--bg) 78%, transparent), transparent 24%, transparent 70%, color-mix(in srgb, var(--bg-inset) 26%, transparent)),
+      linear-gradient(90deg, color-mix(in srgb, var(--bg) 35%, transparent), transparent 56%);
   }
 
   .haven-landing__inner {
+    min-height: 0;
     grid-template-columns: 1fr;
     align-items: start;
+    padding: 0 1rem calc(var(--hero-mobile-art-height) + 5.85rem);
   }
 
   .haven-landing__welcome {
-    width: min(100%, 23rem);
-    max-width: 23rem;
+    width: min(100%, var(--hero-mobile-copy-width));
+    max-width: var(--hero-mobile-copy-width);
+    padding: 1.2rem 0 0;
   }
 
   .haven-landing__inner::after {
-    min-height: clamp(18rem, 58vw, 25rem);
+    display: none;
   }
 
-  /* Meet Nari: top copy field, full-width painting below it. */
-  .character-intro--integrated {
-    min-height: 48rem;
-    align-items: start;
-    padding-block-start: 1.5rem;
+  .haven-landing h1 {
+    margin-block-end: 0.55rem;
+    font-size: clamp(3rem, 13vw, 4.1rem);
   }
 
-  .character-intro--integrated::before {
-    background-color: var(--bg);
-    background-position: 74% 100%;
-    background-repeat: no-repeat;
-    background-size: auto 58%;
+  .haven-landing__kicker {
+    margin-block-end: 0.55rem;
   }
 
-  .character-intro--integrated::after {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 98%, transparent) 45%,
-      color-mix(in srgb, var(--bg) 88%, transparent) 54%,
-      color-mix(in srgb, var(--bg) 20%, transparent) 66%,
-      transparent 77%
-    );
+  .haven-landing__intro {
+    max-width: 20rem;
+    margin-block-end: 0.45rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
   }
 
-  .character-intro--integrated .character-intro__copy {
-    width: min(100%, 25rem);
-    max-width: 25rem;
-    padding-block: 1rem 23rem;
+  .haven-landing__divider {
+    margin-block: 0.5rem 0.35rem;
   }
 
-  /* Nails and Haven use real backdrop elements: reserve their lower half for Nari. */
-  .studio-opening,
-  .haven-heart {
-    min-height: 48rem;
-  }
-
-  .studio-opening__backdrop,
-  .haven-heart__environment {
-    background-color: var(--bg);
-    background-position: 74% 100%;
-    background-repeat: no-repeat;
-    background-size: auto 58%;
-  }
-
-  .studio-opening::after,
-  .haven-heart::after {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 98%, transparent) 44%,
-      color-mix(in srgb, var(--bg) 88%, transparent) 53%,
-      color-mix(in srgb, var(--bg) 18%, transparent) 66%,
-      transparent 78%
-    );
-  }
-
-  .studio-opening__inner,
-  .haven-heart__inner {
-    min-height: 48rem;
-    grid-template-columns: 1fr;
-    align-items: start;
-    padding-block: 2rem 23rem;
-  }
-
-  .studio-opening__inner > div,
-  .haven-heart__inner > div {
-    width: min(100%, 25rem);
-    max-width: 25rem;
-  }
-
-  /* Support and Story Time use pseudo-element paintings; same safe geometry. */
-  .story-opening--painted,
-  .support-welcome--painted {
-    min-height: 48rem;
-    align-items: flex-start;
-    padding-block: 2rem 23rem;
-  }
-
-  .story-opening--painted::before,
-  .support-welcome--painted::before {
-    background-color: var(--bg);
-    background-position: 74% 100%;
-    background-repeat: no-repeat;
-    background-size: auto 58%;
-  }
-
-  .story-opening--painted::after,
-  .support-welcome--painted::after {
-    background: linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 98%, transparent) 44%,
-      color-mix(in srgb, var(--bg) 87%, transparent) 53%,
-      color-mix(in srgb, var(--bg) 18%, transparent) 66%,
-      transparent 78%
-    );
-  }
-
-  .story-opening--painted > div:first-child,
-  .support-welcome--painted > div {
-    width: min(100%, 25rem);
-    max-width: 25rem;
-  }
-
-  /* Streams and Work: true stacked layout, image after copy. */
-  .room-opening--streams,
-  .room-opening--work {
+  .haven-landing .social-dock {
     display: grid;
-    min-height: auto;
+    width: min(100%, 20rem);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.15rem;
+    margin-block: 0.35rem 0.55rem;
+  }
+
+  .haven-landing .social-dock > a {
+    width: auto;
+    min-width: 0;
+    font-size: 0.48rem;
+  }
+
+  .haven-landing__actions {
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+
+  .haven-landing__actions > .button {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .haven-landing__meet {
+    min-height: 2.2rem;
+    justify-content: flex-start;
+  }
+
+  .haven-landing__rooms {
+    bottom: 0.65rem;
+    width: calc(100% - 1.5rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .haven-landing__rooms > a {
+    min-height: 3.75rem;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    align-items: start;
-    padding-block: 2.25rem 3rem;
+    place-items: center;
+    gap: 0.1rem;
+    padding: 0.45rem 0.25rem;
+    text-align: center;
   }
 
-  .room-opening--streams::before,
-  .room-opening--work::before {
-    background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg-inset) 62%, var(--bg)));
+  .haven-landing__rooms > a > img,
+  .haven-landing__room-number,
+  .haven-landing__room-copy small,
+  .haven-landing__rooms > a > svg {
+    display: none;
   }
 
-  .room-opening--streams .room-opening__copy,
-  .room-opening--work .room-opening__copy {
-    z-index: 1;
-    width: min(100%, 28rem);
-    max-width: 28rem;
-  }
-
-  .room-opening--streams .room-opening__art,
-  .room-opening--work .room-opening__art {
-    position: relative;
-    z-index: 0;
-    inset: auto;
-    width: 100%;
-    min-height: clamp(19rem, 72vw, 28rem);
-    overflow: hidden;
-    background: var(--story-surface-deep);
-    border: 1px solid var(--story-line);
-    border-radius: 0.7rem;
-    box-shadow: 0 0.9rem 2.4rem rgb(15 9 13 / 15%);
-  }
-
-  .room-opening--streams .room-opening__art > img:first-child,
-  .room-opening--work .room-opening__art > img:first-child {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 70% 38%;
-  }
-}
-
-/* Narrow phones get a little more vertical breathing room for the painting. */
-@media (max-width: 42rem) {
-  .haven-landing {
-    min-height: max(46rem, calc(100svh - var(--header-height)));
-  }
-
-  .haven-landing__scene {
-    background-position: 72% 100%;
-    background-size: auto 56%;
-  }
-
-  .haven-landing__welcome {
-    width: min(100%, 21rem);
-    max-width: 21rem;
+  .haven-landing__room-copy strong {
+    font-size: 0.68rem;
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .character-intro--integrated,
@@ -378,7 +302,12 @@
   .haven-heart,
   .story-opening--painted,
   .support-welcome--painted {
-    min-height: 50rem;
+    min-height: 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 82% 100%, color-mix(in srgb, var(--lavender) 9%, transparent), transparent 36%),
+      var(--bg);
+    border-block-end: 1px solid var(--story-line);
   }
 
   .character-intro--integrated::before,
@@ -386,26 +315,179 @@
   .haven-heart__environment,
   .story-opening--painted::before,
   .support-welcome--painted::before {
-    background-position: 72% 100%;
-    background-size: auto 55%;
+    top: auto;
+    right: var(--page-gutter);
+    bottom: 1.25rem;
+    left: var(--page-gutter);
+    height: var(--hero-mobile-art-height);
+    overflow: hidden;
+    background-color: var(--bg-inset);
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid var(--story-line);
+    border-radius: 0.7rem;
+    box-shadow: 0 0.9rem 2.4rem rgb(15 9 13 / 17%);
   }
 
-  .character-intro--integrated .character-intro__copy,
-  .studio-opening__inner,
-  .haven-heart__inner,
-  .story-opening--painted,
-  .support-welcome--painted {
-    padding-block-end: 24rem;
+  .character-intro--integrated::after,
+  .studio-opening::after,
+  .haven-heart::after,
+  .story-opening--painted::after,
+  .support-welcome--painted::after {
+    top: auto;
+    right: var(--page-gutter);
+    bottom: 1.25rem;
+    left: var(--page-gutter);
+    height: var(--hero-mobile-art-height);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 74%, transparent) 0%,
+      transparent 22%,
+      transparent 76%,
+      color-mix(in srgb, var(--bg-inset) 22%, transparent) 100%
+    );
+    border-radius: 0.7rem;
+    pointer-events: none;
+  }
+
+  .character-intro--integrated {
+    align-items: start;
+    padding: 0 var(--page-gutter);
   }
 
   .character-intro--integrated .character-intro__copy,
   .studio-opening__inner > div,
   .haven-heart__inner > div,
   .story-opening--painted > div:first-child,
-  .support-welcome--painted > div,
+  .support-welcome--painted > div {
+    width: min(100%, var(--hero-mobile-copy-width));
+    max-width: var(--hero-mobile-copy-width);
+  }
+
+  .character-intro--integrated .character-intro__copy {
+    padding-block: 1.75rem calc(var(--hero-mobile-art-height) + 2.5rem);
+  }
+
+  .studio-opening__inner,
+  .haven-heart__inner {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding-block: 1.75rem calc(var(--hero-mobile-art-height) + 2.5rem);
+  }
+
+  .story-opening--painted,
+  .support-welcome--painted {
+    align-items: flex-start;
+    padding: 1.75rem var(--page-gutter) calc(var(--hero-mobile-art-height) + 2.5rem);
+  }
+
+  .room-opening--streams,
+  .room-opening--work {
+    display: grid;
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: start;
+    padding: 1.75rem var(--page-gutter) 2.5rem;
+    background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg-inset) 62%, var(--bg)));
+  }
+
+  .room-opening--streams::before,
+  .room-opening--work::before {
+    display: none;
+  }
+
   .room-opening--streams .room-opening__copy,
   .room-opening--work .room-opening__copy {
-    width: min(100%, 22rem);
-    max-width: 22rem;
+    z-index: 2;
+    width: min(100%, 28rem);
+    max-width: 28rem;
+    padding: 1rem 1rem 1.45rem;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    border: 1px solid var(--story-line);
+    border-radius: 0.7rem 0.7rem 0.25rem 0.25rem;
+    box-shadow: 0 0.65rem 1.8rem rgb(15 9 13 / 12%);
+  }
+
+  .room-opening--streams .room-opening__art,
+  .room-opening--work .room-opening__art {
+    position: relative;
+    z-index: 1;
+    inset: auto;
+    width: 100%;
+    height: clamp(18rem, 70vw, 27rem);
+    min-height: 0;
+    margin-block-start: -0.45rem;
+    overflow: hidden;
+    background: var(--story-surface-deep);
+    border: 1px solid var(--story-line);
+    border-radius: 0.25rem 0.25rem 0.7rem 0.7rem;
+    box-shadow: 0 0.9rem 2.4rem rgb(15 9 13 / 16%);
+  }
+
+  .room-opening--streams .room-opening__art > img:first-child,
+  .room-opening--work .room-opening__art > img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 64rem) {
+  .room-opening--streams,
+  .room-opening--work {
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
+    align-items: stretch;
+    gap: 1.1rem;
+  }
+
+  .room-opening--streams .room-opening__copy,
+  .room-opening--work .room-opening__copy {
+    align-self: center;
+    padding: 1.25rem;
+    border-radius: 0.7rem;
+  }
+
+  .room-opening--streams .room-opening__art,
+  .room-opening--work .room-opening__art {
+    height: 25rem;
+    margin: 0;
+    border-radius: 0.7rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .haven-landing {
+    --hero-mobile-art-height: 16.25rem;
+    min-height: 43.5rem;
+  }
+
+  .haven-landing__welcome {
+    padding-block-start: 0.9rem;
+  }
+
+  .haven-landing__kicker {
+    font-size: 0.52rem;
+  }
+
+  .haven-landing__subtitle {
+    font-size: 0.92rem;
+  }
+
+  .haven-landing__intro {
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+
+  .haven-landing .social-dock > a {
+    font-size: 0.43rem;
+  }
+
+  .room-opening--streams .room-opening__copy,
+  .room-opening--work .room-opening__copy {
+    padding-inline: 0.8rem;
   }
 }
