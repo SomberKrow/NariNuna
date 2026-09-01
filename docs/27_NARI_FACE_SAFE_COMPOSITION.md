@@ -30,7 +30,7 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 - Home and painted-background chapter pages keep text in a capped left-side lane.
 - Nari's painting focal point is positioned toward the right side of the viewport.
 - Veils become opaque through the copy lane and fall away before the protected Nari focal area.
-- Streams and Work With Nari no longer treat Nari's illustration as a background behind copy. Their hero is a real two-column layout with copy and artwork in physically separate columns.
+- Streams and Work With Nari use the same full-width painted-banner language as the other desktop chapters. A strong left-side veil protects the capped copy lane while each painting's focal point keeps Nari unobscured on the right.
 
 ### Tablet and mobile
 
@@ -58,7 +58,7 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 - the face-safe layer is loaded last;
 - all Nari-containing hero pages remain covered by the contract;
 - desktop left-lane/right-focal geometry remains present;
-- Streams and Work keep their artwork physically separate from copy;
+- Streams and Work remain full-bleed painted banners on desktop while keeping their copy inside a protected left lane;
 - tablet/mobile paintings remain below the copy field in compact framed plates;
 - every affected page exposes explicit focal variables instead of inheriting one universal crop;
 - Nari-specific rules are not applied to Resources, 404, or Prinny pages.

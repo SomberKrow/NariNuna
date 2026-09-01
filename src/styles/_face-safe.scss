@@ -49,11 +49,13 @@
 }
 
 .room-opening--streams {
+  --hero-desktop-focus-x: 65%;
   --hero-mobile-focus-x: 69%;
   --hero-mobile-focus-y: 50%;
 }
 
 .room-opening--work {
+  --hero-desktop-focus-x: 65%;
   --hero-mobile-focus-x: 66%;
   --hero-mobile-focus-y: 50%;
 }
@@ -123,49 +125,48 @@
 
   .room-opening--streams,
   .room-opening--work {
-    display: grid;
-    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(2rem, 4vw, 5rem);
-    align-items: center;
+    display: flex;
   }
 
   .room-opening--streams::before,
   .room-opening--work::before {
     background: linear-gradient(
       90deg,
-      color-mix(in srgb, var(--bg) 99%, transparent),
-      color-mix(in srgb, var(--bg) 92%, transparent) 37%,
-      color-mix(in srgb, var(--bg) 55%, transparent) 55%,
-      color-mix(in srgb, var(--bg) 18%, transparent)
+      color-mix(in srgb, var(--bg) 99%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 97%, transparent) 32%,
+      color-mix(in srgb, var(--bg) 86%, transparent) 41%,
+      color-mix(in srgb, var(--bg) 32%, transparent) 54%,
+      transparent 69%
     );
   }
 
   .room-opening--streams .room-opening__copy,
   .room-opening--work .room-opening__copy {
     z-index: 1;
-    width: min(100%, 30rem);
+    width: min(38vw, 30rem);
     max-width: 30rem;
   }
 
   .room-opening--streams .room-opening__art,
   .room-opening--work .room-opening__art {
-    position: relative;
-    z-index: 0;
-    inset: auto;
-    min-height: clamp(29rem, 34vw, 36rem);
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    min-height: 0;
     overflow: hidden;
-    background: var(--story-surface-deep);
-    border: 1px solid var(--story-line);
-    border-radius: 0.8rem;
-    box-shadow: 0 1.2rem 3rem rgb(15 9 13 / 18%);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .room-opening--streams .room-opening__art > img:first-child,
   .room-opening--work .room-opening__art > img:first-child {
     width: 100%;
     height: 100%;
+    aspect-ratio: auto;
+    border-radius: 0;
     object-fit: cover;
-    object-position: var(--hero-mobile-focus-x) center;
+    object-position: var(--hero-desktop-focus-x) center;
   }
 }
 

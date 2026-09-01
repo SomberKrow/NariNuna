@@ -64,15 +64,16 @@ describe("Nari face-safe composition contract", () => {
     expect(styles).toContain("width: min(38vw, 30rem)");
   });
 
-  it("physically separates Streams and Work copy from Nari's image", () => {
+  it("keeps Streams and Work full-bleed on desktop with a protected copy lane", () => {
     const styles = sourceAt("src/styles/_face-safe.scss");
 
     expect(styles).toContain(".room-opening--streams,");
     expect(styles).toContain(".room-opening--work {");
-    expect(styles).toContain("grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr)");
+    expect(styles).toContain("width: min(38vw, 30rem)");
     expect(styles).toContain(".room-opening--streams .room-opening__art,");
-    expect(styles).toContain("position: relative");
-    expect(styles).toContain("inset: auto");
+    expect(styles).toContain("position: absolute");
+    expect(styles).toContain("z-index: -2");
+    expect(styles).toContain("object-position: var(--hero-desktop-focus-x) center");
   });
 
   it("moves Nari paintings into compact framed plates on tablet and mobile", () => {
