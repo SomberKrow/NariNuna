@@ -600,3 +600,231 @@ body[data-route="support"] .support-boundary::before {
     transform: none;
   }
 }
+
+/*
+ * Phase C: one recognizable presentation device per ordinary chapter.
+ * The devices reuse the Phase B room materials and existing artwork; none of
+ * them carries meaning or changes the accessible reading order.
+ */
+
+/* Meet Nari — three offset journal fragments held by quiet paper clips. */
+body[data-route="meet-nari"] .identity-rooms__fragment {
+  position: relative;
+  box-shadow: 0 0.8rem 1.8rem color-mix(in srgb, var(--bg-inset) 38%, transparent);
+}
+
+body[data-route="meet-nari"] .identity-rooms__fragment::before {
+  position: absolute;
+  z-index: 2;
+  top: -0.45rem;
+  left: clamp(4.6rem, 18%, 7rem);
+  width: 0.52rem;
+  height: 2.2rem;
+  border: 1px solid color-mix(in srgb, var(--story-muted) 62%, transparent);
+  border-radius: 0.45rem 0.45rem 0.2rem 0.2rem;
+  content: "";
+  opacity: 0.7;
+  pointer-events: none;
+  transform: rotate(7deg);
+}
+
+body[data-route="meet-nari"] .identity-rooms__fragment:nth-child(2)::before {
+  right: 1.4rem;
+  left: auto;
+  transform: rotate(-9deg);
+}
+
+body[data-route="meet-nari"] .identity-rooms__fragment:nth-child(3)::before {
+  left: 44%;
+  transform: rotate(4deg);
+}
+
+/* Streams — a single broadcast rail connects the live desk and clip archive. */
+body[data-route="streams"] .stream-platform-grid,
+body[data-route="streams"] .moment-shelf--final .media-grid {
+  position: relative;
+  padding-block-start: 1.35rem;
+  border-block-start: 2px solid color-mix(in srgb, var(--story-accent) 48%, var(--story-line));
+}
+
+body[data-route="streams"] .stream-platform-grid::before,
+body[data-route="streams"] .moment-shelf--final .media-grid::before {
+  position: absolute;
+  top: -0.34rem;
+  left: clamp(1rem, 5vw, 3rem);
+  width: clamp(3.5rem, 12vw, 8rem);
+  height: 0.55rem;
+  background: var(--story-accent);
+  content: "";
+  opacity: 0.52;
+  pointer-events: none;
+}
+
+/* Nail Studio — one measured workbench with ruler ticks and polish swatches. */
+body[data-route="nail-studio"] .studio-notes__grid--painted {
+  padding-block-start: 2rem;
+  border-block-start: 0.32rem solid color-mix(in srgb, var(--story-line) 75%, var(--ember));
+  background-image: repeating-linear-gradient(90deg, var(--story-line) 0 1px, transparent 1px 1rem);
+  background-repeat: repeat-x;
+  background-size: auto 0.48rem;
+}
+
+body[data-route="nail-studio"] .studio-notes__grid--painted::after {
+  position: absolute;
+  top: 0.72rem;
+  right: clamp(0.75rem, 5vw, 3rem);
+  width: 3.85rem;
+  height: 0.8rem;
+  background:
+    radial-gradient(circle at 0.4rem 50%, var(--rose) 0 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 1.9rem 50%, var(--lavender) 0 0.28rem, transparent 0.3rem),
+    radial-gradient(circle at 3.4rem 50%, var(--story-accent) 0 0.28rem, transparent 0.3rem);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+/* Haven — a floor path becomes quieter and deeper on the way to the door. */
+body[data-route="haven"] .haven-values__grid--storybook {
+  padding-block-end: clamp(2.5rem, 7vw, 5rem);
+}
+
+body[data-route="haven"] .haven-values__grid--storybook::after {
+  position: absolute;
+  z-index: -1;
+  right: 8%;
+  bottom: 0.55rem;
+  left: 8%;
+  height: clamp(1.8rem, 5vw, 3rem);
+  background:
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--story-accent) 18%, transparent) 20% 80%, transparent),
+    repeating-linear-gradient(90deg, transparent 0 2.8rem, color-mix(in srgb, var(--story-line) 55%, transparent) 2.8rem calc(2.8rem + 1px));
+  border-block: 1px solid color-mix(in srgb, var(--story-line) 58%, transparent);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+  transform: perspective(8rem) rotateX(42deg);
+  transform-origin: bottom;
+}
+
+body[data-route="haven"] .haven-entry {
+  margin-block-start: clamp(-1rem, -2vw, -2rem);
+}
+
+/* Resources — every collection sits on one continuous shelf system. */
+body[data-route="resources"] .resource-shelves__grid--painted,
+body[data-route="resources"] .resource-demo__grid {
+  padding-inline: clamp(0.45rem, 2vw, 1.1rem);
+  border-inline: 1px solid color-mix(in srgb, var(--story-line) 72%, transparent);
+  box-shadow: inset 0 -0.35rem 0 color-mix(in srgb, var(--ember) 46%, var(--story-line));
+}
+
+body[data-route="resources"] .resource-shelves__chapter,
+body[data-route="resources"] .resource-demo__item {
+  margin-block-end: 0.35rem;
+  border-block-end: 0;
+  border-radius: 0.2rem 0.2rem 0 0;
+}
+
+/* Work With Nari — a correspondence ledger with one numbered index. */
+body[data-route="work-with-nari"] .nari-links__directory {
+  padding-inline-start: clamp(0.75rem, 2vw, 1.35rem);
+  border-inline-start: 1px solid color-mix(in srgb, var(--rose) 52%, var(--story-line));
+}
+
+body[data-route="work-with-nari"] .nari-links__directory > a {
+  background-image: repeating-linear-gradient(180deg, transparent 0 1.45rem, color-mix(in srgb, var(--story-line) 24%, transparent) 1.45rem calc(1.45rem + 1px));
+}
+
+body[data-route="work-with-nari"] .work-process ol {
+  counter-reset: correspondence-step;
+}
+
+body[data-route="work-with-nari"] .work-process li {
+  counter-increment: correspondence-step;
+}
+
+/* Story Time — one numbered album/contact sheet, led by the first memory. */
+body[data-route="stories"] .moment-shelf--stories .media-grid {
+  counter-reset: archive-item;
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  border-inline-start: clamp(0.55rem, 1.4vw, 0.9rem) solid color-mix(in srgb, var(--plum) 48%, var(--story-line));
+}
+
+body[data-route="stories"] .moment-shelf--stories .media-card {
+  position: relative;
+  counter-increment: archive-item;
+}
+
+body[data-route="stories"] .moment-shelf--stories .media-card::before {
+  position: absolute;
+  z-index: 3;
+  top: 0.55rem;
+  right: 0.55rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  color: var(--story-copy);
+  background: color-mix(in srgb, var(--story-surface-deep) 88%, transparent);
+  border: 1px solid var(--story-line);
+  font-family: var(--font-detail);
+  font-size: 0.58rem;
+  font-weight: 850;
+  content: counter(archive-item, decimal-leading-zero);
+  pointer-events: none;
+}
+
+/* Support — a sparse gratitude wall with pinned notes and generous air. */
+body[data-route="support"] .support-kindness {
+  max-width: min(68rem, calc(100% - (var(--page-gutter) * 2)));
+}
+
+body[data-route="support"] .support-kindness__chapter {
+  position: relative;
+}
+
+body[data-route="support"] .support-kindness__chapter::before {
+  position: absolute;
+  z-index: 2;
+  top: 0.6rem;
+  right: 0.75rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  background: color-mix(in srgb, var(--rose) 62%, var(--story-accent));
+  border: 1px solid color-mix(in srgb, var(--story-copy) 35%, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0.18rem 0.28rem color-mix(in srgb, var(--bg-inset) 55%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+body[data-route="support"] .support-boundary {
+  max-width: min(58rem, calc(100% - (var(--page-gutter) * 2)));
+  margin-block-start: clamp(3rem, 9vw, 7rem);
+}
+
+@media (max-width: 42rem) {
+  body[data-route="meet-nari"] .identity-rooms__fragment::before {
+    left: 4.85rem;
+  }
+
+  body[data-route="nail-studio"] .studio-notes__grid--painted {
+    padding-block-start: 1.55rem;
+  }
+
+  body[data-route="haven"] .haven-values__grid--storybook::after {
+    right: 3%;
+    left: 3%;
+  }
+
+  body[data-route="resources"] .resource-shelves__grid--painted,
+  body[data-route="resources"] .resource-demo__grid {
+    padding-inline: 0.35rem;
+  }
+
+  body[data-route="stories"] .moment-shelf--stories .media-grid {
+    padding: 0.6rem;
+    border-inline-start-width: 0.42rem;
+  }
+}

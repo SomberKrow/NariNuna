@@ -147,6 +147,10 @@ Three `i.ytimg.com` images load without player code and use no-referrer. They st
 | `style-src 'unsafe-inline'` | Review; do not expand to script |
 | Focus containment/return | Decide from final manual testing |
 
+## 2026-09-02 Phase C client-review implementation
+
+The ordinary chapters now expose one route-specific presentation device on top of the shared Phase B material system: journal fragments, broadcast rail, measured workbench, doorway path, shelves, correspondence ledger, archive album, and quiet gratitude wall. Home keeps its established room gateways. These devices are CSS-led and decorative; they add no content, assets, dependencies, routes, or interaction requirements. See `docs/30_PAGE_SIGNATURE_DEVICES.md`. Current validation evidence belongs to the Phase C commit and must not be inferred from the historical snapshot below.
+
 ## Recorded commands
 
 The repository defines:
