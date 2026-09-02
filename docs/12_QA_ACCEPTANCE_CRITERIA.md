@@ -16,6 +16,10 @@
 
 Intent, code review, or a previous commit's result is not a current `PASS`.
 
+## Current Phase E client-review evidence — 2026-09-02
+
+The Phase E working tree passed `npm ci` and the full `npm run check` pipeline after Phases A–D. The final Phase E commit adds only the shared-header More/Escape stabilization, its contract assertion, and synchronized evidence documentation; the full gate is rerun on that commit before publication. See `docs/32_PHASE_E_VALIDATION.md` for exact observed counts, route/asset coverage, pending manual viewport and assistive-technology checks, blockers, and rollback boundaries. This is client-review evidence, not production release clearance.
+
 ## Historical snapshot
 
 The prior implementation handoff recorded these observations on 2026-08-13 for commit `b65e1c5a6da5a35f4f4f5969465c13f32f277912`:

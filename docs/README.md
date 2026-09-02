@@ -100,6 +100,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |
 | `30_PAGE_SIGNATURE_DEVICES` | Phase C one-device-per-route map and decorative-content boundary | A route's recognizable presentation device changes |
 | `31_DE_CARDIFICATION_AND_RHYTHM` | Phase D noninteractive chrome and route-pacing contract | Container boundaries, radius discipline, or chapter rhythm changes |
+| `32_PHASE_E_VALIDATION` | Phase E automated evidence, manual matrix status, limitations, and rollback | Final validation is rerun or preview/release evidence changes |
 
 ## Authority and conflict resolution
 

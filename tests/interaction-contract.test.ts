@@ -118,4 +118,14 @@ describe("client-feedback interaction contracts", () => {
     expect(feedback).toContain("@media (prefers-reduced-motion: reduce)");
     expect(feedback).toContain("transform: none");
   });
+
+  it("closes both navigation layers with Escape and link selection", () => {
+    const header = sourceAt("src/components/layout/SiteHeader.vue");
+
+    expect(header).toContain('const moreMenu = ref<HTMLDetailsElement | null>(null)');
+    expect(header).toContain("if (moreMenu.value) moreMenu.value.open = false");
+    expect(header).toContain('if (event.key === "Escape") closeMenu()');
+    expect(header).toContain('<details ref="moreMenu" class="site-header__more">');
+    expect(header.match(/@click="closeMenu"/g)).toHaveLength(2);
+  });
 });

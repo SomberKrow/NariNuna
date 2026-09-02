@@ -6,6 +6,7 @@ import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { twitchUrl } from "@/data/socials";
 
 const menuOpen = ref(false);
+const moreMenu = ref<HTMLDetailsElement | null>(null);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
   ["/meet-nari/", "/streams/", "/haven/", "/work-with-nari/"].includes(item.href)
@@ -21,6 +22,7 @@ function isCurrent(href: string): boolean {
 
 function closeMenu(): void {
   menuOpen.value = false;
+  if (moreMenu.value) moreMenu.value.open = false;
 }
 
 function handleEscape(event: KeyboardEvent): void {
@@ -74,7 +76,7 @@ onBeforeUnmount(() => {
           </a>
         </nav>
 
-        <details class="site-header__more">
+        <details ref="moreMenu" class="site-header__more">
           <summary>More <ChevronDown :size="15" aria-hidden="true" /></summary>
           <nav aria-label="Additional Haven rooms">
             <a

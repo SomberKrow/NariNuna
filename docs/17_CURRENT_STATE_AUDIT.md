@@ -155,6 +155,10 @@ The ordinary chapters now expose one route-specific presentation device on top o
 
 Noninteractive chapter layouts now use open editorial structures instead of repeating full card chrome. Route pacing deliberately ranges from compact Streams/Resources through reflective Meet Nari/Support, while links and controls retain visible boundaries and focus behavior. See `docs/31_DE_CARDIFICATION_AND_RHYTHM.md`. No content, route, asset, dependency, or interaction was added; validation evidence belongs to the Phase D commit.
 
+## 2026-09-02 Phase E validation and stabilization
+
+The clean-install/full repository gate passes after the environmental roadmap, and the shared header now explicitly closes both the mobile panel and native More disclosure through its existing Escape/link-selection path. Automated validation covers all eleven output documents and essential local assets; the deployed human viewport, zoom, screen-reader, and contrast matrix remains pending and is not represented as passed. See `docs/32_PHASE_E_VALIDATION.md`.
+
 ## Recorded commands
 
 The repository defines:
