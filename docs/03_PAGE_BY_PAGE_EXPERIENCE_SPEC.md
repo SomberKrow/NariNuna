@@ -17,13 +17,17 @@ The approved content and route responsibilities remain intact. Home's compact ro
 
 The same page-specific composition standard now extends to the remaining ordinary pages. Nail Studio uses a workbench sequence around its honest portfolio hold; Haven reads as a staggered community charter before the unchanged doorway; Resources separates its dominant category shelf from a dense varied demonstration catalog; Work presents collaboration fit and public links as an editorial ledger; Story Time treats one existing moment as the lead archive piece; and Support turns its three free-support actions into an illustrated generosity sequence. The hidden room, 404, page copy, routes, data, and external destinations remain unchanged.
 
+## 2026-09-02 Nari-only review demo
+
+Phase A removes the public atmosphere selector and fixes every route to Nari for client review. This is a reversible implementation proposal, not recorded Nari/Panda approval or a rewrite of the locked historical direction. See [`28_NARI_ONLY_ATMOSPHERE_DEMO.md`](28_NARI_ONLY_ATMOSPHERE_DEMO.md).
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:
 
 - first-focusable skip link;
 - shared sticky header and primary navigation;
-- persistent Nari/Dark/Light theme control;
+- fixed Nari atmosphere metadata in the Phase A client-review demo;
 - one `<main id="main-content">` region;
 - shared footer on every ordinary page except the intentionally single-viewport Home arrival;
 - low-priority Ghostie summoner;
@@ -49,7 +53,7 @@ Every page review asks:
 
 ### Required sequence
 
-1. Theme-specific Haven environment and actual supplied Nari character model.
+1. Nari Haven environment and actual supplied Nari character model.
 2. Concise big-sister identity, verified social dock, and primary Twitch action.
 3. Secondary Meet Nari action.
 4. Three compact room gateways: Streams, Nail Studio, The Haven.

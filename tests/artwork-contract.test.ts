@@ -86,11 +86,15 @@ describe("approved-source artwork contracts", () => {
     }
   });
 
-  it("keeps the three physical Haven atmospheres connected to real room artwork", () => {
+  it("keeps the Nari atmosphere active while preserving the existing room artwork family", () => {
     const worldStyles = readFileSync(resolve(process.cwd(), "src/styles/_world.scss"), "utf8");
+
     expect(worldStyles).toContain(environmentArtwork.homeSunset);
-    expect(worldStyles).toContain(environmentArtwork.homeNight);
-    expect(worldStyles).toContain(environmentArtwork.homeDaylight);
+    expect(worldStyles).not.toContain(environmentArtwork.homeNight);
+    expect(worldStyles).not.toContain(environmentArtwork.homeDaylight);
+    expect(publicAssetExists(environmentArtwork.homeSunset)).toBe(true);
+    expect(publicAssetExists(environmentArtwork.homeNight)).toBe(true);
+    expect(publicAssetExists(environmentArtwork.homeDaylight)).toBe(true);
   });
 
   it("integrates Nari into distinct Home and Meet Nari hero paintings without separate model overlays", () => {

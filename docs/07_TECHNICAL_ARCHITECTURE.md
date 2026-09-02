@@ -14,7 +14,6 @@ There is no backend, account, database, CMS, form handler, analytics service, ru
 ```mermaid
 flowchart TD
   B["Browser requests a real route"] --> H["Route-specific HTML document"]
-  H --> T["theme-boot.js sets pre-paint theme"]
   H --> M["src/main.ts"]
   M --> R["Vue Router resolves location"]
   R --> P["Lazy page module"]
@@ -65,7 +64,7 @@ The following sources must stay synchronized:
 | Primary/footer visibility | `src/data/navigation.ts` |
 | Output existence | `scripts/validate-build.mjs` |
 | Route invariants | `tests/content-contract.test.ts` |
-| Title/description/robots/theme boot | Each HTML entry document |
+| Title/description/robots/theme metadata | Each HTML entry document |
 | Product responsibility | Docs `00`, `02`, and `03` |
 
 A route is incomplete if only one registry knows it exists.
@@ -81,7 +80,6 @@ A route is incomplete if only one registry knows it exists.
 ├── public/
 │   ├── _headers                       # Host-compatible security/cache rules
 │   ├── media/generated/               # Served optimized project imagery
-│   ├── theme-boot.js                  # Pre-Vue theme selection
 │   ├── icons + manifest
 │   └── robots.txt
 ├── scripts/validate-build.mjs         # Eleven-document output contract
@@ -92,8 +90,8 @@ A route is incomplete if only one registry knows it exists.
 │   ├── components/
 │   │   ├── haven/                     # Progressive community/secret threshold
 │   │   ├── layout/                    # Shared shell/header/footer
-│   │   └── ui/                        # Theme/media/heading/Ghostie primitives
-│   ├── composables/                   # Theme and motion preference state
+│   │   └── ui/                        # Media/heading/Ghostie primitives
+│   ├── composables/                   # Motion preference state
 │   ├── data/                          # Reviewed local content records
 │   ├── pages/                         # One lazy module per route view
 │   ├── router/                        # URL-to-page mapping and route metadata
@@ -108,19 +106,9 @@ A route is incomplete if only one registry knows it exists.
 
 ## Bootstrap lifecycle
 
-### Pre-paint theme
+### Nari atmosphere metadata
 
-Each HTML document loads `/theme-boot.js` before the module entry. The script:
-
-- accepts only `nari`, `dark`, or `light`;
-- reads `localStorage` defensively;
-- falls back to the document's `data-theme`;
-- sets `<html data-theme>`;
-- updates the route's `theme-color` metadata.
-
-The corresponding Vue composable uses the same allowlist, color map, and storage key `nari-haven-theme-v1`.
-
-**Invariant:** Change theme names, storage key, or browser theme colors in both `public/theme-boot.js` and `src/composables/useTheme.ts`. The boot script is external because the CSP blocks inline script.
+Phase A is a proposed client-review demo. Every HTML document declares `data-theme="nari"` and the Nari `theme-color` directly, so first paint is deterministic without a preference boot script. The application does not read or write the historical `nari-haven-theme-v1` local-storage key; stale Dark/Light preferences therefore cannot affect rendering. Semantic CSS custom properties remain the styling boundary. See `28_NARI_ONLY_ATMOSPHERE_DEMO.md` for proposal status and rollback.
 
 ### Vue bootstrap
 
@@ -164,14 +152,14 @@ Do not add a global store until state truly crosses unrelated component trees an
 
 ### Styles
 
-Semantic theme values are CSS custom properties so the pre-Vue paint is correct. SCSS compiles structural layers. Shared primitives live in `_components.scss`; page compositions live in `_pages.scss`; preference and breakpoint overrides live in `_responsive.scss`.
+Semantic visual values remain CSS custom properties so atmosphere and component code stay decoupled. SCSS compiles structural layers. Shared primitives live in `_components.scss`; page compositions live in `_pages.scss`; preference and breakpoint overrides live in `_responsive.scss`.
 
 ## State ownership
 
 | State | Owner | Persistence | Trust/privacy |
 |---|---|---|---|
 | Current route | Browser URL + Vue Router | History/document navigation | Public |
-| Theme | `useTheme` + `<html data-theme>` | Local storage key | Local preference only |
+| Atmosphere | Route HTML + Nari semantic tokens | None | Public presentation only |
 | Reduced motion | `matchMedia` via `useReducedMotion` | OS/browser preference | No storage |
 | Mobile menu | `SiteHeader` local ref | None | UI-only |
 | Ghostie open state | `GhostieSummoner` local ref | None | UI-only |
@@ -235,7 +223,7 @@ The following are merge blockers unless intentionally changed through an accepte
 ## Adding a route
 
 1. Approve the route responsibility in docs `00`, `02`, and `03`.
-2. Add `pages/<route>/index.html` with route-specific title, description, theme metadata, icons/manifest, theme boot, and module entry.
+2. Add `pages/<route>/index.html` with route-specific title, description, fixed Nari atmosphere metadata, icons/manifest, and module entry.
 3. Add the HTML path to `pageEntries` in `vite.config.ts`.
 4. Add the lazy route record in `src/router/index.ts`.
 5. Create the page module under `src/pages`.

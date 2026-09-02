@@ -28,8 +28,8 @@ The HTML documents include route-specific Open Graph/Twitter painted previews ex
 | Language | Strict TypeScript |
 | Build | Vite 8 true MPA with eleven HTML inputs |
 | Routing | Vue Router 5; ordinary anchors for top-level document navigation |
-| Styling | Five-layer SCSS system with semantic CSS theme tokens |
-| Themes | Nari, Dark, Light; pre-paint boot and local persistence |
+| Styling | Layered SCSS system with semantic CSS atmosphere tokens |
+| Themes | Proposed Phase A client-review demo exposes Nari only; no selector or persisted preference runtime |
 | Motion | Motion for Vue for Ghostie; CSS transitions for small states |
 | Icons | Tree-shaken Lucide Vue imports |
 | Content | Local TypeScript records plus page-local static composition |
@@ -46,7 +46,7 @@ The HTML documents include route-specific Open Graph/Twitter painted previews ex
 - Small, understandable dependency surface.
 - Strict TypeScript and focused local data modules.
 - Route-level lazy modules.
-- Pre-paint theme continuity across document navigation.
+- Deterministic Nari atmosphere metadata across direct document navigation in the proposed Phase A demo.
 - Semantic shell, skip link, visible focus, native controls, and reduced-motion foundation.
 - Honest empty states instead of fake schedule, gallery, metrics, contact form, or resources.
 - Original local placeholder art with explicit noncanonical labels.

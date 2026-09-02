@@ -2,7 +2,7 @@
 
 **Status:** Core interactions `IMPLEMENTED`; final manual/device review `PENDING`  
 **Owns:** Interaction state, timing, input parity, focus, delight limits, reduced-motion equivalence  
-**Implementation files:** `SiteHeader.vue`, `ThemeSwitcher.vue`, `GhostieSummoner.vue`, `HavenDoor.vue`, `LooseFloorboard.vue`, `PrinnyCultPage.vue`, SCSS  
+**Implementation files:** `SiteHeader.vue`, `GhostieSummoner.vue`, `HavenDoor.vue`, `LooseFloorboard.vue`, `PrinnyCultPage.vue`, SCSS
 **Update trigger:** New/changed interaction, shortcut, animation, live region, menu, theme, or reveal behavior
 
 ## Motion thesis
@@ -37,32 +37,9 @@ Future cross-document transitions must be progressive enhancement and must:
 
 ## Interaction state machines
 
-### Theme switcher
+### Nari-only atmosphere demo
 
-```mermaid
-stateDiagram-v2
-  [*] --> StoredOrDefault
-  StoredOrDefault --> Nari: select Nari
-  StoredOrDefault --> Dark: select Dark
-  StoredOrDefault --> Light: select Light
-  Nari --> Dark: select Dark
-  Nari --> Light: select Light
-  Dark --> Nari: select Nari
-  Dark --> Light: select Light
-  Light --> Nari: select Nari
-  Light --> Dark: select Dark
-```
-
-State effects:
-
-- update `<html data-theme>` immediately;
-- update `theme-color`;
-- persist allowed value defensively to local storage;
-- retain focus on the selected button;
-- expose state through `aria-pressed`, icon, and label/title;
-- play no sound and load no network resource.
-
-Pre-paint and Vue state must share the same allowed values, storage key, and theme colors.
+Phase A removes the theme switcher and persisted theme interaction from the client-review build. Atmosphere is fixed by route metadata before Vue loads, so there is no theme-specific focus, keyboard, animation, or storage state. This is a reversible proposal pending client approval, documented in `28_NARI_ONLY_ATMOSPHERE_DEMO.md`.
 
 ### Mobile navigation
 

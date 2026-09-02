@@ -14,7 +14,7 @@ Target WCAG 2.2 AA for public launch through automation **and** manual keyboard,
 
 - One primary `<main>` and one meaningful `h1` per route view.
 - “Skip to content” is the first focusable ordinary-shell control and becomes visible on focus.
-- Header, navigation, theme group, footer, and page sections use semantic elements.
+- Header, navigation, footer, and page sections use semantic elements.
 - Secret route has its own `<main>` because it intentionally bypasses `SiteShell`.
 - Heading levels describe hierarchy; visual size is controlled by CSS, not skipped levels.
 - Repeated card collections use appropriate list/section/article semantics when their relationship benefits from it.
@@ -31,7 +31,7 @@ Target WCAG 2.2 AA for public launch through automation **and** manual keyboard,
 
 ## Contrast, reflow, and zoom
 
-Review every text/control state in Nari, Dark, and Light themes.
+Review every text/control state in the active Nari atmosphere. Separate Light and Dark modes are not accessibility requirements; the singular atmosphere must meet the same WCAG 2.2 AA contrast target on its own.
 
 Targets:
 
@@ -219,7 +219,7 @@ Observe, do not assume:
 - Automated accessibility scan with no critical/serious issues, followed by manual review.
 - Keyboard-only and screen-reader smoke matrix.
 - 200% text/400% zoom and 320/390/768/wide layouts.
-- All themes and reduced motion with final assets.
+- The active Nari atmosphere and reduced motion with final assets; reinstate multi-atmosphere evidence if the client rejects the demo.
 - Network evidence showing zero unapproved third-party scripts/iframes.
 - Image metadata/privacy scan.
 - Secret/dependency/license/content-rights review.

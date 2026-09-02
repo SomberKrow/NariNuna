@@ -2,7 +2,6 @@
 import { ChevronDown, Menu, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
-import ThemeSwitcher from "@/components/ui/ThemeSwitcher.vue";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { twitchUrl } from "@/data/socials";
 
@@ -91,7 +90,6 @@ onBeforeUnmount(() => {
           </nav>
         </details>
 
-        <ThemeSwitcher />
         <a class="site-header__live-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
           <span aria-hidden="true"></span>
           On Twitch

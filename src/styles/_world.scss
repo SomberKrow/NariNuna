@@ -4,17 +4,6 @@
   --art-border: rgb(218 174 209 / 21%);
 }
 
-:root[data-theme="dark"] {
-  --haven-scene: url("/media/storybook/scenes/haven-midnight.webp");
-  --scene-veil: linear-gradient(90deg, rgb(16 11 21 / 97%) 0%, rgb(25 17 35 / 84%) 45%, rgb(19 14 31 / 26%) 78%, rgb(15 11 25 / 38%) 100%);
-}
-
-:root[data-theme="light"] {
-  --haven-scene: url("/media/storybook/scenes/haven-daybreak.webp");
-  --scene-veil: linear-gradient(90deg, rgb(250 242 227 / 98%) 0%, rgb(248 237 219 / 88%) 43%, rgb(247 229 209 / 22%) 80%, rgb(250 236 216 / 28%) 100%);
-  --art-border: rgb(128 85 108 / 19%);
-}
-
 .brand-mark i {
   color: var(--lavender);
   font-style: normal;
