@@ -97,6 +97,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
 | `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
 | `28_NARI_ONLY_ATMOSPHERE_DEMO` | Reversible Phase A client-review demo, implementation boundary, and rollback contract | The Nari-only proposal, runtime, or client decision changes |
+| `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |
 
 ## Authority and conflict resolution
 

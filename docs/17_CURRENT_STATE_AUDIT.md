@@ -8,6 +8,10 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
+## 2026-09-02 environmental-continuity delta
+
+The Phase B client-feedback branch now extends the Haven's physical language below each chapter opening without adding imagery, dependencies, content, or routes. Eight ordinary content routes share one restrained inset-material primitive while selecting a room-specific journal, broadcast-desk, workbench, rug, shelving, correspondence, album, or gratitude-wall rhythm. Haven's material darkens toward the existing doorway; Home is intentionally unchanged because it already remains inside one illustrated environment. All material layers are decorative CSS and preserve semantic reading order, focus behavior, and reduced-motion equivalence.
+
 ## 2026-09-01 composition and navigation delta
 
 The active client-feedback branch now prioritizes Meet Nari, Streams, Haven, and Work in the visible header; the Nari brand remains the Home link, while Resources, Nails, Story Time, and Support appear in the native More disclosure. Public URLs and the true MPA route registry are unchanged. Home, Meet Nari, and Streams retain their approved content and artwork while using more page-specific visual rhythm: destination imagery returns to the compact Home room rail where width permits, Meet Nari uses an asymmetrical identity spread, Twitch leads the Streams platform hierarchy, and the existing media cards form a varied editorial shelf. The final face-safe layer remains authoritative for hero crops.

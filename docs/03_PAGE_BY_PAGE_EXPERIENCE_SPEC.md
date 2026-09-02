@@ -21,6 +21,10 @@ The same page-specific composition standard now extends to the remaining ordinar
 
 Phase A removes the public atmosphere selector and fixes every route to Nari for client review. This is a reversible implementation proposal, not recorded Nari/Panda approval or a rewrite of the locked historical direction. See [`28_NARI_ONLY_ATMOSPHERE_DEMO.md`](28_NARI_ONLY_ATMOSPHERE_DEMO.md).
 
+## 2026-09-02 environmental-continuity refinement
+
+Phase B carries the chapter-banner environment into each ordinary route through restrained material cues rather than additional hero art. Meet Nari uses journal rules; Streams uses broadcast-desk rails; Nail Studio uses workbench boards and lacquer glints; Haven uses a rug lattice that darkens toward the doorway; Resources uses shelf uprights and ledges; Work uses correspondence rules; Story Time uses an album spine; and Support uses the quietest stitched-wall rhythm. Home remains unchanged because its existing single-scene composition already satisfies the environmental goal. Content order, actions, routes, artwork, and truth boundaries are unchanged. See [`29_ENVIRONMENTAL_CONTINUITY.md`](29_ENVIRONMENTAL_CONTINUITY.md).
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:

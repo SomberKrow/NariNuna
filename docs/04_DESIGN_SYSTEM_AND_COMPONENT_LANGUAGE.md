@@ -30,6 +30,10 @@ Import order is tokens → base → components → pages → responsive. Changin
 
 Phase A exposes only the Nari column below. Dark and Light remain part of historical product direction and retained artwork provenance, but they are not active runtime states in this client-review demo.
 
+## Environmental material language
+
+Phase B adds a shared post-banner material primitive in `_feedback.scss`. Every affected route uses the same inset geometry, semantic color mixing, fine border treatment, and low-contrast depth; route-specific `--room-material` values change only the physical cue. The current map is journal, broadcast desk, workbench, rug, shelving, correspondence, album, and gratitude wall. These layers are decorative pseudo-elements with no text or interaction, so document meaning and order remain complete when decoration is unavailable. See `29_ENVIRONMENTAL_CONTINUITY.md`.
+
 | Semantic token | Nari | Dark | Light | Intended use |
 |---|---|---|---|---|
 | `--bg` | `#2a1820` | `#130d13` | `#efe1cd` | Document atmosphere |
