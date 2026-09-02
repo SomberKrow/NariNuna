@@ -99,6 +99,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `28_NARI_ONLY_ATMOSPHERE_DEMO` | Reversible Phase A client-review demo, implementation boundary, and rollback contract | The Nari-only proposal, runtime, or client decision changes |
 | `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |
 | `30_PAGE_SIGNATURE_DEVICES` | Phase C one-device-per-route map and decorative-content boundary | A route's recognizable presentation device changes |
+| `31_DE_CARDIFICATION_AND_RHYTHM` | Phase D noninteractive chrome and route-pacing contract | Container boundaries, radius discipline, or chapter rhythm changes |
 
 ## Authority and conflict resolution
 

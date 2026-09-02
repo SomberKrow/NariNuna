@@ -440,6 +440,207 @@ body[data-route="support"] .support-boundary::before {
   }
 }
 
+/*
+ * Phase D: open noninteractive content and let type, rules, artwork, and each
+ * route's signature device carry hierarchy. Interactive targets retain their
+ * boundaries and the global focus treatment.
+ */
+
+:where(
+  body[data-route="meet-nari"] .identity-rooms__fragment,
+  body[data-route="nail-studio"] .studio-notes__fragment,
+  body[data-route="haven"] .haven-values__fragment,
+  body[data-route="resources"] .resource-shelves__chapter,
+  body[data-route="work-with-nari"] .work-fit__chapter,
+  body[data-route="support"] .support-kindness__chapter
+) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+:where(
+  body[data-route="meet-nari"] .identity-rooms__fragment,
+  body[data-route="nail-studio"] .studio-notes__fragment,
+  body[data-route="haven"] .haven-values__fragment,
+  body[data-route="resources"] .resource-shelves__chapter,
+  body[data-route="work-with-nari"] .work-fit__chapter,
+  body[data-route="support"] .support-kindness__chapter
+)::after {
+  display: none;
+}
+
+/* Journal fragments remain paper, but lose the nested frame and card shadow. */
+body[data-route="meet-nari"] .identity-rooms__fragment {
+  background: color-mix(in srgb, var(--story-surface) 72%, transparent);
+  border-block: 1px solid color-mix(in srgb, var(--story-line) 65%, transparent);
+  box-shadow: 0 0.5rem 1rem color-mix(in srgb, var(--bg-inset) 22%, transparent);
+}
+
+body[data-route="meet-nari"] .identity-rooms__fragment > div {
+  border-inline-start-color: color-mix(in srgb, var(--story-line) 55%, transparent);
+}
+
+/* Workbench notes use the measured desk line instead of three containers. */
+body[data-route="nail-studio"] .studio-notes__fragment {
+  border-block-end: 1px solid color-mix(in srgb, var(--story-line) 68%, transparent);
+}
+
+body[data-route="nail-studio"] .studio-notes__fragment > div {
+  border-inline-start-color: color-mix(in srgb, var(--story-line) 54%, transparent);
+}
+
+/* The community charter reads as a sequence along the path, not four cards. */
+body[data-route="haven"] .haven-values__fragment {
+  border-block-start: 1px solid color-mix(in srgb, var(--story-line) 58%, transparent);
+}
+
+body[data-route="haven"] .haven-values__fragment:nth-child(2),
+body[data-route="haven"] .haven-values__fragment:nth-child(3) {
+  opacity: 0.92;
+}
+
+body[data-route="haven"] .haven-values__fragment:nth-child(4) {
+  opacity: 0.84;
+}
+
+body[data-route="haven"] .haven-values__copy {
+  border-inline-start-color: color-mix(in srgb, var(--story-line) 48%, transparent);
+}
+
+/* Shelf ledges replace independent category/demo cards. */
+body[data-route="resources"] .resource-shelves__chapter {
+  padding-block-end: 1.15rem;
+  border-block-end: 0.34rem solid color-mix(in srgb, var(--ember) 42%, var(--story-line));
+}
+
+body[data-route="resources"] .resource-demo__item {
+  background: color-mix(in srgb, var(--story-surface) 58%, transparent);
+  border: 0;
+  border-block-end: 0.3rem solid color-mix(in srgb, var(--ember) 36%, var(--story-line));
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body[data-route="resources"] .resource-demo__item::before {
+  right: 0;
+  left: 0;
+  background: var(--story-line);
+  opacity: 0.5;
+}
+
+body[data-route="resources"] .resource-demo__meta small,
+body[data-route="resources"] .resource-demo__item li {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+body[data-route="resources"] .resource-demo__item li {
+  padding-inline: 0;
+}
+
+body[data-route="resources"] .resource-demo__item li + li::before {
+  margin-inline-end: 0.35rem;
+  color: var(--story-accent);
+  content: "·";
+}
+
+/* Work fit becomes image-plus-copy; the public directory stays interactive. */
+body[data-route="work-with-nari"] .work-fit__chapter {
+  padding: 0;
+  border-block-end: 1px solid color-mix(in srgb, var(--story-line) 62%, transparent);
+}
+
+body[data-route="work-with-nari"] .work-fit__chapter > div {
+  padding: 1.15rem 0.3rem 1.35rem;
+}
+
+body[data-route="work-with-nari"] .nari-links__directory > a {
+  background-color: color-mix(in srgb, var(--story-surface) 56%, transparent);
+  border: 0;
+  border-block-end: 1px solid var(--story-line);
+  border-inline-start: 2px solid color-mix(in srgb, var(--story-line) 78%, var(--story-accent));
+  border-radius: 0;
+}
+
+body[data-route="work-with-nari"] .nari-links__directory > a:hover,
+body[data-route="work-with-nari"] .nari-links__directory > a:focus-visible {
+  background-color: color-mix(in srgb, var(--story-surface) 82%, var(--story-accent));
+  border-block-end-color: var(--story-accent);
+}
+
+/* The archive relies on its album spine, image scale, and captions. */
+body[data-route="stories"] .moment-shelf--stories .media-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body[data-route="stories"] .moment-shelf--stories .media-card > a {
+  border-block-end: 1px solid color-mix(in srgb, var(--story-line) 68%, transparent);
+  border-radius: 0;
+}
+
+/* Gratitude notes keep a paper tint, but no repeated frame or shadow. */
+body[data-route="support"] .support-kindness__chapter {
+  background: color-mix(in srgb, var(--story-surface) 48%, transparent);
+  border-block: 1px solid color-mix(in srgb, var(--story-line) 48%, transparent);
+}
+
+body[data-route="support"] .support-kindness__chapter > div {
+  border-inline-start-color: color-mix(in srgb, var(--story-line) 42%, transparent);
+}
+
+/* Route-specific pacing: lively rooms compress; reflective rooms breathe. */
+body[data-route="meet-nari"] :is(.identity-rooms, .nari-promise),
+body[data-route="support"] :is(.support-kindness, .support-boundary) {
+  padding-block: clamp(4rem, 10vw, 7.5rem);
+}
+
+body[data-route="streams"] :is(.stream-hub, .moment-shelf--final),
+body[data-route="resources"] .resource-shelves {
+  padding-block: clamp(2.8rem, 6vw, 4.5rem);
+}
+
+body[data-route="nail-studio"] .studio-notes {
+  padding-block: clamp(3rem, 7vw, 5.25rem);
+}
+
+body[data-route="haven"] .haven-values {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+body[data-route="haven"] .haven-entry {
+  padding-block: clamp(2rem, 5vw, 3.5rem) clamp(5rem, 11vw, 8rem);
+}
+
+body[data-route="work-with-nari"] :is(.work-fit, .nari-links, .work-process),
+body[data-route="stories"] .moment-shelf--stories {
+  padding-block: clamp(3.2rem, 7vw, 5.5rem);
+}
+
+@media (max-width: 42rem) {
+  :where(
+    body[data-route="meet-nari"] .identity-rooms__fragment,
+    body[data-route="nail-studio"] .studio-notes__fragment,
+    body[data-route="haven"] .haven-values__fragment,
+    body[data-route="support"] .support-kindness__chapter
+  ) {
+    grid-template-columns: minmax(4.75rem, 5.6rem) minmax(0, 1fr);
+  }
+
+  body[data-route="resources"] .resource-demo__item {
+    min-height: 0;
+  }
+
+  body[data-route="support"] :is(.support-kindness, .support-boundary) {
+    padding-block: clamp(3.25rem, 13vw, 4.75rem);
+  }
+}
+
 @media (max-width: 42rem) {
   /*
    * Keep Home a composed scene on phones. Copy remains in the left visual lane,
