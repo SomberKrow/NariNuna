@@ -8,7 +8,7 @@ Status: implementation on PR #9, `kiva/nari-client-feedback-pass`. Review baseli
 - `npm run artwork:prepare` runs `scripts/prepare-responsive-artwork.py` with Python/Pillow WebP support. This offline tooling adds no npm/runtime dependency and is not needed to build the committed output. Input is the retained local review artwork. It does not need access to private source archives.
 - Resizing uses Lanczos, keeps the source aspect ratio, never upscales, and writes WebP without EXIF/XMP/ICC payloads. Encoding starts at quality 84 and steps down by two to a floor of 50 to satisfy the role's byte ceiling; failures stop generation. Inspect final crops after regenerating.
 - `src/data/responsive-artwork.json` records source SHA-256, dimensions, alpha, and each derivative's dimensions, quality, bytes, and SHA-256. Candidate filenames include the first 16 hex characters of the encoded-content SHA-256.
-- `public/media/responsive/` is the only newly added immutable cache scope. Existing originals retain their URLs and cache behavior. HTML explicitly revalidates. Changing any encoded image changes its URL; do not overwrite bytes under an old hash. Remove obsolete generated copies only after confirming they are no longer referenced and considering old deployment retention.
+- `public/media/responsive/` is the only newly added immutable cache scope. Existing originals retain their URLs and cache behavior. HTML retains the host’s existing revalidation default. No additional document cache rules are needed; immutable policy is limited to asset paths. Changing any encoded image changes its URL; do not overwrite bytes under an old hash. Remove obsolete generated copies only after confirming they are no longer referenced and considering old deployment retention.
 
 ## Slots and loading
 
@@ -55,3 +55,11 @@ For a release benchmark, use a clean build without the Netlify review drawer, fr
 Rollback by reverting this performance commit as a unit. It preserves originals and does not require restoring art from an external archive. No merge or production release is included.
 
 References: [MDN responsive preloads](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload), [MDN CSS image-set](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/image/image-set).
+
+## Deployed verification — 2026-09-05
+
+Implementation commit `ab826931a4393c41249b9bfa68cb8a7446d79697` passed GitHub Quality Gate #45 and Netlify preview deployment. The deployed Home DOM at 1363×936 CSS px/DPR 1 selects the expected 64px header Ghostie, 256px sprig, three 128px cards, and media-matched hero preloads. Home and Streams screenshots preserve the face-safe desktop composition with no horizontal overflow. The Streams picture selects its 1672px hashed candidate.
+
+On Haven, the doorway began at y=1627px with no interior image in the DOM. After approaching/knocking, the 640px candidate loaded. All three steps completed, the Discord link appeared only after the third knock, exactly one loaded interior image filled the doorway, and Close reset the sequence. The final reveal was visually inspected.
+
+HTTP verification caught redundant document cache rules overriding asset freshness on the preview. The follow-up removes those additions, retaining the original host HTML defaults and explicit hashed-asset cache scopes. Final live header evidence is recorded in the PR description. The Netlify review drawer remains host-added and is excluded from performance claims. Mobile viewport, screen-reader, zoom and Lighthouse measurements remain pending; no inference from desktop substitutes for those checks.
