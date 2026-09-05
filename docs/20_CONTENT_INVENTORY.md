@@ -28,12 +28,12 @@ Shared authentic identity assets now live in `src/data/artwork.ts`; authentic su
 | Identity pillars | `src/data/content.ts` | Implemented | Review after canon resolution |
 | Header/brand/Watch live | `SiteHeader.vue` | Implemented | Brand art/copy and destination recheck |
 | Footer statement/social subset | `SiteFooter.vue` | Implemented | Final placeholder/privacy wording review |
-| Theme labels | `ThemeSwitcher.vue` | Implemented | Stable unless theme decision changes |
+| Theme labels | No live owner in Phase A demo | Proposed removal | Await Nari/Panda review; restore from Git history if rejected |
 | Ghostie reminder | `GhostieSummoner.vue` | Implemented placeholder voice | Approve final mascot/copy |
 
 ## Metadata inventory
 
-Each entry document currently owns title, description, theme color, icons/manifest, and theme boot. Secret/404 own robots intent.
+Each entry document currently owns title, description, fixed Nari theme color, icons/manifest, and atmosphere metadata. Secret/404 own robots intent.
 
 Production additions pending:
 

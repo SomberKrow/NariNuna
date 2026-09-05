@@ -4,10 +4,10 @@ export const primaryNavigation: NavigationItem[] = [
   { label: "Home", href: "/" },
   { label: "Meet Nari", href: "/meet-nari/" },
   { label: "Streams", href: "/streams/" },
-  { label: "Nail Studio", shortLabel: "Nails", href: "/nail-studio/" },
   { label: "The Haven", shortLabel: "Haven", href: "/haven/" },
+  { label: "Work With Nari", shortLabel: "Work", href: "/work-with-nari/" },
   { label: "Resources", href: "/resources/" },
-  { label: "Work With Nari", shortLabel: "Work", href: "/work-with-nari/" }
+  { label: "Nail Studio", shortLabel: "Nails", href: "/nail-studio/" }
 ];
 
 export const footerNavigation: NavigationItem[] = [

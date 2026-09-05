@@ -9,3 +9,7 @@
 
 /media/generated/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Only content-addressed artwork receives immutable caching.
+/media/responsive/*
+  Cache-Control: public, max-age=31536000, immutable

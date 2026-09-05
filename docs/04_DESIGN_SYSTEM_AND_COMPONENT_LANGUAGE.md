@@ -8,7 +8,7 @@
 ## Design-system principles
 
 1. **Semantic before decorative.** Components and tokens describe purpose, not a random hex or one-off page mood.
-2. **One Haven, three atmospheres.** Theme changes alter light/material while preserving hierarchy and layout.
+2. **One authored Haven atmosphere for review.** Phase A exposes Nari only while preserving semantic token boundaries and the existing artwork family.
 3. **Atmospheric does not mean vague.** Text, controls, focus, states, and destinations remain explicit.
 4. **Mobile is composition.** Content reorders and density changes; it is not a scaled desktop screenshot.
 5. **Components earn reuse.** Abstract a repeated behavior or semantic pattern, not every repeated `<div>`.
@@ -28,7 +28,11 @@ Import order is tokens → base → components → pages → responsive. Changin
 
 ## Theme color tokens
 
-These values mirror `src/styles/_tokens.scss` at the documented snapshot.
+Phase A exposes only the Nari column below. Dark and Light remain part of historical product direction and retained artwork provenance, but they are not active runtime states in this client-review demo.
+
+## Environmental material language
+
+Phase B adds a shared post-banner material primitive in `_feedback.scss`. Every affected route uses the same inset geometry, semantic color mixing, fine border treatment, and low-contrast depth; route-specific `--room-material` values change only the physical cue. The current map is journal, broadcast desk, workbench, rug, shelving, correspondence, album, and gratitude wall. These layers are decorative pseudo-elements with no text or interaction, so document meaning and order remain complete when decoration is unavailable. See `29_ENVIRONMENTAL_CONTINUITY.md`.
 
 | Semantic token | Nari | Dark | Light | Intended use |
 |---|---|---|---|---|
@@ -149,7 +153,7 @@ Breakpoints are content thresholds, not device names.
 | Threshold | System response |
 |---:|---|
 | `70rem` | Compact nav labels; 3-column grids become 2; last item may span |
-| `56rem` | Mobile navigation panel; primary split layouts stack; theme labels appear |
+| `56rem` | Mobile navigation panel; primary split layouts stack; header utilities reflow |
 | `45rem` | Major grids become one column; hero crops/veils change; density reduces |
 | `30rem` | Nav becomes one column; button rows become full-width; footer/secret compress |
 
@@ -162,7 +166,6 @@ New breakpoints require a demonstrated content failure that existing thresholds 
 | `SiteShell` | `components/layout/SiteShell.vue` | Skip, header, main, footer, Ghostie | Duplicate landmarks/shell |
 | `SiteHeader` | `components/layout/SiteHeader.vue` | MPA anchors, active state, mobile panel | Focus/overflow/current route |
 | `SiteFooter` | `components/layout/SiteFooter.vue` | Belonging, secondary routes, selected socials | Becoming a link dump |
-| `ThemeSwitcher` | `components/ui/ThemeSwitcher.vue` | Three labelled buttons, `aria-pressed` | Flash/desync/color-only state |
 | `GhostieSummoner` | `components/ui/GhostieSummoner.vue` | User-triggered low-priority delight | Obstruction/live-region noise |
 | `MediaCard` | `components/ui/MediaCard.vue` | Thumbnail + explicit outbound source | Remote failure/privacy |
 | `SectionHeading` | `components/ui/SectionHeading.vue` | Consistent section threshold | Heading-level misuse |
@@ -230,6 +233,6 @@ Buttons are at least 3rem high by default; the compact header utility is 2.55rem
 2. Name the state, inputs, outputs, keyboard behavior, and reduced-motion behavior.
 3. Use existing tokens; add a token only if it represents a reusable decision.
 4. Place shared structure in the correct SCSS layer.
-5. Test all three themes, four target widths, keyboard, focus, zoom, and reduced motion.
+5. Test the active Nari atmosphere at four target widths, keyboard, focus, zoom, and reduced motion. Restore three-theme QA only if the client rejects the Phase A proposal.
 6. Update this inventory, the relevant page spec, interaction spec, and QA matrix.
 7. Record screenshots/evidence in the pull request without uploading private or uncleared art.

@@ -5,7 +5,7 @@ import GhostieArt from "@/components/art/GhostieArt.vue";
 
 <template>
   <section class="not-found page-width section-pad">
-    <GhostieArt class="not-found__ghostie" variant="panicked" :decorative="false" label="A panicked Nari Nuna Ghostie who cannot find the missing room" />
+    <GhostieArt class="not-found__ghostie" sizes="(min-width: 48rem) 320px, 80vw" variant="panicked" :decorative="false" label="A panicked Nari Nuna Ghostie who cannot find the missing room" />
     <div><MapPinOff :size="34" aria-hidden="true" /><p class="eyebrow">This room wandered off</p><h1>A Ghostie moved<br /><em>the door again.</em></h1><p>We would blame the pillow fort, but honestly? This one has Prinny energy.</p><a class="button button--ember" href="/"><ArrowLeft :size="18" aria-hidden="true" /> Back to the Haven</a></div>
   </section>
 </template>

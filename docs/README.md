@@ -96,6 +96,11 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `22_GLOSSARY` | Canonical project/design/engineering/status language | A durable term changes or becomes ambiguous |
 | `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
 | `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
+| `28_NARI_ONLY_ATMOSPHERE_DEMO` | Reversible Phase A client-review demo, implementation boundary, and rollback contract | The Nari-only proposal, runtime, or client decision changes |
+| `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |
+| `30_PAGE_SIGNATURE_DEVICES` | Phase C one-device-per-route map and decorative-content boundary | A route's recognizable presentation device changes |
+| `31_DE_CARDIFICATION_AND_RHYTHM` | Phase D noninteractive chrome and route-pacing contract | Container boundaries, radius discipline, or chapter rhythm changes |
+| `32_PHASE_E_VALIDATION` | Phase E automated evidence, manual matrix status, limitations, and rollback | Final validation is rerun or preview/release evidence changes |
 
 ## Authority and conflict resolution
 
@@ -144,3 +149,7 @@ Use the records under [`templates/`](templates/) instead of inventing approval f
 The codebase now includes an owner-requested authentic-artwork review implementation using the supplied Nari model, supplied character art, official static emotes, and all 27 supplied Prinny designs. It is **not cleared for public production release**. The critical blockers are final canonical identity wording, documented artist/owner/website/franchise permissions and credits, real nail-work content, final Discord and professional contact decisions, host/domain configuration, and final manual accessibility/mobile/rights review.
 
 Unknown is a valid state. Fabricated certainty is not.
+
+## 2026-09-05 delivery pass
+
+See [`33_RESPONSIVE_ARTWORK_PERFORMANCE.md`](33_RESPONSIVE_ARTWORK_PERFORMANCE.md) for responsive artwork, preloads, immutable caching, deferred doorway loading, guarded recovery, budgets, and observed evidence.

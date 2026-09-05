@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { artworkSrc, artworkSrcset } from "@/data/artworkDelivery";
 import { communityGhostieArtwork } from "@/data/artwork";
 
 export type GhostieArtVariant = keyof typeof communityGhostieArtwork;
@@ -9,11 +10,15 @@ withDefaults(
     decorative?: boolean;
     label?: string;
     mirror?: boolean;
+    sizes?: string;
+    loading?: "eager" | "lazy";
   }>(),
   {
     decorative: true,
     label: "A Nari Nuna community Ghostie",
-    mirror: false
+    mirror: false,
+    sizes: "192px",
+    loading: "lazy"
   }
 );
 </script>
@@ -26,11 +31,13 @@ withDefaults(
   >
     <img
       class="ghostie-art__image"
-      :src="communityGhostieArtwork[variant]"
+      :src="artworkSrc(communityGhostieArtwork[variant], 256)"
+      :srcset="artworkSrcset(communityGhostieArtwork[variant])"
+      :sizes="sizes"
       :alt="decorative ? '' : label"
       width="1254"
       height="1254"
-      :loading="variant === 'wave' ? 'eager' : 'lazy'"
+      :loading="loading"
       decoding="async"
     />
   </figure>

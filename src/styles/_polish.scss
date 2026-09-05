@@ -3,8 +3,7 @@
 // larger layouts only add space, columns, and art exposure through min-width
 // enhancements. This file is intentionally loaded last.
 
-:root,
-:root[data-theme="nari"] {
+:root {
   --story-surface: #3b2430;
   --story-surface-deep: #24151d;
   --story-surface-soft: #523040;
@@ -14,30 +13,6 @@
   --story-accent: #e4ad79;
   --story-chip: #593448;
   --story-chip-copy: #fff5ec;
-}
-
-:root[data-theme="dark"] {
-  --story-surface: #241725;
-  --story-surface-deep: #100b11;
-  --story-surface-soft: #342039;
-  --story-copy: #f8edf5;
-  --story-muted: #d2c1d0;
-  --story-line: rgb(235 216 233 / 21%);
-  --story-accent: #d4aa78;
-  --story-chip: #38243d;
-  --story-chip-copy: #fff5fb;
-}
-
-:root[data-theme="light"] {
-  --story-surface: #fff7ea;
-  --story-surface-deep: #ead8c4;
-  --story-surface-soft: #f2e0d7;
-  --story-copy: #321f27;
-  --story-muted: #6b505b;
-  --story-line: rgb(78 44 54 / 20%);
-  --story-accent: #9d5f3f;
-  --story-chip: #ead3d0;
-  --story-chip-copy: #321f27;
 }
 
 .section-pad {
@@ -62,13 +37,8 @@
   grid-template-columns: 1fr;
 }
 
-.theme-switcher,
 .site-header__live-link {
   width: 100%;
-}
-
-.theme-switcher__option {
-  flex: 1;
 }
 
 .site-header__live-link {
@@ -121,10 +91,6 @@
   background: transparent;
   border: 0;
   border-radius: 0;
-}
-
-:root[data-theme="light"] .social-dock__icon {
-  background: transparent;
 }
 
 /* Home starts as a natural mobile document instead of a forced desktop viewport. */
@@ -1190,13 +1156,8 @@ main > .moment-shelf--final:last-child {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .theme-switcher,
   .site-header__live-link {
     width: auto;
-  }
-
-  .theme-switcher__option {
-    flex: initial;
   }
 
   .social-dock {

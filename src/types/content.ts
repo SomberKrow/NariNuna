@@ -1,5 +1,3 @@
-export type ThemeName = "nari" | "dark" | "light";
-
 export interface NavigationItem {
   label: string;
   href: string;

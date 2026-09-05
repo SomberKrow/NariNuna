@@ -16,6 +16,10 @@
 
 Intent, code review, or a previous commit's result is not a current `PASS`.
 
+## Current Phase E client-review evidence — 2026-09-02
+
+The Phase E working tree passed `npm ci` and the full `npm run check` pipeline after Phases A–D. The final Phase E commit adds only the shared-header More/Escape stabilization, its contract assertion, and synchronized evidence documentation; the full gate is rerun on that commit before publication. See `docs/32_PHASE_E_VALIDATION.md` for exact observed counts, route/asset coverage, pending manual viewport and assistive-technology checks, blockers, and rollback boundaries. This is client-review evidence, not production release clearance.
+
 ## Historical snapshot
 
 The prior implementation handoff recorded these observations on 2026-08-13 for commit `b65e1c5a6da5a35f4f4f5969465c13f32f277912`:
@@ -51,7 +55,7 @@ Current gaps to consider expanding before release:
 - exact equality among Vite entries, router records, validator pages, and documented route registry;
 - duplicate navigation labels/route names;
 - allowed external origins and new-tab rel attributes;
-- theme boot/composable allowlist and storage-key synchronization;
+- fixed Nari atmosphere metadata across all eleven documents and absence of stale preference runtime;
 - publish-state filtering when target content schemas arrive;
 - broken/expired volatile-content checks where automatable;
 - generated public image metadata/size budget checks.
@@ -73,7 +77,9 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 
 ### Preferences/themes
 
-- Nari, Dark, Light.
+- Nari atmosphere on every direct-loaded route.
+- Historical `dark` or `light` local-storage values do not affect first paint or hydrated state.
+- No theme selector or theme-specific keyboard stop is present in the Phase A demo.
 - Reduced motion on before load.
 - Preference changed while page is open.
 - Increased contrast where browser/OS support permits.
@@ -96,7 +102,7 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 
 - [ ] Eleven expected HTML documents exist in `dist/`.
 - [ ] Each direct-loads from the production host.
-- [ ] Refresh, trailing slash, back/forward, and cross-document theme persistence work.
+- [ ] Refresh, trailing slash, and back/forward preserve the Nari atmosphere across documents.
 - [ ] Top-level links remain document anchors.
 - [ ] Page modules remain lazy and only relevant route content initializes.
 - [ ] Unknown route maps to branded `404.html` with intended status behavior.
@@ -193,7 +199,7 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 - [ ] Screen-reader smoke matrix passes with recorded tools.
 - [ ] 200% text and 400% page zoom reflow without lost content/controls.
 - [ ] No horizontal page overflow at 320px caused by content.
-- [ ] All themes/states meet contrast target with final art.
+- [ ] All Nari-atmosphere states meet contrast target with final art.
 - [ ] Reduced motion preserves meaning and removes decorative movement.
 - [ ] No focus ring is clipped/covered; fixed UI does not obscure targets.
 
@@ -234,3 +240,7 @@ npm run preview
 ```
 
 Then complete the manual matrix and `templates/RELEASE_EVIDENCE_RECORD.md`. Release is blocked by any critical failure, missing rights/canon approval, unknown host behavior, or unreviewed private content.
+
+## 2026-09-05 performance gate addition
+
+`npm run check` now includes source/derivative hash, alpha, byte and dimension contracts; the capped complete Home image composition; stale-chunk recovery; built hero preloads; and unique transitive gzip JS/CSS limits. Local evidence: 56 passing tests across 10 files and 11 passing document/routes. Image-byte improvements are not Lighthouse scores. See `33_RESPONSIVE_ARTWORK_PERFORMANCE.md` for exact observations and remaining browser/mobile/release gates.

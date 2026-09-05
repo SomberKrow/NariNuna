@@ -8,6 +8,16 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
+## 2026-09-02 environmental-continuity delta
+
+The Phase B client-feedback branch now extends the Haven's physical language below each chapter opening without adding imagery, dependencies, content, or routes. Eight ordinary content routes share one restrained inset-material primitive while selecting a room-specific journal, broadcast-desk, workbench, rug, shelving, correspondence, album, or gratitude-wall rhythm. Haven's material darkens toward the existing doorway; Home is intentionally unchanged because it already remains inside one illustrated environment. All material layers are decorative CSS and preserve semantic reading order, focus behavior, and reduced-motion equivalence.
+
+## 2026-09-01 composition and navigation delta
+
+The active client-feedback branch now prioritizes Meet Nari, Streams, Haven, and Work in the visible header; the Nari brand remains the Home link, while Resources, Nails, Story Time, and Support appear in the native More disclosure. Public URLs and the true MPA route registry are unchanged. Home, Meet Nari, and Streams retain their approved content and artwork while using more page-specific visual rhythm: destination imagery returns to the compact Home room rail where width permits, Meet Nari uses an asymmetrical identity spread, Twitch leads the Streams platform hierarchy, and the existing media cards form a varied editorial shelf. The final face-safe layer remains authoritative for hero crops.
+
+The second composition pass applies the same principle without reusing one universal layout: Nail Studio, Haven, Resources, Work With Nari, Story Time, and Support now own route-specific secondary-content rhythms instead of inheriting equal-card grids. Existing truth and empty-state boundaries remain explicit, including the pending real nail portfolio, demonstration-only Resources content, public-link professional contact fallback, curated Story Time selection, and non-entitlement support language. No new content, route, asset, dependency, integration, or product behavior entered with the pass.
+
 ## 2026-08-23 owner-directed implementation delta
 
 Following owner direction, the current private review redesign retains the actual supplied Nari model and portrait alongside eight bespoke room paintings, including seven integrated model-faithful Nari appearances, dedicated character-inclusive Home and Meet Nari compositions without standalone overlays, five painted Ghosties, eight illustrated chapter postcards, three time-of-day Home scenes, regenerated Nari app icons, and eight route-specific social-preview compositions. Supplied cozy character artwork, 12 supplied static emote derivatives, and all 27 supplied original Prinny designs remain intact. Shared artwork is centralized in `src/data/artwork.ts`; supplied Prinnies remain separated from unapproved canon records in `src/data/prinnyCult.ts`; `tests/artwork-contract.test.ts` verifies original and illustrated identity, distinct integrated Home/Meet scenes, local assets, and the 27-design capacity.
@@ -22,8 +32,8 @@ The HTML documents include route-specific Open Graph/Twitter painted previews ex
 | Language | Strict TypeScript |
 | Build | Vite 8 true MPA with eleven HTML inputs |
 | Routing | Vue Router 5; ordinary anchors for top-level document navigation |
-| Styling | Five-layer SCSS system with semantic CSS theme tokens |
-| Themes | Nari, Dark, Light; pre-paint boot and local persistence |
+| Styling | Layered SCSS system with semantic CSS atmosphere tokens |
+| Themes | Proposed Phase A client-review demo exposes Nari only; no selector or persisted preference runtime |
 | Motion | Motion for Vue for Ghostie; CSS transitions for small states |
 | Icons | Tree-shaken Lucide Vue imports |
 | Content | Local TypeScript records plus page-local static composition |
@@ -40,7 +50,7 @@ The HTML documents include route-specific Open Graph/Twitter painted previews ex
 - Small, understandable dependency surface.
 - Strict TypeScript and focused local data modules.
 - Route-level lazy modules.
-- Pre-paint theme continuity across document navigation.
+- Deterministic Nari atmosphere metadata across direct document navigation in the proposed Phase A demo.
 - Semantic shell, skip link, visible focus, native controls, and reduced-motion foundation.
 - Honest empty states instead of fake schedule, gallery, metrics, contact form, or resources.
 - Original local placeholder art with explicit noncanonical labels.
@@ -137,6 +147,18 @@ Three `i.ytimg.com` images load without player code and use no-referrer. They st
 | `style-src 'unsafe-inline'` | Review; do not expand to script |
 | Focus containment/return | Decide from final manual testing |
 
+## 2026-09-02 Phase C client-review implementation
+
+The ordinary chapters now expose one route-specific presentation device on top of the shared Phase B material system: journal fragments, broadcast rail, measured workbench, doorway path, shelves, correspondence ledger, archive album, and quiet gratitude wall. Home keeps its established room gateways. These devices are CSS-led and decorative; they add no content, assets, dependencies, routes, or interaction requirements. See `docs/30_PAGE_SIGNATURE_DEVICES.md`. Current validation evidence belongs to the Phase C commit and must not be inferred from the historical snapshot below.
+
+## 2026-09-02 Phase D client-review implementation
+
+Noninteractive chapter layouts now use open editorial structures instead of repeating full card chrome. Route pacing deliberately ranges from compact Streams/Resources through reflective Meet Nari/Support, while links and controls retain visible boundaries and focus behavior. See `docs/31_DE_CARDIFICATION_AND_RHYTHM.md`. No content, route, asset, dependency, or interaction was added; validation evidence belongs to the Phase D commit.
+
+## 2026-09-02 Phase E validation and stabilization
+
+The clean-install/full repository gate passes after the environmental roadmap, and the shared header now explicitly closes both the mobile panel and native More disclosure through its existing Escape/link-selection path. Automated validation covers all eleven output documents and essential local assets; the deployed human viewport, zoom, screen-reader, and contrast matrix remains pending and is not represented as passed. See `docs/32_PHASE_E_VALIDATION.md`.
+
 ## Recorded commands
 
 The repository defines:
@@ -156,3 +178,7 @@ Historical records state `npm run check` passed at the audited implementation sn
 ## Recommended first implementation action
 
 Do not refactor architecture first. Resolve the canonical identity and asset-rights packet, then integrate one complete vertical slice—current Nari portrait plus Meet Nari/Home placement—through source preservation, responsive derivatives, alt/credit, themes/mobile, tests, and documentation. That proves the production pipeline with real material before scaling to the nail gallery and remaining asset families.
+
+## 2026-09-05 responsive artwork delta
+
+PR #9 now implements the delivery slice from the 5 September performance review: 121 responsive WebP copies, nine route hero preloads, content-addressed cache headers, deferred Haven interior, a stale-chunk reload guard, and enforced asset/bundle budgets. The six-role desktop Home image selection is 184.94 KB versus 1,369.58 KB in the prior review. Local full gate: 10 test files / 56 tests, 11 documents/routes. This is file-byte/build evidence; no new Lighthouse or field metric is claimed. See [full evidence and limitations](33_RESPONSIVE_ARTWORK_PERFORMANCE.md).

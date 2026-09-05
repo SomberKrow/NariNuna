@@ -205,3 +205,7 @@ The project is governed well when a future builder can answer:
 - How is a release proven and rolled back?
 
 If those answers exist only in someone's memory, the system is not finished.
+
+## 2026-09-05 authorized performance implementation
+
+Jake requested application of the attached performance review to existing PR #9. This authorizes resizing/compression and delivery changes to the retained artwork within the existing private-review scope. Implemented responsive hashed copies, matching route preloads, deferred doorway loading, immutable caching only for new content-addressed paths, automated byte budgets, and guarded stale-chunk recovery. No visual redesign, source destruction, dependency migration, budget exception, new identity/content/rights approval, merge, or production release. See `33_RESPONSIVE_ARTWORK_PERFORMANCE.md`; all unresolved client/public-release approvals retain their previous state.

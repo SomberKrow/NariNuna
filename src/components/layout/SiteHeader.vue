@@ -2,17 +2,17 @@
 import { ChevronDown, Menu, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
-import ThemeSwitcher from "@/components/ui/ThemeSwitcher.vue";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { twitchUrl } from "@/data/socials";
 
 const menuOpen = ref(false);
+const moreMenu = ref<HTMLDetailsElement | null>(null);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
-  ["/meet-nari/", "/streams/", "/nail-studio/", "/haven/"].includes(item.href)
+  ["/meet-nari/", "/streams/", "/haven/", "/work-with-nari/"].includes(item.href)
 );
 const moreLinks = [
-  ...primaryNavigation.filter((item) => ["/resources/", "/work-with-nari/"].includes(item.href)),
+  ...primaryNavigation.filter((item) => ["/resources/", "/nail-studio/"].includes(item.href)),
   ...footerNavigation
 ];
 
@@ -22,6 +22,7 @@ function isCurrent(href: string): boolean {
 
 function closeMenu(): void {
   menuOpen.value = false;
+  if (moreMenu.value) moreMenu.value.open = false;
 }
 
 function handleEscape(event: KeyboardEvent): void {
@@ -43,7 +44,7 @@ onBeforeUnmount(() => {
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
-        <span class="brand-mark__emblem"><GhostieArt variant="wave" /></span>
+        <span class="brand-mark__emblem"><GhostieArt variant="wave" sizes="48px" loading="eager" /></span>
         <span>
           <strong>Nari <i>Nuna</i></strong>
           <small>The little world next door</small>
@@ -75,7 +76,7 @@ onBeforeUnmount(() => {
           </a>
         </nav>
 
-        <details class="site-header__more">
+        <details ref="moreMenu" class="site-header__more">
           <summary>More <ChevronDown :size="15" aria-hidden="true" /></summary>
           <nav aria-label="Additional Haven rooms">
             <a
@@ -86,12 +87,11 @@ onBeforeUnmount(() => {
               @click="closeMenu"
             >
               <span>{{ item.shortLabel ?? item.label }}</span>
-              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/work-with-nari/" ? "Collaborations" : item.href === "/stories/" ? "Saved moments" : "Support Nari" }}</small>
+              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/nail-studio/" ? "Color and craft" : item.href === "/stories/" ? "Saved moments" : "Support Nari" }}</small>
             </a>
           </nav>
         </details>
 
-        <ThemeSwitcher />
         <a class="site-header__live-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
           <span aria-hidden="true"></span>
           On Twitch

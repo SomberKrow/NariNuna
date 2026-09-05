@@ -11,13 +11,27 @@ The owner-directed review redesign changes Home from a long scrolling gateway pa
 
 Meet Nari centers the supplied model portrait and official emotes. Streams, Nail Studio, Haven, Resources, Work With Nari, Support, Stories, and 404 each receive route-specific scene, Ghostie, emote, or state artwork. The Nail Studio still contains no fabricated portfolio, client service, or qualification. The hidden optional room displays all 27 owner-supplied Prinny designs while keeping approved character identity/canon records empty. Exact route-by-route assets and outstanding public-rights blockers are recorded in [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
 
+## 2026-09-01 visual-composition refinement
+
+The approved content and route responsibilities remain intact. Home's compact room rail now carries restrained destination-specific imagery above 320px without competing with the face-safe hero. Meet Nari presents its three existing identity pillars as one asymmetrical illustrated spread rather than three equal cards. Streams gives Twitch dominant live-room weight, treats YouTube as a supporting archive destination, and varies the existing featured-moment shelf without changing `MediaCard` behavior. These are composition changes only; no copy, routes, product behavior, or external destinations were added.
+
+The same page-specific composition standard now extends to the remaining ordinary pages. Nail Studio uses a workbench sequence around its honest portfolio hold; Haven reads as a staggered community charter before the unchanged doorway; Resources separates its dominant category shelf from a dense varied demonstration catalog; Work presents collaboration fit and public links as an editorial ledger; Story Time treats one existing moment as the lead archive piece; and Support turns its three free-support actions into an illustrated generosity sequence. The hidden room, 404, page copy, routes, data, and external destinations remain unchanged.
+
+## 2026-09-02 Nari-only review demo
+
+Phase A removes the public atmosphere selector and fixes every route to Nari for client review. This is a reversible implementation proposal, not recorded Nari/Panda approval or a rewrite of the locked historical direction. See [`28_NARI_ONLY_ATMOSPHERE_DEMO.md`](28_NARI_ONLY_ATMOSPHERE_DEMO.md).
+
+## 2026-09-02 environmental-continuity refinement
+
+Phase B carries the chapter-banner environment into each ordinary route through restrained material cues rather than additional hero art. Meet Nari uses journal rules; Streams uses broadcast-desk rails; Nail Studio uses workbench boards and lacquer glints; Haven uses a rug lattice that darkens toward the doorway; Resources uses shelf uprights and ledges; Work uses correspondence rules; Story Time uses an album spine; and Support uses the quietest stitched-wall rhythm. Home remains unchanged because its existing single-scene composition already satisfies the environmental goal. Content order, actions, routes, artwork, and truth boundaries are unchanged. See [`29_ENVIRONMENTAL_CONTINUITY.md`](29_ENVIRONMENTAL_CONTINUITY.md).
+
 ## Shared page contract
 
 Every ordinary page uses `SiteShell` and therefore receives:
 
 - first-focusable skip link;
 - shared sticky header and primary navigation;
-- persistent Nari/Dark/Light theme control;
+- fixed Nari atmosphere metadata in the Phase A client-review demo;
 - one `<main id="main-content">` region;
 - shared footer on every ordinary page except the intentionally single-viewport Home arrival;
 - low-priority Ghostie summoner;
@@ -43,7 +57,7 @@ Every page review asks:
 
 ### Required sequence
 
-1. Theme-specific Haven environment and actual supplied Nari character model.
+1. Nari Haven environment and actual supplied Nari character model.
 2. Concise big-sister identity, verified social dock, and primary Twitch action.
 3. Secondary Meet Nari action.
 4. Three compact room gateways: Streams, Nail Studio, The Haven.

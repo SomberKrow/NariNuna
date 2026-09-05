@@ -36,7 +36,7 @@ Never claim a test, build, branch, commit, PR, deployment, link, right, or appro
 - True Vite MPA with eleven real HTML documents.
 - Ordinary anchors for top-level document navigation.
 - Shared Vue entry/shell and lazy route modules.
-- Nari/Dark/Light semantic themes with external pre-paint boot.
+- Phase A review branch: one Nari atmosphere with semantic tokens; Dark/Light removal remains a reversible client-review proposal, not an approved product-foundation change.
 - Local typed content; no backend, CMS, analytics, form, account, or embeds in the foundation.
 - No Tailwind, general UI kit, second scaffold, SPA rewrite, or client secrets.
 
@@ -69,7 +69,7 @@ An architecture departure requires an accepted decision record.
 - Use native semantic elements and visible focus.
 - Clean listeners/timers/observers/animations.
 - Keep SCSS layer ownership and semantic tokens.
-- Recompose mobile from 320px; honor reduced motion and all themes.
+- Recompose mobile from 320px; honor reduced motion and the active Nari atmosphere.
 - Add dependencies only with documented need, impact, license/privacy review, tests, and removal plan.
 - Update code, tests, docs, inventories, approvals, decisions, and evidence together.
 
@@ -82,7 +82,7 @@ npm ci
 npm run check
 ```
 
-Then perform relevant manual checks from `docs/12_QA_ACCEPTANCE_CRITERIA.md`: direct routes, Nari/Dark/Light, 320/390/768/wide, keyboard/focus, reduced motion, zoom/reflow, screen reader, contrast, network/performance, error states, links, rights, and privacy.
+Then perform relevant manual checks from `docs/12_QA_ACCEPTANCE_CRITERIA.md`: direct routes, the active Nari atmosphere, 320/390/768/wide, keyboard/focus, reduced motion, zoom/reflow, screen reader, contrast, network/performance, error states, links, rights, and privacy. Historical three-theme release requirements remain pending client review.
 
 Report only observed results.
 

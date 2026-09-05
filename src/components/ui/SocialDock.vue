@@ -1,34 +1,13 @@
 <script setup lang="ts">
-import { socialLinks, throneUrl } from "@/data/socials";
-
-interface DockLink {
-  label: string;
-  href: string;
-  platform: "twitch" | "youtube" | "tiktok" | "instagram" | "x" | "throne";
-}
-
-const twitch = socialLinks.find((link) => link.label === "Twitch");
-const youtube = socialLinks.find((link) => link.label === "YouTube");
-const tiktok = socialLinks.find((link) => link.label === "TikTok");
-const instagram = socialLinks.find((link) => link.label === "Instagram");
-const x = socialLinks.find((link) => link.label === "X");
-
-const links: DockLink[] = [
-  ...(twitch ? [{ label: "Twitch", href: twitch.url, platform: "twitch" as const }] : []),
-  ...(youtube ? [{ label: "YouTube", href: youtube.url, platform: "youtube" as const }] : []),
-  ...(tiktok ? [{ label: "TikTok", href: tiktok.url, platform: "tiktok" as const }] : []),
-  ...(instagram ? [{ label: "Instagram", href: instagram.url, platform: "instagram" as const }] : []),
-  ...(x ? [{ label: "X", href: x.url, platform: "x" as const }] : []),
-  { label: "Throne", href: throneUrl, platform: "throne" }
-];
+import { nariLinks } from "@/data/socials";
 </script>
 
 <template>
   <nav class="social-dock" aria-label="Nari's verified public profiles">
     <a
-      v-for="link in links"
+      v-for="link in nariLinks"
       :key="link.platform"
-      :href="link.href"
+      :href="link.url"
       :aria-label="`${link.label} (opens in a new tab)`"
       :title="link.label"
       target="_blank"

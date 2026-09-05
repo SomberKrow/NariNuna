@@ -8,14 +8,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && node scripts/validate-build.mjs",
+    "build": "vue-tsc --noEmit && vite build && node scripts/validate-build.mjs && node scripts/validate-performance.mjs",
     "preview": "vite preview",
     "verify:preview": "node scripts/verify-preview.mjs",
     "start": "npm run preview",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run test && npm run build && npm run verify:preview",
-    "lint": "eslint . --ignore-pattern dist"
+    "lint": "eslint . --ignore-pattern dist",
+    "artwork:prepare": "python3 scripts/prepare-responsive-artwork.py"
   },
   "dependencies": {
     "@lucide/vue": "^1.31.0",
