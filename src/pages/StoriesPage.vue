@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { heroStyle } from "@/data/artworkDelivery";
 import { BookOpenText, Clock3 } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
 import { environmentArtwork } from "@/data/artwork";
@@ -6,7 +7,7 @@ import { featuredMoments } from "@/data/media";
 </script>
 
 <template>
-  <section class="story-opening story-opening--painted page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.stories}')` }">
+  <section class="story-opening story-opening--painted page-width responsive-hero" :style="heroStyle(environmentArtwork.stories)">
     <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Chapter seven · lanterns, blankets, one more story</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A little shelf for Nari's favorite stories, ridiculous stream memories, and moments that still make her laugh when chat is long gone.</p></div>
   </section>
 

@@ -448,7 +448,7 @@
   box-shadow: none;
 }
 
-.room-opening__art > img:first-child {
+.room-opening__art > img {
   width: 100%;
   height: 100%;
   aspect-ratio: auto;
@@ -821,7 +821,7 @@
     padding-inline: var(--page-gutter);
   }
 
-  .room-opening__art > img:first-child,
+  .room-opening__art > img,
   .studio-opening__backdrop,
   .haven-heart__environment,
   .story-opening--painted::before,

@@ -149,3 +149,7 @@ Use the records under [`templates/`](templates/) instead of inventing approval f
 The codebase now includes an owner-requested authentic-artwork review implementation using the supplied Nari model, supplied character art, official static emotes, and all 27 supplied Prinny designs. It is **not cleared for public production release**. The critical blockers are final canonical identity wording, documented artist/owner/website/franchise permissions and credits, real nail-work content, final Discord and professional contact decisions, host/domain configuration, and final manual accessibility/mobile/rights review.
 
 Unknown is a valid state. Fabricated certainty is not.
+
+## 2026-09-05 delivery pass
+
+See [`33_RESPONSIVE_ARTWORK_PERFORMANCE.md`](33_RESPONSIVE_ARTWORK_PERFORMANCE.md) for responsive artwork, preloads, immutable caching, deferred doorway loading, guarded recovery, budgets, and observed evidence.

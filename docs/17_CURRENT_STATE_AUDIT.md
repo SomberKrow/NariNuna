@@ -178,3 +178,7 @@ Historical records state `npm run check` passed at the audited implementation sn
 ## Recommended first implementation action
 
 Do not refactor architecture first. Resolve the canonical identity and asset-rights packet, then integrate one complete vertical slice—current Nari portrait plus Meet Nari/Home placement—through source preservation, responsive derivatives, alt/credit, themes/mobile, tests, and documentation. That proves the production pipeline with real material before scaling to the nail gallery and remaining asset families.
+
+## 2026-09-05 responsive artwork delta
+
+PR #9 now implements the delivery slice from the 5 September performance review: 121 responsive WebP copies, nine route hero preloads, content-addressed cache headers, deferred Haven interior, a stale-chunk reload guard, and enforced asset/bundle budgets. The six-role desktop Home image selection is 184.94 KB versus 1,369.58 KB in the prior review. Local full gate: 10 test files / 56 tests, 11 documents/routes. This is file-byte/build evidence; no new Lighthouse or field metric is claimed. See [full evidence and limitations](33_RESPONSIVE_ARTWORK_PERFORMANCE.md).

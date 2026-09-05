@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { heroStyle } from "@/data/artworkDelivery";
 import { House } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import HavenDoor from "@/components/haven/HavenDoor.vue";
@@ -10,8 +11,8 @@ const valueGhosties: GhostieArtVariant[] = ["support", "bonked", "protective", "
 </script>
 
 <template>
-  <section class="haven-heart">
-    <div class="haven-heart__environment" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.commonRoom}')` }"></div>
+  <section class="haven-heart responsive-hero" :style="heroStyle(environmentArtwork.commonRoom)">
+    <div class="haven-heart__environment" aria-hidden="true" :style="{ backgroundImage: 'var(--responsive-hero-art)' }"></div>
     <div class="haven-heart__inner page-width">
       <div>
         <p class="eyebrow"><House :size="16" aria-hidden="true" /> Chapter four · the room that feels like exhaling</p>
@@ -25,7 +26,7 @@ const valueGhosties: GhostieArtVariant[] = ["support", "bonked", "protective", "
     <header class="world-heading world-heading--center"><p class="eyebrow">What keeps the room feeling like home</p><h2>Kindness has a backbone.</h2></header>
     <div class="haven-values__grid haven-values__grid--storybook">
       <article v-for="(value, index) in communityValues" :key="value.title" :class="`haven-values__fragment haven-values__fragment--${index + 1}`">
-        <GhostieArt class="haven-values__ghostie" :variant="valueGhosties[index]" />
+        <GhostieArt class="haven-values__ghostie" sizes="(min-width: 48rem) 120px, 112px" :variant="valueGhosties[index]" />
         <div class="haven-values__copy"><span>{{ String(index + 1).padStart(2, "0") }}</span><h3>{{ value.title }}</h3><p>{{ value.description }}</p></div>
       </article>
     </div>

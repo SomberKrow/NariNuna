@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { artworkSrc, artworkSrcset, heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import SocialDock from "@/components/ui/SocialDock.vue";
-import { detailArtwork, storybookPostcards } from "@/data/artwork";
+import { detailArtwork, environmentArtwork, storybookPostcards } from "@/data/artwork";
 
 const rooms = [
   { icon: Gamepad2, title: "The stream room", note: "Laughter comes with the furniture.", href: "/streams/", image: storybookPostcards.streams, number: "01" },
@@ -11,14 +12,14 @@ const rooms = [
 </script>
 
 <template>
-  <section class="haven-landing" aria-labelledby="landing-title">
+  <section class="haven-landing responsive-hero" :style="heroStyle(environmentArtwork.homeSunset)" aria-labelledby="landing-title">
     <div
       class="haven-landing__scene"
       role="img"
       aria-label="Nari, with emerald eyes, asymmetric cat-and-dog ears, lavender clothes, and her purple-tipped tail, welcomes a little Ghostie from the autumn window seat in her Haven."
     ></div>
     <div class="haven-landing__veil" aria-hidden="true"></div>
-    <img class="haven-landing__sprig" :src="detailArtwork.lavender" width="290" height="290" alt="" aria-hidden="true" />
+    <img class="haven-landing__sprig" :src="artworkSrc(detailArtwork.lavender, 256)" :srcset="artworkSrcset(detailArtwork.lavender)" sizes="(max-width: 738px) 96px, (max-width: 1538px) 13vw, 200px" width="290" height="290" alt="" aria-hidden="true" />
     <div class="haven-landing__margin-note" aria-hidden="true"><span>AUTUMN, AFTER HOURS</span><i></i><MoonStar :size="15" /></div>
 
     <div class="haven-landing__inner page-width">
@@ -47,7 +48,7 @@ const rooms = [
 
     <nav class="haven-landing__rooms page-width" aria-label="Explore Nari's rooms">
       <a v-for="room in rooms" :key="room.href" :href="room.href">
-        <img :src="room.image" width="320" height="180" alt="" loading="lazy" />
+        <img :src="artworkSrc(room.image, 256)" :srcset="artworkSrcset(room.image, 256)" sizes="(max-width: 64rem) calc((100vw - 40px) / 3), 88px" width="320" height="180" alt="" loading="lazy" />
         <span class="haven-landing__room-number">{{ room.number }}</span>
         <span class="haven-landing__room-copy"><strong>{{ room.title }}</strong><small>{{ room.note }}</small></span>
         <component :is="room.icon" :size="19" aria-hidden="true" />

@@ -1,0 +1,1240 @@
+{
+  "/media/storybook/scenes/haven-community.webp": {
+    "role": "scene",
+    "sourceSha256": "fe1e23bdc562e492d0c70c6e2e9194dbca03d3aa920e8885c1d8e4d0c28ab396",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-haven-community-768.260f46866966296e.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 79594,
+        "sha256": "260f46866966296e2aaad11233616dd413b87f925ee228d9f76ff52c497f4c32",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-haven-community-1280.4f2368e80df669bc.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 146110,
+        "sha256": "4f2368e80df669bc2e1cc38114b6f40c1036ef2a8219bda242faeca1003ecb34",
+        "quality": 80
+      },
+      {
+        "src": "/media/responsive/scene-haven-community-1672.6c865fc0a4f9c363.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 147748,
+        "sha256": "6c865fc0a4f9c3634e0d4ce58ebba2634745cebc6d2d3f7f556baf288bfd5dc6",
+        "quality": 66
+      }
+    ]
+  },
+  "/media/storybook/scenes/haven-doorway-interior.webp": {
+    "role": "scene",
+    "sourceSha256": "02ef7a8bac4db894f82cf147f6556db7c790249571a0790418a2d2fb07ebac45",
+    "width": 1024,
+    "height": 1536,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-haven-doorway-interior-320.cb82559e413ef1e1.webp",
+        "width": 320,
+        "height": 480,
+        "bytes": 50174,
+        "sha256": "cb82559e413ef1e19a92c5d8e53fa9ac64bdd3aa52bf9fcd1b74582b7e503556",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-haven-doorway-interior-640.4a79227b1c7bb2aa.webp",
+        "width": 640,
+        "height": 960,
+        "bytes": 143694,
+        "sha256": "4a79227b1c7bb2aaec5dc68d4d765943a1d6b8dcf1440d4918bda22d7243a5b5",
+        "quality": 78
+      },
+      {
+        "src": "/media/responsive/scene-haven-doorway-interior-768.340eb4df654dcf31.webp",
+        "width": 768,
+        "height": 1152,
+        "bytes": 143944,
+        "sha256": "340eb4df654dcf31636aeccac4afcd4583d915bc4e9bdc42f89c2d46c3fa2c1a",
+        "quality": 62
+      }
+    ]
+  },
+  "/media/storybook/scenes/haven-sunset.webp": {
+    "role": "scene",
+    "sourceSha256": "8f8b5bdefbfc5f5c1a347cbc3d93b701c4f83e81ee8b253898640efcb2515ca3",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-haven-sunset-768.c5afdd8f62f9edff.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 78940,
+        "sha256": "c5afdd8f62f9edff5fa261c554aaf556e050e3eac9c38dd88ebf9293d0be8679",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-haven-sunset-1280.a7c90055b81e76b6.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 144764,
+        "sha256": "a7c90055b81e76b67ccf526fb11304c654a57ecb5bdfe1c930a02c0eaa08e200",
+        "quality": 80
+      },
+      {
+        "src": "/media/responsive/scene-haven-sunset-1672.241d015394438c1f.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 146078,
+        "sha256": "241d015394438c1f7bc3f7f05706e85fd1a691577a08ded21b8499c4f2317d20",
+        "quality": 64
+      }
+    ]
+  },
+  "/media/storybook/scenes/meet-nari.webp": {
+    "role": "scene",
+    "sourceSha256": "202a1c3de6ea27a8feec72e0f52d75fcbdf00b7ac02c6337c2fca2ad74b95d53",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-meet-nari-768.516f68062df543e6.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 89434,
+        "sha256": "516f68062df543e6a1b19e2d93f676c529b9c27562e8b6e465f3476f7b99b06e",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-meet-nari-1280.5ac42bdd67d50335.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 143018,
+        "sha256": "5ac42bdd67d503352c5b05bbf528b94a89b9de0ad827745a52ee7e5328d3a3ac",
+        "quality": 76
+      },
+      {
+        "src": "/media/responsive/scene-meet-nari-1672.613f0aee145d1c47.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 145342,
+        "sha256": "613f0aee145d1c47b13b6d9fd031077f8dde75aecdd6727134bfe90e4c81e0e6",
+        "quality": 52
+      }
+    ]
+  },
+  "/media/storybook/scenes/nails-atelier.webp": {
+    "role": "scene",
+    "sourceSha256": "32184f72579fbc0c349f10a28f5f50e25123fe8ed30a0d45b6c022e52b5d5ca2",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-nails-atelier-768.8f01018d663e6a35.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 79760,
+        "sha256": "8f01018d663e6a351cdb68d1efff8ab4e3c7160e1679f167462c2d961c232424",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-nails-atelier-1280.874fe7a908c32088.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 147884,
+        "sha256": "874fe7a908c32088cecf69a42101c8fd23e49e5212a53e86bdd802a92f75514f",
+        "quality": 80
+      },
+      {
+        "src": "/media/responsive/scene-nails-atelier-1672.7f81a8d681866fe7.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 145890,
+        "sha256": "7f81a8d681866fe728695f9b32e06f750fb811d6314ae900d25e4a3863bb1f2b",
+        "quality": 62
+      }
+    ]
+  },
+  "/media/storybook/scenes/resources-library.webp": {
+    "role": "scene",
+    "sourceSha256": "c065639c5f0dd02a1f6de87c89a50b307d2cb3687fa8568df78da30c9be82d06",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-resources-library-768.aacc9a59cb706dc4.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 72494,
+        "sha256": "aacc9a59cb706dc4ed00d2f8d1917dd004976c46ab4847b2b931fd6f7962816f",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-resources-library-1280.8c95042c06b76dba.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 144258,
+        "sha256": "8c95042c06b76dbaa139c588ab76bb082bf3624f8404877a4a99defd2fcc4585",
+        "quality": 82
+      },
+      {
+        "src": "/media/responsive/scene-resources-library-1672.874f33c7ec5d5fac.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 144928,
+        "sha256": "874f33c7ec5d5facd6481e19d8ff515be33f71df1d32bb25ea43adb3125a753d",
+        "quality": 70
+      }
+    ]
+  },
+  "/media/storybook/scenes/stories-lantern.webp": {
+    "role": "scene",
+    "sourceSha256": "1b73fb98582e2408bb4964d9e0e0980a43a1661e7fe8d8ab49eb45e84b1c2c60",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-stories-lantern-768.b4e103820e50f4b3.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 71966,
+        "sha256": "b4e103820e50f4b3c522465d49bb6b27491e9689f5bcb547e7ad69c7264a3a22",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-stories-lantern-1280.f590fbd2dcddf2fc.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 141934,
+        "sha256": "f590fbd2dcddf2fc2e76d5fd8c0b7a53228a0c4b7fd208e058bb0fa529a07a46",
+        "quality": 82
+      },
+      {
+        "src": "/media/responsive/scene-stories-lantern-1672.f872ca8307c6f18d.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 143062,
+        "sha256": "f872ca8307c6f18d8621fb8c338c180f3abccfacfe7a8a083ef95a819425c85b",
+        "quality": 72
+      }
+    ]
+  },
+  "/media/storybook/scenes/streams-atelier.webp": {
+    "role": "scene",
+    "sourceSha256": "9cab7b07121493f4248f6034e7682e403798317eb0ca144cabee38a0e54796f6",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-streams-atelier-768.421db5b0b4617282.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 80264,
+        "sha256": "421db5b0b4617282911a9475c1ca668d7637ef85e015f4a576a6917eac8b07a4",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-streams-atelier-1280.98f8e93d1fb519d5.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 140956,
+        "sha256": "98f8e93d1fb519d582c8f642102f60b9ed4b23356238a1e2d39d87dc5408f2d3",
+        "quality": 78
+      },
+      {
+        "src": "/media/responsive/scene-streams-atelier-1672.c97cd21f53ff29dd.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 144810,
+        "sha256": "c97cd21f53ff29ddb4e7cfaf584aeb59cf75a85ffc49276cd6a306801584db77",
+        "quality": 58
+      }
+    ]
+  },
+  "/media/storybook/scenes/work-correspondence.webp": {
+    "role": "scene",
+    "sourceSha256": "ab534f6cfdf81bf96020d7d42102689762e13be79c2ae474cb285a7fd66b3a2d",
+    "width": 1672,
+    "height": 941,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/scene-work-correspondence-768.8e3fbd819746fe46.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 70164,
+        "sha256": "8e3fbd819746fe46cd7fb6d63cc3d153f0a5b10de6685d1311decf483b4b8df8",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/scene-work-correspondence-1280.463627b4fdc1ae65.webp",
+        "width": 1280,
+        "height": 720,
+        "bytes": 143618,
+        "sha256": "463627b4fdc1ae65d5d6f9634b43d07e96a4791abd0e91d28e1c07fa93eb6de9",
+        "quality": 82
+      },
+      {
+        "src": "/media/responsive/scene-work-correspondence-1672.6def6da5e10e61fa.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 144268,
+        "sha256": "6def6da5e10e61faa925a25c65739d0968a69b7bf090cd305dd70f0ea0704a3a",
+        "quality": 70
+      }
+    ]
+  },
+  "/media/storybook/postcards/haven-community.webp": {
+    "role": "postcard",
+    "sourceSha256": "4f2e23e24e4eb07eeddf7ead464ee07e45758d16a6c9ad6fe31af6771945620a",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-haven-community-128.89ddc8aa333dfb46.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 3376,
+        "sha256": "89ddc8aa333dfb4611adf0037e000965780df47e74dccea8f0d9e8849996938a",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-community-256.6438ca9737db8404.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 11538,
+        "sha256": "6438ca9737db84044d822c0f569487af1ff34649f8e91c3ee766d09ce5d8e67f",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-community-480.e59e555a574c568c.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 34892,
+        "sha256": "e59e555a574c568c06f5bc4d69979b8bc49a1b37de6a6740753ca1865b8f93a4",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-community-768.e535fc0d74c2e858.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 69394,
+        "sha256": "e535fc0d74c2e8587c7dca8a38c4201fc545a1640f91d4397634cf05a8286d4c",
+        "quality": 82
+      }
+    ]
+  },
+  "/media/storybook/postcards/haven-sunset.webp": {
+    "role": "postcard",
+    "sourceSha256": "a5814ce02a09547449d00bb579e6f762588c72c0e6c08416c2e229b79052adb9",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-haven-sunset-128.ae1b447da4dc5d69.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 3326,
+        "sha256": "ae1b447da4dc5d695f82afbbe70c694b287f49157543e9c0a7f6ffe2dbeb5330",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-sunset-256.16776720ece7aa55.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 11280,
+        "sha256": "16776720ece7aa55eaf94a3b0743683357df8c52ba9aaedfa46c6a72d0e10533",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-sunset-480.179028c540bf855c.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 34102,
+        "sha256": "179028c540bf855c740f2b2a74a9fda037275f9b4b89ad524ab9092898b46317",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-haven-sunset-768.e67f8c5ba4d95e0b.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 68526,
+        "sha256": "e67f8c5ba4d95e0b7104f78cead907c005f955f63a8f26cc37e45f1db9f17c9c",
+        "quality": 82
+      }
+    ]
+  },
+  "/media/storybook/postcards/meet-nari.webp": {
+    "role": "postcard",
+    "sourceSha256": "ae000dadb3b9d69b6d125f51f170f840b62701b2edc442802b5d1282b642aa7e",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-meet-nari-128.c4cc0aef2f068504.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 3546,
+        "sha256": "c4cc0aef2f06850487dd22f540a5ce1f3c8d6fb6cf78ae96e5ee7591545690b1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-meet-nari-256.3c9fdca0e6dc9ef1.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 12074,
+        "sha256": "3c9fdca0e6dc9ef10b353dc20f22e8f42e176f70120f69a15a4600ff6f370118",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-meet-nari-480.5ad8a3debbd5ceb1.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 38636,
+        "sha256": "5ad8a3debbd5ceb137637751d11b803c7bec5540cd1708ff21d0021a5b5158ec",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-meet-nari-768.01a79c9ebbfa7efe.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 67806,
+        "sha256": "01a79c9ebbfa7efe1970cdb5a263a96ddc8e14cb0535f672547585dd9f13fddb",
+        "quality": 78
+      }
+    ]
+  },
+  "/media/storybook/postcards/nails-atelier.webp": {
+    "role": "postcard",
+    "sourceSha256": "b91c43a137d18c6ef2eee388a93da7d9b3275a12530594f6fa564db3008669c2",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-nails-atelier-128.4ee2b5e3f78238b4.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 3098,
+        "sha256": "4ee2b5e3f78238b49f02ed7e2f407cd0afe70645af77addc76c8c74c805d9ef6",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-nails-atelier-256.11ec935139346a14.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 10572,
+        "sha256": "11ec935139346a14fb50d8f2ce3148d41046e949c991e7ed3d525cc7a2344116",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-nails-atelier-480.e6e6f4878c0ddc11.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 33746,
+        "sha256": "e6e6f4878c0ddc1102dd8d4f01c7a6465a22f239d2e14e74c7ba20492cc80c63",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-nails-atelier-768.bbdf0f6312976a62.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 69984,
+        "sha256": "bbdf0f6312976a6277919d9f9b32b81c7740f6e28519374c6c98af09e8fd90ae",
+        "quality": 82
+      }
+    ]
+  },
+  "/media/storybook/postcards/resources-library.webp": {
+    "role": "postcard",
+    "sourceSha256": "386a3ba7c64853f53b9a2f3322bb66535f9ee07968f30a87a63cd865d04e9fdc",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-resources-library-128.385a7e0806b6d596.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 2898,
+        "sha256": "385a7e0806b6d596d0723e416cd275cfd7bfc18df4135549cafd88fae8e9466c",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-resources-library-256.465b60c1d961c3a6.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 10040,
+        "sha256": "465b60c1d961c3a69ac082a8072d0fe57d3a9d8519260e729fbe0fcdf942447c",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-resources-library-480.4adcb0de666cf4c5.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 31064,
+        "sha256": "4adcb0de666cf4c563c554efa36a5e7e446df8097bc2e81927b519f638b6260a",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-resources-library-768.fd4a8d1be5c23406.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 69768,
+        "sha256": "fd4a8d1be5c23406390f5271c169423a4812948ed45bb3177d720a0b49afa517",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/storybook/postcards/stories-lantern.webp": {
+    "role": "postcard",
+    "sourceSha256": "6917d351eb1c3398f5be8baa925e9e0db214b847ab0a34044e91e83d88db9b59",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-stories-lantern-128.347afc643ba795f8.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 2962,
+        "sha256": "347afc643ba795f8a7bd31fbe5201071de0e6ba401bcb8d6abd29dabe0173cf7",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-stories-lantern-256.1dd4c8eef58f09c6.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 9916,
+        "sha256": "1dd4c8eef58f09c6cc1d24094bd0733be29d9a589bf318033370701f5cf4533e",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-stories-lantern-480.376e09a6f75c54e3.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 31366,
+        "sha256": "376e09a6f75c54e37281b4be182061bea5ec4f6d386f1d2010a8fee1a04653fe",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-stories-lantern-768.e8dc970bfec265e9.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 68808,
+        "sha256": "e8dc970bfec265e983e01dcaf22693a5a29ffd51a8f4a69ef49bb7af4e18941d",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/storybook/postcards/streams-atelier.webp": {
+    "role": "postcard",
+    "sourceSha256": "8ca3105176cc97f889e5448f1c851483c9b5611cf23447801656a74c27b9eca7",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-streams-atelier-128.a7b57071e5654498.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 3284,
+        "sha256": "a7b57071e565449829d6c1853f346bebccb45ebbd7e09c55313de61688928fc1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-streams-atelier-256.937f8256db495a6a.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 10882,
+        "sha256": "937f8256db495a6acd0dea437090ac070a5539c876ddf8b54eb3bc3df157d540",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-streams-atelier-480.d41efef4412afb90.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 34272,
+        "sha256": "d41efef4412afb9045affb2d102f1629bd9c00f976f8e76cba630d0ad38edd72",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-streams-atelier-768.440c8b0ce7cb8ca8.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 64714,
+        "sha256": "440c8b0ce7cb8ca829e7762e046e8ff8d0aa8a4cee4b04e6cb578aa414059da1",
+        "quality": 80
+      }
+    ]
+  },
+  "/media/storybook/postcards/work-correspondence.webp": {
+    "role": "postcard",
+    "sourceSha256": "357d54c043e39c1163cdc81d6d46af386ac5d114af18782cc45cca5a76942939",
+    "width": 960,
+    "height": 540,
+    "alpha": false,
+    "candidates": [
+      {
+        "src": "/media/responsive/postcard-work-correspondence-128.21b3cd0c03a6bf87.webp",
+        "width": 128,
+        "height": 72,
+        "bytes": 2888,
+        "sha256": "21b3cd0c03a6bf87e825126a38cd1d7bf9b256599afa10507aa4d0baffa5849b",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-work-correspondence-256.5b151fd12f95d4bd.webp",
+        "width": 256,
+        "height": 144,
+        "bytes": 9500,
+        "sha256": "5b151fd12f95d4bd4f1dd839eb5f5a74e4ebd3d614dca302d42d8a48fca6b5e8",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-work-correspondence-480.cbb2cdb1646dda73.webp",
+        "width": 480,
+        "height": 270,
+        "bytes": 30342,
+        "sha256": "cbb2cdb1646dda73a5233a14e6cb8ae77625857bc7da9e8348706352dfcaa905",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/postcard-work-correspondence-768.c6c8e93ef9a774cd.webp",
+        "width": 768,
+        "height": 432,
+        "bytes": 68408,
+        "sha256": "c6c8e93ef9a774cd31fe1e748002c81b26ded1d2bc1d2ba5154d4063f44f808b",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-bonked.webp": {
+    "role": "ghostie",
+    "sourceSha256": "2abeab624bd132b254baef68a26fa5135a85899de3c3bc54b7865207e2cfdf35",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-bonked-64.fead17f05e10910b.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 3254,
+        "sha256": "fead17f05e10910b2437d651b145978753ba56c15f5b027f7658fa796dcaef3d",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-bonked-128.56ce1573c9799e73.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 7682,
+        "sha256": "56ce1573c9799e735cebf41659b03cce79be1b6171307bf5055dacda82d18c2d",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-bonked-256.80f522b69d9aa386.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 19418,
+        "sha256": "80f522b69d9aa3863cdeb991697e2dffacfbf153c571d2db6ba69b6f6bb4bb6d",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-bonked-512.23cf16d989782470.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 52784,
+        "sha256": "23cf16d9897824700df763775156f9e32aedf9dd8830e6ac86973c026f183f56",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-bonked-768.334c15a58b579f79.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 87060,
+        "sha256": "334c15a58b579f79a537b24d01f77469793febc28e366d70f6316f4f1244090f",
+        "quality": 76
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-chaotic.webp": {
+    "role": "ghostie",
+    "sourceSha256": "b95ad57161902da5bfb08e1a5952f87568355c04acfe69ad47ba870d98597a32",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-chaotic-64.d9d5bd209b6600e2.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 3244,
+        "sha256": "d9d5bd209b6600e20a0ca8a0de8d6e2b2a224c9bde076818e2ae9dc9f75c8215",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-chaotic-128.b72d4e3248972a98.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 7270,
+        "sha256": "b72d4e3248972a98ade12ba7de93b84120f73044547cd54e55d456afc00e21c9",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-chaotic-256.928550c04e950c2c.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 17334,
+        "sha256": "928550c04e950c2c2e24fde8a58d12e8eba1741ff8d07b1806ffef38555def70",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-chaotic-512.5cb0b5bff245c625.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 42876,
+        "sha256": "5cb0b5bff245c62537903e8afd97252f2d635d041127f30ad2c8edad85fa9eca",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-chaotic-768.26169dc0a91b77cf.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 76568,
+        "sha256": "26169dc0a91b77cfa5c78d6ef61c5280440901dd8ef5d9cc1fd08856a609bb7a",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-cozy.webp": {
+    "role": "ghostie",
+    "sourceSha256": "19c7cb43252cff1e633750000cea09e64dbc95ca2df056832e7edbdab060432e",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-cozy-64.8505e8b16154e668.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 3166,
+        "sha256": "8505e8b16154e668983bfdf008d796ec7edf52ca13ed90a652771b18740c6722",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-cozy-128.acef03f449962436.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 7738,
+        "sha256": "acef03f449962436e191ffa88898a39491c1ca10b70ac33b805f24b1c9c6a14f",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-cozy-256.6a74b3554c611d81.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 20734,
+        "sha256": "6a74b3554c611d81caad05c89b4be7f96a196b4c7615ddd67825d1f62ca7ae2b",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-cozy-512.4a9b1fc17c6a348a.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 57380,
+        "sha256": "4a9b1fc17c6a348a0573532b4f2b1099aa2cd94f4e55301522200413630765a0",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-cozy-768.dd0281d1e3dcfed8.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 87746,
+        "sha256": "dd0281d1e3dcfed871431685a5244436f08707053aada7f7817d00813fc35fe5",
+        "quality": 78
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-gaming.webp": {
+    "role": "ghostie",
+    "sourceSha256": "11194e25e497e99c94020afdbefc109719964c93d08f5797e313f1d6446b8f58",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-gaming-64.895c0304d1dfbd4c.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2974,
+        "sha256": "895c0304d1dfbd4c925fbffbb76fdc1c0f62adae6f0ef104bc9e20eea9a23be5",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-gaming-128.8b6008be3d064c99.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 6758,
+        "sha256": "8b6008be3d064c9953438c8adfb22a2e22088d2a1e517c714c1cdd354001c1c0",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-gaming-256.c6af764307a14e9e.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 16884,
+        "sha256": "c6af764307a14e9e629d264ed7858cbe145c2a76375a8d9bbf734c8913efe069",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-gaming-512.5f02b051beb6f44f.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 46430,
+        "sha256": "5f02b051beb6f44ffde5737c610a163a32daed535e661e66744abe87495ed0f6",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-gaming-768.88aebcb448d3e812.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 89862,
+        "sha256": "88aebcb448d3e8122765062b0be1a39dd924e1fa3f4b14787bf179ef82fbeb4e",
+        "quality": 82
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-heart.webp": {
+    "role": "ghostie",
+    "sourceSha256": "07b480846f66908e500e1fd82223fa035a2379234652c1c28b08a46f183d26b4",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-heart-64.ddd85fb64253d9fe.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2424,
+        "sha256": "ddd85fb64253d9feb2d464ea3ff15b02f453d0a0f45c6df6aa271d872fb463a2",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-heart-128.e5355397a6b280e7.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 5272,
+        "sha256": "e5355397a6b280e7f607dcf8bf9a9087a6f813f5f35fbeaa610245c7d6acb9f0",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-heart-256.f95e19c3d108e0b2.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 12396,
+        "sha256": "f95e19c3d108e0b2fcf8641f04536f150e288368ebdafc32c15355def0d63c00",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-heart-512.6e6df039e2308295.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 32606,
+        "sha256": "6e6df039e2308295833a911d83d8c3475b1046c1f904aa9e907f07e80459a0f1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-heart-768.37028c28f801857b.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 59414,
+        "sha256": "37028c28f801857b5678188b15c26c0168cd07cb504165c047b278c2aa7e7bde",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-nail-tech.webp": {
+    "role": "ghostie",
+    "sourceSha256": "83a568ba07504cd66135753ac2cf53a6879dc22cf0247333350b0c0413bc9eeb",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-nail-tech-64.49edfd7b6f7a7713.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 3114,
+        "sha256": "49edfd7b6f7a7713e64755adfc69ad64adcf50a27f6d07c91159198de6b21dd9",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-nail-tech-128.cd99742bac3dfee8.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 6924,
+        "sha256": "cd99742bac3dfee80b45a2bb723ce343000b230a2ac419960ed8fa623dacdf1c",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-nail-tech-256.402279bb4621d829.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 17002,
+        "sha256": "402279bb4621d829a0a704332ddc67abeead351f0c0654440164354ebf77d3d1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-nail-tech-512.127c40fbd18707ab.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 45442,
+        "sha256": "127c40fbd18707ab83063439ad2aaf57d8359eb97ba8a64557f86176fbf7531b",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-nail-tech-768.65490fc5d80d57b6.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 84904,
+        "sha256": "65490fc5d80d57b6f4798a3f7c9209f8dc842f37624114f3eaf1c2e271cbb004",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-peek.webp": {
+    "role": "ghostie",
+    "sourceSha256": "75fc92460be5fe01d59b4f7d9f3aeb3c6ab33d1834a208d981184df4789762f2",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-peek-64.8de4bfa1f7ae724a.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2442,
+        "sha256": "8de4bfa1f7ae724ace0b7082aa6ee748033d96306ff6267bb32d08fe63ac4022",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-peek-128.996a441ca6ceb5a2.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 5732,
+        "sha256": "996a441ca6ceb5a213ddf683716e15f78fe8c49db1f2d85f1d6e48bf79c6d5cf",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-peek-256.984863c7538f4747.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 15318,
+        "sha256": "984863c7538f4747fb97bc3bd5e9cf6b80d0c7e2d4885b6b9d49cacd3cf8324f",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-peek-512.439094515fe9a146.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 46016,
+        "sha256": "439094515fe9a1465bfbad9c8b6d596c862e20fee445afa4f0046803c758af12",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-peek-768.b02ea81d21ed1028.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 87932,
+        "sha256": "b02ea81d21ed10289e4b6504236996e6a9ba31131c898b497bb09f7d638d7cc6",
+        "quality": 80
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-protective.webp": {
+    "role": "ghostie",
+    "sourceSha256": "56425065322e6b3d35db30b75f3bbce5813bf65e3754bbf31662304e6b0317b5",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-protective-64.e6d9932676e3a072.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2938,
+        "sha256": "e6d9932676e3a07281be3023a438759faa472fe63604de537fd02cc3762083d9",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-protective-128.b403b8c750c5729f.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 6510,
+        "sha256": "b403b8c750c5729fc62e366ae709c566715a0f2f08f5483646921691f5e2acfd",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-protective-256.448952edac40afb7.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 15880,
+        "sha256": "448952edac40afb7bd72c184f840cb29ddce232efd4c8b0e8a4286237432eab2",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-protective-512.1f133899728fbd6a.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 41084,
+        "sha256": "1f133899728fbd6a0291218a09b1997973726285f764a831d1a3a5b60e8ffd13",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-protective-768.4ecf9d4aeeb7509a.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 75210,
+        "sha256": "4ecf9d4aeeb7509a1e5329559cc4a7ec1cf3bc0f28221c370a567e4aee1c526e",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-shy.webp": {
+    "role": "ghostie",
+    "sourceSha256": "7395c075bc289fea5de061bdab7f20ab2d3928b671f31c9bebab594457f12f6c",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-shy-64.581b2af34460e18e.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2346,
+        "sha256": "581b2af34460e18e27cd4b617ca1ceee4306d721d6c78bba1045debf61201d4e",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-shy-128.4e1b8b900f928e96.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 4666,
+        "sha256": "4e1b8b900f928e967aebbe57bfe5be2c98492b735db09590ee0e632805f10be5",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-shy-256.dca1a27367a3c317.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 10440,
+        "sha256": "dca1a27367a3c3170da53bb73f018b8515d60730939a91db3d4283c49216c19d",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-shy-512.584dfd1ecb8902cc.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 25630,
+        "sha256": "584dfd1ecb8902cc6ba7c262077d89938d0abdee4783e9e7ad58fd072eab22c4",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-shy-768.09433ddc81266e11.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 45208,
+        "sha256": "09433ddc81266e117ec5d770d357771fdb1d6e80701d9a68f9d4fdb61046a831",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-sign.webp": {
+    "role": "ghostie",
+    "sourceSha256": "ca0689c2a7e4e51f26af9ae0c44d3599a9555333256f24f6f53133e59cc8be66",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-sign-64.3101bc9d185d8df0.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2968,
+        "sha256": "3101bc9d185d8df0c384c941c8339737f6f309a6bf9fef93647696dd1234dcf6",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sign-128.b3ec98e2464a7c04.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 6740,
+        "sha256": "b3ec98e2464a7c04b178b5ffc69c0160e086bd2021d80a96713a81a6eba9646d",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sign-256.be537aafac50318a.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 17480,
+        "sha256": "be537aafac50318a280d00163787598429b9199d73b425ee17df19f5d6201908",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sign-512.cfdc9623690592d4.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 47604,
+        "sha256": "cfdc9623690592d4a5989fa8a837e4c93ae8db2cb0c4972e481780983988d48c",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sign-768.9dc0994d59025de7.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 87392,
+        "sha256": "9dc0994d59025de75d488b7c581eb6e3b99ad60bb225a1784bfcb300b763cbb5",
+        "quality": 80
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-sleeping.webp": {
+    "role": "ghostie",
+    "sourceSha256": "cb92d01b6aff5b83bbd6ec378e23ff54de6b4252626d47a36bd44b1a1df2dc85",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-sleeping-64.cc3dbc28ab37f125.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 2662,
+        "sha256": "cc3dbc28ab37f125b5e6e53765d05687de818740b4456eba1e92d41eda6fa5c6",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sleeping-128.345a5ac6453dd17d.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 5948,
+        "sha256": "345a5ac6453dd17d51926ffae95890a2cc53a5aac4ee778aee31adf621839532",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sleeping-256.3f2c20078fb85625.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 14720,
+        "sha256": "3f2c20078fb85625ed606228053d82cd1f44bfe05f76ce1bd2e2726471aedff1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sleeping-512.9ca3fad0e359a955.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 41492,
+        "sha256": "9ca3fad0e359a9552b81b5179f0a78ad12dea92db8957df7aac7059ed17781c2",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-sleeping-768.6934ca914cb24807.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 78480,
+        "sha256": "6934ca914cb248078af569e93de2f5d7c31ead014e1b9dff45bb6d8933374caa",
+        "quality": 84
+      }
+    ]
+  },
+  "/media/ghosties/community/ghostie-study.webp": {
+    "role": "ghostie",
+    "sourceSha256": "f67047493e56433b99b765c1fdcfd10e2518f6ef1bb517b4afcbf255011685ce",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/ghostie-ghostie-study-64.9cff3ef7afd62b45.webp",
+        "width": 64,
+        "height": 64,
+        "bytes": 3372,
+        "sha256": "9cff3ef7afd62b45f3a98305a763a93e7f8ef1a62aba150ca54f63567b96a6a6",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-study-128.2c830017b9b8a60a.webp",
+        "width": 128,
+        "height": 128,
+        "bytes": 8002,
+        "sha256": "2c830017b9b8a60a8e3a2987d1793dc4c617627795d1fbacdd3ec294762d2288",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-study-256.629c526d96a87896.webp",
+        "width": 256,
+        "height": 256,
+        "bytes": 20424,
+        "sha256": "629c526d96a87896ced8e9b8d154676fb7eb805a54af7fa73fcdc3e2c198db93",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-study-512.baad18df3a2da7e6.webp",
+        "width": 512,
+        "height": 512,
+        "bytes": 59148,
+        "sha256": "baad18df3a2da7e6b934d60b9ee3ecb393ba8e1c33ca17dea88ddac78e220fc1",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/ghostie-ghostie-study-768.e1b8f89bd47e9ddd.webp",
+        "width": 768,
+        "height": 768,
+        "bytes": 89298,
+        "sha256": "e1b8f89bd47e9ddd4fdbc45e49fb93bfa0ad4a112c4781a32b6cadd94e17cf6c",
+        "quality": 66
+      }
+    ]
+  },
+  "/media/motifs/lavender-sprig.webp": {
+    "role": "motif",
+    "sourceSha256": "8592fcd5139569c04a13b75d9cce3ae7b208ff1536db689329946e4eb4e8813e",
+    "width": 760,
+    "height": 570,
+    "alpha": true,
+    "candidates": [
+      {
+        "src": "/media/responsive/motif-lavender-sprig-128.d8b0114efee05665.webp",
+        "width": 128,
+        "height": 96,
+        "bytes": 9686,
+        "sha256": "d8b0114efee0566536b176dd2e51de777926ab622d1f27a3e7e67a78eb715f80",
+        "quality": 84
+      },
+      {
+        "src": "/media/responsive/motif-lavender-sprig-256.8c5a339f1743b877.webp",
+        "width": 256,
+        "height": 192,
+        "bytes": 26682,
+        "sha256": "8c5a339f1743b8779d7fb2acb4bc2548b62d866a332cc3245d50d95944235ff6",
+        "quality": 84
+      }
+    ]
+  }
+}

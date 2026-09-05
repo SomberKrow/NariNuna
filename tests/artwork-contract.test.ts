@@ -89,7 +89,9 @@ describe("approved-source artwork contracts", () => {
   it("keeps the Nari atmosphere active while preserving the existing room artwork family", () => {
     const worldStyles = readFileSync(resolve(process.cwd(), "src/styles/_world.scss"), "utf8");
 
-    expect(worldStyles).toContain(environmentArtwork.homeSunset);
+    expect(worldStyles).not.toContain(environmentArtwork.homeSunset);
+    const homePage = readFileSync(resolve(process.cwd(), "src/pages/HomePage.vue"), "utf8");
+    expect(homePage).toContain("heroStyle(environmentArtwork.homeSunset)");
     expect(worldStyles).not.toContain(environmentArtwork.homeNight);
     expect(worldStyles).not.toContain(environmentArtwork.homeDaylight);
     expect(publicAssetExists(environmentArtwork.homeSunset)).toBe(true);

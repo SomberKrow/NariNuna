@@ -1,4 +1,5 @@
 import { resolve } from "node:path";
+import { heroPreloads } from "./scripts/hero-preloads";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vitest/config";
 
@@ -24,7 +25,7 @@ export default defineConfig({
   root: documentRoot,
   publicDir: resolve(projectRoot, "public"),
   appType: "mpa",
-  plugins: [vue()],
+  plugins: [vue(), heroPreloads()],
   resolve: {
     alias: {
       "@": sourceRoot,
@@ -38,6 +39,7 @@ export default defineConfig({
   build: {
     outDir: resolve(projectRoot, "dist"),
     emptyOutDir: true,
+    manifest: true,
     target: "baseline-widely-available",
     rolldownOptions: {
       input: pageEntries

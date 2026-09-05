@@ -1,5 +1,4 @@
 :root {
-  --haven-scene: url("/media/storybook/scenes/haven-sunset.webp");
   --scene-veil: linear-gradient(90deg, rgb(30 18 26 / 93%) 0%, rgb(38 23 32 / 79%) 43%, rgb(39 25 40 / 21%) 78%, rgb(35 21 33 / 30%) 100%);
   --art-border: rgb(218 174 209 / 21%);
 }
@@ -556,7 +555,7 @@ body[data-route="home"] .site-footer {
   box-shadow: var(--shadow-deep);
 }
 
-.room-opening__art > img:first-child {
+.room-opening__art > img {
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: inherit;

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Shield, Sparkles } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import { environmentArtwork } from "@/data/artwork";
@@ -9,7 +10,7 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
 </script>
 
 <template>
-  <section class="character-intro character-intro--storybook character-intro--integrated page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.meetNari}')` }">
+  <section class="character-intro character-intro--storybook character-intro--integrated page-width responsive-hero" :style="heroStyle(environmentArtwork.meetNari)">
     <div class="character-intro__copy">
       <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
       <h1>Hi, I'm <em>Nari.</em></h1>
@@ -28,14 +29,14 @@ const identityCards = identityPillars.map((pillar, index) => ({ ...pillar, ghost
     <header class="world-heading"><p class="eyebrow">One Nari, three familiar corners</p><h2>The warmth, the chaos, and the craft all belong together.</h2></header>
     <div class="identity-rooms__grid identity-rooms__grid--painted">
       <article v-for="(card, index) in identityCards" :key="card.title" :class="`identity-rooms__fragment identity-rooms__fragment--${index + 1}`">
-        <GhostieArt class="ghostie-card-art" :variant="card.ghostie" />
+        <GhostieArt class="ghostie-card-art" :sizes="index === 0 ? '(min-width: 48rem) 208px, 128px' : '(min-width: 48rem) 136px, 128px'" :variant="card.ghostie" />
         <div><p class="eyebrow">{{ card.eyebrow }}</p><h3>{{ card.title }}</h3><p>{{ card.text }}</p></div>
       </article>
     </div>
   </section>
 
   <section class="nari-promise nari-promise--storybook page-width section-pad">
-    <GhostieArt class="nari-promise__ghostie" variant="protective" :decorative="false" label="A Nari Nuna Ghostie holding a heart shield, representing warmth with strong boundaries" />
+    <GhostieArt class="nari-promise__ghostie" sizes="(min-width: 48rem) 352px, 288px" variant="protective" :decorative="false" label="A Nari Nuna Ghostie holding a heart shield, representing warmth with strong boundaries" />
     <div class="nari-promise__copy">
       <p class="eyebrow"><Shield :size="15" aria-hidden="true" /> Sweet doesn't mean spineless</p>
       <h2>We take care of our people here.</h2>

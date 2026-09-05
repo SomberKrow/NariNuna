@@ -44,7 +44,7 @@ onBeforeUnmount(() => {
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
-        <span class="brand-mark__emblem"><GhostieArt variant="wave" /></span>
+        <span class="brand-mark__emblem"><GhostieArt variant="wave" sizes="48px" loading="eager" /></span>
         <span>
           <strong>Nari <i>Nuna</i></strong>
           <small>The little world next door</small>

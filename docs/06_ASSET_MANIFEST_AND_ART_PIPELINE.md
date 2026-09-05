@@ -265,3 +265,7 @@ Adding another remote image origin requires privacy, CSP, reliability, and right
 - [ ] Performance budget holds or an exception is approved.
 - [ ] Placeholder wording and retired files are synchronized.
 - [ ] Manifest, relevant page spec, content record, and release evidence are updated.
+
+## 2026-09-05 responsive delivery update
+
+The existing review artwork now has 121 content-addressed WebP delivery copies under `public/media/responsive/`. Source files remain intact. `src/data/responsive-artwork.json` records exact source/candidate hashes, dimensions, alpha, quality, and bytes. Run `npm run artwork:prepare` with Python/Pillow WebP support to regenerate; committed output builds without that tooling. Every candidate stays below its role budget; Home has a conservative complete-composition limit. See [delivery specification](33_RESPONSIVE_ARTWORK_PERFORMANCE.md) and [intake record](asset-records/ASSET-2026-021-responsive-delivery.md).

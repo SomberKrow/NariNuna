@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowUpRight, Eye, Gift, Heart, Share2 } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import { environmentArtwork } from "@/data/artwork";
@@ -12,14 +13,14 @@ const ways: { icon: typeof Eye; title: string; text: string; ghostie: GhostieArt
 </script>
 
 <template>
-  <section class="support-welcome support-welcome--painted page-width" :style="{ '--chapter-painting': `url('${environmentArtwork.commonRoom}')` }">
+  <section class="support-welcome support-welcome--painted page-width responsive-hero" :style="heroStyle(environmentArtwork.commonRoom)">
     <div><p class="eyebrow"><Heart :size="15" aria-hidden="true" /> A gentle reminder, before anything else</p><h1>Your presence<br /><em>already counts.</em></h1><p>You matter here whether you spend money or not. Laughing, learning, lurking, checking in, and simply being kind are all real support.</p></div>
   </section>
   <section class="support-kindness page-width section-pad">
     <header class="world-heading"><p class="eyebrow">The things that cost absolutely nothing</p><h2>These are the big ones.</h2></header>
     <div class="support-kindness__grid support-kindness__grid--painted">
       <article v-for="(way, index) in ways" :key="way.title" :class="`support-kindness__chapter support-kindness__chapter--${index + 1}`">
-        <GhostieArt class="ghostie-card-art" :variant="way.ghostie" :mirror="way.mirror" />
+        <GhostieArt :sizes="index === 0 ? '(min-width: 48rem) 208px, 124px' : '124px'" class="ghostie-card-art" :variant="way.ghostie" :mirror="way.mirror" />
         <div><component :is="way.icon" :size="22" aria-hidden="true" /><h3>{{ way.title }}</h3><p>{{ way.text }}</p></div>
       </article>
     </div>

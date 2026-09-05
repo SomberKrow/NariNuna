@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { artworkSrc, artworkSrcset, heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
@@ -11,8 +12,8 @@ const studioPieces: { icon: typeof Images; title: string; text: string; ghostie:
 </script>
 
 <template>
-  <section class="studio-opening">
-    <div class="studio-opening__backdrop" aria-hidden="true" :style="{ backgroundImage: `url('${environmentArtwork.nails}')` }"></div>
+  <section class="studio-opening responsive-hero" :style="heroStyle(environmentArtwork.nails)">
+    <div class="studio-opening__backdrop" aria-hidden="true" :style="{ backgroundImage: 'var(--responsive-hero-art)' }"></div>
     <div class="studio-opening__inner page-width">
       <div>
         <p class="eyebrow"><Paintbrush :size="16" aria-hidden="true" /> Chapter three · her favorite little desk</p>
@@ -27,12 +28,12 @@ const studioPieces: { icon: typeof Images; title: string; text: string; ghostie:
     <header class="world-heading"><p class="eyebrow">A proper creative room</p><h2>Polish, practice, and doing it her way.</h2></header>
     <div class="studio-notes__grid studio-notes__grid--painted">
       <article v-for="(piece, index) in studioPieces" :key="piece.title" :class="`studio-notes__fragment studio-notes__fragment--${index + 1}`">
-        <GhostieArt class="ghostie-card-art" :variant="piece.ghostie" />
+        <GhostieArt :sizes="index === 0 ? '(min-width: 48rem) 224px, 128px' : '128px'" class="ghostie-card-art" :variant="piece.ghostie" />
         <div><component :is="piece.icon" :size="20" aria-hidden="true" /><h3>{{ piece.title }}</h3><p>{{ piece.text }}</p></div>
       </article>
     </div>
     <div class="studio-gallery-note">
-      <img :src="storybookPostcards.nails" width="960" height="540" alt="Painted detail of Nari's nail workspace while the real portfolio is being selected" loading="lazy" />
+      <img :src="artworkSrc(storybookPostcards.nails, 256)" :srcset="artworkSrcset(storybookPostcards.nails)" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="960" height="540" alt="Painted detail of Nari's nail workspace while the real portfolio is being selected" loading="lazy" />
       <div><p class="eyebrow">Her actual work, or nothing</p><h2>The portfolio opens when Nari picks the sets.</h2><p>No stock nails. No generated hands. No borrowing somebody else's manicure to make the page look finished. Until her approved photos are ready, the studio itself carries the mood.</p></div>
     </div>
   </section>

@@ -17,7 +17,8 @@ describe("client-feedback interaction contracts", () => {
     expect(doorway).toContain('name: "Third knock"');
     expect(doorway).toContain('aria-label="Your three knocks at the Haven door"');
     expect(doorway).toContain("environmentArtwork.havenDoorInterior");
-    expect(doorway).toContain('v-if="isOpen" class="haven-threshold__gathering"');
+    expect(doorway).toContain('v-if="loadInterior" class="haven-threshold__gathering"');
+    expect(doorway).toContain(':aria-hidden="!isOpen ? \'true\' : undefined"');
     expect(doorway).toContain("object-fit: cover");
     expect(doorway).not.toContain("backdrop-filter: blur");
 

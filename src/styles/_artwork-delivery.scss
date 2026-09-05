@@ -1,0 +1,12 @@
+/* Candidate selection only. Existing face-safe layers retain crop and geometry. */
+.responsive-hero {
+  --responsive-hero-art: var(--hero-art-small);
+}
+
+@media (768px <= width < 1280px) {
+  .responsive-hero { --responsive-hero-art: var(--hero-art-medium); }
+}
+
+@media (width >= 1280px) {
+  .responsive-hero { --responsive-hero-art: var(--hero-art-wide); }
+}

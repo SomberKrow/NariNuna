@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
+import { artworkSrc, artworkSrcset } from "@/data/artworkDelivery";
 import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
 const knocksRequired = 3;
 const step = ref(0);
+const threshold = ref<HTMLElement | null>(null);
+const loadInterior = ref(false);
+let observer: IntersectionObserver | undefined;
+
+function prepareInterior(): void {
+  loadInterior.value = true;
+  observer?.disconnect();
+}
+
+onMounted(() => {
+  if (!("IntersectionObserver" in window)) {
+    prepareInterior();
+    return;
+  }
+  observer = new IntersectionObserver((entries) => {
+    if (entries.some((entry) => entry.isIntersecting)) prepareInterior();
+  }, { rootMargin: "300px" });
+  if (threshold.value) observer.observe(threshold.value);
+});
+
+onUnmounted(() => observer?.disconnect());
 
 const stages = [
   {
@@ -38,6 +60,7 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
 const isOpen = computed(() => step.value === knocksRequired);
 
 function knock(): void {
+  prepareInterior();
   step.value = Math.min(step.value + 1, knocksRequired);
 }
 
@@ -48,14 +71,15 @@ function closeDoor(): void {
 
 <template>
   <section
+    ref="threshold"
     class="haven-threshold"
+    @focusin="prepareInterior"
     :class="{ 'haven-threshold--open': isOpen }"
     aria-labelledby="haven-door-title"
   >
     <div
       class="haven-threshold__scene"
       :class="`is-step-${step}`"
-      :style="{ '--haven-room-art': `url('${environmentArtwork.havenDoorInterior}')` }"
     >
       <div class="haven-threshold__wall" aria-hidden="true"></div>
       <div class="haven-threshold__halo" aria-hidden="true"></div>
@@ -66,18 +90,19 @@ function closeDoor(): void {
       <div class="haven-threshold__keystone" aria-hidden="true">☾</div>
 
       <div class="haven-threshold__arch">
-        <div class="haven-threshold__room" aria-hidden="true"></div>
         <div class="haven-threshold__room-light" aria-hidden="true"></div>
 
-        <figure v-if="isOpen" class="haven-threshold__gathering">
+        <figure v-if="loadInterior" class="haven-threshold__gathering" :class="{ 'is-glimpsed': !isOpen }" :aria-hidden="!isOpen ? 'true' : undefined">
           <img
-            :src="environmentArtwork.havenDoorInterior"
+            :src="artworkSrc(environmentArtwork.havenDoorInterior, 640)"
+            :srcset="artworkSrcset(environmentArtwork.havenDoorInterior)"
+            sizes="(min-width: 68rem) 368px, 320px"
             width="1024"
             height="1536"
             alt="Nari welcomes you into a lantern-lit autumn cottage surrounded by her cheerful little scythe-hairpin Ghosties"
             decoding="async"
           />
-          <figcaption>
+          <figcaption v-if="isOpen">
             <span>Beyond the doorway</span>
             <strong>We saved you a spot.</strong>
           </figcaption>
@@ -298,15 +323,6 @@ function closeDoor(): void {
     0 1rem 3rem rgb(10 4 9 / 48%);
   perspective: 950px;
   transform: translateX(-50%);
-}
-
-.haven-threshold__room {
-  position: absolute;
-  inset: 0;
-  background-image: var(--haven-room-art);
-  background-position: 59% center;
-  background-size: cover;
-  filter: brightness(0.7) saturate(0.86);
 }
 
 .haven-threshold__room-light {
@@ -826,4 +842,5 @@ function closeDoor(): void {
     transition: none;
   }
 }
+.haven-threshold__gathering.is-glimpsed { filter: brightness(0.7) saturate(0.86); }
 </style>

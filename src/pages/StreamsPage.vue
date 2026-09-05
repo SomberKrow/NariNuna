@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { artworkSrc, artworkSrcset, heroSources } from "@/data/artworkDelivery";
 import { ArrowUpRight, Gamepad2, MessageCircle, Radio, Sparkles, Video } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
@@ -40,16 +41,17 @@ const platforms = [
       </div>
       <div class="room-opening__signals"><span><MessageCircle :size="15" aria-hidden="true" /> Chat welcome</span><span><Gamepad2 :size="15" aria-hidden="true" /> Plans optional</span></div>
     </div>
-    <div class="room-opening__art room-opening__art--streams">
-      <img :src="environmentArtwork.streams" width="1672" height="941" alt="Nari laughs at her hand-painted autumn streaming desk beside a little Ghostie wearing matching lavender headphones" fetchpriority="high" />
-    </div>
+    <picture class="room-opening__art room-opening__art--streams">
+      <source v-for="source in heroSources(environmentArtwork.streams)" :key="source.media" :media="source.media" :srcset="source.srcset" />
+      <img :src="artworkSrc(environmentArtwork.streams, 1280)" width="1672" height="941" alt="Nari laughs at her hand-painted autumn streaming desk beside a little Ghostie wearing matching lavender headphones" fetchpriority="high" />
+    </picture>
   </section>
 
   <section class="stream-hub page-width section-pad">
     <header class="world-heading"><p class="eyebrow">Two doors that are actually current</p><h2>Live there. Catch up here.</h2><p>Twitch is the live room. YouTube is where Nari's highlights, Shorts, and longer-lived creative pieces can keep breathing afterward.</p></header>
     <div class="stream-platform-grid">
       <a v-for="platform in platforms" :key="platform.title" :href="platform.href" target="_blank" rel="noreferrer noopener">
-        <img :src="platform.art" width="960" height="540" alt="" loading="lazy" />
+        <img :src="artworkSrc(platform.art, 256)" :srcset="artworkSrcset(platform.art)" sizes="(min-width: 64rem) 720px, (min-width: 48rem) 60vw, calc(100vw - 48px)" width="960" height="540" alt="" loading="lazy" />
         <div>
           <component :is="platform.icon" :size="22" aria-hidden="true" />
           <span><strong>{{ platform.title }}</strong><small>{{ platform.note }}</small></span>

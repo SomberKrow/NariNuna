@@ -240,3 +240,7 @@ npm run preview
 ```
 
 Then complete the manual matrix and `templates/RELEASE_EVIDENCE_RECORD.md`. Release is blocked by any critical failure, missing rights/canon approval, unknown host behavior, or unreviewed private content.
+
+## 2026-09-05 performance gate addition
+
+`npm run check` now includes source/derivative hash, alpha, byte and dimension contracts; the capped complete Home image composition; stale-chunk recovery; built hero preloads; and unique transitive gzip JS/CSS limits. Local evidence: 56 passing tests across 10 files and 11 passing document/routes. Image-byte improvements are not Lighthouse scores. See `33_RESPONSIVE_ARTWORK_PERFORMANCE.md` for exact observations and remaining browser/mobile/release gates.

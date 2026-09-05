@@ -253,3 +253,7 @@ If these questions are premature, the integration is premature.
 ## Deployment contract
 
 Architecture remains provider-neutral. The host must serve directory indexes, map unknown paths to `404.html`, enforce security/cache headers, support HTTPS, preserve root-relative assets, and permit atomic rollback. Detailed deployment and verification live in `15_DEPLOYMENT_AND_RELEASE_RUNBOOK.md`.
+
+## 2026-09-05 performance delivery delta
+
+A Vite HTML transform generates route-specific, media-matched hero preloads from the shared artwork delivery module for nine ordinary documents. CSS backgrounds and native picture sources select the same content-addressed candidates. All eleven documents and lazy route modules remain. The build manifest now feeds a transitive JS/CSS budget gate. The Haven interior has proximity/focus/knock loading with observer cleanup. Stale chunks use a session-scoped one-reload guard with manual failure recovery. See [implementation and evidence](33_RESPONSIVE_ARTWORK_PERFORMANCE.md).
