@@ -110,7 +110,7 @@ describe("client-feedback interaction contracts", () => {
 
   it("keeps icon buttons uniform and disables new motion when reduced motion is requested", () => {
     const polish = sourceAt("src/styles/_polish.scss");
-    const feedback = sourceAt("src/styles/_feedback.scss");
+    const feedback = sourceAt("src/styles/_chapters.scss");
     const socials = polish.slice(polish.indexOf("/* Recognizable, icon-only socials"), polish.indexOf("/* Home starts"));
 
     expect(socials).toContain("grid-template-columns: repeat(6, minmax(0, 1fr))");

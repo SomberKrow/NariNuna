@@ -97,8 +97,7 @@
 .haven-landing {
   min-height: calc(100svh - var(--header-height));
   max-height: none;
-  padding-block-end: 1rem;
-}
+  }
 
 .haven-landing::before {
   inset: 0.55rem;
@@ -155,13 +154,11 @@
 }
 
 .haven-landing__rooms {
-  position: relative;
-  z-index: 5;
+    z-index: 5;
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.55rem;
-  padding: 0.8rem 1rem 0;
-}
+  }
 
 .haven-landing__rooms > a {
   grid-template-columns: 4.1rem auto minmax(0, 1fr) auto;
