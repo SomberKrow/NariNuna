@@ -10,8 +10,9 @@ describe("client-feedback interaction contracts", () => {
   it("keeps the Discord invitation behind exactly three accessible Haven knocks", () => {
     const doorway = sourceAt("src/components/haven/HavenDoor.vue");
 
-    expect(doorway).toContain("const knocksRequired = 3");
-    expect(doorway).toContain("Math.min(step.value + 1, knocksRequired)");
+    const behavior = sourceAt("src/composables/useHavenDoor.ts");
+    expect(behavior).toContain("const knocksRequired = 3");
+    expect(behavior).toContain("Math.min(step.value + 1, knocksRequired)");
     expect(doorway).toContain('name: "First knock"');
     expect(doorway).toContain('name: "Second knock"');
     expect(doorway).toContain('name: "Third knock"');

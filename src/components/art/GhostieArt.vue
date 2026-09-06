@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { artworkSrc, artworkSrcset } from "@/data/artworkDelivery";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+
 import { communityGhostieArtwork } from "@/data/artwork";
 
 export type GhostieArtVariant = keyof typeof communityGhostieArtwork;
@@ -29,10 +30,9 @@ withDefaults(
     :class="{ 'ghostie-art--mirrored': mirror }"
     :aria-hidden="decorative ? 'true' : undefined"
   >
-    <img
+    <ResponsiveArtwork
       class="ghostie-art__image"
-      :src="artworkSrc(communityGhostieArtwork[variant], 256)"
-      :srcset="artworkSrcset(communityGhostieArtwork[variant])"
+      :artwork="communityGhostieArtwork[variant]"
       :sizes="sizes"
       :alt="decorative ? '' : label"
       width="1254"

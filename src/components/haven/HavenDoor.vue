@@ -1,34 +1,15 @@
 <script setup lang="ts">
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
-import { computed, onMounted, onUnmounted, ref } from "vue";
-import { artworkSrc, artworkSrcset } from "@/data/artworkDelivery";
+import { computed } from "vue";
+import { useHavenDoor } from "@/composables/useHavenDoor";
+
 import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
-const knocksRequired = 3;
-const step = ref(0);
-const threshold = ref<HTMLElement | null>(null);
-const loadInterior = ref(false);
-let observer: IntersectionObserver | undefined;
+const { knocksRequired, step, threshold, loadInterior, prepareInterior, isOpen, knock, closeDoor } = useHavenDoor();
 
-function prepareInterior(): void {
-  loadInterior.value = true;
-  observer?.disconnect();
-}
-
-onMounted(() => {
-  if (!("IntersectionObserver" in window)) {
-    prepareInterior();
-    return;
-  }
-  observer = new IntersectionObserver((entries) => {
-    if (entries.some((entry) => entry.isIntersecting)) prepareInterior();
-  }, { rootMargin: "300px" });
-  if (threshold.value) observer.observe(threshold.value);
-});
-
-onUnmounted(() => observer?.disconnect());
-
+// Narrative copy stays beside the presentation; the composable owns interaction state.
 const stages = [
   {
     name: "First knock",
@@ -57,16 +38,6 @@ const stages = [
 ] as const;
 
 const currentStage = computed(() => stages[Math.min(step.value, knocksRequired - 1)]);
-const isOpen = computed(() => step.value === knocksRequired);
-
-function knock(): void {
-  prepareInterior();
-  step.value = Math.min(step.value + 1, knocksRequired);
-}
-
-function closeDoor(): void {
-  step.value = 0;
-}
 </script>
 
 <template>
@@ -93,9 +64,8 @@ function closeDoor(): void {
         <div class="haven-threshold__room-light" aria-hidden="true"></div>
 
         <figure v-if="loadInterior" class="haven-threshold__gathering" :class="{ 'is-glimpsed': !isOpen }" :aria-hidden="!isOpen ? 'true' : undefined">
-          <img
-            :src="artworkSrc(environmentArtwork.havenDoorInterior, 640)"
-            :srcset="artworkSrcset(environmentArtwork.havenDoorInterior)"
+          <ResponsiveArtwork
+            :fallback-width="640" loading="eager" :artwork="environmentArtwork.havenDoorInterior"
             sizes="(min-width: 68rem) 368px, 320px"
             width="1024"
             height="1536"

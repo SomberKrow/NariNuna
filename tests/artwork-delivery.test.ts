@@ -53,7 +53,7 @@ describe("responsive artwork delivery", () => {
       + [storybookPostcards.streams, storybookPostcards.nails, storybookPostcards.haven].reduce((bytes, source) => bytes + maximum(source, 256), 0);
     expect(total).toBeLessThanOrEqual(250_000);
     const home = readFileSync("src/pages/HomePage.vue", "utf8");
-    expect(home).toContain("artworkSrcset(room.image, 256)");
+    expect(home).toContain(':max-width="256"');
   });
 
   it("gives all nine ordinary documents matching CSS/picture/preload candidates", () => {

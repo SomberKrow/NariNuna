@@ -35,7 +35,7 @@ describe("approved-source artwork contracts", () => {
 
     expect(uniqueGhosties).toHaveLength(12);
     expect(ghostieComponent).toContain("communityGhostieArtwork[variant]");
-    expect(ghostieComponent).toContain("<img");
+    expect(ghostieComponent).toContain("<ResponsiveArtwork");
     expect(ghostieComponent).toContain('width="1254"');
     expect(ghostieComponent).toContain("background: transparent");
     expect(ghostieComponent).toContain("drop-shadow");
