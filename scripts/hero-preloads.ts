@@ -1,18 +1,14 @@
+import projectPages from "../src/data/projectPages.json";
 import type { Plugin } from "vite";
 import { environmentArtwork } from "../src/data/artwork";
 import { heroSources } from "../src/data/artworkDelivery";
 
-export const routeHeroArtwork: Record<string, string> = {
-  "index.html": environmentArtwork.homeSunset,
-  "meet-nari/index.html": environmentArtwork.meetNari,
-  "streams/index.html": environmentArtwork.streams,
-  "nail-studio/index.html": environmentArtwork.nails,
-  "haven/index.html": environmentArtwork.commonRoom,
-  "resources/index.html": environmentArtwork.resources,
-  "work-with-nari/index.html": environmentArtwork.work,
-  "stories/index.html": environmentArtwork.stories,
-  "support/index.html": environmentArtwork.commonRoom
-};
+export const routeHeroArtwork: Record<string, string> = Object.fromEntries(
+  projectPages.filter(({ hero }) => hero !== null).map(({ document, hero }) => {
+    if (!hero || !(hero in environmentArtwork)) throw new Error(`Unknown hero for ${document}: ${hero}`);
+    return [document, environmentArtwork[hero as keyof typeof environmentArtwork]];
+  })
+);
 
 export function heroPreloads(): Plugin {
   return {

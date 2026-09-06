@@ -1,0 +1,90 @@
+[
+  {
+    "id": "home",
+    "path": "/",
+    "document": "index.html",
+    "title": "Nari Nuna's Haven",
+    "socialImage": "/media/storybook/share/nari-home-social.jpg",
+    "hero": "homeSunset"
+  },
+  {
+    "id": "meetNari",
+    "path": "/meet-nari/",
+    "document": "meet-nari/index.html",
+    "title": "Meet Nari",
+    "socialImage": "/media/storybook/share/nari-meet-social.jpg",
+    "hero": "meetNari"
+  },
+  {
+    "id": "streams",
+    "path": "/streams/",
+    "document": "streams/index.html",
+    "title": "Streams",
+    "socialImage": "/media/storybook/share/nari-streams-social.jpg",
+    "hero": "streams"
+  },
+  {
+    "id": "nailStudio",
+    "path": "/nail-studio/",
+    "document": "nail-studio/index.html",
+    "title": "Nail Studio",
+    "socialImage": "/media/storybook/share/nari-nails-social.jpg",
+    "hero": "nails"
+  },
+  {
+    "id": "haven",
+    "path": "/haven/",
+    "document": "haven/index.html",
+    "title": "The Haven",
+    "socialImage": "/media/storybook/share/nari-haven-social.jpg",
+    "hero": "commonRoom"
+  },
+  {
+    "id": "resources",
+    "path": "/resources/",
+    "document": "resources/index.html",
+    "title": "Resources",
+    "socialImage": "/media/storybook/share/nari-resources-social.jpg",
+    "hero": "resources"
+  },
+  {
+    "id": "workWithNari",
+    "path": "/work-with-nari/",
+    "document": "work-with-nari/index.html",
+    "title": "Work With Nari",
+    "socialImage": "/media/storybook/share/nari-work-social.jpg",
+    "hero": "work"
+  },
+  {
+    "id": "support",
+    "path": "/support/",
+    "document": "support/index.html",
+    "title": "Support",
+    "socialImage": "/media/storybook/share/nari-haven-social.jpg",
+    "hero": "commonRoom"
+  },
+  {
+    "id": "stories",
+    "path": "/stories/",
+    "document": "stories/index.html",
+    "title": "Story Time",
+    "socialImage": "/media/storybook/share/nari-stories-social.jpg",
+    "hero": "stories"
+  },
+  {
+    "id": "prinnyCult",
+    "path": "/the-prinny-cult/",
+    "document": "the-prinny-cult/index.html",
+    "title": "???",
+    "socialImage": null,
+    "hero": null
+  },
+  {
+    "id": "notFound",
+    "path": "/404.html",
+    "document": "404.html",
+    "title": "Room Not Found",
+    "socialImage": null,
+    "hero": null
+  }
+]

@@ -1,19 +1,8 @@
+import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
-const pages = [
-  "index.html",
-  "meet-nari/index.html",
-  "streams/index.html",
-  "nail-studio/index.html",
-  "haven/index.html",
-  "resources/index.html",
-  "work-with-nari/index.html",
-  "support/index.html",
-  "stories/index.html",
-  "the-prinny-cult/index.html",
-  "404.html"
-];
+const pages = projectPages.map(({ document }) => document);
 
 for (const page of pages) {
   const output = resolve("dist", page);

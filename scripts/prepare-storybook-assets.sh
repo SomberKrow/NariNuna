@@ -3,13 +3,15 @@ set -euo pipefail
 
 master_root="${1:?Usage: scripts/prepare-storybook-assets.sh STORYBOOK_MASTER_DIRECTORY}"
 media_root="${2:-public/media}"
+source_media="${3:-src/assets/source/delivery/media}"
 
 if ! command -v convert >/dev/null 2>&1; then
   printf '%s\n' 'ImageMagick is required to prepare the illustrated Nari artwork.' >&2
   exit 1
 fi
 
-mkdir -p "$media_root/storybook"/{characters,scenes,ghosties,postcards,share}
+mkdir -p "$media_root/storybook"/{characters,ghosties,share}
+mkdir -p "$source_media/storybook"/{scenes,postcards,share}
 
 convert_checked() {
   local destination="${@: -1}"
@@ -95,11 +97,11 @@ declare -A scenes=(
 for slug in "${!scenes[@]}"; do
   convert_checked "$master_root/${scenes[$slug]}.png" \
     -resize '2560x1440>' -strip -quality 92 \
-    "$media_root/storybook/scenes/$slug.webp"
+    "$source_media/storybook/scenes/$slug.webp"
 
   convert_checked "$master_root/${scenes[$slug]}.png" \
     -resize '960x540>' -strip -quality 90 \
-    "$media_root/storybook/postcards/$slug.webp"
+    "$source_media/storybook/postcards/$slug.webp"
 done
 
 # Preserve the physical room composition across all themes; only the clock,
@@ -107,12 +109,12 @@ done
 convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 73,82,104 -fill '#34204a' -colorize 13 \
   -resize '2560x1440>' -strip -quality 92 \
-  "$media_root/storybook/scenes/haven-midnight.webp"
+  "$source_media/storybook/scenes/haven-midnight.webp"
 
 convert_checked "$master_root/home-integrated-nari-master.png" \
   -modulate 116,88,99 -fill '#ffe3c1' -colorize 12 \
   -resize '2560x1440>' -strip -quality 92 \
-  "$media_root/storybook/scenes/haven-daybreak.webp"
+  "$source_media/storybook/scenes/haven-daybreak.webp"
 
 for emotion in shy chaos cozy nails heart; do
   character="$master_root/ghostie-$emotion-storybook.png"
@@ -141,7 +143,7 @@ for share in home meet streams nails haven resources work stories; do
   convert_checked "$master_root/$source.png" \
     -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \
     -strip -quality 84 \
-    "$media_root/storybook/share/nari-$share-social.webp"
+    "$source_media/storybook/share/nari-$share-social.webp"
 
   convert_checked "$master_root/$source.png" \
     -resize '1200x630>' -background '#291923' -gravity Center -extent 1200x630 \

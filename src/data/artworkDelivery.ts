@@ -1,4 +1,14 @@
-import manifest from "./responsive-artwork.json";
+import generated from "./responsive-artwork.json";
+
+const manifest = generated.artworks;
+
+export type ArtworkKey = keyof typeof manifest;
+
+export function artworkMetadata(source: string) {
+  const asset = manifest[source as ArtworkKey];
+  if (!asset) throw new Error(`Missing responsive artwork: ${source}`);
+  return asset;
+}
 
 export interface ArtworkCandidate {
   src: string;
@@ -8,9 +18,7 @@ export interface ArtworkCandidate {
 }
 
 export function artworkCandidates(source: string): readonly ArtworkCandidate[] {
-  const asset = manifest[source as keyof typeof manifest];
-  if (!asset) throw new Error(`Missing responsive artwork: ${source}`);
-  return asset.candidates;
+  return artworkMetadata(source).candidates;
 }
 
 export function artworkSrc(source: string, width: number): string {

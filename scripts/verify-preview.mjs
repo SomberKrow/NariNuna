@@ -1,6 +1,8 @@
+import projectPages from "../src/data/projectPages.json" with { type: "json" };
+import { existsSync } from "node:fs";
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { readdir } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { setTimeout as delay } from "node:timers/promises";
 
 const origin = process.env.NARI_PREVIEW_URL ?? "http://127.0.0.1:4173";
@@ -39,19 +41,7 @@ if (managesPreview) {
 }
 
 try {
-const routes = [
-  ["/", "Nari Nuna's Haven", "/media/storybook/share/nari-home-social.jpg"],
-  ["/meet-nari/", "Meet Nari", "/media/storybook/share/nari-meet-social.jpg"],
-  ["/streams/", "Streams", "/media/storybook/share/nari-streams-social.jpg"],
-  ["/nail-studio/", "Nail Studio", "/media/storybook/share/nari-nails-social.jpg"],
-  ["/haven/", "The Haven", "/media/storybook/share/nari-haven-social.jpg"],
-  ["/resources/", "Resources", "/media/storybook/share/nari-resources-social.jpg"],
-  ["/work-with-nari/", "Work With Nari", "/media/storybook/share/nari-work-social.jpg"],
-  ["/support/", "Support", "/media/storybook/share/nari-haven-social.jpg"],
-  ["/stories/", "Story Time", "/media/storybook/share/nari-stories-social.jpg"],
-  ["/the-prinny-cult/", "???", null],
-  ["/404.html", "Room Not Found", null]
-];
+const routes = projectPages.map(({ path, title, socialImage }) => [path, title, socialImage]);
 
 const requiredAssets = [
   "/media/nari/nari-model-fullbody.webp",
@@ -67,18 +57,6 @@ const requiredAssets = [
   "/media/storybook/ghosties/ghostie-cozy.webp",
   "/media/storybook/ghosties/ghostie-nails.webp",
   "/media/storybook/ghosties/ghostie-heart.webp",
-  "/media/storybook/scenes/haven-sunset.webp",
-  "/media/storybook/scenes/haven-midnight.webp",
-  "/media/storybook/scenes/haven-daybreak.webp",
-  "/media/storybook/scenes/meet-nari.webp",
-  "/media/storybook/scenes/streams-atelier.webp",
-  "/media/storybook/scenes/haven-community.webp",
-  "/media/storybook/scenes/haven-doorway-gathering.webp",
-  "/media/storybook/scenes/haven-doorway-interior.webp",
-  "/media/storybook/scenes/nails-atelier.webp",
-  "/media/storybook/scenes/resources-library.webp",
-  "/media/storybook/scenes/work-correspondence.webp",
-  "/media/storybook/scenes/stories-lantern.webp",
   "/media/storybook/share/nari-home-social.jpg",
   "/media/storybook/share/nari-meet-social.jpg",
   "/favicon.png"
@@ -98,6 +76,12 @@ for (const [route, expectedTitle, expectedPreview] of routes) {
   } else {
     assert.match(html, /name="robots" content="noindex/, `${route} must remain non-indexable`);
   }
+}
+
+const generated = JSON.parse(await readFile("src/data/responsive-artwork.json", "utf8"));
+for (const artwork of Object.values(generated.artworks)) {
+  assert.ok(existsSync(artwork.sourceFile), `Missing retained source: ${artwork.sourceFile}`);
+  requiredAssets.push(...artwork.candidates.map(({ src }) => src));
 }
 
 for (const asset of requiredAssets) {

@@ -1,17 +1,19 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import manifest from "@/data/responsive-artwork.json";
+import generated from "@/data/responsive-artwork.json";
 import { artworkCandidates, artworkSrc, artworkSrcset, heroSources } from "@/data/artworkDelivery";
 import { communityGhostieArtwork, detailArtwork, environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { routeHeroArtwork } from "../scripts/hero-preloads";
+
+const manifest = generated.artworks;
 
 const hash = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 
 describe("responsive artwork delivery", () => {
   it("preserves source identity, alpha, dimensions and content-addressed byte budgets", () => {
-    for (const [source, asset] of Object.entries(manifest)) {
-      expect(hash(readFileSync(`public${source}`))).toBe(asset.sourceSha256);
+    for (const asset of Object.values(manifest)) {
+      expect(hash(readFileSync(asset.sourceFile))).toBe(asset.sourceSha256);
       let lastWidth = 0;
       for (const candidate of asset.candidates) {
         const bytes = readFileSync(`public${candidate.src}`);
