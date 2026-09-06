@@ -269,3 +269,16 @@ Adding another remote image origin requires privacy, CSP, reliability, and right
 ## 2026-09-05 responsive delivery update
 
 The existing review artwork now has 121 content-addressed WebP delivery copies under `public/media/responsive/`. Source files remain intact. `src/data/responsive-artwork.json` records exact source/candidate hashes, dimensions, alpha, quality, and bytes. Run `npm run artwork:prepare` with Python/Pillow WebP support to regenerate; committed output builds without that tooling. Every candidate stays below its role budget; Home has a conservative complete-composition limit. See [delivery specification](33_RESPONSIVE_ARTWORK_PERFORMANCE.md) and [intake record](asset-records/ASSET-2026-021-responsive-delivery.md).
+
+## 2026-09-06 source/runtime separation
+
+The maintenance branch preserves 63 existing files (14,411,064 bytes) outside deployment. Exact former URLs, current repository paths, roles, bytes and SHA-256 hashes are in `src/assets/source/delivery/inventory.json`; automated tests enforce preservation and absence from `public/`.
+
+| Family | Current owner | Delivery |
+|---|---|---|
+| Scene/postcard/community Ghostie originals and Home lavender sprig | `src/assets/source/delivery/media/` | 121 unchanged responsive WebPs |
+| Eight unused storybook WebP social alternatives | `src/assets/source/delivery/media/storybook/share/` | Existing JPEG crops remain public and metadata-referenced |
+| Superseded generic social PNGs and placeholder derivatives | `src/assets/source/retired/media/{share,generated}/` | Retired from deployment; retained for provenance |
+| Supplied identity/emotes, 27 Prinnies, active storybook JPEG metadata | Existing `public/media/` families | Existing URLs retained |
+
+`prepare-responsive-artwork.py` now reads the nonpublic sources. `prepare-storybook-assets.sh` sends scene/postcard inputs to the same source tree; character and JPEG outputs keep their existing public destinations. App-icon PNGs were re-encoded losslessly, saving 2,761 bytes with identical decoded RGBA pixels. No artwork design, crop, identity, alpha, rights, credit or public-release approval changed. Historical path tables above describe their dated intake; this relocation record owns current locations. Unreferenced candidates reported by `npm run audit:assets` are review evidence, not automatic deletion permission.

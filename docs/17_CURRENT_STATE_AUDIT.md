@@ -182,3 +182,24 @@ Do not refactor architecture first. Resolve the canonical identity and asset-rig
 ## 2026-09-05 responsive artwork delta
 
 PR #9 now implements the delivery slice from the 5 September performance review: 121 responsive WebP copies, nine route hero preloads, content-addressed cache headers, deferred Haven interior, a stale-chunk reload guard, and enforced asset/bundle budgets. The six-role desktop Home image selection is 184.94 KB versus 1,369.58 KB in the prior review. Local full gate: 10 test files / 56 tests, 11 documents/routes. This is file-byte/build evidence; no new Lighthouse or field metric is claimed. See [full evidence and limitations](33_RESPONSIVE_ARTWORK_PERFORMANCE.md).
+
+## 2026-09-06 maintenance baseline and implementation
+
+Reviewed `main` at `21b6fbab22cd660ffcfcde969b3ffe10fed2d390`; clean installation and baseline gate passed (56 tests, 11 direct HTTP documents). Before editing, media totals were: scenes 6,141,346 B; responsive derivatives 6,038,214 B; storybook social pairs 3,727,575 B; community Ghosties 3,572,614 B; postcards 1,385,714 B; legacy social PNGs 894,164 B; legacy generated derivatives 554,176 B. Image delivery markup was repeated across page images, Ghosties, media fallback and doorway. Document lists were separately maintained in Vite, build/performance validators, preloads and preview verification. Haven's actual current behavior had three synchronous steps and one observer, with no timers to extract.
+
+The branch now provides `ResponsiveArtwork`, `useHavenDoor`, canonical `projectPages.json`, a reference-aware non-destructive `audit:assets` command, and source preservation tests. All 121 responsive images regenerate unchanged. See docs 33 for comparable before/after measurements, observed checks, and the remaining browser block.
+
+### Current CSS editing map
+
+| Owner | Responsibility |
+|---|---|
+| `_tokens.scss`, `_base.scss` | Semantic tokens and document defaults |
+| `_components.scss` | Shared primitives |
+| `_pages.scss`, `_responsive.scss` | Earlier page structures and responsive defaults |
+| `_world.scss`, `_storybook.scss`, `_polish.scss` | Remaining overlapping illustrated layout/composition; consolidation still pending browser evidence |
+| `_chapters.scss` | Home rail, Work directory, Resources demonstration layouts, room materials, editorial rhythm and route signatures |
+| `_artwork-delivery.scss` | Matching CSS hero media bands |
+| `_face-safe.scss` | Final hero focus/copy-lane geometry; remains last |
+| `HavenDoor.vue` scoped style | Door presentation, transitions and reduced-motion treatment |
+
+The change removes 172 superseded declarations while retaining surviving order and matching 3,088 final selector/context/property values. It does not claim all historical cascade debt is resolved. Full browser visual QA and the remaining three historical composition layers are the concrete unfinished handoff work. Asset audit still identifies 124 unreferenced-review files (775,146 B); dynamic/provenance uncertainty is left visible instead of used as deletion proof. The original 27-design Prinny collection and identity assets remain retained.

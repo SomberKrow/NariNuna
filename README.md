@@ -2,7 +2,7 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 5 September 2026, after merge of PR #9 (`e2c6d344a42c90b91f388db3225d1af7c201106f`).  
+> **Current implementation snapshot:** 6 September 2026 maintenance branch, based on the merged PR #9 and README baseline. See [cleanup evidence](docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md#2026-09-06-maintenance-evidence) for measured changes and remaining visual checks.
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 
@@ -316,7 +316,12 @@ Until a future maintainability/content-authoring pass makes the repository more 
 | Easter-egg trigger data | `src/data/easterEgg.ts` |
 | Shared visual tokens/layout language | `src/styles/` |
 | HTML title/description/social metadata | corresponding document under `pages/` |
-| Route entries | `vite.config.ts` + router files + validators/tests |
+| Document paths, titles, social previews and hero assignments | `src/data/projectPages.json` |
+| Explicit lazy route components | `src/router/routes.ts` (coverage checked against the document registry) |
+| Shared responsive image rendering | `src/components/art/ResponsiveArtwork.vue` |
+| Haven doorway state and deferred loading | `src/composables/useHavenDoor.ts`; copy and scoped presentation stay in `HavenDoor.vue` |
+| Chapter materials, signatures, Work directory and Resources layouts | `src/styles/_chapters.scss` |
+| Streams/Work/Home hero focal placement | `src/styles/_face-safe.scss` |
 | Host security/cache headers | `public/_headers` |
 | Performance enforcement | `scripts/validate-performance.mjs` + related tests |
 | Responsive derivative generation | `scripts/prepare-responsive-artwork.py` |
@@ -480,7 +485,11 @@ Automated tests do not replace this matrix.
 
 ## Responsive artwork pipeline
 
-PR #9 added responsive content-addressed WebP delivery without deleting the retained originals.
+The responsive pipeline reads retained sources from `src/assets/source/delivery/media/` and writes the same content-addressed WebP candidates to `public/media/responsive/`. The source and retired artwork inventory records 63 preserved files, former URLs, current paths and SHA-256 hashes. Historical scene/postcard/Ghostie strings in `artwork.ts` are lookup keys, not served source URLs.
+
+`src/assets/source/retired/` preserves superseded placeholder derivatives and social previews. Current HTML uses the eight existing storybook JPEG social crops. Old WebP social alternatives remain outside `public/`. No source master was deleted.
+
+Use `npm run audit:assets` for a JSON inventory of public assets and reference evidence. Its unreferenced results require human review; dynamic URLs and provenance references are explicitly distinguished, and the command never deletes files.
 
 ### Generated candidates
 
@@ -658,15 +667,15 @@ Adding, removing, renaming, or materially moving a route normally requires coord
 
 1. the real HTML document under `pages/`;
 2. route-specific document metadata;
-3. `vite.config.ts` MPA entries;
-4. Vue Router route mapping/lazy import;
+3. `src/data/projectPages.json` (Vite entries, output checks, preview checks and preload coverage derive from it);
+4. the explicit lazy import in `src/router/routes.ts`;
 5. the matching `src/pages/*Page.vue` component;
 6. `src/data/navigation.ts` if navigable;
 7. `SiteHeader.vue` if header grouping changes;
 8. build/document validation;
 9. preview-route verification;
 10. relevant tests;
-11. hero preload mapping if it is an ordinary illustrated route;
+11. the registry hero key if it is an ordinary illustrated route;
 12. social metadata/artwork where applicable;
 13. 404/host behavior if URLs change;
 14. owning documentation.
@@ -798,7 +807,7 @@ A useful PR description should state:
 
 The current repository is substantially more disciplined than the early prototype, but several areas are intentionally still future work:
 
-1. **Maintainability/content authoring pass** — make routine copy, links, imagery, and page configuration easier to modify without understanding as much component internals.
+1. **Remaining CSS ownership and visual QA** — the maintenance branch centralizes image delivery, door behavior and document metadata, removes 172 superseded declarations, and names the chapter owner. Consolidation of the remaining `_world.scss`, `_storybook.scss` and `_polish.scss` layers still requires browser comparison; do not treat the full cleanup handoff as complete.
 2. **Documentation normalization** — reconcile historical three-theme/branch/asset references throughout older docs with the current Nari-only post-PR #9 implementation while preserving useful decision history.
 3. **Release performance benchmark** — run controlled mobile/desktop Lighthouse series and, once production traffic exists, evaluate field Core Web Vitals.
 4. **Accessibility release QA** — finish screen-reader, contrast, zoom/reflow, short-height, and full viewport matrix review.
