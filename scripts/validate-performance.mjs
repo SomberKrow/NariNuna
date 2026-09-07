@@ -1,9 +1,10 @@
+import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import { readFileSync } from "node:fs";
 import { gzipSync } from "node:zlib";
 import { resolve } from "node:path";
 
 const manifest = JSON.parse(readFileSync("dist/.vite/manifest.json", "utf8"));
-const assets = JSON.parse(readFileSync("src/data/responsive-artwork.json", "utf8"));
+const assets = JSON.parse(readFileSync("src/data/responsive-artwork.json", "utf8")).artworks;
 const limit = (name, bytes, maximum) => {
   if (bytes > maximum) throw new Error(`${name}: ${bytes} bytes exceeds ${maximum}`);
   console.log(`${name}: ${(bytes / 1000).toFixed(2)} KB / ${maximum / 1000} KB`);
@@ -48,7 +49,7 @@ for (const [source, asset] of Object.entries(assets)) {
     if (bytes !== candidate.bytes || bytes > maximum) throw new Error(`Artwork budget mismatch: ${candidate.src}`);
   }
 }
-const heroDocuments = ["index.html", "meet-nari/index.html", "streams/index.html", "nail-studio/index.html", "haven/index.html", "resources/index.html", "work-with-nari/index.html", "stories/index.html", "support/index.html"];
+const heroDocuments = projectPages.filter(({ hero }) => hero !== null).map(({ document }) => document);
 for (const document of heroDocuments) {
   const html = readFileSync(`dist/${document}`, "utf8");
   const preloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*>/g)].map(([tag]) => tag);

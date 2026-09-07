@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { artworkSrc, artworkSrcset, heroSources } from "@/data/artworkDelivery";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import { heroSources } from "@/data/artworkDelivery";
 import { BadgeCheck, BookMarked, HeartHandshake, Scale } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
@@ -18,7 +19,7 @@ const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storyboo
     </div>
     <picture class="room-opening__art room-opening__art--resources">
       <source v-for="source in heroSources(environmentArtwork.resources)" :key="source.media" :media="source.media" :srcset="source.srcset" />
-      <img :src="artworkSrc(environmentArtwork.resources, 1280)" width="1672" height="941" alt="An intricately hand-painted autumn library where little Ghosties keep watch over Nari's books, creative tools, lavender, and helpful shelves" fetchpriority="high" />
+      <ResponsiveArtwork :fallback-width="1280" sizes="100vw" loading="eager" :artwork="environmentArtwork.resources" width="1672" height="941" alt="An intricately hand-painted autumn library where little Ghosties keep watch over Nari's books, creative tools, lavender, and helpful shelves" fetchpriority="high" />
     </picture>
   </section>
 
@@ -31,7 +32,7 @@ const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storyboo
 
     <div class="resource-shelves__grid resource-shelves__grid--painted">
       <article v-for="(category, index) in resourceCategories" :key="category.title" :class="`resource-shelves__chapter resource-shelves__chapter--${index + 1}`">
-        <img :src="artworkSrc(categoryArt[index], 256)" :srcset="artworkSrcset(categoryArt[index])" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="640" height="360" alt="" loading="lazy" />
+        <ResponsiveArtwork :artwork="categoryArt[index]" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="640" height="360" alt="" loading="lazy" />
         <div>
           <span><BadgeCheck :size="14" aria-hidden="true" /> {{ category.status }}</span>
           <h3>{{ category.title }}</h3>

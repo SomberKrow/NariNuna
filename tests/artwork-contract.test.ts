@@ -4,28 +4,29 @@ import { describe, expect, it } from "vitest";
 import { communityGhostieArtwork, environmentArtwork, ghostieArtwork, nariArtwork, officialEmotes, storybookPostcards } from "@/data/artwork";
 import { prinnyCultAssets, prinnyRosterCapacity, suppliedPrinnyArtwork } from "@/data/prinnyCult";
 
-function publicAssetExists(assetPath: string): boolean {
-  return existsSync(resolve(process.cwd(), "public", assetPath.replace(/^\//, "")));
+function retainedAssetExists(assetPath: string): boolean {
+  return existsSync(resolve(process.cwd(), "public", assetPath.replace(/^\//, "")))
+    || existsSync(resolve(process.cwd(), "src/assets/source/delivery", assetPath.replace(/^\//, "")));
 }
 
 describe("approved-source artwork contracts", () => {
   it("preserves both owner-authorized storybook Nari and her untouched supplied identity", () => {
-    expect(publicAssetExists(nariArtwork.fullbody)).toBe(true);
-    expect(publicAssetExists(nariArtwork.portrait)).toBe(true);
-    expect(publicAssetExists(nariArtwork.avatar)).toBe(true);
-    expect(publicAssetExists(nariArtwork.suppliedModel)).toBe(true);
-    expect(publicAssetExists(nariArtwork.suppliedPortrait)).toBe(true);
-    expect(publicAssetExists(nariArtwork.cozy)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.fullbody)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.portrait)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.avatar)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.suppliedModel)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.suppliedPortrait)).toBe(true);
+    expect(retainedAssetExists(nariArtwork.cozy)).toBe(true);
     expect(nariArtwork.fullbody).toContain("/media/storybook/characters/");
     expect(nariArtwork.suppliedModel).toContain("/media/nari/");
-    expect(Object.values(officialEmotes).every(publicAssetExists)).toBe(true);
+    expect(Object.values(officialEmotes).every(retainedAssetExists)).toBe(true);
   });
 
   it("gives every shared Ghostie and room illustration a real asset", () => {
-    expect(Object.values(ghostieArtwork).every(publicAssetExists)).toBe(true);
-    expect(Object.values(communityGhostieArtwork).every(publicAssetExists)).toBe(true);
-    expect(Object.values(environmentArtwork).every(publicAssetExists)).toBe(true);
-    expect(Object.values(storybookPostcards).every(publicAssetExists)).toBe(true);
+    expect(Object.values(ghostieArtwork).every(retainedAssetExists)).toBe(true);
+    expect(Object.values(communityGhostieArtwork).every(retainedAssetExists)).toBe(true);
+    expect(Object.values(environmentArtwork).every(retainedAssetExists)).toBe(true);
+    expect(Object.values(storybookPostcards).every(retainedAssetExists)).toBe(true);
   });
 
   it("uses individually authored transparent Ghosties without sprite cropping or canvas processing", () => {
@@ -34,7 +35,7 @@ describe("approved-source artwork contracts", () => {
 
     expect(uniqueGhosties).toHaveLength(12);
     expect(ghostieComponent).toContain("communityGhostieArtwork[variant]");
-    expect(ghostieComponent).toContain("<img");
+    expect(ghostieComponent).toContain("<ResponsiveArtwork");
     expect(ghostieComponent).toContain('width="1254"');
     expect(ghostieComponent).toContain("background: transparent");
     expect(ghostieComponent).toContain("drop-shadow");
@@ -45,7 +46,7 @@ describe("approved-source artwork contracts", () => {
     expect(ghostieComponent).not.toContain("#fffaf3");
 
     for (const asset of uniqueGhosties) {
-      const bytes = readFileSync(resolve(process.cwd(), "public", asset.replace(/^\//, "")));
+      const bytes = readFileSync(resolve(process.cwd(), "src/assets/source/delivery", asset.replace(/^\//, "")));
       expect(bytes.toString("ascii", 8, 12)).toBe("WEBP");
       expect(bytes.toString("ascii", 12, 16)).toBe("VP8X");
       expect(bytes[20] & 0b00010000).toBeTruthy();
@@ -72,12 +73,12 @@ describe("approved-source artwork contracts", () => {
   it("retains all 27 supplied Prinny designs without fabricating roster lore", () => {
     expect(suppliedPrinnyArtwork).toHaveLength(prinnyRosterCapacity);
     expect(new Set(suppliedPrinnyArtwork.map(({ assetId }) => assetId)).size).toBe(prinnyRosterCapacity);
-    expect(suppliedPrinnyArtwork.every(({ src }) => publicAssetExists(src))).toBe(true);
+    expect(suppliedPrinnyArtwork.every(({ src }) => retainedAssetExists(src))).toBe(true);
   });
 
   it("gives the hidden cult original optimized sanctuary and altar environments", () => {
-    expect(publicAssetExists(prinnyCultAssets.sanctumPainting)).toBe(true);
-    expect(publicAssetExists(prinnyCultAssets.altarPainting)).toBe(true);
+    expect(retainedAssetExists(prinnyCultAssets.sanctumPainting)).toBe(true);
+    expect(retainedAssetExists(prinnyCultAssets.altarPainting)).toBe(true);
 
     for (const asset of [prinnyCultAssets.sanctumPainting, prinnyCultAssets.altarPainting]) {
       const bytes = readFileSync(resolve(process.cwd(), "public", asset.replace(/^\//, "")));
@@ -94,9 +95,9 @@ describe("approved-source artwork contracts", () => {
     expect(homePage).toContain("heroStyle(environmentArtwork.homeSunset)");
     expect(worldStyles).not.toContain(environmentArtwork.homeNight);
     expect(worldStyles).not.toContain(environmentArtwork.homeDaylight);
-    expect(publicAssetExists(environmentArtwork.homeSunset)).toBe(true);
-    expect(publicAssetExists(environmentArtwork.homeNight)).toBe(true);
-    expect(publicAssetExists(environmentArtwork.homeDaylight)).toBe(true);
+    expect(retainedAssetExists(environmentArtwork.homeSunset)).toBe(true);
+    expect(retainedAssetExists(environmentArtwork.homeNight)).toBe(true);
+    expect(retainedAssetExists(environmentArtwork.homeDaylight)).toBe(true);
   });
 
   it("integrates Nari into distinct Home and Meet Nari hero paintings without separate model overlays", () => {

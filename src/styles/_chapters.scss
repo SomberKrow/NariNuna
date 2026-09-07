@@ -1,7 +1,7 @@
 /*
- * 2026-08-31 Nari/Panda client-feedback pass.
- * Loaded after the established storybook/polish layers so these rules stay
- * focused on the approved hero, native-links, Resources, and Easter-egg changes.
+ * Chapter-owned content: Home rail, Work directory, Resources demonstrations,
+ * room materials, editorial rhythm and decorative signatures. Face-safe hero
+ * placement remains in _face-safe.scss, loaded after this file.
  */
 
 /* Home: one deliberate desktop viewport, with room gateways inside the frame. */
@@ -266,7 +266,7 @@
 }
 
 /*
- * Phase B: each chapter keeps moving through its room after the opening art.
+ * Each chapter keeps moving through its room after the opening art.
  * These are quiet material cues, not new scenery or content containers. The
  * shared geometry keeps every route inside the same Haven; only the material
  * rhythm changes to match the work happening in that room.
@@ -441,7 +441,7 @@ body[data-route="support"] .support-boundary::before {
 }
 
 /*
- * Phase D: open noninteractive content and let type, rules, artwork, and each
+ * Open noninteractive content and let type, rules, artwork, and each
  * route's signature device carry hierarchy. Interactive targets retain their
  * boundaries and the global focus treatment.
  */
@@ -475,8 +475,7 @@ body[data-route="support"] .support-boundary::before {
 body[data-route="meet-nari"] .identity-rooms__fragment {
   background: color-mix(in srgb, var(--story-surface) 72%, transparent);
   border-block: 1px solid color-mix(in srgb, var(--story-line) 65%, transparent);
-  box-shadow: 0 0.5rem 1rem color-mix(in srgb, var(--bg-inset) 22%, transparent);
-}
+  }
 
 body[data-route="meet-nari"] .identity-rooms__fragment > div {
   border-inline-start-color: color-mix(in srgb, var(--story-line) 55%, transparent);
@@ -803,8 +802,8 @@ body[data-route="stories"] .moment-shelf--stories {
 }
 
 /*
- * Phase C: one recognizable presentation device per ordinary chapter.
- * The devices reuse the Phase B room materials and existing artwork; none of
+ * One recognizable presentation device per ordinary chapter.
+ * The devices reuse the shared room materials and existing artwork; none of
  * them carries meaning or changes the accessible reading order.
  */
 

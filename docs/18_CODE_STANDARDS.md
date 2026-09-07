@@ -174,3 +174,12 @@ Follow existing ESLint and style conventions. Introduce an automated formatter o
 - Did a dependency/raw color/global abstraction enter without justification?
 - Which automated and manual evidence was actually observed?
 - Are docs, approvals, assets, tests, and rollback synchronized?
+
+## Maintenance ownership — 2026-09-06
+
+- Use `ResponsiveArtwork` for registered inline art: `artwork`, meaningful `alt` (or empty for decoration), and accurate `sizes`. Lazy/async/auto-priority are defaults. Explicit eager/high priority belongs only to the hero; the Home ornament retains its existing eager behavior. Native hero `<picture>` sources still use `heroSources`; the component contributes only the image element, preserving direct-child selectors. Existing authored width/height attributes remain valid fallthrough overrides.
+- `GhostieArt` owns Ghostie semantics/appearance and delegates delivery to that component. Do not paste manifest lookups into pages.
+- Generated JSON identifies itself and groups records under `artworks`. Edit the source file, run `npm run artwork:prepare`, and review hashes/budgets/quality. Never substitute a historical lookup key for an image URL.
+- `projectPages.json` owns document metadata shared by build, preview and preload checks. Router component imports stay explicit in `router/routes.ts`; contract tests protect equality. Navigation remains a separate product decision.
+- `useHavenDoor` owns the three-knock counter and image eligibility/observer lifecycle. Narrative stages and CSS motion remain in `HavenDoor.vue`; there is no timer-based state machine.
+- `_chapters.scss` owns chapter materials, signatures and content rhythm (formerly `_feedback.scss`). `_face-safe.scss` remains last. The older world/storybook/polish layers still overlap; broad reordering requires viewport comparisons. The maintenance change removed only superseded declarations while preserving surviving rule order and syntax fallbacks.

@@ -107,8 +107,7 @@
   top: 18%;
   bottom: 20%;
   left: clamp(1.65rem, 3vw, 3.4rem);
-  display: flex;
-  align-items: center;
+    align-items: center;
   gap: 0.75rem;
   writing-mode: vertical-rl;
 }
@@ -132,8 +131,7 @@
 }
 
 .haven-landing__welcome {
-  max-width: 33rem;
-  padding-block: 1rem 0.5rem;
+    padding-block: 1rem 0.5rem;
 }
 
 .haven-landing__kicker {
@@ -141,8 +139,7 @@
   margin-block-end: 1.15rem;
   color: var(--storybook-gold);
   font-family: var(--font-detail);
-  font-size: 0.64rem;
-  font-weight: 680;
+    font-weight: 680;
   letter-spacing: 0.095em;
   text-transform: uppercase;
 }
@@ -151,10 +148,8 @@
   display: grid;
   gap: 0;
   margin-block-end: 0.9rem;
-  font-size: clamp(4.1rem, 8.4vw, 7.6rem);
-  font-weight: 580;
-  line-height: 0.8;
-  letter-spacing: -0.087em;
+    font-weight: 580;
+    letter-spacing: -0.087em;
 }
 
 .haven-landing h1 > em {
@@ -178,8 +173,7 @@
   max-width: 27.6rem;
   margin-block-end: 0.65rem;
   font-size: clamp(0.79rem, 1vw, 0.92rem);
-  line-height: 1.8;
-}
+  }
 
 .haven-landing__divider {
   display: flex;
@@ -205,12 +199,10 @@
 
 .social-dock {
   gap: 0.2rem;
-  margin-block: 0.7rem 1.15rem;
-}
+  }
 
 .social-dock > a {
-  width: 3.45rem;
-  font-size: 0.56rem;
+    font-size: 0.56rem;
   font-weight: 620;
 }
 
@@ -224,10 +216,6 @@
 .social-dock__icon img {
   width: 1.12rem;
   height: 1.12rem;
-}
-
-.haven-landing__actions {
-  gap: 1.25rem;
 }
 
 .haven-landing__actions > .button {
@@ -245,21 +233,16 @@
 }
 
 .haven-landing__rooms {
-  z-index: 5;
-  width: min(100%, 87rem);
-  gap: 0.7rem;
-  padding-inline: clamp(2.4rem, 6vw, 6.3rem);
+    width: min(100%, 87rem);
+    padding-inline: clamp(2.4rem, 6vw, 6.3rem);
   padding-block-end: 1.3rem;
 }
 
 .haven-landing__rooms > a {
   position: relative;
   display: grid;
-  min-height: 5.1rem;
-  grid-template-columns: 5.4rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.72rem;
-  padding: 0.38rem 0.66rem 0.38rem 0.38rem;
+      align-items: center;
+    padding: 0.38rem 0.66rem 0.38rem 0.38rem;
   overflow: hidden;
   background: rgb(32 21 30 / 89%);
   border: 1px solid var(--storybook-rule);
@@ -268,11 +251,8 @@
 }
 
 .haven-landing__rooms > a > img {
-  width: 5.4rem;
-  height: 4.15rem;
-  border-radius: 0.22rem;
-  object-fit: cover;
-  object-position: 68% center;
+      border-radius: 0.22rem;
+    object-position: 68% center;
 }
 
 .haven-landing__room-number {
@@ -306,11 +286,6 @@
   align-self: end;
   margin-block-end: 0.48rem;
   color: var(--lavender);
-}
-
-.world-heading {
-  max-width: 51rem;
-  margin-block-end: 2.8rem;
 }
 
 .world-heading h2 {
@@ -872,8 +847,7 @@
 
   .haven-landing__scene {
     background-color: var(--bg);
-    background-position: 72% 76%;
-    background-repeat: no-repeat;
+        background-repeat: no-repeat;
     background-size: auto 76%;
   }
 
@@ -894,8 +868,7 @@
 
   .haven-landing__inner {
     grid-template-columns: 1fr;
-    padding-inline: 2.45rem 1.2rem;
-  }
+      }
 
   .haven-landing__inner::after {
     display: block;
@@ -908,13 +881,7 @@
     padding-inline-start: 1rem;
   }
 
-  .haven-landing h1 {
-    font-size: clamp(4.2rem, 18vw, 6.3rem);
-  }
 
-  .haven-landing__intro {
-    max-width: 26rem;
-  }
 
   .social-dock > a {
     width: 3.15rem;
@@ -926,8 +893,7 @@
   }
 
   .haven-landing__rooms > a {
-    min-height: 4.6rem;
-    grid-template-columns: 5rem minmax(0, 1fr) auto;
+        grid-template-columns: 5rem minmax(0, 1fr) auto;
   }
 
   .haven-landing__rooms > a > img {

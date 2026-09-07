@@ -13,6 +13,7 @@ from PIL import Image, features
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / 'public'
+SOURCES = ROOT / 'src/assets/source/delivery'
 OUTPUT = PUBLIC / 'media' / 'responsive'
 MANIFEST = ROOT / 'src' / 'data' / 'responsive-artwork.json'
 
@@ -22,16 +23,16 @@ def generate():
         raise SystemExit('Pillow must include WebP support')
     OUTPUT.mkdir(parents=True, exist_ok=True)
     families = [
-        ('scene', sorted((PUBLIC / 'media/storybook/scenes').glob('*.webp')), [768, 1280, 1672], 148_000),
-        ('postcard', sorted((PUBLIC / 'media/storybook/postcards').glob('*.webp')), [128, 256, 480, 768], 70_000),
-        ('ghostie', sorted((PUBLIC / 'media/ghosties/community').glob('*.webp')), [64, 128, 256, 512, 768], 90_000),
-        ('motif', [PUBLIC / 'media/motifs/lavender-sprig.webp'], [128, 256], 30_000),
+        ('scene', sorted((SOURCES / 'media/storybook/scenes').glob('*.webp')), [768, 1280, 1672], 148_000),
+        ('postcard', sorted((SOURCES / 'media/storybook/postcards').glob('*.webp')), [128, 256, 480, 768], 70_000),
+        ('ghostie', sorted((SOURCES / 'media/ghosties/community').glob('*.webp')), [64, 128, 256, 512, 768], 90_000),
+        ('motif', [SOURCES / 'media/motifs/lavender-sprig.webp'], [128, 256], 30_000),
     ]
     jobs = [(role, source, widths, budget) for role, paths, widths, budget in families for source in paths]
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(prepare_source, jobs))
     manifest = dict(result for result in results if result is not None)
-    MANIFEST.write_text(json.dumps(manifest, indent=2) + '\n')
+    MANIFEST.write_text(json.dumps({'_generated': 'GENERATED FILE. Do not edit manually. Regenerate with: npm run artwork:prepare', 'artworks': manifest}, indent=2) + '\n')
     print(f'Prepared {sum(len(item["candidates"]) for item in manifest.values())} immutable delivery candidates.')
 
 
@@ -61,7 +62,8 @@ def prepare_source(job):
         (OUTPUT / filename).write_bytes(data)
         candidates.append({'src': f'/media/responsive/{filename}', 'width': width,
                            'height': height, 'bytes': len(data), 'sha256': digest, 'quality': quality})
-    return "/" + source.relative_to(PUBLIC).as_posix(), {
+    return "/" + source.relative_to(SOURCES).as_posix(), {
+        "sourceFile": source.relative_to(ROOT).as_posix(),
         "role": role, "sourceSha256": sha256(source.read_bytes()).hexdigest(),
         "width": image.width, "height": image.height, "alpha": "A" in image.getbands(),
         "candidates": candidates,

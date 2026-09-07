@@ -59,8 +59,8 @@ The following sources must stay synchronized:
 | Concern | Source |
 |---|---|
 | HTML document root and page metadata | `pages/` |
-| Build entries | `pageEntries` in `vite.config.ts` |
-| Client route matching | `routes` in `src/router/index.ts` |
+| Build entries | `src/data/projectPages.json`, resolved by `vite.config.ts` |
+| Client route matching | `routes` in `src/router/routes.ts` |
 | Primary/footer visibility | `src/data/navigation.ts` |
 | Output existence | `scripts/validate-build.mjs` |
 | Route invariants | `tests/content-contract.test.ts` |
@@ -224,11 +224,11 @@ The following are merge blockers unless intentionally changed through an accepte
 
 1. Approve the route responsibility in docs `00`, `02`, and `03`.
 2. Add `pages/<route>/index.html` with route-specific title, description, fixed Nari atmosphere metadata, icons/manifest, and module entry.
-3. Add the HTML path to `pageEntries` in `vite.config.ts`.
-4. Add the lazy route record in `src/router/index.ts`.
+3. Add the HTML path to `src/data/projectPages.json`, resolved by `vite.config.ts`.
+4. Add the explicit lazy route record in `src/router/routes.ts`.
 5. Create the page module under `src/pages`.
 6. Add navigation only at the IA-approved priority.
-7. Add the expected document to `scripts/validate-build.mjs`.
+7. Output/preview/preload validators derive their coverage from the registry; verify the document contract test.
 8. Update route/data tests and count assumptions.
 9. Update host routing, metadata, docs, QA matrix, and sitemap/robots intent if applicable.
 10. Run `npm run check`, then direct-load the built route and test back/forward/refresh/trailing slash.

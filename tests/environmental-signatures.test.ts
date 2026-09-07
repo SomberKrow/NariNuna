@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const feedbackStyles = readFileSync("src/styles/_feedback.scss", "utf8");
+const feedbackStyles = readFileSync("src/styles/_chapters.scss", "utf8");
 
 describe("page signature devices", () => {
   it.each([

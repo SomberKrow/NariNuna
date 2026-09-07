@@ -63,3 +63,31 @@ Implementation commit `ab826931a4393c41249b9bfa68cb8a7446d79697` passed GitHub Q
 On Haven, the doorway began at y=1627px with no interior image in the DOM. After approaching/knocking, the 640px candidate loaded. All three steps completed, the Discord link appeared only after the third knock, exactly one loaded interior image filled the doorway, and Close reset the sequence. The final reveal was visually inspected.
 
 HTTP verification caught redundant document cache rules overriding asset freshness on the preview. The follow-up removes those additions, retaining the original host HTML defaults and explicit hashed-asset cache scopes. Final live header evidence is recorded in the PR description. The Netlify review drawer remains host-added and is excluded from performance claims. Mobile viewport, screen-reader, zoom and Lighthouse measurements remain pending; no inference from desktop substitutes for those checks.
+
+## 2026-09-06 maintenance evidence
+
+Baseline: `main` at `21b6fbab22cd660ffcfcde969b3ffe10fed2d390`. Measurements use clean production builds in the same Node 24.19.0 environment, decimal bytes/KB, and Node's default gzip compression for bundle/CSS accounting. Dependency versions and budgets did not change.
+
+| Measurement | Before | After |
+|---|---:|---:|
+| Total `dist/`, including manifest | 27,104,558 B | 12,692,081 B |
+| Deployable media | 26,312,486 B | 11,901,422 B |
+| Built CSS, all chunks | 168,974 B | 164,922 B |
+| Built CSS gzip, all chunks | 32,577 B | 31,997 B |
+| Shared JS + CSS gzip | 71.04 KB | 71.32 KB |
+| Largest additional page JS graph (Haven) | 5.83 KB | 5.96 KB |
+| Largest responsive candidate | 147,884 B | 147,884 B |
+| Active responsive source originals in `public/` | 30 | 0 |
+| Audited source/retired files in deployment | 63 | 0 |
+| Tests | 56 passing / 10 files | 66 passing / 13 files |
+| Build / direct document HTTP checks | Pass / 11 | Pass / 11 |
+
+Deployment is 14,412,477 bytes smaller (53.17%). The media reduction is preserved artwork moved outside `public/`, not new compression. All 121 candidate records and files match baseline byte-for-byte after `npm run artwork:prepare`; all 63 relocated files retain their recorded SHA-256. The four PNG icons retain identical decoded RGBA pixels and save 2,761 bytes. The shared bundle grows slightly because the common component reads intrinsic metadata; this remains well within the unchanged budget and is not represented as a JS optimization.
+
+`npm ci`, `npm run artwork:prepare`, and `npm run check` passed. The actual current script names are `verify:preview` and the build-integrated `scripts/validate-performance.mjs`, not the handoff's `preview:check`/`validate:perf`. Preview validation now checks all 121 responsive candidates rather than requiring relocated source originals to be served; it also checks 11 documents, current retained identity/social assets, and all 27 Prinnies. Additional tests cover image attribute fallthrough/caps/hero ordering, source preservation, document/route metadata equality, and door state/observer cleanup.
+
+CSS evidence: 172 superseded declarations removed, surviving rule order retained, and 3,088 final selector/context/property values match the baseline. `_chapters.scss` replaces `_feedback.scss` as the named content-material/rhythm/signature owner. This is a conservative cascade cleanup, not completion of broad ownership consolidation.
+
+**Remaining acceptance work:** Chromium installation timed out; no browser executable was available, and the system package route was unavailable. No 320/390/768/desktop/wide screenshot comparison, actual `currentSrc`/layout-shift inspection, keyboard browser run, screen-reader, zoom, contrast, or Lighthouse result is claimed. The original face-safe geometry, picture bands, responsive candidates and CSS reduced-motion rules remain. Full `_world.scss`/`_storybook.scss`/`_polish.scss` consolidation is deferred until those browser comparisons can run. The complete A–G handoff is therefore not marked done; this branch is a measured, reviewable implementation of its asset/component/registry work and a limited CSS pass.
+
+Rollback: revert the maintenance branch commits together to restore original paths, manifest shape, component delivery and document lists. No merge or deployment is authorized by this evidence. Atomic deployment/previous-artifact retention must be considered before releasing removed historical public paths.

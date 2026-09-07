@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { artworkSrc, artworkSrcset, heroSources } from "@/data/artworkDelivery";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import { heroSources } from "@/data/artworkDelivery";
 import { ArrowRight, ArrowUpRight, Clapperboard, Handshake, MessageSquareMore, ShieldCheck, Sparkles } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { nariLinks } from "@/data/socials";
@@ -21,7 +22,7 @@ const fits = [
     </div>
     <picture class="room-opening__art room-opening__art--work">
       <source v-for="source in heroSources(environmentArtwork.work)" :key="source.media" :media="source.media" :srcset="source.srcset" />
-      <img :src="artworkSrc(environmentArtwork.work, 1280)" width="1672" height="941" alt="Nari sits at her beautifully illustrated autumn correspondence desk while a tiny Ghostie helps carry a letter" fetchpriority="high" />
+      <ResponsiveArtwork :fallback-width="1280" sizes="100vw" loading="eager" :artwork="environmentArtwork.work" width="1672" height="941" alt="Nari sits at her beautifully illustrated autumn correspondence desk while a tiny Ghostie helps carry a letter" fetchpriority="high" />
     </picture>
   </section>
 
@@ -29,7 +30,7 @@ const fits = [
     <header class="world-heading"><p class="eyebrow">Where the fit feels right</p><h2>Creative work with an actual heartbeat.</h2></header>
     <div class="work-fit__grid work-fit__grid--painted">
       <article v-for="(fit, index) in fits" :key="fit.title" :class="`work-fit__chapter work-fit__chapter--${index + 1}`">
-        <img :src="artworkSrc(fit.art, 256)" :srcset="artworkSrcset(fit.art)" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="640" height="360" alt="" loading="lazy" />
+        <ResponsiveArtwork :artwork="fit.art" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="640" height="360" alt="" loading="lazy" />
         <div><component :is="fit.icon" :size="24" aria-hidden="true" /><h3>{{ fit.title }}</h3><p>{{ fit.text }}</p></div>
       </article>
     </div>
@@ -67,7 +68,7 @@ const fits = [
       <ol><li><span>01</span><div><strong>What are you making?</strong><p>Project, audience, platform, timing, and the people involved.</p></div></li><li><span>02</span><div><strong>What does the work involve?</strong><p>Deliverables, approval process, usage rights, deadlines, and compensation.</p></div></li><li><span>03</span><div><strong>Why Nari?</strong><p>Show that you understand her creative voice and the community she protects.</p></div></li></ol>
     </div>
     <div class="work-contact work-contact--storybook page-width">
-      <img :src="artworkSrc(storybookPostcards.work, 256)" :srcset="artworkSrcset(storybookPostcards.work)" sizes="(min-width: 48rem) 320px, calc(100vw - 48px)" width="320" height="180" alt="Painted detail of Nari's correspondence desk" loading="lazy" />
+      <ResponsiveArtwork :artwork="storybookPostcards.work" sizes="(min-width: 48rem) 320px, calc(100vw - 48px)" width="320" height="180" alt="Painted detail of Nari's correspondence desk" loading="lazy" />
       <div><p class="eyebrow"><MessageSquareMore :size="15" aria-hidden="true" /> Say hello properly</p><h2>The dedicated business inbox isn't public yet.</h2><p>Until Nari chooses an approved business contact, use the public doors above and lead with the project, timing, deliverables, usage, and compensation.</p><div class="button-row"><a class="button button--ember" href="#nari-links">Back to Nari's links <ArrowRight :size="17" aria-hidden="true" /></a></div></div>
       <aside><ShieldCheck :size="22" aria-hidden="true" /><span>No invented audience numbers, brand deals, or performance claims.</span></aside>
     </div>

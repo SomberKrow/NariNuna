@@ -1,3 +1,6 @@
+// Scene, postcard and community Ghostie values are stable responsive lookup keys,
+// not original-image URLs. Render through ResponsiveArtwork or heroStyle/heroSources.
+// Supplied identity/emote/Prinny assets retain their direct public URLs.
 export const nariArtwork = {
   fullbody: "/media/storybook/characters/nari-painted-welcome.webp",
   portrait: "/media/storybook/characters/nari-painted-portrait.webp",

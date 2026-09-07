@@ -10,7 +10,7 @@ describe("Nari face-safe composition contract", () => {
   it("loads the face-safe layer after every existing composition layer", () => {
     const main = sourceAt("src/styles/main.scss").trim();
 
-    expect(main).toContain('@use "feedback";');
+    expect(main).toContain('@use "chapters";');
     expect(main.endsWith('@use "face-safe";')).toBe(true);
   });
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { artworkSrc, artworkSrcset } from "@/data/artworkDelivery";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+
 import { ArrowUpRight, Play } from "@lucide/vue";
 import { ref } from "vue";
 import { storybookPostcards } from "@/data/artwork";
@@ -23,9 +24,9 @@ const imageFailed = ref(false);
           referrerpolicy="no-referrer"
           @error="imageFailed = true"
         />
-        <img
+        <ResponsiveArtwork
           v-else
-          :src="artworkSrc(storybookPostcards.streams, 256)" :srcset="artworkSrcset(storybookPostcards.streams)" sizes="(min-width: 48rem) 50vw, calc(100vw - 48px)"
+          :artwork="storybookPostcards.streams" sizes="(min-width: 48rem) 50vw, calc(100vw - 48px)"
           width="960"
           height="540"
           alt="Painted view of Nari's stream room"

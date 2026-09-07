@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { artworkSrc, artworkSrcset, heroStyle } from "@/data/artworkDelivery";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, BookOpen, FlaskConical, Heart, Images, Paintbrush, Sparkles } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
@@ -33,7 +34,7 @@ const studioPieces: { icon: typeof Images; title: string; text: string; ghostie:
       </article>
     </div>
     <div class="studio-gallery-note">
-      <img :src="artworkSrc(storybookPostcards.nails, 256)" :srcset="artworkSrcset(storybookPostcards.nails)" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="960" height="540" alt="Painted detail of Nari's nail workspace while the real portfolio is being selected" loading="lazy" />
+      <ResponsiveArtwork :artwork="storybookPostcards.nails" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="960" height="540" alt="Painted detail of Nari's nail workspace while the real portfolio is being selected" loading="lazy" />
       <div><p class="eyebrow">Her actual work, or nothing</p><h2>The portfolio opens when Nari picks the sets.</h2><p>No stock nails. No generated hands. No borrowing somebody else's manicure to make the page look finished. Until her approved photos are ready, the studio itself carries the mood.</p></div>
     </div>
   </section>

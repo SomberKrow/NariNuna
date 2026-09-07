@@ -597,20 +597,14 @@
 }
 
 .haven-door {
-  display: grid;
-  grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
-  overflow: hidden;
-  color: var(--ink);
-  background: var(--surface);
-  border: 1px solid var(--line-dark);
-  border-radius: var(--radius-lg);
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+          border-radius: var(--radius-lg);
   box-shadow: var(--shadow-deep);
 }
 
 .haven-door__art {
   display: grid;
-  min-height: 28rem;
-  grid-template-columns: repeat(3, 2rem);
+    grid-template-columns: repeat(3, 2rem);
   place-content: center;
   gap: 0.5rem;
   color: var(--lavender);
@@ -635,9 +629,7 @@
 }
 
 .haven-door__content {
-  display: flex;
-  min-height: 28rem;
-  flex-direction: column;
+      flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   padding: clamp(2rem, 5vw, 5rem);
@@ -892,9 +884,7 @@
 }
 
 .cult-page__escape {
-  position: absolute;
-  z-index: 1;
-  top: 1.25rem;
+      top: 1.25rem;
   left: 1.25rem;
   display: inline-flex;
   align-items: center;
