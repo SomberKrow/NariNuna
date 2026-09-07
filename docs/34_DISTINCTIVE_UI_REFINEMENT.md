@@ -22,6 +22,12 @@ Preserve the illustrated late-fall Haven and face-safe hero compositions; give t
 
 Prinny and 404 retain their established scope. The tiny optional Prinny route is not expanded into the historical cult concept.
 
+## Haven threshold refinement
+
+The doorway now responds visibly to every deliberate knock instead of relying on copy replacement alone. Each state strengthens the lantern and threshold light, opens a larger glimpse of the existing continuous room illustration, plays one short brass impact ripple, and turns the adjacent story forward. The progress treatment reads as a three-part path—Arrive, Belong, Promise—with answered and current states conveyed by text/shape as well as color. The door itself exposes a changing visible prompt so its direct interaction is easier to discover.
+
+The response is capped to the three existing user actions: there is no idle loop, random particle field, sound, new timer, extra gate, or persistent state. Reduced-motion mode removes the impact and content travel while preserving immediate state, labels, image, and final Discord access. The invite anchor still does not exist before the third knock, and the already-deferred interior image retains its proximity/focus/interaction loading contract.
+
 ## Engineering ownership
 
 Each interior page imports its scoped composition from `src/styles/rooms/`. Shared reading primitives live in `_room-language.scss`; MediaCard owns its broadcast and album variants. Retired selector branches were removed from legacy layers while preserving unrelated styles and the final face-safe layer. Header Escape handling restores focus; Twitch uses a radio icon without suggesting a live status. Root minimum widths no longer force horizontal overflow on narrow viewports with scrollbars.
@@ -37,6 +43,7 @@ Source-string tests tied to retired CSS were replaced with rendered-content chec
 - 200% root text sizing at 390px covered all eleven routes. Work and Resources overflow found during review was corrected; Resources and Work then measured without document overflow. This simulates text enlargement, not native browser zoom. Existing Haven door content still needs a release-grade enlarged-text review; document width alone does not establish that every scene element is visible.
 - Visual browser review included the Work mobile hero and paper letter, Resources desktop shelves, and visible desktop More focus after Escape. Mobile navigation opened and closed with Escape; the Work hero anchor reached the letter.
 - Existing reduced-motion contracts pass; native OS reduced-motion, screen-reader interaction, exhaustive contrast, real-device touch, and external destination availability were not fully exercised. These remain release QA, not claimed approvals.
+- After the Haven threshold refinement, a fresh `npm ci` and full `npm run check` passed again: lint, strict typecheck, 59 tests across 13 files, production build, all 11 independently served documents, 137 essential assets, and all 27 retained Prinny designs. Shared JS + CSS is 68.93 KB gzip against the 120 KB limit; Haven's additional page graph is 6.14 KB gzip against 35 KB. This is automated/build evidence, not a claim of manual browser approval.
 
 ## Content and release boundaries
 
