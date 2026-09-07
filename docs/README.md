@@ -1,5 +1,7 @@
 # Nari Nuna's Haven — Documentation Hub
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 This directory is the product specification, engineering manual, content contract, and release record for Nari Nuna's Haven. It is not background reading. A change that contradicts this suite without an approved decision record is not ready to merge.
 
 **Repository:** `SomberKrow/NariNuna`  

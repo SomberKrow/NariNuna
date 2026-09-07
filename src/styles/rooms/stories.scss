@@ -1,0 +1,46 @@
+.memory-album__pages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.memory-album__pages > li {
+  padding: 1.25rem 0 2.75rem;
+  border-top: 1px solid var(--story-line);
+}
+.memory-album__folio {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.memory-album__folio span:last-child {
+  color: var(--text-muted);
+}
+.memory-album__pages > li:nth-child(even) {
+  margin-inline-start: 8%;
+}
+.memory-album__pages > li:nth-child(odd) {
+  margin-inline-end: 8%;
+}
+.memory-album__closing {
+  max-width: 38rem;
+  margin: 1rem auto 0;
+  color: var(--text-muted);
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+}
+@media (max-width: 47.99rem) {
+  .memory-album__pages > li:nth-child(n) {
+    margin-inline: 0;
+  }
+  .memory-album__pages > li {
+    padding-bottom: 2rem;
+  }
+}

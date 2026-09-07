@@ -1,0 +1,81 @@
+.haven-charter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.5fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+.haven-charter__welcome h2 {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  line-height: 1.1;
+}
+.haven-charter__welcome .ghostie-art {
+  --ghostie-size: 18rem;
+  max-width: 18rem;
+  height: 17rem;
+}
+.haven-charter__welcome .room-caption {
+  margin: 0;
+}
+.haven-charter__values {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--story-line);
+}
+.haven-charter__values li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-block: 1.75rem;
+  border-bottom: 1px solid var(--story-line);
+}
+.haven-charter__number {
+  color: var(--storybook-gold);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  line-height: 1;
+}
+.haven-charter__values h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+}
+.haven-charter__values p {
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 39rem;
+}
+.haven-entry {
+  padding-top: 1rem;
+}
+@media (max-width: 47.99rem) {
+  .haven-charter {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .haven-charter__welcome {
+    display: grid;
+    grid-template-columns: 1fr 8rem;
+  }
+  .haven-charter__welcome .room-kicker {
+    grid-column: 1 / -1;
+  }
+  .haven-charter__welcome .ghostie-art {
+    --ghostie-size: 8rem;
+    height: 9rem;
+    grid-column: 2;
+    grid-row: 2 / 4;
+  }
+  .haven-charter__values li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+}
+@media (max-width: 24rem) {
+  .haven-charter__welcome {
+    grid-template-columns: 1fr;
+  }
+  .haven-charter__welcome .ghostie-art {
+    display: none;
+  }
+}

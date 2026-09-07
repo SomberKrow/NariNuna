@@ -80,8 +80,7 @@
 .studio-grid,
 .values-grid,
 .resource-grid,
-.support-grid,
-.work-fit__grid {
+.support-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-5);
@@ -145,7 +144,6 @@
 .stream-map,
 .gallery-hold,
 .disclosure-principles,
-.work-process,
 .support-promise,
 .story-system {
   background: var(--bg-raised);
@@ -295,8 +293,7 @@
 .pillar-card,
 .studio-grid article,
 .resource-grid article,
-.support-grid article,
-.work-fit__grid article {
+.support-grid article {
   padding: var(--space-6);
   color: var(--ink);
   background: var(--surface);
@@ -312,8 +309,7 @@
 .pillar-card h2,
 .studio-grid h2,
 .resource-grid h2,
-.support-grid h2,
-.work-fit__grid h2 {
+.support-grid h2 {
   color: var(--ink);
   font-size: 1.9rem;
 }
@@ -321,8 +317,7 @@
 .pillar-card > p:last-child,
 .studio-grid article > p,
 .resource-grid article > p,
-.support-grid article > p,
-.work-fit__grid article > p {
+.support-grid article > p {
   color: var(--ink-muted);
 }
 
@@ -800,37 +795,6 @@
   font-size: 0.88rem;
 }
 
-.work-process__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: var(--space-8);
-}
-
-.work-process ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.work-process li {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
-  border-top: 1px solid var(--line);
-}
-
-.work-process li > span {
-  color: var(--emerald);
-  font-family: var(--font-detail);
-  font-size: 0.7rem;
-}
-
-.work-process li p {
-  margin: 0;
-  color: var(--text-muted);
-}
-
 .contact-hold,
 .optional-support {
   grid-template-columns: auto minmax(0, 1fr);
@@ -855,7 +819,6 @@
 }
 
 .support-grid article > svg,
-.work-fit__grid article > svg,
 .studio-grid article > svg {
   margin-block-end: var(--space-7);
   color: var(--plum);

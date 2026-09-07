@@ -1,9 +1,23 @@
 <script setup lang="ts">
 import { ArrowUpRight, Heart } from "@lucide/vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 import { footerNavigation } from "@/data/navigation";
 import { socialLinks } from "@/data/socials";
 
 const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikTok", "Instagram"].includes(link.label));
+const route = useRoute();
+const roomNotes: Record<string, string> = {
+  "/meet-nari/": "The warmth, the chaos, and the craft.",
+  "/streams/": "There's always one more good bit.",
+  "/nail-studio/": "A little glitter gets everywhere.",
+  "/haven/": "Leave the room a little kinder.",
+  "/resources/": "A few good things, chosen with care.",
+  "/work-with-nari/": "Good ideas start with a conversation.",
+  "/stories/": "Keep the moments. Make some more.",
+  "/support/": "Thank you for being part of the room."
+};
+const roomNote = computed(() => roomNotes[route.path] ?? "The little world next door.");
 </script>
 
 <template>
@@ -12,7 +26,7 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
       <div class="site-footer__top">
         <a class="site-footer__brand" href="/">
           <strong>Nari Nuna</strong>
-          <span>The little world next door.</span>
+          <span>{{ roomNote }}</span>
         </a>
         <div class="site-footer__socials" aria-label="Nari's social profiles">
           <a v-for="link in featuredSocials" :key="link.url" :href="link.url" target="_blank" rel="noreferrer noopener">
@@ -43,11 +57,11 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
 .site-footer__bottom { padding-block-start: 0.9rem; }
 .site-footer__brand { display: grid; gap: 0.08rem; color: var(--text); text-decoration: none; }
 .site-footer__brand strong { font-family: var(--font-display); font-size: 1.2rem; font-style: italic; letter-spacing: -0.025em; }
-.site-footer__brand span { color: var(--text-muted); font-size: 0.7rem; }
+.site-footer__brand span { color: var(--text-muted); font-size: 0.875rem; }
 .site-footer__socials { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .site-footer__socials > a {
   display: inline-flex;
-  min-height: 2.25rem;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.3rem;
   padding: 0.42rem 0.65rem;
@@ -55,15 +69,15 @@ const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikT
   background: var(--story-chip);
   border: 1px solid var(--story-line);
   border-radius: 999px;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 750;
   text-decoration: none;
 }
 .site-footer__bottom nav { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
-.site-footer__bottom nav a { color: var(--text-muted); font-size: 0.72rem; font-weight: 720; text-decoration: none; }
+.site-footer__bottom nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--text-muted); font-size: 0.875rem; font-weight: 720; text-decoration: none; }
 .site-footer__bottom nav a:hover,
 .site-footer__socials > a:hover { color: var(--text); }
-.site-footer__bottom > p { display: inline-flex; align-items: center; gap: 0.3rem; margin: 0; color: var(--text-muted); font-size: 0.68rem; }
+.site-footer__bottom > p { display: inline-flex; align-items: center; gap: 0.3rem; margin: 0; color: var(--text-muted); font-size: 0.75rem; }
 .site-footer__bottom > p svg { color: var(--story-accent); }
 @media (min-width: 48rem) {
   .site-footer--compact .site-footer__inner { padding-block: 1.35rem 1.05rem; }

@@ -1,0 +1,52 @@
+.clip-desk__moments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+}
+.clip-desk__moments > :nth-child(2) {
+  margin-top: 2rem;
+}
+.clip-desk__moments > :nth-child(3) {
+  margin-top: 4rem;
+}
+.broadcast-tuning {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  padding-block: 1.8rem;
+  margin-top: 3rem;
+  border-block: 1px solid var(--story-line);
+}
+.broadcast-tuning > div {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex: 1 1 25rem;
+}
+.broadcast-tuning svg {
+  flex: 0 0 auto;
+  color: var(--storybook-gold);
+}
+.broadcast-tuning p {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+}
+.broadcast-tuning p span {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+@media (max-width: 47.99rem) {
+  .clip-desk__moments {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .clip-desk__moments > :nth-child(n) {
+    margin-top: 0;
+  }
+  .broadcast-tuning {
+    gap: 0.8rem 1.5rem;
+  }
+}

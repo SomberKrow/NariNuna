@@ -2,7 +2,7 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 6 September 2026 maintenance branch, based on the merged PR #9 and README baseline. See [cleanup evidence](docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md#2026-09-06-maintenance-evidence) for measured changes and remaining visual checks.
+> **Current implementation snapshot:** 7 September 2026 integrated visual refinement on `kiva/nari-distinctive-ui`, incorporating the PR #10 maintenance baseline. See [visual changes and validation](docs/34_DISTINCTIVE_UI_REFINEMENT.md).
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 

@@ -19,18 +19,14 @@
   .pillar-grid,
   .studio-grid,
   .resource-grid,
-  .support-grid,
-  .work-fit__grid,
-  .media-grid {
+  .support-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .gateway-card:last-child,
   .studio-grid article:last-child,
   .resource-grid article:last-child,
-  .support-grid article:last-child,
-  .work-fit__grid article:last-child,
-  .media-card:last-child {
+  .support-grid article:last-child {
     grid-column: 1 / -1;
   }
 }
@@ -99,7 +95,6 @@
   .work-hero,
   .host-note__inner,
   .found-family__inner,
-  .work-process__inner,
   .gallery-hold__inner,
   .not-found {
     min-height: auto;
@@ -205,8 +200,6 @@
   .values-grid,
   .resource-grid,
   .support-grid,
-  .work-fit__grid,
-  .media-grid,
   .symbol-section__inner,
   .social-directory__grid {
     grid-template-columns: 1fr;
@@ -226,9 +219,7 @@
   .gateway-card:last-child,
   .studio-grid article:last-child,
   .resource-grid article:last-child,
-  .support-grid article:last-child,
-  .work-fit__grid article:last-child,
-  .media-card:last-child {
+  .support-grid article:last-child {
     grid-column: auto;
   }
 
@@ -322,8 +313,6 @@
 
   .button:hover,
   .gateway-card:hover,
-  .media-card:hover,
-  .media-card:hover .media-card__image img,
   .social-directory__grid a:hover {
     transform: none;
   }

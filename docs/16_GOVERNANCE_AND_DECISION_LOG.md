@@ -1,5 +1,9 @@
 # Governance and Decision Log
 
+## 2026-09-07 — one integrated visual implementation
+
+Owner requested an immediate full UI refinement instead of phased handoffs. Implemented route-specific post-hero compositions within the existing Vue/MPA/SCSS architecture, incorporating PR #10 maintenance. This authorizes implementation and review delivery, not a new canon, asset-rights approval, merge, or public release. See [scope and evidence](34_DISTINCTIVE_UI_REFINEMENT.md).
+
 **Status:** `ACTIVE`  
 **Owns:** Authority, approvals, durable architecture/product decisions, content expiry, conflict and change control  
 **Update trigger:** A decision is proposed/accepted/reversed, authority changes, or approval/expiry policy changes

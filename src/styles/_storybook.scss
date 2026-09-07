@@ -1,5 +1,5 @@
-// The Haven is a hand-illustrated autumn storybook, not a set of reusable UI
-// cards. Paintings own the first viewport; the interface sits inside the room.
+
+/* cards. Paintings own the first viewport; the interface sits inside the room. */
 :root {
   --font-display: "Palatino Linotype", "Book Antiqua", Iowan Old Style, Baskerville, serif;
   --storybook-gold: #dfae77;
@@ -288,13 +288,6 @@
   color: var(--lavender);
 }
 
-.world-heading h2 {
-  font-size: clamp(2.2rem, 4.2vw, 3.6rem);
-  font-weight: 490;
-  letter-spacing: -0.055em;
-}
-
-.world-heading .eyebrow,
 .room-opening .eyebrow,
 .studio-opening .eyebrow,
 .haven-heart .eyebrow,
@@ -556,22 +549,12 @@
   width: 5rem;
 }
 
-.identity-rooms,
 .stream-door-section,
-.studio-notes,
-.resource-shelves,
-.work-fit,
-.social-directory,
-.haven-values {
+.social-directory {
   position: relative;
 }
 
-.identity-rooms::before,
-.stream-door-section::before,
-.studio-notes::before,
-.resource-shelves::before,
-.work-fit::before,
-.haven-values::before {
+.stream-door-section::before {
   position: absolute;
   top: 3.5rem;
   right: var(--page-gutter);
@@ -581,68 +564,12 @@
   content: "";
 }
 
-.identity-rooms__grid,
-.studio-notes__grid,
-.resource-shelves__grid,
-.stream-door-grid,
-.support-kindness__grid,
-.haven-values__grid {
+.stream-door-grid {
   gap: 1.3rem;
 }
 
-.identity-rooms__grid > article,
-.studio-notes__grid > article,
-.resource-shelves__grid > article,
-.support-kindness__grid > article,
-.haven-values__grid > article,
-.work-fit__grid > article {
-  position: relative;
-  padding: 1.55rem;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse at 78% 2%, rgb(215 174 151 / 10%), transparent 48%),
-    linear-gradient(155deg, var(--bg-raised), color-mix(in srgb, var(--bg-inset) 55%, var(--bg-raised)));
-  border: 1px solid var(--storybook-rule);
-  border-radius: 0.55rem;
-  box-shadow: 0 0.7rem 2rem rgb(20 12 18 / 12%);
-}
-
-.identity-rooms__grid > article::after,
-.studio-notes__grid > article::after,
-.resource-shelves__grid > article::after,
-.support-kindness__grid > article::after,
-.haven-values__grid > article::after,
-.work-fit__grid > article::after {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  bottom: 0.4rem;
-  left: 0.4rem;
-  border: 1px solid rgb(223 174 119 / 9%);
-  content: "";
-  pointer-events: none;
-}
-
-.identity-rooms__grid > article:nth-child(2),
-.studio-notes__grid > article:nth-child(2),
-.resource-shelves__grid > article:nth-child(2),
 .stream-door-grid > a:nth-child(2) {
   transform: translateY(0.75rem);
-}
-
-.identity-rooms__grid > article > img,
-.haven-values__grid > article > img {
-  width: 7.8rem;
-  filter: drop-shadow(0 0.65rem 0.9rem rgb(22 13 20 / 18%));
-}
-
-.identity-rooms__grid h3,
-.studio-notes__grid h3,
-.resource-shelves__grid h3,
-.haven-values__grid h3,
-.support-kindness__grid h3,
-.work-fit__grid h3 {
-  font-weight: 500;
 }
 
 .stream-door-grid > a {
@@ -672,13 +599,10 @@
   margin-block-start: 0.14rem;
 }
 
-.moment-shelf,
 .meaningful-details,
 .shelf-promise,
 .haven-belonging,
-.support-kindness,
-.honest-gallery,
-.work-process {
+.honest-gallery {
   position: relative;
   background:
     radial-gradient(ellipse at 12% 8%, rgb(190 129 116 / 8%), transparent 40%),
@@ -690,10 +614,6 @@
 .haven-belonging__badges > span {
   border-color: var(--storybook-rule);
   border-radius: 0.45rem;
-}
-
-.nari-promise {
-  gap: 2.7rem;
 }
 
 .site-footer {
@@ -816,9 +736,7 @@
     width: 6rem;
   }
 
-  .identity-rooms__grid > article:nth-child(2),
-  .studio-notes__grid > article:nth-child(2),
-  .resource-shelves__grid > article:nth-child(2),
+
   .stream-door-grid > a:nth-child(2) {
     transform: none;
   }
@@ -880,8 +798,6 @@
     padding-block: 2.1rem 0.5rem;
     padding-inline-start: 1rem;
   }
-
-
 
   .social-dock > a {
     width: 3.15rem;

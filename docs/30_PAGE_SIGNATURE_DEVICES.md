@@ -1,5 +1,7 @@
 # Page Signature Devices
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 **Status:** `IMPLEMENTED` Phase C client-review refinement  
 **Scope:** One recognizable, nonessential presentation device per ordinary route  
 **Decision posture:** Supports the proposed Nari-only atmosphere; it is not evidence of Nari/Panda approval

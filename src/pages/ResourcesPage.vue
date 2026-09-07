@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
-import { BadgeCheck, BookMarked, HeartHandshake, Scale } from "@lucide/vue";
+import { BookMarked, HeartHandshake } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
 import { resourceDemoEntries } from "@/data/resources";
 
 const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storybookPostcards.streams];
+const shelfIds = ["nail-desk", "creator-shelf", "game-pile"];
 </script>
 
 <template>
@@ -23,102 +24,46 @@ const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storyboo
     </picture>
   </section>
 
-  <section class="resource-shelves page-width section-pad">
-    <header class="world-heading">
-      <p class="eyebrow">Layout preview · recommendations still pending</p>
-      <h2>The shelves finally have enough weight to judge.</h2>
-      <p>The category cards remain honest curating states. The entries below are clearly marked demonstration content so Nari and Panda can evaluate density before final recommendations exist.</p>
-    </header>
+  <section class="resource-library room-section page-width" aria-labelledby="shelf-title">
+    <aside class="resource-library__index">
+      <p class="room-kicker">The collection</p>
+      <h2 id="shelf-title">A little less searching.<br /><em>A little more making.</em></h2>
+      <nav aria-label="Resource categories">
+        <a v-for="(category, index) in resourceCategories" :key="category.title" :href="`#${shelfIds[index]}`">
+          <span aria-hidden="true">0{{ index + 1 }}</span>{{ category.title }}
+        </a>
+      </nav>
+      <p class="room-caption">Nari is choosing her first recommendations. Each one will include a reason it belongs here.</p>
+    </aside>
 
-    <div class="resource-shelves__grid resource-shelves__grid--painted">
-      <article v-for="(category, index) in resourceCategories" :key="category.title" :class="`resource-shelves__chapter resource-shelves__chapter--${index + 1}`">
-        <ResponsiveArtwork :artwork="categoryArt[index]" sizes="(min-width: 48rem) 40vw, calc(100vw - 48px)" width="640" height="360" alt="" loading="lazy" />
-        <div>
-          <span><BadgeCheck :size="14" aria-hidden="true" /> {{ category.status }}</span>
-          <h3>{{ category.title }}</h3>
-          <p>{{ category.description }}</p>
-          <ul><li v-for="example in category.examples" :key="example">{{ example }}</li></ul>
+    <div class="resource-library__shelves">
+      <article v-for="(category, index) in resourceCategories" :id="shelfIds[index]" :key="category.title" class="resource-shelf">
+        <div class="resource-shelf__heading">
+          <span class="resource-shelf__number" aria-hidden="true">0{{ index + 1 }}</span>
+          <div><p class="room-kicker">{{ category.status }}</p><h3>{{ category.title }}</h3></div>
+          <ResponsiveArtwork :artwork="categoryArt[index]" sizes="(min-width: 40rem) 160px, 96px" alt="" />
         </div>
+        <p>{{ category.description }}</p>
+        <ul><li v-for="example in category.examples" :key="example">{{ example }}</li></ul>
       </article>
     </div>
+  </section>
 
-    <div class="resource-demo" aria-labelledby="resource-demo-title">
-      <header class="resource-demo__heading">
-        <p class="eyebrow"><BadgeCheck :size="14" aria-hidden="true" /> Demonstration shelf</p>
-        <h2 id="resource-demo-title">What a genuinely populated page can feel like.</h2>
-        <p>Different lengths, different rhythms, and enough repetition to expose awkward wrapping or empty space before real recommendations arrive.</p>
-      </header>
-
-      <div class="resource-demo__grid">
-        <article
-          v-for="entry in resourceDemoEntries"
-          :key="entry.id"
-          class="resource-demo__item"
-          :class="`resource-demo__item--${entry.layout}`"
-        >
-          <div class="resource-demo__meta"><span>{{ entry.category }}</span><small>Demo entry</small></div>
-          <h3>{{ entry.title }}</h3>
-          <p>{{ entry.summary }}</p>
+  <section class="resource-review page-width" aria-label="Recommendation policy and review samples">
+    <div class="shelf-policy"><BookMarked :size="24" aria-hidden="true" /><div><h2>A recommendation should earn its place.</h2><p>Nari's picks will include her own context and clear disclosures for any paid or affiliate relationship.</p></div></div>
+    <!-- Keep the existing client density samples available without presenting them as recommendations. -->
+    <details class="resource-samples">
+      <summary>Client preview: sample shelf entries <span>Demonstration content</span></summary>
+      <p class="resource-samples__disclosure">Demonstration only: these entries preview layout and content rhythm; they are not endorsements, sponsorships, or final Nari recommendations.</p>
+      <div class="resource-samples__list">
+        <article v-for="entry in resourceDemoEntries" :key="entry.id">
+          <p class="room-kicker">{{ entry.category }} · Demo entry</p>
+          <h3>{{ entry.title }}</h3><p>{{ entry.summary }}</p>
           <ul><li v-for="detail in entry.details" :key="detail">{{ detail }}</li></ul>
         </article>
       </div>
-
-      <p class="resource-demo__disclosure"><Scale :size="18" aria-hidden="true" /> Demonstration only: these entries preview layout and content rhythm; they are not endorsements, sponsorships, or final Nari recommendations.</p>
-    </div>
-
-    <div class="resource-promise"><Scale :size="28" aria-hidden="true" /><div><strong>No fake recommendations. No pressure.</strong><p>If something earns a link, Nari gets to explain why. Any material relationship gets disclosed, and nobody pretends a random product is essential.</p></div></div>
+    </details>
   </section>
 </template>
 
-<style scoped>
-.resource-shelves__grid--painted { position: relative; gap: 0.9rem; }
-.resource-shelves__chapter { border-radius: 0.4rem; }
-.resource-shelves__chapter > img { transition: filter 260ms ease, transform 420ms ease; }
-.resource-shelves__chapter:hover > img { filter: saturate(1.06) contrast(1.03); transform: scale(1.025); }
-.resource-demo__grid { align-items: start; }
-.resource-demo__item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.35rem;
-}
-.resource-demo__item::before {
-  position: absolute;
-  top: 0;
-  right: 1rem;
-  left: 1rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--story-accent), transparent);
-  opacity: 0.42;
-  content: "";
-}
-@media (min-width: 48rem) {
-  .resource-shelves__grid--painted {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 1.15rem;
-    align-items: start;
-  }
-  .resource-shelves__grid--painted > .resource-shelves__chapter--1 {
-    grid-column: 1 / 8;
-    grid-row: 1 / span 2;
-  }
-  .resource-shelves__grid--painted > .resource-shelves__chapter--1 > img { height: clamp(15rem, 28vw, 21rem); }
-  .resource-shelves__grid--painted > .resource-shelves__chapter--2 { grid-column: 8 / 13; grid-row: 1; }
-  .resource-shelves__grid--painted > .resource-shelves__chapter--3 { grid-column: 7 / 12; grid-row: 2; }
-}
-@media (min-width: 72rem) {
-  .resource-demo__grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-auto-flow: dense;
-    gap: 0.85rem;
-  }
-  .resource-demo__item--compact { grid-column: span 3; }
-  .resource-demo__item--standard { grid-column: span 4; }
-  .resource-demo__item--wide { grid-column: span 6; }
-  .resource-demo__item:nth-child(4) { grid-column: span 5; }
-  .resource-demo__item:nth-child(7) { grid-column: span 7; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .resource-shelves__chapter > img { transition: none; }
-  .resource-shelves__chapter:hover > img { transform: none; }
-}
-</style>
+<style scoped lang="scss" src="@/styles/rooms/resources.scss"></style>
