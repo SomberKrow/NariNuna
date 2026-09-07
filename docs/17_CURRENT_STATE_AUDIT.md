@@ -1,5 +1,7 @@
 # Current-State Audit
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 **Repository:** `SomberKrow/NariNuna`  
 **Branch audited:** `agent/build-nari-haven`  
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  

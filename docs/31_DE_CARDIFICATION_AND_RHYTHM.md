@@ -1,5 +1,7 @@
 # De-Cardification and Rhythm Cleanup
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 **Status:** `IMPLEMENTED` Phase D client-review refinement  
 **Scope:** Noninteractive container chrome, route pacing, and purposeful geometry  
 **Decision posture:** Supports the proposed Nari-only atmosphere; it is not client approval or release clearance

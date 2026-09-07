@@ -1,0 +1,204 @@
+.resource-library {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.65fr);
+  gap: clamp(2rem, 6vw, 6rem);
+}
+.resource-library__index {
+  align-self: start;
+  position: sticky;
+  top: calc(var(--header-height) + 2rem);
+}
+.resource-library__index h2 {
+  font-size: clamp(1.85rem, 3vw, 2.65rem);
+  line-height: 1.15;
+}
+.resource-library__index nav {
+  display: grid;
+  margin-block: 2rem;
+  border-block: 1px solid var(--story-line);
+}
+.resource-library__index a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.resource-library__index a + a {
+  border-top: 1px solid var(--story-line);
+}
+.resource-library__index a span {
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.75rem;
+}
+.resource-library__index a:hover {
+  color: var(--lavender);
+}
+.resource-shelf {
+  padding: 0 0 2rem;
+  margin-block-end: 2rem;
+  border-bottom: 3px double var(--story-line);
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+.resource-shelf:last-child {
+  margin-bottom: 0;
+}
+.resource-shelf__heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 10rem;
+  align-items: center;
+  gap: 1.2rem;
+  margin-block-end: 1.25rem;
+}
+.resource-shelf__number {
+  color: var(--storybook-gold);
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-style: italic;
+  line-height: 1;
+}
+.resource-shelf__heading .room-kicker {
+  margin-bottom: 0.25rem;
+  color: var(--text-muted);
+}
+.resource-shelf__heading h3 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+.resource-shelf__heading img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--story-line);
+  padding: 0.25rem;
+}
+.resource-shelf > p {
+  max-width: 40rem;
+  color: var(--text-muted);
+}
+.resource-shelf ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.resource-shelf li {
+  padding-inline-start: 0.8rem;
+  border-inline-start: 2px solid var(--lavender);
+  font-size: 0.875rem;
+}
+.resource-review {
+  padding-block-end: 4rem;
+}
+.shelf-policy {
+  display: flex;
+  align-items: start;
+  gap: 1.2rem;
+  padding: 2rem;
+  background: var(--story-surface-deep);
+  border-inline-start: 3px solid var(--storybook-gold);
+}
+.shelf-policy svg {
+  flex: 0 0 auto;
+  color: var(--storybook-gold);
+}
+.shelf-policy h2 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+.shelf-policy p {
+  margin: 0;
+  color: var(--text-muted);
+}
+.resource-samples {
+  margin-top: 2rem;
+  border-block: 1px solid var(--story-line);
+}
+.resource-samples summary {
+  padding: 1rem 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.resource-samples summary span {
+  display: inline-block;
+  margin-inline-start: 1rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+.resource-samples__disclosure {
+  padding: 1rem;
+  background: var(--story-surface-deep);
+  font-size: 0.875rem;
+}
+.resource-samples__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 3rem;
+}
+.resource-samples__list article {
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--story-line);
+}
+.resource-samples__list h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.resource-samples__list p:not(.room-kicker), .resource-samples__list li {
+  color: var(--text-muted);
+}
+@media (max-width: 63.99rem) {
+  .resource-library {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .resource-library__index {
+    position: static;
+  }
+  .resource-library__index nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-block: 1.5rem;
+  }
+  .resource-library__index a {
+    padding: 0.65rem 0.5rem;
+    gap: 0.6rem;
+    line-height: 1.4;
+  }
+  .resource-library__index a + a {
+    border-top: 0;
+    border-left: 1px solid var(--story-line);
+  }
+  .resource-library__index .room-caption {
+    max-width: 35rem;
+  }
+}
+@media (max-width: 39.99rem) {
+  .resource-library__index a {
+    font-size: 0.875rem;
+    flex-direction: column;
+    align-items: start;
+  }
+  .resource-shelf__heading {
+    grid-template-columns: minmax(0, 1fr) 6rem;
+    gap: 1rem;
+  }
+  .resource-shelf__number {
+    display: none;
+  }
+  .resource-shelf ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+  .resource-samples__list {
+    grid-template-columns: 1fr;
+  }
+  .shelf-policy {
+    padding: 1.25rem;
+  }
+}
+
+.resource-review { overflow-wrap: anywhere; }
+.shelf-policy > div { min-width: 0; }

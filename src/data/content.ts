@@ -22,7 +22,7 @@ export const communityValues: CommunityValue[] = [
 export const resourceCategories: ResourceCategory[] = [
   {
     title: "Nail desk",
-    description: "Products, tools, storage, and learning references Nari has personally reviewed.",
+    description: "A place for Nari's future picks: products, tools, storage, and learning references.",
     status: "curating",
     examples: ["Polish and color systems", "Prep and art tools", "Practice and organization"]
   },
@@ -34,7 +34,7 @@ export const resourceCategories: ResourceCategory[] = [
   },
   {
     title: "Game pile",
-    description: "Games and software that genuinely earned a place in the room.",
+    description: "A collection in the making: games and software that fit the room.",
     status: "curating",
     examples: ["Community-night games", "Story-rich favorites", "Chaos generators"]
   }

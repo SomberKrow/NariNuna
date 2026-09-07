@@ -110,15 +110,14 @@ describe("client-feedback interaction contracts", () => {
 
   it("keeps icon buttons uniform and disables new motion when reduced motion is requested", () => {
     const polish = sourceAt("src/styles/_polish.scss");
-    const feedback = sourceAt("src/styles/_chapters.scss");
     const socials = polish.slice(polish.indexOf("/* Recognizable, icon-only socials"), polish.indexOf("/* Home starts"));
 
     expect(socials).toContain("grid-template-columns: repeat(6, minmax(0, 1fr))");
     expect(socials).toContain("color: var(--story-copy)");
     expect(socials).toContain("border-radius: 50%");
     expect(socials).toContain("color: inherit");
-    expect(feedback).toContain("@media (prefers-reduced-motion: reduce)");
-    expect(feedback).toContain("transform: none");
+    expect(sourceAt("src/components/ui/MediaCard.vue")).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(sourceAt("src/components/ui/MediaCard.vue")).toContain("transform: none");
   });
 
   it("closes both navigation layers with Escape and link selection", () => {
@@ -126,7 +125,8 @@ describe("client-feedback interaction contracts", () => {
 
     expect(header).toContain('const moreMenu = ref<HTMLDetailsElement | null>(null)');
     expect(header).toContain("if (moreMenu.value) moreMenu.value.open = false");
-    expect(header).toContain('if (event.key === "Escape") closeMenu()');
+    expect(header).toContain('if (event.key !== "Escape") return');
+    expect(header).toContain("returnTo?.focus()");
     expect(header).toContain('<details ref="moreMenu" class="site-header__more">');
     expect(header.match(/@click="closeMenu"/g)).toHaveLength(2);
   });

@@ -1,5 +1,7 @@
 # QA and Acceptance Criteria
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 **Status:** Automated foundation previously recorded as passing; final production matrix incomplete  
 **Owns:** Test layers, evidence status, per-route acceptance, release blockers  
 **Update trigger:** Any behavior/content changes, evidence is rerun, or release environment changes

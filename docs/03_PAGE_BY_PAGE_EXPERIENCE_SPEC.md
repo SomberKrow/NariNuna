@@ -1,5 +1,7 @@
 # Page-by-Page Experience Specification
 
+> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
+
 **Status:** `IMPLEMENTED` foundation; final content/art acceptance `BLOCKED`  
 **Owns:** Page purpose, sequence, dependencies, responsive behavior, failure state, and acceptance  
 **Implementation files:** `src/pages/*.vue`, route HTML documents, page selectors in `src/styles/_pages.scss`  

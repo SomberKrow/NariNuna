@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronDown, Menu, X } from "@lucide/vue";
+import { ChevronDown, Menu, Radio, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
@@ -7,6 +7,8 @@ import { twitchUrl } from "@/data/socials";
 
 const menuOpen = ref(false);
 const moreMenu = ref<HTMLDetailsElement | null>(null);
+const menuToggle = ref<HTMLButtonElement | null>(null);
+const moreToggle = ref<HTMLElement | null>(null);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
   ["/meet-nari/", "/streams/", "/haven/", "/work-with-nari/"].includes(item.href)
@@ -26,7 +28,10 @@ function closeMenu(): void {
 }
 
 function handleEscape(event: KeyboardEvent): void {
-  if (event.key === "Escape") closeMenu();
+  if (event.key !== "Escape") return;
+  const returnTo = menuOpen.value ? menuToggle.value : moreMenu.value?.open ? moreToggle.value : null;
+  closeMenu();
+  returnTo?.focus();
 }
 
 watch(menuOpen, (open) => {
@@ -52,6 +57,7 @@ onBeforeUnmount(() => {
       </a>
 
       <button
+        ref="menuToggle"
         class="nav-toggle"
         type="button"
         :aria-expanded="menuOpen"
@@ -77,7 +83,7 @@ onBeforeUnmount(() => {
         </nav>
 
         <details ref="moreMenu" class="site-header__more">
-          <summary>More <ChevronDown :size="15" aria-hidden="true" /></summary>
+          <summary ref="moreToggle">More <ChevronDown :size="15" aria-hidden="true" /></summary>
           <nav aria-label="Additional Haven rooms">
             <a
               v-for="item in moreLinks"
@@ -93,7 +99,7 @@ onBeforeUnmount(() => {
         </details>
 
         <a class="site-header__live-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">
-          <span aria-hidden="true"></span>
+          <Radio :size="16" aria-hidden="true" />
           On Twitch
           <span class="sr-only"> (opens in a new tab)</span>
         </a>
@@ -174,4 +180,9 @@ onBeforeUnmount(() => {
   }
   .site-header__more > nav > a { min-height: 4.5rem; align-content: center; padding: 0.85rem 0.9rem; }
 }
+.site-header__main-nav > a,
+.site-header__live-link,
+.site-header__more > summary,
+.site-header__more > nav > a { font-size: 0.875rem; }
+.site-header__more > nav > a small { font-size: 0.75rem; }
 </style>
