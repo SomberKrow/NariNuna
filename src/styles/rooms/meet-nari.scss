@@ -1,6 +1,6 @@
 .nari-journal__opening {
   max-width: 42rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 .nari-journal__opening h2 {
   font-size: clamp(2.1rem, 4vw, 3.3rem);
@@ -9,28 +9,75 @@
 .nari-journal__opening > p:last-child {
   color: var(--text-muted);
 }
+.nari-journal__surface {
+  position: relative;
+  padding: clamp(1.4rem, 4vw, 3.25rem) clamp(1rem, 4vw, 3.5rem) clamp(1.4rem, 4vw, 3rem) clamp(2.75rem, 7vw, 6.5rem);
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, transparent 0 4.3rem, color-mix(in srgb, var(--rose) 30%, transparent) 4.3rem calc(4.3rem + 1px), transparent calc(4.3rem + 1px)),
+    repeating-linear-gradient(180deg, transparent 0 2.45rem, color-mix(in srgb, var(--ink-muted) 12%, transparent) 2.45rem calc(2.45rem + 1px)),
+    var(--storybook-paper);
+  border: 1px solid color-mix(in srgb, var(--line-dark) 55%, transparent);
+  border-radius: 0.35rem 0.8rem 0.55rem 0.3rem;
+  box-shadow: 0 1.5rem 3.5rem rgb(14 8 12 / 22%), inset 1.1rem 0 1.8rem rgb(88 49 59 / 7%);
+}
+.nari-journal__surface::before {
+  position: absolute;
+  inset: 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--line-dark) 24%, transparent);
+  content: "";
+  pointer-events: none;
+}
+.nari-journal__bookmark {
+  position: absolute;
+  top: -0.65rem;
+  right: clamp(1rem, 5vw, 4rem);
+  display: grid;
+  min-width: 3.5rem;
+  min-height: 5.2rem;
+  place-items: center;
+  padding: 0.75rem 0.55rem 1.2rem;
+  color: var(--cream);
+  background: color-mix(in srgb, var(--plum) 84%, var(--bg-inset));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+  font-family: var(--font-detail);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+}
 .nari-journal__entries {
-  border-block: 1px solid var(--story-line);
+  border-block: 1px solid color-mix(in srgb, var(--ink-muted) 30%, transparent);
 }
 .journal-entry {
   display: grid;
-  grid-template-columns: 0.65fr 1.7fr 12rem;
-  gap: 2rem;
+  grid-template-columns: minmax(7.5rem, 0.55fr) minmax(0, 1.8fr) 10rem;
+  gap: clamp(1rem, 3vw, 2.5rem);
   align-items: center;
-  padding-block: 1.25rem;
+  min-height: 13rem;
+  padding-block: 1.4rem;
 }
 .journal-entry + .journal-entry {
-  border-top: 1px solid var(--story-line);
+  border-top: 1px solid color-mix(in srgb, var(--ink-muted) 28%, transparent);
+}
+.journal-entry:first-child {
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--cream) 42%, transparent), transparent 72%);
+}
+.journal-entry:nth-child(3) .journal-entry__marker > span {
+  color: color-mix(in srgb, var(--plum) 78%, var(--ink));
 }
 .journal-entry__marker > span {
   display: block;
-  color: var(--storybook-gold);
+  color: color-mix(in srgb, var(--ember) 72%, var(--ink));
   font-family: var(--font-display);
   font-size: 3rem;
   font-style: italic;
 }
 .journal-entry__marker .room-kicker {
   margin: 0;
+  color: var(--ink-muted);
 }
 .journal-entry__copy h3 {
   font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -39,21 +86,28 @@
 .journal-entry__copy p {
   max-width: 38rem;
   margin: 0;
-  color: var(--text-muted);
+  color: var(--ink-muted);
 }
 .journal-entry__ghostie {
-  --ghostie-size: 12rem;
-  height: 11rem;
+  --ghostie-size: 11rem;
+  width: 11rem;
+  height: 10rem;
+  margin-inline-end: -1.5rem;
+  filter: drop-shadow(0 0.65rem 0.8rem rgb(66 37 48 / 16%));
 }
 .journal-entry:nth-child(2) .journal-entry__copy {
-  padding-inline-start: 2rem;
+  padding-inline-start: clamp(0rem, 3vw, 2.5rem);
 }
 .nari-promise-note {
   display: grid;
   grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
   align-items: center;
   gap: clamp(1.5rem, 6vw, 6rem);
-  padding-top: 1rem;
+  max-width: 66rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2.5rem, 7vw, 5rem);
+  background: color-mix(in srgb, var(--story-surface) 54%, transparent);
+  border-block: 1px solid var(--story-line);
 }
 .nari-promise-note__guardian {
   --ghostie-size: 20rem;
@@ -91,6 +145,19 @@
   font-size: 0.875rem;
 }
 @media (max-width: 47.99rem) {
+  .nari-journal__surface {
+    padding: 3.5rem 1rem 1rem 1.45rem;
+    background:
+      linear-gradient(90deg, transparent 0 1rem, color-mix(in srgb, var(--rose) 24%, transparent) 1rem calc(1rem + 1px), transparent calc(1rem + 1px)),
+      var(--storybook-paper);
+    box-shadow: 0 1rem 2.4rem rgb(14 8 12 / 18%);
+  }
+  .nari-journal__surface::before { inset: 0.45rem; }
+  .nari-journal__bookmark {
+    right: 1.25rem;
+    min-height: 3.7rem;
+    writing-mode: horizontal-tb;
+  }
   .journal-entry {
     grid-template-columns: minmax(0, 1fr) 7rem;
     column-gap: 0.5rem;
@@ -109,6 +176,7 @@
   .journal-entry__ghostie {
     --ghostie-size: 7rem;
     height: 8rem;
+    margin-inline-end: -0.5rem;
   }
   .journal-entry:nth-child(2) .journal-entry__copy {
     padding: 0;
@@ -116,6 +184,8 @@
   .nari-promise-note {
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding: 1.25rem 0;
+    background: transparent;
   }
   .nari-promise-note__guardian {
     --ghostie-size: 12rem;

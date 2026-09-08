@@ -11,6 +11,8 @@ import GhostieArt from "@/components/art/GhostieArt.vue";
 </template>
 
 <style scoped>
-.not-found__ghostie { --ghostie-size: 18rem; min-height: 18rem; border: 1px solid var(--story-line); border-radius: 0.75rem; }
+.not-found { position: relative; min-height: calc(100svh - var(--header-height)); }
+.not-found::before { position: absolute; z-index: -1; inset: 12% 4%; background: radial-gradient(circle, color-mix(in srgb, var(--lavender) 12%, transparent), transparent 68%); content: ""; }
+.not-found__ghostie { --ghostie-size: 18rem; min-height: 18rem; padding: 0.5rem; background: color-mix(in srgb, var(--story-surface) 50%, transparent); border: 1px solid var(--story-line); border-radius: 0.35rem; box-shadow: 0 1rem 2.4rem rgb(12 7 10 / 18%); }
 @media (min-width: 56rem) { .not-found__ghostie { --ghostie-size: 22rem; min-height: 24rem; } }
 </style>

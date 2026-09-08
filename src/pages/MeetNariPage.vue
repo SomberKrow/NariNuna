@@ -5,7 +5,10 @@ import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.
 import { environmentArtwork } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
-const identityVariants: GhostieArtVariant[] = ["heart", "chaotic", "nailTech"];
+const identityEntries = identityPillars.map((pillar, index) => ({
+  ...pillar,
+  ghostie: (["heart", "chaotic", "nailTech"] satisfies GhostieArtVariant[])[index]
+}));
 </script>
 
 <template>
@@ -30,12 +33,15 @@ const identityVariants: GhostieArtVariant[] = ["heart", "chaotic", "nailTech"];
       <h2 id="journal-title">A soft place to land.<br /><em>A little chaos included.</em></h2>
       <p>The warmth, the chaos, and the craft all belong together.</p>
     </header>
-    <div class="nari-journal__entries">
-      <article v-for="(pillar, index) in identityPillars" :key="pillar.title" class="journal-entry">
-        <div class="journal-entry__marker"><span aria-hidden="true">0{{ index + 1 }}</span><p class="room-kicker">{{ pillar.eyebrow }}</p></div>
-        <div class="journal-entry__copy"><h3>{{ pillar.title }}</h3><p>{{ pillar.text }}</p></div>
-        <GhostieArt class="journal-entry__ghostie" sizes="(min-width: 48rem) 192px, 112px" :variant="identityVariants[index]" />
-      </article>
+    <div class="nari-journal__surface">
+      <span class="nari-journal__bookmark" aria-hidden="true">NARI</span>
+      <div class="nari-journal__entries">
+        <article v-for="(entry, index) in identityEntries" :key="entry.title" class="journal-entry">
+          <div class="journal-entry__marker"><span aria-hidden="true">0{{ index + 1 }}</span><p class="room-kicker">{{ entry.eyebrow }}</p></div>
+          <div class="journal-entry__copy"><h3>{{ entry.title }}</h3><p>{{ entry.text }}</p></div>
+          <GhostieArt class="journal-entry__ghostie" sizes="(min-width: 48rem) 176px, 104px" :variant="entry.ghostie" />
+        </article>
+      </div>
     </div>
   </section>
 

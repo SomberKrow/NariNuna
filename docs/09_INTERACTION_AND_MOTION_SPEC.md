@@ -73,6 +73,10 @@ stateDiagram-v2
 
 The Discord anchor exists only at `Invite`. Progress bars are decorative reinforcement; headings, paragraph, and button labels carry the state. This is narrative sequencing, not security or consent storage.
 
+Each deliberate knock may trigger one short brass impact ripple, strengthen the lantern/threshold light, advance the door angle, and replace the adjacent story with a brief fade/turn. The response is action-bound and capped: no idle loop, random decoration, sound, timer-driven state, or delayed destination. Reduced motion removes the ripple and content travel while preserving the complete immediate state change. The visible progress path names Arrive, Belong, and Promise; answered/current meaning is also exposed through check marks, accessible labels, and `aria-current` rather than color alone.
+
+The adjacent story copy transitions independently from a stable action region. Keyboard activation through knocks one and two therefore keeps focus on the same native button. When the third keyboard activation replaces that button with the Discord destination, focus moves to the new destination; closing the door through the focused reset control returns focus to the restored knock button. Direct door-scene activation does not steal focus into the text panel.
+
 ### Loose floorboard
 
 States: untouched → first knock → second knock → gatekeeper listening → password accepted.

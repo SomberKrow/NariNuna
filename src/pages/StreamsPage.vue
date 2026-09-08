@@ -8,6 +8,8 @@ import { featuredMoments } from "@/data/media";
 import { socialLinks, twitchUrl } from "@/data/socials";
 
 const youtube = socialLinks.find((link) => link.label === "YouTube");
+const leadMoment = featuredMoments[0];
+const supportingMoments = featuredMoments.slice(1);
 </script>
 
 <template>
@@ -31,13 +33,17 @@ const youtube = socialLinks.find((link) => link.label === "YouTube");
   <section class="clip-desk room-section page-width" aria-labelledby="moments-title">
     <header class="room-heading"><div><p class="room-kicker">A taste of the room</p><h2 id="moments-title">The bits we keep<br /><em>coming back to.</em></h2></div><p>Games, tangents, and plans that lasted about three seconds.</p></header>
     <div class="clip-desk__moments">
-      <MediaCard v-for="moment in featuredMoments" :key="moment.id" :moment="moment" presentation="broadcast" />
+      <MediaCard class="clip-desk__lead" :moment="leadMoment" presentation="broadcast" featured />
+      <div class="clip-desk__supporting">
+        <MediaCard v-for="moment in supportingMoments" :key="moment.id" :moment="moment" presentation="broadcast" />
+      </div>
     </div>
     <div class="broadcast-tuning">
       <div><Radio :size="25" aria-hidden="true" /><p><strong>Want the whole evening?</strong><span>Find current stream times on Twitch and Nari's socials.</span></p></div>
       <a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Open Twitch <ArrowUpRight :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
       <a v-if="youtube" class="text-link" :href="youtube.url" target="_blank" rel="noreferrer noopener">More on YouTube <ArrowUpRight :size="18" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a>
     </div>
+    <a class="clip-desk__next text-link" href="/stories/">Open the quieter memory album <ArrowUpRight :size="17" aria-hidden="true" /></a>
   </section>
 </template>
 

@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
-import { computed } from "vue";
+import { computed, nextTick, ref } from "vue";
 import { useHavenDoor } from "@/composables/useHavenDoor";
 
 import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
 const { knocksRequired, step, threshold, loadInterior, prepareInterior, isOpen, knock, closeDoor } = useHavenDoor();
+const storyAction = ref<HTMLButtonElement | null>(null);
+const discordAction = ref<HTMLAnchorElement | null>(null);
 
 // Narrative copy stays beside the presentation; the composable owns interaction state.
 const stages = [
@@ -17,7 +19,8 @@ const stages = [
     title: "Knock once. Let us know you're here.",
     text: "A little gold light finds its way beneath the door. You don't need an invitation to be interesting, impressive, or perfectly okay. Just start with a knock.",
     action: "Give the first knock",
-    whisper: "Somewhere inside, a tiny Ghostie looks up."
+    whisper: "Somewhere inside, a tiny Ghostie looks up.",
+    sceneNote: "A thread of lamplight slips beneath the door."
   },
   {
     name: "Second knock",
@@ -25,7 +28,8 @@ const stages = [
     title: "You can come exactly as you are.",
     text: "The latch stirs. A Ghostie peeks out and nudges a basket toward you. The pretending, the proving, the need to be anyone else? You can leave those here.",
     action: "Give the second knock",
-    whisper: "Difference belongs here. Cruelty doesn't."
+    whisper: "Difference belongs here. Cruelty doesn't.",
+    sceneNote: "The latch lifts. Someone is home."
   },
   {
     name: "Third knock",
@@ -33,11 +37,37 @@ const stages = [
     title: "One small promise before we open.",
     text: "Be kind to the people inside. Respect their boundaries. Protect the warmth without trying to own it. The Haven stays a haven because everybody helps.",
     action: "Promise kindness · third knock",
-    whisper: "The Ghostie is already making room for you."
+    whisper: "The Ghostie is already making room for you.",
+    sceneNote: "Warmth spills through the opening."
   }
 ] as const;
 
 const currentStage = computed(() => stages[Math.min(step.value, knocksRequired - 1)]);
+const progressLabels = ["Arrive", "Belong", "Promise"] as const;
+const doorPrompt = computed(() => ["Knock here", "Again, gently", "One last promise"][Math.min(step.value, 2)]);
+const sceneNote = computed(() => {
+  if (isOpen.value) return "The whole room answers in gold.";
+  if (step.value === 0) return "The cottage is listening.";
+  return stages[step.value - 1].sceneNote;
+});
+
+async function knockFromStory(): Promise<void> {
+  const shouldTransferFocus = document.activeElement === storyAction.value && step.value === knocksRequired - 1;
+  knock();
+  if (shouldTransferFocus) {
+    await nextTick();
+    discordAction.value?.focus();
+  }
+}
+
+async function closeFromStory(): Promise<void> {
+  const shouldTransferFocus = document.activeElement?.classList.contains("text-button") ?? false;
+  closeDoor();
+  if (shouldTransferFocus) {
+    await nextTick();
+    storyAction.value?.focus();
+  }
+}
 </script>
 
 <template>
@@ -98,13 +128,18 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
           </span>
           <span class="haven-threshold__knocker" aria-hidden="true"></span>
           <span class="haven-threshold__knob" aria-hidden="true"></span>
+          <span v-if="!isOpen" class="haven-threshold__door-prompt" aria-hidden="true">{{ doorPrompt }}</span>
         </button>
+
+        <span v-if="step > 0" :key="step" class="haven-threshold__knock-response" aria-hidden="true">
+          <span></span>
+        </span>
       </div>
 
       <div class="haven-threshold__stepstone" aria-hidden="true"></div>
       <div class="haven-threshold__mat" aria-hidden="true">COME AS YOU ARE</div>
       <p class="haven-threshold__scene-note" aria-hidden="true">
-        {{ isOpen ? "A little look inside the Haven." : "You can knock on the door, too." }}
+        {{ sceneNote }}
       </p>
     </div>
 
@@ -120,45 +155,55 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
           :key="index"
           :class="{ 'is-answered': step >= index, 'is-current': !isOpen && step === index - 1 }"
           :aria-label="`Knock ${index}: ${step >= index ? 'answered' : 'waiting'}`"
+          :aria-current="!isOpen && step === index - 1 ? 'step' : undefined"
         >
-          <span aria-hidden="true">{{ index }}</span>
+          <span class="haven-threshold__progress-mark" aria-hidden="true">{{ step >= index ? "✓" : `0${index}` }}</span>
+          <span class="haven-threshold__progress-label" aria-hidden="true">{{ progressLabels[index - 1] }}</span>
         </li>
       </ol>
 
-      <template v-if="!isOpen">
-        <p class="haven-threshold__stage-name">{{ currentStage.name }}</p>
-        <h2 id="haven-door-title">{{ currentStage.title }}</h2>
-        <p class="haven-threshold__story">{{ currentStage.text }}</p>
-        <p class="haven-threshold__whisper">{{ currentStage.whisper }}</p>
+      <Transition name="haven-story" mode="out-in">
+        <div :key="step" class="haven-threshold__story-copy">
+          <template v-if="!isOpen">
+            <p class="haven-threshold__stage-name">{{ currentStage.name }}</p>
+            <h2 id="haven-door-title">{{ currentStage.title }}</h2>
+            <p class="haven-threshold__story">{{ currentStage.text }}</p>
+            <p class="haven-threshold__whisper">{{ currentStage.whisper }}</p>
+          </template>
 
-        <button class="button button--ember haven-threshold__action" type="button" @click="knock">
+          <template v-else>
+            <p class="haven-threshold__stage-name">The door swings open</p>
+            <h2 id="haven-door-title">There's a place for you inside.</h2>
+            <p class="haven-threshold__story">
+              The Ghostie steps aside. Past the blankets and the soft lavender light, people are already making room.
+              Welcome to Nari's Haven.
+            </p>
+            <p class="haven-threshold__whisper">You knew the way in was never just a link.</p>
+          </template>
+        </div>
+      </Transition>
+
+      <div class="haven-threshold__action-region">
+        <button v-if="!isOpen" ref="storyAction" class="button button--ember haven-threshold__action" type="button" @click="knockFromStory">
           <ShieldCheck v-if="step === 2" :size="18" aria-hidden="true" />
           <HeartHandshake v-else :size="18" aria-hidden="true" />
           {{ currentStage.action }}
         </button>
-      </template>
-
-      <template v-else>
-        <p class="haven-threshold__stage-name">The door swings open</p>
-        <h2 id="haven-door-title">There's a place for you inside.</h2>
-        <p class="haven-threshold__story">
-          The Ghostie steps aside. Past the blankets and the soft lavender light, people are already making room.
-          Welcome to Nari's Haven.
-        </p>
-        <p class="haven-threshold__whisper">You knew the way in was never just a link.</p>
-
-        <a
-          class="button button--emerald haven-threshold__action"
-          :href="discordUrl"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Enter Nari's Haven on Discord
-          <ArrowUpRight :size="18" aria-hidden="true" />
-          <span class="sr-only"> (opens in a new tab)</span>
-        </a>
-        <button class="text-button" type="button" @click="closeDoor">Close the door behind me</button>
-      </template>
+        <template v-else>
+          <a
+            ref="discordAction"
+            class="button button--emerald haven-threshold__action"
+            :href="discordUrl"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Enter Nari's Haven on Discord
+            <ArrowUpRight :size="18" aria-hidden="true" />
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <button class="text-button" type="button" @click="closeFromStory">Close the door behind me</button>
+        </template>
+      </div>
     </div>
   </section>
 </template>
@@ -169,9 +214,11 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   overflow: hidden;
   color: var(--story-copy);
   background: var(--story-surface);
-  border: 1px solid var(--story-line);
-  border-radius: 1rem;
-  box-shadow: 0 1.15rem 3.2rem rgb(15 9 13 / 20%);
+  border: 1px solid color-mix(in srgb, var(--story-line) 78%, var(--story-accent));
+  border-radius: 1.25rem;
+  box-shadow:
+    0 1.15rem 3.2rem rgb(15 9 13 / 20%),
+    0 0 0 0.35rem color-mix(in srgb, var(--story-surface) 82%, transparent);
 }
 
 .haven-threshold__scene {
@@ -179,10 +226,11 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   min-height: 26rem;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 42%, rgb(196 138 88 / 22%), transparent 40%),
-    radial-gradient(ellipse at 50% 100%, rgb(236 167 98 / 20%), transparent 60%),
+    radial-gradient(ellipse at 50% 42%, rgb(196 138 88 / 28%), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgb(236 167 98 / 24%), transparent 62%),
     linear-gradient(155deg, #392839 0%, #4b3446 35%, #2c1d2a 78%, #241720);
   isolation: isolate;
+  transition: background-color 320ms var(--ease-out);
 }
 
 .haven-threshold__wall {
@@ -201,12 +249,14 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   left: 50%;
   width: min(90%, 25rem);
   height: 76%;
-  background: radial-gradient(ellipse at 50% 47%, rgb(237 172 109 / 20%), transparent 71%);
+  background: radial-gradient(ellipse at 50% 47%, rgb(237 172 109 / 27%), transparent 71%);
   border: 1px solid rgb(241 195 146 / 12%);
   border-bottom: 0;
   border-radius: 13rem 13rem 0 0;
-  box-shadow: 0 0 0 0.45rem rgb(37 23 33 / 17%), 0 0 2.7rem rgb(233 163 93 / 11%);
+  box-shadow: 0 0 0 0.45rem rgb(37 23 33 / 17%), 0 0 2.7rem rgb(233 163 93 / 16%);
+  opacity: 0.72;
   transform: translateX(-50%);
+  transition: opacity 320ms var(--ease-out), box-shadow 320ms var(--ease-out);
 }
 
 .haven-threshold__ivy {
@@ -324,11 +374,22 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   transform: rotateY(var(--door-angle));
   transform-origin: left center;
   transform-style: preserve-3d;
-  transition: transform 520ms cubic-bezier(0.22, 0.78, 0.22, 1), filter 180ms ease;
+  box-shadow: inset -1.4rem 0 1.8rem rgb(29 13 23 / 18%);
+  transition:
+    transform 520ms cubic-bezier(0.22, 0.78, 0.22, 1),
+    filter 180ms ease,
+    box-shadow 320ms var(--ease-out);
+  will-change: transform;
 }
 
 .haven-threshold__door:hover:not(:disabled) {
-  filter: brightness(1.08);
+  filter: brightness(1.1) saturate(1.04);
+  box-shadow: inset -1.4rem 0 1.8rem rgb(29 13 23 / 24%), 0 0 1.1rem rgb(238 183 112 / 18%);
+}
+
+.haven-threshold__door:hover:not(:disabled) .haven-threshold__sign,
+.haven-threshold__door:focus-visible .haven-threshold__sign {
+  transform: translateX(-50%) rotate(0.8deg) translateY(-0.12rem);
 }
 
 .haven-threshold__door:focus-visible {
@@ -434,6 +495,7 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   box-shadow: 0 0 0 0.13rem rgb(58 37 48 / 80%), 0 0.42rem 0 rgb(36 19 30 / 24%);
   text-align: center;
   transform: translateX(-50%) rotate(-1deg);
+  transition: transform 180ms var(--ease-out);
 }
 
 .haven-threshold__sign::before,
@@ -482,6 +544,7 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   border-radius: 48% 48% 44% 44%;
   box-shadow: inset 0 0 0 1px rgb(49 25 31 / 34%), 0 0 0.8rem rgb(232 174 103 / 15%);
   transform: translateX(-50%);
+  transition: filter 180ms ease;
 }
 
 .haven-threshold__knocker::before {
@@ -509,6 +572,58 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   box-shadow: 0 0 0 0.25rem rgb(36 18 27 / 24%);
 }
 
+.haven-threshold__door-prompt {
+  position: absolute;
+  right: 0;
+  bottom: 9.5%;
+  left: 0;
+  color: rgb(255 237 215 / 88%);
+  font-family: var(--font-detail);
+  font-size: 0.875rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-shadow: 0 0.12rem 0.45rem rgb(30 13 23 / 70%);
+  text-transform: uppercase;
+}
+
+.haven-threshold__knock-response {
+  position: absolute;
+  z-index: 7;
+  top: 62%;
+  left: 50%;
+  width: 2.7rem;
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.haven-threshold__knock-response::before,
+.haven-threshold__knock-response::after {
+  border: 1px solid rgb(247 207 153 / 82%);
+  border-radius: 50%;
+}
+
+.haven-threshold__knock-response::before,
+.haven-threshold__knock-response::after {
+  position: absolute;
+  inset: -0.1rem;
+  content: "";
+  animation: haven-knock-ring 520ms var(--ease-out) both;
+}
+
+.haven-threshold__knock-response::after {
+  animation-delay: 70ms;
+}
+
+.haven-threshold__knock-response > span {
+  position: absolute;
+  inset: 0.72rem;
+  background: radial-gradient(circle, rgb(255 222 173 / 72%), rgb(229 153 83 / 8%) 68%, transparent 72%);
+  border-radius: 50%;
+  animation: haven-knock-flash 360ms ease-out both;
+}
+
 .haven-threshold__lantern {
   position: absolute;
   z-index: 5;
@@ -519,6 +634,8 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   border: 0.15rem solid #76534d;
   border-radius: 35% 35% 28% 28%;
   box-shadow: 0 0 1.7rem 0.55rem rgb(235 176 107 / 32%);
+  filter: saturate(0.9) brightness(0.88);
+  transition: filter 320ms var(--ease-out), box-shadow 320ms var(--ease-out);
 }
 
 .haven-threshold__lantern::before {
@@ -579,17 +696,30 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   margin: 0;
   color: rgb(249 225 218 / 83%);
   font-family: var(--font-detail);
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
   text-align: center;
 }
 
+.haven-threshold__scene.is-step-1 .haven-threshold__halo,
+.haven-threshold__scene.is-step-2 .haven-threshold__halo,
+.haven-threshold__scene.is-step-3 .haven-threshold__halo {
+  opacity: 1;
+}
+
+.haven-threshold__scene.is-step-1 .haven-threshold__lantern,
+.haven-threshold__scene.is-step-2 .haven-threshold__lantern,
+.haven-threshold__scene.is-step-3 .haven-threshold__lantern {
+  filter: saturate(1.08) brightness(1.08);
+  box-shadow: 0 0 2.15rem 0.72rem rgb(241 179 99 / 45%);
+}
+
 .haven-threshold__scene.is-step-1 .haven-threshold__arch {
-  --door-angle: -18deg;
+  --door-angle: -15deg;
 }
 
 .haven-threshold__scene.is-step-2 .haven-threshold__arch {
-  --door-angle: -43deg;
+  --door-angle: -38deg;
 }
 
 .haven-threshold__scene.is-step-3 .haven-threshold__arch {
@@ -606,7 +736,7 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
 }
 
 .haven-threshold__scene.is-step-1 .haven-threshold__room-light {
-  opacity: 0.48;
+  opacity: 0.52;
 }
 
 .haven-threshold__scene.is-step-2 .haven-threshold__room-light,
@@ -682,6 +812,18 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
     var(--story-surface);
 }
 
+.haven-threshold__story-copy {
+  display: grid;
+  justify-items: start;
+}
+
+.haven-threshold__action-region {
+  display: grid;
+  justify-items: start;
+  gap: 0.65rem;
+  min-height: 4.1rem;
+}
+
 .haven-threshold__chapter {
   display: flex;
   width: 100%;
@@ -704,37 +846,78 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
 }
 
 .haven-threshold__progress {
-  display: flex;
-  align-items: center;
-  gap: 0.62rem;
+  position: relative;
+  display: grid;
+  width: min(100%, 24rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
   padding: 0;
-  margin-block: 1rem 1.1rem;
+  margin-block: 1.05rem 1.3rem;
   list-style: none;
 }
 
+.haven-threshold__progress::before {
+  position: absolute;
+  top: 1.18rem;
+  right: 15%;
+  left: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--story-line), var(--story-accent), var(--story-line));
+  content: "";
+  opacity: 0.58;
+}
+
 .haven-threshold__progress > li {
+  position: relative;
+  z-index: 1;
   display: grid;
-  width: 2rem;
-  aspect-ratio: 1;
+  gap: 0.38rem;
   place-items: center;
   color: var(--story-muted);
-  background: color-mix(in srgb, var(--story-surface-deep) 75%, transparent);
+  font-size: 0.8rem;
+  font-weight: 760;
+}
+
+.haven-threshold__progress-mark {
+  display: grid;
+  width: 2.35rem;
+  aspect-ratio: 1;
+  place-items: center;
+  background: color-mix(in srgb, var(--story-surface-deep) 82%, transparent);
   border: 1px solid var(--story-line);
   border-radius: 50%;
-  font-size: 0.76rem;
-  font-weight: 800;
-  transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+  font-family: var(--font-detail);
+  font-size: 0.74rem;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms var(--ease-out);
 }
 
-.haven-threshold__progress > li.is-current {
+.haven-threshold__progress-label {
+  font-family: var(--font-detail);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.haven-threshold__progress > li.is-current .haven-threshold__progress-mark {
   color: var(--story-copy);
   border-color: var(--story-accent);
+  box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--story-accent) 14%, transparent);
+  transform: translateY(-0.08rem);
 }
 
-.haven-threshold__progress > li.is-answered {
+.haven-threshold__progress > li.is-answered .haven-threshold__progress-mark {
   color: var(--story-copy);
   background: color-mix(in srgb, var(--story-accent) 36%, var(--story-surface));
   border-color: var(--story-accent);
+}
+
+.haven-threshold__progress > li.is-answered .haven-threshold__progress-label,
+.haven-threshold__progress > li.is-current .haven-threshold__progress-label {
+  color: var(--story-copy);
 }
 
 .haven-threshold__stage-name {
@@ -779,6 +962,43 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
   color: var(--story-muted);
 }
 
+.haven-threshold--open .haven-threshold__action {
+  box-shadow: 0 0.65rem 1.7rem color-mix(in srgb, var(--emerald) 22%, transparent);
+}
+
+.haven-story-enter-active,
+.haven-story-leave-active {
+  transition: opacity 180ms ease, transform 240ms var(--ease-out);
+}
+
+.haven-story-enter-from {
+  opacity: 0;
+  transform: translateY(0.45rem);
+}
+
+.haven-story-leave-to {
+  opacity: 0;
+  transform: translateY(-0.25rem);
+}
+
+@keyframes haven-knock-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  25% { opacity: 0.92; }
+  100% {
+    opacity: 0;
+    transform: scale(2.35);
+  }
+}
+
+@keyframes haven-knock-flash {
+  0% { opacity: 0; transform: scale(0.4); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.45); }
+}
+
 @media (min-width: 56rem) {
   .haven-threshold {
     grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
@@ -808,9 +1028,26 @@ const currentStage = computed(() => stages[Math.min(step.value, knocksRequired -
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,
   .haven-threshold__room-light,
-  .haven-threshold__progress > li {
+  .haven-threshold__halo,
+  .haven-threshold__lantern,
+  .haven-threshold__sign,
+  .haven-threshold__progress-mark,
+  .haven-story-enter-active,
+  .haven-story-leave-active {
     transition: none;
   }
+
+  .haven-threshold__knock-response,
+  .haven-threshold__knock-response::before,
+  .haven-threshold__knock-response::after,
+  .haven-threshold__knock-response > span {
+    animation: none;
+    opacity: 0;
+  }
 }
-.haven-threshold__gathering.is-glimpsed { filter: brightness(0.7) saturate(0.86); }
+
+.haven-threshold__gathering.is-glimpsed {
+  filter: brightness(0.72) saturate(0.9);
+  transition: filter 320ms var(--ease-out);
+}
 </style>

@@ -5,6 +5,11 @@ import { resolve } from "node:path";
 
 const manifest = JSON.parse(readFileSync("dist/.vite/manifest.json", "utf8"));
 const assets = JSON.parse(readFileSync("src/data/responsive-artwork.json", "utf8")).artworks;
+const limits = {
+  shared: 120_000,
+  routeJs: 35_000,
+  routeCss: 12_000
+};
 const limit = (name, bytes, maximum) => {
   if (bytes > maximum) throw new Error(`${name}: ${bytes} bytes exceeds ${maximum}`);
   console.log(`${name}: ${(bytes / 1000).toFixed(2)} KB / ${maximum / 1000} KB`);
@@ -16,13 +21,16 @@ function graph(key, found = new Set()) {
   for (const dependency of manifest[key].imports ?? []) graph(dependency, found);
   return found;
 }
-function graphBytes(keys, includeCss) {
+function graphFiles(keys) {
   const files = new Set();
   for (const key of keys) {
     files.add(manifest[key].file);
-    if (includeCss) for (const css of manifest[key].css ?? []) files.add(css);
+    for (const css of manifest[key].css ?? []) files.add(css);
   }
-  return [...files].filter((file) => /\.(js|css)$/.test(file))
+  return files;
+}
+function gzipBytes(files, extensionPattern) {
+  return [...files].filter((file) => extensionPattern.test(file))
     .reduce((total, file) => total + gzipSync(readFileSync(resolve("dist", file))).length, 0);
 }
 // Resolve the emitted document script rather than assuming an HTML manifest key;
@@ -36,11 +44,18 @@ for (const file of scripts) {
   if (!key) throw new Error(`Home script missing from build manifest: ${file}`);
   graph(key, shared);
 }
-limit("Shared JS + CSS (gzip)", graphBytes(shared, true), 120_000);
+const sharedFiles = graphFiles(shared);
+limit("Shared JS + CSS (gzip)", gzipBytes(sharedFiles, /\.(js|css)$/), limits.shared);
 for (const [key, entry] of Object.entries(manifest)) {
   if (!entry.isDynamicEntry || !key.endsWith("Page.vue")) continue;
   const route = [...graph(key)].filter((dependency) => !shared.has(dependency));
-  limit(`${key} JS (gzip)`, graphBytes(route, false), 35_000);
+  const routeFiles = graphFiles(route);
+  const routeJs = gzipBytes(routeFiles, /\.js$/);
+  const routeCss = gzipBytes(routeFiles, /\.css$/);
+  const combinedFiles = new Set([...sharedFiles, ...routeFiles]);
+  limit(`${key} JS (gzip)`, routeJs, limits.routeJs);
+  limit(`${key} CSS (gzip)`, routeCss, limits.routeCss);
+  console.log(`${key} combined JS + CSS graph (gzip): ${(gzipBytes(combinedFiles, /\.(js|css)$/) / 1000).toFixed(2)} KB`);
 }
 for (const [source, asset] of Object.entries(assets)) {
   for (const candidate of asset.candidates) {

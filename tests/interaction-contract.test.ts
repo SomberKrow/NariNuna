@@ -17,9 +17,19 @@ describe("client-feedback interaction contracts", () => {
     expect(doorway).toContain('name: "Second knock"');
     expect(doorway).toContain('name: "Third knock"');
     expect(doorway).toContain('aria-label="Your three knocks at the Haven door"');
+    expect(doorway).toContain(':aria-current="!isOpen && step === index - 1 ? \'step\' : undefined"');
     expect(doorway).toContain("environmentArtwork.havenDoorInterior");
     expect(doorway).toContain('v-if="loadInterior" class="haven-threshold__gathering"');
     expect(doorway).toContain(':aria-hidden="!isOpen ? \'true\' : undefined"');
+    expect(doorway).toContain('v-if="step > 0" :key="step" class="haven-threshold__knock-response"');
+    expect(doorway).toContain('<Transition name="haven-story" mode="out-in">');
+    expect(doorway).toContain('ref="storyAction"');
+    expect(doorway).toContain('ref="discordAction"');
+    expect(doorway).toContain('document.activeElement === storyAction.value');
+    expect(doorway).toContain("discordAction.value?.focus()");
+    expect(doorway).toContain("storyAction.value?.focus()");
+    expect(doorway).toContain("@keyframes haven-knock-ring");
+    expect(doorway).toContain("@media (prefers-reduced-motion: reduce)");
     expect(doorway).toContain("object-fit: cover");
     expect(doorway).not.toContain("backdrop-filter: blur");
 
@@ -28,7 +38,10 @@ describe("client-feedback interaction contracts", () => {
 
     expect(lockedState).not.toContain(':href="discordUrl"');
     expect(openState).toContain(':href="discordUrl"');
-    expect(openState).toContain('@click="closeDoor"');
+    expect(openState).toContain('@click="closeFromStory"');
+
+    const transitionedCopy = doorway.slice(doorway.indexOf('<Transition name="haven-story"'), doorway.indexOf("</Transition>") + 13);
+    expect(transitionedCopy).not.toContain("haven-threshold__action");
   });
 
   it("routes Come sit with us directly into the Haven doorway", () => {

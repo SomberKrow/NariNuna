@@ -1,5 +1,28 @@
 # Integrated distinctive UI refinement
 
+## 2026-09-08 composed-room follow-up
+
+The current follow-up branch, `kiva/nari-experience-refinement`, is stacked on open PR #12 at `5e0ec49`. It develops the already-approved implementation direction instead of repeating the earlier de-cardification pass:
+
+| Route | Current refinement |
+|---|---|
+| Home | The three gateway postcards share one physical threshold lip and contact shadow while retaining the compact arrival. |
+| Meet Nari | Identity entries now sit on one readable ruled journal sheet with a binding margin, restrained bookmark, varied emphasis, and smaller purposeful Ghostie overlap. |
+| Streams | One existing clip leads; two supporting clips form a compact desk column, with an explicit path to the quieter Story Time album. |
+| Haven | The charter receives a restrained textile/rug surface; the story action no longer lives inside the keyed transition subtree. |
+| Resources | Stable shelf IDs, art, and category records are paired; shelf lips/uprights and readable jump tabs clarify the library; sample layout metadata now controls disclosed demo density. |
+| Nails | The illustration and notes form one workbench composition; the paper notes and compact honest portfolio hold remain distinct from real work. |
+| Work | Paper edges, masthead, fold, illustration contact shadow, and directory continuation strengthen the correspondence metaphor without inventing contact. |
+| Stories | A bound paper album with one lead memory and two supporting entries is visually distinct from the broadcast desk while reusing only approved clips. |
+| Support | The three free-support messages share one calm ruled surface; the central paper note leads and the wishlist remains subordinate. |
+| Prinny / 404 | Prinny scope is unchanged; 404 receives only a restrained recovery composition. |
+
+The Haven keyboard fix keeps the text action in a stable DOM region for knocks one and two. On the final keyboard-triggered replacement, focus moves to the Discord link; focused reset returns focus to the restored knock action. The door-scene button remains an independent activation path and does not trigger unsolicited focus movement.
+
+`scripts/validate-performance.mjs` now measures route-only CSS separately, enforces a new 12 KB gzip route-CSS ceiling, and reports each deduplicated combined JS+CSS graph while retaining the existing 120 KB shared and 35 KB route-JS limits. On the implementation checkout, `npm run check` passes with 59 tests and 11 served documents. Shared JS+CSS is 68.94 KB gzip; the largest route CSS is Haven at 4.95 KB; the largest combined route graph is Haven at 80.19 KB. These are build measurements, not field performance or Lighthouse results.
+
+Browser review remains required on the deployed stacked preview for focus continuity, mobile/reflow, reduced motion, failed media, and final whole-page visual evidence. No client approval or public-release clearance is inferred from the implementation.
+
 Date: 2026-09-07. Branch: `kiva/nari-distinctive-ui`.
 
 ## Scope and direction
@@ -22,6 +45,12 @@ Preserve the illustrated late-fall Haven and face-safe hero compositions; give t
 
 Prinny and 404 retain their established scope. The tiny optional Prinny route is not expanded into the historical cult concept.
 
+## Haven threshold refinement
+
+The doorway now responds visibly to every deliberate knock instead of relying on copy replacement alone. Each state strengthens the lantern and threshold light, opens a larger glimpse of the existing continuous room illustration, plays one short brass impact ripple, and turns the adjacent story forward. The progress treatment reads as a three-part path—Arrive, Belong, Promise—with answered and current states conveyed by text/shape as well as color. The door itself exposes a changing visible prompt so its direct interaction is easier to discover.
+
+The response is capped to the three existing user actions: there is no idle loop, random particle field, sound, new timer, extra gate, or persistent state. Reduced-motion mode removes the impact and content travel while preserving immediate state, labels, image, and final Discord access. The invite anchor still does not exist before the third knock, and the already-deferred interior image retains its proximity/focus/interaction loading contract.
+
 ## Engineering ownership
 
 Each interior page imports its scoped composition from `src/styles/rooms/`. Shared reading primitives live in `_room-language.scss`; MediaCard owns its broadcast and album variants. Retired selector branches were removed from legacy layers while preserving unrelated styles and the final face-safe layer. Header Escape handling restores focus; Twitch uses a radio icon without suggesting a live status. Root minimum widths no longer force horizontal overflow on narrow viewports with scrollbars.
@@ -37,6 +66,7 @@ Source-string tests tied to retired CSS were replaced with rendered-content chec
 - 200% root text sizing at 390px covered all eleven routes. Work and Resources overflow found during review was corrected; Resources and Work then measured without document overflow. This simulates text enlargement, not native browser zoom. Existing Haven door content still needs a release-grade enlarged-text review; document width alone does not establish that every scene element is visible.
 - Visual browser review included the Work mobile hero and paper letter, Resources desktop shelves, and visible desktop More focus after Escape. Mobile navigation opened and closed with Escape; the Work hero anchor reached the letter.
 - Existing reduced-motion contracts pass; native OS reduced-motion, screen-reader interaction, exhaustive contrast, real-device touch, and external destination availability were not fully exercised. These remain release QA, not claimed approvals.
+- After the Haven threshold refinement, a fresh `npm ci` and full `npm run check` passed again: lint, strict typecheck, 59 tests across 13 files, production build, all 11 independently served documents, 137 essential assets, and all 27 retained Prinny designs. Shared JS + CSS is 68.93 KB gzip against the 120 KB limit; Haven's additional page graph is 6.14 KB gzip against 35 KB. This is automated/build evidence, not a claim of manual browser approval.
 
 ## Content and release boundaries
 
