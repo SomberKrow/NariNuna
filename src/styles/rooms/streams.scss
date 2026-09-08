@@ -1,14 +1,35 @@
 .clip-desk__moments {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: minmax(0, 1.55fr) minmax(18rem, 0.75fr);
+  gap: clamp(1.25rem, 3vw, 2.75rem);
   align-items: start;
+  padding: clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-raised) 84%, transparent), color-mix(in srgb, var(--bg-inset) 76%, transparent));
+  border-block: 1px solid color-mix(in srgb, var(--story-line) 74%, var(--storybook-gold));
+  box-shadow: inset 0 -0.45rem 0 color-mix(in srgb, var(--bg-inset) 62%, transparent), 0 1.2rem 2.8rem rgb(13 8 12 / 14%);
 }
-.clip-desk__moments > :nth-child(2) {
-  margin-top: 2rem;
+.clip-desk__moments::before {
+  position: absolute;
+  top: -0.65rem;
+  left: 1rem;
+  padding: 0.2rem 0.65rem;
+  color: var(--bg-inset);
+  background: var(--storybook-gold);
+  content: "ON THE DESK";
+  font-family: var(--font-detail);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
 }
-.clip-desk__moments > :nth-child(3) {
-  margin-top: 4rem;
+.clip-desk__lead { min-width: 0; }
+.clip-desk__supporting {
+  display: grid;
+  gap: 1.5rem;
+}
+.clip-desk__supporting :deep(.media-card + .media-card) {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--story-line);
 }
 .broadcast-tuning {
   display: flex;
@@ -16,7 +37,7 @@
   align-items: center;
   gap: 1.5rem 2rem;
   padding-block: 1.8rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   border-block: 1px solid var(--story-line);
 }
 .broadcast-tuning > div {
@@ -38,15 +59,22 @@
   color: var(--text-muted);
   font-size: 0.875rem;
 }
+.clip-desk__next {
+  width: fit-content;
+  margin: 1rem 0 0 auto;
+}
+@media (max-width: 63.99rem) {
+  .clip-desk__moments { grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.8fr); }
+}
 @media (max-width: 47.99rem) {
   .clip-desk__moments {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
+    padding: 1rem;
   }
-  .clip-desk__moments > :nth-child(n) {
-    margin-top: 0;
-  }
+  .clip-desk__supporting { gap: 1.25rem; }
   .broadcast-tuning {
     gap: 0.8rem 1.5rem;
   }
+  .clip-desk__next { margin-inline-start: 0; }
 }

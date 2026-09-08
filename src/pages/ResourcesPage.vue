@@ -6,8 +6,11 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
 import { resourceDemoEntries } from "@/data/resources";
 
-const categoryArt = [storybookPostcards.nails, storybookPostcards.work, storybookPostcards.streams];
-const shelfIds = ["nail-desk", "creator-shelf", "game-pile"];
+const resourceShelves = [
+  { id: "nail-desk", category: resourceCategories[0], art: storybookPostcards.nails },
+  { id: "creator-shelf", category: resourceCategories[1], art: storybookPostcards.work },
+  { id: "game-pile", category: resourceCategories[2], art: storybookPostcards.streams }
+];
 </script>
 
 <template>
@@ -29,22 +32,22 @@ const shelfIds = ["nail-desk", "creator-shelf", "game-pile"];
       <p class="room-kicker">The collection</p>
       <h2 id="shelf-title">A little less searching.<br /><em>A little more making.</em></h2>
       <nav aria-label="Resource categories">
-        <a v-for="(category, index) in resourceCategories" :key="category.title" :href="`#${shelfIds[index]}`">
-          <span aria-hidden="true">0{{ index + 1 }}</span>{{ category.title }}
+        <a v-for="(shelf, index) in resourceShelves" :key="shelf.id" :href="`#${shelf.id}`">
+          <span aria-hidden="true">0{{ index + 1 }}</span>{{ shelf.category.title }}
         </a>
       </nav>
       <p class="room-caption">Nari is choosing her first recommendations. Each one will include a reason it belongs here.</p>
     </aside>
 
     <div class="resource-library__shelves">
-      <article v-for="(category, index) in resourceCategories" :id="shelfIds[index]" :key="category.title" class="resource-shelf">
+      <article v-for="(shelf, index) in resourceShelves" :id="shelf.id" :key="shelf.id" class="resource-shelf">
         <div class="resource-shelf__heading">
           <span class="resource-shelf__number" aria-hidden="true">0{{ index + 1 }}</span>
-          <div><p class="room-kicker">{{ category.status }}</p><h3>{{ category.title }}</h3></div>
-          <ResponsiveArtwork :artwork="categoryArt[index]" sizes="(min-width: 40rem) 160px, 96px" alt="" />
+          <div><p class="room-kicker">{{ shelf.category.status }}</p><h3>{{ shelf.category.title }}</h3></div>
+          <ResponsiveArtwork :artwork="shelf.art" sizes="(min-width: 64rem) 160px, (min-width: 40rem) 128px, 96px" alt="" />
         </div>
-        <p>{{ category.description }}</p>
-        <ul><li v-for="example in category.examples" :key="example">{{ example }}</li></ul>
+        <p>{{ shelf.category.description }}</p>
+        <ul><li v-for="example in shelf.category.examples" :key="example">{{ example }}</li></ul>
       </article>
     </div>
   </section>
@@ -56,7 +59,7 @@ const shelfIds = ["nail-desk", "creator-shelf", "game-pile"];
       <summary>Client preview: sample shelf entries <span>Demonstration content</span></summary>
       <p class="resource-samples__disclosure">Demonstration only: these entries preview layout and content rhythm; they are not endorsements, sponsorships, or final Nari recommendations.</p>
       <div class="resource-samples__list">
-        <article v-for="entry in resourceDemoEntries" :key="entry.id">
+        <article v-for="entry in resourceDemoEntries" :key="entry.id" :class="`resource-samples__entry--${entry.layout}`">
           <p class="room-kicker">{{ entry.category }} · Demo entry</p>
           <h3>{{ entry.title }}</h3><p>{{ entry.summary }}</p>
           <ul><li v-for="detail in entry.details" :key="detail">{{ detail }}</li></ul>

@@ -2,13 +2,17 @@
 
 > 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
 
+> 2026-09-08 refinement delta: the current stacked review branch strengthens the physical and editorial hierarchy of all ordinary content rooms, fixes the PR #12 keyed-action focus risk, pairs Resources shelf presentation with stable IDs, uses the existing demo layout field, and extends build accounting with route CSS and combined graph reporting. Automated evidence and current limitations are recorded in document 34.
+
 **Repository:** `SomberKrow/NariNuna`  
-**Branch audited:** `agent/build-nari-haven`  
+**Historical branch audited:** `agent/build-nari-haven`
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Audit date:** 2026-08-13  
 **Evidence type:** Repository/code inspection plus historical validation records; final production/manual evidence remains pending
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
+
+Current GitHub state observed on 2026-09-08: `main` at `a35e164`, PR #12 open at `5e0ec49`, repository public, and the experience-refinement work stacked from that PR head. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
 
 ## 2026-09-02 environmental-continuity delta
 

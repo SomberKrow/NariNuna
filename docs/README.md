@@ -2,12 +2,15 @@
 
 > 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
 
+> 2026-09-08 current review delta: `kiva/nari-experience-refinement` is stacked on open PR #12 (`kiva/nari-haven-doorway`, head `5e0ec49`) and deepens the existing rooms without changing routes, assets, canon, dependencies, or release posture. It also keeps the Haven text action stable between knocks, adds deliberate final/reset focus transfer, and reports route CSS plus combined transfer graphs. See the current section in [document 34](34_DISTINCTIVE_UI_REFINEMENT.md).
+
 This directory is the product specification, engineering manual, content contract, and release record for Nari Nuna's Haven. It is not background reading. A change that contradicts this suite without an approved decision record is not ready to merge.
 
-**Repository:** `SomberKrow/NariNuna`  
-**Implementation branch:** `agent/build-nari-haven`  
+**Repository:** public `SomberKrow/NariNuna`
+**Default branch:** `main`
+**Current review branch:** `kiva/nari-experience-refinement`, stacked on open PR #12
 **Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
-**Implementation snapshot described:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
+**Historical implementation snapshot described below:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
 
 ## Start here
 

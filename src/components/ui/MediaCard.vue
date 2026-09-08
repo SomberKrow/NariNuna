@@ -2,16 +2,21 @@
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 
 import { ArrowUpRight, Play } from "@lucide/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { storybookPostcards } from "@/data/artwork";
 import type { MediaMoment } from "@/types/content";
 
-withDefaults(defineProps<{ moment: MediaMoment; presentation?: "broadcast" | "album" }>(), { presentation: "broadcast" });
+const props = withDefaults(defineProps<{ moment: MediaMoment; presentation?: "broadcast" | "album"; featured?: boolean }>(), { presentation: "broadcast", featured: false });
 const imageFailed = ref(false);
+const fallbackSizes = computed(() => {
+  if (props.presentation === "album") return "(min-width: 64rem) 42vw, (min-width: 48rem) 40vw, calc(100vw - 48px)";
+  if (props.featured) return "(min-width: 72rem) 52vw, (min-width: 48rem) 58vw, calc(100vw - 48px)";
+  return "(min-width: 72rem) 24vw, (min-width: 48rem) 34vw, calc(100vw - 48px)";
+});
 </script>
 
 <template>
-  <article class="media-card" :class="`media-card--${presentation}`">
+  <article class="media-card" :class="[`media-card--${presentation}`, { 'media-card--featured': featured }]">
     <a :href="moment.url" target="_blank" rel="noreferrer noopener">
       <div class="media-card__image">
         <img
@@ -26,7 +31,7 @@ const imageFailed = ref(false);
         />
         <ResponsiveArtwork
           v-else
-          :artwork="storybookPostcards.streams" sizes="(min-width: 48rem) 50vw, calc(100vw - 48px)"
+          :artwork="storybookPostcards.streams" :sizes="fallbackSizes"
           width="960"
           height="540"
           alt="Painted view of Nari's stream room"
@@ -67,9 +72,15 @@ const imageFailed = ref(false);
 .media-card:hover, .media-card:focus-within { transform: none; box-shadow: none; }
 .media-card > a:hover h3 { color: var(--lavender); }
 .media-card > a:hover .media-card__image > img { transform: scale(1.025); }
+.media-card--featured .media-card__body h3 { font-size: clamp(1.9rem, 3.2vw, 2.8rem); }
+.media-card--broadcast.media-card--featured .media-card__image { box-shadow: 0 1rem 2rem rgb(12 7 10 / 22%); }
 .media-card--album > a { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
-.media-card--album .media-card__image { padding: 0.5rem; border: 1px solid var(--story-line); background: var(--storybook-paper); }
+.media-card--album .media-card__image { padding: 0.5rem; border: 1px solid color-mix(in srgb, var(--ink-muted) 42%, transparent); background: var(--cream); box-shadow: 0 0.65rem 1.3rem rgb(56 31 40 / 13%); }
 .media-card--album .media-card__body { padding: 0; }
+.media-card--album .media-card__body h3 { color: var(--ink); }
+.media-card--album .media-card__body > p:not(.eyebrow) { color: var(--ink-muted); }
+.media-card--album .media-card__body .eyebrow { color: color-mix(in srgb, var(--ember) 72%, var(--ink)); }
+.media-card--album .text-link { color: var(--emerald-ink); }
 @media (max-width: 47.99rem) {
   .media-card--album > a { grid-template-columns: 1fr; gap: 1.25rem; }
 }
