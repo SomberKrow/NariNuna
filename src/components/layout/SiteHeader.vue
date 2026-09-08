@@ -17,6 +17,7 @@ const moreLinks = [
   ...primaryNavigation.filter((item) => ["/resources/", "/nail-studio/"].includes(item.href)),
   ...footerNavigation
 ];
+const mobileLinks = [...principalLinks, ...moreLinks];
 
 function isCurrent(href: string): boolean {
   return currentPath.value === href || (href === "/" && currentPath.value === "");
@@ -70,6 +71,19 @@ onBeforeUnmount(() => {
       </button>
 
       <div id="primary-navigation" class="site-header__panel" :class="{ 'is-open': menuOpen }">
+        <nav class="site-header__mobile-nav" aria-label="Haven rooms">
+          <a
+            v-for="(item, index) in mobileLinks"
+            :key="item.href"
+            :href="item.href"
+            :aria-current="isCurrent(item.href) ? 'page' : undefined"
+            @click="closeMenu"
+          >
+            <span aria-hidden="true">0{{ index + 1 }}</span>
+            <strong>{{ item.shortLabel ?? item.label }}</strong>
+          </a>
+        </nav>
+
         <nav class="site-header__main-nav" aria-label="Primary navigation">
           <a
             v-for="item in principalLinks"
@@ -123,6 +137,7 @@ onBeforeUnmount(() => {
 }
 .brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 3.15rem; }
 .site-header__more { position: relative; }
+.site-header__mobile-nav { display: none; }
 .site-header__more > summary {
   display: flex;
   min-height: 2.7rem;
@@ -179,6 +194,58 @@ onBeforeUnmount(() => {
     margin: 0;
   }
   .site-header__more > nav > a { min-height: 4.5rem; align-content: center; padding: 0.85rem 0.9rem; }
+}
+@media (max-width: 55.99rem) {
+  .site-header__main-nav,
+  .site-header__more { display: none; }
+  .site-header__mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+  .site-header__mobile-nav > a {
+    display: grid;
+    min-height: 4.35rem;
+    align-content: center;
+    gap: 0.15rem;
+    padding: 0.8rem 0.9rem;
+    color: var(--story-copy);
+    background: color-mix(in srgb, var(--story-surface) 76%, transparent);
+    border: 1px solid var(--story-line);
+    border-radius: 0.55rem;
+    text-decoration: none;
+    white-space: normal;
+  }
+  .site-header__mobile-nav > a > span {
+    color: var(--storybook-gold);
+    font-family: var(--font-detail);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+  .site-header__mobile-nav > a > strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .site-header__mobile-nav > a[aria-current="page"] {
+    background: color-mix(in srgb, var(--story-surface-soft) 88%, transparent);
+    border-color: color-mix(in srgb, var(--storybook-gold) 62%, var(--story-line));
+  }
+}
+@media (max-width: 30rem) {
+  .brand-mark { gap: 0.5rem; }
+  .brand-mark__emblem {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 2.75rem; }
+  .brand-mark strong { display: grid; line-height: 0.9; }
+  .brand-mark strong i { padding-inline-start: 0.55rem; }
+}
+@media (max-width: 24rem) {
+  .site-header__mobile-nav { grid-template-columns: 1fr; }
+  .site-header__mobile-nav > a { min-height: 3.65rem; }
 }
 .site-header__main-nav > a,
 .site-header__live-link,

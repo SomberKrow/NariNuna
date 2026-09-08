@@ -2,7 +2,7 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 8 September 2026, `main` at `5b5a8a8`, incorporating merged PRs #10–#13: maintenance, distinctive room layouts, the Haven doorway and composed-page refinements. See [visual changes and validation](docs/34_DISTINCTIVE_UI_REFINEMENT.md).
+> **Current implementation snapshot:** 8 September 2026, `main` at `8845a01`, plus the `kiva/mobile-first-overhaul` review branch. See [mobile changes and validation](docs/35_MOBILE_FIRST_OVERHAUL.md).
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 
@@ -109,7 +109,7 @@ These changes are merged into `main`. References in older documents to open PR #
 | Meet Nari | Ruled journal sheet, binding margin, bookmark, varied entry emphasis and restrained Ghostie overlap. |
 | Streams | Broadcast desk with one lead clip, two supporting clips, platform links and a path to Story Time. |
 | Haven | Four-point community charter on a textile/rug surface, followed by the three-knock doorway. |
-| Resources | Indexed illustrated shelves, jump tabs, stable shelf records and a closed, explicitly labelled client-demo disclosure. |
+| Resources | Direct illustrated shelves, stable shelf records and a closed, explicitly labelled client-demo disclosure. |
 | Nails | Illustration and process notes form a workbench; real portfolio material remains on an honest hold. |
 | Work | Collaboration letter with masthead, paper edges/fold, brief guidance and public-directory continuation. |
 | Story Time | Bound paper album with one lead memory and two supporting entries using existing curated clips. |
@@ -356,13 +356,14 @@ Use this ownership map to make focused edits to content, composition, behavior a
 | Surviving shared chapter materials/signatures | `src/styles/_chapters.scss` |
 | Resources shelf IDs, art pairing and demo layout | `src/pages/ResourcesPage.vue`; records in `src/data/resources.ts` |
 | Streams/Work/Home hero focal placement | `src/styles/_face-safe.scss` |
+| Final phone chapter composition and density | `src/styles/_mobile-first.scss` |
 | Host security/cache headers | `public/_headers` |
 | Performance enforcement | `scripts/validate-performance.mjs` + related tests |
 | Responsive derivative generation | `scripts/prepare-responsive-artwork.py` |
 
 ### Style ownership
 
-`main.scss` loads tokens, base, components, pages, responsive, world, storybook, polish, chapters, artwork delivery, room language, then face-safe. Preserve `_face-safe.scss` as the final global layer. Eight interior pages import scoped compositions from `src/styles/rooms/`; Home and 404 retain local styles. Door presentation and focus handoff stay in `HavenDoor.vue`; the composable owns knock state and image eligibility.
+`main.scss` loads tokens, base, components, pages, responsive, world, storybook, polish, chapters, artwork delivery, room language, face-safe, then mobile-first. Preserve `_mobile-first.scss` as the final phone-only authority. Eight interior pages import scoped compositions from `src/styles/rooms/`; Home and 404 retain local styles. Door presentation and focus handoff stay in `HavenDoor.vue`; the composable owns knock state and image eligibility.
 
 Some legacy global layers still overlap. Inspect existing selectors before adding overrides; room-style extraction does not mean all cascade debt is resolved.
 

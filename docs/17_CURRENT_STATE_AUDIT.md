@@ -4,6 +4,8 @@
 
 > 2026-09-08 refinement delta: the current stacked review branch strengthens the physical and editorial hierarchy of all ordinary content rooms, fixes the PR #12 keyed-action focus risk, pairs Resources shelf presentation with stable IDs, uses the existing demo layout field, and extends build accounting with route CSS and combined graph reporting. Automated evidence and current limitations are recorded in document 34.
 
+> 2026-09-08 mobile delta: the client-review phone experience now uses an art-first chapter composition, a flat eight-room mobile directory, route-specific compact interiors, and direct Resources shelves. Desktop remains unchanged. Validation and limitations are recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 **Repository:** `SomberKrow/NariNuna`  
 **Historical branch audited:** `agent/build-nari-haven`
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
@@ -205,7 +207,8 @@ The branch now provides `ResponsiveArtwork`, `useHavenDoor`, canonical `projectP
 | `_world.scss`, `_storybook.scss`, `_polish.scss` | Remaining overlapping illustrated layout/composition; consolidation still pending browser evidence |
 | `_chapters.scss` | Home rail, Work directory, Resources demonstration layouts, room materials, editorial rhythm and route signatures |
 | `_artwork-delivery.scss` | Matching CSS hero media bands |
-| `_face-safe.scss` | Final hero focus/copy-lane geometry; remains last |
+| `_face-safe.scss` | Desktop/tablet hero focus/copy-lane geometry |
+| `_mobile-first.scss` | Final phone-only chapter composition and narrow-width density authority |
 | `HavenDoor.vue` scoped style | Door presentation, transitions and reduced-motion treatment |
 
 The change removes 172 superseded declarations while retaining surviving order and matching 3,088 final selector/context/property values. It does not claim all historical cascade debt is resolved. Full browser visual QA and the remaining three historical composition layers are the concrete unfinished handoff work. Asset audit still identifies 124 unreferenced-review files (775,146 B); dynamic/provenance uncertainty is left visible instead of used as deletion proof. The original 27-design Prinny collection and identity assets remain retained.

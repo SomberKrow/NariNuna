@@ -1026,6 +1026,48 @@ async function closeFromStory(): Promise<void> {
   }
 }
 
+@media (max-width: 47.99rem) {
+  .haven-threshold {
+    border-width: 0.2rem;
+    border-radius: 0.75rem;
+    box-shadow:
+      0 0.9rem 2.4rem rgb(15 9 13 / 18%),
+      0 0 0 0.14rem color-mix(in srgb, var(--story-surface-deep) 86%, transparent);
+  }
+
+  .haven-threshold__scene {
+    min-height: 22.5rem;
+  }
+
+  .haven-threshold__arch {
+    bottom: 3.6rem;
+    width: min(76%, 17.5rem);
+  }
+
+  .haven-threshold__content {
+    min-height: 0;
+    padding: 1.15rem;
+  }
+
+  .haven-threshold__progress {
+    margin-block: 0.85rem 1.1rem;
+  }
+
+  .haven-threshold__content h2 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+  }
+
+  .haven-threshold__story {
+    font-size: 0.9rem;
+    line-height: 1.58;
+  }
+
+  .haven-threshold__action-region,
+  .haven-threshold__action {
+    width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,
   .haven-threshold__room-light,

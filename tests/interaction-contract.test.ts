@@ -134,6 +134,8 @@ describe("client-feedback interaction contracts", () => {
     expect(page).toContain("resourceDemoEntries");
     expect(page).toContain("Demo entry");
     expect(page).toContain("Demonstration only:");
+    expect(page).not.toContain('aria-label="Resource categories"');
+    expect(page).not.toContain(':href="`#${shelf.id}`"');
     expect(data).toContain('layout: "compact"');
     expect(data).toContain('layout: "standard"');
     expect(data).toContain('layout: "wide"');
@@ -161,6 +163,8 @@ describe("client-feedback interaction contracts", () => {
     expect(header).toContain('if (event.key !== "Escape") return');
     expect(header).toContain("returnTo?.focus()");
     expect(header).toContain('<details ref="moreMenu" class="site-header__more">');
-    expect(header.match(/@click="closeMenu"/g)).toHaveLength(2);
+    expect(header).toContain('class="site-header__mobile-nav"');
+    expect(header).toContain('v-for="(item, index) in mobileLinks"');
+    expect(header.match(/@click="closeMenu"/g)).toHaveLength(3);
   });
 });
