@@ -2,7 +2,7 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 7 September 2026 integrated visual refinement on `kiva/nari-distinctive-ui`, incorporating the PR #10 maintenance baseline. See [visual changes and validation](docs/34_DISTINCTIVE_UI_REFINEMENT.md).
+> **Current implementation snapshot:** 8 September 2026, `main` at `5b5a8a8`, incorporating merged PRs #10–#13: maintenance, distinctive room layouts, the Haven doorway and composed-page refinements. See [visual changes and validation](docs/34_DISTINCTIVE_UI_REFINEMENT.md).
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 
@@ -64,13 +64,13 @@ The same refinement pass also introduced:
 4. **Route-specific rhythm** — Streams/Resources are tighter, Nails/Work more measured, Stories more editorial, Haven progressively quieter, and Meet Nari/Support more spacious.
 5. **Responsive artwork delivery** — the artwork remains visually intact while appropriately sized, hashed WebP derivatives are served to the browser.
 
-The Nari-only direction is still a **proposal under client review**, not approved product history. Older documents that describe Nari/Dark/Light as three currently active user-selectable themes should be read as historical context unless they have been reconciled with the post-PR #9 implementation. The latest implementation supplements are `docs/28` through `docs/33`.
+The Nari-only direction is still a **proposal under client review**, not approved product history. Older documents that describe Nari/Dark/Light as three currently active user-selectable themes should be read as historical context unless they have been reconciled with the post-PR #9 implementation. The latest implementation supplements are `docs/28` through `docs/34`.
 
 ---
 
 ## Current implementation
 
-The merged PR #9 baseline currently includes:
+The current merged implementation includes the PR #9 foundation plus PRs #10–#13:
 
 - a Vue/Vite **true multi-page application** with eleven real HTML documents;
 - normal document navigation between top-level pages;
@@ -88,6 +88,33 @@ The merged PR #9 baseline currently includes:
 - guarded stale-chunk recovery;
 - automated JS/CSS and image byte budgets;
 - automated route, asset, metadata, artwork, and behavior checks.
+
+### Recent merged changes
+
+| Change | Added or improved |
+|---|---|
+| [PR #9](https://github.com/SomberKrow/NariNuna/pull/9) | Client-feedback navigation, Nari-only review atmosphere, face-safe compositions, responsive delivery, hero preloads, deferred interior, caching, recovery and budgets. |
+| [PR #10](https://github.com/SomberKrow/NariNuna/pull/10) | Shared `ResponsiveArtwork`, local `useHavenDoor` state, canonical `projectPages.json`, non-destructive asset auditing, preserved source/retired artwork outside the served tree and superseded-CSS removal. Recorded deployment-size reduction: 53.17%, a historical build comparison rather than loading-time evidence. |
+| [PR #11](https://github.com/SomberKrow/NariNuna/pull/11) | Scoped room styles, shared reading primitives, broadcast/album media variants, labelled Resources demos, header Escape focus restoration, narrow-width corrections and rendered-content checks. |
+| [PR #12](https://github.com/SomberKrow/NariNuna/pull/12) | Each knock changes lantern/threshold light, room glimpse, brass ripple and story; Arrive/Belong/Promise progress and visible prompts clarify the interaction. Reduced motion preserves immediate state and access. |
+| [PR #13](https://github.com/SomberKrow/NariNuna/pull/13) | Stronger page materials and hierarchy, stable Haven story-button focus between knocks, final/reset focus transfer, paired Resources shelf IDs/art/category records, demo-density handling, route-CSS budgets and combined graph reporting. |
+
+These changes are merged into `main`. References in older documents to open PR #12 or stacked PR #13 are historical workflow snapshots, not current branch instructions. Merge status does not confer client approval or production clearance.
+
+### Current page experiences
+
+| Page | Implemented composition |
+|---|---|
+| Home | Compact illustrated arrival; three gateway postcards share a threshold lip and contact shadow. |
+| Meet Nari | Ruled journal sheet, binding margin, bookmark, varied entry emphasis and restrained Ghostie overlap. |
+| Streams | Broadcast desk with one lead clip, two supporting clips, platform links and a path to Story Time. |
+| Haven | Four-point community charter on a textile/rug surface, followed by the three-knock doorway. |
+| Resources | Indexed illustrated shelves, jump tabs, stable shelf records and a closed, explicitly labelled client-demo disclosure. |
+| Nails | Illustration and process notes form a workbench; real portfolio material remains on an honest hold. |
+| Work | Collaboration letter with masthead, paper edges/fold, brief guidance and public-directory continuation. |
+| Story Time | Bound paper album with one lead memory and two supporting entries using existing curated clips. |
+| Support | Free-support messages on a ruled surface, central paper note and subordinate wishlist link. |
+| Prinny / 404 | Small optional hidden room retained; restrained 404 recovery composition. Retaining 27 supplied designs does not mean an expanded cult experience is implemented. |
 
 The repository does **not** currently contain or depend on:
 
@@ -230,6 +257,8 @@ Navigation data lives in `src/data/navigation.ts`. Header grouping behavior live
 │   │   ├── haven/            # Haven-specific interactive pieces
 │   │   ├── layout/           # Header, footer, shared shell
 │   │   └── ui/               # Reusable interface primitives
+│   ├── assets/source/        # Preserved delivery masters and retired artwork
+│   ├── composables/          # Door state and reduced-motion helpers
 │   ├── data/                 # Typed content/config/artwork/social/navigation data
 │   ├── pages/                # Route-level Vue page components
 │   ├── router/               # Route resolution/lazy page mapping
@@ -298,7 +327,7 @@ npm run check
 
 ## Common editing map
 
-Until a future maintainability/content-authoring pass makes the repository more editor-friendly, use this map to avoid hunting through the tree.
+Use this ownership map to make focused edits to content, composition, behavior and generated artwork.
 
 | You want to change… | Start here |
 |---|---|
@@ -320,11 +349,22 @@ Until a future maintainability/content-authoring pass makes the repository more 
 | Explicit lazy route components | `src/router/routes.ts` (coverage checked against the document registry) |
 | Shared responsive image rendering | `src/components/art/ResponsiveArtwork.vue` |
 | Haven doorway state and deferred loading | `src/composables/useHavenDoor.ts`; copy and scoped presentation stay in `HavenDoor.vue` |
-| Chapter materials, signatures, Work directory and Resources layouts | `src/styles/_chapters.scss` |
+| Interior page composition | matching scoped file under `src/styles/rooms/`, imported by its Vue page |
+| Shared room reading primitives | `src/styles/_room-language.scss` |
+| Broadcast and album presentation | `src/components/ui/MediaCard.vue` |
+| Home gateway threshold | `src/pages/HomePage.vue` scoped style |
+| Surviving shared chapter materials/signatures | `src/styles/_chapters.scss` |
+| Resources shelf IDs, art pairing and demo layout | `src/pages/ResourcesPage.vue`; records in `src/data/resources.ts` |
 | Streams/Work/Home hero focal placement | `src/styles/_face-safe.scss` |
 | Host security/cache headers | `public/_headers` |
 | Performance enforcement | `scripts/validate-performance.mjs` + related tests |
 | Responsive derivative generation | `scripts/prepare-responsive-artwork.py` |
+
+### Style ownership
+
+`main.scss` loads tokens, base, components, pages, responsive, world, storybook, polish, chapters, artwork delivery, room language, then face-safe. Preserve `_face-safe.scss` as the final global layer. Eight interior pages import scoped compositions from `src/styles/rooms/`; Home and 404 retain local styles. Door presentation and focus handoff stay in `HavenDoor.vue`; the composable owns knock state and image eligibility.
+
+Some legacy global layers still overlap. Inspect existing selectors before adding overrides; room-style extraction does not mean all cascade debt is resolved.
 
 ### Important maintenance rule
 
@@ -357,23 +397,13 @@ The preview verifier starts and stops its own production preview when used norma
 
 CI uses Node 22, installs from the lockfile with `npm ci`, and runs `npm run check`.
 
-### Last verified PR #9 evidence
+### Recorded implementation evidence
 
-Before the PR #9 merge, the final implementation head passed:
+The 8 September record in [document 34](docs/34_DISTINCTIVE_UI_REFINEMENT.md) reports a passing full gate with **59 tests** and **11 served documents**. The preceding doorway record reports 13 test files, 137 essential assets and all 27 retained Prinny designs. Responsive delivery retains 121 candidates.
 
-- ESLint;
-- strict Vue/TypeScript checking;
-- **10 Vitest files / 56 tests**;
-- production build;
-- **11/11 HTML documents/routes**;
-- required identity/environment asset validation;
-- all **27 retained supplied Prinny designs**;
-- **121 responsive artwork candidates**;
-- image and transitive bundle budgets;
-- GitHub Quality Gate #46;
-- Netlify deploy preview.
+The earlier visual pass recorded 55 route/viewport measurements at 320, 390, 768, 1024 and 1920 CSS px, simulated text enlargement and selected visual/focus checks. Those dated observations do not prove the later composed-room changes passed the entire manual matrix. Final focus continuity, native zoom/reflow, reduced motion, failed media, screen-reader and contrast review remain pending.
 
-A documentation-only README change does not make those historic implementation checks “current evidence” for later code changes. Run the gate again whenever implementation changes.
+Validation performed specifically for this README update is recorded in its pull request. Historical results are not inherited as fresh evidence.
 
 ---
 
@@ -389,12 +419,25 @@ These are currently enforced by repository tooling:
 |---|---:|
 | Shared production JS + CSS, gzip | **120,000 bytes** |
 | Additional JS graph for any lazy route page, gzip | **35,000 bytes** |
+| Route-only CSS graph, gzip | **12,000 bytes** |
 | Normal responsive artwork candidate | **150,000 bytes** |
 | `haven-sunset` responsive candidate exception | **160,000 bytes** |
 | Conservative capped Home image composition | **250,000 bytes** |
 | Ordinary hero documents | exactly **3** mutually exclusive responsive preload bands |
 
 Do not raise a budget simply to make a failing build green. A budget increase should explain what is being purchased, why the additional bytes are justified, and what alternatives were rejected.
+
+### Latest recorded implementation measurements
+
+Document 34 records these 8 September build measurements:
+
+| Measurement | Gzip size |
+|---|---:|
+| Shared JS + CSS | 68.94 KB |
+| Largest route-only CSS, Haven | 4.95 KB |
+| Largest combined route JS + CSS graph, Haven | 80.19 KB |
+
+The validator walks transitive imports, measures route JS and CSS separately, and reports the deduplicated shared-plus-route graph. Combined totals are reported without a separate combined ceiling. KB means 1,000 bytes. These are recorded build measurements, not Lighthouse, network timing or field metrics.
 
 ### PR #9 measured baseline
 
@@ -551,7 +594,7 @@ The Haven interior is deliberately deferred until:
 - it receives keyboard focus; or
 - the user begins the knock interaction.
 
-The same responsive image remains continuous through glimpse, reveal, and reset. Loading the image must never gate the three-knock logic or the Discord action.
+The same responsive image remains continuous through glimpse, reveal, and reset. The Discord anchor is absent before the third knock. The story action stays mounted for knocks one and two; final activation from the focused story action transfers focus to Discord. Focused reset returns focus to the restored story action. The separate door-scene action does not force that focus transfer. There is no idle loop, sound, timer, extra gate or persisted progress. Loading the image must never gate the three-knock logic or the Discord action.
 
 ---
 
@@ -688,7 +731,7 @@ After a route change, direct-load the built URL. A route that only works after n
 
 The repository produces a portable static artifact in `dist/`.
 
-### Current preview evidence
+### Historical preview evidence
 
 PR #9 was deployed to a Netlify deploy preview and inspected there. The preview was used to verify desktop rendering, the Haven deferred doorway artwork/three-knock interaction, and final asset/document cache headers.
 
@@ -733,6 +776,8 @@ These are especially important for understanding the current merged implementati
 - [`docs/32_PHASE_E_VALIDATION.md`](docs/32_PHASE_E_VALIDATION.md) — refinement validation evidence
 - [`docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md`](docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md) — responsive delivery, performance budgets, cache and recovery behavior
 
+- [`docs/34_DISTINCTIVE_UI_REFINEMENT.md`](docs/34_DISTINCTIVE_UI_REFINEMENT.md) — current room compositions, style ownership, doorway response/focus, route-CSS accounting and dated evidence
+
 ### Core engineering references
 
 - [`docs/07_TECHNICAL_ARCHITECTURE.md`](docs/07_TECHNICAL_ARCHITECTURE.md)
@@ -760,7 +805,7 @@ For **current implementation mechanics**, prefer:
 
 1. current code on `main`;
 2. this README's dated implementation snapshot;
-3. post-feedback docs `26–33`;
+3. post-feedback docs `26–34`;
 4. older architectural/product documents for the still-valid underlying contract.
 
 A future documentation-normalization pass should reconcile the older historical references rather than silently deleting useful decision history.
@@ -807,7 +852,7 @@ A useful PR description should state:
 
 The current repository is substantially more disciplined than the early prototype, but several areas are intentionally still future work:
 
-1. **Remaining CSS ownership and visual QA** — the maintenance branch centralizes image delivery, door behavior and document metadata, removes 172 superseded declarations, and names the chapter owner. Consolidation of the remaining `_world.scss`, `_storybook.scss` and `_polish.scss` layers still requires browser comparison; do not treat the full cleanup handoff as complete.
+1. **Remaining CSS and visual QA** — shared delivery/state/document ownership and scoped room styles are merged. Review surviving `_world.scss`, `_storybook.scss` and `_polish.scss` overlap before further consolidation. Complete whole-page comparison and Haven focus/reflow review for the latest changes; do not repeat the completed room-style extraction as new work.
 2. **Documentation normalization** — reconcile historical three-theme/branch/asset references throughout older docs with the current Nari-only post-PR #9 implementation while preserving useful decision history.
 3. **Release performance benchmark** — run controlled mobile/desktop Lighthouse series and, once production traffic exists, evaluate field Core Web Vitals.
 4. **Accessibility release QA** — finish screen-reader, contrast, zoom/reflow, short-height, and full viewport matrix review.
