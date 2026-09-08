@@ -1,10 +1,15 @@
 .studio-workbench__spread {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.85fr);
   gap: clamp(1.5rem, 4vw, 4rem);
   align-items: start;
-  padding-block: 1.5rem 2.5rem;
-  border-block: 1px solid var(--story-line);
+  padding: clamp(1rem, 3vw, 2.25rem);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 8rem, color-mix(in srgb, var(--story-line) 13%, transparent) 8rem calc(8rem + 1px)),
+    color-mix(in srgb, var(--bg-inset) 58%, var(--bg-raised));
+  border-block: 1px solid color-mix(in srgb, var(--story-line) 72%, var(--rose));
+  box-shadow: inset 0 -0.5rem 0 color-mix(in srgb, var(--bg-inset) 58%, transparent), 0 1.1rem 2.5rem rgb(13 8 11 / 15%);
 }
 .studio-workbench__scene {
   margin: 0;
@@ -13,7 +18,10 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border: 1px solid var(--story-line);
+  padding: 0.45rem;
+  background: var(--storybook-paper);
+  border: 1px solid color-mix(in srgb, var(--story-line) 76%, var(--lavender));
+  box-shadow: 0 0.9rem 1.8rem rgb(12 7 10 / 22%);
 }
 .studio-workbench__scene figcaption {
   display: flex;
@@ -28,7 +36,12 @@
   font-size: 0.75rem;
 }
 .studio-workbench__notes {
-  border-top: 3px solid var(--lavender);
+  padding: 0.25rem clamp(1rem, 2.5vw, 1.6rem);
+  color: var(--ink);
+  background: var(--storybook-paper);
+  border-top: 0.35rem solid var(--lavender);
+  box-shadow: 0 0.8rem 1.6rem rgb(12 7 10 / 17%);
+  transform: rotate(0.35deg);
 }
 .studio-workbench__notes article {
   padding-block: 1.5rem;
@@ -41,15 +54,20 @@
   line-height: 1.2;
 }
 .studio-workbench__notes p:not(.room-kicker) {
-  color: var(--text-muted);
+  color: var(--ink-muted);
 }
+.studio-workbench__notes .room-kicker { color: var(--ink-muted); }
+.studio-workbench__notes .text-link { color: var(--emerald-ink); }
 .studio-portfolio-hold {
   display: grid;
   grid-template-columns: 8rem minmax(0, 1fr);
   align-items: center;
   gap: 1.5rem;
-  max-width: 55rem;
-  margin: 2rem auto;
+  max-width: 52rem;
+  margin: 2.25rem auto 1.5rem;
+  padding: 1rem 1.25rem;
+  background: color-mix(in srgb, var(--story-surface) 45%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--story-line) 80%, var(--lavender));
 }
 .studio-portfolio-hold .ghostie-art {
   --ghostie-size: 8rem;
@@ -78,6 +96,7 @@
   }
   .studio-workbench__notes {
     border-top-width: 1px;
+    transform: none;
   }
   .studio-portfolio-hold {
     grid-template-columns: 1fr;

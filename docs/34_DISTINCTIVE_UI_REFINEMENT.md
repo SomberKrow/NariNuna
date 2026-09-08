@@ -1,5 +1,28 @@
 # Integrated distinctive UI refinement
 
+## 2026-09-08 composed-room follow-up
+
+The current follow-up branch, `kiva/nari-experience-refinement`, is stacked on open PR #12 at `5e0ec49`. It develops the already-approved implementation direction instead of repeating the earlier de-cardification pass:
+
+| Route | Current refinement |
+|---|---|
+| Home | The three gateway postcards share one physical threshold lip and contact shadow while retaining the compact arrival. |
+| Meet Nari | Identity entries now sit on one readable ruled journal sheet with a binding margin, restrained bookmark, varied emphasis, and smaller purposeful Ghostie overlap. |
+| Streams | One existing clip leads; two supporting clips form a compact desk column, with an explicit path to the quieter Story Time album. |
+| Haven | The charter receives a restrained textile/rug surface; the story action no longer lives inside the keyed transition subtree. |
+| Resources | Stable shelf IDs, art, and category records are paired; shelf lips/uprights and readable jump tabs clarify the library; sample layout metadata now controls disclosed demo density. |
+| Nails | The illustration and notes form one workbench composition; the paper notes and compact honest portfolio hold remain distinct from real work. |
+| Work | Paper edges, masthead, fold, illustration contact shadow, and directory continuation strengthen the correspondence metaphor without inventing contact. |
+| Stories | A bound paper album with one lead memory and two supporting entries is visually distinct from the broadcast desk while reusing only approved clips. |
+| Support | The three free-support messages share one calm ruled surface; the central paper note leads and the wishlist remains subordinate. |
+| Prinny / 404 | Prinny scope is unchanged; 404 receives only a restrained recovery composition. |
+
+The Haven keyboard fix keeps the text action in a stable DOM region for knocks one and two. On the final keyboard-triggered replacement, focus moves to the Discord link; focused reset returns focus to the restored knock action. The door-scene button remains an independent activation path and does not trigger unsolicited focus movement.
+
+`scripts/validate-performance.mjs` now measures route-only CSS separately, enforces a new 12 KB gzip route-CSS ceiling, and reports each deduplicated combined JS+CSS graph while retaining the existing 120 KB shared and 35 KB route-JS limits. On the implementation checkout, `npm run check` passes with 59 tests and 11 served documents. Shared JS+CSS is 68.94 KB gzip; the largest route CSS is Haven at 4.95 KB; the largest combined route graph is Haven at 80.19 KB. These are build measurements, not field performance or Lighthouse results.
+
+Browser review remains required on the deployed stacked preview for focus continuity, mobile/reflow, reduced motion, failed media, and final whole-page visual evidence. No client approval or public-release clearance is inferred from the implementation.
+
 Date: 2026-09-07. Branch: `kiva/nari-distinctive-ui`.
 
 ## Scope and direction

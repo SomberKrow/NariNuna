@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
-import { computed } from "vue";
+import { computed, nextTick, ref } from "vue";
 import { useHavenDoor } from "@/composables/useHavenDoor";
 
 import { environmentArtwork } from "@/data/artwork";
 import { discordUrl } from "@/data/socials";
 
 const { knocksRequired, step, threshold, loadInterior, prepareInterior, isOpen, knock, closeDoor } = useHavenDoor();
+const storyAction = ref<HTMLButtonElement | null>(null);
+const discordAction = ref<HTMLAnchorElement | null>(null);
 
 // Narrative copy stays beside the presentation; the composable owns interaction state.
 const stages = [
@@ -48,6 +50,24 @@ const sceneNote = computed(() => {
   if (step.value === 0) return "The cottage is listening.";
   return stages[step.value - 1].sceneNote;
 });
+
+async function knockFromStory(): Promise<void> {
+  const shouldTransferFocus = document.activeElement === storyAction.value && step.value === knocksRequired - 1;
+  knock();
+  if (shouldTransferFocus) {
+    await nextTick();
+    discordAction.value?.focus();
+  }
+}
+
+async function closeFromStory(): Promise<void> {
+  const shouldTransferFocus = document.activeElement?.classList.contains("text-button") ?? false;
+  closeDoor();
+  if (shouldTransferFocus) {
+    await nextTick();
+    storyAction.value?.focus();
+  }
+}
 </script>
 
 <template>
@@ -143,18 +163,12 @@ const sceneNote = computed(() => {
       </ol>
 
       <Transition name="haven-story" mode="out-in">
-        <div :key="step" class="haven-threshold__story-panel">
+        <div :key="step" class="haven-threshold__story-copy">
           <template v-if="!isOpen">
             <p class="haven-threshold__stage-name">{{ currentStage.name }}</p>
             <h2 id="haven-door-title">{{ currentStage.title }}</h2>
             <p class="haven-threshold__story">{{ currentStage.text }}</p>
             <p class="haven-threshold__whisper">{{ currentStage.whisper }}</p>
-
-            <button class="button button--ember haven-threshold__action" type="button" @click="knock">
-              <ShieldCheck v-if="step === 2" :size="18" aria-hidden="true" />
-              <HeartHandshake v-else :size="18" aria-hidden="true" />
-              {{ currentStage.action }}
-            </button>
           </template>
 
           <template v-else>
@@ -165,21 +179,31 @@ const sceneNote = computed(() => {
               Welcome to Nari's Haven.
             </p>
             <p class="haven-threshold__whisper">You knew the way in was never just a link.</p>
-
-            <a
-              class="button button--emerald haven-threshold__action"
-              :href="discordUrl"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Enter Nari's Haven on Discord
-              <ArrowUpRight :size="18" aria-hidden="true" />
-              <span class="sr-only"> (opens in a new tab)</span>
-            </a>
-            <button class="text-button" type="button" @click="closeDoor">Close the door behind me</button>
           </template>
         </div>
       </Transition>
+
+      <div class="haven-threshold__action-region">
+        <button v-if="!isOpen" ref="storyAction" class="button button--ember haven-threshold__action" type="button" @click="knockFromStory">
+          <ShieldCheck v-if="step === 2" :size="18" aria-hidden="true" />
+          <HeartHandshake v-else :size="18" aria-hidden="true" />
+          {{ currentStage.action }}
+        </button>
+        <template v-else>
+          <a
+            ref="discordAction"
+            class="button button--emerald haven-threshold__action"
+            :href="discordUrl"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Enter Nari's Haven on Discord
+            <ArrowUpRight :size="18" aria-hidden="true" />
+            <span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <button class="text-button" type="button" @click="closeFromStory">Close the door behind me</button>
+        </template>
+      </div>
     </div>
   </section>
 </template>
@@ -788,9 +812,16 @@ const sceneNote = computed(() => {
     var(--story-surface);
 }
 
-.haven-threshold__story-panel {
+.haven-threshold__story-copy {
   display: grid;
   justify-items: start;
+}
+
+.haven-threshold__action-region {
+  display: grid;
+  justify-items: start;
+  gap: 0.65rem;
+  min-height: 4.1rem;
 }
 
 .haven-threshold__chapter {

@@ -1,5 +1,11 @@
 # Governance and Decision Log
 
+## 2026-09-08 — experience refinement stacked on Haven doorway
+
+Jake supplied the experience-refinement execution brief and authorized one integrated implementation and review PR. The work may strengthen route-owned composition, fix keyboard continuity, improve build-budget reporting, and synchronize current operational documentation. It does not authorize merging PR #12, merging the stacked PR, deployment, release, new canon/content, asset deletion, or a change in rights posture. The repository's current public visibility is recorded as operational fact, not as publication approval.
+
+**Status:** `ACTIVE`
+
 ## 2026-09-07 — one integrated visual implementation
 
 Owner requested an immediate full UI refinement instead of phased handoffs. Implemented route-specific post-hero compositions within the existing Vue/MPA/SCSS architecture, incorporating PR #10 maintenance. This authorizes implementation and review delivery, not a new canon, asset-rights approval, merge, or public release. See [scope and evidence](34_DISTINCTIVE_UI_REFINEMENT.md).

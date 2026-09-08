@@ -70,6 +70,16 @@ const rooms = [
     background-color var(--duration-fast) ease,
     transform var(--duration-fast) ease;
 }
+.haven-landing__rooms::before {
+  position: absolute;
+  right: 0.5rem;
+  bottom: -0.42rem;
+  left: 0.5rem;
+  height: 0.42rem;
+  background: color-mix(in srgb, var(--story-line) 68%, var(--bg-inset));
+  box-shadow: 0 0.5rem 0.8rem rgb(11 6 9 / 24%);
+  content: "";
+}
 .haven-landing__rooms > a::after {
   position: absolute;
   z-index: -1;

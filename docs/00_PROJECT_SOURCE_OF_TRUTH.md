@@ -6,6 +6,12 @@
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Update trigger:** Any change to identity, audience, routes, stack, public claims, launch scope, or blocker status
 
+## 2026-09-08 experience-refinement review state
+
+The repository is currently public. The active implementation remains a client-review build with unresolved public-release rights, canon, content, contact, hosting, and manual-QA decisions; repository visibility does not clear those blockers. The review branch `kiva/nari-experience-refinement` is stacked on open PR #12 so the doorway work remains intact and independently reviewable.
+
+This refinement gives the existing journal, broadcast desk, shelves, workbench, Haven charter, correspondence, memory album, support notes, Home gateway threshold, and 404 recovery stronger material hierarchy. It adds no new public claim, route, asset, dependency, integration, backend, or approval. The Nari-only atmosphere remains a reversible client-review proposal rather than a recorded final client decision.
+
 ## 2026-08-23 owner-directed authentic-artwork implementation update
 
 The repository owner first directed that the site retain Nari's real model and original Prinnies, then explicitly authorized an identity-preserving reillustration of Nari to create a distinctive, cohesive private-review website. The implementation retains the supplied `Model_File.png`, supplied `Assets/comfy.png`, supplied static emotes, and all 27 unchanged-as-design `Assets/PrinnysForThrow/*.png` derivatives. Its storybook character and character-led environments are derived from the actual supplied model, never public references or a guessed replacement identity. Asymmetric ears, emerald eyes, brown-to-purple hair and tail, lavender/corset silhouette, complexion, accessories, and warm adult demeanor are mandatory invariants. Owner-directed private review is not public-release or model-artist derivative-rights approval; see ADR-008 and `docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`.
@@ -132,8 +138,8 @@ Adding, removing, renaming, or re-ranking a route requires updates to architectu
 
 | Concern | Confirmed implementation |
 |---|---|
-| Canonical repository | Private `SomberKrow/NariNuna` |
-| Active implementation branch | `agent/build-nari-haven` |
+| Canonical repository | Public `SomberKrow/NariNuna`; public visibility is not asset or release permission |
+| Default / current review | `main`; `kiva/nari-experience-refinement` stacked on open PR #12 |
 | Package manager | npm, committed `package-lock.json` |
 | Runtime floor | Node.js 22.13+ |
 | Framework | Vue 3.5.x + TypeScript 5.9.x |

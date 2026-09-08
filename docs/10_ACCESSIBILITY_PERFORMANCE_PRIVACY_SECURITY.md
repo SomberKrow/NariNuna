@@ -94,6 +94,7 @@ Release budgets are gates, not averages:
 |---|---:|
 | Shared entry JS + CSS, gzip, excluding images | ≤120 KB |
 | Initial route-specific JS, gzip | ≤35 KB |
+| Initial route-specific CSS, gzip | ≤12 KB |
 | Home above-fold wide image | ≤160 KB; smaller responsive mobile candidate |
 | Other single web image | ≤150 KB unless approved detail exception |
 | First-viewport local image total | ≤250 KB |
@@ -102,6 +103,8 @@ Release budgets are gates, not averages:
 | Largest Contentful Paint | <2.5s p75 target after real-host measurement |
 
 The 2026-08-13 implementation record reported shared main JS near 59 KB gzip, icon helper near 24 KB gzip, CSS near 7.6 KB gzip, and the largest hero derivative at 125 KB. Those are historical local measurements, not field data or proof for later commits.
+
+The build validator reports shared JS+CSS, route-only JS, route-only CSS, and each deduplicated combined route graph. The 12 KB route-CSS ceiling is separate from the existing 35 KB route-JS ceiling; neither budget was raised or redefined for the 2026-09-08 design pass.
 
 ## Performance practices
 
