@@ -181,7 +181,7 @@
   .haven-landing__veil {
     top: auto;
     right: 0.75rem;
-    bottom: 5.15rem;
+    bottom: 0.75rem;
     left: 0.75rem;
     height: var(--hero-mobile-art-height);
     border-radius: 0.65rem;
@@ -207,7 +207,7 @@
     min-height: 0;
     grid-template-columns: 1fr;
     align-items: start;
-    padding: 0 1rem calc(var(--hero-mobile-art-height) + 5.85rem);
+    padding: 0 1rem calc(var(--hero-mobile-art-height) + 1.5rem);
   }
 
   .haven-landing__welcome {

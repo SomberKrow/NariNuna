@@ -143,29 +143,6 @@
   justify-content: center;
 }
 
-.haven-landing__rooms {
-    z-index: 5;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.55rem;
-  }
-
-.haven-landing__rooms > a {
-  grid-template-columns: 4.1rem auto minmax(0, 1fr) auto;
-  min-height: 4.25rem;
-  gap: 0.45rem;
-}
-
-.haven-landing__rooms > a > img {
-  width: 4.1rem;
-  height: 3.25rem;
-  object-fit: cover;
-}
-
-.haven-landing__room-copy > small {
-  display: none;
-}
-
 /* Haven values use banner-canon scene crops instead of a second Ghostie style. */
 
 .haven-entry {
@@ -655,28 +632,6 @@
     width: auto;
   }
 
-  .haven-landing__rooms {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding: 0 1rem 1rem;
-  }
-
-  .haven-landing__rooms > a {
-    grid-template-columns: 5.5rem auto minmax(0, 1fr) auto;
-  }
-
-  .haven-landing__rooms > a > img {
-    width: 5.5rem;
-    height: 4rem;
-  }
-
-  .haven-landing__room-copy > small {
-    display: block;
-  }
-
   .haven-door {
     grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   }
@@ -732,12 +687,4 @@
     padding: 0.48rem;
   }
 
-  .haven-landing__rooms > a {
-    grid-template-columns: 3.6rem auto minmax(0, 1fr) auto;
-  }
-
-  .haven-landing__rooms > a > img {
-    width: 3.6rem;
-    height: 3rem;
-  }
 }

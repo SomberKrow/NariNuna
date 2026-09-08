@@ -69,7 +69,7 @@ The HTML documents include route-specific Open Graph/Twitter painted previews ex
 
 ### Content contracts are uneven
 
-Navigation, socials, media, resource categories, community values, and identity pillars are centralized. Much page copy and fit/gateway data is still page-local. The implemented `MediaMoment` type lacks explicit publish state/provenance objects documented in the target schemas.
+Navigation, socials, media, resource categories, community values, and identity pillars are centralized. Much page copy and collaboration-fit data is still page-local; the unused Home gateway data was removed. The implemented `MediaMoment` type lacks explicit publish state/provenance objects documented in the target schemas.
 
 **Direction:** Migrate only when real approved content arrives. Do not churn static copy into a generic CMS-shaped schema without an editorial need.
 
@@ -155,7 +155,7 @@ Three `i.ytimg.com` images load without player code and use no-referrer. They st
 
 ## 2026-09-02 Phase C client-review implementation
 
-The ordinary chapters now expose one route-specific presentation device on top of the shared Phase B material system: journal fragments, broadcast rail, measured workbench, doorway path, shelves, correspondence ledger, archive album, and quiet gratitude wall. Home keeps its established room gateways. These devices are CSS-led and decorative; they add no content, assets, dependencies, routes, or interaction requirements. See `docs/30_PAGE_SIGNATURE_DEVICES.md`. Current validation evidence belongs to the Phase C commit and must not be inferred from the historical snapshot below.
+The ordinary chapters now expose one route-specific presentation device on top of the shared Phase B material system: journal fragments, broadcast desk, measured workbench, doorway path, shelves, correspondence ledger, archive album, and quiet gratitude wall. Home uses its face-safe painted arrival without the retired gateway rail. These devices are CSS-led and decorative; they add no dependencies, routes, or interaction requirements. See `docs/30_PAGE_SIGNATURE_DEVICES.md`. Current validation evidence belongs to the relevant branch and must not be inferred from the historical snapshot below.
 
 ## 2026-09-02 Phase D client-review implementation
 

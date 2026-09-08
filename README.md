@@ -105,7 +105,7 @@ These changes are merged into `main`. References in older documents to open PR #
 
 | Page | Implemented composition |
 |---|---|
-| Home | Compact illustrated arrival; three gateway postcards share a threshold lip and contact shadow. |
+| Home | Clean illustrated arrival with verified social dock, Haven CTA, and Meet Nari path; the numbered gateway rail is retired. |
 | Meet Nari | Ruled journal sheet, binding margin, bookmark, varied entry emphasis and restrained Ghostie overlap. |
 | Streams | Broadcast desk with one lead clip, two supporting clips, platform links and a path to Story Time. |
 | Haven | Four-point community charter on a textile/rug surface, followed by the three-knock doorway. |
@@ -225,7 +225,7 @@ The disclosure and mobile navigation both close through the shared header behavi
 
 | Route | Vue page | Navigation responsibility |
 |---|---|---|
-| `/` | `src/pages/HomePage.vue` | Haven arrival, identity, social doors, primary room gateways |
+| `/` | `src/pages/HomePage.vue` | Haven arrival, identity, social dock, Haven CTA, and Meet Nari path |
 | `/meet-nari/` | `src/pages/MeetNariPage.vue` | Privacy-safe identity, values, symbols, boundaries, unresolved canon hold |
 | `/streams/` | `src/pages/StreamsPage.vue` | Curated stream experience and verified platform doors |
 | `/haven/` | `src/pages/HavenPage.vue` | Community values and progressive Discord discovery |
@@ -352,7 +352,7 @@ Use this ownership map to make focused edits to content, composition, behavior a
 | Interior page composition | matching scoped file under `src/styles/rooms/`, imported by its Vue page |
 | Shared room reading primitives | `src/styles/_room-language.scss` |
 | Broadcast and album presentation | `src/components/ui/MediaCard.vue` |
-| Home gateway threshold | `src/pages/HomePage.vue` scoped style |
+| Home painted arrival | Shared Home layers plus `src/pages/HomePage.vue` |
 | Surviving shared chapter materials/signatures | `src/styles/_chapters.scss` |
 | Resources shelf IDs, art pairing and demo layout | `src/pages/ResourcesPage.vue`; records in `src/data/resources.ts` |
 | Streams/Work/Home hero focal placement | `src/styles/_face-safe.scss` |

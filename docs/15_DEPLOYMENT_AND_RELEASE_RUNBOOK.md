@@ -183,7 +183,7 @@ Do not add canonical URLs pointing to a temporary preview domain.
 
 ## Post-deploy smoke matrix
 
-- Home hero/art/CTA and three gateways.
+- Home hero/art, social dock, Haven CTA, and Meet Nari path.
 - Header current state and mobile menu.
 - Nari/Dark/Light pre-paint and persistence.
 - Streams selected media/text fallbacks.

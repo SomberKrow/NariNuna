@@ -9,13 +9,13 @@
 
 ## 2026-08-23 authentic-artwork composition update
 
-The owner-directed review redesign changes Home from a long scrolling gateway page to a single composed desktop viewport: actual Nari full-body model, theme-specific illustrated Haven room, concise welcome, verified social dock, a Twitch action, Meet Nari link, and three compact Streams/Nail Studio/Haven room doors. Mobile may scroll naturally. Home deliberately suppresses the shared footer; the remaining ordinary pages retain it.
+The owner-directed review redesign changes Home from a long scrolling gateway page to a single composed desktop viewport: actual Nari full-body model, theme-specific illustrated Haven room, concise welcome, verified social dock, a Haven action, and a Meet Nari link. The earlier three-card room rail was removed in the 2026-09-08 final quality pass. Mobile may scroll naturally. Home deliberately suppresses the shared footer; the remaining ordinary pages retain it.
 
 Meet Nari centers the supplied model portrait and official emotes. Streams, Nail Studio, Haven, Resources, Work With Nari, Support, Stories, and 404 each receive route-specific scene, Ghostie, emote, or state artwork. The Nail Studio still contains no fabricated portfolio, client service, or qualification. The hidden optional room displays all 27 owner-supplied Prinny designs while keeping approved character identity/canon records empty. Exact route-by-route assets and outstanding public-rights blockers are recorded in [`23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md`](23_AUTHENTIC_ARTWORK_IMPLEMENTATION.md).
 
 ## 2026-09-01 visual-composition refinement
 
-The approved content and route responsibilities remain intact. Home's compact room rail now carries restrained destination-specific imagery above 320px without competing with the face-safe hero. Meet Nari presents its three existing identity pillars as one asymmetrical illustrated spread rather than three equal cards. Streams gives Twitch dominant live-room weight, treats YouTube as a supporting archive destination, and varies the existing featured-moment shelf without changing `MediaCard` behavior. These are composition changes only; no copy, routes, product behavior, or external destinations were added.
+The approved content and route responsibilities remain intact. Home now lets its face-safe hero and two actions carry the arrival without a secondary room rail. Meet Nari presents its three existing identity pillars as one asymmetrical illustrated spread rather than three equal cards. Streams gives Twitch dominant live-room weight, treats YouTube as a supporting archive destination, and varies the existing featured-moment shelf through the shared `MediaCard`. These are composition changes only; no routes or external destinations were added.
 
 The same page-specific composition standard now extends to the remaining ordinary pages. Nail Studio uses a workbench sequence around its honest portfolio hold; Haven reads as a staggered community charter before the unchanged doorway; Resources separates its dominant category shelf from a dense varied demonstration catalog; Work presents collaboration fit and public links as an editorial ledger; Story Time treats one existing moment as the lead archive piece; and Support turns its three free-support actions into an illustrated generosity sequence. The hidden room, 404, page copy, routes, data, and external destinations remain unchanged.
 
@@ -62,15 +62,14 @@ Every page review asks:
 1. Nari Haven environment and actual supplied Nari character model.
 2. Concise big-sister identity, verified social dock, and primary Twitch action.
 3. Secondary Meet Nari action.
-4. Three compact room gateways: Streams, Nail Studio, The Haven.
-5. All five elements appear within the desktop viewport; deeper content belongs to its owning room rather than a long Home scroll.
+4. The arrival remains complete inside the desktop viewport; deeper content belongs to its owning room and the shared header rather than a Home link rail.
 
 ### Action hierarchy
 
-- Primary: Catch a stream on Twitch.
+- Primary: Enter the Haven doorway sequence.
 - Secondary: Meet Nari.
-- Contextual: enter Streams, Nail Studio, Haven, or Work With Nari.
-- Not allowed in hero: Discord, Throne, affiliate product, newsletter, or generic all-links button.
+- Contextual: enter Streams, Nail Studio, Haven, or Work With Nari through the shared navigation.
+- Not allowed in hero: direct Discord invite, Throne, affiliate product, newsletter, or generic all-links button.
 
 ### Asset and content dependencies
 
@@ -83,7 +82,7 @@ Every page review asks:
 
 - Hero copy remains left-weighted with an art-specific veil.
 - At 45rem and below, the art uses the documented mobile `object-position`; re-test when art changes.
-- Gateway cards collapse 3 → 2 → 1 columns while retaining unequal narrative emphasis.
+- The environmental painting receives the space previously reserved for the removed gateway rail.
 - Host portrait precedes copy on narrow screens.
 - Buttons become full-width only at the smallest breakpoint, not tablet by default.
 - Fixed Ghostie never obscures hero or CTA.
@@ -96,7 +95,7 @@ Every page review asks:
 
 ### Acceptance
 
-- Haven, streams, nails, and community are understandable without scrolling through every section.
+- The Haven identity and available next actions are understandable without scrolling.
 - First viewport is not seven equal actions.
 - Hero copy meets contrast in every theme and crop.
 - LCP image uses an appropriate `srcset` candidate and explicit dimensions.

@@ -94,7 +94,7 @@ Do not add a webfont until its license, hosting, weights, glyph coverage, privac
 ### Sections
 
 - Alternate environmental/dense sections with quieter reading sections.
-- Use asymmetry intentionally: unequal gateway cards, offset pillar, unexpected but stable room transitions.
+- Use asymmetry intentionally: offset pillars, unequal chapter layouts, and unexpected but stable room transitions.
 - A section must have a job beyond “more cards.”
 - Decorative density disappears before content, labels, or controls disappear.
 

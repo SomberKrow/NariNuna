@@ -39,7 +39,7 @@ Swearing may be part of Nari's personality when deliberate and audience-aware. I
 |---:|---|---|
 | 1 | Nari's Haven is warm, playful, and protective | Home, Haven, footer |
 | 2 | Nari is a chaotic big-sister VTuber, gamer, and self-taught nail artist | Home, Meet Nari |
-| 3 | Streams, nails, and community are equal rooms in one identity | Home gateways |
+| 3 | Streams, nails, and community are equal rooms in one identity | Shared navigation and route introductions |
 | 4 | Belonging and support never create ownership | Haven, Support |
 | 5 | Nail content is authentic practice and learning, not salon/medical authority | Nail Studio, Resources |
 | 6 | Professional work is possible when fit, scope, rights, and boundaries are clear | Work With Nari |

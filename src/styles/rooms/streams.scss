@@ -1,7 +1,7 @@
 .clip-desk__moments {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(18rem, 0.75fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(1.25rem, 3vw, 2.75rem);
   align-items: start;
   padding: clamp(1rem, 3vw, 2rem);
@@ -22,14 +22,19 @@
   font-weight: 800;
   letter-spacing: 0.1em;
 }
-.clip-desk__lead { min-width: 0; }
+.clip-desk__lead {
+  min-width: 0;
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--story-line);
+}
 .clip-desk__supporting {
   display: grid;
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
 }
 .clip-desk__supporting :deep(.media-card + .media-card) {
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--story-line);
+  padding-inline-start: clamp(1rem, 3vw, 2rem);
+  border-inline-start: 1px solid var(--story-line);
 }
 .broadcast-tuning {
   display: flex;
@@ -63,16 +68,22 @@
   width: fit-content;
   margin: 1rem 0 0 auto;
 }
-@media (max-width: 63.99rem) {
-  .clip-desk__moments { grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.8fr); }
-}
 @media (max-width: 47.99rem) {
   .clip-desk__moments {
     grid-template-columns: 1fr;
     gap: 1.75rem;
     padding: 1rem;
   }
-  .clip-desk__supporting { gap: 1.25rem; }
+  .clip-desk__supporting {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .clip-desk__supporting :deep(.media-card + .media-card) {
+    padding-block-start: 1.25rem;
+    padding-inline-start: 0;
+    border-block-start: 1px solid var(--story-line);
+    border-inline-start: 0;
+  }
   .broadcast-tuning {
     gap: 0.8rem 1.5rem;
   }

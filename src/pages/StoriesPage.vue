@@ -18,11 +18,9 @@ const albumMemories = featuredMoments.slice(1);
     <header class="room-heading"><div><p class="room-kicker">Saved from the stream room</p><h2 id="album-title">You had to be there.<br /><em>Or you can start here.</em></h2></div><p>A few familiar clips, kept together while Nari chooses the stories to share next.</p></header>
     <ol class="memory-album__pages">
       <li class="memory-album__lead">
-        <div class="memory-album__folio"><span>Lead memory · 01</span><span aria-hidden="true">Nari's Haven</span></div>
         <MediaCard :moment="leadMemory" presentation="album" featured />
       </li>
-      <li v-for="(moment, index) in albumMemories" :key="moment.id">
-        <div class="memory-album__folio"><span>Moment 0{{ index + 2 }}</span><span aria-hidden="true">Nari's Haven</span></div>
+      <li v-for="moment in albumMemories" :key="moment.id">
         <MediaCard :moment="moment" presentation="album" />
       </li>
     </ol>

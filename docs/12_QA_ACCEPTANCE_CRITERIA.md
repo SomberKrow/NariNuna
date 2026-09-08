@@ -126,7 +126,7 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 ### Home
 
 - [ ] Hero establishes Haven and one primary action.
-- [ ] Three gateways are distinct and understandable.
+- [ ] Social dock, Haven CTA, Meet Nari path, and shared navigation provide clear onward routes without a secondary gateway rail.
 - [ ] Final art crop/veil maintains contrast at every target width/theme.
 - [ ] Selected moments remain usable when thumbnails fail.
 - [ ] Discord and financial support do not dominate arrival.

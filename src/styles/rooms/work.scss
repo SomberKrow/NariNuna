@@ -54,11 +54,13 @@
   filter: drop-shadow(-0.25rem 0.25rem 0.2rem rgb(37 20 27 / 12%));
 }
 .collaboration-letter__masthead {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.5rem;
-  padding-bottom: 1rem;
+  padding: 0 clamp(3.5rem, 7vw, 5.5rem) 1rem 0;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--line-dark);
   color: var(--ink-muted);
@@ -134,6 +136,7 @@
 }
 .public-directory {
   padding-top: 0;
+  scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 .public-directory__links {
   display: grid;
@@ -224,6 +227,11 @@
   }
   .collaboration-letter dd {
     margin-left: 0;
+  }
+  .collaboration-letter__masthead {
+    display: grid;
+    justify-content: start;
+    padding-right: 3.25rem;
   }
   .public-directory__links {
     grid-template-columns: minmax(0, 1fr);

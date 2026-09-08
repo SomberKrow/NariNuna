@@ -53,6 +53,15 @@ describe("client-feedback interaction contracts", () => {
     expect(haven).toContain('id="haven-door" class="haven-entry page-width section-pad"');
   });
 
+  it("keeps the Home arrival clean and sends Nail Studio to its exact resource shelf", () => {
+    const home = sourceAt("src/pages/HomePage.vue");
+    const nails = sourceAt("src/pages/NailStudioPage.vue");
+
+    expect(home).not.toContain("haven-landing__rooms");
+    expect(home).not.toContain('number: "01"');
+    expect(nails).toContain('href="/resources/#nail-desk"');
+  });
+
   it("reduces the loose floorboard to one optional Easter-egg reveal", () => {
     const floorboard = sourceAt("src/components/haven/LooseFloorboard.vue");
 
@@ -86,9 +95,20 @@ describe("client-feedback interaction contracts", () => {
     expect(work).toContain('id="nari-links"');
     expect(work).toContain('v-for="(link, index) in nariLinks"');
     expect(work).toContain('aria-label="Nari\'s public links"');
+    expect(work).toContain('href="#nari-links"');
+    expect(work).toContain("work-contact-vignette.svg");
+    expect(work).toContain("Read the collaboration note");
     expect(work).not.toContain("Linktree");
     expect(links).toContain("export const nariLinks");
     expect(links).not.toContain("linktr.ee");
+  });
+
+  it("keeps Story Time clip chrome free of repeated numbering and branding", () => {
+    const stories = sourceAt("src/pages/StoriesPage.vue");
+
+    expect(stories).not.toContain("memory-album__folio");
+    expect(stories).not.toContain("Lead memory");
+    expect(stories).not.toContain("Moment 0");
   });
 
   it("uses the shared registry for recognizable, accessible homepage social icons", () => {

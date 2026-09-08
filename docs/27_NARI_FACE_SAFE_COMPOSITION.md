@@ -38,7 +38,7 @@ Resources, the 404 page, and the hidden Prinny route are intentionally excluded 
 - Copy stays in a compact upper field while the environmental painting becomes a bordered chapter plate beneath it. The plate uses `cover` inside a deliberately shallow frame instead of sizing a wide desktop painting against the entire hero height.
 - Meet Nari, Nail Studio, Haven, Support, and Story Time each define their own focal coordinates and art height so character and room context survive together.
 - Streams and Work With Nari remain physically separate copy/image compositions. Phones use a joined editorial spread; tablets return to two columns when the content has enough width.
-- Home keeps copy, Nari's scene, and the three room gateways in one opening composition. Its social dock and actions compress before the painting is sacrificed.
+- Home keeps copy and Nari's scene in one opening composition. Its social dock and two actions compress before the painting is sacrificed; the removed gateway rail no longer reserves space beneath the art.
 
 ## Implementation
 

@@ -10,7 +10,7 @@
 
 The repository is currently public. The active implementation remains a client-review build with unresolved public-release rights, canon, content, contact, hosting, and manual-QA decisions; repository visibility does not clear those blockers. The review branch `kiva/nari-experience-refinement` is stacked on open PR #12 so the doorway work remains intact and independently reviewable.
 
-This refinement gives the existing journal, broadcast desk, shelves, workbench, Haven charter, correspondence, memory album, support notes, Home gateway threshold, and 404 recovery stronger material hierarchy. It adds no new public claim, route, asset, dependency, integration, backend, or approval. The Nari-only atmosphere remains a reversible client-review proposal rather than a recorded final client decision.
+This refinement gives the existing journal, broadcast desk, shelves, workbench, Haven charter, correspondence, memory album, support notes, clean Home arrival, and 404 recovery stronger material hierarchy. It adds no new public claim, route, asset, dependency, integration, backend, or approval. The Nari-only atmosphere remains a reversible client-review proposal rather than a recorded final client decision.
 
 ## 2026-08-23 owner-directed authentic-artwork implementation update
 
@@ -120,7 +120,7 @@ Until Nari resolves it:
 
 | Route | Document | Navigation | Product responsibility |
 |---|---|---|---|
-| `/` | `pages/index.html` | Primary | One-screen desktop arrival, actual Nari identity, verified social dock, three room gateways |
+| `/` | `pages/index.html` | Primary | Clean one-screen desktop arrival, actual Nari identity, verified social dock, Haven CTA, and Meet Nari path |
 | `/meet-nari/` | `pages/meet-nari/index.html` | Primary | Privacy-safe identity, roles, symbols, boundaries, lore status |
 | `/streams/` | `pages/streams/index.html` | Primary | Stream feeling, curated moments, live/archive doors, schedule truth |
 | `/nail-studio/` | `pages/nail-studio/index.html` | Primary | Authentic nail practice, education, future approved gallery |

@@ -172,7 +172,7 @@ New breakpoints require a demonstrated content failure that existing thresholds 
 | `HavenDoor` | `components/haven/HavenDoor.vue` | Four-state value-to-invite narrative | Fake security/invite expiry |
 | `LooseFloorboard` | `components/haven/LooseFloorboard.vue` | Optional three-step discovery | Required task hidden |
 | `.button` family | `_components.scss` | Priority, touch size, focus, reduced motion | Too many equal primaries |
-| gateway cards | `HomePage` + `_pages.scss` | Unequal spatial doors | Generic equal card grid |
+| Home arrival actions | `HomePage` + shared Home layers | Haven primary, Meet Nari secondary | Rebuilding the removed room rail or creating an equal-action link wall |
 | honest holds | page components | Explain missing truth and safe route | Fake demo/skeleton content |
 
 ## Control variants

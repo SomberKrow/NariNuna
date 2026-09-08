@@ -46,14 +46,13 @@ describe("responsive artwork delivery", () => {
     expect(() => artworkCandidates("/missing.webp")).toThrow("Missing responsive artwork");
   });
 
-  it("keeps the entire Home local image composition below 250 KB even at largest selected sizes", () => {
+  it("keeps the simplified Home image composition below 200 KB", () => {
     const maximum = (source: string, maxWidth = Infinity) => Math.max(...artworkCandidates(source).filter((candidate) => candidate.width <= maxWidth).map((candidate) => candidate.bytes));
     const total = maximum(environmentArtwork.homeSunset) + maximum(communityGhostieArtwork.wave, 256)
-      + maximum(detailArtwork.lavender)
-      + [storybookPostcards.streams, storybookPostcards.nails, storybookPostcards.haven].reduce((bytes, source) => bytes + maximum(source, 256), 0);
-    expect(total).toBeLessThanOrEqual(250_000);
+      + maximum(detailArtwork.lavender);
+    expect(total).toBeLessThanOrEqual(200_000);
     const home = readFileSync("src/pages/HomePage.vue", "utf8");
-    expect(home).toContain(':max-width="256"');
+    expect(home).not.toContain("storybookPostcards");
   });
 
   it("gives all nine ordinary documents matching CSS/picture/preload candidates", () => {

@@ -214,11 +214,12 @@ async function closeFromStory(): Promise<void> {
   overflow: hidden;
   color: var(--story-copy);
   background: var(--story-surface);
-  border: 1px solid color-mix(in srgb, var(--story-line) 78%, var(--story-accent));
+  border: 0.35rem solid color-mix(in srgb, var(--story-line) 74%, var(--storybook-gold));
   border-radius: 1.25rem;
   box-shadow:
     0 1.15rem 3.2rem rgb(15 9 13 / 20%),
-    0 0 0 0.35rem color-mix(in srgb, var(--story-surface) 82%, transparent);
+    0 0 0 0.18rem color-mix(in srgb, var(--story-surface-deep) 92%, transparent),
+    0 0 0 0.7rem color-mix(in srgb, var(--story-surface) 68%, transparent);
 }
 
 .haven-threshold__scene {

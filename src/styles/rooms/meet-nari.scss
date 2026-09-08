@@ -99,6 +99,7 @@
   padding-inline-start: clamp(0rem, 3vw, 2.5rem);
 }
 .nari-promise-note {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.6fr) minmax(0, 1fr);
   align-items: center;
@@ -106,12 +107,27 @@
   max-width: 66rem;
   padding: clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2.5rem, 7vw, 5rem);
-  background: color-mix(in srgb, var(--story-surface) 54%, transparent);
-  border-block: 1px solid var(--story-line);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 22% 48%, color-mix(in srgb, var(--lavender) 24%, transparent), transparent 34%),
+    linear-gradient(112deg, color-mix(in srgb, var(--story-surface-deep) 92%, transparent), color-mix(in srgb, var(--story-surface) 68%, transparent));
+  border: 1px solid color-mix(in srgb, var(--story-line) 82%, var(--lavender));
+  border-radius: 1.4rem 1.4rem 0.55rem 0.55rem;
+  box-shadow: 0 1.4rem 3rem rgb(14 8 12 / 18%), inset 0 0 0 0.42rem color-mix(in srgb, var(--bg-inset) 32%, transparent);
+}
+.nari-promise-note::before {
+  position: absolute;
+  inset: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--lavender) 20%, transparent);
+  border-radius: 0.95rem 0.95rem 0.3rem 0.3rem;
+  content: "";
+  pointer-events: none;
 }
 .nari-promise-note__guardian {
   --ghostie-size: 20rem;
   min-height: 20rem;
+  background: radial-gradient(circle at 50% 54%, color-mix(in srgb, var(--lavender) 34%, transparent), transparent 64%);
+  filter: drop-shadow(0 0 1.2rem color-mix(in srgb, var(--lavender) 28%, transparent));
 }
 .nari-promise-note h2 {
   font-size: clamp(2rem, 4vw, 3.2rem);
@@ -184,8 +200,7 @@
   .nari-promise-note {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 1.25rem 0;
-    background: transparent;
+    padding: 1.25rem;
   }
   .nari-promise-note__guardian {
     --ghostie-size: 12rem;

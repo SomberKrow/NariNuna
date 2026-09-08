@@ -54,7 +54,7 @@ The diagram describes user flow, not implementation routing. Technical route con
 
 | Page | Owns | Must not become |
 |---|---|---|
-| Home | World arrival, short identity, three primary gateways, curated taste | Full bio, all links, full gallery, Discord/support funnel |
+| Home | World arrival, short identity, verified social dock, Haven CTA, and Meet Nari path | Full bio, all links, full gallery, Discord/support funnel |
 | Meet Nari | Privacy-safe identity, roles, symbols, boundaries, canon status | Unapproved lore encyclopedia or private biography |
 | Streams | Stream feeling, selected media, channel map, schedule truth | Autoplay embed wall or scraped feed |
 | Nail Studio | Authentic practice, education, future gallery, safety scope | Salon/services page or generated portfolio |
@@ -82,7 +82,7 @@ CTA copy names the destination. Repeated “Learn more” and mystery navigation
 ### First-time viewer
 
 **Entry:** Clip, Twitch profile, social post, search, direct link.  
-**Path:** Home hero → Streams gateway or selected moment → Twitch/YouTube.  
+**Path:** Home social dock or header → Twitch/YouTube or Streams.
 **Question answered:** “What does spending time with Nari feel like?”  
 **Success:** The visitor understands warmth, chaos, conversation, and boundaries before leaving for a platform.  
 **Failure mode:** Link wall, generic biography, autoplay stream, or seven equal buttons.
@@ -97,7 +97,7 @@ CTA copy names the destination. Repeated “Learn more” and mystery navigation
 
 ### Nail learner
 
-**Entry:** Nail video, social profile, search, Home gateway.  
+**Entry:** Nail video, social profile, search, or header navigation.
 **Path:** Nail Studio → approved gallery/process → relevant Resources.  
 **Question answered:** “What has Nari actually made or learned?”  
 **Success:** Real work is legible, credited, and scoped; resources explain why they matter.  
