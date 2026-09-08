@@ -1,6 +1,6 @@
-import projectPages from "./src/data/projectPages.json";
+import projectPages from "./src/data/projectPages.json" with { type: "json" };
 import { resolve } from "node:path";
-import { heroPreloads } from "./scripts/hero-preloads";
+import { heroPreloads } from "./scripts/hero-preloads.ts";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vitest/config";
 

@@ -12,21 +12,21 @@ Every ordinary chapter keeps the shared Haven typography, tokens, spacing, navig
 
 | Route | Signature device | Implementation |
 |---|---|---|
-| Home | Haven room gateways | Preserved without redesign |
+| Home | Face-safe painted arrival | Numbered room rail removed; painting, social dock, and two actions remain |
 | Meet Nari | Journal fragments | Offset papers with restrained clip marks |
 | Streams | Broadcast strip | One rail linking platforms and saved moments |
 | Nail Studio | Workbench | Ruler ticks and three polish swatches |
 | Haven | Doorway progression | A low floor path leading toward the stable door composition |
 | Resources | Shelves | Shared uprights and shelf ledges beneath collections |
 | Work With Nari | Correspondence ledger | Ruled, numbered public-link index |
-| Story Time | Archive album | Album spine and numbered contact-sheet moments |
+| Story Time | Archive album | Album spine and unnumbered saved moments |
 | Support | Quiet gratitude wall | Sparse pinned notes and increased breathing room |
 
 ## Boundaries
 
 - No content, claim, route, interaction, dependency, or artwork asset was added.
 - No fake live state, recommendation, nail work, story metadata, business contact, or support entitlement was introduced.
-- Home, the Haven doorway, and face-safe chapter compositions remain structurally unchanged.
+- The Haven doorway and face-safe chapter compositions remain structurally unchanged; Home's secondary rail is intentionally retired.
 - Ghosties remain existing inhabitants; no constant animation or motion-dependent meaning was added.
 
 ## Validation contract

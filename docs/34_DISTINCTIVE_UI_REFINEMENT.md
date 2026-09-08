@@ -1,12 +1,22 @@
 # Integrated distinctive UI refinement
 
+## 2026-09-08 final quality pass
+
+Owner review requested a focused cohesion and navigation pass before completion. The implementation removes Home's numbered gateway rail, keeps its two intentional actions, and recomposes the mobile painting without the rail's reserved empty space. Meet Nari's protective Ghostie now sits in a framed lavender pool instead of an ungrounded strip. Haven replaces the charter-wide diamond lattice with a cushioned, tufted welcome backrest and gives the doorway a stronger nested frame.
+
+Streams now keeps its lead preview at a restrained editorial size and pairs the two supporting moments beneath it, reducing the visible upscaling of the remote 480×360 thumbnails. Story Time removes the repeated `Lead memory`, `Moment 02/03`, and `Nari's Haven` folio chrome. Work reserves the paper-fold corner so the full masthead remains legible, replaces the repeated hero postcard with the already tracked correspondence vignette, and renames the hero action to match its actual collaboration-note destination. A business email remains intentionally absent until an approved public address is supplied.
+
+Hash navigation now preserves browser history positions, lands named fragments on their sections, and otherwise starts a new route at the top. This repairs the Work public-directory jump, the Resources shelf index, `/haven/#haven-door`, and the new Nail Studio → `/resources/#nail-desk` path without adding client-side routing abstractions.
+
+On the final quality-pass working tree, `npm run check` passed: lint, strict typecheck, 64 tests across 14 files, production build, all 11 independently served documents, 137 essential assets, and all 27 retained Prinny designs. Shared JS+CSS measured 68.60 KB gzip against the 120 KB ceiling; the largest route CSS was Haven at 5.15 KB gzip against 12 KB; the largest combined route graph was Haven at 80.07 KB. The deployed PR preview was reviewed at a 1363×936 browser viewport across Home, Work, Resources, Meet Nari, Streams, Haven, and Story Time: each had one H1 and no document-level horizontal overflow. The Work public-profile jump and Resources game-pile jump landed on their named sections, and Haven reached its open-door state after three knocks with the existing Discord destination present. This focused pass does not claim native zoom, assistive-technology, real-device, or client-approval coverage.
+
 ## 2026-09-08 composed-room follow-up
 
 The current follow-up branch, `kiva/nari-experience-refinement`, is stacked on open PR #12 at `5e0ec49`. It develops the already-approved implementation direction instead of repeating the earlier de-cardification pass:
 
 | Route | Current refinement |
 |---|---|
-| Home | The three gateway postcards share one physical threshold lip and contact shadow while retaining the compact arrival. |
+| Home | Historical on the earlier branch: the three gateway postcards shared one physical threshold lip. The final quality pass removes that rail per owner review. |
 | Meet Nari | Identity entries now sit on one readable ruled journal sheet with a binding margin, restrained bookmark, varied emphasis, and smaller purposeful Ghostie overlap. |
 | Streams | One existing clip leads; two supporting clips form a compact desk column, with an explicit path to the quieter Story Time album. |
 | Haven | The charter receives a restrained textile/rug surface; the story action no longer lives inside the keyed transition subtree. |

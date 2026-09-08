@@ -1,10 +1,10 @@
 /*
- * Shared Home rail and Haven entry continuity. Interior page compositions
+ * Shared Home composition and Haven entry continuity. Interior page compositions
  * now live in styles/rooms/ with their own Vue pages. Face-safe hero
  * placement remains in _face-safe.scss, loaded after this file.
  */
 
-/* Home: one deliberate desktop viewport, with room gateways inside the frame. */
+/* Home: one deliberate desktop viewport with a clean, uninterrupted arrival. */
 .haven-landing {
   height: calc(100svh - var(--header-height));
   min-height: 38rem;
@@ -13,22 +13,11 @@
 
 .haven-landing__inner {
   min-height: 100%;
-  padding-block-end: 5.8rem;
+  padding-block-end: 1rem;
 }
 
 .haven-landing__welcome {
   padding-block: clamp(1rem, 4svh, 2.2rem) 1rem;
-}
-
-.haven-landing__rooms {
-  position: absolute;
-  right: auto;
-  bottom: 0.8rem;
-  left: 50%;
-  width: min(var(--page-width), calc(100% - (var(--page-gutter) * 2)));
-  padding: 0;
-  margin: 0;
-  transform: translateX(-50%);
 }
 
 #haven-door,
@@ -117,9 +106,8 @@ body[data-route="haven"] .haven-entry {
 
 @media (max-width: 42rem) {
   /*
-   * Keep Home a composed scene on phones. Copy remains in the left visual lane,
-   * the CTA shrinks to its content instead of crossing the painting, and the
-   * three room gateways become a compact bottom rail inside the viewport.
+   * Keep Home a composed scene on phones. Copy remains in the left visual lane
+   * and the CTA shrinks to its content instead of crossing the painting.
    */
   .haven-landing {
     min-height: 39rem;
@@ -138,7 +126,7 @@ body[data-route="haven"] .haven-entry {
   .haven-landing__inner {
     align-items: start;
     padding-inline: 1rem;
-    padding-block-end: 5rem;
+    padding-block-end: 1rem;
   }
 
   .haven-landing__welcome {
@@ -179,34 +167,6 @@ body[data-route="haven"] .haven-entry {
     justify-content: flex-start;
   }
 
-  .haven-landing__rooms {
-    bottom: 0.55rem;
-    width: calc(100% - 2rem);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.35rem;
-  }
-
-  .haven-landing__rooms > a {
-    min-height: 3.75rem;
-    grid-template-columns: 1fr;
-    place-items: center;
-    gap: 0.1rem;
-    padding: 0.45rem 0.3rem;
-    text-align: center;
-  }
-
-  .haven-landing__rooms > a > img,
-  .haven-landing__room-number,
-  .haven-landing__room-copy small,
-  .haven-landing__rooms > a > svg {
-    display: none;
-  }
-
-  .haven-landing__room-copy strong {
-    font-size: 0.68rem;
-    line-height: 1.25;
-    white-space: normal;
-  }
 }
 
 @media (max-width: 42rem) and (max-height: 44rem) {

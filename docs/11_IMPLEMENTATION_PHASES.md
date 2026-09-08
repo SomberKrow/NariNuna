@@ -14,7 +14,7 @@ Statuses describe evidence at the documentation baseline. `IMPLEMENTED` does not
 | 1 | True MPA and shared shell | Vite config, HTML entries, Router, layout | 11 docs build/direct-load; shared shell | `IMPLEMENTED` |
 | 2 | Theme and design foundation | Theme boot/composable, SCSS tokens/layers | Pre-paint persistence; three themes | `IMPLEMENTED`; final contrast pending |
 | 3 | Placeholder asset pipeline | Source masters, generated derivatives, manifest | Hash/rights/status/dimensions recorded | `IMPLEMENTED` for placeholders |
-| 4 | Home world and gateways | `HomePage`, hero/gateway/media styles | Nari-specific arrival, correct CTA hierarchy | `IMPLEMENTED`; final art pending |
+| 4 | Home world and arrival | `HomePage`, shared Home styles | Nari-specific arrival, correct CTA hierarchy | `IMPLEMENTED`; numbered gateway rail retired by owner direction; final art pending |
 | 5 | Meet Nari canon | `MeetNariPage`, character assets/content | Approved identity/lore/render/credit | `BLOCKED` |
 | 6 | Streams curation | `StreamsPage`, media data | Approved clips/rating/links; no autoplay | Foundation `IMPLEMENTED`; final approval pending |
 | 7 | Nail Studio flagship | `NailStudioPage`, future gallery/guides | Real approved work, labels, rights, safety review | Structure `IMPLEMENTED`; content `BLOCKED` |

@@ -27,20 +27,6 @@
 }
 .memory-album__pages > li:first-child { border-top: 0; }
 .memory-album__lead { padding-top: 0.25rem; }
-.memory-album__folio {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  color: color-mix(in srgb, var(--ember) 70%, var(--ink));
-  font-family: var(--font-detail);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.memory-album__folio span:last-child {
-  color: var(--ink-muted);
-}
 .memory-album__closing {
   max-width: 38rem;
   margin: 1rem auto 0;

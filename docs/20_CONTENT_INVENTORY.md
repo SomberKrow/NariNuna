@@ -51,13 +51,13 @@ Metadata is public content and follows the same approval rules as the page.
 | Section | Current content owner | Current state | Production dependency |
 |---|---|---|---|
 | Hero | `HomePage.vue` | Implemented with environment placeholder | Final hero art/crop and copy approval |
-| Three gateways | Page-local `gateways` | Implemented | Review after flagship content arrives |
+| Room gateway rail | Removed by owner direction | Retired | Shared header and two Home actions own onward navigation |
 | Host note/quote | Template copy | Implemented with Ghostie placeholder | Canonical Nari portrait and approved quote/copy |
 | Three moments | `featuredMoments` | Implemented | Final selected-media approval |
 | Haven invitation | Template copy | Implemented | Community/Discord final state |
 | Professional strip | Template copy | Implemented | Contact/media-kit scope review |
 
-Migration note: gateway data is page-local and genuinely Home-specific. Move it only if another consumer or editorial workflow appears.
+Migration note: the former page-local gateway data and postcard rail were removed rather than migrated; no second consumer exists.
 
 ## Meet Nari
 

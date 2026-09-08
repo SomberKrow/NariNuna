@@ -232,62 +232,6 @@
   font-style: italic;
 }
 
-.haven-landing__rooms {
-    width: min(100%, 87rem);
-    padding-inline: clamp(2.4rem, 6vw, 6.3rem);
-  padding-block-end: 1.3rem;
-}
-
-.haven-landing__rooms > a {
-  position: relative;
-  display: grid;
-      align-items: center;
-    padding: 0.38rem 0.66rem 0.38rem 0.38rem;
-  overflow: hidden;
-  background: rgb(32 21 30 / 89%);
-  border: 1px solid var(--storybook-rule);
-  border-radius: 0.45rem;
-  box-shadow: 0 0.75rem 1.8rem rgb(15 10 13 / 24%);
-}
-
-.haven-landing__rooms > a > img {
-      border-radius: 0.22rem;
-    object-position: 68% center;
-}
-
-.haven-landing__room-number {
-  position: absolute;
-  top: 0.64rem;
-  right: 0.65rem;
-  color: var(--storybook-gold);
-  font-family: var(--font-detail);
-  font-size: 0.5rem;
-}
-
-.haven-landing__room-copy {
-  display: grid;
-  gap: 0.11rem;
-}
-
-.haven-landing__rooms .haven-landing__room-copy > strong {
-  color: #fbefe4;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-style: italic;
-  font-weight: 530;
-}
-
-.haven-landing__rooms .haven-landing__room-copy > small {
-  color: #d0b9b9;
-  font-size: 0.64rem;
-}
-
-.haven-landing__rooms > a > svg:last-child {
-  align-self: end;
-  margin-block-end: 0.48rem;
-  color: var(--lavender);
-}
-
 .room-opening .eyebrow,
 .studio-opening .eyebrow,
 .haven-heart .eyebrow,
@@ -639,18 +583,6 @@
     padding-inline: clamp(3.5rem, 7vw, 6rem);
   }
 
-  .haven-landing__rooms {
-    padding-inline: clamp(2.2rem, 5vw, 4rem);
-  }
-
-  .haven-landing__rooms > a {
-    grid-template-columns: 4.35rem minmax(0, 1fr) auto;
-    gap: 0.48rem;
-  }
-
-  .haven-landing__rooms > a > img {
-    width: 4.35rem;
-  }
 }
 
 @media (max-width: 56rem) {
@@ -674,14 +606,6 @@
 
   .haven-landing h1 {
     font-size: clamp(3.8rem, 9vw, 5.4rem);
-  }
-
-  .haven-landing__rooms {
-    padding-inline: 2rem;
-  }
-
-  .haven-landing__rooms .haven-landing__room-copy > small {
-    display: none;
   }
 
   .character-intro--storybook {
@@ -803,24 +727,6 @@
     width: 3.15rem;
   }
 
-  .haven-landing__rooms {
-    grid-template-columns: 1fr;
-    padding: 0.7rem 1.3rem 1.55rem;
-  }
-
-  .haven-landing__rooms > a {
-        grid-template-columns: 5rem minmax(0, 1fr) auto;
-  }
-
-  .haven-landing__rooms > a > img {
-    width: 5rem;
-    height: 3.8rem;
-  }
-
-  .haven-landing__rooms .haven-landing__room-copy > small {
-    display: block;
-  }
-
   .room-opening,
   .studio-opening,
   .haven-heart,
@@ -893,11 +799,4 @@
     margin-block: 0.45rem 0.7rem;
   }
 
-  .haven-landing__rooms > a {
-    min-height: 4rem;
-  }
-
-  .haven-landing__rooms > a > img {
-    height: 3.35rem;
-  }
 }

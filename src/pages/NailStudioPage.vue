@@ -28,7 +28,7 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
       </figure>
       <div class="studio-workbench__notes">
         <article><p class="room-kicker">01 · The practice</p><h3>A little better, one set at a time.</h3><p>Nari is a self-taught artist exploring color, process, and details on her own nails.</p></article>
-        <article><p class="room-kicker">02 · The learning</p><h3>Figuring it out is part of the fun.</h3><p>Honest little lessons, creative experiments, and the things she learns along the way.</p><a class="text-link" href="/resources/">Visit the resource shelf <ArrowRight :size="16" aria-hidden="true" /></a></article>
+        <article><p class="room-kicker">02 · The learning</p><h3>Figuring it out is part of the fun.</h3><p>Honest little lessons, creative experiments, and the things she learns along the way.</p><a class="text-link" href="/resources/#nail-desk">Visit the nail desk shelf <ArrowRight :size="16" aria-hidden="true" /></a></article>
       </div>
     </div>
     <div class="studio-portfolio-hold">

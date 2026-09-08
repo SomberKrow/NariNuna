@@ -73,6 +73,15 @@ const fallbackSizes = computed(() => {
 .media-card > a:hover h3 { color: var(--lavender); }
 .media-card > a:hover .media-card__image > img { transform: scale(1.025); }
 .media-card--featured .media-card__body h3 { font-size: clamp(1.9rem, 3.2vw, 2.8rem); }
+.media-card--broadcast.media-card--featured > a {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.9fr) minmax(0, 1fr);
+  gap: clamp(1.4rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.media-card--broadcast.media-card--featured .media-card__body { padding: 0; }
+.media-card--broadcast .media-card__image { width: min(100%, 30rem); }
+.media-card--broadcast:not(.media-card--featured) > a { max-width: 30rem; margin-inline: auto; }
 .media-card--broadcast.media-card--featured .media-card__image { box-shadow: 0 1rem 2rem rgb(12 7 10 / 22%); }
 .media-card--album > a { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: center; }
 .media-card--album .media-card__image { padding: 0.5rem; border: 1px solid color-mix(in srgb, var(--ink-muted) 42%, transparent); background: var(--cream); box-shadow: 0 0.65rem 1.3rem rgb(56 31 40 / 13%); }
@@ -82,7 +91,9 @@ const fallbackSizes = computed(() => {
 .media-card--album .media-card__body .eyebrow { color: color-mix(in srgb, var(--ember) 72%, var(--ink)); }
 .media-card--album .text-link { color: var(--emerald-ink); }
 @media (max-width: 47.99rem) {
+  .media-card--broadcast.media-card--featured > a,
   .media-card--album > a { grid-template-columns: 1fr; gap: 1.25rem; }
+  .media-card--broadcast.media-card--featured .media-card__body { padding-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .media-card__image > img { transition: none; } .media-card > a:hover .media-card__image > img { transform: none; } }
 </style>

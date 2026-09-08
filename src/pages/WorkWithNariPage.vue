@@ -2,7 +2,7 @@
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { ArrowRight, ArrowUpRight, Handshake } from "@lucide/vue";
-import { environmentArtwork, storybookPostcards } from "@/data/artwork";
+import { environmentArtwork } from "@/data/artwork";
 import { nariLinks } from "@/data/socials";
 
 const fits = [
@@ -18,7 +18,7 @@ const fits = [
       <p class="eyebrow"><Handshake :size="16" aria-hidden="true" /> Chapter six · a note from the writing desk</p>
       <h1>Let's make<br /><em>something lovely.</em></h1>
       <p>Good work can be clear, professional, and well organized without asking Nari to become somebody else.</p>
-      <a class="button button--ember" href="#collaboration-note">Let's talk about your idea <ArrowRight :size="17" aria-hidden="true" /></a>
+      <a class="button button--ember" href="#collaboration-note">Read the collaboration note <ArrowRight :size="17" aria-hidden="true" /></a>
     </div>
     <picture class="room-opening__art room-opening__art--work">
       <source v-for="source in heroSources(environmentArtwork.work)" :key="source.media" :media="source.media" :srcset="source.srcset" />
@@ -29,7 +29,7 @@ const fits = [
   <section id="collaboration-note" class="correspondence room-section page-width" aria-labelledby="letter-title">
     <div class="correspondence__margin">
       <p class="room-kicker">From the writing desk</p>
-      <ResponsiveArtwork :artwork="storybookPostcards.work" sizes="(min-width: 64rem) 340px, (min-width: 40rem) 220px, 160px" alt="Painted detail of Nari's correspondence desk" />
+      <img src="/media/work/work-contact-vignette.svg" width="1000" height="800" alt="An illustrated letter, lavender envelope, pen, cocoa, and phone arranged for a thoughtful conversation" />
       <p>Clear expectations.<br />Room for personality.</p>
       <span class="correspondence__signature" aria-hidden="true">Nari Nuna</span>
     </div>

@@ -1,7 +1,7 @@
-import projectPages from "../src/data/projectPages.json";
+import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import type { Plugin } from "vite";
-import { environmentArtwork } from "../src/data/artwork";
-import { heroSources } from "../src/data/artworkDelivery";
+import { environmentArtwork } from "../src/data/artwork.ts";
+import { heroSources } from "../src/data/artworkDelivery.ts";
 
 export const routeHeroArtwork: Record<string, string> = Object.fromEntries(
   projectPages.filter(({ hero }) => hero !== null).map(({ document, hero }) => {

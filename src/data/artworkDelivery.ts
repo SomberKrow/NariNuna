@@ -1,4 +1,4 @@
-import generated from "./responsive-artwork.json";
+import generated from "./responsive-artwork.json" with { type: "json" };
 
 const manifest = generated.artworks;
 
