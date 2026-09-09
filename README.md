@@ -2,7 +2,7 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 9 September 2026, `main` at `c763366` after merged PR #16, plus open PR #17 on `kiva/mobile-refinement-pass-2`. The follow-up connects the ordinary mobile rooms into one chapter-ordered journey. See [mobile changes and validation](docs/35_MOBILE_FIRST_OVERHAUL.md).
+> **Current implementation snapshot:** 9 September 2026, after merged PRs #16 and #17. `kiva/journey-polish-desktop` polishes the guided room passage and extends it to tablet/desktop, with mobile directory cleanup. Automated checks pass; fresh visual review remains pending. See [changes and validation](docs/35_MOBILE_FIRST_OVERHAUL.md).
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 

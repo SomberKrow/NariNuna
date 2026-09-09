@@ -1,5 +1,15 @@
 # Governance and Decision Log
 
+## 2026-09-09 — Nari-centered image framing
+
+Jake explicitly requested shifting the Home painting left and making Nari the focal point throughout character-led imagery. Authorized CSS crop refinement of the existing supplied-model-derived review paintings, with image-specific phone/desktop focal positions and preserved copy readability. No regenerated art, source modification, new asset rights, merge, or deployment is included.
+
+## 2026-09-09 — shared journey polish and desktop parity
+
+Jake explicitly requested a general polish of the recent mobile work and extension of the guided room path to desktop. This supersedes the previous phone-only scope for `RoomPassage.vue`: the same nine-room journey may appear on tablet and desktop with a compact horizontal composition. The implementation also cleans up mobile directory feedback, safe-area spacing, and menu state when crossing into desktop navigation. Existing room artwork, route order, MPA anchors, hidden-room exclusion, and product/release boundaries continue to apply. PRs #16 and #17 were observed merged before this branch began.
+
+**Status:** `ACCEPTED` for implementation and review on `kiva/journey-polish-desktop`.
+
 ## 2026-09-09 — connected mobile journey
 
 Jake clarified that improved responsive layout is not sufficient by itself: the phone site should feel like one experience. PR #17 may connect the existing ordinary rooms with chapter-ordered, direct-document previous/next navigation; reuse the approved room notes in the expanded directory; and add restrained progressive cross-document transitions with a reduced-motion equivalent. This does not authorize new routes, lore, assets, external destinations, hidden-room promotion, desktop recomposition, merge, deployment, or release.

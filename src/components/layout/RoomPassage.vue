@@ -20,11 +20,13 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
     <div class="room-passage__inner page-width">
       <header class="room-passage__header">
         <p class="room-passage__eyebrow"><Sparkles :size="14" aria-hidden="true" /> Keep wandering</p>
-        <p id="room-passage-title">{{ currentRoom.note }}</p>
+        <h2 id="room-passage-title">{{ currentRoom.note }}</h2>
+        <p class="room-passage__location">You’re in <strong>{{ currentRoom.label }}</strong></p>
       </header>
 
       <div
         class="room-passage__trail"
+        :style="{ gridTemplateColumns: `repeat(${havenJourney.length}, minmax(0, 1fr))` }"
         role="progressbar"
         aria-label="Your path through Nari's Haven"
         aria-valuemin="1"
@@ -46,7 +48,7 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
           <span><small>Previous room</small><strong>{{ previousRoom.label }}</strong></span>
         </a>
         <a class="room-passage__next" :href="nextRoom.href">
-          <span><small>{{ isLastRoom ? "Back to the beginning" : "Next room" }}</small><strong>{{ nextRoom.label }}</strong></span>
+          <span><small>{{ isLastRoom ? "Back to the beginning" : "Next room" }}</small><strong>{{ nextRoom.label }}</strong><span class="room-passage__destination-note">{{ nextRoom.note }}</span></span>
           <ArrowRight :size="19" aria-hidden="true" />
         </a>
       </nav>
@@ -55,171 +57,167 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
 </template>
 
 <style scoped>
-.room-passage { display: none; }
+.room-passage {
+  --passage-frame: color-mix(in srgb, var(--storybook-gold) 42%, var(--story-line));
+  position: relative;
+  padding: 1.5rem var(--page-gutter) 0.5rem;
+  margin-block-start: 0.75rem;
+  isolation: isolate;
+}
 
-@media (max-width: 47.99rem) {
-  .room-passage {
-    --passage-frame: color-mix(in srgb, var(--storybook-gold) 42%, var(--story-line));
-    position: relative;
-    display: block;
-    padding: 1.3rem var(--page-gutter) 0;
-    margin-block-start: 0.75rem;
-    overflow: hidden;
-    isolation: isolate;
-  }
+.room-passage::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg-inset) 72%, transparent));
+  content: "";
+  pointer-events: none;
+}
 
-  .room-passage::before {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--storybook-gold) 14%, transparent), transparent 42%),
-      linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg-inset) 72%, transparent));
-    content: "";
-    pointer-events: none;
-  }
+/* One quiet threshold between the room and footer, at every viewport. */
+.room-passage__inner {
+  position: relative;
+  max-width: 72rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  background: linear-gradient(145deg, var(--story-surface), var(--story-surface-deep));
+  border: 1px solid var(--passage-frame);
+  border-block-start: 0.2rem solid var(--passage-frame);
+  border-radius: 2.5rem 2.5rem 0.5rem 0.5rem / 1.25rem 1.25rem 0.5rem 0.5rem;
+  box-shadow: inset 0 0 0 0.3rem color-mix(in srgb, var(--story-surface) 42%, transparent), 0 0.75rem 2rem rgb(12 7 11 / 16%);
+}
 
+.room-passage__header {
+  display: grid;
+  min-width: 0;
+  gap: 0.45rem;
+  text-align: center;
+}
+
+.room-passage__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--storybook-gold);
+  font-family: var(--font-detail);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.room-passage__header h2 {
+  margin: 0;
+  color: var(--story-copy);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.room-passage__location {
+  margin: 0;
+  color: var(--story-muted);
+  font-size: 0.8125rem;
+}
+.room-passage__location strong { color: var(--story-copy); font-weight: 600; }
+
+.room-passage__trail {
+  display: grid;
+  align-items: center;
+  gap: 0.4rem;
+  margin-block: 1.2rem;
+}
+.room-passage__trail > span {
+  height: 0.2rem;
+  background: color-mix(in srgb, var(--story-muted) 26%, transparent);
+  border-radius: 999px;
+}
+.room-passage__trail > span.is-past {
+  background: color-mix(in srgb, var(--storybook-gold) 55%, var(--story-line));
+}
+.room-passage__trail > span.is-current {
+  height: 0.4rem;
+  background: var(--storybook-gold);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--storybook-gold) 18%, transparent);
+}
+
+.room-passage__navigation { display: grid; min-width: 0; gap: 0.65rem; }
+.room-passage__navigation > a {
+  display: flex;
+  min-width: 0;
+  min-height: 3.25rem;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--story-copy);
+  border-radius: 0.35rem;
+  text-decoration: none;
+}
+.room-passage__navigation > a > span { display: grid; min-width: 0; gap: 0.2rem; }
+.room-passage__navigation svg { flex: 0 0 auto; }
+.room-passage__navigation small {
+  color: var(--story-muted);
+  font-family: var(--font-detail);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.room-passage__navigation strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.room-passage__destination-note {
+  color: var(--story-muted);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+.room-passage__previous { padding: 0.4rem 0.65rem; }
+.room-passage__previous:hover { background: color-mix(in srgb, var(--story-surface-soft) 55%, transparent); }
+.room-passage__next {
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--story-surface-soft);
+  border: 1px solid var(--passage-frame);
+  border-inline-end: 0.2rem solid var(--storybook-gold);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+.room-passage__next:hover { border-color: var(--storybook-gold); }
+.room-passage__navigation > a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+@media (min-width: 48rem) {
+  .room-passage { padding-block: 2rem 1rem; }
   .room-passage__inner {
-    position: relative;
-    padding: 1.5rem 1rem 1.1rem;
-    background:
-      linear-gradient(90deg, transparent 0 0%, color-mix(in srgb, var(--storybook-gold) 7%, transparent) 50% 50.4%, transparent 51%),
-      linear-gradient(145deg, color-mix(in srgb, var(--story-surface) 92%, var(--plum)), color-mix(in srgb, var(--story-surface-deep) 94%, var(--bg-inset)));
-    border: 1px solid var(--passage-frame);
-    border-block-start: 0.3rem solid var(--passage-frame);
-    border-radius: 3.5rem 3.5rem 0.55rem 0.55rem / 1.8rem 1.8rem 0.55rem 0.55rem;
-    box-shadow: inset 0 0 0 0.35rem color-mix(in srgb, var(--story-surface) 42%, transparent), 0 1.1rem 2.5rem rgb(12 7 11 / 20%);
-  }
-
-  .room-passage__inner::after {
-    position: absolute;
-    right: 1.25rem;
-    bottom: 0.35rem;
-    left: 1.25rem;
-    height: 0.2rem;
-    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--storybook-gold) 58%, transparent), transparent);
-    content: "";
-    pointer-events: none;
-  }
-
-  .room-passage__header {
     display: grid;
-    gap: 0.25rem;
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  .room-passage__eyebrow {
-    display: inline-flex;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
     align-items: center;
-    justify-content: center;
-    gap: 0.35rem;
-    margin: 0;
-    color: var(--storybook-gold);
-    font-family: var(--font-detail);
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    gap: 0 2rem;
+    padding: 1.75rem 2rem 1.25rem;
   }
-
-  .room-passage__header > p:last-child {
-    margin: 0;
-    color: var(--story-copy);
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem, 5.5vw, 1.5rem);
-    font-style: italic;
-    line-height: 1.2;
-    text-wrap: balance;
-  }
-
-  .room-passage__trail {
-    display: grid;
-    grid-template-columns: repeat(9, minmax(0, 1fr));
-    align-items: center;
-    gap: 0.35rem;
-    margin-block: 1rem 1.1rem;
-  }
-
-  .room-passage__trail > span {
-    height: 0.2rem;
-    background: color-mix(in srgb, var(--story-muted) 22%, transparent);
-    border-radius: 999px;
-  }
-
-  .room-passage__trail > span.is-past {
-    background: color-mix(in srgb, var(--storybook-gold) 46%, var(--story-line));
-  }
-
-  .room-passage__trail > span.is-current {
-    height: 0.38rem;
-    background: var(--storybook-gold);
-    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--storybook-gold) 18%, transparent);
-  }
-
+  .room-passage__header { text-align: start; }
+  .room-passage__eyebrow { justify-content: flex-start; }
   .room-passage__navigation {
-    display: grid;
-    gap: 0.55rem;
+    grid-column: 2;
+    grid-row: 1;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: stretch;
   }
-
-  .room-passage__navigation > a {
-    display: flex;
-    min-height: 3.25rem;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--story-copy);
-    text-decoration: none;
-  }
-
-  .room-passage__navigation > a span {
-    display: grid;
-    gap: 0.05rem;
-  }
-
-  .room-passage__navigation > a small {
-    color: var(--story-muted);
-    font-family: var(--font-detail);
-    font-size: 0.75rem;
-    font-weight: 750;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .room-passage__navigation > a strong {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .room-passage__previous {
-    width: fit-content;
-    padding-inline: 0.25rem;
-  }
-
-  .room-passage__next {
-    justify-content: space-between;
-    padding: 0.8rem 0.9rem 0.8rem 1rem;
-    background: linear-gradient(110deg, color-mix(in srgb, var(--story-surface-soft) 88%, transparent), color-mix(in srgb, var(--story-surface) 82%, var(--bg-inset)));
-    border: 1px solid var(--passage-frame);
-    border-inline-end: 0.3rem solid var(--storybook-gold);
-    border-radius: 0.4rem;
-    box-shadow: inset 0 0 0 0.2rem color-mix(in srgb, var(--story-surface-deep) 30%, transparent);
-    transition: border-color var(--duration-fast) ease, transform var(--duration-fast) var(--ease-out);
-  }
-
-  .room-passage__next:hover {
-    border-color: var(--storybook-gold);
-    transform: translateX(0.15rem);
-  }
+  .room-passage__next:only-child { grid-column: 1 / -1; }
+  .room-passage__trail { grid-column: 1 / -1; margin-block: 1.4rem 0; }
 }
 
 @media (max-width: 24rem) {
-  .room-passage__inner { padding-inline: 0.8rem; }
-  .room-passage__header > p:last-child { font-size: 1.15rem; }
+  .room-passage__inner { padding-inline: 1rem; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .room-passage__next { transition: none; }
-  .room-passage__next:hover { transform: none; }
 }
 </style>

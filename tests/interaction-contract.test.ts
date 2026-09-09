@@ -192,7 +192,7 @@ describe("client-feedback interaction contracts", () => {
     expect(header.match(/@click="closeMenu"/g)).toHaveLength(3);
   });
 
-  it("turns ordinary mobile routes into one accessible room-to-room journey", () => {
+  it("turns ordinary routes into one accessible room-to-room journey", () => {
     const shell = sourceAt("src/components/layout/SiteShell.vue");
     const passage = sourceAt("src/components/layout/RoomPassage.vue");
     const base = sourceAt("src/styles/_base.scss");

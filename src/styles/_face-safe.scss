@@ -1,62 +1,64 @@
-/* Final Nari hero composition authority: shared geometry, page-specific crops. */
+/* Nari focal points belong here; phone silhouettes consume these values too.
+ * Higher horizontal cover positions move the painting left inside its frame.
+ * Desktop preserves the copy lane; phone crops prioritize her face and ears. */
 
 .haven-landing {
-  --hero-desktop-focus-x: 77%;
-  --hero-mobile-focus-x: 72%;
+  --hero-desktop-focus-x: 86%;
+  --hero-mobile-focus-x: 80%;
   --hero-mobile-focus-y: 48%;
   --hero-mobile-art-height: clamp(17rem, 76vw, 20rem);
   --hero-mobile-copy-width: 21rem;
 }
 
 .character-intro--integrated {
-  --hero-desktop-focus-x: 78%;
-  --hero-mobile-focus-x: 72%;
+  --hero-desktop-focus-x: 82%;
+  --hero-mobile-focus-x: 82%;
   --hero-mobile-focus-y: 48%;
   --hero-mobile-art-height: clamp(16.5rem, 70vw, 19rem);
   --hero-mobile-copy-width: 25rem;
 }
 
 .studio-opening {
-  --hero-desktop-focus-x: 78%;
-  --hero-mobile-focus-x: 72%;
+  --hero-desktop-focus-x: 84%;
+  --hero-mobile-focus-x: 100%;
   --hero-mobile-focus-y: 50%;
   --hero-mobile-art-height: clamp(15.5rem, 66vw, 18.5rem);
   --hero-mobile-copy-width: 24rem;
 }
 
 .haven-heart {
-  --hero-desktop-focus-x: 78%;
-  --hero-mobile-focus-x: 70%;
+  --hero-desktop-focus-x: 84%;
+  --hero-mobile-focus-x: 78%;
   --hero-mobile-focus-y: 50%;
   --hero-mobile-art-height: clamp(15.5rem, 67vw, 18.75rem);
   --hero-mobile-copy-width: 24rem;
 }
 
 .support-welcome--painted {
-  --hero-desktop-focus-x: 78%;
-  --hero-mobile-focus-x: 64%;
+  --hero-desktop-focus-x: 84%;
+  --hero-mobile-focus-x: 84%;
   --hero-mobile-focus-y: 50%;
   --hero-mobile-art-height: clamp(15rem, 65vw, 18.25rem);
   --hero-mobile-copy-width: 24rem;
 }
 
 .story-opening--painted {
-  --hero-desktop-focus-x: 78%;
-  --hero-mobile-focus-x: 69%;
+  --hero-desktop-focus-x: 84%;
+  --hero-mobile-focus-x: 100%;
   --hero-mobile-focus-y: 48%;
   --hero-mobile-art-height: clamp(15.5rem, 66vw, 18.5rem);
   --hero-mobile-copy-width: 24rem;
 }
 
 .room-opening--streams {
-  --hero-desktop-focus-x: 65%;
-  --hero-mobile-focus-x: 69%;
+  --hero-desktop-focus-x: 78%;
+  --hero-mobile-focus-x: 88%;
   --hero-mobile-focus-y: 50%;
 }
 
 .room-opening--work {
-  --hero-desktop-focus-x: 65%;
-  --hero-mobile-focus-x: 66%;
+  --hero-desktop-focus-x: 84%;
+  --hero-mobile-focus-x: 100%;
   --hero-mobile-focus-y: 50%;
 }
 
