@@ -10,6 +10,10 @@ The repository produces a portable static artifact. A provider may host it, but 
 
 No production release occurs until critical canon, rights, privacy, accessibility, host, and rollback gates in `12_QA_ACCEPTANCE_CRITERIA.md` pass.
 
+## Current security review before release
+
+At main `fa83954` (9 September 2026), the full gate passes but the separate dependency audit reports four affected development packages. See [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md) for patch targets, exposure and raw evidence. Run both `npm audit --json` and `npm audit --omit=dev --json` against the intended release lockfile and resolve or explicitly triage findings; `npm run check` does not currently include an advisory gate. Neither a clean production-only audit nor a passing build clears host or manual security review.
+
 ## Artifact contract
 
 From a clean checkout:
@@ -26,7 +30,7 @@ Expected artifact: `dist/` containing:
 - `404.html`;
 - hashed compiled assets under `assets/`;
 - local media under `media/`;
-- icons, manifest, robots, theme boot, and compatible static-host files.
+- icons, manifest, robots, and compatible static-host files.
 
 Do not deploy the Vite development server. Do not upload source masters from `src/assets/source/` as public files.
 
@@ -37,7 +41,7 @@ Do not deploy the Vite development server. Do not upload source masters from `sr
 | HTTPS | Integrity/privacy baseline | Browser and command-line header check |
 | Directory indexes | Every route is a real document | Direct-load each trailing-slash route |
 | Branded 404 mapping | Unknown route recovery | Request a unique nonexistent path |
-| Root-relative asset support | Documents reference `/assets`, `/media`, `/theme-boot.js` | Inspect nested route network |
+| Root-relative asset support | Documents reference `/assets`, `/media` | Inspect nested route network |
 | Security headers | CSP/privacy/framing/permissions | Observe response headers, not config file |
 | Immutable hashed asset caching | Efficient stable delivery | Inspect `Cache-Control` on hashed assets |
 | HTML revalidation | Avoid stale document/chunk references | Inspect HTML cache policy |
@@ -134,10 +138,10 @@ Recommended intent:
 | Hashed `/assets/*` | Long-lived immutable |
 | Versioned/local generated media | Long-lived; invalidate through filename change when content changes |
 | HTML documents | Revalidate/no long stale cache |
-| `theme-boot.js`, manifest, robots, icons | Explicit short/revalidation policy unless versioned |
+| Manifest, robots, icons | Explicit short/revalidation policy unless versioned |
 | 404 | Revalidate; avoid long-lived accidental response |
 
-Current generated media filenames are not content-hashed. Replacing bytes under the same name risks stale caches. Prefer versioned/renamed filenames for canonical replacements or define a reliable purge strategy.
+Responsive artwork under `/media/responsive/` is content-addressed; generated media and compiled assets also receive immutable cache headers. Preserve filename/content integrity and never replace bytes under an immutable URL. Unversioned icons, other media and HTML need a separately verified host policy.
 
 ## Domain and metadata cutover
 

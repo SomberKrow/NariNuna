@@ -2,7 +2,8 @@
 
 A warm, true multi-page website for Nari Nuna's streams, nail-art learning, community, stories, resources, collaborations, and zero-pressure support.
 
-> **Current implementation snapshot:** 9 September 2026, after merged PRs #16 and #17. `kiva/journey-polish-desktop` polishes the guided room passage and extends it to tablet/desktop, with mobile directory cleanup. Automated checks pass; fresh visual review remains pending. See [changes and validation](docs/35_MOBILE_FIRST_OVERHAUL.md).
+> **Current implementation snapshot:** 9 September 2026, `main` at `fa83954f09938a864fd53f6a26739e50e2277970` (merged PR #18, including Nari-centered crop refinement). Nine ordinary rooms have a guided passage on mobile, tablet, and desktop. See the [current audit and issue register](docs/17_CURRENT_STATE_AUDIT.md).
+> **Security snapshot:** dependency audit reports **4 affected development packages (2 high, 2 moderate)** and **0 production dependency advisories**. Published fixes are available; this documentation update does not apply them. No zero-day or active exploitation is confirmed. See [advisories, exposure, and next steps](docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
 > **Current visual direction:** one Nari atmosphere. The former public Nari/Dark/Light selector and persisted theme preference were removed during the client-feedback pass.  
 > **Release status:** client-review implementation, **not production clearance**. Final public release remains blocked by client approval, rights/credit records, final content inputs, hosting/domain decisions, and release-grade manual QA.
 
@@ -64,13 +65,13 @@ The same refinement pass also introduced:
 4. **Route-specific rhythm** — Streams/Resources are tighter, Nails/Work more measured, Stories more editorial, Haven progressively quieter, and Meet Nari/Support more spacious.
 5. **Responsive artwork delivery** — the artwork remains visually intact while appropriately sized, hashed WebP derivatives are served to the browser.
 
-The Nari-only direction is still a **proposal under client review**, not approved product history. Older documents that describe Nari/Dark/Light as three currently active user-selectable themes should be read as historical context unless they have been reconciled with the post-PR #9 implementation. The latest implementation supplements are `docs/28` through `docs/34`.
+The Nari-only direction is still a **proposal under client review**, not approved product history. Older documents that describe Nari/Dark/Light as three currently active user-selectable themes should be read as historical context unless they have been reconciled with the post-PR #9 implementation. The latest implementation supplements are `docs/28` through `docs/36`.
 
 ---
 
 ## Current implementation
 
-The current merged implementation includes the PR #9 foundation plus PRs #10–#13:
+The current merged implementation includes the PR #9 foundation and the maintenance, room, mobile, journey, and crop refinements through PR #18:
 
 - a Vue/Vite **true multi-page application** with eleven real HTML documents;
 - normal document navigation between top-level pages;
@@ -98,6 +99,12 @@ The current merged implementation includes the PR #9 foundation plus PRs #10–#
 | [PR #11](https://github.com/SomberKrow/NariNuna/pull/11) | Scoped room styles, shared reading primitives, broadcast/album media variants, labelled Resources demos, header Escape focus restoration, narrow-width corrections and rendered-content checks. |
 | [PR #12](https://github.com/SomberKrow/NariNuna/pull/12) | Each knock changes lantern/threshold light, room glimpse, brass ripple and story; Arrive/Belong/Promise progress and visible prompts clarify the interaction. Reduced motion preserves immediate state and access. |
 | [PR #13](https://github.com/SomberKrow/NariNuna/pull/13) | Stronger page materials and hierarchy, stable Haven story-button focus between knocks, final/reset focus transfer, paired Resources shelf IDs/art/category records, demo-density handling, route-CSS budgets and combined graph reporting. |
+
+| [PR #14](https://github.com/SomberKrow/NariNuna/pull/14) | Operational README refresh for the earlier merged room and delivery baseline. |
+| [PR #15](https://github.com/SomberKrow/NariNuna/pull/15) | Page quality pass, retired Home numbering, Work fold correction, and repaired section navigation. |
+| [PR #16](https://github.com/SomberKrow/NariNuna/pull/16) | Nine distinct phone openings, labelled social links, direct Resources shelves, and enlarged-text layout refinements. |
+| [PR #17](https://github.com/SomberKrow/NariNuna/pull/17) | Mobile focus containment, readable controls, described room directory, previous/next journey, and progressive document transitions. |
+| [PR #18](https://github.com/SomberKrow/NariNuna/pull/18) | Guided passage on tablet/desktop, mobile safe-area and resize cleanup, and Nari-centered image framing. Fresh rendered crop/journey confirmation remains pending. |
 
 These changes are merged into `main`. References in older documents to open PR #12 or stacked PR #13 are historical workflow snapshots, not current branch instructions. Merge status does not confer client approval or production clearance.
 
@@ -398,13 +405,13 @@ The preview verifier starts and stops its own production preview when used norma
 
 CI uses Node 22, installs from the lockfile with `npm ci`, and runs `npm run check`.
 
-### Recorded implementation evidence
+### Current validation evidence
 
-The 8 September record in [document 34](docs/34_DISTINCTIVE_UI_REFINEMENT.md) reports a passing full gate with **59 tests** and **11 served documents**. The preceding doorway record reports 13 test files, 137 essential assets and all 27 retained Prinny designs. Responsive delivery retains 121 candidates.
+On 9 September 2026, a fresh checkout of `main` at `fa83954` passed `npm ci` and `npm run check` on Node **24.19.0**, npm **11.9.0**: lint, strict typecheck, **68 tests in 14 files**, production build/budgets, **11 independently served documents**, **137 essential assets**, and **27 supplied Prinny designs**. CI is configured for Node 22; this local run does not establish a fresh Node 22 CI result.
 
-The earlier visual pass recorded 55 route/viewport measurements at 320, 390, 768, 1024 and 1920 CSS px, simulated text enlargement and selected visual/focus checks. Those dated observations do not prove the later composed-room changes passed the entire manual matrix. Final focus continuity, native zoom/reflow, reduced motion, failed media, screen-reader and contrast review remain pending.
+`npm run check` does **not** gate dependency advisories. The separately run full `npm audit --json` reports four affected development packages; `npm audit --omit=dev --json` reports zero. See [the security register and raw audit evidence](docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
 
-Validation performed specifically for this README update is recorded in its pull request. Historical results are not inherited as fresh evidence.
+Earlier browser measurements in documents 34–35 are historical. This documentation pass did not rerun rendered viewport, physical Pixel 9, native zoom, screen-reader, contrast, Lighthouse, or production-host checks. In particular, PR #18's final crops and desktop journey still require visual confirmation.
 
 ---
 
@@ -430,13 +437,13 @@ Do not raise a budget simply to make a failing build green. A budget increase sh
 
 ### Latest recorded implementation measurements
 
-Document 34 records these 8 September build measurements:
+The 9 September `fa83954` checkout produced these local build measurements:
 
 | Measurement | Gzip size |
 |---|---:|
-| Shared JS + CSS | 68.94 KB |
-| Largest route-only CSS, Haven | 4.95 KB |
-| Largest combined route JS + CSS graph, Haven | 80.19 KB |
+| Shared JS + CSS | 73.04 KB |
+| Largest route-only CSS, Haven | 5.36 KB |
+| Largest combined route JS + CSS graph, Haven | 84.42 KB |
 
 The validator walks transitive imports, measures route JS and CSS separately, and reports the deduplicated shared-plus-route graph. Combined totals are reported without a separate combined ceiling. KB means 1,000 bytes. These are recorded build measurements, not Lighthouse, network timing or field metrics.
 
@@ -630,7 +637,9 @@ The recovery behavior:
 
 ## Security and privacy posture
 
-The site is static and intentionally has no trusted client-side secret boundary.
+The site is static and intentionally has no trusted client-side secret boundary. The [security and known-issues register](docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md) separates dependency findings, intentional public behavior, hardening gaps, and unverified release checks.
+
+The three-knock Discord reveal and hidden Prinny route are presentation features, not authentication. Their destinations/content are inspectable in public source and delivered files. No private information belongs behind either interaction. Published dependency advisories are documented; no zero-day discovery, active compromise, or exhaustive security clearance is claimed.
 
 ### Response headers
 
@@ -777,7 +786,9 @@ These are especially important for understanding the current merged implementati
 - [`docs/32_PHASE_E_VALIDATION.md`](docs/32_PHASE_E_VALIDATION.md) — refinement validation evidence
 - [`docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md`](docs/33_RESPONSIVE_ARTWORK_PERFORMANCE.md) — responsive delivery, performance budgets, cache and recovery behavior
 
-- [`docs/34_DISTINCTIVE_UI_REFINEMENT.md`](docs/34_DISTINCTIVE_UI_REFINEMENT.md) — current room compositions, style ownership, doorway response/focus, route-CSS accounting and dated evidence
+- [`docs/34_DISTINCTIVE_UI_REFINEMENT.md`](docs/34_DISTINCTIVE_UI_REFINEMENT.md) — room compositions and dated evidence
+- [`docs/35_MOBILE_FIRST_OVERHAUL.md`](docs/35_MOBILE_FIRST_OVERHAUL.md) — mobile experience, shared journey, crop changes and dated QA
+- [`docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md`](docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md) — current advisories, limitations, hardening priorities and audit evidence
 
 ### Core engineering references
 
@@ -806,10 +817,10 @@ For **current implementation mechanics**, prefer:
 
 1. current code on `main`;
 2. this README's dated implementation snapshot;
-3. post-feedback docs `26–34`;
+3. current audit/security records and post-feedback docs `26–36`;
 4. older architectural/product documents for the still-valid underlying contract.
 
-A future documentation-normalization pass should reconcile the older historical references rather than silently deleting useful decision history.
+Document 17 now provides the current audit. Dated implementation records remain historical evidence; their former branch instructions and test counts do not override this snapshot.
 
 ---
 
@@ -851,10 +862,10 @@ A useful PR description should state:
 
 ## Known follow-up work
 
-The current repository is substantially more disciplined than the early prototype, but several areas are intentionally still future work:
+The [dated issue register](docs/36_MAIN_SECURITY_AND_KNOWN_ISSUES.md) owns issue status and closure evidence. Priorities:
 
 1. **Remaining CSS and visual QA** — shared delivery/state/document ownership and scoped room styles are merged. Review surviving `_world.scss`, `_storybook.scss` and `_polish.scss` overlap before further consolidation. Complete whole-page comparison and Haven focus/reflow review for the latest changes; do not repeat the completed room-style extraction as new work.
-2. **Documentation normalization** — reconcile historical three-theme/branch/asset references throughout older docs with the current Nari-only post-PR #9 implementation while preserving useful decision history.
+2. **Dependency security remediation** — refresh the affected Vitest/mocker, brace-expansion, and js-yaml lockfile resolutions in a focused implementation PR; review the diff, rerun both audits and the full gate. No dependency fix is included in this docs update.
 3. **Release performance benchmark** — run controlled mobile/desktop Lighthouse series and, once production traffic exists, evaluate field Core Web Vitals.
 4. **Accessibility release QA** — finish screen-reader, contrast, zoom/reflow, short-height, and full viewport matrix review.
 5. **Client approval/content closure** — resolve final identity wording, rights/credits, nail work, Resources, contact, Discord, support, hosting, and domain decisions.
