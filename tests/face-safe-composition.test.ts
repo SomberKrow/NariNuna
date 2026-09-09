@@ -97,16 +97,18 @@ describe("Nari face-safe composition contract", () => {
     expect(styles).not.toContain("prinny-cult");
   });
 
-  it("recomposes phone heroes as art-first caption cards", () => {
+  it("gives each ordinary phone route a distinct opening silhouette", () => {
     const styles = sourceAt("src/styles/_mobile-first.scss");
 
     expect(styles).toContain("@media (max-width: 47.99rem)");
-    expect(styles).toContain("--hero-phone-art-height");
-    expect(styles).toContain("calc(var(--hero-phone-art-height) - 2.8rem)");
-    expect(styles).toContain(".room-opening .room-opening__art");
-    expect(styles).toContain("order: -1");
+    expect(styles).toContain(".haven-landing__scene");
+    expect(styles).toContain(".character-intro--integrated");
+    expect(styles).toContain(".studio-opening");
+    expect(styles).toContain(".haven-heart");
+    expect(styles).toContain(".room-opening--work");
     expect(styles).toContain(".room-opening--resources");
-    expect(styles).not.toContain(".not-found");
-    expect(styles).not.toContain(".prinny-cult");
+    expect(styles).toContain(".story-opening--painted");
+    expect(styles).toContain(".support-welcome--painted");
+    expect(styles).toContain("rooms, not one caption card");
   });
 });

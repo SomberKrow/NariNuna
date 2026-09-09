@@ -1,5 +1,11 @@
 # Governance and Decision Log
 
+## 2026-09-09 — distinct mobile room compositions
+
+Jake supplied the mobile-overhaul continuation brief and authorized implementation and review evidence on PR #16. The phone layer may replace the repeated caption-card treatment with route-specific silhouettes, simplify the mobile directory, expose text labels beside Home social icons, preserve direct Resources shelves, update behavior contracts, and synchronize current documentation. This does not authorize merging PR #16, deployment, public release, new canon/content, new asset rights, or a change in the existing release blockers.
+
+**Status:** `ACTIVE`
+
 ## 2026-09-08 — experience refinement stacked on Haven doorway
 
 Jake supplied the experience-refinement execution brief and authorized one integrated implementation and review PR. The work may strengthen route-owned composition, fix keyboard continuity, improve build-budget reporting, and synchronize current operational documentation. It does not authorize merging PR #12, merging the stacked PR, deployment, release, new canon/content, asset deletion, or a change in rights posture. The repository's current public visibility is recorded as operational fact, not as publication approval.

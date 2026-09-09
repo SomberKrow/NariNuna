@@ -83,6 +83,10 @@
   border-radius: 0;
 }
 
+.social-dock__label {
+  display: none;
+}
+
 /* Home starts as a natural mobile document instead of a forced desktop viewport. */
 .haven-landing {
   min-height: calc(100svh - var(--header-height));

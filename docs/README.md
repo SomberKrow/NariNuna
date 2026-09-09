@@ -4,13 +4,13 @@
 
 > 2026-09-08 current review delta: `kiva/nari-experience-refinement` is stacked on open PR #12 (`kiva/nari-haven-doorway`, head `5e0ec49`) and deepens the existing rooms without changing routes, assets, canon, dependencies, or release posture. It also keeps the Haven text action stable between knocks, adds deliberate final/reset focus transfer, and reports route CSS plus combined transfer graphs. See the current section in [document 34](34_DISTINCTIVE_UI_REFINEMENT.md).
 
-> 2026-09-08 mobile review delta: [mobile-first experience overhaul](35_MOBILE_FIRST_OVERHAUL.md) records the phone-only art-first chapter composition, flat mobile room directory, direct Resources shelves, and narrow-width QA evidence. It does not alter the desktop composition or release posture.
+> 2026-09-09 mobile review delta: [mobile-first experience overhaul](35_MOBILE_FIRST_OVERHAUL.md) records nine route-specific phone openings, a plain mobile room directory, labelled Home social links, direct Resources shelves, and narrow-width QA evidence. It does not alter the desktop composition or release posture.
 
 This directory is the product specification, engineering manual, content contract, and release record for Nari Nuna's Haven. It is not background reading. A change that contradicts this suite without an approved decision record is not ready to merge.
 
 **Repository:** public `SomberKrow/NariNuna`
 **Default branch:** `main`
-**Current review branch:** `kiva/nari-experience-refinement`, stacked on open PR #12
+**Current review branch:** `kiva/mobile-first-overhaul`, open PR #16
 **Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
 **Historical implementation snapshot described below:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
 

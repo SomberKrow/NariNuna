@@ -120,7 +120,9 @@ describe("client-feedback interaction contracts", () => {
     expect(dock).toContain(':aria-label="`${link.label} (opens in a new tab)`"');
     expect(dock).toContain(':title="link.label"');
     expect(dock).toContain('fill="currentColor"');
-    expect(dock).not.toContain("social-dock__label");
+    expect(dock).toContain('class="social-dock__label"');
+    expect(sourceAt("src/styles/_polish.scss")).toContain(".social-dock__label");
+    expect(sourceAt("src/styles/_mobile-first.scss")).toContain(".haven-landing .social-dock__label");
 
     for (const platform of ["twitch", "youtube", "tiktok", "instagram", "x", "throne"]) {
       expect(links).toContain(`platform: "${platform}"`);
@@ -164,7 +166,8 @@ describe("client-feedback interaction contracts", () => {
     expect(header).toContain("returnTo?.focus()");
     expect(header).toContain('<details ref="moreMenu" class="site-header__more">');
     expect(header).toContain('class="site-header__mobile-nav"');
-    expect(header).toContain('v-for="(item, index) in mobileLinks"');
+    expect(header).toContain('v-for="item in mobileLinks"');
+    expect(header).not.toContain("index + 1");
     expect(header.match(/@click="closeMenu"/g)).toHaveLength(3);
   });
 });

@@ -73,13 +73,12 @@ onBeforeUnmount(() => {
       <div id="primary-navigation" class="site-header__panel" :class="{ 'is-open': menuOpen }">
         <nav class="site-header__mobile-nav" aria-label="Haven rooms">
           <a
-            v-for="(item, index) in mobileLinks"
+            v-for="item in mobileLinks"
             :key="item.href"
             :href="item.href"
             :aria-current="isCurrent(item.href) ? 'page' : undefined"
             @click="closeMenu"
           >
-            <span aria-hidden="true">0{{ index + 1 }}</span>
             <strong>{{ item.shortLabel ?? item.label }}</strong>
           </a>
         </nav>
@@ -204,10 +203,9 @@ onBeforeUnmount(() => {
     gap: 0.55rem;
   }
   .site-header__mobile-nav > a {
-    display: grid;
-    min-height: 4.35rem;
-    align-content: center;
-    gap: 0.15rem;
+    display: flex;
+    min-height: 3.75rem;
+    align-items: center;
     padding: 0.8rem 0.9rem;
     color: var(--story-copy);
     background: color-mix(in srgb, var(--story-surface) 76%, transparent);
@@ -215,12 +213,6 @@ onBeforeUnmount(() => {
     border-radius: 0.55rem;
     text-decoration: none;
     white-space: normal;
-  }
-  .site-header__mobile-nav > a > span {
-    color: var(--storybook-gold);
-    font-family: var(--font-detail);
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
   }
   .site-header__mobile-nav > a > strong {
     font-family: var(--font-display);

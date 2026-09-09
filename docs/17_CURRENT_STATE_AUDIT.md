@@ -4,7 +4,7 @@
 
 > 2026-09-08 refinement delta: the current stacked review branch strengthens the physical and editorial hierarchy of all ordinary content rooms, fixes the PR #12 keyed-action focus risk, pairs Resources shelf presentation with stable IDs, uses the existing demo layout field, and extends build accounting with route CSS and combined graph reporting. Automated evidence and current limitations are recorded in document 34.
 
-> 2026-09-08 mobile delta: the client-review phone experience now uses an art-first chapter composition, a flat eight-room mobile directory, route-specific compact interiors, and direct Resources shelves. Desktop remains unchanged. Validation and limitations are recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+> 2026-09-09 mobile delta: the client-review phone experience now gives each of the nine ordinary routes a different first-screen silhouette, reveals text labels for the Home social directory, uses a plain eight-room mobile menu, preserves route-specific interiors, and continues directly into the Resources shelves. Desktop remains unchanged. Validation and limitations are recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
 
 **Repository:** `SomberKrow/NariNuna`  
 **Historical branch audited:** `agent/build-nari-haven`
@@ -14,7 +14,7 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
-Current GitHub state observed on 2026-09-08: `main` at `a35e164`, PR #12 open at `5e0ec49`, repository public, and the experience-refinement work stacked from that PR head. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
+Current GitHub state observed on 2026-09-09: PR #16 is open on `kiva/mobile-first-overhaul`; the repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
 
 ## 2026-09-02 environmental-continuity delta
 
