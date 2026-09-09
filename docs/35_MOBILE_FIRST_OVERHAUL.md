@@ -100,3 +100,11 @@ The mobile directory gains hover feedback, one current-room marker instead of a 
 Render all nine ordinary rooms at 320, 390, 768, and 1440px; inspect the passage and its transition into each footer. Check 200% text sizing, focus outlines, previous/next destinations, Support-to-Home closure, the excluded 404/Prinny routes, and reduced motion. Open the mobile menu, widen through 896px, and verify body scrolling resumes and keyboard focus remains visible. Keep this pass in draft until rendered review is complete.
 
 Rollback: revert the focused shared-journey polish commit; no migration, dependency, or asset rollback is required.
+
+## Character focal-point follow-up — 2026-09-09
+
+Jake requested a leftward adjustment to the Home painting and stronger emphasis on Nari throughout character-led images. Inspected the served source paintings for Home, Meet Nari, Streams, Nails, Haven/Support, Stories, Work, Resources, and the doorway interior. The eight character-led hero routes now use individual horizontal focal points in `_face-safe.scss`; `_mobile-first.scss` consumes those points rather than overriding Home, Nails, Haven, Support, Streams, and Work with scenery-biased positions. Desktop adjustments preserve the text lane. Higher cover-position percentages shift the painting left when horizontal cropping occurs; they do not shift an image that already exactly fits its width.
+
+Home changes from the effective 64% phone crop to 80%, with its desktop focal point moving from 77% to 86%. Meet Nari uses 82% on phones; Nails 100%; Haven 78%; Support 84%; Stories 100%; Streams 88%; Work 100%. These are image-specific crop positions, not subject coordinates or a universal centering rule. Resources has no Nari figure and retains its existing crop. The portrait doorway interior already uses a centered crop and is retained. No asset pixels, source files, delivery sizes, rights records, or copy changed.
+
+Source artwork was visually inspected. Full rendered/device confirmation remains pending under the browser limitation above; source inspection is not a claim of viewport QA. Rollback: revert the focused crop follow-up commit.

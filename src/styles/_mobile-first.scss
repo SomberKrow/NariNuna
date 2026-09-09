@@ -82,7 +82,7 @@
 
   .haven-landing__scene {
     z-index: 0;
-    background-position: 64% center;
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
   }
 
   .haven-landing__veil {
@@ -287,7 +287,7 @@
 
   .studio-opening__backdrop {
     z-index: 0;
-    background-position: 57% var(--hero-mobile-focus-y);
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
     border: 0;
     box-shadow: inset 0 -1.5rem 2rem rgb(16 9 14 / 28%);
   }
@@ -363,7 +363,7 @@
 
   .haven-heart__environment {
     z-index: 0;
-    background-position: 57% center;
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
   }
 
   .haven-heart::after {
@@ -476,7 +476,7 @@
 
   .support-welcome--painted::before {
     z-index: 0;
-    background-position: 63% center;
+    background-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
     border: 1px solid var(--story-line);
     box-shadow: 0 0.9rem 2rem rgb(13 7 11 / 18%);
   }
@@ -568,7 +568,7 @@
   }
 
   .room-opening--streams .room-opening__art > img {
-    object-position: 58% var(--hero-mobile-focus-y, 50%);
+    object-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
   }
 
   .room-opening--streams .room-opening__copy {
@@ -610,7 +610,7 @@
   }
 
   .room-opening--work .room-opening__art > img {
-    object-position: 62% var(--hero-mobile-focus-y, 50%);
+    object-position: var(--hero-mobile-focus-x) var(--hero-mobile-focus-y);
   }
 
   .room-opening--work .room-opening__copy {

@@ -1,5 +1,9 @@
 # Governance and Decision Log
 
+## 2026-09-09 — Nari-centered image framing
+
+Jake explicitly requested shifting the Home painting left and making Nari the focal point throughout character-led imagery. Authorized CSS crop refinement of the existing supplied-model-derived review paintings, with image-specific phone/desktop focal positions and preserved copy readability. No regenerated art, source modification, new asset rights, merge, or deployment is included.
+
 ## 2026-09-09 — shared journey polish and desktop parity
 
 Jake explicitly requested a general polish of the recent mobile work and extension of the guided room path to desktop. This supersedes the previous phone-only scope for `RoomPassage.vue`: the same nine-room journey may appear on tablet and desktop with a compact horizontal composition. The implementation also cleans up mobile directory feedback, safe-area spacing, and menu state when crossing into desktop navigation. Existing room artwork, route order, MPA anchors, hidden-room exclusion, and product/release boundaries continue to apply. PRs #16 and #17 were observed merged before this branch began.

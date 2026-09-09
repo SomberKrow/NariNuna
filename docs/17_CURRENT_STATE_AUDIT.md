@@ -1,5 +1,7 @@
 # Current-State Audit
 
+> 2026-09-09 character-focus follow-up: the eight Nari-led hero routes now share route-specific crop settings across phone/desktop layers. Home shifts left on phones from 64% to 80%; scenery-only Resources and the already-centered doorway remain intact. Source paintings were visually inspected; rendered crop confirmation is still pending. See document 35.
+
 > 2026-09-09 shared-journey polish: `kiva/journey-polish-desktop` refines the passage on all nine ordinary routes and extends it to desktop/tablet. The mobile directory also gains viewport/safe-area polish and desktop-resize state cleanup. The automated gate passes; fresh rendered QA is blocked by browser access. See the latest evidence in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
 
 > 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
