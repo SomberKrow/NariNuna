@@ -1,22 +1,12 @@
 # Nari Nuna's Haven — Documentation Hub
 
-> 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
-
-> 2026-09-08 current review delta: `kiva/nari-experience-refinement` is stacked on open PR #12 (`kiva/nari-haven-doorway`, head `5e0ec49`) and deepens the existing rooms without changing routes, assets, canon, dependencies, or release posture. It also keeps the Haven text action stable between knocks, adds deliberate final/reset focus transfer, and reports route CSS plus combined transfer graphs. See the current section in [document 34](34_DISTINCTIVE_UI_REFINEMENT.md).
-
-> 2026-09-09 mobile review delta: [mobile-first experience overhaul](35_MOBILE_FIRST_OVERHAUL.md) records nine route-specific phone openings, a plain mobile room directory, labelled Home social links, direct Resources shelves, and narrow-width QA evidence. It does not alter the desktop composition or release posture.
-
-> 2026-09-09 mobile refinement delta: the follow-up pass improves Home action/label readability, contains keyboard focus inside the open mobile menu, strengthens its current-room treatment, and raises the Haven doorway and optional floorboard controls to readable mobile sizes. See the continuation record in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
-
-> 2026-09-09 connected-journey delta: PR #17 connects the nine ordinary phone routes with an accessible previous/next passage, turns the expanded menu into a described Haven directory, and adds reduced-motion-safe document transitions without changing desktop composition or route scope. See [document 35](35_MOBILE_FIRST_OVERHAUL.md).
-
-This directory is the product specification, engineering manual, content contract, and release record for Nari Nuna's Haven. It is not background reading. A change that contradicts this suite without an approved decision record is not ready to merge.
+This directory owns the product contracts, engineering guidance, and release evidence. Start with the current audit; dated implementation logs preserve history rather than defining today's branch status.
 
 **Repository:** public `SomberKrow/NariNuna`
-**Default branch:** `main`
-**Current review branch:** `kiva/journey-polish-desktop`; PRs #16 and #17 are merged. The shared guided passage now includes desktop; fresh visual QA is pending.
-**Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
-**Historical implementation snapshot described below:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
+**Audited default branch:** `main` at `fa83954f09938a864fd53f6a26739e50e2277970`, 9 September 2026
+**Merged implementation:** through PR #18, including shared desktop/mobile journey and Nari crop refinements
+**Current status:** client review; production approvals and manual QA remain pending
+**Security:** four affected development packages; zero production dependency advisories in this audit. See [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
 
 ## Start here
 
@@ -112,6 +102,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `30_PAGE_SIGNATURE_DEVICES` | Phase C one-device-per-route map and decorative-content boundary | A route's recognizable presentation device changes |
 | `31_DE_CARDIFICATION_AND_RHYTHM` | Phase D noninteractive chrome and route-pacing contract | Container boundaries, radius discipline, or chapter rhythm changes |
 | `32_PHASE_E_VALIDATION` | Phase E automated evidence, manual matrix status, limitations, and rollback | Final validation is rerun or preview/release evidence changes |
+| `36_MAIN_SECURITY_AND_KNOWN_ISSUES` | Dated dependency advisories, known limitations, security boundaries, remediation and evidence | An advisory, issue, verification, or mitigation changes |
 | `35_MOBILE_FIRST_OVERHAUL` | Phone composition, mobile navigation, Resources simplification, validation, and rollback | The narrow-width layout, menu, or Resources wayfinding changes |
 
 ## Authority and conflict resolution

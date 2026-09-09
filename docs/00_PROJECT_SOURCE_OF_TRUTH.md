@@ -6,6 +6,10 @@
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Update trigger:** Any change to identity, audience, routes, stack, public claims, launch scope, or blocker status
 
+## 2026-09-09 current-main reconciliation
+
+Audited `main` is `fa83954f09938a864fd53f6a26739e50e2277970`, including merged PR #18 and Nari-centered crops. Earlier stacked/open-branch descriptions below are dated history. The site has one Nari atmosphere and a nine-room journey on mobile, tablet, and desktop. Implementation and merge history do not settle the outstanding client, rights, content, or release decisions. Current evidence and risks are owned by [document 17](17_CURRENT_STATE_AUDIT.md) and [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
+
 ## 2026-09-08 experience-refinement review state
 
 The repository is currently public. The active implementation remains a client-review build with unresolved public-release rights, canon, content, contact, hosting, and manual-QA decisions; repository visibility does not clear those blockers. The review branch `kiva/nari-experience-refinement` is stacked on open PR #12 so the doorway work remains intact and independently reviewable.

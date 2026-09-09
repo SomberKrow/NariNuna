@@ -6,6 +6,10 @@
 
 These are product requirements, not cleanup work after the visual design is finished.
 
+## Current security evidence
+
+The dated [main-branch security register](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md) records four affected development packages, no reported production dependency advisories, observed controls, and unverified areas at `fa83954` (9 September 2026). This document defines the contract; it does not certify the site secure or free from zero-days. `npm run check` currently omits an explicit advisory gate.
+
 ## Accessibility target
 
 Target WCAG 2.2 AA for public launch through automation **and** manual keyboard, screen-reader, zoom, contrast, reduced-motion, and multi-viewport review. A clean build or automated scan is not an accessibility audit.
@@ -25,7 +29,7 @@ Target WCAG 2.2 AA for public launch through automation **and** manual keyboard,
 - Visible focus is a 3px semantic outline with 4px offset.
 - No required content/action depends on hover, pointer precision, animation, color, or a secret shortcut.
 - Mobile navigation exposes `aria-expanded`/`aria-controls`, closes on Escape, and locks background scroll.
-- Before release, manually determine whether the full-width mobile panel requires focus containment and explicit focus return; these are not currently documented as implemented.
+- Mobile Tab/Shift+Tab containment, Escape focus return, and desktop-resize cleanup are implemented in `SiteHeader.vue`. Verify them with native keyboard/screen-reader and viewport QA before release.
 - External new-tab links name the destination and include a visible or screen-reader new-tab cue.
 - Fixed Ghostie UI never obscures the focused control.
 
@@ -78,7 +82,7 @@ At minimum test with one desktop and one mobile-capable screen-reader/browser co
 | Area | Required observation |
 |---|---|
 | Shell | Skip link reaches main; landmarks/headings are understandable |
-| Header | Current page, menu state, and theme pressed state are announced |
+| Header | Current page, menu state are announced; there is no current theme selector |
 | Media card | Destination/title is not redundantly or ambiguously announced |
 | Ghostie | Open/close is understandable; status does not spam |
 | Haven door | Each state heading/action is clear; final Discord link appears in sequence |
@@ -127,10 +131,11 @@ Current site behavior:
 - no account or login;
 - no analytics or advertising pixel;
 - no location request;
-- no personalization beyond local theme preference;
+- no persisted theme preference or account personalization;
+- session storage holds only the stale-chunk recovery pathname marker;
 - no embedded third-party player/feed;
 - no server-side storage;
-- outbound links only.
+- outbound platform links and three remote YouTube thumbnail URLs; thumbnail requests disclose network metadata even without an embedded player.
 
 Do not add analytics because it is free or common. Define purpose, exact events, legal/consent basis, retention, access, deletion, processor, and owner approval first.
 

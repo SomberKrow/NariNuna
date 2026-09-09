@@ -1,5 +1,11 @@
 # Governance and Decision Log
 
+## 2026-09-09 — main-branch documentation and security reconciliation
+
+Jake requested README and necessary documentation updates against current main, including known bugs and security/exploit status. Baseline: `fa83954f09938a864fd53f6a26739e50e2277970`, merged PR #18 including crop commit `45501ea`. Earlier ACTIVE/open/stacked entries below preserve the authority at the time of implementation; those branch descriptions are superseded by this observed merged baseline.
+
+This documentation-only review records passing automated checks, four affected development packages from npm audit, zero production dependency advisories, and unresolved manual/host/approval work. It does not apply dependency fixes, claim a zero-day, grant rights, approve release, merge, or deploy. See documents 17 and 36. Rollback is a normal revert of the documentation commit.
+
 ## 2026-09-09 — Nari-centered image framing
 
 Jake explicitly requested shifting the Home painting left and making Nari the focal point throughout character-led imagery. Authorized CSS crop refinement of the existing supplied-model-derived review paintings, with image-specific phone/desktop focal positions and preserved copy readability. No regenerated art, source modification, new asset rights, merge, or deployment is included.
