@@ -8,6 +8,7 @@ import { twitchUrl } from "@/data/socials";
 const menuOpen = ref(false);
 const moreMenu = ref<HTMLDetailsElement | null>(null);
 const menuToggle = ref<HTMLButtonElement | null>(null);
+const menuPanel = ref<HTMLElement | null>(null);
 const moreToggle = ref<HTMLElement | null>(null);
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
@@ -28,20 +29,43 @@ function closeMenu(): void {
   if (moreMenu.value) moreMenu.value.open = false;
 }
 
-function handleEscape(event: KeyboardEvent): void {
-  if (event.key !== "Escape") return;
-  const returnTo = menuOpen.value ? menuToggle.value : moreMenu.value?.open ? moreToggle.value : null;
-  closeMenu();
-  returnTo?.focus();
+function handleNavigationKeys(event: KeyboardEvent): void {
+  if (event.key === "Escape") {
+    const returnTo = menuOpen.value ? menuToggle.value : moreMenu.value?.open ? moreToggle.value : null;
+    closeMenu();
+    returnTo?.focus();
+    return;
+  }
+
+  if (event.key !== "Tab" || !menuOpen.value || !menuPanel.value || !menuToggle.value) return;
+
+  const panelLinks = [...menuPanel.value.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), summary')].filter(
+    (element) => element.getClientRects().length > 0
+  );
+  const focusable = [menuToggle.value, ...panelLinks];
+  const first = focusable[0];
+  const last = focusable.at(-1);
+  const active = document.activeElement;
+
+  if (!focusable.includes(active as HTMLElement)) {
+    event.preventDefault();
+    first?.focus();
+  } else if (event.shiftKey && active === first) {
+    event.preventDefault();
+    last?.focus();
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault();
+    first?.focus();
+  }
 }
 
 watch(menuOpen, (open) => {
   document.body.classList.toggle("nav-is-open", open);
 });
 
-window.addEventListener("keydown", handleEscape);
+window.addEventListener("keydown", handleNavigationKeys);
 onBeforeUnmount(() => {
-  window.removeEventListener("keydown", handleEscape);
+  window.removeEventListener("keydown", handleNavigationKeys);
   document.body.classList.remove("nav-is-open");
 });
 </script>
@@ -70,7 +94,7 @@ onBeforeUnmount(() => {
         <Menu v-else :size="22" aria-hidden="true" />
       </button>
 
-      <div id="primary-navigation" class="site-header__panel" :class="{ 'is-open': menuOpen }">
+      <div id="primary-navigation" ref="menuPanel" class="site-header__panel" :class="{ 'is-open': menuOpen }">
         <nav class="site-header__mobile-nav" aria-label="Haven rooms">
           <a
             v-for="item in mobileLinks"
@@ -223,6 +247,7 @@ onBeforeUnmount(() => {
   .site-header__mobile-nav > a[aria-current="page"] {
     background: color-mix(in srgb, var(--story-surface-soft) 88%, transparent);
     border-color: color-mix(in srgb, var(--storybook-gold) 62%, var(--story-line));
+    box-shadow: inset 0.2rem 0 var(--storybook-gold);
   }
 }
 @media (max-width: 30rem) {

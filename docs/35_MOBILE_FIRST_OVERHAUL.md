@@ -1,8 +1,8 @@
 # Mobile-first experience overhaul
 
-**Status:** `IMPLEMENTED` for client review; production clearance remains blocked
+**Status:** PR #16 `MERGED`; follow-up refinement `IMPLEMENTED` for client review; production clearance remains blocked
 **Date:** 2026-09-09
-**Branch:** `kiva/mobile-first-overhaul`
+**Branches:** `kiva/mobile-first-overhaul`; `kiva/mobile-refinement-pass-2`
 **Scope:** Phone composition, compact navigation, narrow-width reflow, and Resources wayfinding
 
 ## Outcome
@@ -25,6 +25,16 @@ Desktop and tablet composition remains owned by the existing layers at `48rem` a
 
 Resources continues directly into its three shelves. The redundant category jump links remain removed, while stable section IDs and the Nail Studio cross-link remain intact.
 
+## Continuation refinement
+
+The follow-up pass keeps the nine silhouettes intact and resolves the remaining small-control issues found during visual review:
+
+- Home social labels now render at 13px without truncation; the primary Haven action is 14px with a 48px target.
+- The open mobile directory contains Tab and Shift+Tab focus between its close control, eight room links, and Twitch link. Escape still closes the panel and returns focus to the menu control.
+- The current room gains an inset gold marker in addition to its existing `aria-current` state.
+- Haven knock count, progress labels, and stage copy now render at 12–13px on phones.
+- The optional floorboard reveal and hidden-room return link use 14px interactive text and at least 44px targets.
+
 ## Implementation contract
 
 | Concern | Implementation |
@@ -44,9 +54,9 @@ No route, dependency, approved copy, external destination, artwork record, canon
 
 Browser review covered all 11 HTML documents at `320×844`, `390×844`, `430×932`, `667×375`, and `768×1024` CSS pixels. Every route exposed exactly one H1 and no horizontal overflow. A separate `390×844` pass with the document root text size set to 200% produced the same result across all 11 documents.
 
-Interaction review at `390×844` confirmed all eight mobile menu destinations, Escape closure, and focus return to the menu trigger. The Haven doorway progressed through all three knocks, revealed the Discord action only in the open state, and returned to the first-knock state with focus restored after reset. Home was also reviewed at `1363×936`; no desktop overflow or opening-composition regression was observed. Meet Nari and Resources were inspected beyond their openings to confirm the journal and shelf treatments remain distinct.
+Interaction review at `390×844` confirmed all eight mobile menu destinations, Tab/Shift+Tab containment, Escape closure, and focus return to the menu trigger. The Haven doorway progressed through all three knocks, revealed the Discord action only in the open state, and returned to the first-knock state with focus restored after reset. Home was also reviewed at `1363×936`; no desktop overflow or opening-composition regression was observed. Meet Nari and Resources were inspected beyond their openings to confirm the journal and shelf treatments remain distinct.
 
-`npm run check` passes lint, strict type checking, 65 Vitest checks across 14 files, the production build, asset/budget validation, and direct preview verification for all 11 documents. Shared JS plus CSS is 70.97 KB gzip against the 120 KB budget. The largest route CSS remains Haven at 5.33 KB against 12 KB, and the largest combined route graph is Haven at 82.62 KB. Preview validation covers 137 essential identity/environment assets and all 27 supplied Prinny designs.
+`npm run check` passes lint, strict type checking, 66 Vitest checks across 14 files, the production build, asset/budget validation, and direct preview verification for all 11 documents. Shared JS plus CSS is 71.16 KB gzip against the 120 KB budget. The largest route CSS remains Haven at 5.36 KB against 12 KB, and the largest combined route graph is Haven at 82.84 KB. Preview validation covers 137 essential identity/environment assets and all 27 supplied Prinny designs.
 
 ## Remaining release work
 

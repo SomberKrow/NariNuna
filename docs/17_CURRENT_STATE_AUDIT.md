@@ -6,6 +6,8 @@
 
 > 2026-09-09 mobile delta: the client-review phone experience now gives each of the nine ordinary routes a different first-screen silhouette, reveals text labels for the Home social directory, uses a plain eight-room mobile menu, preserves route-specific interiors, and continues directly into the Resources shelves. Desktop remains unchanged. Validation and limitations are recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
 
+> 2026-09-09 mobile refinement delta: the follow-up branch preserves those compositions while increasing important Home/Haven control text, enforcing 44–48px targets, containing Tab focus inside the expanded mobile menu, and keeping Escape focus return. Evidence remains in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 **Repository:** `SomberKrow/NariNuna`  
 **Historical branch audited:** `agent/build-nari-haven`
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
@@ -14,7 +16,7 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
-Current GitHub state observed on 2026-09-09: PR #16 is open on `kiva/mobile-first-overhaul`; the repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
+Current GitHub state observed on 2026-09-09: PR #16 is merged into `main` at `c763366`; `kiva/mobile-refinement-pass-2` carries the active follow-up review. The repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
 
 ## 2026-09-02 environmental-continuity delta
 

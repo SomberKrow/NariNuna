@@ -1053,6 +1053,22 @@ async function closeFromStory(): Promise<void> {
     margin-block: 0.85rem 1.1rem;
   }
 
+  .haven-threshold__count {
+    font-size: 0.8rem;
+  }
+
+  .haven-threshold__progress-mark {
+    font-size: 0.75rem;
+  }
+
+  .haven-threshold__progress-label {
+    font-size: 0.8125rem;
+  }
+
+  .haven-threshold__stage-name {
+    font-size: 0.75rem;
+  }
+
   .haven-threshold__content h2 {
     font-size: clamp(1.75rem, 8vw, 2.25rem);
   }
