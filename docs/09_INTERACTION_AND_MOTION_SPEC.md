@@ -1,5 +1,7 @@
 # Interaction and Motion Specification
 
+> Current 2026-09-09 behavior: the shared room passage appears on phone, tablet, and desktop using normal previous/next document anchors. The expanded mobile directory contains Tab focus and closes with Escape/focus return; crossing into desktop clears the mobile scroll lock and returns focus to a visible navigation link when needed. PR #17 introduced progressive, reduced-motion-safe cross-document transitions. Historical interaction descriptions below are superseded where they differ; current implementation and evidence are recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 **Status:** Core interactions `IMPLEMENTED`; final manual/device review `PENDING`  
 **Owns:** Interaction state, timing, input parity, focus, delight limits, reduced-motion equivalence  
 **Implementation files:** `SiteHeader.vue`, `GhostieSummoner.vue`, `HavenDoor.vue`, `LooseFloorboard.vue`, `PrinnyCultPage.vue`, SCSS

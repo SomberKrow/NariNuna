@@ -14,7 +14,7 @@ This directory is the product specification, engineering manual, content contrac
 
 **Repository:** public `SomberKrow/NariNuna`
 **Default branch:** `main`
-**Current review branch:** `kiva/mobile-refinement-pass-2`; PR #17 is open and PR #16 is merged
+**Current review branch:** `kiva/journey-polish-desktop`; PRs #16 and #17 are merged. The shared guided passage now includes desktop; fresh visual QA is pending.
 **Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
 **Historical implementation snapshot described below:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
 

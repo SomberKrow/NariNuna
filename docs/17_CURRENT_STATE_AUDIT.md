@@ -1,5 +1,7 @@
 # Current-State Audit
 
+> 2026-09-09 shared-journey polish: `kiva/journey-polish-desktop` refines the passage on all nine ordinary routes and extends it to desktop/tablet. The mobile directory also gains viewport/safe-area polish and desktop-resize state cleanup. The automated gate passes; fresh rendered QA is blocked by browser access. See the latest evidence in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 > 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
 
 > 2026-09-08 refinement delta: the current stacked review branch strengthens the physical and editorial hierarchy of all ordinary content rooms, fixes the PR #12 keyed-action focus risk, pairs Resources shelf presentation with stable IDs, uses the existing demo layout field, and extends build accounting with route CSS and combined graph reporting. Automated evidence and current limitations are recorded in document 34.
@@ -18,7 +20,7 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
-Current GitHub state observed on 2026-09-09: PR #16 is merged into `main` at `c763366`; PR #17 on `kiva/mobile-refinement-pass-2` carries the active mobile and connected-journey follow-up review. The repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
+Current GitHub state observed on 2026-09-09: PRs #16 and #17 are merged into `main`. `kiva/journey-polish-desktop` carries the shared journey follow-up. The repository remains public. Historical branch/status statements below are dated evidence rather than current operating instructions.
 
 ## 2026-09-02 environmental-continuity delta
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ChevronDown, Menu, Radio, Sparkles, X } from "@lucide/vue";
-import { computed, onBeforeUnmount, ref, watch } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
 import { havenRoomNotes } from "@/data/journey";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
@@ -64,6 +64,17 @@ function handleNavigationKeys(event: KeyboardEvent): void {
   }
 }
 
+// Clear mobile-only state when the desktop navigation takes over.
+const desktopNavigation = window.matchMedia("(min-width: 56rem)");
+function handleNavigationLayout(): void {
+  if (!desktopNavigation.matches || !menuOpen.value) return;
+  const active = document.activeElement;
+  const focusWasInMenu = active === menuToggle.value || (active instanceof Node && menuPanel.value?.contains(active));
+  closeMenu();
+  if (focusWasInMenu) menuPanel.value?.querySelector<HTMLElement>(".site-header__main-nav a")?.focus();
+}
+onMounted(() => desktopNavigation.addEventListener("change", handleNavigationLayout));
+
 watch(menuOpen, (open) => {
   document.body.classList.toggle("nav-is-open", open);
 });
@@ -71,6 +82,7 @@ watch(menuOpen, (open) => {
 window.addEventListener("keydown", handleNavigationKeys);
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", handleNavigationKeys);
+  desktopNavigation.removeEventListener("change", handleNavigationLayout);
   document.body.classList.remove("nav-is-open");
 });
 </script>
@@ -232,7 +244,10 @@ onBeforeUnmount(() => {
   .site-header__main-nav,
   .site-header__more { display: none; }
   .site-header__panel {
-    min-height: calc(100svh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
+    max-height: calc(100dvh - var(--header-height));
+    overscroll-behavior: contain;
+    padding-block-end: max(1.5rem, env(safe-area-inset-bottom));
     align-content: start;
   }
   .site-header__mobile-nav {
@@ -280,6 +295,11 @@ onBeforeUnmount(() => {
     font-weight: 650;
     line-height: 1.3;
   }
+  .site-header__mobile-nav > a:hover {
+    background: var(--story-surface-soft);
+    border-color: var(--storybook-gold);
+  }
+  .site-header__mobile-nav > a[aria-current="page"]::after { display: none; }
   .site-header__mobile-nav > a[aria-current="page"] {
     background: color-mix(in srgb, var(--story-surface-soft) 88%, transparent);
     border-color: color-mix(in srgb, var(--storybook-gold) 62%, var(--story-line));
