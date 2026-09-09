@@ -8,6 +8,8 @@
 
 > 2026-09-09 mobile refinement delta: the follow-up branch preserves those compositions while increasing important Home/Haven control text, enforcing 44–48px targets, containing Tab focus inside the expanded mobile menu, and keeping Escape focus return. Evidence remains in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
 
+> 2026-09-09 connected-journey delta: PR #17 now joins the nine ordinary mobile rooms with a chapter-ordered previous/next passage, makes the expanded menu read as a room directory with existing notes, and progressively enhances real document changes with reduced-motion-safe transitions. The 404 and hidden room remain outside the journey. Evidence is recorded in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 **Repository:** `SomberKrow/NariNuna`  
 **Historical branch audited:** `agent/build-nari-haven`
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
@@ -16,7 +18,7 @@
 
 This audit separates confirmed implementation, historical evidence, product blockers, and recommendations. It is the starting point for engineering work; it does not outrank `00_PROJECT_SOURCE_OF_TRUTH.md`.
 
-Current GitHub state observed on 2026-09-09: PR #16 is merged into `main` at `c763366`; `kiva/mobile-refinement-pass-2` carries the active follow-up review. The repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
+Current GitHub state observed on 2026-09-09: PR #16 is merged into `main` at `c763366`; PR #17 on `kiva/mobile-refinement-pass-2` carries the active mobile and connected-journey follow-up review. The repository remains public. Historical branch/status statements below are retained as dated evidence rather than current operating instructions.
 
 ## 2026-09-02 environmental-continuity delta
 

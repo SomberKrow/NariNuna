@@ -8,11 +8,13 @@
 
 > 2026-09-09 mobile refinement delta: the follow-up pass improves Home action/label readability, contains keyboard focus inside the open mobile menu, strengthens its current-room treatment, and raises the Haven doorway and optional floorboard controls to readable mobile sizes. See the continuation record in [document 35](35_MOBILE_FIRST_OVERHAUL.md).
 
+> 2026-09-09 connected-journey delta: PR #17 connects the nine ordinary phone routes with an accessible previous/next passage, turns the expanded menu into a described Haven directory, and adds reduced-motion-safe document transitions without changing desktop composition or route scope. See [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 This directory is the product specification, engineering manual, content contract, and release record for Nari Nuna's Haven. It is not background reading. A change that contradicts this suite without an approved decision record is not ready to merge.
 
 **Repository:** public `SomberKrow/NariNuna`
 **Default branch:** `main`
-**Current review branch:** `kiva/mobile-refinement-pass-2`; PR #16 is merged
+**Current review branch:** `kiva/mobile-refinement-pass-2`; PR #17 is open and PR #16 is merged
 **Documentation baseline:** 2026-08-13; owner-requested authentic-artwork implementation update 2026-08-23
 **Historical implementation snapshot described below:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`
 

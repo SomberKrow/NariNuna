@@ -1,9 +1,9 @@
 # Mobile-first experience overhaul
 
-**Status:** PR #16 `MERGED`; follow-up refinement `IMPLEMENTED` for client review; production clearance remains blocked
+**Status:** PR #16 `MERGED`; PR #17 experiential follow-up `IMPLEMENTED` for client review; production clearance remains blocked
 **Date:** 2026-09-09
 **Branches:** `kiva/mobile-first-overhaul`; `kiva/mobile-refinement-pass-2`
-**Scope:** Phone composition, compact navigation, narrow-width reflow, and Resources wayfinding
+**Scope:** Phone composition, compact navigation, narrow-width reflow, Resources wayfinding, and room-to-room continuity
 
 ## Outcome
 
@@ -35,6 +35,16 @@ The follow-up pass keeps the nine silhouettes intact and resolves the remaining 
 - Haven knock count, progress labels, and stage copy now render at 12–13px on phones.
 - The optional floorboard reveal and hidden-room return link use 14px interactive text and at least 44px targets.
 
+## Connected journey refinement
+
+The next client-review pass turns the separate rooms into a continuous mobile visit without replacing their individual compositions:
+
+- Every ordinary public route ends with a compact, doorway-shaped passage showing the current room's place in the nine-stop journey.
+- Large previous/next-room anchors follow the site's actual chapter order: Home, Meet Nari, Streams, Nail Studio, Haven, Resources, Work With Nari, Story Time, and Support. Support returns visitors to Home.
+- The shared passage reuses the existing room notes rather than adding lore or promotional copy. Those notes now live in `src/data/journey.ts`, which is also the single ordered journey registry.
+- The expanded phone menu reads as a Haven directory: each room keeps a clear destination label and gains its existing one-line room note. The panel fills the available short-screen height and remains scrollable.
+- Same-origin document changes use a short progressive-enhancement transition. Reduced-motion preference disables cross-document navigation animation, and the 404 and hidden Prinny routes do not render the journey passage.
+
 ## Implementation contract
 
 | Concern | Implementation |
@@ -45,6 +55,7 @@ The follow-up pass keeps the nine silhouettes intact and resolves the remaining 
 | Interior ownership | Existing route SFC SCSS continues to own journal, desk, workbench, shelves, ledger, album, and gratitude-wall sections |
 | Social labels | `SocialDock.vue` provides visible text; `_polish.scss` keeps the desktop icon-only default; the Home phone composition reveals the labels |
 | Mobile navigation | Flat eight-room directory in `SiteHeader.vue`; the desktop primary/More hierarchy is unchanged |
+| Room continuity | `RoomPassage.vue` and `src/data/journey.ts` connect the nine ordinary public rooms in chapter order below `48rem` |
 | Resources | Category jump navigation removed; all shelves, records, disclosures, and stable section IDs retained |
 | Accessibility | One H1 per document, no horizontal overflow in the observed matrix, touch-sized menu controls, focus return, and existing reduced-motion behavior |
 
@@ -56,7 +67,9 @@ Browser review covered all 11 HTML documents at `320×844`, `390×844`, `430×93
 
 Interaction review at `390×844` confirmed all eight mobile menu destinations, Tab/Shift+Tab containment, Escape closure, and focus return to the menu trigger. The Haven doorway progressed through all three knocks, revealed the Discord action only in the open state, and returned to the first-knock state with focus restored after reset. Home was also reviewed at `1363×936`; no desktop overflow or opening-composition regression was observed. Meet Nari and Resources were inspected beyond their openings to confirm the journal and shelf treatments remain distinct.
 
-`npm run check` passes lint, strict type checking, 66 Vitest checks across 14 files, the production build, asset/budget validation, and direct preview verification for all 11 documents. Shared JS plus CSS is 71.16 KB gzip against the 120 KB budget. The largest route CSS remains Haven at 5.36 KB against 12 KB, and the largest combined route graph is Haven at 82.84 KB. Preview validation covers 137 essential identity/environment assets and all 27 supplied Prinny designs.
+The connected-journey browser review covered all nine ordinary routes at `320×844` and `390×844`. Every route rendered one H1, its correct progress state, 52–77px passage links, and no horizontal overflow. All nine were also rechecked at `390×844` with a 200% root text size; no passage or page overflow appeared. The expanded directory fit a `390×667` short screen, retained internal scrolling, and kept all room targets at roughly 80px. Tab/Shift+Tab containment, Escape closure/focus return, real document navigation from Home to Meet Nari, 404/Prinny exclusion, and desktop passage suppression at 1348px were observed.
+
+`npm run check` passes lint, strict type checking, 68 Vitest checks across 14 files, the production build, asset/budget validation, and direct preview verification for all 11 documents. Shared JS plus CSS is 72.80 KB gzip against the 120 KB budget. The largest route CSS remains Haven at 5.36 KB against 12 KB, and the largest combined route graph is Haven at 84.17 KB. Preview validation covers 137 essential identity/environment assets and all 27 supplied Prinny designs.
 
 ## Remaining release work
 
@@ -64,4 +77,4 @@ This is review evidence, not production clearance. The environment did not provi
 
 ## Rollback
 
-Revert the focused mobile-overhaul commit. The change is limited to the final phone stylesheet, the mobile directory/social-label markup, their source contracts, and this documentation; it requires no data migration or asset rollback.
+Revert the focused mobile-overhaul or experiential follow-up commit. The connected-journey layer is isolated to `RoomPassage.vue`, `src/data/journey.ts`, the shell/header/footer wiring, the progressive transition rules, tests, and this documentation; it requires no data migration or asset rollback.

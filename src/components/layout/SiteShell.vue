@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import RoomPassage from "./RoomPassage.vue";
 import SiteFooter from "./SiteFooter.vue";
 import SiteHeader from "./SiteHeader.vue";
 </script>
@@ -9,5 +10,6 @@ import SiteHeader from "./SiteHeader.vue";
   <main id="main-content" tabindex="-1">
     <slot />
   </main>
+  <RoomPassage />
   <SiteFooter />
 </template>

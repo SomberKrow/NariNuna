@@ -191,4 +191,20 @@ describe("client-feedback interaction contracts", () => {
     expect(header).not.toContain("index + 1");
     expect(header.match(/@click="closeMenu"/g)).toHaveLength(3);
   });
+
+  it("turns ordinary mobile routes into one accessible room-to-room journey", () => {
+    const shell = sourceAt("src/components/layout/SiteShell.vue");
+    const passage = sourceAt("src/components/layout/RoomPassage.vue");
+    const base = sourceAt("src/styles/_base.scss");
+
+    expect(shell).toContain("<RoomPassage />");
+    expect(passage).toContain('role="progressbar"');
+    expect(passage).toContain(':aria-valuetext="`${currentRoom.label}, room ${activeIndex + 1} of ${havenJourney.length}`"');
+    expect(passage).toContain('aria-label="Continue through Nari\'s Haven"');
+    expect(passage).toContain(':href="previousRoom.href"');
+    expect(passage).toContain(':href="nextRoom.href"');
+    expect(passage).toContain('@media (prefers-reduced-motion: reduce)');
+    expect(base).toContain("@view-transition");
+    expect(base).toContain("navigation: none");
+  });
 });

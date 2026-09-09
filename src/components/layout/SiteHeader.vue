@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ChevronDown, Menu, Radio, X } from "@lucide/vue";
+import { ChevronDown, Menu, Radio, Sparkles, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
+import { havenRoomNotes } from "@/data/journey";
 import { footerNavigation, primaryNavigation } from "@/data/navigation";
 import { twitchUrl } from "@/data/socials";
 
@@ -22,6 +23,10 @@ const mobileLinks = [...principalLinks, ...moreLinks];
 
 function isCurrent(href: string): boolean {
   return currentPath.value === href || (href === "/" && currentPath.value === "");
+}
+
+function roomNoteFor(href: string): string {
+  return havenRoomNotes[href] ?? "Another corner of the Haven.";
 }
 
 function closeMenu(): void {
@@ -95,6 +100,7 @@ onBeforeUnmount(() => {
       </button>
 
       <div id="primary-navigation" ref="menuPanel" class="site-header__panel" :class="{ 'is-open': menuOpen }">
+        <p class="site-header__mobile-context"><Sparkles :size="14" aria-hidden="true" /> The Haven, room by room</p>
         <nav class="site-header__mobile-nav" aria-label="Haven rooms">
           <a
             v-for="item in mobileLinks"
@@ -103,7 +109,10 @@ onBeforeUnmount(() => {
             :aria-current="isCurrent(item.href) ? 'page' : undefined"
             @click="closeMenu"
           >
-            <strong>{{ item.shortLabel ?? item.label }}</strong>
+            <span>
+              <strong>{{ item.shortLabel ?? item.label }}</strong>
+              <small>{{ roomNoteFor(item.href) }}</small>
+            </span>
           </a>
         </nav>
 
@@ -160,6 +169,7 @@ onBeforeUnmount(() => {
 }
 .brand-mark__emblem :deep(.ghostie-art) { --ghostie-size: 3.15rem; }
 .site-header__more { position: relative; }
+.site-header__mobile-context { display: none; }
 .site-header__mobile-nav { display: none; }
 .site-header__more > summary {
   display: flex;
@@ -221,14 +231,30 @@ onBeforeUnmount(() => {
 @media (max-width: 55.99rem) {
   .site-header__main-nav,
   .site-header__more { display: none; }
+  .site-header__panel {
+    min-height: calc(100svh - var(--header-height));
+    align-content: start;
+  }
   .site-header__mobile-nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.55rem;
   }
+  .site-header__mobile-context {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: var(--storybook-gold);
+    font-family: var(--font-detail);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
   .site-header__mobile-nav > a {
     display: flex;
-    min-height: 3.75rem;
+    min-height: 4.5rem;
     align-items: center;
     padding: 0.8rem 0.9rem;
     color: var(--story-copy);
@@ -238,11 +264,21 @@ onBeforeUnmount(() => {
     text-decoration: none;
     white-space: normal;
   }
-  .site-header__mobile-nav > a > strong {
+  .site-header__mobile-nav > a > span {
+    display: grid;
+    gap: 0.18rem;
+  }
+  .site-header__mobile-nav > a strong {
     font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 600;
     line-height: 1.1;
+  }
+  .site-header__mobile-nav > a small {
+    color: var(--story-muted);
+    font-size: 0.75rem;
+    font-weight: 650;
+    line-height: 1.3;
   }
   .site-header__mobile-nav > a[aria-current="page"] {
     background: color-mix(in srgb, var(--story-surface-soft) 88%, transparent);
@@ -262,7 +298,7 @@ onBeforeUnmount(() => {
 }
 @media (max-width: 24rem) {
   .site-header__mobile-nav { grid-template-columns: 1fr; }
-  .site-header__mobile-nav > a { min-height: 3.65rem; }
+  .site-header__mobile-nav > a { min-height: 4.25rem; }
 }
 .site-header__main-nav > a,
 .site-header__live-link,
