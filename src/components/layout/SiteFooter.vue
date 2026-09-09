@@ -2,22 +2,13 @@
 import { ArrowUpRight, Heart } from "@lucide/vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import { havenRoomNotes } from "@/data/journey";
 import { footerNavigation } from "@/data/navigation";
 import { socialLinks } from "@/data/socials";
 
 const featuredSocials = socialLinks.filter((link) => ["Twitch", "YouTube", "TikTok", "Instagram"].includes(link.label));
 const route = useRoute();
-const roomNotes: Record<string, string> = {
-  "/meet-nari/": "The warmth, the chaos, and the craft.",
-  "/streams/": "There's always one more good bit.",
-  "/nail-studio/": "A little glitter gets everywhere.",
-  "/haven/": "Leave the room a little kinder.",
-  "/resources/": "A few good things, chosen with care.",
-  "/work-with-nari/": "Good ideas start with a conversation.",
-  "/stories/": "Keep the moments. Make some more.",
-  "/support/": "Thank you for being part of the room."
-};
-const roomNote = computed(() => roomNotes[route.path] ?? "The little world next door.");
+const roomNote = computed(() => havenRoomNotes[route.path] ?? "The little world next door.");
 </script>
 
 <template>

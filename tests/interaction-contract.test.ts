@@ -75,6 +75,23 @@ describe("client-feedback interaction contracts", () => {
     expect(floorboard).not.toContain("suppliedPrinnyArtwork");
   });
 
+  it("keeps secondary mobile actions readable and touch-sized", () => {
+    const floorboard = sourceAt("src/components/haven/LooseFloorboard.vue");
+    const doorway = sourceAt("src/components/haven/HavenDoor.vue");
+    const cult = sourceAt("src/pages/PrinnyCultPage.vue");
+    const mobile = sourceAt("src/styles/_mobile-first.scss");
+
+    expect(floorboard).toContain("font-size: 0.875rem");
+    expect(floorboard).toContain("min-height: 2.75rem");
+    expect(doorway).toContain(".haven-threshold__count");
+    expect(doorway).toContain("font-size: 0.8rem");
+    expect(doorway).toContain("font-size: 0.8125rem");
+    expect(cult).toContain("font-size: 0.875rem");
+    expect(cult).toContain("min-height: 2.75rem");
+    expect(mobile).toContain("font-size: 0.8125rem");
+    expect(mobile).toContain("font-size: 0.875rem");
+  });
+
   it("keeps the hidden Prinny route tiny instead of restoring a cult system", () => {
     const cult = sourceAt("src/pages/PrinnyCultPage.vue");
 
@@ -157,17 +174,37 @@ describe("client-feedback interaction contracts", () => {
     expect(sourceAt("src/components/ui/MediaCard.vue")).toContain("transform: none");
   });
 
-  it("closes both navigation layers with Escape and link selection", () => {
+  it("closes both navigation layers and contains mobile keyboard focus", () => {
     const header = sourceAt("src/components/layout/SiteHeader.vue");
 
     expect(header).toContain('const moreMenu = ref<HTMLDetailsElement | null>(null)');
+    expect(header).toContain('const menuPanel = ref<HTMLElement | null>(null)');
     expect(header).toContain("if (moreMenu.value) moreMenu.value.open = false");
-    expect(header).toContain('if (event.key !== "Escape") return');
+    expect(header).toContain('if (event.key === "Escape")');
+    expect(header).toContain('event.key !== "Tab"');
+    expect(header).toContain("event.preventDefault()");
+    expect(header).toContain("focusable.includes(active as HTMLElement)");
     expect(header).toContain("returnTo?.focus()");
     expect(header).toContain('<details ref="moreMenu" class="site-header__more">');
     expect(header).toContain('class="site-header__mobile-nav"');
     expect(header).toContain('v-for="item in mobileLinks"');
     expect(header).not.toContain("index + 1");
     expect(header.match(/@click="closeMenu"/g)).toHaveLength(3);
+  });
+
+  it("turns ordinary mobile routes into one accessible room-to-room journey", () => {
+    const shell = sourceAt("src/components/layout/SiteShell.vue");
+    const passage = sourceAt("src/components/layout/RoomPassage.vue");
+    const base = sourceAt("src/styles/_base.scss");
+
+    expect(shell).toContain("<RoomPassage />");
+    expect(passage).toContain('role="progressbar"');
+    expect(passage).toContain(':aria-valuetext="`${currentRoom.label}, room ${activeIndex + 1} of ${havenJourney.length}`"');
+    expect(passage).toContain('aria-label="Continue through Nari\'s Haven"');
+    expect(passage).toContain(':href="previousRoom.href"');
+    expect(passage).toContain(':href="nextRoom.href"');
+    expect(passage).toContain('@media (prefers-reduced-motion: reduce)');
+    expect(base).toContain("@view-transition");
+    expect(base).toContain("navigation: none");
   });
 });

@@ -57,7 +57,7 @@ const isOpen = ref(false);
   background: transparent;
   border: 1px dashed var(--story-line);
   border-radius: 0.45rem;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 720;
   cursor: pointer;
 }
@@ -93,7 +93,7 @@ const isOpen = ref(false);
   margin: 0 0 0.2rem;
   color: var(--story-accent);
   font-family: var(--font-detail);
-  font-size: 0.59rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -102,17 +102,17 @@ const isOpen = ref(false);
 .hidden-floorboard__reveal p:not(.hidden-floorboard__eyebrow) {
   margin: 0 0 0.55rem;
   color: var(--story-muted);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
 .hidden-floorboard__descent {
   display: inline-flex;
-  min-height: 2.4rem;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.35rem;
   color: var(--story-copy);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 750;
   text-decoration: none;
 }

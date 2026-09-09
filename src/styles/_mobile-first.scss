@@ -171,7 +171,7 @@
   .haven-landing .social-dock__label {
     display: block;
     overflow: hidden;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -188,6 +188,11 @@
   .haven-landing__meet {
     width: auto;
     min-height: 2.75rem;
+  }
+
+  .haven-landing__actions > .button {
+    min-height: 3rem;
+    font-size: 0.875rem;
   }
 
   .haven-landing__meet {

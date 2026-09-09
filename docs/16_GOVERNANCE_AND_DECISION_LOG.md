@@ -1,5 +1,17 @@
 # Governance and Decision Log
 
+## 2026-09-09 — connected mobile journey
+
+Jake clarified that improved responsive layout is not sufficient by itself: the phone site should feel like one experience. PR #17 may connect the existing ordinary rooms with chapter-ordered, direct-document previous/next navigation; reuse the approved room notes in the expanded directory; and add restrained progressive cross-document transitions with a reduced-motion equivalent. This does not authorize new routes, lore, assets, external destinations, hidden-room promotion, desktop recomposition, merge, deployment, or release.
+
+**Status:** `ACTIVE`
+
+## 2026-09-09 — mobile readability and focus continuation
+
+After PR #16 merged, Jake authorized a focused continuation pass from the new `main` head. The follow-up may improve mobile control readability, touch sizing, current-room wayfinding, and keyboard containment without replacing the approved route silhouettes. It does not authorize new routes/content/assets, desktop redesign, deployment, production release, or changes to rights and approval blockers.
+
+**Status:** `ACTIVE`
+
 ## 2026-09-09 — distinct mobile room compositions
 
 Jake supplied the mobile-overhaul continuation brief and authorized implementation and review evidence on PR #16. The phone layer may replace the repeated caption-card treatment with route-specific silhouettes, simplify the mobile directory, expose text labels beside Home social icons, preserve direct Resources shelves, update behavior contracts, and synchronize current documentation. This does not authorize merging PR #16, deployment, public release, new canon/content, new asset rights, or a change in the existing release blockers.

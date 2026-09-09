@@ -39,11 +39,11 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 .tiny-easter-egg__back {
   display: inline-flex;
   width: fit-content;
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.35rem;
   color: var(--text-muted);
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 750;
   text-decoration: none;
 }
