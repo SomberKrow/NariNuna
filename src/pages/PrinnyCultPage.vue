@@ -27,7 +27,8 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 <style scoped>
 .tiny-easter-egg {
   display: grid;
-  width: min(100% - 2rem, 44rem);
+  width: min(calc(100% - 2rem), 44rem);
+  max-width: 100%;
   min-height: calc(100svh - var(--header-height));
   align-content: center;
   gap: 1rem;
@@ -54,6 +55,8 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 
 .tiny-easter-egg__card {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
   justify-items: start;
   padding: clamp(1.25rem, 5vw, 2.4rem);
   color: var(--story-copy);
@@ -61,6 +64,11 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
   border: 1px solid var(--story-line);
   border-radius: 0.8rem;
   box-shadow: 0 1rem 3rem rgb(15 9 13 / 16%);
+}
+
+.tiny-easter-egg__card > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .tiny-easter-egg__card > img {
@@ -73,6 +81,7 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
   margin-block-end: 0.65rem;
   color: var(--story-copy);
   font-size: clamp(2.1rem, 9vw, 3.5rem);
+  overflow-wrap: anywhere;
 }
 
 .tiny-easter-egg__card > p:not(.eyebrow) {
@@ -87,6 +96,8 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 }
 
 .tiny-easter-egg__card .button {
+  width: 100%;
+  max-width: 100%;
   margin-block-start: 0.4rem;
 }
 </style>

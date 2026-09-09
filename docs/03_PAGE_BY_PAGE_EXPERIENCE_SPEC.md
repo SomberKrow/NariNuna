@@ -2,6 +2,8 @@
 
 > 2026-09-07 implementation delta: [integrated visual refinement](34_DISTINCTIVE_UI_REFINEMENT.md) records current layouts, style ownership, content disclosures, and observed QA. Earlier implementation descriptions below are historical where superseded; product and release requirements remain in force.
 
+> 2026-09-08 mobile delta: below `48rem`, ordinary chapter openings use an art-first composition with overlapping copy, and Resources proceeds directly from its opening into the three shelves without category jump links. Desktop composition, shelf IDs, content order, actions, and publication gates are unchanged. See [document 35](35_MOBILE_FIRST_OVERHAUL.md).
+
 **Status:** `IMPLEMENTED` foundation; final content/art acceptance `BLOCKED`  
 **Owns:** Page purpose, sequence, dependencies, responsive behavior, failure state, and acceptance  
 **Implementation files:** `src/pages/*.vue`, route HTML documents, page selectors in `src/styles/_pages.scss`  

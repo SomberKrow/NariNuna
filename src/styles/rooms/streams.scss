@@ -85,7 +85,11 @@
     border-inline-start: 0;
   }
   .broadcast-tuning {
+    display: grid;
     gap: 0.8rem 1.5rem;
+    padding-block: 1.35rem;
   }
+  .broadcast-tuning > div { align-items: flex-start; }
+  .broadcast-tuning .text-link { width: 100%; justify-content: space-between; border-top: 1px solid var(--story-line); }
   .clip-desk__next { margin-inline-start: 0; }
 }

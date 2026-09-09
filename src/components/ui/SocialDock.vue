@@ -52,6 +52,7 @@ import { nariLinks } from "@/data/socials";
           <circle cx="12" cy="13.4" r="1.1" fill="currentColor" stroke="none" />
         </g>
       </svg>
+      <span class="social-dock__label">{{ link.label }}</span>
     </a>
   </nav>
 </template>

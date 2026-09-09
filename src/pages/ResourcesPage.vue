@@ -28,16 +28,11 @@ const resourceShelves = [
   </section>
 
   <section class="resource-library room-section page-width" aria-labelledby="shelf-title">
-    <aside class="resource-library__index">
+    <header class="resource-library__index">
       <p class="room-kicker">The collection</p>
       <h2 id="shelf-title">A little less searching.<br /><em>A little more making.</em></h2>
-      <nav aria-label="Resource categories">
-        <a v-for="(shelf, index) in resourceShelves" :key="shelf.id" :href="`#${shelf.id}`">
-          <span aria-hidden="true">0{{ index + 1 }}</span>{{ shelf.category.title }}
-        </a>
-      </nav>
       <p class="room-caption">Nari is choosing her first recommendations. Each one will include a reason it belongs here.</p>
-    </aside>
+    </header>
 
     <div class="resource-library__shelves">
       <article v-for="(shelf, index) in resourceShelves" :id="shelf.id" :key="shelf.id" class="resource-shelf">

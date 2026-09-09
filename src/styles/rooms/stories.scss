@@ -41,9 +41,10 @@
   margin: 1rem auto 0;
 }
 @media (max-width: 47.99rem) {
-  .memory-album__pages { padding: 3.5rem 1rem 1rem 2rem; }
-  .memory-album__pages::before { left: 1.25rem; }
+  .memory-album__pages { padding: 2.75rem 0.8rem 0.8rem 1.5rem; }
+  .memory-album__pages::before { left: 0.95rem; }
   .memory-album__pages > li {
-    padding-bottom: 2rem;
+    padding: 1.15rem 0 1.65rem;
   }
+  .memory-album__closing { font-size: 1.2rem; line-height: 1.45; }
 }

@@ -2,7 +2,7 @@
 
 **Status:** `IMPLEMENTED` foundation; final contrast/art review `PENDING`  
 **Owns:** Exact tokens, typography, layout, breakpoints, component semantics, visual state rules  
-**Implementation files:** `src/styles/_tokens.scss`, `_base.scss`, `_components.scss`, `_pages.scss`, `_responsive.scss`  
+**Implementation files:** `src/styles/_tokens.scss`, `_base.scss`, `_components.scss`, `_pages.scss`, `_responsive.scss`, `_mobile-first.scss`
 **Update trigger:** Token, primitive, component, breakpoint, type, focus, or shared state changes
 
 ## Design-system principles
@@ -22,9 +22,10 @@
 | `_components.scss` | Shared shell, navigation, buttons, cards, theme, media, Ghostie | One-off page sections |
 | `_pages.scss` | Route composition and page-level section patterns | Token definitions |
 | `_responsive.scss` | Cross-system breakpoint recomposition and preferences | A duplicate desktop system |
+| `_mobile-first.scss` | Final phone-only art-first chapter and density authority below `48rem` | Desktop/tablet composition or component behavior |
 | `main.scss` | Import order only | Actual styles |
 
-Import order is tokens → base → components → pages → responsive. Changing it can change cascade behavior and requires visual regression review.
+The legacy and room layers retain their existing order; `_mobile-first.scss` is the final phone-only authority after `_face-safe.scss`. Changing this order can change cascade behavior and requires visual regression review. See [`35_MOBILE_FIRST_OVERHAUL.md`](35_MOBILE_FIRST_OVERHAUL.md).
 
 ## Theme color tokens
 

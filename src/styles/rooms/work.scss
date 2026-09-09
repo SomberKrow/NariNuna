@@ -210,7 +210,7 @@
 }
 @media (max-width: 39.99rem) {
   .correspondence__margin {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 8rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 7rem);
     gap: 0.75rem;
   }
   .correspondence__margin .room-kicker {
@@ -228,6 +228,10 @@
   .collaboration-letter dd {
     margin-left: 0;
   }
+  .collaboration-letter { padding: 1.1rem; }
+  .collaboration-letter h2 { font-size: clamp(2rem, 9vw, 2.55rem); }
+  .collaboration-letter__fits { margin-block: 1.4rem; }
+  .collaboration-letter__fits > div { padding-block: 1rem; }
   .collaboration-letter__masthead {
     display: grid;
     justify-content: start;
@@ -236,6 +240,7 @@
   .public-directory__links {
     grid-template-columns: minmax(0, 1fr);
   }
+  .public-directory__links > a { min-height: 5.5rem; padding: 1.1rem 0.85rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .public-directory__links > a {

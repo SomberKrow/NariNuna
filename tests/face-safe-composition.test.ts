@@ -7,11 +7,12 @@ function sourceAt(path: string): string {
 }
 
 describe("Nari face-safe composition contract", () => {
-  it("loads the face-safe layer after every existing composition layer", () => {
+  it("loads face-safe after legacy compositions and the phone authority last", () => {
     const main = sourceAt("src/styles/main.scss").trim();
 
     expect(main).toContain('@use "chapters";');
-    expect(main.endsWith('@use "face-safe";')).toBe(true);
+    expect(main.indexOf('@use "face-safe";')).toBeGreaterThan(main.indexOf('@use "chapters";'));
+    expect(main.endsWith('@use "mobile-first";')).toBe(true);
   });
 
   it("covers every page whose hero painting explicitly contains Nari", () => {
@@ -94,5 +95,20 @@ describe("Nari face-safe composition contract", () => {
     expect(styles).not.toContain("room-opening--resources");
     expect(styles).not.toContain("not-found");
     expect(styles).not.toContain("prinny-cult");
+  });
+
+  it("gives each ordinary phone route a distinct opening silhouette", () => {
+    const styles = sourceAt("src/styles/_mobile-first.scss");
+
+    expect(styles).toContain("@media (max-width: 47.99rem)");
+    expect(styles).toContain(".haven-landing__scene");
+    expect(styles).toContain(".character-intro--integrated");
+    expect(styles).toContain(".studio-opening");
+    expect(styles).toContain(".haven-heart");
+    expect(styles).toContain(".room-opening--work");
+    expect(styles).toContain(".room-opening--resources");
+    expect(styles).toContain(".story-opening--painted");
+    expect(styles).toContain(".support-welcome--painted");
+    expect(styles).toContain("rooms, not one caption card");
   });
 });
