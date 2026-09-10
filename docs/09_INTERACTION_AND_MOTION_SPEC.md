@@ -81,16 +81,13 @@ The adjacent story copy transitions independently from a stable action region. K
 
 ### Loose floorboard
 
-States: untouched → first knock → second knock → gatekeeper listening → password accepted.
+States: closed → open → closed.
 
-- One visible native button advances exactly three capped floorboard knocks.
-- A supplied original Prinny rises from the illustrated boards as a decorative state cue.
-- The listening gatekeeper presents three labelled native password buttons.
-- Incorrect answers announce a harmless, polite explanation without losing progress.
-- Only `DOOD` accepts the password; only the accepted state renders the normal hidden-route link.
-- Text changes in an `aria-live="polite"` region.
-- No hover, timing, precision, or sound is required.
-- The interaction is optional and contains no essential page action.
+- One native button toggles the optional reveal and exposes `aria-expanded` and `aria-controls`.
+- The plank lifts slightly on activation; a warm recess reveals the existing Prinny and a normal hidden-room link.
+- Enter, Space, pointer, and touch use the same toggle. Closing removes the hidden link from the tab order.
+- Reduced motion removes the plank transform and transition. No hover, timing, password, sound, or extra knocks are required.
+- This is a playful entrance, not access control; the hidden route remains publicly addressable.
 
 ### Prinny initiation and eleventh offering
 

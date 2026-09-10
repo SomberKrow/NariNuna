@@ -2,7 +2,7 @@
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { ArrowRight, ArrowUpRight, Handshake } from "@lucide/vue";
-import { environmentArtwork } from "@/data/artwork";
+import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { nariLinks } from "@/data/socials";
 
 const fits = [
@@ -29,7 +29,7 @@ const fits = [
   <section id="collaboration-note" class="correspondence room-section page-width" aria-labelledby="letter-title">
     <div class="correspondence__margin">
       <p class="room-kicker">From the writing desk</p>
-      <img src="/media/work/work-contact-vignette.svg" width="1000" height="800" alt="An illustrated letter, lavender envelope, pen, cocoa, and phone arranged for a thoughtful conversation" />
+      <ResponsiveArtwork :artwork="storybookPostcards.work" :fallback-width="480" sizes="(min-width: 64rem) 336px, (min-width: 40rem) 224px, 112px" alt="Nari writing a letter at her warm autumn desk, with a little Ghostie beside her" />
       <p>Clear expectations.<br />Room for personality.</p>
       <span class="correspondence__signature" aria-hidden="true">Nari Nuna</span>
     </div>

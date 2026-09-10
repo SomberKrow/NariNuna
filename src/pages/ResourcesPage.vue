@@ -4,7 +4,6 @@ import { heroSources } from "@/data/artworkDelivery";
 import { BookMarked, HeartHandshake } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { resourceCategories } from "@/data/content";
-import { resourceDemoEntries } from "@/data/resources";
 
 const resourceShelves = [
   { id: "nail-desk", category: resourceCategories[0], art: storybookPostcards.nails },
@@ -47,20 +46,8 @@ const resourceShelves = [
     </div>
   </section>
 
-  <section class="resource-review page-width" aria-label="Recommendation policy and review samples">
+  <section class="resource-review page-width" aria-label="Recommendation policy">
     <div class="shelf-policy"><BookMarked :size="24" aria-hidden="true" /><div><h2>A recommendation should earn its place.</h2><p>Nari's picks will include her own context and clear disclosures for any paid or affiliate relationship.</p></div></div>
-    <!-- Keep the existing client density samples available without presenting them as recommendations. -->
-    <details class="resource-samples">
-      <summary>Client preview: sample shelf entries <span>Demonstration content</span></summary>
-      <p class="resource-samples__disclosure">Demonstration only: these entries preview layout and content rhythm; they are not endorsements, sponsorships, or final Nari recommendations.</p>
-      <div class="resource-samples__list">
-        <article v-for="entry in resourceDemoEntries" :key="entry.id" :class="`resource-samples__entry--${entry.layout}`">
-          <p class="room-kicker">{{ entry.category }} · Demo entry</p>
-          <h3>{{ entry.title }}</h3><p>{{ entry.summary }}</p>
-          <ul><li v-for="detail in entry.details" :key="detail">{{ detail }}</li></ul>
-        </article>
-      </div>
-    </details>
   </section>
 </template>
 
