@@ -175,7 +175,7 @@
 @media (max-width: 47.99rem) {
   .nari-journal__opening { margin-bottom: 1.5rem; }
   .nari-journal__surface {
-    padding: 3.25rem 0.85rem 0.8rem 1.15rem;
+    padding: 3.5rem 1.25rem 1rem 1.5rem;
     background:
       linear-gradient(90deg, transparent 0 1rem, color-mix(in srgb, var(--rose) 24%, transparent) 1rem calc(1rem + 1px), transparent calc(1rem + 1px)),
       var(--storybook-paper);
@@ -190,34 +190,39 @@
   .journal-entry {
     grid-template-columns: minmax(0, 1fr) 5.75rem;
     column-gap: 0.5rem;
-    row-gap: 0.8rem;
+    row-gap: 1rem;
     min-height: 0;
-    padding-block: 1.35rem;
+    padding-block: 1.75rem;
   }
   .journal-entry__marker {
-    grid-column: 1 / -1;
+    grid-column: 1;
     display: flex;
     align-items: baseline;
-    gap: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   .journal-entry__marker > span {
     font-size: 1.5rem;
   }
   .journal-entry__ghostie {
+    grid-column: 2;
+    grid-row: 1;
     --ghostie-size: 5.75rem;
     width: 5.75rem;
     height: 6.5rem;
     margin-inline-end: -0.2rem;
   }
   .journal-entry__copy h3 { font-size: clamp(1.55rem, 7vw, 1.9rem); }
-  .journal-entry__copy p { font-size: 0.9rem; line-height: 1.55; }
+  .journal-entry__copy { grid-column: 1 / -1; }
+  .journal-entry__copy h3 { margin-bottom: 0.8rem; }
+  .journal-entry__copy p { font-size: 0.95rem; line-height: 1.7; }
   .journal-entry:nth-child(2) .journal-entry__copy {
     padding: 0;
   }
   .nari-promise-note {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
-    padding: 1rem;
+    gap: 1.25rem;
+    padding: 1.5rem;
     margin-top: 2rem;
     border-radius: 0.85rem 0.85rem 0.35rem 0.35rem;
   }
@@ -228,6 +233,9 @@
     min-height: 0;
     margin-inline: auto;
   }
+  .nari-promise-note > div > p:not(.room-kicker),
+  .nari-promise-note dd { line-height: 1.7; }
+  .nari-promise-note__details { gap: 1.5rem; }
   .nari-promise-note h2 { font-size: clamp(2rem, 9vw, 2.65rem); }
 }
 @media (max-width: 24rem) {

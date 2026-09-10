@@ -1,24 +1,13 @@
 .memory-album__pages {
   position: relative;
   list-style: none;
-  padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 7vw, 6rem);
+  padding: clamp(1.25rem, 4vw, 3rem);
   margin: 0;
   color: var(--ink);
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--plum) 86%, var(--bg-inset)) 0 clamp(1.7rem, 4vw, 3.8rem), transparent clamp(1.7rem, 4vw, 3.8rem)),
-    var(--storybook-paper);
+  background: var(--storybook-paper);
   border: 1px solid color-mix(in srgb, var(--line-dark) 56%, transparent);
   border-radius: 0.35rem 0.8rem 0.8rem 0.35rem;
   box-shadow: 0 1.4rem 3.3rem rgb(13 7 11 / 23%), inset 1rem 0 1.4rem rgb(62 32 47 / 8%);
-}
-.memory-album__pages::before {
-  position: absolute;
-  top: 1rem;
-  bottom: 1rem;
-  left: clamp(2.25rem, 5vw, 4.7rem);
-  width: 1px;
-  background: color-mix(in srgb, var(--rose) 44%, transparent);
-  content: "";
 }
 .memory-album__pages > li {
   position: relative;
@@ -41,8 +30,7 @@
   margin: 1rem auto 0;
 }
 @media (max-width: 47.99rem) {
-  .memory-album__pages { padding: 2.75rem 0.8rem 0.8rem 1.5rem; }
-  .memory-album__pages::before { left: 0.95rem; }
+  .memory-album__pages { padding: 1.25rem 1rem; }
   .memory-album__pages > li {
     padding: 1.15rem 0 1.65rem;
   }

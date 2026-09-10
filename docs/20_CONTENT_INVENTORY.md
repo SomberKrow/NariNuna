@@ -105,6 +105,8 @@ Never migrate generated nail examples into this inventory as production work.
 
 ## Resources
 
+2026-09-10 review refinement: the client-preview sample section and its runtime import are removed. The three curating shelves and recommendation policy remain. Historical demo data is retained as an unused fixture, not bundled page content.
+
 | Content | Current state | Target |
 |---|---|---|
 | Three categories | `curating` | Approved item records |
@@ -114,6 +116,8 @@ Never migrate generated nail examples into this inventory as production work.
 Every future resource needs why, best-for, relationship, disclosure, review date, source, and publish state.
 
 ## Work With Nari
+
+2026-09-10 review refinement: the writing-desk margin uses the existing responsive painted correspondence postcard instead of `work-contact-vignette.svg`. No new identity art or contact claim was introduced.
 
 | Content | Current state | Blocker/action |
 |---|---|---|

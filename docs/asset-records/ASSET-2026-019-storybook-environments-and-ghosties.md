@@ -20,3 +20,7 @@ Five new original storybook companions—shy, chaos, cozy, nails, and heart—li
 ## Ownership and release boundary
 
 All owner-supplied-model appearances inherit the unresolved original model artist, derivative/tool-use, website publishing, credit, and Nari likeness approvals described in `ASSET-2026-018`. Final adoption of environment and companion visuals remains subject to owner/Nari review. Do not infer franchise rights, portfolio authenticity, canon, schedules, metrics, or consent from generated setting artwork. Complete actual prompts and generation references are recorded in `docs/24_STORYBOOK_ART_DIRECTION_AND_PROMPTS.md`.
+
+## 2026-09-10 correspondence reuse
+
+The existing work-correspondence postcard now also appears beside the collaboration letter via `ResponsiveArtwork`, using existing content-addressed WebP candidates, intrinsic dimensions, and lazy loading. No new master, derivative, crop, or rights claim is introduced. The former SVG source is retained for rollback. Existing review and public-release restrictions continue to apply.

@@ -113,7 +113,8 @@ describe("client-feedback interaction contracts", () => {
     expect(work).toContain('v-for="(link, index) in nariLinks"');
     expect(work).toContain('aria-label="Nari\'s public links"');
     expect(work).toContain('href="#nari-links"');
-    expect(work).toContain("work-contact-vignette.svg");
+    expect(work).toContain('artwork="storybookPostcards.work"');
+    expect(work).not.toContain("work-contact-vignette.svg");
     expect(work).toContain("Read the collaboration note");
     expect(work).not.toContain("Linktree");
     expect(links).toContain("export const nariLinks");
@@ -146,20 +147,12 @@ describe("client-feedback interaction contracts", () => {
     }
   });
 
-  it("renders clearly labelled Resources demonstration density from data", () => {
+  it("keeps Resources recommendations free of client preview samples", () => {
     const page = sourceAt("src/pages/ResourcesPage.vue");
-    const data = sourceAt("src/data/resources.ts");
-
-    expect(page).toContain("resourceDemoEntries");
-    expect(page).toContain("Demo entry");
-    expect(page).toContain("Demonstration only:");
+    expect(page).not.toContain("resourceDemoEntries");
+    expect(page).not.toContain("resource-samples");
+    expect(page).toContain("shelf-policy");
     expect(page).not.toContain('aria-label="Resource categories"');
-    expect(page).not.toContain(':href="`#${shelf.id}`"');
-    expect(data).toContain('layout: "compact"');
-    expect(data).toContain('layout: "standard"');
-    expect(data).toContain('layout: "wide"');
-    expect(data).not.toContain("http://");
-    expect(data).not.toContain("https://");
   });
 
   it("keeps icon buttons uniform and disables new motion when reduced motion is requested", () => {

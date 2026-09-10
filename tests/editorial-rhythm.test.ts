@@ -23,16 +23,11 @@ describe("room reading order", () => {
     expect(html).not.toMatch(/<iframe|<video|autoplay|No pretend live schedule/);
   });
 
-  it("keeps demo entries behind a closed, explicitly labelled disclosure", async () => {
+  it("omits client samples while retaining the honest curating state", async () => {
     const html = await renderToString(createSSRApp({ render: () => h(ResourcesPage) }));
-    const details = html.match(/<details\b[^>]*>([\s\S]*?)<\/details>/)?.[0];
-    expect(details).toBeDefined();
-    expect(details).not.toMatch(/<details[^>]*\bopen\b/);
-    expect(details).toContain("Demonstration only:");
-    expect(details).toContain("Demo entry");
-    expect(details).toContain("Practice-station reset");
-    expect(details).not.toMatch(/href=/);
-    expect(html.indexOf("Nari is choosing her first recommendations")).toBeLessThan(html.indexOf("<details"));
+    expect(html).not.toMatch(/Client preview|Demonstration only:|Demo entry|Practice-station reset/);
+    expect(html).toContain("Nari is choosing her first recommendations");
+    expect(html).toContain("A recommendation should earn its place.");
   });
 
   it("puts free support before the wishlist and preserves the boundary", async () => {

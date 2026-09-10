@@ -55,43 +55,6 @@
   isolation: isolate;
 }
 
-:where(body[data-route="haven"] .haven-entry)::before {
-  position: absolute;
-  z-index: -1;
-  top: clamp(0.65rem, 2vw, 1.35rem);
-  right: var(--page-gutter);
-  bottom: clamp(0.65rem, 2vw, 1.35rem);
-  left: var(--page-gutter);
-  background: var(--room-material);
-  border-block: 1px solid var(--room-material-line);
-  box-shadow: inset 0 1.4rem 2.8rem var(--room-material-shadow);
-  content: "";
-  opacity: 0.58;
-  pointer-events: none;
-}
-
-/* Haven: a low-contrast rug lattice that darkens toward the doorway. */
-body[data-route="haven"] #main-content {
-  --room-material:
-    repeating-linear-gradient(45deg, transparent 0 3.9rem, var(--room-material-line) 3.9rem calc(3.9rem + 1px)),
-    repeating-linear-gradient(-45deg, transparent 0 3.9rem, color-mix(in srgb, var(--rose) 8%, transparent) 3.9rem calc(3.9rem + 1px)),
-    linear-gradient(180deg, color-mix(in srgb, var(--bg-raised) 68%, transparent), color-mix(in srgb, var(--bg-inset) 88%, transparent));
-}
-
-body[data-route="haven"] .haven-entry::before {
-  opacity: 0.76;
-  box-shadow: inset 0 3rem 5rem color-mix(in srgb, var(--bg-inset) 86%, transparent);
-}
-
-@media (max-width: 42rem) {
-  :where(
-    body[data-route="haven"] .haven-entry)::before {
-    right: 0.55rem;
-    left: 0.55rem;
-    opacity: 0.42;
-  }
-}
-
 /*
  * Open noninteractive content and let type, rules, artwork, and each
  * route's signature device carry hierarchy. Interactive targets retain their

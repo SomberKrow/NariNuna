@@ -253,3 +253,11 @@ If those answers exist only in someone's memory, the system is not finished.
 ## 2026-09-05 authorized performance implementation
 
 Jake requested application of the attached performance review to existing PR #9. This authorizes resizing/compression and delivery changes to the retained artwork within the existing private-review scope. Implemented responsive hashed copies, matching route preloads, deferred doorway loading, immutable caching only for new content-addressed paths, automated byte budgets, and guarded stale-chunk recovery. No visual redesign, source destruction, dependency migration, budget exception, new identity/content/rights approval, merge, or production release. See `33_RESPONSIVE_ARTWORK_PERFORMANCE.md`; all unresolved client/public-release approvals retain their previous state.
+
+## 2026-09-10 owner review refinements
+
+Jake requested a new review PR from main: loosen Meet Nari mobile copy; remove the Haven charter's lower protrusion and doorway lattice; make the optional floorboard reveal more tactile; remove Resources client samples; replace the Work margin SVG with painted artwork; remove Story Time's left stripe at every width. This authorizes the focused implementation and PR, not merge or production deployment. Existing work-correspondence artwork is reused; no new canonical art or public claims are adopted.
+
+Validation: clean `npm ci` and `npm run check` passed locally on Node 24.19.0: lint, typecheck, 68 tests in 14 files, build/asset/performance validators, and 11 served HTML documents with 137 essential assets and 27 supplied Prinny designs. Browser visual/keyboard/reduced-motion verification remains pending: Chromium was absent and its download timed out. Inspect 320/390/768/wide, floorboard open/close, and the five changed pages in the PR preview.
+
+Rollback: revert the focused refinement commit. Existing source artwork and historical demo fixture remain retained.

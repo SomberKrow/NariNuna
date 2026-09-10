@@ -7,7 +7,7 @@ const isOpen = ref(false);
 </script>
 
 <template>
-  <aside class="hidden-floorboard" aria-label="A small hidden joke beneath the Haven floor">
+  <aside class="hidden-floorboard" :class="{ 'hidden-floorboard--open': isOpen }" aria-label="A small hidden joke beneath the Haven floor">
     <button
       class="hidden-floorboard__trigger"
       type="button"
@@ -15,7 +15,7 @@ const isOpen = ref(false);
       aria-controls="hidden-floorboard-reveal"
       @click="isOpen = !isOpen"
     >
-      <Sparkles :size="15" aria-hidden="true" />
+      <span class="hidden-floorboard__notch" aria-hidden="true"><Sparkles :size="15" /></span>
       {{ isOpen ? "Settle the loose floorboard" : "One floorboard looks a little loose" }}
     </button>
 
@@ -28,10 +28,10 @@ const isOpen = ref(false);
         loading="lazy"
       />
       <div>
-        <p class="hidden-floorboard__eyebrow">Okay, you found the tiny joke.</p>
-        <p>There is exactly enough suspicious basement energy for one small dood.</p>
+        <p class="hidden-floorboard__eyebrow">A little light beneath the boards.</p>
+        <p>A tiny dood has been keeping this entrance warm. There’s a whole room down there.</p>
         <a class="hidden-floorboard__descent" href="/the-prinny-cult/">
-          Peek underneath
+          Follow the little light
           <ArrowDown :size="16" aria-hidden="true" />
         </a>
       </div>
@@ -43,20 +43,28 @@ const isOpen = ref(false);
 .hidden-floorboard {
   display: grid;
   width: min(100%, 29rem);
+  perspective: 700px;
   justify-items: center;
-  margin: 1rem auto 0;
+  margin: 2rem auto 0;
 }
 
 .hidden-floorboard__trigger {
   display: inline-flex;
   min-height: 2.75rem;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 0.75rem;
-  color: var(--story-muted);
-  background: transparent;
-  border: 1px dashed var(--story-line);
-  border-radius: 0.45rem;
+  width: 100%;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.15rem 1rem;
+  color: var(--story-copy);
+  background:
+    repeating-linear-gradient(2deg, transparent 0 0.65rem, color-mix(in srgb, var(--storybook-gold) 9%, transparent) 0.7rem 0.75rem, transparent 0.8rem 1.2rem),
+    var(--story-surface-deep);
+  border: 1px solid var(--story-line);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.4rem 0 var(--bg-inset), inset 0 1px color-mix(in srgb, var(--storybook-gold) 28%, transparent);
+  transform-origin: top;
+  transition: transform 280ms var(--ease-out), box-shadow 280ms var(--ease-out);
   font-size: 0.875rem;
   font-weight: 720;
   cursor: pointer;
@@ -68,6 +76,21 @@ const isOpen = ref(false);
   border-color: var(--story-accent);
 }
 
+.hidden-floorboard__notch {
+  display: grid;
+  flex: 0 0 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  color: var(--storybook-gold);
+  border: 1px solid var(--story-line);
+  border-radius: 50%;
+}
+
+.hidden-floorboard--open .hidden-floorboard__trigger {
+  transform: rotateX(12deg);
+  box-shadow: 0 0.65rem 1rem rgb(0 0 0 / 25%);
+}
+
 .hidden-floorboard__reveal {
   display: grid;
   width: 100%;
@@ -77,7 +100,7 @@ const isOpen = ref(false);
   padding: 0.8rem;
   margin-block-start: 0.65rem;
   color: var(--story-copy);
-  background: color-mix(in srgb, var(--story-surface-deep) 88%, transparent);
+  background: radial-gradient(ellipse at 12% 50%, color-mix(in srgb, var(--storybook-gold) 20%, transparent), transparent 62%), var(--bg-inset);
   border: 1px solid var(--story-line);
   border-radius: 0.65rem;
   text-align: left;
@@ -132,5 +155,9 @@ const isOpen = ref(false);
   .hidden-floorboard__reveal img {
     width: 4rem;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hidden-floorboard__trigger { transition: none; }
+  .hidden-floorboard--open .hidden-floorboard__trigger { transform: none; }
 }
 </style>
