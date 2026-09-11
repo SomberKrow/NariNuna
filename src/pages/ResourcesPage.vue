@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Render three stable shelf fragments with curating copy. Category positions below must remain Nail desk, Creator shelf, Game pile.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { BookMarked, HeartHandshake } from "@lucide/vue";
@@ -13,6 +14,7 @@ const resourceShelves = [
 </script>
 
 <template>
+  <!-- Shelf fragments are public link contracts used by Nail Studio and Work; descriptive examples are not product endorsements. -->
   <section class="room-opening room-opening--resources page-width">
     <div class="room-opening__copy">
       <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Chapter five · the very helpful shelf</p>
@@ -26,6 +28,7 @@ const resourceShelves = [
     </picture>
   </section>
 
+  <!-- Keep the three shelves even while recommendations are being curated. -->
   <section class="resource-library room-section page-width" aria-labelledby="shelf-title">
     <header class="resource-library__index">
       <p class="room-kicker">The collection</p>
@@ -46,6 +49,7 @@ const resourceShelves = [
     </div>
   </section>
 
+  <!-- Policy is separate from shelf examples so placeholders cannot imply an endorsement. -->
   <section class="resource-review page-width" aria-label="Recommendation policy">
     <div class="shelf-policy"><BookMarked :size="24" aria-hidden="true" /><div><h2>A recommendation should earn its place.</h2><p>Nari's picks will include her own context and clear disclosures for any paid or affiliate relationship.</p></div></div>
   </section>

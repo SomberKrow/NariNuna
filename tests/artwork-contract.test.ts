@@ -1,3 +1,4 @@
+// Public-art inventory and source-string contracts prevent accidental identity replacement or retired UI restoration; they do not establish visual quality or rights.
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";

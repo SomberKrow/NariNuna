@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Derive adjacent rooms from the reviewed journey order. A missing route suppresses this optional passage; the final room returns Home.
 import { ArrowLeft, ArrowRight, Sparkles } from "@lucide/vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
@@ -16,6 +17,7 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
 </script>
 
 <template>
+  <!-- Progress describes position in the journey, not task completion; all navigation remains ordinary anchors. -->
   <aside v-if="currentRoom && nextRoom" class="room-passage" aria-labelledby="room-passage-title">
     <div class="room-passage__inner page-width">
       <header class="room-passage__header">
@@ -57,6 +59,7 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
 </template>
 
 <style scoped>
+/* One shared passage at all widths; the tablet grid changes presentation without changing journey order. */
 .room-passage {
   --passage-frame: color-mix(in srgb, var(--storybook-gold) 42%, var(--story-line));
   position: relative;

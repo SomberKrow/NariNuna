@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Own the correspondence letter and native public-profile directory. Keep both fragment destinations and the unpublished-inbox disclosure.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { ArrowRight, ArrowUpRight, Handshake } from "@lucide/vue";
@@ -13,6 +14,7 @@ const fits = [
 </script>
 
 <template>
+  <!-- The letter and profile directory are separately addressable; preserve painted margin clearance around the text. -->
   <section class="room-opening room-opening--work page-width">
     <div class="room-opening__copy">
       <p class="eyebrow"><Handshake :size="16" aria-hidden="true" /> Chapter six · a note from the writing desk</p>
@@ -26,6 +28,7 @@ const fits = [
     </picture>
   </section>
 
+  <!-- This fragment is linked from the hero; keep the correspondence margin outside the letter text. -->
   <section id="collaboration-note" class="correspondence room-section page-width" aria-labelledby="letter-title">
     <div class="correspondence__margin">
       <p class="room-kicker">From the writing desk</p>
@@ -55,6 +58,7 @@ const fits = [
     </div>
   </section>
 
+  <!-- Public profiles are the current contact route; do not invent an inbox or form. -->
   <section id="nari-links" class="public-directory room-section page-width" aria-labelledby="nari-links-title">
     <header class="room-heading"><div><p class="room-kicker">Elsewhere in the Haven</p><h2 id="nari-links-title">Find your way to Nari.</h2></div><p>Streams, creative work, and everyday updates.</p></header>
     <nav class="public-directory__links" aria-label="Nari's public links">

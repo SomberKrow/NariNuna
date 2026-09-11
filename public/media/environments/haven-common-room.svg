@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<!-- The Ghosties' cozy common room: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">The Ghosties' cozy common room</title>
   <desc id="desc">A softly lit community lounge with pillows, hanging string lights, lavender, a welcoming doorway and three original friendly Ghosties.</desc>
   <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#432941"/><stop offset="1" stop-color="#241a2d"/></linearGradient><radialGradient id="glow"><stop stop-color="#f2b77f" stop-opacity=".36"/><stop offset="1" stop-color="#f2b77f" stop-opacity="0"/></radialGradient><filter id="shadow"><feDropShadow dy="12" stdDeviation="15" flood-color="#130e19" flood-opacity=".35"/></filter><g id="ghost"><path d="M0 52q0-51 48-51t48 51v72l-16-12-16 12-16-12-16 12-16-12-16 12Z" fill="#fff8f5"/><circle cx="34" cy="48" r="5" fill="#35253b"/><circle cx="63" cy="48" r="5" fill="#35253b"/><path d="M39 68q9 9 18 0" fill="none" stroke="#da98a8" stroke-width="4" stroke-linecap="round"/></g></defs>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Keep free support first and the optional wishlist subordinate. Support never changes access, boundaries or claims on time.
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowUpRight, Eye, Gift, Heart, Share2 } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
@@ -13,6 +14,7 @@ const ways: { icon: typeof Eye; title: string; text: string; ghostie: GhostieArt
 </script>
 
 <template>
+  <!-- Free ways to participate precede financial options in both DOM and visual order. -->
   <section class="support-welcome support-welcome--painted page-width responsive-hero" :style="heroStyle(environmentArtwork.commonRoom)">
     <div><p class="eyebrow"><Heart :size="15" aria-hidden="true" /> A gentle reminder, before anything else</p><h1>Your presence<br /><em>already counts.</em></h1><p>You matter here whether you spend money or not. Laughing, learning, lurking, checking in, and simply being kind are all real support.</p></div>
   </section>
@@ -24,6 +26,7 @@ const ways: { icon: typeof Eye; title: string; text: string; ghostie: GhostieArt
         <div><component :is="way.icon" :size="22" aria-hidden="true" /><h3>{{ way.title }}</h3><p>{{ way.text }}</p></div>
       </article>
     </div>
+    <!-- Financial support remains optional and subordinate to the free ways above. -->
     <aside class="wishlist-note" aria-labelledby="wishlist-title">
       <Gift :size="28" aria-hidden="true" />
       <div><p class="room-kicker">Only if you'd like to</p><h2 id="wishlist-title">There's a wishlist, too.</h2><p>Financial support never buys access, extra attention, ownership, permission to cross a boundary, or a claim on Nari's time. Ever.</p><div class="button-row"><a class="text-link" :href="throneUrl" target="_blank" rel="noreferrer noopener">Visit Throne <ArrowUpRight :size="17" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" :href="twitchUrl" target="_blank" rel="noreferrer noopener">Or just come hang out <ArrowUpRight :size="15" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span></a></div></div>

@@ -1,2 +1,3 @@
+# Discourage indexing of the optional joke; crawler directives do not provide access control.
 User-agent: *
 Disallow: /the-prinny-cult/

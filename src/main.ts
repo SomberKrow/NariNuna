@@ -1,3 +1,4 @@
+// Bootstrap each real HTML document after its lazy route is ready; stale chunks get one guarded automatic recovery attempt.
 import { createApp } from "vue";
 import { attemptChunkRecovery, clearChunkRecovery } from "./utils/chunkRecovery";
 import App from "./App.vue";
@@ -12,6 +13,7 @@ window.addEventListener("vite:preloadError", (event) => {
   showLoadFailure();
 });
 
+/** Supply a manual retry only for an empty failed mount; never overwrite a working room. */
 function showLoadFailure(): void {
   const root = document.getElementById("app");
   if (!root || root.hasChildNodes()) return;
@@ -28,6 +30,7 @@ function showLoadFailure(): void {
 const app = createApp(App);
 app.use(router);
 
+// Clear recovery history only after a successful mount so failed retries cannot loop.
 router.isReady().then(() => {
   app.mount("#app");
   try { clearChunkRecovery(window.sessionStorage); } catch { /* Storage is optional. */ }

@@ -9,6 +9,7 @@ export function useHavenDoor() {
   const isOpen = computed(() => step.value === knocksRequired);
   let observer: IntersectionObserver | undefined;
 
+  /** Eligibility is one-way for this mount; focus and intersection may safely call it repeatedly. */
   function prepareInterior(): void {
     loadInterior.value = true;
     observer?.disconnect();
@@ -20,11 +21,13 @@ export function useHavenDoor() {
     step.value = Math.min(step.value + 1, knocksRequired);
   }
 
+  /** Reset the narrative while retaining the already-requested image to avoid another cold reveal. */
   function closeDoor(): void {
     step.value = 0;
     // Keep the same loaded image behind the door when the sequence restarts.
   }
 
+  // Warm the room just before it is visible. Without observation support, keep the image available.
   onMounted(() => {
     if (!("IntersectionObserver" in window)) {
       prepareInterior();

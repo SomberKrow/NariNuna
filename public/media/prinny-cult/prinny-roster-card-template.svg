@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<!-- Prinny roster card template: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny roster card template</title>
   <desc id="desc">A blank ceremonial roster card frame with an image well, title area, status notch, and stitched trim for dynamic HTML content.</desc>
   <rect x="18" y="18" width="684" height="384" rx="34" fill="#211218" stroke="#8f607d" stroke-width="8"/>

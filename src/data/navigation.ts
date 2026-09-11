@@ -1,3 +1,4 @@
+// Canonical document destinations and visibility groups. Header composes principal/More links; the secret room is intentionally absent.
 import type { NavigationItem } from "@/types/content";
 
 export const primaryNavigation: NavigationItem[] = [

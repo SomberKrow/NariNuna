@@ -1,9 +1,11 @@
 <script setup lang="ts">
+// Standalone noindex Easter egg with two exits upstairs. Its main landmark replaces the shared shell; retained roster data is not a UI requirement.
 import { ArrowLeft, Sparkles } from "@lucide/vue";
 import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 </script>
 
 <template>
+  <!-- Keep a visible route upstairs before and after the small joke; no ordinary site navigation promotes it. -->
   <main id="main-content" class="tiny-easter-egg">
     <a class="tiny-easter-egg__back" href="/haven/#haven-door"><ArrowLeft :size="16" aria-hidden="true" /> Back to the Haven</a>
 
@@ -25,6 +27,7 @@ import { prinnyEasterEggArtwork } from "@/data/easterEgg";
 </template>
 
 <style scoped>
+/* Tiny standalone recovery-sized card; keep both upstairs exits within narrow-screen bounds. */
 .tiny-easter-egg {
   display: grid;
   width: min(calc(100% - 2rem), 44rem);

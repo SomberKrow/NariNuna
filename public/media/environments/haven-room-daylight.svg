@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" role="img" aria-labelledby="title desc">
+<!-- Nari's Haven on a bright autumn afternoon: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Nari's Haven on a bright autumn afternoon</title>
   <desc id="desc">The familiar Haven washed in cream and lavender daylight, with an autumn window, soft velvet sofa, books, plants, and a welcoming Ghostie.</desc>
   <defs><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5e7d4"/><stop offset="1" stop-color="#e8d5ca"/></linearGradient><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c8cce7"/><stop offset=".55" stop-color="#f7d7c0"/><stop offset="1" stop-color="#f5c994"/></linearGradient><radialGradient id="light"><stop stop-color="#fff6d8" stop-opacity=".68"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/></radialGradient><filter id="shadow"><feDropShadow dy="11" stdDeviation="14" flood-color="#704f5f" flood-opacity=".15"/></filter></defs>

@@ -1,3 +1,4 @@
+// Build-time registry projection; use the same hero bands as CSS/picture consumers to prevent competing image downloads.
 import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import type { Plugin } from "vite";
 import { environmentArtwork } from "../src/data/artwork.ts";
@@ -10,6 +11,7 @@ export const routeHeroArtwork: Record<string, string> = Object.fromEntries(
   })
 );
 
+/** Inject only registered hero documents; secret and recovery entries return no preload tags. */
 export function heroPreloads(): Plugin {
   return {
     name: "nari-route-hero-preloads",

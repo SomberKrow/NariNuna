@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Native single-img delivery with intrinsic dimensions. Callers own slot sizes, meaningful alt text and eager hero priority.
 import { computed } from "vue";
 import { artworkMetadata, artworkSrc, artworkSrcset, type ArtworkKey } from "@/data/artworkDelivery";
 
@@ -24,6 +25,7 @@ const metadata = computed(() => artworkMetadata(props.artwork));
 </script>
 
 <template>
+  <!-- Keep one root img so picture sources, direct-child selectors and inherited attributes continue to work. -->
   <img
     :src="artworkSrc(artwork, Math.min(fallbackWidth, maxWidth))"
     :srcset="artworkSrcset(artwork, maxWidth)"

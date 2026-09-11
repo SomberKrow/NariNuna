@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" role="img" aria-labelledby="title desc">
+<!-- Prinny rank badge set: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny rank badge set</title>
   <desc id="desc">Five blank rank badge motifs for dynamic labels: circle, double-chevron, eye, star, and heart-seal tiers.</desc>
   <g stroke="#c6a6d4" stroke-width="7" fill="#211218">

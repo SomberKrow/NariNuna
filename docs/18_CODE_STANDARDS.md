@@ -66,7 +66,7 @@ Avoid:
 - a global store for page-local interactions;
 - persisted state without a privacy/expiry need.
 
-The current theme singleton is deliberate because it synchronizes one global document preference. Haven door, menu, floorboard, and Ghostie state remain local.
+The active Nari atmosphere has no preference singleton or persistence. Haven door, menu and floorboard state remain local; the dormant reduced-motion helper owns one listener per consumer.
 
 ## Content modules
 
@@ -84,7 +84,7 @@ The current theme singleton is deliberate because it synchronizes one global doc
 
 - Preserve one real HTML entry per documented route inside the repository-level `pages/` document root.
 - Keep Vue page implementations in `src/pages/`; do not scatter route-entry folders across the repository root.
-- Each entry owns accurate title, description, robots, viewport, theme color, icons/manifest, theme boot, and module entry.
+- Each entry owns accurate title, description, robots, viewport, theme color, icons/manifest, fixed atmosphere, and module entry.
 - Primary top-level navigation uses ordinary anchors.
 - Route paths are lowercase kebab-case with trailing slash, except `404.html`.
 - Keep Vite entries, Router records, validator, tests, navigation, metadata, and docs synchronized.
@@ -93,7 +93,7 @@ The current theme singleton is deliberate because it synchronizes one global doc
 ## SCSS and CSS
 
 - Use SCSS for organization and CSS custom properties for semantic runtime tokens.
-- Preserve layer order: tokens → base → components → pages → responsive.
+- Preserve the actual `main.scss` order: foundations → shared world/material refinements → image selection and reading rhythm → face-safe → mobile-first. Scoped room files own interior composition.
 - Prefer low-specificity class selectors and shallow nesting.
 - Do not style by generated Vue scope attribute, brittle DOM depth, or text content.
 - Avoid `!important` except a documented accessibility/preference override.
@@ -185,3 +185,9 @@ Follow existing ESLint and style conventions. Introduce an automated formatter o
 - `projectPages.json` owns document metadata shared by build, preview and preload checks. Router component imports stay explicit in `router/routes.ts`; contract tests protect equality. Navigation remains a separate product decision.
 - `useHavenDoor` owns the three-knock counter and image eligibility/observer lifecycle. Narrative stages and CSS motion remain in `HavenDoor.vue`; there is no timer-based state machine.
 - `_chapters.scss` owns chapter materials, signatures and content rhythm (formerly `_feedback.scss`). `_face-safe.scss` remains last. The older world/storybook/polish layers still overlap; broad reordering requires viewport comparisons. The maintenance change removed only superseded declarations while preserving surviving rule order and syntax fallbacks.
+
+## Whole-code maintenance coverage
+
+Every owned maintained code file needs local purpose/contract comments, with meaningful state transitions, semantic regions, failure/cleanup, ordering and cascade dependencies explained where they occur. Avoid syntax narration, private context and commented-out implementations. Never treat a detected comment marker as proof of adequate explanation. [Document 38](38_CODE_OWNERSHIP.md) records each baseline file plus imported/generated/strict-data exceptions.
+
+Strict JSON and web manifests do not accept comments. Document the owner/generator instead; generated runtime artwork data stays compact. Imported vector packs retain source-boundary provenance; editable SVG notes preserve viewBox/IDs/titles. Keep shebangs, XML declarations and TypeScript reference directives in their required positions. Source-string tests remain limited evidence and must not accidentally pass solely because a comment repeats the target implementation.

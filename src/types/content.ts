@@ -1,3 +1,4 @@
+// Types describe current local content, not runtime validation or approved future CMS records. Preserve explicit rating and review-date fields.
 export interface NavigationItem {
   label: string;
   href: string;

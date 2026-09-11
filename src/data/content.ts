@@ -1,3 +1,4 @@
+// Shared editorial records for values, shelves and identity. Array order maps to numbered values, shelf IDs and Ghostie variants in page owners.
 import type { CommunityValue, ResourceCategory } from "@/types/content";
 
 export const communityValues: CommunityValue[] = [

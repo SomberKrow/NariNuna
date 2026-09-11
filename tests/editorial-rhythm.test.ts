@@ -1,3 +1,4 @@
+// Source-level guards retain distinct room compositions and responsive reading rules. They are not screenshot or computed-layout assertions.
 import { createSSRApp, h } from "vue";
 import { renderToString } from "vue/server-renderer";
 import { describe, expect, it } from "vitest";

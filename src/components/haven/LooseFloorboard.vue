@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// One optional local toggle exposes the tiny basement link. It must remain operable by keyboard without timing or a hidden shortcut.
 import { ArrowDown, Sparkles } from "@lucide/vue";
 import { ref } from "vue";
 import { prinnyEasterEggArtwork } from "@/data/easterEgg";
@@ -7,6 +8,7 @@ const isOpen = ref(false);
 </script>
 
 <template>
+  <!-- Keep the trigger mounted when the reveal closes so keyboard focus has a stable owner. -->
   <aside class="hidden-floorboard" :class="{ 'hidden-floorboard--open': isOpen }" aria-label="A small hidden joke beneath the Haven floor">
     <button
       class="hidden-floorboard__trigger"
@@ -40,6 +42,7 @@ const isOpen = ref(false);
 </template>
 
 <style scoped>
+/* Perspective and shadows make the optional toggle tactile; reduced motion keeps the same open state without the tilt. */
 .hidden-floorboard {
   display: grid;
   width: min(100%, 29rem);

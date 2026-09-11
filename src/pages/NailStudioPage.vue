@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Present self-taught practice and the illustrated desk honestly. Keep the real-photo hold and exact resource-shelf destination.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Heart, Paintbrush, Sparkles } from "@lucide/vue";
@@ -7,6 +8,7 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
 </script>
 
 <template>
+  <!-- Illustrated atmosphere leads into practice notes and an honest real-work hold; artwork is not portfolio evidence. -->
   <section class="studio-opening responsive-hero" :style="heroStyle(environmentArtwork.nails)">
     <div class="studio-opening__backdrop" aria-hidden="true" :style="{ backgroundImage: 'var(--responsive-hero-art)' }"></div>
     <div class="studio-opening__inner page-width">
@@ -31,6 +33,7 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
         <article><p class="room-kicker">02 · The learning</p><h3>Figuring it out is part of the fun.</h3><p>Honest little lessons, creative experiments, and the things she learns along the way.</p><a class="text-link" href="/resources/#nail-desk">Visit the nail desk shelf <ArrowRight :size="16" aria-hidden="true" /></a></article>
       </div>
     </div>
+    <!-- This hold remains until real, approved photographs replace the illustrative workspace. -->
     <div class="studio-portfolio-hold">
       <GhostieArt variant="study" sizes="128px" />
       <div><p class="room-kicker">The real-work collection</p><h2>Her favorite sets are still being chosen.</h2><p>Nari's own photographs will live here when she's ready to share them. For now, enjoy a look around the desk.</p></div>
