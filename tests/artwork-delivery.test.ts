@@ -1,7 +1,9 @@
+// Byte/hash and selection contracts protect retained originals and emitted candidates; runtime projection equality rejects stale or oversized metadata.
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import generated from "@/data/responsive-artwork.json";
+import runtime from "@/data/responsive-artwork.runtime.json";
 import { artworkCandidates, artworkSrc, artworkSrcset, heroSources } from "@/data/artworkDelivery";
 import { communityGhostieArtwork, detailArtwork, environmentArtwork, storybookPostcards } from "@/data/artwork";
 import { routeHeroArtwork } from "../scripts/hero-preloads";
@@ -11,6 +13,15 @@ const manifest = generated.artworks;
 const hash = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 
 describe("responsive artwork delivery", () => {
+  it("ships exactly the selection projection without losing or reordering candidates", () => {
+    const expected = Object.fromEntries(Object.entries(manifest).map(([key, asset]) => [key, {
+      width: asset.width,
+      height: asset.height,
+      candidates: asset.candidates.map(({ src, width, height }) => ({ src, width, height }))
+    }]));
+    expect(runtime).toEqual(expected);
+  });
+
   it("preserves source identity, alpha, dimensions and content-addressed byte budgets", () => {
     for (const asset of Object.values(manifest)) {
       expect(hash(readFileSync(asset.sourceFile))).toBe(asset.sourceSha256);
@@ -47,7 +58,8 @@ describe("responsive artwork delivery", () => {
   });
 
   it("keeps the simplified Home image composition below 200 KB", () => {
-    const maximum = (source: string, maxWidth = Infinity) => Math.max(...artworkCandidates(source).filter((candidate) => candidate.width <= maxWidth).map((candidate) => candidate.bytes));
+    // Byte budgets belong to build evidence, never the browser's selection API.
+    const maximum = (source: keyof typeof manifest, maxWidth = Infinity) => Math.max(...manifest[source].candidates.filter((candidate) => candidate.width <= maxWidth).map((candidate) => candidate.bytes));
     const total = maximum(environmentArtwork.homeSunset) + maximum(communityGhostieArtwork.wave, 256)
       + maximum(detailArtwork.lavender);
     expect(total).toBeLessThanOrEqual(200_000);
