@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Presentation and focus owner for the three-knock sequence. The composable owns steps and image eligibility; opening is narrative, not access control.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { ArrowUpRight, HeartHandshake, ShieldCheck } from "@lucide/vue";
 import { computed, nextTick, ref } from "vue";
@@ -42,6 +43,7 @@ const stages = [
   }
 ] as const;
 
+// Step three renders the open state; clamp lookups to the last pre-opening copy record.
 const currentStage = computed(() => stages[Math.min(step.value, knocksRequired - 1)]);
 const progressLabels = ["Arrive", "Belong", "Promise"] as const;
 const doorPrompt = computed(() => ["Knock here", "Again, gently", "One last promise"][Math.min(step.value, 2)]);
@@ -51,6 +53,7 @@ const sceneNote = computed(() => {
   return stages[step.value - 1].sceneNote;
 });
 
+/** Only the focused final story action transfers focus after Vue mounts the invite. */
 async function knockFromStory(): Promise<void> {
   const shouldTransferFocus = document.activeElement === storyAction.value && step.value === knocksRequired - 1;
   knock();
@@ -60,6 +63,7 @@ async function knockFromStory(): Promise<void> {
   }
 }
 
+/** Return focus after reset only when the visitor activated the disappearing reset action. */
 async function closeFromStory(): Promise<void> {
   const shouldTransferFocus = document.activeElement?.classList.contains("text-button") ?? false;
   closeDoor();
@@ -71,6 +75,7 @@ async function closeFromStory(): Promise<void> {
 </script>
 
 <template>
+  <!-- Scene decorations are separate from the narrative/action region; image loading must never gate the third knock. -->
   <section
     ref="threshold"
     class="haven-threshold"
@@ -93,6 +98,7 @@ async function closeFromStory(): Promise<void> {
       <div class="haven-threshold__arch">
         <div class="haven-threshold__room-light" aria-hidden="true"></div>
 
+        <!-- Do not mount interior artwork until proximity, focus or a knock makes it eligible. -->
         <figure v-if="loadInterior" class="haven-threshold__gathering" :class="{ 'is-glimpsed': !isOpen }" :aria-hidden="!isOpen ? 'true' : undefined">
           <ResponsiveArtwork
             :fallback-width="640" loading="eager" :artwork="environmentArtwork.havenDoorInterior"
@@ -108,6 +114,7 @@ async function closeFromStory(): Promise<void> {
           </figcaption>
         </figure>
 
+        <!-- Native door button advances the same state as the story action, independently of image readiness. -->
         <button
           class="haven-threshold__door"
           type="button"
@@ -209,6 +216,7 @@ async function closeFromStory(): Promise<void> {
 </template>
 
 <style scoped>
+/* Door-owned layering: room behind rotating door, decorations around the arch, narrative alongside it. Deep selectors are not needed for the single-img artwork root. */
 .haven-threshold {
   display: grid;
   overflow: hidden;
@@ -222,6 +230,7 @@ async function closeFromStory(): Promise<void> {
     0 0 0 0.7rem color-mix(in srgb, var(--story-surface) 68%, transparent);
 }
 
+/* Scene geometry keeps the entire painted room behind the arch; adornments do not receive input. */
 .haven-threshold__scene {
   position: relative;
   min-height: 26rem;
@@ -356,6 +365,7 @@ async function closeFromStory(): Promise<void> {
   transition: opacity 360ms ease;
 }
 
+/* Transform the door around its hinge; steps below change the angle without remounting the scene. */
 .haven-threshold__door {
   position: absolute;
   z-index: 4;
@@ -603,10 +613,6 @@ async function closeFromStory(): Promise<void> {
 .haven-threshold__knock-response::after {
   border: 1px solid rgb(247 207 153 / 82%);
   border-radius: 50%;
-}
-
-.haven-threshold__knock-response::before,
-.haven-threshold__knock-response::after {
   position: absolute;
   inset: -0.1rem;
   content: "";
@@ -702,6 +708,7 @@ async function closeFromStory(): Promise<void> {
   text-align: center;
 }
 
+/* Knock progress progressively lights the same scene; the third step reveals the room. */
 .haven-threshold__scene.is-step-1 .haven-threshold__halo,
 .haven-threshold__scene.is-step-2 .haven-threshold__halo,
 .haven-threshold__scene.is-step-3 .haven-threshold__halo {
@@ -745,6 +752,7 @@ async function closeFromStory(): Promise<void> {
   opacity: 0.84;
 }
 
+/* The single responsive img root keeps this direct-child crop valid. Do not add a wrapper casually. */
 .haven-threshold__gathering {
   position: absolute;
   z-index: 2;
@@ -801,6 +809,7 @@ async function closeFromStory(): Promise<void> {
   line-height: 1.06;
 }
 
+/* Story copy and stable action region sit outside the decorative scene to preserve reading and focus order. */
 .haven-threshold__content {
   display: grid;
   align-content: center;
@@ -967,6 +976,7 @@ async function closeFromStory(): Promise<void> {
   box-shadow: 0 0.65rem 1.7rem color-mix(in srgb, var(--emerald) 22%, transparent);
 }
 
+/* Transition only the story presentation; action ownership and focus handoff stay in the script. */
 .haven-story-enter-active,
 .haven-story-leave-active {
   transition: opacity 180ms ease, transform 240ms var(--ease-out);
@@ -1000,6 +1010,7 @@ async function closeFromStory(): Promise<void> {
   100% { opacity: 0; transform: scale(1.45); }
 }
 
+/* Wide layout pairs narrative with the doorway; phones keep the scene above the story. */
 @media (min-width: 56rem) {
   .haven-threshold {
     grid-template-columns: minmax(0, 1.08fr) minmax(23rem, 0.92fr);
@@ -1026,6 +1037,7 @@ async function closeFromStory(): Promise<void> {
   }
 }
 
+/* Narrow screens reduce ornament and padding while keeping full-width story controls. */
 @media (max-width: 47.99rem) {
   .haven-threshold {
     border-width: 0.2rem;
@@ -1084,6 +1096,7 @@ async function closeFromStory(): Promise<void> {
   }
 }
 
+/* Preserve all knock states and the invite while suppressing rotational and flash feedback. */
 @media (prefers-reduced-motion: reduce) {
   .haven-threshold__door,
   .haven-threshold__room-light,

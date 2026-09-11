@@ -1,3 +1,4 @@
+// Local record and source contracts protect route count, safe destinations and content boundaries; no external destination is fetched.
 import { describe, expect, it } from "vitest";
 import { havenJourney, havenRoomNotes } from "@/data/journey";
 import { featuredMoments } from "@/data/media";

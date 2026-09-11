@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Select a room-specific closing note and a deliberate subset of public profiles without duplicating volatile destinations.
 import { ArrowUpRight, Heart } from "@lucide/vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
@@ -12,6 +13,7 @@ const roomNote = computed(() => havenRoomNotes[route.path] ?? "The little world 
 </script>
 
 <template>
+  <!-- Room note, curated profiles and footer navigation close each ordinary document. -->
   <footer class="site-footer site-footer--compact">
     <div class="site-footer__inner page-width">
       <div class="site-footer__top">
@@ -40,6 +42,7 @@ const roomNote = computed(() => havenRoomNotes[route.path] ?? "The little world 
 </template>
 
 <style scoped>
+/* Compact footer overrides the global foundation; wrapped links retain touch height before the desktop row layout. */
 .site-footer--compact { padding-block: 0; }
 .site-footer--compact .site-footer__inner { display: grid; gap: 0; padding-block: 1.25rem 1rem; }
 .site-footer__top,

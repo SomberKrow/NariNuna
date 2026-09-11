@@ -1,3 +1,4 @@
+// Structural style/source guards protect the room material language. Rendered appearance still requires browser comparison.
 import { createSSRApp, h } from "vue";
 import { renderToString } from "vue/server-renderer";
 import { describe, expect, it } from "vitest";

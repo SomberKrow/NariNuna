@@ -16,8 +16,27 @@ PUBLIC = ROOT / 'public'
 SOURCES = ROOT / 'src/assets/source/delivery'
 OUTPUT = PUBLIC / 'media' / 'responsive'
 MANIFEST = ROOT / 'src' / 'data' / 'responsive-artwork.json'
+RUNTIME_MANIFEST = MANIFEST.with_name('responsive-artwork.runtime.json')
 
 
+def write_manifests(manifest):
+    """Keep integrity records in tooling; ship only image-selection fields to Vue.
+
+    Candidate order is ascending width and is part of the runtime selection API.
+    Both outputs come from the same result set; Vitest rejects stale projections.
+    """
+    MANIFEST.write_text(json.dumps({'_generated': 'GENERATED FILE. Do not edit manually. Regenerate with: npm run artwork:prepare', 'artworks': manifest}, indent=2) + '\n')
+    runtime = {
+        key: {'width': asset['width'], 'height': asset['height'],
+              'candidates': [{field: candidate[field] for field in ('src', 'width', 'height')}
+                             for candidate in asset['candidates']]}
+        for key, asset in manifest.items()
+    }
+    # This is generated strict JSON, not hand-maintained source; avoid duplicate pretty-print weight.
+    RUNTIME_MANIFEST.write_text(json.dumps(runtime, separators=(',', ':')) + '\n')
+
+
+# Regenerate candidates and both manifests together; old hashed files are retained, never broadly deleted.
 def generate():
     if not features.check('webp'):
         raise SystemExit('Pillow must include WebP support')
@@ -32,10 +51,11 @@ def generate():
     with ThreadPoolExecutor(max_workers=4) as pool:
         results = list(pool.map(prepare_source, jobs))
     manifest = dict(result for result in results if result is not None)
-    MANIFEST.write_text(json.dumps({'_generated': 'GENERATED FILE. Do not edit manually. Regenerate with: npm run artwork:prepare', 'artworks': manifest}, indent=2) + '\n')
+    write_manifests(manifest)
     print(f'Prepared {sum(len(item["candidates"]) for item in manifest.values())} immutable delivery candidates.')
 
 
+# Encode from preserved originals, without cropping/upscaling; stop rather than silently exceed a role budget.
 def prepare_source(job):
     role, source, widths, budget = job
     # Alternate atmospheres remain available as originals, outside active delivery.
@@ -49,6 +69,7 @@ def prepare_source(job):
             continue
         height = round(image.height * width / image.width)
         resized = image.resize((width, height), Image.Resampling.LANCZOS)
+        # Try the highest allowed quality first. Content hashes name the exact final encoded bytes.
         for quality in range(84, 49, -2):
             output = BytesIO()
             resized.save(output, format='WEBP', quality=quality, method=6, exact=True)

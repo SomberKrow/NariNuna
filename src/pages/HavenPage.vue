@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Values precede the three-knock Discord threshold; the optional floorboard follows it. Keep the door fragment stable for inbound links.
 import { heroStyle } from "@/data/artworkDelivery";
 import { House } from "@lucide/vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
@@ -9,6 +10,7 @@ import { communityValues } from "@/data/content";
 </script>
 
 <template>
+  <!-- The charter establishes boundaries before any community invitation or hidden-room discovery. -->
   <section class="haven-heart responsive-hero" :style="heroStyle(environmentArtwork.commonRoom)">
     <div class="haven-heart__environment" aria-hidden="true" :style="{ backgroundImage: 'var(--responsive-hero-art)' }"></div>
     <div class="haven-heart__inner page-width">
@@ -35,6 +37,7 @@ import { communityValues } from "@/data/content";
     </ol>
   </section>
 
+  <!-- The public fragment targets both invitation and optional discovery, after the charter. -->
   <section id="haven-door" class="haven-entry page-width section-pad">
     <HavenDoor />
     <LooseFloorboard />

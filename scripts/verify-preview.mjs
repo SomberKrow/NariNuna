@@ -1,3 +1,4 @@
+// Verify HTTP retrieval and metadata, not pixels or final host headers. Own a local preview unless NARI_PREVIEW_URL is supplied; always stop the owned child.
 import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import { existsSync } from "node:fs";
 import assert from "node:assert/strict";

@@ -261,3 +261,9 @@ Jake requested a new review PR from main: loosen Meet Nari mobile copy; remove t
 Validation: clean `npm ci` and `npm run check` passed locally on Node 24.19.0: lint, typecheck, 68 tests in 14 files, build/asset/performance validators, and 11 served HTML documents with 137 essential assets and 27 supplied Prinny designs. Browser visual/keyboard/reduced-motion verification remains pending: Chromium was absent and its download timed out. Inspect 320/390/768/wide, floorboard open/close, and the five changed pages in the PR preview.
 
 Rollback: revert the focused refinement commit. Existing source artwork and historical demo fixture remain retained.
+
+## 2026-09-11 preservation-first size and maintenance pass
+
+Jake supplied the repository optimization handoff and directed continuation. Scope: compact browser artwork metadata with retained full provenance; remove proven obsolete cult styles; consolidate only adjacent identical-selector blocks with ordered-declaration equivalence; explanatory comments across owned code; syntax-safe ownership for generated/strict data and vectors; operational documentation and review PR. Reduced-motion fragment handling and dormant widget/listener defects identified in the handoff are corrected separately from byte savings.
+
+No public content, raster bytes, crop, source/retention contract, architecture, dependency version, client/right approval, merge or deployment is changed. Chromium installation failed, so lossy encoding and broader active-cascade restructuring remain deferred. Structural comparison and automated gate evidence, exact metrics and rollback are in [document 37](37_SIZE_MAINTENANCE.md). This records implementation authority, not release clearance.

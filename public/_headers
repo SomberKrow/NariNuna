@@ -1,3 +1,4 @@
+# Static-host rules, not CSS: the opening wildcard is a URL pattern. Inline style bindings require the current style-src policy.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
@@ -5,9 +6,6 @@
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self'; connect-src 'self'; media-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
 
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/media/generated/*
   Cache-Control: public, max-age=31536000, immutable
 
 # Only content-addressed artwork receives immutable caching.

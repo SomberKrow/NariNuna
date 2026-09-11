@@ -1,3 +1,4 @@
+# Read-only PR/main gate on Node 22. Locked installation precedes all lint/type/test/build/HTTP checks; audit reporting remains separate.
 name: Quality gate
 
 on:

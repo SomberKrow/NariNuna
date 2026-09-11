@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult room: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult room</title>
   <desc id="desc">A cozy, theatrical secret chamber with plum curtains, candlelight, shelves, pillows, and an empty ceremonial center.</desc>
   <defs>

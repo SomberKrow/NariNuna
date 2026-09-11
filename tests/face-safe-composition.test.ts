@@ -1,3 +1,4 @@
+// Source-level crop and silhouette guards preserve intended focal variables; they cannot prove a face remains visible at a particular viewport.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";

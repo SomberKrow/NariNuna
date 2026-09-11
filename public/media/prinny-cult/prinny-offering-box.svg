@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult offering box: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult offering box</title>
   <desc id="desc">A squat ceremonial offering chest with plum panels, lavender stitching, a coin slot, and a glowing emerald latch.</desc>
   <ellipse cx="350" cy="496" rx="250" ry="42" fill="#130d13" opacity=".35"/>

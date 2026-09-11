@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" role="img" aria-labelledby="title desc">
+<!-- Nari's Haven after the moon comes out: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Nari's Haven after the moon comes out</title>
   <desc id="desc">The same Haven at night: a moonlit arched window, indigo curtains, warm lamps, shelves, blankets, and quietly glowing Ghosties.</desc>
   <defs><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22172b"/><stop offset="1" stop-color="#100d18"/></linearGradient><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#182341"/><stop offset="1" stop-color="#574364"/></linearGradient><radialGradient id="glow"><stop stop-color="#efd0a0" stop-opacity=".22"/><stop offset="1" stop-color="#efd0a0" stop-opacity="0"/></radialGradient><filter id="soft"><feGaussianBlur stdDeviation="21"/></filter><g id="spark"><path d="M0-7 2-2 7 0 2 2 0 7-2 2-7 0-2-2Z"/></g></defs>

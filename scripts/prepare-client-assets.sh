@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Run from the repository root with the supplied archive directory; ImageMagick creates metadata-stripped derivatives while preserving original inputs.
 set -euo pipefail
 
 source_root="${1:?Usage: scripts/prepare-client-assets.sh SOURCE_MATERIAL_DIRECTORY}"
@@ -101,6 +102,10 @@ identity_root="$generated_root/Nari_Identity_4_Full_Resolution/Nari_Identity_4_F
 convert "$identity_root/identity-wordmark-primary.png" -resize '980x450>' -strip -quality 88 "$media_root/identity/nari-wordmark.webp"
 convert "$identity_root/identity-icon-mark.png" -resize '512x512>' -strip -quality 88 "$media_root/identity/nari-icon.webp"
 
+# These SVGs are imported asset-pack snapshots, not generated from the Vue icon code.
+# Preserve geometry, titles, IDs and pack provenance; inventory/ownership is in docs/38.
+# Upstream generators are not part of this repository. Edit the source pack and recopy
+# deliberately; do not add comments to every path or infer canonical approval from filenames.
 cp "$generated_root/streams-assets/streams-assets/"*.svg "$media_root/streams/"
 cp "$generated_root/nari-nails-assets-final/"*.svg "$media_root/nails/"
 cp "$generated_root/nari-resources-assets/"*.svg "$media_root/resources/"

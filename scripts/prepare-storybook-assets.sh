@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Run from the repository root with the approved master directory. ImageMagick writes public character/social derivatives and retained scene/postcard sources; existing outputs are replaced.
 set -euo pipefail
 
 master_root="${1:?Usage: scripts/prepare-storybook-assets.sh STORYBOOK_MASTER_DIRECTORY}"

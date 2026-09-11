@@ -1,3 +1,4 @@
+// Read-only public-asset inventory from repository root. Static matches include dormant registries; retention and dynamic consumers require human review.
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { createHash } from "node:crypto";

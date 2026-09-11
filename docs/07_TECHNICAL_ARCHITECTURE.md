@@ -79,7 +79,7 @@ A route is incomplete if only one registry knows it exists.
 │   └── 404.html                       # Static-host fallback entry
 ├── public/
 │   ├── _headers                       # Host-compatible security/cache rules
-│   ├── media/generated/               # Served optimized project imagery
+│   ├── media/responsive/              # Content-addressed responsive derivatives
 │   ├── icons + manifest
 │   └── robots.txt
 ├── scripts/validate-build.mjs         # Eleven-document output contract
@@ -123,7 +123,7 @@ Phase A is a proposed client-review demo. Every HTML document declares `data-the
 
 ### Shell selection
 
-`App.vue` renders normal route views inside `SiteShell`. Routes with `meta.secret === true` bypass it. `SiteShell` owns skip link, header, one main region, footer, and Ghostie layer.
+`App.vue` renders normal route views inside `SiteShell`. Routes with `meta.secret === true` bypass it. `SiteShell` owns the skip link, header, one main region, room passage and footer. The retained Ghostie summoner is not mounted.
 
 Do not duplicate these concerns inside ordinary page components.
 
@@ -139,10 +139,7 @@ Components own reusable behavior and semantic patterns. A component should expos
 
 ### Composables
 
-Composables own shared reactive browser state. Current global state is intentionally tiny:
-
-- theme selection/persistence;
-- operating-system reduced-motion preference.
+Composables own shared reactive browser state. The current atmosphere is fixed in HTML and does not persist preferences. The retained reduced-motion helper owns a media-query subscription per consumer; one unmount cannot remove another consumer’s listener.
 
 Do not add a global store until state truly crosses unrelated component trees and cannot be cleanly represented through props/composables/URL.
 
@@ -152,7 +149,7 @@ Do not add a global store until state truly crosses unrelated component trees an
 
 ### Styles
 
-Semantic visual values remain CSS custom properties so atmosphere and component code stay decoupled. SCSS compiles structural layers. Shared primitives live in `_components.scss`; page compositions live in `_pages.scss`; preference and breakpoint overrides live in `_responsive.scss`.
+Semantic visual values remain CSS custom properties so atmosphere and component code stay decoupled. SCSS compiles structural layers. Shared primitives begin in `_components.scss`; active interior compositions live in scoped `styles/rooms/` files. `_world.scss`, `_storybook.scss` and `_polish.scss` retain shared hero/material foundations. Final reading, focal-position and phone layers follow them in `main.scss`. Reordering layers requires cascade and browser evidence; document 38 records ownership.
 
 ## State ownership
 
@@ -162,10 +159,10 @@ Semantic visual values remain CSS custom properties so atmosphere and component 
 | Atmosphere | Route HTML + Nari semantic tokens | None | Public presentation only |
 | Reduced motion | `matchMedia` via `useReducedMotion` | OS/browser preference | No storage |
 | Mobile menu | `SiteHeader` local ref | None | UI-only |
-| Ghostie open state | `GhostieSummoner` local ref | None | UI-only |
+| Retained Ghostie widget | Dormant `GhostieSummoner` local ref | None | Not mounted by the shell |
 | Haven door step | `HavenDoor` local ref | None | Narrative, not auth |
-| Floorboard taps | `LooseFloorboard` local ref | None | Optional joke |
-| Secret oath/counter | `PrinnyCultPage` local refs | None | Optional joke |
+| Floorboard open state | `LooseFloorboard` local ref | None | One optional toggle |
+| Secret page | Tiny standalone view; no oath/counter | None | Optional public joke |
 
 No current state belongs in a cookie, account, server session, URL parameter, or analytics event.
 
@@ -197,8 +194,8 @@ The browser is untrusted and the output is public static code.
 | `npm run lint` | ESLint across repository excluding build/cache paths |
 | `npm run typecheck` | `vue-tsc --noEmit` |
 | `npm run test` | Vitest content-contract suite |
-| `npm run build` | Typecheck → Vite MPA build → eleven-document validator |
-| `npm run check` | Lint → typecheck → test → build |
+| `npm run build` | Typecheck → Vite MPA build → document and performance validators |
+| `npm run check` | Lint → typecheck → test → build → HTTP preview verification |
 | `npm run preview` | Preview built production artifact |
 
 The last recorded implementation evidence on 2026-08-13 stated that `npm run check` passed with four tests and eleven output documents. Treat this as historical evidence for the snapshot, not proof for a later commit. Re-run the gate.
@@ -211,7 +208,7 @@ The following are merge blockers unless intentionally changed through an accepte
 - primary top-level navigation remains real document navigation;
 - shared shell is component-owned, not copied per page;
 - page modules remain lazy;
-- theme paints before Vue and persists across document navigation;
+- fixed Nari atmosphere paints before Vue without reading a persisted preference;
 - no Tailwind/general UI kit/second scaffold;
 - no backend-dependent claim without a backend;
 - no unapproved third-party script, iframe, or runtime feed;
@@ -257,3 +254,7 @@ Architecture remains provider-neutral. The host must serve directory indexes, ma
 ## 2026-09-05 performance delivery delta
 
 A Vite HTML transform generates route-specific, media-matched hero preloads from the shared artwork delivery module for nine ordinary documents. CSS backgrounds and native picture sources select the same content-addressed candidates. All eleven documents and lazy route modules remain. The build manifest now feeds a transitive JS/CSS budget gate. The Haven interior has proximity/focus/knock loading with observer cleanup. Stale chunks use a session-scoped one-reload guard with manual failure recovery. See [implementation and evidence](33_RESPONSIVE_ARTWORK_PERFORMANCE.md).
+
+## 2026-09-11 maintenance representation
+
+`prepare-responsive-artwork.py` writes the full provenance manifest plus `responsive-artwork.runtime.json` from one candidate set. Browser helpers import only the compact representation; tests compare the complete selection projection and the build rejects known provenance markers in shared chunks. All candidate/source bytes remain unchanged. Fragment scrolling reads reduced motion at navigation time while saved history positions retain precedence. See [maintenance evidence](37_SIZE_MAINTENANCE.md).

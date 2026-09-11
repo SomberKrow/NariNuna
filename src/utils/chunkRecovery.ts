@@ -1,3 +1,4 @@
+// Storage is optional: a denied write must never trigger an uncontrolled reload loop or erase already-mounted content.
 const recoveryKey = "nari-chunk-recovery";
 
 // One automatic attempt per tab/path until that document mounts successfully.
@@ -13,6 +14,7 @@ export function attemptChunkRecovery(storage: Pick<Storage, "getItem" | "setItem
   return true;
 }
 
+/** A successful mount permits future recovery; unavailable storage stays nonfatal. */
 export function clearChunkRecovery(storage: Pick<Storage, "removeItem">): void {
   try { storage.removeItem(recoveryKey); } catch { /* Storage is optional. */ }
 }

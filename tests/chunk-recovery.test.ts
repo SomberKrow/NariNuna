@@ -1,3 +1,4 @@
+// Storage doubles exercise one-attempt recovery and denied-storage behavior; no real browser reload is performed.
 import { describe, expect, it, vi } from "vitest";
 import { attemptChunkRecovery, clearChunkRecovery } from "@/utils/chunkRecovery";
 

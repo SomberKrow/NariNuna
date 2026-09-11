@@ -1,3 +1,4 @@
+// Ordered nine-room journey, independent of header grouping. The last room links Home; unknown routes have no passage.
 export interface HavenJourneyRoom {
   label: string;
   href: string;

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Map named Ghostie poses through the responsive registry. Decorative art is hidden; meaningful instances require a contextual label.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 
 import { communityGhostieArtwork } from "@/data/artwork";
@@ -25,6 +26,7 @@ withDefaults(
 </script>
 
 <template>
+  <!-- The figure controls decorative semantics; responsive delivery keeps the original silhouette and alpha. -->
   <figure
     class="ghostie-art"
     :class="{ 'ghostie-art--mirrored': mirror }"
@@ -44,6 +46,7 @@ withDefaults(
 </template>
 
 <style scoped>
+/* Contain the full transparent silhouette; mirror through a custom property, not a second asset. Parent slots control size. */
 .ghostie-art {
   --ghostie-mirror: 1;
   position: relative;

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+// Render the shared public-profile directory in its reviewed order. Inline platform glyphs are decorative; visible labels carry meaning.
 import { nariLinks } from "@/data/socials";
 </script>
 
 <template>
+  <!-- Glyph coordinates use the 24-unit viewBox; names come from the links, not the SVG paths. -->
   <nav class="social-dock" aria-label="Nari's verified public profiles">
     <a
       v-for="link in nariLinks"

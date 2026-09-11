@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Own the uninterrupted Home arrival, centered character framing and single Haven destination; the shared shell supplies the room passage.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Heart, MoonStar, Sparkles } from "@lucide/vue";
@@ -7,6 +8,7 @@ import { detailArtwork, environmentArtwork } from "@/data/artwork";
 </script>
 
 <template>
+  <!-- The scene is described once; veil, sprig and marginal marks are decorative. Preserve the clear area behind the welcome copy. -->
   <section class="haven-landing responsive-hero" :style="heroStyle(environmentArtwork.homeSunset)" aria-labelledby="landing-title">
     <div
       class="haven-landing__scene"

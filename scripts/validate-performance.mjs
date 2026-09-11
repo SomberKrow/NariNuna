@@ -1,3 +1,4 @@
+// Run from repository root on dist. Count each emitted file once per transitive static-import graph using Node default gzip; lazy routes are measured separately.
 import projectPages from "../src/data/projectPages.json" with { type: "json" };
 import { readFileSync } from "node:fs";
 import { gzipSync } from "node:zlib";
@@ -14,6 +15,7 @@ const limit = (name, bytes, maximum) => {
   if (bytes > maximum) throw new Error(`${name}: ${bytes} bytes exceeds ${maximum}`);
   console.log(`${name}: ${(bytes / 1000).toFixed(2)} KB / ${maximum / 1000} KB`);
 };
+// Follow static imports only: dynamic page modules are independent entry graphs, not shared payload.
 function graph(key, found = new Set()) {
   if (found.has(key)) return found;
   if (!manifest[key]) throw new Error(`Missing build dependency ${key}`);
@@ -21,6 +23,7 @@ function graph(key, found = new Set()) {
   for (const dependency of manifest[key].imports ?? []) graph(dependency, found);
   return found;
 }
+// Deduplicate filenames across chunks, including CSS emitted for more than one import owner.
 function graphFiles(keys) {
   const files = new Set();
   for (const key of keys) {
@@ -29,6 +32,7 @@ function graphFiles(keys) {
   }
   return files;
 }
+// This exact compression method is the before/after metric; do not mix it with Vite console estimates.
 function gzipBytes(files, extensionPattern) {
   return [...files].filter((file) => extensionPattern.test(file))
     .reduce((total, file) => total + gzipSync(readFileSync(resolve("dist", file))).length, 0);
@@ -45,6 +49,12 @@ for (const file of scripts) {
   graph(key, shared);
 }
 const sharedFiles = graphFiles(shared);
+// Catch accidental re-imports of provenance even when broad gzip budgets still pass.
+for (const file of sharedFiles) {
+  if (file.endsWith(".js") && /sourceFile|sourceSha256|GENERATED FILE/.test(readFileSync(resolve("dist", file), "utf8"))) {
+    throw new Error(`Artwork provenance leaked into shared runtime: ${file}`);
+  }
+}
 limit("Shared JS + CSS (gzip)", gzipBytes(sharedFiles, /\.(js|css)$/), limits.shared);
 for (const [key, entry] of Object.entries(manifest)) {
   if (!entry.isDynamicEntry || !key.endsWith("Page.vue")) continue;

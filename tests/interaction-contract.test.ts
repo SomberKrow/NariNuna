@@ -1,3 +1,4 @@
+// Source-level navigation, focus and room-content invariants. Literal matches are regression clues, not proof of keyboard behavior or pixel parity.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";

@@ -32,3 +32,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 /.npm-cache/
+
+# Local Python generator bytecode is reproducible and is never source evidence.
+__pycache__/

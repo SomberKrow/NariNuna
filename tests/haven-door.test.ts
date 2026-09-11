@@ -1,3 +1,4 @@
+// Vue lifecycle hooks and IntersectionObserver are mocked; real refs/computed values exercise knock limits, reset and deferred-image eligibility.
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useHavenDoor } from "@/composables/useHavenDoor";
 

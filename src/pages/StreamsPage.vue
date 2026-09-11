@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Own the Twitch/YouTube broadcast desk. The first curated moment leads; MediaCard owns blocked-thumbnail fallback.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { ArrowUpRight, Gamepad2, MessageCircle, Radio, Video } from "@lucide/vue";
@@ -13,6 +14,7 @@ const supportingMoments = featuredMoments.slice(1);
 </script>
 
 <template>
+  <!-- Hero sources precede the fallback img and match head preloads; clips remain outbound links with no embedded player. -->
   <section class="room-opening room-opening--streams page-width">
     <div class="room-opening__copy">
       <p class="eyebrow"><Radio :size="16" aria-hidden="true" /> Chapter two · somewhere after midnight</p>
@@ -30,6 +32,7 @@ const supportingMoments = featuredMoments.slice(1);
     </picture>
   </section>
 
+  <!-- The curated lead and supporting clips share MediaCard fallback behavior. -->
   <section class="clip-desk room-section page-width" aria-labelledby="moments-title">
     <header class="room-heading"><div><p class="room-kicker">A taste of the room</p><h2 id="moments-title">The bits we keep<br /><em>coming back to.</em></h2></div><p>Games, tangents, and plans that lasted about three seconds.</p></header>
     <div class="clip-desk__moments">

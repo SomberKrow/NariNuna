@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult altar: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult altar</title>
   <desc id="desc">A small ceremonial altar with draped plum fabric, candles, stitched trim, and a glowing abstract seal.</desc>
   <defs><radialGradient id="g"><stop stop-color="#df8a55" stop-opacity=".55"/><stop offset="1" stop-color="#df8a55" stop-opacity="0"/></radialGradient></defs>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Own the introduction, identity journal and boundary note. Pillar order is coupled to the Ghostie tuple below; keep these in sync.
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
@@ -12,6 +13,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
 </script>
 
 <template>
+  <!-- Character-led arrival, identity journal, then protective promise; preserve that reading order on mobile. -->
   <section class="character-intro character-intro--storybook character-intro--integrated page-width responsive-hero" :style="heroStyle(environmentArtwork.meetNari)">
     <div class="character-intro__copy">
       <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
@@ -27,6 +29,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
     </div>
   </section>
 
+  <!-- The identity tuple above determines both copy order and decorative Ghostie pose. -->
   <section class="nari-journal room-section page-width" aria-labelledby="journal-title">
     <header class="nari-journal__opening">
       <p class="room-kicker">Notes from the girl next door</p>
@@ -45,6 +48,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
     </div>
   </section>
 
+  <!-- Boundary copy follows the introduction; symbolism stays limited to Nari-approved meaning. -->
   <section class="nari-promise-note room-section page-width" aria-labelledby="promise-title">
     <GhostieArt class="nari-promise-note__guardian" sizes="(min-width: 48rem) 320px, 192px" variant="protective" />
     <div>

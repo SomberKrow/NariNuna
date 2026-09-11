@@ -1,3 +1,4 @@
+// Legacy global page foundations retained where ownership overlaps. Retired cult selectors were removed; active room interiors live in rooms/.
 .home-hero,
 .nail-hero {
   position: relative;
@@ -826,99 +827,6 @@
 
 .optional-support {
   grid-template-columns: 1fr;
-}
-
-.cult-page {
-  position: relative;
-  display: grid;
-  min-height: 100svh;
-  place-items: center;
-  padding: var(--space-7) var(--page-gutter);
-  color: #f7e8f2;
-  background: radial-gradient(circle at 50% 20%, #492843 0%, #1a1019 44%, #080608 100%);
-}
-
-.cult-page::before {
-  position: fixed;
-  inset: 0;
-  background-image: repeating-linear-gradient(90deg, transparent 0 5rem, rgb(255 255 255 / 2%) 5rem 5.05rem);
-  content: "";
-  pointer-events: none;
-}
-
-.cult-page__escape {
-      top: 1.25rem;
-  left: 1.25rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #cab8c6;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.cult-page__card {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 54rem);
-  padding: clamp(2rem, 7vw, 5rem);
-  text-align: center;
-  border: 1px solid rgb(234 211 232 / 18%);
-  border-radius: var(--radius-lg);
-  background: rgb(17 10 17 / 72%);
-  box-shadow: 0 2rem 8rem rgb(0 0 0 / 55%);
-  backdrop-filter: blur(18px);
-}
-
-.cult-page__card > img {
-  width: min(15rem, 52vw);
-  margin-inline: auto;
-  filter: drop-shadow(0 1rem 2rem rgb(151 93 153 / 28%));
-}
-
-.cult-page__card .eyebrow {
-  justify-content: center;
-}
-
-.cult-page__card h1 {
-  margin-block-end: var(--space-4);
-  font-size: clamp(3.4rem, 10vw, 7rem);
-}
-
-.cult-page__lede {
-  max-width: 38rem;
-  margin-inline: auto;
-  color: #cab8c6;
-}
-
-.cult-page__oath,
-.cult-page__reveal {
-  display: grid;
-  justify-items: center;
-  gap: var(--space-3);
-  margin-block-start: var(--space-6);
-  padding: var(--space-5);
-  border: 1px dashed rgb(234 211 232 / 25%);
-  border-radius: var(--radius-md);
-}
-
-.cult-page__oath p,
-.cult-page__reveal p {
-  max-width: 36rem;
-  margin: 0;
-  color: #d7c5d3;
-}
-
-.cult-page__reveal button {
-  min-height: 2.75rem;
-  padding: 0.65rem 1rem;
-  color: #241320;
-  background: #c8acd1;
-  border: 0;
-  border-radius: var(--radius-pill);
-  font-weight: 850;
-  cursor: pointer;
 }
 
 .not-found {

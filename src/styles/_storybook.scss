@@ -1,4 +1,4 @@
-
+// Integrated painting treatment over world geometry: palette, veils and room atmosphere. Later layers intentionally refine size and framing.
 /* cards. Paintings own the first viewport; the interface sits inside the room. */
 :root {
   --font-display: "Palatino Linotype", "Book Antiqua", Iowan Old Style, Baskerville, serif;
@@ -243,6 +243,7 @@
   letter-spacing: 0.13em;
 }
 
+// Integrate the painting into the introduction; final crop is delegated to face-safe.
 .character-intro--storybook {
   position: relative;
   width: 100%;
@@ -299,6 +300,7 @@
   content: "";
 }
 
+// Painted room surface and veil, refined later by route silhouette rules.
 .room-opening {
   position: relative;
   display: flex;
@@ -425,6 +427,7 @@
   margin-block-end: 1.2rem;
 }
 
+// Stories and Support share painted arrival mechanics while retaining separate art and content.
 .story-opening--painted,
 .support-welcome--painted {
   position: relative;

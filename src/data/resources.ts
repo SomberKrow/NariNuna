@@ -1,3 +1,4 @@
+// Retained client-demo fixture used by tests only. ResourcesPage intentionally publishes the honest curating state instead of these examples.
 export type ResourceDemoLayout = "compact" | "standard" | "wide";
 
 export interface ResourceDemoEntry {

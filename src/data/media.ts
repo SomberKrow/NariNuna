@@ -1,3 +1,4 @@
+// Curated outbound moments, not a live feed. The first item leads Streams and Stories; thumbnails are optional and may fail.
 import type { MediaMoment } from "@/types/content";
 
 export const featuredMoments: MediaMoment[] = [

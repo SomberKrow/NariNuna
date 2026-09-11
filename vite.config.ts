@@ -1,3 +1,4 @@
+// Build eleven registry-owned HTML entries from pages into dist. Keep aliases, preload plugin and manifest output aligned with validators.
 import projectPages from "./src/data/projectPages.json" with { type: "json" };
 import { resolve } from "node:path";
 import { heroPreloads } from "./scripts/hero-preloads.ts";

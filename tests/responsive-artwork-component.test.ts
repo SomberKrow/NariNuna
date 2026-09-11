@@ -1,3 +1,4 @@
+// SSR-rendered markup verifies single-image roots, attribute fallthrough and native picture ordering; network candidate choice requires a browser.
 import { createSSRApp, h } from "vue";
 import { renderToString } from "vue/server-renderer";
 import { describe, expect, it } from "vitest";

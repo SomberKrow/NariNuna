@@ -1,7 +1,4 @@
-
-
-/* enhancements. This file is intentionally loaded last. */
-
+// Shared refinement layer after storybook, before chapters and final responsive layers. Do not treat this file as the final cascade owner.
 :root {
   --story-surface: #3b2430;
   --story-surface-deep: #24151d;
@@ -357,181 +354,7 @@
   border-radius: 0.65rem;
 }
 
-/* Prinny basement: one actual Prinny gets the sign; the supplied roster remains canon. */
-.cult-page--collection {
-  min-height: 100svh;
-  color: #f5e7df;
-  background:
-    radial-gradient(circle at 18% 8%, rgb(126 49 61 / 28%), transparent 34%),
-    radial-gradient(circle at 82% 30%, rgb(78 56 105 / 24%), transparent 32%),
-    linear-gradient(180deg, #150c13, #211019 48%, #10090f);
-}
-
-.cult-page__escape {
-  position: relative;
-  z-index: 2;
-}
-
-.cult-collection {
-  position: relative;
-  z-index: 1;
-  width: min(100%, 82rem);
-  margin-inline: auto;
-  padding: 6rem 0.85rem 3rem;
-}
-
-.cult-collection__header--rebuilt {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-  align-items: center;
-}
-
-.cult-mascot-sign {
-  position: relative;
-  display: grid;
-  min-height: 18rem;
-  place-items: end center;
-  padding: 1rem;
-  overflow: hidden;
-  background: radial-gradient(circle at 50% 65%, rgb(143 78 97 / 26%), transparent 55%);
-  border: 1px solid rgb(244 226 214 / 13%);
-  border-radius: 0.7rem;
-}
-
-.cult-mascot-sign > img {
-  width: min(72%, 15rem);
-  filter: drop-shadow(0 1rem 1.1rem rgb(0 0 0 / 38%));
-}
-
-.cult-signboard {
-  position: absolute;
-  right: 0.75rem;
-  bottom: 0.8rem;
-  left: 0.75rem;
-  display: grid;
-  gap: 0.18rem;
-  padding: 0.65rem 0.8rem;
-  color: #321d20;
-  background: #e4c68f;
-  border: 2px solid #704236;
-  box-shadow: 0.25rem 0.35rem 0 #391d23;
-  transform: rotate(-1.4deg);
-}
-
-.cult-signboard span,
-.cult-signboard small {
-  font-family: var(--font-detail);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-}
-
-.cult-signboard strong {
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 5vw, 1.45rem);
-  line-height: 1;
-}
-
-.cult-collection__intro > p:last-child,
-.cult-collection__roster > div:first-child > p:last-child {
-  color: #d6c0c8;
-}
-
-.cult-briefing {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.65rem;
-  margin-block: 1.2rem;
-}
-
-.cult-briefing > article {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.7rem;
-  padding: 0.9rem;
-  color: #f5e7df;
-  background: rgb(44 24 34 / 82%);
-  border: 1px solid rgb(241 214 199 / 14%);
-  border-radius: 0.45rem;
-}
-
-.cult-briefing h2 {
-  margin-block-end: 0.25rem;
-  font-size: 1.05rem;
-}
-
-.cult-briefing p {
-  margin: 0;
-  color: #d5c0c8;
-  font-size: 0.78rem;
-}
-
-.cult-collection__roster {
-  padding: 1rem;
-  background: rgb(18 10 15 / 54%);
-  border: 1px solid rgb(241 214 199 / 12%);
-  border-radius: 0.65rem;
-}
-
-.cult-collection__gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin-block-start: 1rem;
-}
-
-.cult-collection__gallery > article {
-  position: relative;
-  display: grid;
-  aspect-ratio: 1;
-  place-items: center;
-  overflow: hidden;
-  background: rgb(52 27 38 / 86%);
-  border: 1px solid rgb(241 214 199 / 13%);
-  border-radius: 0.4rem;
-}
-
-.cult-collection__gallery > article > span {
-  position: absolute;
-  z-index: 2;
-  top: 0.35rem;
-  left: 0.4rem;
-  color: #e2c6b8;
-  font-family: var(--font-detail);
-  font-size: 0.55rem;
-}
-
-.cult-collection__gallery img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-}
-
-.cult-collection__contract {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.8rem;
-  align-items: center;
-  padding: 1rem;
-  margin-block-start: 1rem;
-  color: #f5e7df;
-  background: #3b2530;
-  border: 1px solid rgb(241 214 199 / 18%);
-  border-radius: 0.55rem;
-}
-
-.cult-collection__contract > svg {
-  color: #e4c68f;
-}
-
-.cult-collection__contract p {
-  color: #d6c0c8;
-}
-
-.cult-collection__contract .text-button {
-  justify-self: start;
-  color: #f0d8cb;
-}
+// The retired collection presentation is absent; the tiny page owns its scoped styles.
 
 /* Tablet: add columns only when the content has room. */
 @media (min-width: 30rem) {
@@ -541,10 +364,6 @@
 
   .site-footer__socials {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .cult-collection__gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -561,14 +380,6 @@
   .not-found {
     grid-template-columns: minmax(16rem, 0.9fr) minmax(0, 1.1fr);
     align-items: center;
-  }
-
-  .cult-briefing {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .cult-collection__gallery {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -647,24 +458,6 @@
 
   .haven-door__content {
     padding: clamp(1.6rem, 4vw, 3rem);
-  }
-
-  .cult-collection__header--rebuilt {
-    grid-template-columns: minmax(19rem, 0.9fr) minmax(0, 1.1fr);
-    gap: 2rem;
-  }
-
-  .cult-mascot-sign {
-    min-height: 23rem;
-  }
-
-  .cult-collection__gallery {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .cult-collection__contract {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 1rem;
   }
 }
 

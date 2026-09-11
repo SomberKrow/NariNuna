@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 640" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult pedestal: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult pedestal</title>
   <desc id="desc">A compact ceremonial pedestal with plum stone, lavender trim, a soft emerald inset, and an empty top for a featured cult figure.</desc>
   <ellipse cx="260" cy="584" rx="190" ry="36" fill="#130d13" opacity=".4"/>

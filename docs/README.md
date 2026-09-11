@@ -3,10 +3,12 @@
 This directory owns the product contracts, engineering guidance, and release evidence. Start with the current audit; dated implementation logs preserve history rather than defining today's branch status.
 
 **Repository:** public `SomberKrow/NariNuna`
-**Audited default branch:** `main` at `fa83954f09938a864fd53f6a26739e50e2277970`, 9 September 2026
-**Merged implementation:** through PR #18, including shared desktop/mobile journey and Nari crop refinements
+**Implementation baseline:** `main` at `8c7fe67b91882f7379ab762d24c34fbeae7e4ffc`, 10 September 2026; maintenance branch evidence dated 11 September
+**Merged baseline:** through PR #20; metadata/CSS/comment maintenance is a separate review branch
 **Current status:** client review; production approvals and manual QA remain pending
 **Security:** four affected development packages; zero production dependency advisories in this audit. See [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
+
+Current maintenance: [37 — size and validation](37_SIZE_MAINTENANCE.md), [38 — code ownership](38_CODE_OWNERSHIP.md), [39 — asset disposition](39_ASSET_DISPOSITION.md).
 
 ## Start here
 

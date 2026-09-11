@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult warning sign: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult warning sign</title>
   <desc id="desc">A crooked ceremonial warning placard with a stitched border and an abstract caution sigil.</desc>
   <path d="M92 96l458-28 24 330-458 42z" fill="#f2dfcf" stroke="#8f607d" stroke-width="10"/>

@@ -1,3 +1,4 @@
+// Foundation breakpoints and preference overrides. Later face-safe and mobile-first layers own final character crops and phone silhouettes.
 @media (max-width: 70rem) {
   .nav-label--wide {
     display: none;
@@ -287,16 +288,9 @@
   .ghostie-summoner__visit {
     grid-template-columns: 5.2rem 1fr;
   }
-
-  .cult-page {
-    padding-inline: 0.75rem;
-  }
-
-  .cult-page__card {
-    padding-inline: 1.1rem;
-  }
 }
 
+// Important overrides intentionally outrank decorative transitions; keep semantic open/closed states visible.
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -318,6 +312,7 @@
   }
 }
 
+// Preference-specific contrast changes belong after the foundation palette, not in image processing.
 @media (prefers-contrast: more) {
   :root {
     --line: currentColor;

@@ -1,3 +1,4 @@
+// Final phone composition layer after face-safe. Preserve route-specific silhouettes, social labels and short-height readability.
 /*
  * Final phone composition authority.
  *
@@ -7,6 +8,7 @@
  * Desktop and tablet remain owned by face-safe at 48rem and above.
  */
 
+// Final phone authority: separate route silhouettes replace the earlier uniform caption-card geometry.
 @media (max-width: 47.99rem) {
   :where(
     .haven-landing,
@@ -703,6 +705,7 @@
   }
 }
 
+// Small phones need tighter framing and wrapping without shrinking the primary controls.
 @media (max-width: 24rem) {
   .haven-landing {
     min-height: 47rem;
@@ -740,6 +743,7 @@
   }
 }
 
+// Short viewports reduce vertical arrival cost while retaining the character and actions.
 @media (max-width: 47.99rem) and (max-height: 42rem) {
   .haven-landing,
   .haven-landing__inner {

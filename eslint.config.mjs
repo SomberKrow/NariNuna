@@ -1,3 +1,4 @@
+// Apply Vue template linting and TypeScript parsing together; formatting exceptions preserve authored markup without disabling correctness rules.
 import eslint from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";

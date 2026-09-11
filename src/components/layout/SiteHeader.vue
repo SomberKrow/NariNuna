@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// Own mobile-directory state, native More disclosure and keyboard focus. Keep the 56rem layout listener aligned with the CSS breakpoint.
 import { ChevronDown, Menu, Radio, Sparkles, X } from "@lucide/vue";
 import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
@@ -11,6 +12,7 @@ const moreMenu = ref<HTMLDetailsElement | null>(null);
 const menuToggle = ref<HTMLButtonElement | null>(null);
 const menuPanel = ref<HTMLElement | null>(null);
 const moreToggle = ref<HTMLElement | null>(null);
+// Document navigation remounts this component; normalize explicit index URLs for aria-current.
 const currentPath = computed(() => window.location.pathname.replace(/index\.html$/, ""));
 const principalLinks = primaryNavigation.filter((item) =>
   ["/meet-nari/", "/streams/", "/haven/", "/work-with-nari/"].includes(item.href)
@@ -21,19 +23,23 @@ const moreLinks = [
 ];
 const mobileLinks = [...principalLinks, ...moreLinks];
 
+/** Compare normalized document destinations; labels are free to change independently. */
 function isCurrent(href: string): boolean {
   return currentPath.value === href || (href === "/" && currentPath.value === "");
 }
 
+/** Share journey descriptions, with a harmless fallback for a newly registered room. */
 function roomNoteFor(href: string): string {
   return havenRoomNotes[href] ?? "Another corner of the Haven.";
 }
 
+/** Close both navigation presentations before a document change or Escape focus return. */
 function closeMenu(): void {
   menuOpen.value = false;
   if (moreMenu.value) moreMenu.value.open = false;
 }
 
+/** Escape returns to the opener; Tab wraps only through visible mobile controls. */
 function handleNavigationKeys(event: KeyboardEvent): void {
   if (event.key === "Escape") {
     const returnTo = menuOpen.value ? menuToggle.value : moreMenu.value?.open ? moreToggle.value : null;
@@ -75,6 +81,7 @@ function handleNavigationLayout(): void {
 }
 onMounted(() => desktopNavigation.addEventListener("change", handleNavigationLayout));
 
+// Body scroll lock follows local state and is removed on teardown, even mid-navigation.
 watch(menuOpen, (open) => {
   document.body.classList.toggle("nav-is-open", open);
 });
@@ -88,6 +95,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <!-- Home branding and menu controls share one landmark; mobile and desktop link groups retain distinct accessible names. -->
   <header class="site-header">
     <div class="site-header__inner page-width">
       <a class="brand-mark" href="/" aria-label="Nari Nuna's Haven, home">
@@ -113,6 +121,7 @@ onBeforeUnmount(() => {
 
       <div id="primary-navigation" ref="menuPanel" class="site-header__panel" :class="{ 'is-open': menuOpen }">
         <p class="site-header__mobile-context"><Sparkles :size="14" aria-hidden="true" /> The Haven, room by room</p>
+        <!-- Separate link groups let CSS switch layouts without rebuilding open-menu focus state. -->
         <nav class="site-header__mobile-nav" aria-label="Haven rooms">
           <a
             v-for="item in mobileLinks"
@@ -140,6 +149,7 @@ onBeforeUnmount(() => {
           </a>
         </nav>
 
+        <!-- Native details supplies disclosure semantics; the shared key handler adds Escape return. -->
         <details ref="moreMenu" class="site-header__more">
           <summary ref="moreToggle">More <ChevronDown :size="15" aria-hidden="true" /></summary>
           <nav aria-label="Additional Haven rooms">
@@ -167,6 +177,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+/* Header-only disclosure, brand and mobile directory. The desktop breakpoint must match the media-query listener above. */
 .brand-mark__emblem {
   display: grid;
   width: 3.15rem;

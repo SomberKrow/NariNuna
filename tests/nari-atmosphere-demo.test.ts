@@ -1,3 +1,4 @@
+// Check deterministic Nari-only metadata and absence of persisted theme UI. This is implementation evidence, not final client acceptance.
 import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { pageEntries } from "../vite.config";

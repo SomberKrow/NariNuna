@@ -28,6 +28,7 @@ export const ghostieArtwork = {
   peekingRight: "/media/ghosties/community/ghostie-peek.webp"
 } as const;
 
+// Aliases deliberately share candidate sets; a pose label does not imply a separate source file.
 export const communityGhostieArtwork = {
   sleeping: "/media/ghosties/community/ghostie-sleeping.webp",
   chaotic: "/media/ghosties/community/ghostie-chaotic.webp",
@@ -64,6 +65,8 @@ export const officialEmotes = {
   uwu: "/media/emotes/nari-uwu.webp"
 } as const;
 
+// Alternate atmospheres and the old gathering remain retained keys with no active runtime candidates.
+// Only active keys may be passed to the delivery helpers.
 export const environmentArtwork = {
   homeSunset: "/media/storybook/scenes/haven-sunset.webp",
   homeNight: "/media/storybook/scenes/haven-midnight.webp",

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// One outbound link owns each clip. Thumbnail failure swaps to local art while title, destination and reading order remain usable.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
 
 import { ArrowUpRight, Play } from "@lucide/vue";
@@ -16,6 +17,7 @@ const fallbackSizes = computed(() => {
 </script>
 
 <template>
+  <!-- Image and copy share one link; a failed thumbnail must not hide the destination. -->
   <article class="media-card" :class="[`media-card--${presentation}`, { 'media-card--featured': featured }]">
     <a :href="moment.url" target="_blank" rel="noreferrer noopener">
       <div class="media-card__image">
@@ -51,6 +53,7 @@ const fallbackSizes = computed(() => {
 </template>
 
 <style scoped lang="scss">
+/* Broadcast and album presentations share link semantics. Contain thumbnails; decorative hover scaling is disabled for reduced motion. */
 /* The same accessible link and failure state serve two deliberately different rooms. */
 .media-card {
   min-width: 0;

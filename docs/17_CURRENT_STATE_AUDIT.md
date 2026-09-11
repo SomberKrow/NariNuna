@@ -1,80 +1,43 @@
 # Current State Audit
 
-**Reviewed:** 9 September 2026
-**Repository:** public `SomberKrow/NariNuna`
-**Baseline:** `main` at `fa83954f09938a864fd53f6a26739e50e2277970`
-**Scope:** current source, lockfile, workflow, documentation, local automated checks and advisory audit
-
-This replaces the accumulated August baseline/delta summary with a single current-main record. Historical implementation evidence remains in documents 23–35 and Git history. Product authority remains with `00_PROJECT_SOURCE_OF_TRUTH.md`; passing tests and merged code do not confer release approval.
+**Reviewed:** 11 September 2026. **Repository:** public `SomberKrow/NariNuna`.
+**Main baseline:** `8c7fe67b91882f7379ab762d24c34fbeae7e4ffc`, merged PR #20.
+**Implementation under review:** `kiva/nari-size-maintenance`; this record does not claim its merge or deployment.
 
 ## Current implementation
 
-Main includes PR #18 and crop commit `45501ea`: the room passage now spans mobile, tablet and desktop; Nari-centered framing is present in the final crop layers. PR #18 is no longer an open implementation dependency for this snapshot.
+Eleven real HTML documents share Vue, explicit lazy route modules and ordinary anchor navigation. One Nari atmosphere remains the client-review implementation. Header priority, nine-room desktop/mobile passage, distinct room interiors, the three-knock Haven threshold, tiny optional floorboard/Prinny route and approved content boundaries remain intact.
 
-| Area | Current behavior / owner |
-|---|---|
-| Architecture | Vue 3, strict TypeScript, Vite 8, Vue Router 5, SCSS, Motion for Vue and Lucide; npm lockfile |
-| Documents | Eleven HTML entries in `pages/`; shared shell and lazy Vue modules; true document navigation |
-| Registry | `src/data/projectPages.json` drives build entries and validation; explicit lazy imports remain in router |
-| Atmosphere | One Nari atmosphere; no public theme selector or persisted theme preference; final client decision pending |
-| Navigation | Home brand; Meet Nari, Streams, Haven, Work; More contains Resources, Nails, Story Time, Support |
-| Guided path | Nine ordinary rooms in `src/data/journey.ts`; `RoomPassage.vue` supports all viewport sizes; 404 and hidden room excluded |
-| Mobile menu | Described directory, Tab containment, Escape focus return, safe-area/dynamic viewport sizing, desktop-resize cleanup |
-| Page layouts | Distinct journal, broadcast desk, textile charter, shelves, workbench, correspondence, album and support-note treatments |
-| Haven door | Three synchronous knocks; deferred continuous interior; stable intermediate story action; final/reset focus transfer |
-| Media | Shared responsive artwork component; 121 content-addressed candidates; nine hero preload sets; 27 supplied Prinny designs retained |
-| Privacy | No backend, form, account, analytics or embedded player; remote YouTube thumbnails remain a network privacy exception |
-| Recovery | One stale-chunk reload attempt per tab/path until successful mount; session-storage failures tolerated |
-| Security | Header intent in `public/_headers`; reviewed local templates/URLs; known development dependency advisories remain open |
+The maintenance branch adds a compact browser artwork manifest while preserving full tooling provenance and every responsive/source raster byte. It removes 59 obsolete cult CSS groups, merges one adjacent identical-selector doorway block without changing declaration order, and adds responsibility/contract comments across the 101 baseline code files plus one new regression test. All 121 vectors have an ownership classification; 18 editable snapshots gain comments only, while 103 imported pack snapshots retain generator/copy-boundary documentation.
 
-## Fresh observed validation
+The README is now an operational entry point linked to owning documents. No dependency, public destination, art framing, content, collection-retention contract or release approval changes.
 
-Local environment: Node **24.19.0**, npm **11.9.0**. The workflow selects Node 22; no new remote CI result or minimum-version validation is claimed here.
+## Observed validation
+
+Node **24.19.0**, npm **11.9.0** locally. CI selects Node 22; consult the PR checks for its result.
 
 | Check | Observed result |
-|---|---|
-| `npm ci` | Passed; 247 packages installed |
-| `npm run check` | Passed: lint, strict typecheck, 68 tests across 14 files, build and validators |
-| `verify:preview` within check | 11 independently served HTML documents, 137 essential assets, all 27 supplied Prinny designs |
-| Shared JS + CSS | 73.04 KB gzip / 120 KB ceiling |
-| Haven route JS / CSS | 6.02 KB / 35 KB; 5.36 KB / 12 KB |
-| Haven combined graph | 84.42 KB gzip; reported, no separate combined ceiling |
-| Full dependency audit | 4 affected packages: 2 high, 2 moderate; 0 critical |
-| Production dependency audit | 0 reported advisories |
-| GitHub open-issue search | No open issues returned; this does not establish absence of defects or security alerts |
+| --- | --- |
+| Fresh `npm ci` | Passed against the unchanged lockfile |
+| `npm run check` | Passed: ESLint, strict Vue/TS, 71 tests in 15 files, production build and validators |
+| HTTP preview check | 11 documents, 137 essential asset entries and all 27 supplied Prinny designs |
+| Active Vue templates | 23 compile identically with comments excluded |
+| Styles | Remaining global declaration sequence equivalent after excluding retired cult rules; nine inline style blocks preserve declaration order |
+| SVGs | 121 retain identical XML after excluding comments and inter-element whitespace |
+| Shared graph | 72,859 → 65,393 bytes, Node default gzip |
+| Full dependency audit | Four affected development packages: two high, two moderate |
+| Production dependency audit | Zero reported advisories |
 
-KB means 1,000 bytes. These are local build/HTTP checks, not rendered visual or field performance measurements. Raw dependency reports and exact findings are in [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
+[Document 37](37_SIZE_MAINTENANCE.md) owns exact before/after sizes, validation methods, scope limits and rollback. [Document 38](38_CODE_OWNERSHIP.md) owns code coverage; [document 39](39_ASSET_DISPOSITION.md) records the retained asset candidates.
 
-## Current defects, risks and limitations
+## Corrections and remaining work
 
-The security/issue register owns status and closure criteria. Highest priorities:
+Reduced-motion fragment navigation now requests instant movement while preserving history precedence and fragment targets. The retained preference helper has per-consumer listeners, preventing one unmount from silencing another. The dormant summoner uses responsive artwork instead of requesting a relocated original. The obsolete immutable-cache rule for the empty generated-media family was removed; current content-addressed cache rules remain.
 
-1. Resolve affected development dependency versions, then rerun both audits and the full gate. A passing build currently does not reject these advisories.
-2. Confirm PR #18's final Nari crops and desktop/mobile journey with rendered viewport and keyboard review. Earlier browser QA predates those final changes.
-3. Validate the real host: headers, HTML revalidation, direct routes, 404 status, atomic deployment and rollback.
-4. Complete native zoom, screen reader, contrast, reduced motion, physical Pixel 9 and measured mobile performance checks.
-5. Close client identity/content/rights/credit/contact/Discord/domain decisions without inventing approvals.
+Chromium was absent and installation failed with network timeouts. No new browser screenshots, keyboard walkthrough, DPR/network measurement, zoom/reflow, screen-reader, contrast or field-performance result is claimed. Lossy social/image recompression, candidate pruning and broad active-style consolidation remain deferred until that evidence is available. Structural equivalence is useful evidence, not a substitute for complete rendered QA.
 
-No new reproducible rendering or interaction defect was established during this documentation-only inspection. The JavaScript-dependent content shell, public hidden route/invite, unverified host behavior and CI hardening gaps are recorded limitations, not claims of a newly exploited site. No zero-day or active exploitation was confirmed.
-
-## Maintenance map
-
-| Owner | Responsibility |
-|---|---|
-| `src/data/` | Typed content, route registry, journey order, asset/delivery maps |
-| `src/components/art/ResponsiveArtwork.vue` | Shared native picture delivery |
-| `src/composables/useHavenDoor.ts` | Knock state and image eligibility |
-| `src/components/haven/HavenDoor.vue` | Door rendering, focus handoff and scoped presentation |
-| `src/components/layout/SiteHeader.vue` | Header/mobile menu state, keyboard and resize behavior |
-| `src/styles/rooms/` | Scoped interior-room composition |
-| `_world.scss`, `_storybook.scss`, `_polish.scss` | Remaining overlapping composition layers; consolidate only with visual evidence |
-| `_face-safe.scss`, `_mobile-first.scss` | Final desktop/tablet focus geometry and phone composition authority |
-| `scripts/`, `tests/` | Document/asset/budget/behavior checks; not an exhaustive security or accessibility audit |
-
-Page-local copy remains appropriate for one-off content. Richer publish-state/provenance schemas are targets, not an implemented CMS. Unreferenced assets must be reviewed with `npm run audit:assets`; lack of a static reference is not deletion authority.
+Four dependency advisories remain open under [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md); the unchanged lockfile was deliberately kept separate from metadata/CSS work. Host headers, actual unknown-route status, cache revalidation and atomic deployment/rollback remain unverified. No zero-day or active exploitation was established.
 
 ## Release boundary
 
-The repository is public, including tracked source assets. “Private-review” in historical art records describes the scope of authorization, not present access restriction. Public repository visibility does not resolve the recorded rights blockers.
-
-Nari-only final approval, identity/canon, derivative/display/franchise rights and credits, real nail work, approved resource recommendations, professional contact, canonical Discord destination, hosting/domain and final QA remain open. Reverify volatile external destinations before release. Do not merge/deploy as a side effect of a documentation review.
+The repository and tracked assets are public. Historical “private-review” wording describes authorization scope, not access restriction. Nari-only final approval, identity/canon, derivative/display/franchise rights/credits, real nail work, recommended resources, public business contact, canonical Discord destination, host/domain and final accessibility/visual review remain open. This maintenance branch neither resolves those decisions nor authorizes merge/release/deployment.

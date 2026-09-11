@@ -1,3 +1,4 @@
+// Lazy page modules correspond to the real documents in projectPages.json. Keep secret metadata on the optional basement route.
 import type { RouteRecordRaw } from "vue-router";
 
 export const routes: RouteRecordRaw[] = [

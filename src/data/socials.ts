@@ -1,3 +1,4 @@
+// One public-profile directory feeds Home, Work and footer links. Verification dates are historical; changing copy must not imply a fresh link check.
 import type { SocialLink } from "@/types/content";
 
 export type NariLinkPlatform = "twitch" | "youtube" | "x" | "tiktok" | "instagram" | "throne";
@@ -73,6 +74,7 @@ export const nariLinks: NariLink[] = [
 
 export const socialLinks: SocialLink[] = nariLinks.filter(({ category }) => category === "social");
 
+/** Required profile omissions fail during module initialization instead of producing an undefined link. */
 function requireNariLink(platform: NariLinkPlatform): NariLink {
   const link = nariLinks.find((candidate) => candidate.platform === platform);
 
@@ -84,5 +86,6 @@ function requireNariLink(platform: NariLinkPlatform): NariLink {
 }
 
 export const twitchUrl = requireNariLink("twitch").url;
+// Community destination is intentionally separate from the general profile directory; reverify before release.
 export const discordUrl = "https://discord.com/invite/f25YtvtnbV";
 export const throneUrl = requireNariLink("throne").url;

@@ -1,3 +1,4 @@
+// Exact hashes protect relocated masters and retired artwork. These tests intentionally reject deleting or silently recompressing preserved sources.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";

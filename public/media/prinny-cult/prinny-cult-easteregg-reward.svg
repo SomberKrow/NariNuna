@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<!-- Prinny Cult easter egg reward: preserve viewBox geometry and accessible title; see docs/38_CODE_OWNERSHIP.md. -->
   <title id="title">Prinny Cult easter egg reward</title>
   <desc id="desc">A blank ceremonial certificate frame with stitched plum borders, a membership seal, stars, ribbons, and space for dynamic reward text.</desc>
   <rect x="34" y="34" width="1132" height="732" rx="44" fill="#f2dfcf" stroke="#8f607d" stroke-width="12"/>

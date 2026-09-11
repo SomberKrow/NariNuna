@@ -1,3 +1,4 @@
+// Retained collection and contract data, not the current tiny page UI. Empty canonical records do not authorize generated names or restored initiation mechanics.
 export type PrinnyPublicationState = "approved" | "retired";
 
 export interface PrinnyRosterRecord {

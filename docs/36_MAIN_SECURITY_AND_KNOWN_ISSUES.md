@@ -4,6 +4,12 @@
 **Audited revision:** `fa83954f09938a864fd53f6a26739e50e2277970` (`main`, merged PR #18)
 **Change scope:** documentation and audit evidence only; no fixes to dependencies or runtime
 
+## 11 September 2026 maintenance recheck
+
+Baseline main `8c7fe67`, Node 24.19.0/npm 11.9.0. Fresh [full audit](evidence/2026-09-11-maintenance/npm-audit.json) still reports four affected development packages (two high, two moderate); [production-only audit](evidence/2026-09-11-maintenance/npm-audit-production.json) reports zero. Package declarations and lockfile are unchanged; dependency remediation remains a separate focused follow-up. The 9 September findings below remain dated evidence.
+
+The maintenance branch corrects reduced-motion fragment scrolling, per-consumer listener lifetime in the dormant helper, and the dormant Ghostie’s nonpublic image lookup. It removes the obsolete immutable-cache rule for the empty generated-media family. Browser/host verification is still pending. See [document 37](37_SIZE_MAINTENANCE.md); no zero-day or exploitation claim is made.
+
 ## Read this result correctly
 
 The fresh full npm audit reports **four affected development packages: two high and two moderate**, representing eight distinct advisory IDs (Vitest and its mocker share one advisory). The production-only audit reports **zero known advisories**. These are registry findings against the lockfile, not proof of exploitability through the deployed website. The affected paths are ESLint and Vitest tooling; the application has no server-side dependency runtime when only `dist/` is served.
