@@ -1,3 +1,5 @@
+// Global buttons, header/footer foundations and retained UI primitives. Component-scoped refinements override their own presentation.
+// Reusable actions keep labels visible and allow wrapping before narrow-screen overflow.
 .button-row {
   display: flex;
   flex-wrap: wrap;
@@ -90,6 +92,7 @@
   cursor: pointer;
 }
 
+// Header foundation only; disclosure and mobile-directory details belong to SiteHeader.vue.
 .site-header {
   position: sticky;
   z-index: 100;
@@ -251,6 +254,7 @@
   margin: 0;
 }
 
+// Retained dormant widget styles; absence from SiteShell is deliberate.
 .ghostie-summoner {
   position: fixed;
   z-index: 80;
@@ -318,6 +322,7 @@
   color: var(--ink);
 }
 
+// Retained heading primitive; current route-owned room headers may override these defaults.
 .section-heading {
   max-width: 49rem;
   margin-block-end: var(--space-7);

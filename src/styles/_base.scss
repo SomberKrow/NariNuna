@@ -1,3 +1,4 @@
+// Document defaults, reading primitives, focus/skip-link behavior and opt-in page transitions. Preference overrides must preserve navigation.
 *,
 *::before,
 *::after {
@@ -10,6 +11,7 @@ html {
   scroll-behavior: smooth;
 }
 
+// Progressive document transitions; unsupported browsers retain ordinary anchor navigation.
 @view-transition {
   navigation: auto;
 }
@@ -157,6 +159,7 @@ em {
   padding-block: var(--space-9);
 }
 
+// These accessibility declarations must beat component display/spacing rules without removing text from assistive technology.
 .sr-only {
   position: absolute !important;
   width: 1px !important;

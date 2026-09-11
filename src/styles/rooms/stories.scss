@@ -1,3 +1,4 @@
+// Scoped memory album spacing and closing navigation. MediaCard owns album cards; do not restore the removed stripe.
 .memory-album__pages {
   position: relative;
   list-style: none;

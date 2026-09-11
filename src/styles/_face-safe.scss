@@ -1,3 +1,4 @@
+// Final character focal positions across desktop and tablet. Mobile-first consumes these variables; preserve copy-safe framing.
 /* Nari focal points belong here; phone silhouettes consume these values too.
  * Higher horizontal cover positions move the painting left inside its frame.
  * Desktop preserves the copy lane; phone crops prioritize her face and ears. */
@@ -62,6 +63,7 @@
   --hero-mobile-focus-y: 50%;
 }
 
+// Desktop copy stays in the left lane while backgrounds move Nari into the remaining clear space.
 @media (min-width: 64.01rem) {
   .haven-landing__inner {
     grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
@@ -172,6 +174,7 @@
   }
 }
 
+// Tablet foundation separates copy from the picture; the later phone layer recomposes below 48rem.
 @media (max-width: 64rem) {
   .haven-landing {
     height: auto;

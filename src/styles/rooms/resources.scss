@@ -1,3 +1,4 @@
+// Scoped three-shelf library and recommendation policy. Preserve fragment offsets and narrow-screen wrapping without restoring old side navigation.
 .resource-library {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.65fr);

@@ -1,3 +1,4 @@
+// Shared world geometry and initial hero composition. Storybook/polish refine materials; face-safe/mobile-first own final crop decisions.
 :root {
   --scene-veil: linear-gradient(90deg, rgb(30 18 26 / 93%) 0%, rgb(38 23 32 / 79%) 43%, rgb(39 25 40 / 21%) 78%, rgb(35 21 33 / 30%) 100%);
   --art-border: rgb(218 174 209 / 21%);
@@ -69,7 +70,8 @@
   box-shadow: 0 0 0.6rem var(--emerald);
 }
 
-body[data-route="home"] .site-footer {
+body[data-route="home"] // Footer foundation; the compact component owns final spacing and closing notes.
+.site-footer {
   display: none;
 }
 
@@ -141,6 +143,7 @@ body[data-route="home"] .site-footer {
       color: var(--text-muted);
   }
 
+// Initial shared profile-control geometry; later polish/mobile layers own final label treatment.
 .social-dock {
     flex-wrap: wrap;
   gap: 0.36rem;
@@ -231,6 +234,7 @@ body[data-route="home"] .site-footer {
   color: var(--lavender);
 }
 
+// Character introduction foundation; integrated painting replaces the older separate portrait treatment.
 .character-intro {
   position: relative;
   display: grid;
@@ -382,6 +386,7 @@ body[data-route="home"] .site-footer {
   color: var(--text-muted);
 }
 
+// Shared room-opening geometry; preserve later route-specific masks and focal overrides.
 .room-opening {
       grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 2.3rem;
@@ -489,6 +494,7 @@ body[data-route="home"] .site-footer {
   padding-block: 4rem;
 }
 
+// Background-led hero structure shared by studio and Haven, with independent page art variables.
 .studio-opening,
 .haven-heart {
   position: relative;
@@ -703,97 +709,6 @@ body[data-route="home"] .site-footer {
   width: 4.2rem;
 }
 
-.cult-collection {
-    min-height: 100svh;
-  padding-block: 4rem 6rem;
-  isolation: isolate;
-}
-
-.cult-collection__backdrop {
-  position: fixed;
-  z-index: -1;
-  inset: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  opacity: 0.18;
-  pointer-events: none;
-}
-
-.cult-collection__intro {
-  max-width: 43rem;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
-
-.cult-collection__intro > img {
-  width: 7rem;
-  margin: 0 auto 0.9rem;
-}
-
-.cult-collection__intro .eyebrow {
-  justify-content: center;
-}
-
-.cult-collection__intro h1 {
-  margin-block-end: 0.65rem;
-  font-size: clamp(3.2rem, 8vw, 5.4rem);
-}
-
-.cult-collection__intro > p:last-child {
-  color: var(--text-muted);
-}
-
-.cult-collection__gallery > article {
-      min-height: 9.2rem;
-    padding: 0.8rem;
-  background: color-mix(in srgb, var(--bg-raised) 90%, transparent);
-  border: 1px solid var(--line);
-    transition: transform var(--duration-fast) ease, border-color var(--duration-fast) ease;
-}
-
-.cult-collection__gallery > article:hover {
-  border-color: var(--lavender);
-  transform: translateY(-3px) rotate(-1deg);
-}
-
-.cult-collection__gallery > article > span {
-        color: var(--text-muted);
-    }
-
-.cult-collection__gallery > article > img {
-  width: 100%;
-  max-height: 9rem;
-  object-fit: contain;
-}
-
-.cult-collection__oath,
-.cult-collection__reward {
-  display: grid;
-  max-width: 37rem;
-  justify-items: center;
-  gap: 0.65rem;
-  padding: 2rem;
-  margin: 3rem auto 0;
-  background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: 1.15rem;
-  text-align: center;
-}
-
-.cult-collection__oath > svg,
-.cult-collection__reward > svg {
-  color: var(--emerald);
-}
-
-.cult-collection__reward > button:not(.button) {
-  padding: 0.5rem 0.9rem;
-  background: transparent;
-  border: 1px solid var(--lavender);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-}
-
 .site-footer {
   position: relative;
 }
@@ -1002,16 +917,6 @@ body[data-route="home"] .site-footer {
   .site-footer__statement {
     grid-template-columns: 5rem minmax(0, 1fr);
     gap: 0.8rem;
-  }
-
-  .cult-collection__gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
-
-  .cult-collection__gallery > article {
-    min-height: 7rem;
-    padding: 0.55rem;
   }
 }
 
