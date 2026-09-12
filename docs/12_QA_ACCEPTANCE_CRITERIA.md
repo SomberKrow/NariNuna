@@ -65,6 +65,8 @@ Current gaps to consider expanding before release:
 
 `npm run verify:release` is intentionally separate. It first proves the current build, then evaluates machine-readable manual approvals and rights facts derived from Credits. A nonzero result is expected while genuine release blockers remain and must not be added to normal `npm run check`.
 
+Phase Two browser attempt, 12 September 2026: the cloud Chrome session could not reach the container-only loopback preview, and the stacked PR did not receive a Netlify deploy-preview URL during the review window. GitHub's Node 22 Quality Gate passed, but no rendered, keyboard, zoom, reduced-motion, contrast, Firefox or screen-reader result is promoted to `PASS`. Exact details remain in [document 41](41_HAVEN_DEPTH_AND_RELEASE_READINESS.md).
+
 ## Manual test matrix
 
 Every ordinary route plus secret and 404 must be covered. Use final content/assets.

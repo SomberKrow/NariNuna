@@ -49,6 +49,9 @@ describe("production release readiness", () => {
     const result = validateReleaseReadiness(readiness, registry, { buildIntegrity: true });
     expect(result.errors.join(" ")).toContain("needs a summary");
     expect(result.errors.join(" ")).toContain("unknown status");
+
+    readiness.items[0] = null;
+    expect(() => validateReleaseReadiness(readiness, registry, { buildIntegrity: true })).not.toThrow();
   });
 
   it("blocks an unresolved artwork-family rights state derived from Credits", () => {

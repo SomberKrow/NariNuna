@@ -53,11 +53,13 @@ Implementation checkpoint:
 
 - `npm run lint`: passed.
 - `npm run typecheck`: passed.
-- `npm run test`: passed with 85 tests in 19 files.
+- `npm run test`: passed with 86 tests in 19 files.
 - `npm run build`: passed with all twelve document, credit, artwork and performance validators.
 - `npm run verify:release`: built successfully and then returned `NOT READY FOR PUBLIC RELEASE`, as intended.
 
-Rendered/browser evidence is appended after review of the branch preview. Firefox, a named screen reader, physical Pixel 9 and production-host behavior remain `PENDING` unless separately observed and recorded.
+## Rendered QA availability
+
+The cloud Chrome session could not open the container-only preview because loopback addresses are blocked by that browser environment. The stacked PR received no Netlify deploy-preview URL during the review window, although GitHub's Node 22 Quality Gate completed successfully. Therefore no rendered viewport, keyboard, zoom, reduced-motion, contrast or screen-reader `PASS` is claimed for this commit. Firefox, a named screen reader, physical Pixel 9 and production-host behavior remain `PENDING`. This limitation is recorded in the release data rather than being papered over with structural tests.
 
 ## Rollback
 

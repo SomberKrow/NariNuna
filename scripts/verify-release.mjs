@@ -21,7 +21,7 @@ export function validateReleaseReadiness(readiness, registry, automatic = {}) {
   if (!Array.isArray(readiness.items)) errors.push("items must be an array.");
   if (errors.length) return { errors, blockers, notices, passes };
 
-  const categorySet = new Set(readiness.items.map((item) => item.category));
+  const categorySet = new Set(readiness.items.map((item) => item?.category));
   for (const category of readiness.requiredCategories) {
     if (typeof category !== "string" || !idPattern.test(category)) errors.push(`Invalid required category: ${category ?? "<missing>"}.`);
     else if (!categorySet.has(category)) errors.push(`Missing required readiness category: ${category}.`);
@@ -30,13 +30,13 @@ export function validateReleaseReadiness(readiness, registry, automatic = {}) {
   const ids = new Set();
   for (const item of readiness.items) {
     if (!idPattern.test(item?.id ?? "")) errors.push(`Readiness item has an invalid id: ${item?.id ?? "<missing>"}.`);
-    if (ids.has(item?.id)) errors.push(`Duplicate readiness item id: ${item.id}.`);
+    if (ids.has(item?.id)) errors.push(`Duplicate readiness item id: ${item?.id ?? "<missing>"}.`);
     ids.add(item?.id);
     if (!idPattern.test(item?.category ?? "")) errors.push(`Readiness item ${item?.id ?? "<missing>"} has an invalid category.`);
     if (!statuses.has(item?.status)) errors.push(`Readiness item ${item?.id ?? "<missing>"} has an unknown status.`);
     if (!item?.summary?.trim()) errors.push(`Readiness item ${item?.id ?? "<missing>"} needs a summary.`);
     if (typeof item?.releaseBlocking !== "boolean") errors.push(`Readiness item ${item?.id ?? "<missing>"} needs a boolean releaseBlocking value.`);
-    if (item?.status === "resolved" && !item?.evidenceRef?.trim()) errors.push(`Resolved readiness item ${item.id} needs a public-safe evidenceRef.`);
+    if (item?.status === "resolved" && !item?.evidenceRef?.trim()) errors.push(`Resolved readiness item ${item?.id ?? "<missing>"} needs a public-safe evidenceRef.`);
 
     if (item?.status === "resolved" || item?.status === "not-applicable") passes.push(item);
     else if (item?.releaseBlocking) blockers.push(item);

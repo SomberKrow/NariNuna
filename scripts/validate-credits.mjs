@@ -87,14 +87,14 @@ export function validateCreditRegistry(registry) {
       if (!Array.isArray(credit.artwork) || credit.artwork.length === 0) errors.push(`Credit ${credit.id} approves display without an artwork reference.`);
       for (const artwork of credit.artwork ?? []) {
         if (!idPattern.test(artwork?.id ?? "")) errors.push(`Credit ${credit.id} has artwork with an invalid id: ${artwork?.id ?? "<missing>"}.`);
-        if (artworkIds.has(artwork?.id)) errors.push(`Duplicate artwork id: ${artwork.id}.`);
+        if (artworkIds.has(artwork?.id)) errors.push(`Duplicate artwork id: ${artwork?.id ?? "<missing>"}.`);
         artworkIds.add(artwork?.id);
         if (!artwork?.title?.trim() || !artwork?.category?.trim() || !artwork?.caption?.trim()) errors.push(`Artwork ${artwork?.id ?? "<missing>"} needs a title, category, and caption.`);
         if (artwork?.year !== undefined && (!Number.isInteger(artwork.year) || artwork.year < 1900 || artwork.year > new Date().getUTCFullYear())) errors.push(`Artwork ${artwork?.id ?? "<missing>"} has an invalid year.`);
         if (!credit.assetFamilyIds?.includes(artwork?.assetFamilyId)) errors.push(`Artwork ${artwork?.id ?? "<missing>"} references a family outside credit ${credit.id}.`);
         const family = registry.assetFamilies.find((candidate) => candidate.id === artwork?.assetFamilyId);
         if (family && family.publicationStatus !== "approved") errors.push(`Credit ${credit.id} displays artwork from non-approved family ${family.id}.`);
-        if (family && !family.trackedAssets.includes(artwork?.src)) errors.push(`Artwork ${artwork?.id ?? "<missing>"} is not tracked by family ${family.id}.`);
+        if (family && Array.isArray(family.trackedAssets) && !family.trackedAssets.includes(artwork?.src)) errors.push(`Artwork ${artwork?.id ?? "<missing>"} is not tracked by family ${family.id}.`);
         if (!artwork?.src || !assetExists(artwork.src)) errors.push(`Credit ${credit.id} displays a missing artwork asset: ${artwork?.src ?? "<missing>"}.`);
         if (!artwork?.alt?.trim()) errors.push(`Credit ${credit.id} displays artwork without meaningful alt text.`);
         if (!Number.isInteger(artwork?.width) || artwork.width <= 0 || !Number.isInteger(artwork?.height) || artwork.height <= 0) {

@@ -1,6 +1,9 @@
 // Exercise the versioned local-only persistence contract without requiring a browser or adding a DOM test dependency.
 import { describe, expect, it } from "vitest";
+import { createSSRApp, h } from "vue";
+import { renderToString } from "vue/server-renderer";
 import { havenJourney } from "@/data/journey";
+import HavenPassport from "@/components/layout/HavenPassport.vue";
 import {
   createHavenPassportPersistence,
   HAVEN_PASSPORT_STORAGE_KEY,
@@ -63,5 +66,12 @@ describe("Haven Passport", () => {
     const passport = createHavenPassportPersistence(broken);
     expect(passport.visit("/streams/")).toEqual(["/streams/"]);
     expect(passport.reset()).toEqual([]);
+  });
+
+  it("renders its optional disclosure without requiring browser storage", async () => {
+    const html = await renderToString(createSSRApp({ render: () => h(HavenPassport, { currentPath: "/" }) }));
+    expect(html).toContain("Haven Passport");
+    expect(html).toContain(`0 / ${havenJourney.length} rooms visited`);
+    expect(html).toContain("Reset passport");
   });
 });
