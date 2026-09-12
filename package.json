@@ -11,6 +11,7 @@
     "build": "vue-tsc --noEmit && npm run validate:credits && vite build && node scripts/validate-build.mjs && node scripts/validate-performance.mjs",
     "preview": "vite preview",
     "verify:preview": "node scripts/verify-preview.mjs",
+    "verify:release": "npm run build && node scripts/verify-release.mjs",
     "start": "npm run preview",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit",

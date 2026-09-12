@@ -3,6 +3,8 @@
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Eye, Gamepad2, Heart, MoonStar, Paintbrush, Sparkles } from "@lucide/vue";
 import GhostieArt, { type GhostieArtVariant } from "@/components/art/GhostieArt.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
+import RoomDiscovery from "@/components/ui/RoomDiscovery.vue";
 import { environmentArtwork } from "@/data/artwork";
 import { identityPillars } from "@/data/content";
 
@@ -26,6 +28,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
         <span><Heart :size="16" aria-hidden="true" /> Protective big sister</span>
       </div>
       <a class="button button--ember" href="/haven/">Come see the Haven <ArrowRight :size="18" aria-hidden="true" /></a>
+      <ArtworkCreditLink credit-id="website-storybook-artwork" />
     </div>
   </section>
 
@@ -46,6 +49,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
         </article>
       </div>
     </div>
+    <RoomDiscovery discovery-id="journal-letter" />
   </section>
 
   <!-- Boundary copy follows the introduction; symbolism stays limited to Nari-approved meaning. -->

@@ -163,6 +163,7 @@ Semantic visual values remain CSS custom properties so atmosphere and component 
 | Haven door step | `HavenDoor` local ref | None | Narrative, not auth |
 | Floorboard open state | `LooseFloorboard` local ref | None | One optional toggle |
 | Secret page | Tiny standalone view; no oath/counter | None | Optional public joke |
+| Haven Passport | `useHavenPassport` + `HavenPassport` | Versioned local storage with in-memory fallback | Canonical room paths only; no identity, account, analytics or gate |
 
 No current state belongs in a cookie, account, server session, URL parameter, or analytics event.
 
@@ -196,6 +197,7 @@ The browser is untrusted and the output is public static code.
 | `npm run test` | Vitest content-contract suite |
 | `npm run build` | Typecheck → credit registry validation → Vite MPA build → document and performance validators |
 | `npm run validate:credits` | Offline attribution/family/link/artwork-display invariant check |
+| `npm run verify:release` | Build the artifact, derive release facts and fail while blocking approval/rights/host/QA records remain |
 | `npm run check` | Lint → typecheck → test → build → HTTP preview verification |
 | `npm run preview` | Preview built production artifact |
 
@@ -216,6 +218,7 @@ The following are merge blockers unless intentionally changed through an accepte
 - no client secret;
 - public assets are local/approved and explicitly sized;
 - hidden route remains optional, no-index, and non-private;
+- Passport derives its room list from `havenJourney`, tolerates unavailable/malformed storage and never gates content;
 - output remains portable to a static host meeting the runbook contract.
 
 ## Adding a route

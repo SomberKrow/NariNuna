@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // Own the uninterrupted Home arrival, centered character framing and single Haven destination; the shared shell supplies the room passage.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Heart, MoonStar, Sparkles } from "@lucide/vue";
 import SocialDock from "@/components/ui/SocialDock.vue";
@@ -40,6 +41,7 @@ import { detailArtwork, environmentArtwork } from "@/data/artwork";
           </a>
           <a class="haven-landing__meet" href="/meet-nari/">Meet Nari <ArrowRight :size="15" aria-hidden="true" /></a>
         </div>
+        <ArtworkCreditLink credit-id="website-storybook-artwork" />
       </div>
     </div>
   </section>

@@ -17,70 +17,110 @@
       "label": "Supplied Nari character artwork",
       "assetRecord": "docs/asset-records/ASSET-2026-015-nari-supplied-character-and-emotes.md",
       "trackedAssets": ["/media/nari/nari-model-fullbody.webp", "/media/nari/nari-model-portrait.webp", "/media/nari/nari-comfy-original.webp"],
-      "publicationStatus": "blocked"
+      "publicationStatus": "blocked",
+      "websiteUseStatus": "blocked",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "concern",
+      "approvalStatus": "pending"
     },
     {
       "id": "nari-model-rigging",
       "label": "Nari model rigging",
       "assetRecord": null,
       "trackedAssets": [],
-      "publicationStatus": "pending"
+      "publicationStatus": "pending",
+      "websiteUseStatus": "not-applicable",
+      "derivativeUseStatus": "not-applicable",
+      "thirdPartyStatus": "not-applicable",
+      "approvalStatus": "pending"
     },
     {
       "id": "official-static-emotes",
       "label": "Official static Nari emotes",
       "assetRecord": "docs/asset-records/ASSET-2026-015-nari-supplied-character-and-emotes.md",
       "trackedAssets": ["/media/emotes/nari-comfy.webp", "/media/emotes/nari-panic.webp"],
-      "publicationStatus": "blocked"
+      "publicationStatus": "blocked",
+      "websiteUseStatus": "blocked",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "concern",
+      "approvalStatus": "pending"
     },
     {
       "id": "channel-identity-artwork",
       "label": "Channel artwork and graphics",
       "assetRecord": null,
       "trackedAssets": [],
-      "publicationStatus": "pending"
+      "publicationStatus": "pending",
+      "websiteUseStatus": "pending",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "pending",
+      "approvalStatus": "pending"
     },
     {
       "id": "community-ghosties",
       "label": "Ghostie support artwork",
       "assetRecord": "docs/asset-records/ASSET-2026-019-storybook-environments-and-ghosties.md",
       "trackedAssets": ["/media/ghosties/community/ghostie-heart.webp", "/media/ghosties/community/ghostie-protective.webp"],
-      "publicationStatus": "pending"
+      "publicationStatus": "pending",
+      "websiteUseStatus": "pending",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "pending",
+      "approvalStatus": "pending"
     },
     {
       "id": "supplied-prinny-collection",
       "label": "Supplied Prinny collection",
       "assetRecord": "docs/asset-records/ASSET-2026-017-supplied-prinny-collection.md",
       "trackedAssets": ["/media/prinny-cult/roster/original.webp"],
-      "publicationStatus": "blocked"
+      "publicationStatus": "blocked",
+      "websiteUseStatus": "blocked",
+      "derivativeUseStatus": "blocked",
+      "thirdPartyStatus": "concern",
+      "approvalStatus": "pending"
     },
     {
       "id": "storybook-nari",
       "label": "Owner-directed storybook Nari derivatives",
       "assetRecord": "docs/asset-records/ASSET-2026-018-owner-authorized-storybook-nari.md",
       "trackedAssets": ["/media/storybook/characters/nari-painted-welcome.webp", "/media/storybook/characters/nari-painted-portrait.webp"],
-      "publicationStatus": "blocked"
+      "publicationStatus": "blocked",
+      "websiteUseStatus": "blocked",
+      "derivativeUseStatus": "blocked",
+      "thirdPartyStatus": "concern",
+      "approvalStatus": "pending"
     },
     {
       "id": "storybook-environments",
       "label": "Storybook rooms and supporting website artwork",
       "assetRecord": "docs/asset-records/ASSET-2026-019-storybook-environments-and-ghosties.md",
       "trackedAssets": ["/media/storybook/scenes/haven-sunset.webp", "/media/storybook/scenes/resources-library.webp"],
-      "publicationStatus": "pending"
+      "publicationStatus": "pending",
+      "websiteUseStatus": "pending",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "pending",
+      "approvalStatus": "pending"
     },
     {
       "id": "future-nail-photography",
       "label": "Future real nail photography",
       "assetRecord": null,
       "trackedAssets": [],
-      "publicationStatus": "pending"
+      "publicationStatus": "pending",
+      "websiteUseStatus": "pending",
+      "derivativeUseStatus": "pending",
+      "thirdPartyStatus": "pending",
+      "approvalStatus": "pending"
     },
     {
       "id": "website-implementation",
       "label": "Website design and engineering",
       "assetRecord": null,
       "trackedAssets": [],
-      "publicationStatus": "approved"
+      "publicationStatus": "approved",
+      "websiteUseStatus": "not-applicable",
+      "derivativeUseStatus": "not-applicable",
+      "thirdPartyStatus": "not-applicable",
+      "approvalStatus": "approved"
     }
   ],
   "credits": [

@@ -50,3 +50,7 @@ The decoration carries no text, state, or interaction. Content remains complete 
 ## Validation contract
 
 Run `npm run check`, then review every ordinary route at 320, 390, 768, and wide desktop widths. Confirm readable copy, visible focus, no horizontal overflow, unchanged content order/actions, coherent transition from the opening painting, and decoration that recedes behind content. Reduced motion requires no alternate implementation because Phase B introduces no motion.
+
+## 2026-09-12 cross-room details
+
+Four small linked objects now repeat the Haven's material language: a journal letter leads toward Work, a workbench bookmark leads to the Nail Desk shelf, a broadcast stub leads from Resources to Streams, and a pinned memory leads from the Haven charter to Story Time. `roomDiscoveries.ts` owns their exact source/destination records; `RoomDiscovery.vue` owns the semantic link and focus treatment. They add no collectible state, height-heavy navigation, Prinny promotion, personal story or new artwork.
