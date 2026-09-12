@@ -19,7 +19,7 @@ const resourceShelves = [
     <div class="room-opening__copy">
       <p class="eyebrow"><BookMarked :size="16" aria-hidden="true" /> Chapter five · the very helpful shelf</p>
       <h1>Useful things.<br /><em>Chosen with care.</em></h1>
-      <p>Helpful finds, creator tools, and nail-desk favorites only get a spot if Nari actually wants to share them.</p>
+      <p>The shelves are sparse on purpose. Nothing gets a label until Nari has actually used it and wants to explain why it belongs here.</p>
       <div class="room-opening__signals"><span><HeartHandshake :size="15" aria-hidden="true" /> People before products</span></div>
     </div>
     <picture class="room-opening__art room-opening__art--resources">
@@ -33,7 +33,7 @@ const resourceShelves = [
     <header class="resource-library__index">
       <p class="room-kicker">The collection</p>
       <h2 id="shelf-title">A little less searching.<br /><em>A little more making.</em></h2>
-      <p class="room-caption">Nari is choosing her first recommendations. Each one will include a reason it belongs here.</p>
+      <p class="room-caption">Nari is still choosing. Empty space beats a recommendation she cannot stand behind.</p>
     </header>
 
     <div class="resource-library__shelves">

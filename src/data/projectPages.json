@@ -72,6 +72,14 @@
     "hero": "stories"
   },
   {
+    "id": "credits",
+    "path": "/credits/",
+    "document": "credits/index.html",
+    "title": "Credits",
+    "socialImage": "/media/storybook/share/nari-haven-social.jpg",
+    "hero": null
+  },
+  {
     "id": "prinnyCult",
     "path": "/the-prinny-cult/",
     "document": "the-prinny-cult/index.html",

@@ -37,3 +37,55 @@ export interface CommunityValue {
   title: string;
   description: string;
 }
+
+export type CreditStatus = "verified" | "pending" | "internal" | "not-required" | "blocked";
+export type ArtworkDisplayStatus = "approved" | "not-approved" | "not-applicable";
+export type PublicationStatus = "approved" | "pending" | "blocked";
+
+export interface CreditLink {
+  label: string;
+  url: string;
+}
+
+export interface CreditArtwork {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+export interface CreditGroup {
+  id: string;
+  label: string;
+  description: string;
+}
+
+export interface AssetFamilyCreditDisposition {
+  id: string;
+  label: string;
+  assetRecord: string | null;
+  trackedAssets: string[];
+  publicationStatus: PublicationStatus;
+}
+
+export interface ArtCredit {
+  id: string;
+  groupId: string;
+  displayName: string;
+  roles: string[];
+  contribution: string;
+  creditText: string;
+  links: CreditLink[];
+  assetFamilyIds: string[];
+  creditStatus: CreditStatus;
+  artworkDisplayStatus: ArtworkDisplayStatus;
+  artwork: CreditArtwork[];
+  pageVisible: boolean;
+}
+
+export interface ArtCreditRegistry {
+  schemaVersion: number;
+  groups: CreditGroup[];
+  assetFamilies: AssetFamilyCreditDisposition[];
+  credits: ArtCredit[];
+}

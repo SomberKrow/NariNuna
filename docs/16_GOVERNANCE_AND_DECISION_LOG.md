@@ -93,6 +93,15 @@ Use `templates/DECISION_RECORD.md` for substantial new decisions, then summarize
 
 ## Accepted decisions
 
+### ADR-010 — Public-safe creative credit registry
+
+**State:** `ACCEPTED` for implementation; contributor verification and publication rights remain `PENDING`/`BLOCKED` per family
+**Date:** 2026-09-12
+**Decision:** Add `/credits/` as a secondary real document and keep public attribution in one validated local registry. Track credit status, family publication state and artwork-display approval separately. Known pending/blocked dispositions are valid; an unclassified meaningful family is not.
+**Reason:** Makes missing attribution visible and maintainable without overloading delivery metadata or publishing private evidence.
+**Consequences:** New meaningful art families require a registry disposition and asset record where applicable. Blocked records cannot render; artwork cannot appear on Credits without explicit display clearance.
+**Revisit when:** A contributor confirms public wording/link, a family gains or loses permission, or the project adopts a private rights-management system.
+
 ### ADR-001 — True Vite MPA with shared Vue Router runtime
 
 **State:** `ACCEPTED`  

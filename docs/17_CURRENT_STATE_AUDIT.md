@@ -1,16 +1,18 @@
 # Current State Audit
 
-**Reviewed:** 11 September 2026. **Repository:** public `SomberKrow/NariNuna`.
-**Main baseline:** `8c7fe67b91882f7379ab762d24c34fbeae7e4ffc`, merged PR #20.
-**Implementation under review:** `kiva/nari-size-maintenance`; this record does not claim its merge or deployment.
+**Reviewed:** 12 September 2026. **Repository:** public `SomberKrow/NariNuna`.
+**Main baseline:** `d1b495cd8aa0be5aaaa8a9255e2bc756d9b5491e`, merged PR #21.
+**Implementation under review:** `kiva/credits-humanization`; this record does not claim its merge or deployment.
 
 ## Current implementation
 
-Eleven real HTML documents share Vue, explicit lazy route modules and ordinary anchor navigation. One Nari atmosphere remains the client-review implementation. Header priority, nine-room desktop/mobile passage, distinct room interiors, the three-knock Haven threshold, tiny optional floorboard/Prinny route and approved content boundaries remain intact.
+Twelve real HTML documents share Vue, explicit lazy route modules and ordinary anchor navigation. Credits joins More/footer navigation and the ten-room passage without becoming a primary header item. A structured public-safe registry classifies ten asset/contribution families and drives nine public credit records; no contributor artwork renders because no related display permission is recorded. The three-knock Haven threshold, tiny optional floorboard/Prinny route and existing content boundaries remain intact.
 
-The maintenance branch adds a compact browser artwork manifest while preserving full tooling provenance and every responsive/source raster byte. It removes 59 obsolete cult CSS groups, merges one adjacent identical-selector doorway block without changing declaration order, and adds responsibility/contract comments across the 101 baseline code files plus one new regression test. All 121 vectors have an ownership classification; 18 editable snapshots gain comments only, while 103 imported pack snapshots retain generator/copy-boundary documentation.
+The humanization pass shortens obvious template language on Home, Meet Nari, Nail Studio, Haven, Resources, Work With Nari and Story Time. Streams and Support were audited and retained because their direct copy already met the established modes. Missing Nari wording, artist identities, links, real nail work and permissions remain honest holds.
 
-The README is now an operational entry point linked to owning documents. No dependency, public destination, art framing, content, collection-retention contract or release approval changes.
+The merged maintenance baseline adds a compact browser artwork manifest while preserving full tooling provenance and every responsive/source raster byte. It removed 59 obsolete cult CSS groups, merged one adjacent identical-selector doorway block without changing declaration order, and added responsibility/contract comments across the baseline code. All 121 vectors retain an ownership classification.
+
+The README, route contracts and owning asset/content documents now describe the Credits system. No dependency, artwork byte, source-retention contract or release approval changes.
 
 ## Observed validation
 
@@ -19,14 +21,12 @@ Node **24.19.0**, npm **11.9.0** locally. CI selects Node 22; consult the PR che
 | Check | Observed result |
 | --- | --- |
 | Fresh `npm ci` | Passed against the unchanged lockfile |
-| `npm run check` | Passed: ESLint, strict Vue/TS, 71 tests in 15 files, production build and validators |
-| HTTP preview check | 11 documents, 137 essential asset entries and all 27 supplied Prinny designs |
-| Active Vue templates | 23 compile identically with comments excluded |
-| Styles | Remaining global declaration sequence equivalent after excluding retired cult rules; nine inline style blocks preserve declaration order |
-| SVGs | 121 retain identical XML after excluding comments and inter-element whitespace |
-| Shared graph | 72,859 → 65,393 bytes, Node default gzip |
-| Full dependency audit | Four affected development packages: two high, two moderate |
-| Production dependency audit | Zero reported advisories |
+| `npm run check` | Passed: ESLint, strict Vue/TS, 76 tests in 16 files, 12-document production build, credit/document/artwork/performance validators and HTTP preview |
+| HTTP preview check | 12 documents, 137 essential asset entries and all 27 supplied Prinny designs |
+| Credit validator | 9 records across 10 explicitly classified families |
+| Shared JS + CSS graph | 65.53 KB gzip / 120 KB budget |
+| Credits route additions | 4.67 KB JS gzip / 35 KB; 1.32 KB CSS gzip / 12 KB |
+| Asset changes | None; existing retained and delivery bytes are untouched |
 
 [Document 37](37_SIZE_MAINTENANCE.md) owns exact before/after sizes, validation methods, scope limits and rollback. [Document 38](38_CODE_OWNERSHIP.md) owns code coverage; [document 39](39_ASSET_DISPOSITION.md) records the retained asset candidates.
 

@@ -17,7 +17,7 @@ import { communityValues } from "@/data/content";
       <div>
         <p class="eyebrow"><House :size="16" aria-hidden="true" /> Chapter four · the room that feels like exhaling</p>
         <h1>You don't have to<br /><em>earn your place here.</em></h1>
-        <p>A warm little refuge for big personalities, quiet lurkers, tired people, weird jokes, and anyone who remembers that there are real humans on the other side of the screen.</p>
+        <p>No audition. No volume requirement. Just big personalities, quiet lurkers, tired people, weird jokes, and respect for the human on the other side of the screen.</p>
       </div>
     </div>
   </section>

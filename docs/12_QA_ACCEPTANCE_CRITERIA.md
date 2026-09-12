@@ -50,14 +50,15 @@ The gate includes:
 - strict Vue/TypeScript checking;
 - Vitest content contracts;
 - production MPA build;
-- existence/metadata/asset-reference validation for eleven HTML documents.
+- deterministic credit-registry validation;
+- existence/metadata/asset-reference validation for twelve HTML documents.
 
 Current gaps to consider expanding before release:
 
 - exact equality among Vite entries, router records, validator pages, and documented route registry;
 - duplicate navigation labels/route names;
 - allowed external origins and new-tab rel attributes;
-- fixed Nari atmosphere metadata across all eleven documents and absence of stale preference runtime;
+- fixed Nari atmosphere metadata across all twelve documents and absence of stale preference runtime;
 - publish-state filtering when target content schemas arrive;
 - broken/expired volatile-content checks where automatable;
 - generated public image metadata/size budget checks.
@@ -102,7 +103,7 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 
 ## Route and MPA acceptance
 
-- [ ] Eleven expected HTML documents exist in `dist/`.
+- [ ] Twelve expected HTML documents exist in `dist/`.
 - [ ] Each direct-loads from the production host.
 - [ ] Refresh, trailing slash, and back/forward preserve the Nari atmosphere across documents.
 - [ ] Top-level links remain document anchors.
@@ -185,6 +186,14 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 - [ ] Draft/retired records render nothing.
 - [ ] Ratings/warnings appear before adult content.
 - [ ] Participant permission/redaction/removal path exists where relevant.
+
+### Credits
+
+- [ ] Every meaningful current artwork family has an explicit disposition.
+- [ ] Confirmed names and links have evidence; pending entries do not imply verification.
+- [ ] Blocked records and non-approved artwork never render.
+- [ ] The page remains complete and understandable with images blocked.
+- [ ] Long names, missing optional links, card wrapping and status labels reflow at target widths.
 
 ### Secret and 404
 

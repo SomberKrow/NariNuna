@@ -69,8 +69,21 @@ Current data modules:
 | `socials.ts` | Public social links + Twitch/Discord/Throne constants | HTTPS, unique URLs, date shape |
 | `media.ts` | Three outbound YouTube Shorts | Count, ID uniqueness, Shorts URL, thumbnail origin, general rating |
 | `content.ts` | Community values, resource categories, identity pillars | TypeScript only |
+| `artCredits.json` + `artCredits.ts` | Public-safe credit groups, asset-family dispositions and page-visible records | TypeScript projection, standalone validator and Vitest mutation/rendering tests |
 
 Current tests are useful invariants, not a complete content approval system.
+
+### Creative credits
+
+The implemented credit registry keeps three concerns explicit:
+
+- `creditStatus`: `verified`, `pending`, `internal`, `not-required` or `blocked`;
+- family `publicationStatus`: `approved`, `pending` or `blocked`;
+- `artworkDisplayStatus`: `approved`, `not-approved` or `not-applicable`.
+
+Credit records own a stable ID, public group, display name or honest pending label, roles, contribution, public credit text, approved HTTPS links, related family IDs and page visibility. Asset families own a stable ID, safe asset-record reference, representative tracked assets and publication state. Private contracts, messages, emails, legal names and approval evidence do not belong in this browser-facing registry.
+
+An approved artwork-display record additionally requires an optimized tracked source, meaningful alt text and positive intrinsic dimensions. Non-approved records must keep their artwork list empty.
 
 ## Shared target primitives
 

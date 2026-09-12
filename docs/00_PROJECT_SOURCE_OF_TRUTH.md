@@ -6,6 +6,10 @@
 **Implementation snapshot:** `b65e1c5a6da5a35f4f4f5969465c13f32f277912`  
 **Update trigger:** Any change to identity, audience, routes, stack, public claims, launch scope, or blocker status
 
+## 2026-09-12 credits and copy implementation
+
+The `kiva/credits-humanization` review branch adds `/credits/` as a secondary public room, a public-safe structured attribution registry, deterministic validation, and a bounded copy-humanization pass. Unknown artists, links, permissions and Nari wording remain explicitly pending. Credit approval and permission to display artwork are separate; no new contributor artwork is displayed on Credits. See [document 40](40_CREDITS_AND_COPY_HUMANIZATION.md). This implementation records unresolved release blockers rather than clearing them.
+
 ## 2026-09-11 implementation maintenance
 
 The maintenance branch starts from main `8c7fe67` (merged PR #20). It preserves current public content, art and product boundaries while reducing runtime metadata and retired CSS, documenting code ownership and correcting reduced-motion maintenance defects. Current evidence is [document 37](37_SIZE_MAINTENANCE.md). Dated baseline statements below remain historical; no new canon, asset-rights, theme or release approval is inferred.
@@ -100,7 +104,7 @@ No audience is optimized through deceptive urgency, surveillance, fake scarcity,
 
 ### Technical foundation
 
-- True Vite multi-page application with eleven real HTML documents.
+- True Vite multi-page application with twelve real HTML documents; Credits is secondary/footer navigation and does not become a primary header destination.
 - Vue 3, TypeScript, Vite, Vue Router, SCSS, Motion for Vue, and Lucide.
 - Normal top-level document navigation; Vue Router resolves and lazy-loads the current page within each entry.
 - No Tailwind, general UI kit, CMS, database, analytics, account system, or fake form in the current scope.
@@ -137,6 +141,7 @@ Until Nari resolves it:
 | `/work-with-nari/` | `pages/work-with-nari/index.html` | Primary | Collaboration fit, boundaries, process, approved contact |
 | `/stories/` | `pages/stories/index.html` | Secondary | Curated, privacy-reviewed memories and media |
 | `/support/` | `pages/support/index.html` | Secondary | Free and financial support with explicit boundaries |
+| `/credits/` | `pages/credits/index.html` | Secondary | Public-safe creative credits, pending attribution and display-permission boundaries |
 | `/the-prinny-cult/` | `pages/the-prinny-cult/index.html` | Hidden | Optional original joke reward |
 | `/404.html` | `pages/404.html` | System | Static-host recovery |
 

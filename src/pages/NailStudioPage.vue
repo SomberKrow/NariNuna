@@ -15,14 +15,14 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
       <div>
         <p class="eyebrow"><Paintbrush :size="16" aria-hidden="true" /> Chapter three · her favorite little desk</p>
         <h1>Tiny canvases.<br /><em>Big Nari energy.</em></h1>
-        <p>Pretty colors, careful little details, and a self-taught creative who genuinely loves showing people what she's figuring out.</p>
+        <p>Nari is self-taught, still practicing, and learning one tiny detail at a time.</p>
         <div class="tag-row"><span><Heart :size="15" aria-hidden="true" /> Made with love</span><span><Sparkles :size="15" aria-hidden="true" /> Probably with glitter</span></div>
       </div>
     </div>
   </section>
 
   <section class="studio-workbench room-section page-width" aria-labelledby="workbench-title">
-    <header class="room-heading"><div><p class="room-kicker">Polish · practice · a little patience</p><h2 id="workbench-title">Made slowly.<br /><em>Made her way.</em></h2></div><p>Color stories, tiny details, glitter experiments, and the occasional wonderful accident.</p></header>
+    <header class="room-heading"><div><p class="room-kicker">Polish · practice · a little patience</p><h2 id="workbench-title">One set.<br /><em>Then the next.</em></h2></div><p>Color, tiny details, glitter experiments, and honest practice on her own nails.</p></header>
     <div class="studio-workbench__spread">
       <figure class="studio-workbench__scene">
         <ResponsiveArtwork :artwork="storybookPostcards.nails" sizes="(min-width: 80rem) 760px, (min-width: 48rem) 58vw, calc(100vw - 32px)" alt="An illustrated view of Nari's nail workspace" />
@@ -36,7 +36,7 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
     <!-- This hold remains until real, approved photographs replace the illustrative workspace. -->
     <div class="studio-portfolio-hold">
       <GhostieArt variant="study" sizes="128px" />
-      <div><p class="room-kicker">The real-work collection</p><h2>Her favorite sets are still being chosen.</h2><p>Nari's own photographs will live here when she's ready to share them. For now, enjoy a look around the desk.</p></div>
+      <div><p class="room-kicker">The real-work collection</p><h2>The gallery is waiting for the real thing.</h2><p>Nari's own approved photographs will go here. Until then, the illustrated desk stays clearly labelled as atmosphere.</p></div>
     </div>
     <p class="studio-scope">Self-taught nail art and personal practice. No salon services or bookings; educational content is not medical advice.</p>
   </section>
