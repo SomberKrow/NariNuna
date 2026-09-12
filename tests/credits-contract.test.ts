@@ -56,13 +56,41 @@ describe("creative credit registry", () => {
     const uncleared = validateFixture((registry) => {
       registry.credits[0].artworkDisplayStatus = "approved";
       registry.credits[0].artwork = [{
+        id: "nari-model-archive-test",
+        title: "Nari model",
         src: registry.assetFamilies[0].trackedAssets[0],
         alt: "Nari's supplied character model",
         width: 714,
-        height: 1800
+        height: 1800,
+        assetFamilyId: "supplied-nari-character",
+        category: "Character artwork",
+        caption: "Archive validation fixture"
       }];
     });
     expect(uncleared.stderr).toContain("non-approved family supplied-nari-character");
+  });
+
+  it("accepts a fully described archive piece from its approved tracked family", () => {
+    const approved = validateFixture((registry) => {
+      const family = registry.assetFamilies.find(({ id }) => id === "storybook-environments");
+      if (family) family.publicationStatus = "approved";
+      const credit = registry.credits.find(({ id }) => id === "website-storybook-artwork");
+      if (!credit || !family) throw new Error("Fixture requires the website storybook records");
+      credit.artworkDisplayStatus = "approved";
+      credit.artwork = [{
+        id: "haven-sunset-archive-piece",
+        title: "Haven at sunset",
+        src: family.trackedAssets[0],
+        alt: "An illustrated autumn room in the Haven",
+        width: 1672,
+        height: 941,
+        assetFamilyId: family.id,
+        category: "Website environment",
+        caption: "Approved archive fixture",
+        year: 2026
+      }];
+    });
+    expect(approved.status).toBe(0);
   });
 
   it("renders every public group from data without exposing blocked artwork", async () => {
@@ -70,6 +98,7 @@ describe("creative credit registry", () => {
     expect(html).toContain("The people behind");
     expect(html).toContain("Somber Crow");
     expect(html).toContain("Awaiting confirmation");
+    expect(html).toContain("The archive opens when individual pieces have confirmed display permission");
     expect(html).not.toMatch(/<img|<picture/);
     expect(html).not.toContain("Do not publish");
   });

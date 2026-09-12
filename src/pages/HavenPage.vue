@@ -3,6 +3,8 @@
 import { heroStyle } from "@/data/artworkDelivery";
 import { House } from "@lucide/vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
+import RoomDiscovery from "@/components/ui/RoomDiscovery.vue";
 import HavenDoor from "@/components/haven/HavenDoor.vue";
 import LooseFloorboard from "@/components/haven/LooseFloorboard.vue";
 import { environmentArtwork } from "@/data/artwork";
@@ -18,6 +20,7 @@ import { communityValues } from "@/data/content";
         <p class="eyebrow"><House :size="16" aria-hidden="true" /> Chapter four · the room that feels like exhaling</p>
         <h1>You don't have to<br /><em>earn your place here.</em></h1>
         <p>No audition. No volume requirement. Just big personalities, quiet lurkers, tired people, weird jokes, and respect for the human on the other side of the screen.</p>
+        <ArtworkCreditLink credit-id="website-storybook-artwork" />
       </div>
     </div>
   </section>
@@ -36,6 +39,8 @@ import { communityValues } from "@/data/content";
       </li>
     </ol>
   </section>
+
+  <div class="page-width"><RoomDiscovery discovery-id="charter-memory-scrap" /></div>
 
   <!-- The public fragment targets both invitation and optional discovery, after the charter. -->
   <section id="haven-door" class="haven-entry page-width section-pad">

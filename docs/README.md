@@ -8,7 +8,7 @@ This directory owns the product contracts, engineering guidance, and release evi
 **Current status:** client review; production approvals and manual QA remain pending
 **Security:** four affected development packages; zero production dependency advisories in this audit. See [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
 
-Current maintenance: [37 — size and validation](37_SIZE_MAINTENANCE.md), [38 — code ownership](38_CODE_OWNERSHIP.md), [39 — asset disposition](39_ASSET_DISPOSITION.md), [40 — credits and copy humanization](40_CREDITS_AND_COPY_HUMANIZATION.md).
+Current maintenance: [37 — size and validation](37_SIZE_MAINTENANCE.md), [38 — code ownership](38_CODE_OWNERSHIP.md), [39 — asset disposition](39_ASSET_DISPOSITION.md), [40 — credits and copy humanization](40_CREDITS_AND_COPY_HUMANIZATION.md), [41 — Haven depth and release readiness](41_HAVEN_DEPTH_AND_RELEASE_READINESS.md).
 
 ## Start here
 
@@ -99,6 +99,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `22_GLOSSARY` | Canonical project/design/engineering/status language | A durable term changes or becomes ambiguous |
 | `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
 | `40_CREDITS_AND_COPY_HUMANIZATION` | Credits registry/page implementation, copy classification, validation evidence and unresolved rights/content | Credit architecture, public attribution, display approval or this humanization pass changes |
+| `41_HAVEN_DEPTH_AND_RELEASE_READINESS` | Release gate, artwork archive, contextual credit access, Passport, discoveries and current QA evidence | Any Phase Two behavior, blocker, evidence or rollback changes |
 | `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
 | `28_NARI_ONLY_ATMOSPHERE_DEMO` | Reversible Phase A client-review demo, implementation boundary, and rollback contract | The Nari-only proposal, runtime, or client decision changes |
 | `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |

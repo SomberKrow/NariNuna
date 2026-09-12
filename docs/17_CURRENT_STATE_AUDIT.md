@@ -14,6 +14,8 @@ The merged maintenance baseline adds a compact browser artwork manifest while pr
 
 The README, route contracts and owning asset/content documents now describe the Credits system. No dependency, artwork byte, source-retention contract or release approval changes.
 
+The Phase Two review branch adds a separate production release gate, an archive-capable Credits projection with contextual credit links on five significant illustrated routes, a ten-room versioned local Haven Passport, and four restrained cross-room discoveries. No account, tracking, backend, new asset, route or dependency was added. Media Kit work and the full Nari content replacement remain explicitly outside this pass.
+
 ## Observed validation
 
 Node **24.19.0**, npm **11.9.0** locally. CI selects Node 22; consult the PR checks for its result.
@@ -27,6 +29,10 @@ Node **24.19.0**, npm **11.9.0** locally. CI selects Node 22; consult the PR che
 | Shared JS + CSS graph | 65.53 KB gzip / 120 KB budget |
 | Credits route additions | 4.67 KB JS gzip / 35 KB; 1.32 KB CSS gzip / 12 KB |
 | Asset changes | None; existing retained and delivery bytes are untouched |
+
+Phase Two checkpoint on `kiva/haven-depth-release-readiness`: `npm run check` passed with 86 tests in 19 files, twelve built and directly served documents, 137 essential asset checks, all 27 retained Prinny designs and all existing gzip budgets. `npm run verify:release` rebuilt successfully and then failed on the explicit unresolved production blockers, which is the required result.
+
+GitHub's Node 22 Quality Gate passed on the initial PR #23 implementation commit. The cloud Chrome session could not reach the container-only preview, and the stacked PR did not receive a Netlify deploy-preview URL during the review window. No new rendered browser or assistive-technology result is claimed.
 
 [Document 37](37_SIZE_MAINTENANCE.md) owns exact before/after sizes, validation methods, scope limits and rollback. [Document 38](38_CODE_OWNERSHIP.md) owns code coverage; [document 39](39_ASSET_DISPOSITION.md) records the retained asset candidates.
 

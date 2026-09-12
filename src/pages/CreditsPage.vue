@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // Render public-safe registry fields only. Artwork stays absent unless a record carries a separate explicit display approval.
 import { ArrowRight, ArrowUpRight, CheckCircle2, Clock3, HeartHandshake, Palette, ShieldCheck } from "@lucide/vue";
-import { publicCreditGroups } from "@/data/artCredits";
+import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import { approvedArchiveArtwork, publicCreditGroups } from "@/data/artCredits";
 import type { CreditStatus } from "@/types/content";
 
 const statusLabels: Record<CreditStatus, string> = {
@@ -45,7 +46,7 @@ function statusIcon(status: CreditStatus) {
         </header>
 
         <div class="credit-group__entries">
-          <article v-for="credit in group.credits" :key="credit.id" class="credit-entry">
+          <article v-for="credit in group.credits" :id="credit.id" :key="credit.id" class="credit-entry" tabindex="-1">
             <div class="credit-entry__status" :class="`credit-entry__status--${credit.creditStatus}`">
               <component :is="statusIcon(credit.creditStatus)" :size="15" aria-hidden="true" />
               {{ statusLabels[credit.creditStatus] }}
@@ -56,18 +57,6 @@ function statusIcon(status: CreditStatus) {
             </ul>
             <p>{{ credit.contribution }}</p>
             <p class="credit-entry__note">{{ credit.creditText }}</p>
-            <div v-if="credit.artworkDisplayStatus === 'approved' && credit.artwork.length" class="credit-entry__artwork">
-              <img
-                v-for="artwork in credit.artwork"
-                :key="artwork.src"
-                :src="artwork.src"
-                :width="artwork.width"
-                :height="artwork.height"
-                :alt="artwork.alt"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
             <nav v-if="credit.links.length" class="credit-entry__links" :aria-label="`Approved links for ${credit.displayName}`">
               <a v-for="link in credit.links" :key="link.url" :href="link.url" target="_blank" rel="noreferrer noopener">
                 {{ link.label }} <ArrowUpRight :size="15" aria-hidden="true" /><span class="sr-only"> (opens in a new tab)</span>
@@ -77,6 +66,25 @@ function statusIcon(status: CreditStatus) {
         </div>
       </section>
     </div>
+  </section>
+
+  <section class="credits-archive room-section page-width" aria-labelledby="archive-title">
+    <header class="room-heading">
+      <div><p class="room-kicker">Artwork archive</p><h2 id="archive-title">Cleared work,<br /><em>kept beside its maker.</em></h2></div>
+      <p>Only optimized artwork with explicit display permission appears here. A credit can remain visible while its images stay private.</p>
+    </header>
+    <div v-if="approvedArchiveArtwork.length" class="credits-archive__grid">
+      <figure v-for="artwork in approvedArchiveArtwork" :id="artwork.id" :key="artwork.id" class="archive-piece">
+        <ResponsiveArtwork :artwork="artwork.src" :alt="artwork.alt" sizes="(min-width: 70rem) 32vw, (min-width: 48rem) 48vw, calc(100vw - 32px)" />
+        <figcaption>
+          <span class="room-kicker">{{ artwork.category }}<template v-if="artwork.year"> · {{ artwork.year }}</template></span>
+          <strong>{{ artwork.title }}</strong>
+          <span>{{ artwork.caption }}</span>
+          <a :href="`#${artwork.credit.id}`">Full credit: {{ artwork.credit.displayName }}</a>
+        </figcaption>
+      </figure>
+    </div>
+    <p v-else class="credits-archive__empty">The archive opens when individual pieces have confirmed display permission. The credit ledger above remains available in the meantime.</p>
   </section>
 
   <section class="credits-correction page-width" aria-labelledby="credits-correction-title">

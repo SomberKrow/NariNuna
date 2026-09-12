@@ -52,10 +52,16 @@
 .credit-entry__roles { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; margin: 0; list-style: none; }
 .credit-entry__roles li { padding: 0.28rem 0.5rem; color: var(--story-chip-copy); background: var(--story-chip); border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
 .credit-entry__note { padding-block-start: 0.65rem; border-block-start: 1px solid var(--story-line); font-size: 0.875rem; font-style: italic; }
-.credit-entry__artwork { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); gap: 0.75rem; }
-.credit-entry__artwork img { width: 100%; height: auto; border: 1px solid var(--story-line); border-radius: 0.35rem; }
+.credit-entry:target { outline: 3px solid var(--focus); outline-offset: -3px; }
 .credit-entry__links { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 .credit-entry__links a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: 0.3rem; color: var(--story-copy); font-weight: 750; }
+.credits-archive__grid { display: grid; gap: 1rem; }
+.archive-piece { display: grid; margin: 0; overflow: hidden; background: var(--story-surface-deep); border: 1px solid var(--story-line); border-radius: 0.55rem; }
+.archive-piece > img { width: 100%; height: auto; }
+.archive-piece figcaption { display: grid; gap: 0.35rem; padding: 1rem; color: var(--story-muted); }
+.archive-piece figcaption strong { color: var(--story-copy); font-family: var(--font-display); font-size: 1.25rem; }
+.archive-piece figcaption a { width: fit-content; min-height: 2.75rem; color: var(--story-copy); font-weight: 750; }
+.credits-archive__empty { max-width: 48rem; padding: 1.15rem 1.25rem; color: var(--story-muted); background: var(--story-surface); border: 1px solid var(--story-line); border-inline-start: 0.25rem solid var(--storybook-gold); }
 .credits-correction { display: flex; align-items: flex-start; gap: 1rem; padding-block: clamp(2rem, 6vw, 4rem); }
 .credits-correction > svg { flex: 0 0 auto; color: var(--storybook-gold); }
 .credits-correction h2 { margin-block: 0.25rem 0.55rem; font-size: clamp(1.5rem, 4vw, 2.2rem); }
@@ -63,6 +69,7 @@
 @media (min-width: 48rem) {
   .credits-opening { grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr); }
   .credit-group { grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr); gap: 2rem; }
+  .credits-archive__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 24rem) {
   .credits-opening { padding-block-start: 3.5rem; }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 // Present self-taught practice and the illustrated desk honestly. Keep the real-photo hold and exact resource-shelf destination.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
+import RoomDiscovery from "@/components/ui/RoomDiscovery.vue";
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, Heart, Paintbrush, Sparkles } from "@lucide/vue";
 import GhostieArt from "@/components/art/GhostieArt.vue";
@@ -17,6 +19,7 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
         <h1>Tiny canvases.<br /><em>Big Nari energy.</em></h1>
         <p>Nari is self-taught, still practicing, and learning one tiny detail at a time.</p>
         <div class="tag-row"><span><Heart :size="15" aria-hidden="true" /> Made with love</span><span><Sparkles :size="15" aria-hidden="true" /> Probably with glitter</span></div>
+        <ArtworkCreditLink credit-id="website-storybook-artwork" />
       </div>
     </div>
   </section>
@@ -27,12 +30,14 @@ import { environmentArtwork, storybookPostcards } from "@/data/artwork";
       <figure class="studio-workbench__scene">
         <ResponsiveArtwork :artwork="storybookPostcards.nails" sizes="(min-width: 80rem) 760px, (min-width: 48rem) 58vw, calc(100vw - 32px)" alt="An illustrated view of Nari's nail workspace" />
         <figcaption>Inside the nail desk <span>Workspace illustration</span></figcaption>
+        <ArtworkCreditLink credit-id="website-storybook-artwork" label="About this illustration" />
       </figure>
       <div class="studio-workbench__notes">
         <article><p class="room-kicker">01 · The practice</p><h3>A little better, one set at a time.</h3><p>Nari is a self-taught artist exploring color, process, and details on her own nails.</p></article>
         <article><p class="room-kicker">02 · The learning</p><h3>Figuring it out is part of the fun.</h3><p>Honest little lessons, creative experiments, and the things she learns along the way.</p><a class="text-link" href="/resources/#nail-desk">Visit the nail desk shelf <ArrowRight :size="16" aria-hidden="true" /></a></article>
       </div>
     </div>
+    <RoomDiscovery discovery-id="workbench-bookmark" />
     <!-- This hold remains until real, approved photographs replace the illustrative workspace. -->
     <div class="studio-portfolio-hold">
       <GhostieArt variant="study" sizes="128px" />

@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Sparkles } from "@lucide/vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { havenJourney } from "@/data/journey";
+import HavenPassport from "./HavenPassport.vue";
 
 const route = useRoute();
 const activeIndex = computed(() => havenJourney.findIndex((room) => room.href === route.path));
@@ -54,6 +55,8 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
           <ArrowRight :size="19" aria-hidden="true" />
         </a>
       </nav>
+
+      <HavenPassport class="room-passage__passport" :current-path="route.path" />
     </div>
   </aside>
 </template>
@@ -215,6 +218,7 @@ const isLastRoom = computed(() => activeIndex.value === havenJourney.length - 1)
   }
   .room-passage__next:only-child { grid-column: 1 / -1; }
   .room-passage__trail { grid-column: 1 / -1; margin-block: 1.4rem 0; }
+  .room-passage__passport { grid-column: 1 / -1; margin-block-start: 1rem; }
 }
 
 @media (max-width: 24rem) {
