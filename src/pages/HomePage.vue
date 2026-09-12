@@ -21,13 +21,13 @@ import { detailArtwork, environmentArtwork } from "@/data/artwork";
 
     <div class="haven-landing__inner page-width">
       <div class="haven-landing__welcome">
-        <p class="haven-landing__kicker"><Sparkles :size="15" aria-hidden="true" /> A little refuge for lovely weirdos</p>
+        <p class="haven-landing__kicker"><Sparkles :size="15" aria-hidden="true" /> A warm seat for lovely weirdos</p>
         <h1 id="landing-title">
           <span>Nari</span>
           <em>Nuna</em>
         </h1>
         <p class="haven-landing__subtitle">Your favorite chaotic big sister.</p>
-        <p class="haven-landing__intro">Somewhere between the late-night laughing, the tiny painted nails, and one more cup of cocoa, we made a place to belong.</p>
+        <p class="haven-landing__intro">Streams get loud, polish gets everywhere, and somebody is always yapping. Pull up a seat.</p>
 
         <div class="haven-landing__divider" aria-hidden="true"><span></span><Heart :size="15" /><span></span></div>
 
@@ -35,7 +35,7 @@ import { detailArtwork, environmentArtwork } from "@/data/artwork";
 
         <div class="haven-landing__actions">
           <a class="button button--ember haven-landing__haven-cta" href="/haven/#haven-door">
-            Come sit with us
+            Find the common room
             <ArrowRight :size="17" aria-hidden="true" />
           </a>
           <a class="haven-landing__meet" href="/meet-nari/">Meet Nari <ArrowRight :size="15" aria-hidden="true" /></a>

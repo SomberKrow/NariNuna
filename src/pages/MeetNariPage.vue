@@ -18,8 +18,8 @@ const identityEntries = identityPillars.map((pillar, index) => ({
     <div class="character-intro__copy">
       <p class="eyebrow"><Sparkles :size="16" aria-hidden="true" /> Chapter one · the girl behind the door</p>
       <h1>Hi, I'm <em>Nari.</em></h1>
-      <p class="character-intro__subtitle">Big-sister energy. Artist hands. Absolutely no volume control.</p>
-      <p class="character-intro__text">I love making people laugh, finding pretty things, learning as I go, and turning strangers into the kind of people who remember to check on each other.</p>
+      <p class="character-intro__subtitle">VTuber. Gamer. Nail-polish menace. Your loud big sister.</p>
+      <p class="character-intro__text">Nari is a warm, protective, curious VTuber, gamer, self-taught nail artist, and prolific yapper.</p>
       <div class="tag-row" aria-label="Nari's creative roles">
         <span><Gamepad2 :size="16" aria-hidden="true" /> VTuber & gamer</span>
         <span><Paintbrush :size="16" aria-hidden="true" /> Self-taught nail artist</span>
@@ -34,7 +34,7 @@ const identityEntries = identityPillars.map((pillar, index) => ({
     <header class="nari-journal__opening">
       <p class="room-kicker">Notes from the girl next door</p>
       <h2 id="journal-title">A soft place to land.<br /><em>A little chaos included.</em></h2>
-      <p>The warmth, the chaos, and the craft all belong together.</p>
+      <p>Warm welcome. Sharp boundaries. Glitter somewhere it should not be.</p>
     </header>
     <div class="nari-journal__surface">
       <span class="nari-journal__bookmark" aria-hidden="true">NARI</span>

@@ -145,6 +145,15 @@ Every future resource needs why, best-for, relationship, disclosure, review date
 | Story records | None | Target schema + privacy/approval/removal workflow |
 | VOD route | Shared social record | Reverify and preserve adult opt-in context |
 
+## Credits
+
+| Content | Current state | Action |
+|---|---|---|
+| Credit groups and records | Structured public-safe registry | Replace pending labels only with verified public wording |
+| Asset-family dispositions | Ten explicit current/future families | Add every new meaningful family before use |
+| Contributor artwork | None displayed | Require separate display approval and tracked optimized asset |
+| Correction path | Existing public-profile directory | Keep private evidence and contact details out of the registry |
+
 ## Secret and 404
 
 - Secret oath/Rule Eleven/counter copy is page-local, original, optional, and pending final joke approval.

@@ -3,12 +3,12 @@
 This directory owns the product contracts, engineering guidance, and release evidence. Start with the current audit; dated implementation logs preserve history rather than defining today's branch status.
 
 **Repository:** public `SomberKrow/NariNuna`
-**Implementation baseline:** `main` at `8c7fe67b91882f7379ab762d24c34fbeae7e4ffc`, 10 September 2026; maintenance branch evidence dated 11 September
-**Merged baseline:** through PR #20; metadata/CSS/comment maintenance is a separate review branch
+**Implementation baseline:** `main` at `d1b495cd8aa0be5aaaa8a9255e2bc756d9b5491e`, 11 September 2026; Credits/copy review evidence dated 12 September
+**Merged baseline:** through PR #21; Credits and copy humanization are on a separate review branch
 **Current status:** client review; production approvals and manual QA remain pending
 **Security:** four affected development packages; zero production dependency advisories in this audit. See [document 36](36_MAIN_SECURITY_AND_KNOWN_ISSUES.md).
 
-Current maintenance: [37 — size and validation](37_SIZE_MAINTENANCE.md), [38 — code ownership](38_CODE_OWNERSHIP.md), [39 — asset disposition](39_ASSET_DISPOSITION.md).
+Current maintenance: [37 — size and validation](37_SIZE_MAINTENANCE.md), [38 — code ownership](38_CODE_OWNERSHIP.md), [39 — asset disposition](39_ASSET_DISPOSITION.md), [40 — credits and copy humanization](40_CREDITS_AND_COPY_HUMANIZATION.md).
 
 ## Start here
 
@@ -98,6 +98,7 @@ Choose the path that matches the work. Do not read every file blindly and hope t
 | `21_AI_ASSISTED_WORKFLOW` | Agent context, evidence labels, protocol, stop and handoff rules | AI/repository workflow changes |
 | `22_GLOSSARY` | Canonical project/design/engineering/status language | A durable term changes or becomes ambiguous |
 | `23_AUTHENTIC_ARTWORK_IMPLEMENTATION` | Owner-supplied identity assets, private-review authority, route composition, artwork provenance, and remaining launch blockers | Real character/emote/Prinny artwork, supporting visual families, or their permission posture changes |
+| `40_CREDITS_AND_COPY_HUMANIZATION` | Credits registry/page implementation, copy classification, validation evidence and unresolved rights/content | Credit architecture, public attribution, display approval or this humanization pass changes |
 | `24_STORYBOOK_ART_DIRECTION_AND_PROMPTS` | Owner-authorized model-anchored storybook direction, identity invariants, image prompts, visual route map, and derivative pipeline | Storybook character, environment, Ghostie, social preview, or private-review derivative authority changes |
 | `28_NARI_ONLY_ATMOSPHERE_DEMO` | Reversible Phase A client-review demo, implementation boundary, and rollback contract | The Nari-only proposal, runtime, or client decision changes |
 | `29_ENVIRONMENTAL_CONTINUITY` | Phase B room-material map, shared rules, and validation contract | Post-banner environmental material or section continuity changes |

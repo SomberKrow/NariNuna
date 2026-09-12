@@ -1,0 +1,81 @@
+// Exercise the public registry and standalone validator through its CLI so Node-version-specific TypeScript loaders are unnecessary.
+import { execFileSync, spawnSync } from "node:child_process";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
+import { createSSRApp, h } from "vue";
+import { renderToString } from "vue/server-renderer";
+import { describe, expect, it } from "vitest";
+import { artCreditRegistry } from "@/data/artCredits";
+import CreditsPage from "@/pages/CreditsPage.vue";
+
+function validateFixture(mutator: (registry: typeof artCreditRegistry) => void) {
+  const fixture = structuredClone(artCreditRegistry);
+  mutator(fixture);
+  const directory = mkdtempSync(join(tmpdir(), "nari-credit-test-"));
+  const path = join(directory, "registry.json");
+  writeFileSync(path, JSON.stringify(fixture));
+  return spawnSync(process.execPath, [resolve("scripts/validate-credits.mjs"), path], { cwd: process.cwd(), encoding: "utf8" });
+}
+
+describe("creative credit registry", () => {
+  it("accepts explicit verified, pending and internal dispositions in the canonical registry", () => {
+    expect(() => execFileSync(process.execPath, ["scripts/validate-credits.mjs"], { encoding: "utf8" })).not.toThrow();
+    expect(artCreditRegistry.credits.some((credit) => credit.creditStatus === "pending")).toBe(true);
+    expect(artCreditRegistry.credits.some((credit) => credit.creditStatus === "internal")).toBe(true);
+
+    const verified = validateFixture((registry) => {
+      registry.credits[0].creditStatus = "verified";
+      registry.credits[0].displayName = "Confirmed Artist";
+      registry.credits[0].links = [{ label: "Artist portfolio", url: "https://example.com/artist" }];
+    });
+    expect(verified.status).toBe(0);
+  });
+
+  it("rejects duplicate IDs and missing asset-family dispositions", () => {
+    const duplicate = validateFixture((registry) => registry.credits.push(structuredClone(registry.credits[0])));
+    expect(duplicate.status).toBe(1);
+    expect(duplicate.stderr).toContain("Duplicate credit id");
+
+    const missingDisposition = validateFixture((registry) => {
+      registry.credits = registry.credits.filter((credit) => !credit.assetFamilyIds.includes("future-nail-photography"));
+    });
+    expect(missingDisposition.status).toBe(1);
+    expect(missingDisposition.stderr).toContain("future-nail-photography has no explicit credit disposition");
+  });
+
+  it("rejects blocked public entries, malformed links and uncleared displayed artwork", () => {
+    const blocked = validateFixture((registry) => { registry.credits[0].creditStatus = "blocked"; });
+    expect(blocked.stderr).toContain("cannot be page-visible");
+
+    const malformed = validateFixture((registry) => {
+      registry.credits[0].links = [{ label: "Artist", url: "http://example.com" }];
+    });
+    expect(malformed.stderr).toContain("malformed or non-HTTPS link");
+
+    const uncleared = validateFixture((registry) => {
+      registry.credits[0].artworkDisplayStatus = "approved";
+      registry.credits[0].artwork = [{
+        src: registry.assetFamilies[0].trackedAssets[0],
+        alt: "Nari's supplied character model",
+        width: 714,
+        height: 1800
+      }];
+    });
+    expect(uncleared.stderr).toContain("non-approved family supplied-nari-character");
+  });
+
+  it("renders every public group from data without exposing blocked artwork", async () => {
+    const html = await renderToString(createSSRApp({ render: () => h(CreditsPage) }));
+    expect(html).toContain("The people behind");
+    expect(html).toContain("Somber Crow");
+    expect(html).toContain("Awaiting confirmation");
+    expect(html).not.toMatch(/<img|<picture/);
+    expect(html).not.toContain("Do not publish");
+  });
+
+  it("keeps the registry free of private evidence fields", () => {
+    const source = readFileSync(resolve("src/data/artCredits.json"), "utf8");
+    expect(source).not.toMatch(/contract|privateMessage|email|legalName|approvalEvidence/i);
+  });
+});

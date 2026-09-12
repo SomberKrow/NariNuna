@@ -34,6 +34,12 @@ Do not copy, hotlink, crop, animate, recolor, trace, or publicly republish Nari'
 
 An artist credit is not a license. Ownership is not automatically permission to create derivatives. Platform use is not automatically independent website use.
 
+## Public credit registry
+
+`src/data/artCredits.json` is the canonical public-safe attribution and asset-family disposition ledger. `src/data/artCredits.ts` exposes only page-ready records. It does not replace the full responsive delivery manifest or private approval evidence. Each meaningful family receives an explicit verified, pending, internal, not-required or blocked credit disposition plus a separate approved, not-approved or not-applicable artwork-display state.
+
+`npm run validate:credits` rejects duplicate/invalid IDs, missing family classification, unknown relationships/statuses, malformed non-HTTPS links, verified records without meaningful attribution, page-visible blocked records, and artwork displayed from uncleared or missing assets. Known pending and blocked family states pass when explicitly classified; silence does not.
+
 ## Storage model
 
 ```text

@@ -16,7 +16,7 @@ Primary header order:
 3. Streams
 4. The Haven
 5. Work With Nari
-6. More dropdown → Resources, Nail Studio, Story Time, Support
+6. More dropdown → Resources, Nail Studio, Story Time, Support, Credits
 
 Header utilities:
 
@@ -26,7 +26,8 @@ Header utilities:
 Secondary/footer routes:
 
 - Story Time;
-- Support.
+- Support;
+- Credits.
 
 The routes remain unchanged. The compact header prioritizes identity, current content, community, and collaboration; supporting material remains available through the native More disclosure and the footer where applicable.
 
@@ -46,6 +47,7 @@ flowchart TD
   S --> ST["Story Time"]
   NS --> R["Resources"]
   H --> U["Support"]
+  H --> C["Credits"]
 ```
 
 The diagram describes user flow, not implementation routing. Technical route construction lives in `07_TECHNICAL_ARCHITECTURE.md`.
@@ -63,6 +65,7 @@ The diagram describes user flow, not implementation routing. Technical route con
 | Work With Nari | Collaboration fit, process, boundaries, approved contact | Corporate persona, fake metrics, nonfunctional form |
 | Support | Optional free/financial support and entitlement boundary | Donation funnel or donor-status system |
 | Story Time | Curated privacy-reviewed stories/moments | Automated feed or permanent index of private anecdotes |
+| Credits | Public-safe attribution, contribution and pending-status ledger | Decorative gallery, legal dump or invented artist directory |
 | Secret room | Optional original joke and return path | Required navigation or copyrighted fandom page |
 | 404 | Recovery and home path | Brand gag that hides the error |
 
@@ -127,6 +130,14 @@ CTA copy names the destination. Repeated “Learn more” and mystery navigation
 **Success:** Selected content is sourced, removable, privacy-reviewed, and appropriately rated.  
 **Failure mode:** Surprise adult content, private anecdote indexing, or feed scrape.
 
+### Artist or credit checker
+
+**Entry:** Footer, More menu, direct Credits link.
+**Path:** Credits group → contributor record or explicit pending state → approved public link when one exists.
+**Question answered:** “Is the maker named accurately, and is artwork display separately cleared?”
+**Success:** Confirmed credits are specific; unknowns remain visible without exposing private evidence or uncleared art.
+**Failure mode:** Guessed names, unverified profiles, buried attribution, or treating credit as publication permission.
+
 ### Curious explorer
 
 **Entry:** The Haven.  
@@ -180,7 +191,7 @@ Do not hide contact, accessibility controls, required disclosures, safety scope,
 The footer provides:
 
 - belonging statement;
-- Story Time and Support;
+- Story Time, Support and Credits;
 - a small set of verified social destinations;
 - placeholder/rights posture while relevant;
 - no-tracking/privacy statement when final copy is approved.

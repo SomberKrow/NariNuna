@@ -154,6 +154,10 @@ Required meaning, subject to Nari's final wording:
 
 Do not rank supporters, imply hardship, create countdowns, promise intimacy, or place financial CTAs above the optionality statement.
 
+## Credits copy
+
+Credits is appreciative, short and specific. Use a confirmed public name, role, contribution, preferred credit line and approved public link only when evidence exists. When it does not, say attribution is being confirmed; do not manufacture a biography, relationship, date, title or social profile. Project-created work may be labelled transparently without presenting unresolved provider/tool terms as settled ownership. A credit line never implies permission to display the related artwork.
+
 ## Resource and affiliate disclosure
 
 Baseline disclosure pattern:

@@ -28,7 +28,7 @@ describe("multi-page document contracts", () => {
     const documentRoot = resolve(projectRoot, "pages");
     const documents = Object.values(pageEntries);
 
-    expect(documents).toHaveLength(11);
+    expect(documents).toHaveLength(12);
     expect(new Set(documents).size).toBe(documents.length);
 
     for (const document of documents) {
