@@ -10,6 +10,8 @@
 
 The `kiva/credits-humanization` review branch adds `/credits/` as a secondary public room, a public-safe structured attribution registry, deterministic validation, and a bounded copy-humanization pass. Unknown artists, links, permissions and Nari wording remain explicitly pending. Credit approval and permission to display artwork are separate; no new contributor artwork is displayed on Credits. See [document 40](40_CREDITS_AND_COPY_HUMANIZATION.md). This implementation records unresolved release blockers rather than clearing them.
 
+The dependent `kiva/haven-depth-release-readiness` review branch adds a separate failing-until-cleared production gate, archive-ready approved-artwork projection, contextual credit access, a local ten-room Passport and four restrained cross-room discoveries. Jake removed Media Kit from this pass; the professional contact blocker remains tracked without creating a kit or route. No existing release blocker is cleared by this implementation. See [document 41](41_HAVEN_DEPTH_AND_RELEASE_READINESS.md).
+
 ## 2026-09-11 implementation maintenance
 
 The maintenance branch starts from main `8c7fe67` (merged PR #20). It preserves current public content, art and product boundaries while reducing runtime metadata and retired CSS, documenting code ownership and correcting reduced-motion maintenance defects. Current evidence is [document 37](37_SIZE_MAINTENANCE.md). Dated baseline statements below remain historical; no new canon, asset-rights, theme or release approval is inferred.

@@ -11,6 +11,8 @@
 
 The registry classifies supplied Nari art, model rigging, official emotes, channel graphics, Ghosties, supplied Prinnies, storybook Nari derivatives, storybook environments, future nail photography and website implementation. It records only public-safe information. Contracts, private messages, personal email, legal identity and approval evidence remain outside browser data.
 
+The follow-up Phase Two branch keeps the same canonical registry while adding per-family website-use, derivative-use, third-party and approval states for release derivation. Credits can now render a curated responsive archive when a specific tracked piece is display-cleared. The current empty state remains deliberate. Five significant illustrated routes link unobtrusively to the canonical `website-storybook-artwork` record rather than duplicating attribution copy.
+
 ## Validation contract
 
 `npm run validate:credits` runs offline and rejects:

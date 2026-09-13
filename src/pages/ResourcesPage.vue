@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // Render three stable shelf fragments with curating copy. Category positions below must remain Nail desk, Creator shelf, Game pile.
 import ResponsiveArtwork from "@/components/art/ResponsiveArtwork.vue";
+import RoomDiscovery from "@/components/ui/RoomDiscovery.vue";
 import { heroSources } from "@/data/artworkDelivery";
 import { BookMarked, HeartHandshake } from "@lucide/vue";
 import { environmentArtwork, storybookPostcards } from "@/data/artwork";
@@ -47,6 +48,7 @@ const resourceShelves = [
         <ul><li v-for="example in shelf.category.examples" :key="example">{{ example }}</li></ul>
       </article>
     </div>
+    <RoomDiscovery discovery-id="shelf-broadcast-stub" />
   </section>
 
   <!-- Policy is separate from shelf examples so placeholders cannot imply an endorsement. -->

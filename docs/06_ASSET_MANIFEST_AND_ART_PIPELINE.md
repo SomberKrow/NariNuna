@@ -36,7 +36,9 @@ An artist credit is not a license. Ownership is not automatically permission to 
 
 ## Public credit registry
 
-`src/data/artCredits.json` is the canonical public-safe attribution and asset-family disposition ledger. `src/data/artCredits.ts` exposes only page-ready records. It does not replace the full responsive delivery manifest or private approval evidence. Each meaningful family receives an explicit verified, pending, internal, not-required or blocked credit disposition plus a separate approved, not-approved or not-applicable artwork-display state.
+`src/data/artCredits.json` is the canonical public-safe attribution and asset-family disposition ledger. `src/data/artCredits.ts` exposes only page-ready records. It does not replace the full responsive delivery manifest or private approval evidence. Each meaningful family receives an explicit verified, pending, internal, not-required or blocked credit disposition plus a separate approved, not-approved or not-applicable artwork-display state. Family records also expose release-facing website-use, derivative-use, third-party and final-approval states so the release gate derives unresolved rights from this registry instead of maintaining a second rights database.
+
+Approved archive pieces remain nested under their credit record with a stable artwork ID, tracked family, title, category, caption, useful alt text, intrinsic dimensions and optional verified year. Credits renders them through the existing responsive-artwork manifest and only when the parent display state and specific tracked family are approved. The current archive is intentionally empty because no contributor-artwork display permission has been recorded.
 
 `npm run validate:credits` rejects duplicate/invalid IDs, missing family classification, unknown relationships/statuses, malformed non-HTTPS links, verified records without meaningful attribution, page-visible blocked records, and artwork displayed from uncleared or missing assets. Known pending and blocked family states pass when explicitly classified; silence does not.
 

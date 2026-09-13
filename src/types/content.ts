@@ -41,6 +41,8 @@ export interface CommunityValue {
 export type CreditStatus = "verified" | "pending" | "internal" | "not-required" | "blocked";
 export type ArtworkDisplayStatus = "approved" | "not-approved" | "not-applicable";
 export type PublicationStatus = "approved" | "pending" | "blocked";
+export type RightsStatus = "approved" | "pending" | "blocked" | "not-applicable";
+export type ThirdPartyStatus = "cleared" | "pending" | "concern" | "not-applicable";
 
 export interface CreditLink {
   label: string;
@@ -48,10 +50,16 @@ export interface CreditLink {
 }
 
 export interface CreditArtwork {
+  id: string;
+  title: string;
   src: string;
   alt: string;
   width: number;
   height: number;
+  assetFamilyId: string;
+  category: string;
+  caption: string;
+  year?: number;
 }
 
 export interface CreditGroup {
@@ -66,6 +74,10 @@ export interface AssetFamilyCreditDisposition {
   assetRecord: string | null;
   trackedAssets: string[];
   publicationStatus: PublicationStatus;
+  websiteUseStatus: RightsStatus;
+  derivativeUseStatus: RightsStatus;
+  thirdPartyStatus: ThirdPartyStatus;
+  approvalStatus: RightsStatus;
 }
 
 export interface ArtCredit {

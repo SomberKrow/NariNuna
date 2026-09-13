@@ -3,6 +3,7 @@
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, BookOpenText } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
 import { environmentArtwork } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 
@@ -13,7 +14,7 @@ const albumMemories = featuredMoments.slice(1);
 <template>
   <!-- The ordered album retains featured-media priority while keeping its distinct room presentation. -->
   <section class="story-opening story-opening--painted page-width responsive-hero" :style="heroStyle(environmentArtwork.stories)">
-    <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Chapter seven · lanterns, blankets, one more story</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A small archive for stream clips worth finding again. Personal stories wait until Nari chooses them herself.</p></div>
+    <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Chapter seven · lanterns, blankets, one more story</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A small archive for stream clips worth finding again. Personal stories wait until Nari chooses them herself.</p><ArtworkCreditLink credit-id="website-storybook-artwork" /></div>
   </section>
 
   <!-- Album order follows the media record; no participant or story permissions are inferred here. -->

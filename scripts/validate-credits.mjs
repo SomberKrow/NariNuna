@@ -1,10 +1,13 @@
 // Validate the public-safe credit registry without network access. Known pending/blocked states are valid; missing classification is not.
 import { existsSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
 
 const creditStatuses = new Set(["verified", "pending", "internal", "not-required", "blocked"]);
 const displayStatuses = new Set(["approved", "not-approved", "not-applicable"]);
 const publicationStatuses = new Set(["approved", "pending", "blocked"]);
+const rightsStatuses = new Set(["approved", "pending", "blocked", "not-applicable"]);
+const thirdPartyStatuses = new Set(["cleared", "pending", "concern", "not-applicable"]);
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function assetExists(asset) {
@@ -34,9 +37,14 @@ export function validateCreditRegistry(registry) {
   const familyIds = ensureUniqueIds(registry.assetFamilies, "asset family");
   ensureUniqueIds(registry.credits, "credit");
   const classifiedFamilies = new Set();
+  const artworkIds = new Set();
 
   for (const family of registry.assetFamilies) {
     if (!publicationStatuses.has(family.publicationStatus)) errors.push(`Asset family ${family.id} has an unknown publication status.`);
+    for (const field of ["websiteUseStatus", "derivativeUseStatus", "approvalStatus"]) {
+      if (!rightsStatuses.has(family[field])) errors.push(`Asset family ${family.id} has an unknown ${field}.`);
+    }
+    if (!thirdPartyStatuses.has(family.thirdPartyStatus)) errors.push(`Asset family ${family.id} has an unknown thirdPartyStatus.`);
     if (!Array.isArray(family.trackedAssets)) errors.push(`Asset family ${family.id} must provide trackedAssets.`);
     for (const asset of family.trackedAssets ?? []) {
       if (typeof asset !== "string" || !asset.startsWith("/")) errors.push(`Asset family ${family.id} has an invalid tracked asset path.`);
@@ -77,11 +85,16 @@ export function validateCreditRegistry(registry) {
     if (credit.artworkDisplayStatus === "approved") {
       if (credit.creditStatus === "blocked") errors.push(`Blocked credit ${credit.id} cannot approve artwork display.`);
       if (!Array.isArray(credit.artwork) || credit.artwork.length === 0) errors.push(`Credit ${credit.id} approves display without an artwork reference.`);
-      for (const familyId of credit.assetFamilyIds ?? []) {
-        const family = registry.assetFamilies.find((candidate) => candidate.id === familyId);
-        if (family && family.publicationStatus !== "approved") errors.push(`Credit ${credit.id} displays artwork from non-approved family ${familyId}.`);
-      }
       for (const artwork of credit.artwork ?? []) {
+        if (!idPattern.test(artwork?.id ?? "")) errors.push(`Credit ${credit.id} has artwork with an invalid id: ${artwork?.id ?? "<missing>"}.`);
+        if (artworkIds.has(artwork?.id)) errors.push(`Duplicate artwork id: ${artwork?.id ?? "<missing>"}.`);
+        artworkIds.add(artwork?.id);
+        if (!artwork?.title?.trim() || !artwork?.category?.trim() || !artwork?.caption?.trim()) errors.push(`Artwork ${artwork?.id ?? "<missing>"} needs a title, category, and caption.`);
+        if (artwork?.year !== undefined && (!Number.isInteger(artwork.year) || artwork.year < 1900 || artwork.year > new Date().getUTCFullYear())) errors.push(`Artwork ${artwork?.id ?? "<missing>"} has an invalid year.`);
+        if (!credit.assetFamilyIds?.includes(artwork?.assetFamilyId)) errors.push(`Artwork ${artwork?.id ?? "<missing>"} references a family outside credit ${credit.id}.`);
+        const family = registry.assetFamilies.find((candidate) => candidate.id === artwork?.assetFamilyId);
+        if (family && family.publicationStatus !== "approved") errors.push(`Credit ${credit.id} displays artwork from non-approved family ${family.id}.`);
+        if (family && Array.isArray(family.trackedAssets) && !family.trackedAssets.includes(artwork?.src)) errors.push(`Artwork ${artwork?.id ?? "<missing>"} is not tracked by family ${family.id}.`);
         if (!artwork?.src || !assetExists(artwork.src)) errors.push(`Credit ${credit.id} displays a missing artwork asset: ${artwork?.src ?? "<missing>"}.`);
         if (!artwork?.alt?.trim()) errors.push(`Credit ${credit.id} displays artwork without meaningful alt text.`);
         if (!Number.isInteger(artwork?.width) || artwork.width <= 0 || !Number.isInteger(artwork?.height) || artwork.height <= 0) {
@@ -97,13 +110,16 @@ export function validateCreditRegistry(registry) {
   return errors;
 }
 
-const registryPath = process.argv[2] ?? "src/data/artCredits.json";
-const registry = JSON.parse(readFileSync(resolve(registryPath), "utf8"));
-const errors = validateCreditRegistry(registry);
+const isCli = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isCli) {
+  const registryPath = process.argv[2] ?? "src/data/artCredits.json";
+  const registry = JSON.parse(readFileSync(resolve(registryPath), "utf8"));
+  const errors = validateCreditRegistry(registry);
 
-if (errors.length) {
-  for (const error of errors) console.error(`Credit registry: ${error}`);
-  process.exitCode = 1;
-} else {
-  console.log(`Validated ${registry.credits.length} credit records across ${registry.assetFamilies.length} classified asset families.`);
+  if (errors.length) {
+    for (const error of errors) console.error(`Credit registry: ${error}`);
+    process.exitCode = 1;
+  } else {
+    console.log(`Validated ${registry.credits.length} credit records across ${registry.assetFamilies.length} classified asset families.`);
+  }
 }

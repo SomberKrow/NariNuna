@@ -1,5 +1,11 @@
 # Governance and Decision Log
 
+## 2026-09-12 — Haven depth and explicit release gate
+
+Jake directed implementation of the Phase Two handoff except Media Kit. Authorized scope is production-readiness data/tooling, archive-capable Credits with contextual access, a local-only Haven Passport, a few cross-room continuity details, rendered QA and synchronized documentation on a branch based on open PR #22. Full Nari content replacement remains deferred. This authority does not approve public artwork/derivative/franchise rights, Nari wording/canon, contact information, Discord, host/domain, merge, deployment or release; the new gate must preserve those blockers rather than marking them complete.
+
+**Status:** `ACCEPTED` for implementation and review on `kiva/haven-depth-release-readiness`.
+
 ## 2026-09-09 — main-branch documentation and security reconciliation
 
 Jake requested README and necessary documentation updates against current main, including known bugs and security/exploit status. Baseline: `fa83954f09938a864fd53f6a26739e50e2277970`, merged PR #18 including crop commit `45501ea`. Earlier ACTIVE/open/stacked entries below preserve the authority at the time of implementation; those branch descriptions are superseded by this observed merged baseline.
