@@ -423,6 +423,29 @@ At release, verify that the selected code resolves to the intended guild. If it 
 - Removing a record does not require layout surgery.
 - Private messages and casual stream remarks are not assumed permanently publishable.
 
+## Credits — `/credits/`
+
+**Implementation:** `credits/index.html`, `CreditsPage.vue`, `src/data/artCredits.{json,ts}`
+**Primary audience:** Artists, contributors, Nari, maintainers and visitors checking provenance
+**Job:** Name confirmed makers, keep incomplete attribution visible, and separate public credit approval from artwork-display permission.
+**Emotional outcome:** “The work and the people behind it are being treated carefully.”
+
+### Required sequence
+
+1. Brief explanation of the honest credit policy.
+2. Registry-driven creative groups and contributor/pending entries.
+3. Clear verified, awaiting-confirmation and project-created states.
+4. Correction path through existing public profiles.
+
+### Acceptance
+
+- No artist, link, ownership, commission term or permission is guessed.
+- Blocked records never render publicly; known pending records remain valid and visible.
+- Credit approval and artwork-display approval are separate fields.
+- The page remains understandable with no images and ships no source master.
+- Every meaningful registered asset family has an explicit disposition.
+- Credits remains secondary/footer navigation and a real MPA document.
+
 ## Hidden Prinny Cult — `/the-prinny-cult/`
 
 **Implementation:** `the-prinny-cult/index.html`, `PrinnyCultPage.vue`  

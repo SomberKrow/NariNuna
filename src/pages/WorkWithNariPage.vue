@@ -19,7 +19,7 @@ const fits = [
     <div class="room-opening__copy">
       <p class="eyebrow"><Handshake :size="16" aria-hidden="true" /> Chapter six · a note from the writing desk</p>
       <h1>Let's make<br /><em>something lovely.</em></h1>
-      <p>Good work can be clear, professional, and well organized without asking Nari to become somebody else.</p>
+      <p>Bring a clear idea, honest terms, and enough room for Nari to still sound like Nari.</p>
       <a class="button button--ember" href="#collaboration-note">Read the collaboration note <ArrowRight :size="17" aria-hidden="true" /></a>
     </div>
     <picture class="room-opening__art room-opening__art--work">
@@ -39,7 +39,7 @@ const fits = [
     <div class="collaboration-letter">
       <div class="collaboration-letter__masthead"><span>Work with Nari</span><span>A good first conversation</span></div>
       <h2 id="letter-title">An idea worth<br /><em>pulling up a chair for.</em></h2>
-      <p class="collaboration-letter__intro">Good projects start with people who understand the room. Here's where we might fit.</p>
+      <p class="collaboration-letter__intro">Here is what may fit—and what a useful first message needs to include.</p>
       <dl class="collaboration-letter__fits">
         <div v-for="(fit, index) in fits" :key="fit.title">
           <dt><span aria-hidden="true">0{{ index + 1 }}</span>{{ fit.title }}</dt><dd>{{ fit.text }}</dd>

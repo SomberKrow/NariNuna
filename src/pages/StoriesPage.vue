@@ -3,6 +3,7 @@
 import { heroStyle } from "@/data/artworkDelivery";
 import { ArrowRight, BookOpenText } from "@lucide/vue";
 import MediaCard from "@/components/ui/MediaCard.vue";
+import ArtworkCreditLink from "@/components/art/ArtworkCreditLink.vue";
 import { environmentArtwork } from "@/data/artwork";
 import { featuredMoments } from "@/data/media";
 
@@ -13,12 +14,12 @@ const albumMemories = featuredMoments.slice(1);
 <template>
   <!-- The ordered album retains featured-media priority while keeping its distinct room presentation. -->
   <section class="story-opening story-opening--painted page-width responsive-hero" :style="heroStyle(environmentArtwork.stories)">
-    <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Chapter seven · lanterns, blankets, one more story</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A little shelf for Nari's favorite stories, ridiculous stream memories, and moments that still make her laugh when chat is long gone.</p></div>
+    <div><p class="eyebrow"><BookOpenText :size="16" aria-hidden="true" /> Chapter seven · lanterns, blankets, one more story</p><h1>Some moments<br /><em>deserve to stay.</em></h1><p>A small archive for stream clips worth finding again. Personal stories wait until Nari chooses them herself.</p><ArtworkCreditLink credit-id="website-storybook-artwork" /></div>
   </section>
 
   <!-- Album order follows the media record; no participant or story permissions are inferred here. -->
   <section class="memory-album room-section page-width" aria-labelledby="album-title">
-    <header class="room-heading"><div><p class="room-kicker">Saved from the stream room</p><h2 id="album-title">You had to be there.<br /><em>Or you can start here.</em></h2></div><p>A few familiar clips, kept together while Nari chooses the stories to share next.</p></header>
+    <header class="room-heading"><div><p class="room-kicker">Saved from the stream room</p><h2 id="album-title">You had to be there.<br /><em>Or you can start here.</em></h2></div><p>Three public clips for now. No invented memories filling the empty pages.</p></header>
     <ol class="memory-album__pages">
       <li class="memory-album__lead">
         <MediaCard :moment="leadMemory" presentation="album" featured />

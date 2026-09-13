@@ -50,17 +50,22 @@ The gate includes:
 - strict Vue/TypeScript checking;
 - Vitest content contracts;
 - production MPA build;
-- existence/metadata/asset-reference validation for eleven HTML documents.
+- deterministic credit-registry validation;
+- existence/metadata/asset-reference validation for twelve HTML documents.
 
 Current gaps to consider expanding before release:
 
 - exact equality among Vite entries, router records, validator pages, and documented route registry;
 - duplicate navigation labels/route names;
 - allowed external origins and new-tab rel attributes;
-- fixed Nari atmosphere metadata across all eleven documents and absence of stale preference runtime;
+- fixed Nari atmosphere metadata across all twelve documents and absence of stale preference runtime;
 - publish-state filtering when target content schemas arrive;
 - broken/expired volatile-content checks where automatable;
 - generated public image metadata/size budget checks.
+
+`npm run verify:release` is intentionally separate. It first proves the current build, then evaluates machine-readable manual approvals and rights facts derived from Credits. A nonzero result is expected while genuine release blockers remain and must not be added to normal `npm run check`.
+
+Phase Two browser attempt, 12 September 2026: the cloud Chrome session could not reach the container-only loopback preview, and the stacked PR did not receive a Netlify deploy-preview URL during the review window. GitHub's Node 22 Quality Gate passed, but no rendered, keyboard, zoom, reduced-motion, contrast, Firefox or screen-reader result is promoted to `PASS`. Exact details remain in [document 41](41_HAVEN_DEPTH_AND_RELEASE_READINESS.md).
 
 ## Manual test matrix
 
@@ -102,7 +107,7 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 
 ## Route and MPA acceptance
 
-- [ ] Eleven expected HTML documents exist in `dist/`.
+- [ ] Twelve expected HTML documents exist in `dist/`.
 - [ ] Each direct-loads from the production host.
 - [ ] Refresh, trailing slash, and back/forward preserve the Nari atmosphere across documents.
 - [ ] Top-level links remain document anchors.
@@ -185,6 +190,24 @@ Also test 200% text zoom and 400% page zoom rather than treating fixed widths as
 - [ ] Draft/retired records render nothing.
 - [ ] Ratings/warnings appear before adult content.
 - [ ] Participant permission/redaction/removal path exists where relevant.
+
+### Credits
+
+- [ ] Every meaningful current artwork family has an explicit disposition.
+- [ ] Confirmed names and links have evidence; pending entries do not imply verification.
+- [ ] Blocked records and non-approved artwork never render.
+- [ ] The page remains complete and understandable with images blocked.
+- [ ] Long names, missing optional links, card wrapping and status labels reflow at target widths.
+- [ ] Contextual artwork links resolve to real Credits records and fragment targets.
+- [ ] Archive imagery renders only from the explicitly approved tracked family through responsive delivery.
+
+### Haven Passport and discoveries
+
+- [ ] Entering each ordinary journey room records that canonical path locally; repeat visits do not duplicate stamps.
+- [ ] Malformed, old-version or unavailable storage cannot break the page.
+- [ ] Reset clears only Haven Passport progress; the secret route and 404 are excluded.
+- [ ] The disclosure, progress, stamps and reset remain keyboard-operable, readable at zoom and meaningful with reduced motion.
+- [ ] Environmental discoveries are real labelled links, preserve visible focus and never expose or gate the secret route.
 
 ### Secret and 404
 

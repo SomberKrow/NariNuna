@@ -1,8 +1,8 @@
 # Nari Nuna’s Haven
 
-A character-led late-fall refuge connecting Nari’s streams, self-taught nail art, community, stories and public profiles. Eleven real HTML documents share Vue components and responsive artwork; each room retains its own composition and metadata.
+A character-led late-fall refuge connecting Nari’s streams, self-taught nail art, community, stories and public profiles. Twelve real HTML documents share Vue components and responsive artwork; each room retains its own composition and metadata.
 
-**Implementation baseline:** `main` at `8c7fe67b91882f7379ab762d24c34fbeae7e4ffc`, merged PR #20, 10 September 2026. The maintenance branch based on that commit is documented in [delivery and validation evidence](docs/37_SIZE_MAINTENANCE.md).
+**Implementation baseline:** `main` at `d1b495cd8aa0be5aaaa8a9255e2bc756d9b5491e`, merged PR #21, 11 September 2026. The current Credits implementation is documented in [credits and copy humanization](docs/40_CREDITS_AND_COPY_HUMANIZATION.md).
 
 **Status:** client review. The active site uses one Nari atmosphere; final theme direction, canon, content, rights/credits, contact/Discord, host/domain and release QA decisions remain open. Public repository visibility is not artwork permission or production clearance.
 
@@ -23,7 +23,8 @@ The required gate runs ESLint, strict Vue/TypeScript checks, Vitest, the product
 
 | Command | Purpose |
 | --- | --- |
-| `npm run build` | Typecheck, build the eleven documents and enforce document/artwork/graph budgets |
+| `npm run build` | Typecheck, validate credits, build the twelve documents and enforce document/artwork/graph budgets |
+| `npm run validate:credits` | Validate attribution records, asset-family coverage, links and artwork-display boundaries |
 | `npm run preview` | Serve the existing production build locally |
 | `npm run verify:preview` | Start/stop a local preview and verify documents/assets; `NARI_PREVIEW_URL` can target an existing preview |
 | `npm run lint` / `npm run typecheck` / `npm test` | Run an individual gate while editing |
@@ -40,11 +41,11 @@ Vue 3, strict TypeScript, Vite, Vue Router, SCSS, Motion for Vue and Lucide. Kee
 
 | Location | Responsibility |
 | --- | --- |
-| `pages/` | Eleven real HTML entries, titles, descriptions, robots and social metadata |
+| `pages/` | Twelve real HTML entries, titles, descriptions, robots and social metadata |
 | `src/data/projectPages.json` | Shared document registry for build entries, preloads and validation |
 | `src/main.ts`, `src/App.vue` | Router-ready mount, guarded chunk recovery and ordinary/secret shell choice |
 | `src/router/` | Explicit lazy route modules and history/fragment scrolling |
-| `src/components/layout/` | Header, keyboard-aware mobile directory, nine-room passage and compact room-specific footer |
+| `src/components/layout/` | Header, keyboard-aware mobile directory, ten-room passage and compact room-specific footer |
 | `src/components/haven/`, `src/composables/useHavenDoor.ts` | Three-knock invitation, deferred interior, focus transfer, reset and optional floorboard |
 | `src/components/art/` | Single-root native image delivery and decorative/meaningful Ghostie semantics |
 | `src/components/ui/MediaCard.vue` | Outbound clips with a local fallback when remote thumbnails fail |
@@ -72,10 +73,11 @@ The complete [code ownership record](docs/38_CODE_OWNERSHIP.md) explains active 
 | `/work-with-nari/` | Painted correspondence, `#collaboration-note`, native public directory at `#nari-links` |
 | `/stories/` | Curated memory album; no restored left stripe or invented stories |
 | `/support/` | Free participation first, optional Throne/Twitch links and clear boundaries |
+| `/credits/` | Public-safe creative ledger with explicit verified, pending and project-created states |
 | `/the-prinny-cult/` | Tiny standalone noindex joke with two exits; all 27 supplied designs remain retained |
 | `/404.html` | Independent recovery document; production unknown-path HTTP status belongs to the host |
 
-Header priority is Home brand, Meet Nari, Streams, Haven and Work. More contains Resources, Nails, Story Time and Support. The nine-room journey has its own deliberate order in `journey.ts`; it appears on mobile and desktop.
+Header priority is Home brand, Meet Nari, Streams, Haven and Work. More contains Resources, Nails, Story Time, Support and Credits. The ten-room journey has its own deliberate order in `journey.ts`; it appears on mobile and desktop.
 
 ## Artwork and performance
 
@@ -114,7 +116,7 @@ Use a focused branch and normal reversible commits. No force push, source-master
 
 ## Browser and release checks
 
-Automated source, SSR, build and HTTP checks do not establish rendered parity. Check all eleven routes at 320, 390, 768 and 1920 CSS px; include responsive thresholds, DPR 1/2, short phones and relevant wide screens. Exercise menus, Escape/Tab/focus return, all door steps/reset, floorboard/secret exits, thumbnail failure, fragments, refresh and back/forward. Complete reduced motion, zoom/reflow, screen reader, contrast and physical-device review.
+Automated source, SSR, build and HTTP checks do not establish rendered parity. Check all twelve routes at 320, 390, 768 and 1920 CSS px; include responsive thresholds, DPR 1/2, short phones and relevant wide screens. Exercise menus, Escape/Tab/focus return, all door steps/reset, floorboard/secret exits, thumbnail failure, fragments, refresh and back/forward. Complete reduced motion, zoom/reflow, screen reader, contrast and physical-device review.
 
 The maintenance environment could not install Chromium. Structural equivalence is recorded; browser screenshots, network transfer and keyboard evidence remain pending. Lossy image changes and broad active-cascade consolidation were therefore deferred.
 

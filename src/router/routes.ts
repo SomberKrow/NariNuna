@@ -11,6 +11,7 @@ export const routes: RouteRecordRaw[] = [
   { path: "/work-with-nari/", name: "work-with-nari", component: () => import("@/pages/WorkWithNariPage.vue") },
   { path: "/support/", name: "support", component: () => import("@/pages/SupportPage.vue") },
   { path: "/stories/", name: "stories", component: () => import("@/pages/StoriesPage.vue") },
+  { path: "/credits/", name: "credits", component: () => import("@/pages/CreditsPage.vue") },
   {
     path: "/the-prinny-cult/",
     name: "prinny-cult",

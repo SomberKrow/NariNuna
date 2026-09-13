@@ -161,7 +161,7 @@ onBeforeUnmount(() => {
               @click="closeMenu"
             >
               <span>{{ item.shortLabel ?? item.label }}</span>
-              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/nail-studio/" ? "Color and craft" : item.href === "/stories/" ? "Saved moments" : "Support Nari" }}</small>
+              <small>{{ item.href === "/resources/" ? "Useful things" : item.href === "/nail-studio/" ? "Color and craft" : item.href === "/stories/" ? "Saved moments" : item.href === "/credits/" ? "Meet the makers" : "Support Nari" }}</small>
             </a>
           </nav>
         </details>

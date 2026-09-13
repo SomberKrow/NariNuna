@@ -1,4 +1,4 @@
-// Ordered nine-room journey, independent of header grouping. The last room links Home; unknown routes have no passage.
+// Ordered ten-room journey, independent of header grouping. The last room links Home; unknown routes have no passage.
 export interface HavenJourneyRoom {
   label: string;
   href: string;
@@ -19,7 +19,8 @@ export const havenJourney: readonly HavenJourneyRoom[] = [
   { label: "Resources", href: "/resources/", note: "A few good things, chosen with care." },
   { label: "Work With Nari", href: "/work-with-nari/", note: "Good ideas start with a conversation." },
   { label: "Story Time", href: "/stories/", note: "Keep the moments. Make some more." },
-  { label: "Support", href: "/support/", note: "Thank you for being part of the room." }
+  { label: "Support", href: "/support/", note: "Thank you for being part of the room." },
+  { label: "Credits", href: "/credits/", note: "Leave every maker's name beside their work." }
 ];
 
 export const havenRoomNotes = Object.fromEntries(

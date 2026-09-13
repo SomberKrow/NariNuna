@@ -13,5 +13,6 @@ export const primaryNavigation: NavigationItem[] = [
 
 export const footerNavigation: NavigationItem[] = [
   { label: "Story Time", href: "/stories/" },
-  { label: "Support", href: "/support/" }
+  { label: "Support", href: "/support/" },
+  { label: "Credits", href: "/credits/" }
 ];

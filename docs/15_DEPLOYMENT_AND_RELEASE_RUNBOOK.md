@@ -21,6 +21,7 @@ From a clean checkout:
 ```bash
 npm ci
 npm run check
+npm run verify:release
 ```
 
 Expected artifact: `dist/` containing:
@@ -104,6 +105,7 @@ Direct requests must serve:
 /work-with-nari/          -> dist/work-with-nari/index.html
 /support/                 -> dist/support/index.html
 /stories/                 -> dist/stories/index.html
+/credits/                 -> dist/credits/index.html
 /the-prinny-cult/         -> dist/the-prinny-cult/index.html
 /unknown-path             -> dist/404.html with intended host status
 ```

@@ -7,7 +7,7 @@
 
 ## System summary
 
-Nari Nuna's Haven is a static Vue application built as a true Vite multi-page application (MPA). Eleven HTML documents share one Vue entry and shell. Vue Router resolves the current URL and lazy-loads the corresponding page component, while primary navigation uses ordinary anchors and real document transitions.
+Nari Nuna's Haven is a static Vue application built as a true Vite multi-page application (MPA). Twelve HTML documents share one Vue entry and shell. Vue Router resolves the current URL and lazy-loads the corresponding page component, while primary navigation uses ordinary anchors and real document transitions.
 
 There is no backend, account, database, CMS, form handler, analytics service, runtime social API, or trusted client secret boundary.
 
@@ -34,7 +34,7 @@ flowchart TD
 | Motion | Motion for Vue (`motion-v`) + CSS transitions |
 | Icons | `@lucide/vue` |
 | Quality | ESLint 9, `vue-tsc`, Vitest, custom output validation |
-| Output | Static `dist/` with eleven HTML documents and hashed assets |
+| Output | Static `dist/` with twelve HTML documents and hashed assets |
 
 Use exact versions resolved in `package-lock.json`. Do not hand-edit the lockfile or treat this table as an upgrade request.
 
@@ -163,6 +163,7 @@ Semantic visual values remain CSS custom properties so atmosphere and component 
 | Haven door step | `HavenDoor` local ref | None | Narrative, not auth |
 | Floorboard open state | `LooseFloorboard` local ref | None | One optional toggle |
 | Secret page | Tiny standalone view; no oath/counter | None | Optional public joke |
+| Haven Passport | `useHavenPassport` + `HavenPassport` | Versioned local storage with in-memory fallback | Canonical room paths only; no identity, account, analytics or gate |
 
 No current state belongs in a cookie, account, server session, URL parameter, or analytics event.
 
@@ -194,7 +195,9 @@ The browser is untrusted and the output is public static code.
 | `npm run lint` | ESLint across repository excluding build/cache paths |
 | `npm run typecheck` | `vue-tsc --noEmit` |
 | `npm run test` | Vitest content-contract suite |
-| `npm run build` | Typecheck → Vite MPA build → document and performance validators |
+| `npm run build` | Typecheck → credit registry validation → Vite MPA build → document and performance validators |
+| `npm run validate:credits` | Offline attribution/family/link/artwork-display invariant check |
+| `npm run verify:release` | Build the artifact, derive release facts and fail while blocking approval/rights/host/QA records remain |
 | `npm run check` | Lint → typecheck → test → build → HTTP preview verification |
 | `npm run preview` | Preview built production artifact |
 
@@ -204,7 +207,7 @@ The last recorded implementation evidence on 2026-08-13 stated that `npm run che
 
 The following are merge blockers unless intentionally changed through an accepted decision record:
 
-- all eleven documents build and direct-load;
+- all twelve documents build and direct-load;
 - primary top-level navigation remains real document navigation;
 - shared shell is component-owned, not copied per page;
 - page modules remain lazy;
@@ -215,6 +218,7 @@ The following are merge blockers unless intentionally changed through an accepte
 - no client secret;
 - public assets are local/approved and explicitly sized;
 - hidden route remains optional, no-index, and non-private;
+- Passport derives its room list from `havenJourney`, tolerates unavailable/malformed storage and never gates content;
 - output remains portable to a static host meeting the runbook contract.
 
 ## Adding a route

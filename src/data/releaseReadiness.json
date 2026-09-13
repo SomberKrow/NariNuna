@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "requiredCategories": ["artwork-rights", "content", "infrastructure", "accessibility-visual-qa", "security"],
+  "items": [
+    { "id": "final-artwork-rights-review", "category": "artwork-rights", "status": "manual-review", "summary": "Final public-use, derivative, attribution, and third-party rights review has not been completed.", "releaseBlocking": true },
+    { "id": "final-nari-content-approval", "category": "content", "status": "pending", "summary": "Nari has not approved the final public wording.", "releaseBlocking": true },
+    { "id": "identity-canon-approval", "category": "content", "status": "pending", "summary": "The public identity and canon relationship still needs Nari's decision.", "releaseBlocking": true },
+    { "id": "real-nail-studio-content", "category": "content", "status": "pending", "summary": "The flagship Nail Studio does not yet contain Nari's approved real work.", "releaseBlocking": true },
+    { "id": "approved-resources", "category": "content", "status": "pending", "summary": "Resource recommendations are intentionally still being curated.", "releaseBlocking": false },
+    { "id": "approved-story-content", "category": "content", "status": "pending", "summary": "Personal Story Time content remains intentionally omitted pending Nari's input.", "releaseBlocking": false },
+    { "id": "professional-contact-route", "category": "content", "status": "pending", "summary": "A dedicated public professional contact route has not been approved.", "releaseBlocking": true },
+    { "id": "canonical-discord-destination", "category": "content", "status": "manual-review", "summary": "The Discord destination must be reverified immediately before release.", "releaseBlocking": true },
+    { "id": "production-host", "category": "infrastructure", "status": "blocked", "summary": "The production host and account owner are not recorded.", "releaseBlocking": true },
+    { "id": "canonical-domain", "category": "infrastructure", "status": "blocked", "summary": "The canonical production domain is not approved.", "releaseBlocking": true },
+    { "id": "production-https", "category": "infrastructure", "status": "manual-review", "summary": "HTTPS has not been observed on the final production host.", "releaseBlocking": true },
+    { "id": "unknown-path-http", "category": "infrastructure", "status": "manual-review", "summary": "Production unknown-path status and 404 mapping have not been observed.", "releaseBlocking": true },
+    { "id": "production-headers", "category": "infrastructure", "status": "manual-review", "summary": "Production security headers have not been observed.", "releaseBlocking": true },
+    { "id": "production-cache-behavior", "category": "infrastructure", "status": "manual-review", "summary": "HTML revalidation and immutable asset caching have not been observed in production.", "releaseBlocking": true },
+    { "id": "rollback-rehearsal", "category": "infrastructure", "status": "manual-review", "summary": "A previous-good deployment and rollback procedure have not been verified.", "releaseBlocking": true },
+    { "id": "keyboard-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "The final keyboard-only route and interaction matrix is incomplete.", "releaseBlocking": true },
+    { "id": "zoom-reflow-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "Final 200% text and 400% page zoom/reflow review is incomplete.", "releaseBlocking": true },
+    { "id": "contrast-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "Final contrast measurements have not been recorded for all important combinations.", "releaseBlocking": true },
+    { "id": "reduced-motion-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "Final reduced-motion rendered behavior is not fully reviewed.", "releaseBlocking": true },
+    { "id": "screen-reader-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "A named screen-reader spot check has not been completed.", "releaseBlocking": true },
+    { "id": "mobile-rendered-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "The final 320, 390, and 430 CSS-pixel rendered review is incomplete.", "releaseBlocking": true },
+    { "id": "desktop-rendered-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "The final 768, 1440, 1920, and very-wide rendered review is incomplete.", "releaseBlocking": true },
+    { "id": "firefox-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "Current desktop Firefox has not been reviewed against the final release commit.", "releaseBlocking": true },
+    { "id": "chromium-qa", "category": "accessibility-visual-qa", "status": "manual-review", "summary": "A Chromium-family browser has not been reviewed against the final release commit.", "releaseBlocking": true },
+    { "id": "production-dependency-audit", "category": "security", "status": "manual-review", "summary": "A production dependency audit must be rerun and recorded for the final release commit.", "releaseBlocking": true }
+  ]
+}

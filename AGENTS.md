@@ -33,7 +33,7 @@ Never claim a test, build, branch, commit, PR, deployment, link, right, or appro
 
 - Vue 3 + strict TypeScript + Vite + Vue Router + SCSS + Motion for Vue + Lucide.
 - npm with committed lockfile and Node.js 22.13+.
-- True Vite MPA with eleven real HTML documents.
+- True Vite MPA with twelve real HTML documents.
 - Ordinary anchors for top-level document navigation.
 - Shared Vue entry/shell and lazy route modules.
 - Phase A review branch: one Nari atmosphere with semantic tokens; Dark/Light removal remains a reversible client-review proposal, not an approved product-foundation change.

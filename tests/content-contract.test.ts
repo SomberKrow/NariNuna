@@ -22,7 +22,8 @@ describe("content contracts", () => {
       "/resources/",
       "/nail-studio/",
       "/stories/",
-      "/support/"
+      "/support/",
+      "/credits/"
     ]);
   });
 
@@ -39,7 +40,8 @@ describe("content contracts", () => {
       "/resources/",
       "/work-with-nari/",
       "/stories/",
-      "/support/"
+      "/support/",
+      "/credits/"
     ]);
     expect(new Set(journeyPaths)).toEqual(new Set(publicPaths));
     expect(havenJourney.every((room) => room.note.length > 0)).toBe(true);

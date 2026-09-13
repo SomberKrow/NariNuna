@@ -27,7 +27,8 @@ describe("room reading order", () => {
   it("omits client samples while retaining the honest curating state", async () => {
     const html = await renderToString(createSSRApp({ render: () => h(ResourcesPage) }));
     expect(html).not.toMatch(/Client preview|Demonstration only:|Demo entry|Practice-station reset/);
-    expect(html).toContain("Nari is choosing her first recommendations");
+    expect(html).toContain("The shelves are sparse on purpose");
+    expect(html).toContain("Empty space beats a recommendation");
     expect(html).toContain("A recommendation should earn its place.");
   });
 

@@ -1,5 +1,11 @@
 # Governance and Decision Log
 
+## 2026-09-12 — Haven depth and explicit release gate
+
+Jake directed implementation of the Phase Two handoff except Media Kit. Authorized scope is production-readiness data/tooling, archive-capable Credits with contextual access, a local-only Haven Passport, a few cross-room continuity details, rendered QA and synchronized documentation on a branch based on open PR #22. Full Nari content replacement remains deferred. This authority does not approve public artwork/derivative/franchise rights, Nari wording/canon, contact information, Discord, host/domain, merge, deployment or release; the new gate must preserve those blockers rather than marking them complete.
+
+**Status:** `ACCEPTED` for implementation and review on `kiva/haven-depth-release-readiness`.
+
 ## 2026-09-09 — main-branch documentation and security reconciliation
 
 Jake requested README and necessary documentation updates against current main, including known bugs and security/exploit status. Baseline: `fa83954f09938a864fd53f6a26739e50e2277970`, merged PR #18 including crop commit `45501ea`. Earlier ACTIVE/open/stacked entries below preserve the authority at the time of implementation; those branch descriptions are superseded by this observed merged baseline.
@@ -92,6 +98,15 @@ Do not commit private contracts, private messages, credentials, or legal identit
 Use `templates/DECISION_RECORD.md` for substantial new decisions, then summarize the accepted result here.
 
 ## Accepted decisions
+
+### ADR-010 — Public-safe creative credit registry
+
+**State:** `ACCEPTED` for implementation; contributor verification and publication rights remain `PENDING`/`BLOCKED` per family
+**Date:** 2026-09-12
+**Decision:** Add `/credits/` as a secondary real document and keep public attribution in one validated local registry. Track credit status, family publication state and artwork-display approval separately. Known pending/blocked dispositions are valid; an unclassified meaningful family is not.
+**Reason:** Makes missing attribution visible and maintainable without overloading delivery metadata or publishing private evidence.
+**Consequences:** New meaningful art families require a registry disposition and asset record where applicable. Blocked records cannot render; artwork cannot appear on Credits without explicit display clearance.
+**Revisit when:** A contributor confirms public wording/link, a family gains or loses permission, or the project adopts a private rights-management system.
 
 ### ADR-001 — True Vite MPA with shared Vue Router runtime
 
